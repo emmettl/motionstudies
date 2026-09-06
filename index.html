@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#050512" />
+    <meta
+      name="description"
+      content="Motion Studies is a catalogue of authored works about cities, movement, and the ways transport becomes visible as data."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Motion Studies" />
+    <meta
+      property="og:description"
+      content="Authored studies of cities in motion — scheduled, observed, and reconstructed."
+    />
+    <meta property="og:url" content="https://emmettl.github.io/motionstudies/" />
+    <meta property="og:image" content="https://emmettl.github.io/motionstudies/social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Motion Studies" />
+    <meta
+      name="twitter:description"
+      content="Authored studies of cities in motion — scheduled, observed, and reconstructed."
+    />
+    <meta name="twitter:image" content="https://emmettl.github.io/motionstudies/social-card.png" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Motion Studies</title>
+  </head>
+  <body>
+    <canvas class="motion-field" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="masthead">
+      <a class="wordmark" href="#top" aria-label="Motion Studies home">
+        <span class="wordmark-mark" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+        <span>Motion Studies</span>
+      </a>
+      <p class="catalogue-mark">An atlas of movement</p>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">Cities move twice</p>
+        <h1 id="hero-title">Once through space.<br />Once through data.</h1>
+        <p class="hero-copy">
+          Motion Studies is a catalogue of authored works about transport, geography,
+          and the different ways a moving city becomes legible.
+        </p>
+        <a class="downlink" href="#catalogue">
+          <span>Explore the catalogue</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </section>
+
+      <section class="catalogue" id="catalogue" aria-labelledby="catalogue-title">
+        <div class="section-heading">
+          <p class="eyebrow">The catalogue</p>
+          <h2 id="catalogue-title">Four places.<br />Four spatial arguments.</h2>
+        </div>
+
+        <ol class="works">
+          <li class="work work-live">
+            <a href="https://emmettl.github.io/gleislicht/" aria-label="Open Gleislicht">
+              <span class="number">005</span>
+              <span class="work-body">
+                <span class="status"><i></i> Live study</span>
+                <strong>Gleislicht</strong>
+                <span class="place">Switzerland</span>
+                <span class="thesis">
+                  A deliberately built national clockwork, revealed through rail,
+                  terrain, Takt, air and road.
+                </span>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li class="work">
+            <article>
+              <span class="number">006</span>
+              <span class="work-body">
+                <span class="status">In development</span>
+                <strong>All Change</strong>
+                <span class="place">London</span>
+                <span class="thesis">
+                  Physical London transforms into Beck-space while every journey
+                  continues uninterrupted.
+                </span>
+              </span>
+            </article>
+          </li>
+          <li class="work">
+            <article>
+              <span class="number">007</span>
+              <span class="work-body">
+                <span class="status">Corridor proof</span>
+                <strong>Local / Express</strong>
+                <span class="place">New York</span>
+                <span class="thesis">
+                  Two speeds of city compress, overtake and rejoin across geographic
+                  and diagrammatic New York.
+                </span>
+              </span>
+            </article>
+          </li>
+          <li class="work">
+            <article>
+              <span class="number">008</span>
+              <span class="work-body">
+                <span class="status">Source study</span>
+                <strong>Correspondances</strong>
+                <span class="place">Paris</span>
+                <span class="thesis">
+                  Métro circulation and outward RER eruptions expose the relationship
+                  between centre and banlieue.
+                </span>
+              </span>
+            </article>
+          </li>
+        </ol>
+      </section>
+
+      <section class="method" aria-labelledby="method-title">
+        <div class="section-heading">
+          <p class="eyebrow">The instrument</p>
+          <h2 id="method-title">Movement is not one kind of knowledge.</h2>
+        </div>
+
+        <div class="modes">
+          <article>
+            <span class="mode-mark scheduled" aria-hidden="true"></span>
+            <p class="mode-number">01</p>
+            <h3>Scheduled</h3>
+            <p>Timetables become interpolated journeys: the intended choreography of a city.</p>
+          </article>
+          <article>
+            <span class="mode-mark observed" aria-hidden="true"></span>
+            <p class="mode-number">02</p>
+            <h3>Observed</h3>
+            <p>Broadcast positions become smoothed trajectories: visitors crossing above the plan.</p>
+          </article>
+          <article>
+            <span class="mode-mark reconstructed" aria-hidden="true"></span>
+            <p class="mode-number">03</p>
+            <h3>Reconstructed</h3>
+            <p>Aggregate flow and speed become particles: measured traffic without imagined tracking.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="statement" aria-label="Editorial statement">
+        <p>
+          Not a dashboard. Not a universal map skin. Each work begins with a place,
+          a source, and a visual claim that would stop making sense anywhere else.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Motion Studies <span>© <span data-year></span></span></p>
+      <p>
+        <a href="https://github.com/emmettl/motionstudies">Source</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/emmettl/gleislicht">Gleislicht</a>
+      </p>
+    </footer>
+
+    <script type="module" src="./motion.js"></script>
+  </body>
+</html>
