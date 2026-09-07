@@ -37,18 +37,12 @@ a {
   color: inherit;
 }
 
-.motion-field,
 .grain {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-}
-
-.motion-field {
-  z-index: -2;
-  opacity: 0.7;
 }
 
 .grain {
@@ -486,14 +480,51 @@ footer a {
     scroll-behavior: auto;
   }
 
-  .motion-field {
-    opacity: 0.35;
-  }
-
   *,
   *::before,
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* The opening study uses the same path for its route and moving light. */
+.hero {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-areas: "intro teaser" "outro teaser";
+  gap: 28px 38px;
+  padding-block: 70px;
+}
+.hero-intro { grid-area: intro; align-self: end; }
+.hero-outro { grid-area: outro; align-self: start; }
+.hero h1 { font-size: clamp(3.1rem, 5.7vw, 5.6rem); line-height: 0.98; margin-bottom: 0; }
+.hero .downlink { margin-top: 32px; }
+.motion-teaser { grid-area: teaser; align-self: center; min-width: 0; margin: 0; }
+.teaser-coordinates { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font: 0.75rem ui-monospace, monospace; letter-spacing: 0.07em; text-transform: uppercase; }
+.teaser-network { display: block; width: 100%; height: auto; overflow: visible; margin-block: 18px; }
+.teaser-river { fill: none; stroke: #263755; stroke-width: 18; opacity: 0.4; }
+.teaser-divider { fill: none; stroke: #8e9cbd; stroke-opacity: 0.22; stroke-dasharray: 2 8; }
+.teaser-route { stroke: currentColor; stroke-width: 1.5; opacity: 0.32; }
+.teaser-network .cyan { color: var(--cyan); }
+.teaser-network .pink { color: var(--magenta); }
+.teaser-network .amber { color: var(--amber); }
+.teaser-train { stroke: currentColor; stroke-width: 3; stroke-dasharray: 0.8 99.2; stroke-dashoffset: 24; opacity: 1; filter: drop-shadow(0 0 4px currentColor); }
+.motion-teaser[data-motion-ready] .teaser-train { animation: route-travel var(--duration) linear var(--phase) infinite; }
+.teaser-stations { fill: var(--field); stroke: #b6d1e1; stroke-width: 1.5; }
+.teaser-interchanges { fill: var(--field); stroke: var(--ink); stroke-width: 2.5; }
+.motion-teaser figcaption { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.875rem; line-height: 1.5; }
+.motion-teaser small { display: block; color: var(--muted); font-size: 0.75rem; }
+.teaser-toggle { flex-shrink: 0; padding: 9px 0; border: 0; border-bottom: 1px solid currentColor; background: none; color: var(--cyan); font: inherit; cursor: pointer; }
+.teaser-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+.motion-teaser[data-paused] .teaser-train { animation-play-state: paused; }
+@keyframes route-travel { to { stroke-dashoffset: -76; } }
+@media (max-width: 1000px) {
+  .hero { grid-template-columns: 1fr; grid-template-areas: "intro" "teaser" "outro"; gap: 30px; padding-block: 44px; }
+  .hero h1 { max-width: 700px; font-size: clamp(2.8rem, 8vw, 5rem); }
+  .motion-teaser { width: 100%; max-width: 760px; }
+  .hero-copy { max-width: 680px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-teaser[data-motion-ready] .teaser-train { animation: none; }
+  .teaser-toggle { display: none; }
 }
