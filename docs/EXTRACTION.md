@@ -6,7 +6,7 @@ The `packages/` and `lab/` directories were imported with `git subtree split` an
 
 The original catalogue files are retained. Site assembly uses an explicit asset allowlist, so npm files, package sources and tests cannot be uploaded as part of the catalogue. The lab is a separate production build under `lab/`.
 
-All Change initially consumes the exact private `0.0.0` tarballs built here. Its vendor manifest records SHA-256 hashes and this source commit. Replace those file dependencies with exact registry prerelease versions once publication is configured. No edition in Gleislicht has been removed or redirected during this rehearsal.
+During the initial rehearsal, All Change consumed private `0.0.0` tarballs with a SHA-256 vendor manifest. Those file dependencies have since been replaced by exact registry prereleases, and the edition repositories now own their implementations as described below.
 
 ## Edition repositories
 
