@@ -1,0 +1,87 @@
+name: Release npm packages
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Dry run, first release with NPM_TOKEN, or trusted OIDC release
+        type: choice
+        options: [dry-run, bootstrap, trusted]
+        default: dry-run
+        required: true
+      version:
+        description: Exact version committed in all four packages
+        type: string
+        default: 0.1.0-alpha.0
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: npm-release
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+      RELEASE_MODE: ${{ inputs.mode }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Check publication ref
+        run: |
+          if [ "$RELEASE_MODE" != dry-run ] && [ "$GITHUB_REF" != refs/heads/main ]; then
+            echo 'Publication requires the main branch.' >&2
+            exit 1
+          fi
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm install --global npm@11.5.1 --ignore-scripts
+      - run: npm ci
+      - run: npm run typecheck && npm run lint && npm run check:architecture && npm test
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm run check:release && npm run test:loaders
+      - run: npm run release:dry-run
+      - uses: actions/upload-artifact@v4
+        with:
+          name: npm-release
+          path: .package-dist/tarballs/
+          if-no-files-found: error
+          retention-days: 14
+  publish:
+    if: inputs.mode != 'dry-run'
+    needs: verify
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+      RELEASE_AUTH: ${{ inputs.mode }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - run: npm install --global npm@11.5.1 --ignore-scripts
+      - uses: actions/download-artifact@v4
+        with:
+          name: npm-release
+          path: .package-dist/tarballs/
+      - name: Bootstrap publication
+        if: inputs.mode == 'bootstrap'
+        run: node scripts/publish-packages.mjs --publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Trusted publication
+        if: inputs.mode == 'trusted'
+        run: node scripts/publish-packages.mjs --publish
+        env:
+          NODE_AUTH_TOKEN: ''
