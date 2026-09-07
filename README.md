@@ -14,6 +14,7 @@ The catalogue for authored studies of cities and movement, and the home of the s
 | Local / Express · New York | Private proof; publication held | [local-express (private)](https://github.com/emmettl/local-express) |
 | NORIKAE · Tokyo | [Investigation brief](docs/TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
 | MANIFEST · World trade | [Investigation brief](docs/MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
+| Umlauf · Berlin | [First proof and source contract](docs/BERLIN.md) | [umlauf (private)](https://github.com/emmettl/umlauf) |
 
 [Project goals](docs/VISION.md) · [Overall roadmap](ROADMAP.md) · [City briefs and source audits](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 

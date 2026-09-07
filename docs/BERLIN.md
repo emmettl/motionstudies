@@ -1,8 +1,10 @@
-# Berlin — title to find
+# Umlauf — Berlin
 
 **An unnumbered Berlin motion study**
 
-**Catalogue status:** feasibility investigation complete; strong scheduled-motion and publication path, vertical track semantics still to compile.
+**Catalogue status:** source-pinned interactive first proof implemented in an independent private repository; unnumbered, with physical rail/interchange sections still to source.
+
+**Implementation:** [Umlauf repository (private)](https://github.com/emmettl/umlauf) · [Data contract](https://github.com/emmettl/umlauf/blob/main/docs/DATA.md) · [Validation](https://github.com/emmettl/umlauf/blob/main/docs/VALIDATION.md) · [Next work](https://github.com/emmettl/umlauf/blob/main/docs/ROADMAP.md).
 
 **Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
 
@@ -15,6 +17,18 @@ Berlin draws an inside with railway. The Ringbahn is simultaneously a circulatin
 The local sentence is therefore **ring and crossing** rather than generic network density. Clockwise S41 and counter-clockwise S42 services should make a continuous pulse around the centre. At the four cardinal rail hubs and selected U-Bahn/tram intersections, cross-city movement should arrive on distinct vertical planes without becoming an interchangeable stack of coloured lines.
 
 The City of Berlin's [Planwerk Innere Stadt](https://www.berlin.de/sen/stadtentwicklung/planung/planwerk-innere-stadt/) explicitly uses the area inside the S-Bahn Ring as its inner-city field. That makes the ring an urban proposition as well as a route geometry, but the planning boundary must remain contextual: trains do not prove a social, cultural or fare boundary by themselves.
+
+## First implemented proof — 7 September 2026
+
+The independent Umlauf edition consumes exact published `@motionstudies/*` packages at `0.1.0-alpha.2`. It uses the retained, hash-verified 3 September VBB release for Monday 7 September, 07:00–09:00 Europe/Berlin. The opening carries 585 scheduled journeys across twelve selected line names, 397 platform/stop records and 1,170 directed path segments. S41 and S42 each contribute 36 trips overlapping the opening; the four named crossing hubs remain legible in the Ring view.
+
+The first view isolates the Ring. The second adds S1/S2, S3/S5/S7/S9, U2/U6/U8 and M10 within a central bounding box. A continuous geographic-to-circulation transformation makes the Ring approximately circular while keeping the same journey identities and clock. Play/pause, scrubbing, speed, station calls, journey following, labels and camera controls work in desktop and phone layouts. The source panel distinguishes scheduled interpolation from observations and credits VBB under CC BY 4.0.
+
+The importer preserves agency, extended route type, route, service, trip, shape, direction and original call sequence. Replacement buses are excluded explicitly. Retained stops match directed shape segments monotonically, including a return to the starting station; the maximum observed stop-to-shape offset is 27.5 metres. A 223.8-metre S2 mismatch at Lichtenrade is outside the selected field and remains unvalidated for any future southern extension. No selected geometry failure is replaced by an invented straight line. Repeat compilation produced identical artifact hashes.
+
+Local validation passed nine source/geometry tests, six Chromium desktop/phone browser checks, typecheck, lint, the independent-package boundary check and production build. Network and diagram payloads are approximately 123 KB and 49 KB gzip respectively; JavaScript including the shared renderer is approximately 323 KB gzip. Phone emulation does not certify physical-device frame or memory budgets.
+
+This proof has no public deployment and assigns no catalogue number. Its display plane does not encode measured rail heights. The next substantial source gate is a defensible interchange section, starting with GTFS relative levels/pathways and official infrastructure evidence at Ostkreuz. Terrain, water, buildings and realtime remain separate additions.
 
 ## Feasibility verdict — 6 September 2026
 
@@ -121,7 +135,7 @@ Start with scheduled motion. Add recorded trip updates only after completeness f
 - [x] Download and inspect a current VBB GTFS; record tables, counts, dates and checksum.
 - [x] Verify licence, annual archive and unauthenticated realtime availability.
 - [x] Decode one realtime snapshot and establish that it contains trip updates, not vehicle positions.
-- [ ] Compile the Berlin-only agency/mode slice and validate every Ringbahn service pattern and replacement route.
+- [x] Compile the selected Berlin agency/mode slice; validate source identities, both full-ring winding directions and replacement-route exclusion for the retained opening.
 - [ ] Inspect ATKIS railway attributes and author above/surface/below-ground segments with confidence.
 - [ ] Crop DGM/LoD2 context and set a phone-first transfer/frame budget.
 - [ ] Record a complete two-hour realtime window only after the VBB coverage warning clears or completeness proves acceptable.

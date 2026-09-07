@@ -26,7 +26,7 @@
 These briefs retain their dated source audits, proposed compositions and publication gates. Inclusion is not a commitment to build or publish.
 
 - [Fietsen — Amsterdam](AMSTERDAM.md)
-- [Berlin](BERLIN.md)
+- [Umlauf — Berlin](BERLIN.md) · [First proof repository (private)](https://github.com/emmettl/umlauf)
 - [Chicago](CHICAGO.md)
 - [Hong Kong](HONG-KONG.md)
 - [Istanbul](ISTANBUL.md)

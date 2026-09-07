@@ -10,7 +10,7 @@ The first choice below is an editorial recommendation for discussion, not an ass
 
 ## Existing study repositories
 
-These studies already have independent repositories. Repository existence is separate from catalogue numbering and publication clearance; Local / Express requires authorised GitHub access.
+These studies already have independent repositories. Repository existence is separate from catalogue numbering and publication clearance; private repositories require authorised GitHub access.
 
 | Study | Place | Brief | Repository |
 | --- | --- | --- | --- |
@@ -20,6 +20,7 @@ These studies already have independent repositories. Repository existence is sep
 | Correspondances | Paris | [Study brief](PARIS.md) | [correspondances](https://github.com/emmettl/correspondances) |
 | NORIKAE | Tokyo | [Study brief](TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
 | MANIFEST | World trade | [Study brief](MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
+| Umlauf (working title) | Berlin | [Study brief](BERLIN.md) | [umlauf (private)](https://github.com/emmettl/umlauf) |
 
 ## Working slate
 
