@@ -86,6 +86,8 @@ The GTFS is unusually rich at station scale. Stops carry parent-station, platfor
 
 Those records support an interchange graph and relative visual stacking. They do not establish a platform's absolute elevation, tunnel crown, track gradient, passenger count or the path taken by any rider. A scheduled station pulse may count arrivals/departures; it must not be labelled a passenger pulse without demand measurements.
 
+**7 September implementation follow-up:** an exact parent-station join for `de:11000:900120003` finds 122 Ostkreuz family records and 1,818 pathway rows whose endpoints both belong to that family. Track/platform codes 1–8 use level ID `9` (index `0`, `Straßenebene`); 11–14 use level ID `31` (index `2`, `Bahnsteig`). The broader named station records also include intermediate level ID `179` (index `1`, `Zwischengeschoss/Übergang`). These are source-relative level indexes, not metre heights. The join deliberately excludes similarly named Beeskow stops and unparented replacement stops. A relative interchange study therefore has concrete source evidence available; no physical section has yet been rendered or metrically validated.
+
 For the line layer, join VBB shapes to Berlin's [ATKIS Basis-DLM WFS](https://daten.berlin.de/datensaetze/atkis-basis-dlm-prasentationsdienst-wfs-d4316e05) and inspect its railway/transport-structure attributes. Any unresolved segment stays `verticalState: unknown`. Bare-earth occlusion is not proof that a line tunnels there.
 
 ## Terrain, buildings and water
