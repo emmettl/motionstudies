@@ -30,6 +30,10 @@ The companion composition is a breathing scale transition: the Métro core remai
 - line/operator colour is locally authored and source-aware, never a casual copy of operator branding;
 - typography should feel unmistakably Parisian while remaining readable over luminous density.
 
+## AIR — the observed sky
+
+An optional AIR layer now replays aircraft from the same 4 September 2026 service day as the railway: 501 morning flight segments and a 4,385-segment day index with twelve lazy two-hour chunks. Aircraft stay on the shared clock and can be searched, selected and followed. CDG, Orly and Le Bourget provide airport context, with approach-envelope associations explicitly labelled as inferred. The dated ADSB.lol/ODbL observations remain distinct from scheduled IDFM trains; aircraft data loads only after activation. The [edition AIR guide](https://github.com/emmettl/correspondances/blob/main/docs/AIR.md) records provenance, filters, source hashes, payload gates and regeneration commands.
+
 ## Delivery plan
 
 ## Source audit
