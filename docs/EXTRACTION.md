@@ -7,3 +7,7 @@ The `packages/` and `lab/` directories were imported with `git subtree split` an
 The original catalogue files are retained. Site assembly uses an explicit asset allowlist, so npm files, package sources and tests cannot be uploaded as part of the catalogue. The lab is a separate production build under `lab/`.
 
 All Change initially consumes the exact private `0.0.0` tarballs built here. Its vendor manifest records SHA-256 hashes and this source commit. Replace those file dependencies with exact registry prerelease versions once publication is configured. No edition in Gleislicht has been removed or redirected during this rehearsal.
+
+## Edition repositories
+
+The shared package and lab extraction is complete. Editions install exact `0.1.0-alpha.1` npm releases: All Change (London), Correspondances (Paris), Gleislicht (Switzerland), and the private Local / Express proof (New York). The latter retains its publication hold and has no Pages workflow. Each repository owns only its edition build, local data tools, artifacts and regression gates. London and Paris retain their former Gleislicht URLs through static compatibility redirects.

@@ -2,6 +2,10 @@
 
 The four shared packages are MIT-licensed. The first coordinated release is `0.1.0-alpha.0`, published under the npm `next` tag. Stable versions use `latest`. All four packages share a version; internal dependencies pin that exact version. Source workspaces stay private. Only an explicit release build produces publishable compiled distributions.
 
+## Completed bootstrap
+
+`0.1.0-alpha.0` bootstrapped the package names. `0.1.0-alpha.1` verified OIDC for all four packages without a token fallback. The GitHub bootstrap secret has been removed. The historical bootstrap procedure follows.
+
 ## Before the first release
 
 1. Merge the prepared workspace and release workflow into `main` after CI passes.
@@ -33,6 +37,6 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 Update all four `packages/*/package.json` versions and their internal dependency pins, plus the root and lab workspace dependency pins. Run `npm install --package-lock-only --ignore-scripts` to update the lockfile, commit, and let CI validate the release build. `npm run check:release` and `npm run release:dry-run` rehearse it locally without publishing. Dispatch `release.yml` on main with the committed version and mode **trusted**.
 
-All Change can replace its four `file:vendor/...` dependencies with the exact published version once the initial release is verified. Its existing vendor candidates remain unchanged until that separate consumer update is made.
+All Change, Correspondances, Gleislicht and the private Local / Express proof consume exact `0.1.0-alpha.1` registry versions. Edition changes update their own manifests and lockfiles and run their own regression gates. No vendored candidates or shared workspaces remain in the edition repositories.
 
 References: [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) and [npm provenance](https://docs.npmjs.com/generating-provenance-statements/).

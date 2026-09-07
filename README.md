@@ -15,7 +15,7 @@ See [package contracts](packages/README.md) and [extraction provenance](docs/EXT
 
 ## Repository ownership
 
-`packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. All Change is being rehearsed in [emmettl/allchange](https://github.com/emmettl/allchange).
+`packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances) and [Gleislicht](https://github.com/emmettl/gleislicht) consume exact published versions in independent repositories. Local / Express has a private repository while its publication hold remains unresolved.
 
 The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The first coordinated npm release is `0.1.0-alpha.0` under `next`; only explicit release builds produce publishable compiled tarballs. The manual `release.yml` workflow supports a token bootstrap and subsequent OIDC releases. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
 
