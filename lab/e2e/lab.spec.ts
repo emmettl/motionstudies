@@ -42,6 +42,7 @@ test('a controlled network supports playback, layouts, selection, layers and rem
   await page.getByRole('combobox', { name: 'Selection', exact: true }).selectOption('service')
   await page.getByLabel('Layout mix').focus()
   await page.keyboard.press('End')
+  await page.getByLabel('Flat routes + quiet ground').check()
   await page.getByLabel('Linked views').check()
   await page.getByLabel('Air + road').check()
   await expect(page.locator('.scene-preview canvas')).toHaveCount(2)

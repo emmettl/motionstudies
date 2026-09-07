@@ -124,6 +124,8 @@ export interface MapCameraCommand {
 }
 
 export interface NationalNetworkSceneProps {
+  /** Quiet removes the reference grid while retaining the ground plane. */
+  readonly groundStyle?: 'grid' | 'quiet'
   readonly boundary?: MapBoundary
   readonly lakes?: MapWaterBodies
   readonly referencePaths?: MapReferencePaths
@@ -392,17 +394,17 @@ function projectedTrainPosition(
   ]
 }
 
-function NationalGround() {
+function NationalGround({ quiet = false }: { readonly quiet?: boolean }) {
   return (
     <group position={[0, -0.11, 0]}>
       <mesh rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[66, 56, 64, 48]} />
         <meshBasicMaterial color="#090b1f" transparent opacity={0.7} />
       </mesh>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.015, 0]}>
+      {!quiet && <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.015, 0]}>
         <planeGeometry args={[66, 56, 64, 48]} />
         <meshBasicMaterial color="#424b98" transparent opacity={0.1} wireframe />
-      </mesh>
+      </mesh>}
     </group>
   )
 }
@@ -476,7 +478,7 @@ function LakeLayer({
   )
 
   return (
-    <group position={[0, -0.072, 0]}>
+    <group position={[0, -0.072, 0]} visible={opacityScale > 0}>
       <mesh geometry={geometry.fill} renderOrder={1}>
         <meshBasicMaterial
           color="#08233b"
@@ -484,6 +486,7 @@ function LakeLayer({
           opacity={(subdued ? 0.42 : 0.9) * opacityScale}
           depthWrite={false}
           side={THREE.DoubleSide}
+          forceSinglePass
           fog={false}
         />
       </mesh>
@@ -495,6 +498,7 @@ function LakeLayer({
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           side={THREE.DoubleSide}
+          forceSinglePass
           toneMapped={false}
           fog={false}
         />
@@ -561,7 +565,7 @@ function DiagramWaterLayer({
   )
 
   return (
-    <group>
+    <group visible={opacity > 0}>
       {geometry.ribbons.map((ribbon, index) => (
         <mesh key={index} geometry={ribbon} renderOrder={1}>
           <meshBasicMaterial
@@ -688,7 +692,7 @@ function CountryBorder({
   )
 
   return (
-    <group>
+    <group visible={opacityScale > 0}>
       {tubes.map(({ id, glow, core }) => (
         <group key={id}>
           <mesh geometry={glow}>
@@ -889,7 +893,7 @@ function RailGraph({
 
   return (
     <>
-      <lineSegments geometry={railGeometry.structural}>
+      <lineSegments geometry={railGeometry.structural} visible={!lineMapStyle || routeColorMix < 1}>
         <lineBasicMaterial
           color="#7296bb"
           transparent
@@ -900,7 +904,7 @@ function RailGraph({
           blending={THREE.AdditiveBlending}
         />
       </lineSegments>
-      <lineSegments geometry={railGeometry.local}>
+      <lineSegments geometry={railGeometry.local} visible={!lineMapStyle || routeColorMix < 1}>
         <lineBasicMaterial
           ref={localNetworkMaterial}
           color="#7296bb"
@@ -1000,7 +1004,7 @@ function RailGraph({
           )}
         </>
       )}
-      <points geometry={stationGeometry} position={[0, STATION_SURFACE_Y, 0]}>
+      <points visible={!lineMapStyle || routeColorMix < 1} geometry={stationGeometry} position={[0, STATION_SURFACE_Y, 0]}>
         <pointsMaterial
           ref={stationMaterial}
           color="#a18cff"
@@ -1178,6 +1182,8 @@ function RouteIdentityLayer({
             <mesh key={`casing:${name}`} geometry={casing} renderOrder={3}>
               <meshBasicMaterial
                 color="#050510"
+                side={THREE.DoubleSide}
+                forceSinglePass
                 transparent
                 opacity={opacity * (subdued ? 0.52 : 0.96)}
                 depthTest={false}
@@ -1193,6 +1199,8 @@ function RouteIdentityLayer({
             <mesh key={name} geometry={core} renderOrder={4}>
               <meshBasicMaterial
                 color={color}
+                side={THREE.DoubleSide}
+                forceSinglePass
                 transparent
                 opacity={opacity * (subdued ? 0.28 : 0.94)}
                 depthTest={false}
@@ -1334,7 +1342,7 @@ function TrafficFlowLayer({
     : 1 - identityMix * 0.78
 
   return (
-    <group position={[0, 0.055, 0]}>
+    <group position={[0, 0.055, 0]} visible={identityAttenuation > 0}>
       <lineSegments geometry={geometries.weighted} renderOrder={1}>
         <lineBasicMaterial
           vertexColors
@@ -4059,7 +4067,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
     <LakeAvoidingPathsContext.Provider value={lakeAvoidingPaths}>
       <fog attach="fog" args={['#050410', 34, 69]} />
       <ambientLight intensity={0.85} color="#7d87ff" />
-      <NationalGround />
+      <NationalGround quiet={props.groundStyle === 'quiet'} />
       {props.lakes && (
         <LakeLayer
           lakes={props.lakes}

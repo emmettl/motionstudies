@@ -55,6 +55,7 @@ function RenderingStudy({ kind }: { kind: 'Network' | 'Hub' }) {
   const [diagram, setDiagram] = useState(0)
   const [compare, setCompare] = useState(false)
   const [layers, setLayers] = useState(false)
+  const [flat,setFlat]=useState(false)
   const [mounted, setMounted] = useState(true)
   const [selection, setSelection] = useState('none')
   const [station, setStation] = useState<StationIndexEntry>()
@@ -68,6 +69,7 @@ function RenderingStudy({ kind }: { kind: 'Network' | 'Hub' }) {
     selectedTrain={!empty && selection === 'service' ? network.trains[0] : undefined}
     selectedStation={!empty && selection === 'station' ? station ?? stations[1] : undefined}
     onSelectStation={(next) => { setStation(next); setSelection('station') }}
+    groundStyle={flat?'quiet':'grid'} topologicalStyle={flat?'line-map':'luminous'} routeColors={flat?{'1':'#ffb36b','2':'#82e5c5'}:undefined} routeColorMix={flat?1:0}
     spatialLayout={layout} spatialLayoutMix={secondary ? 1 - diagram : diagram}
     airSnapshot={layers ? air : undefined} roadSnapshot={layers ? road : undefined} />
   return <>
@@ -76,7 +78,7 @@ function RenderingStudy({ kind }: { kind: 'Network' | 'Hub' }) {
       <button data-tooltip={mounted ? 'Remove the scene to exercise cleanup; keep the control settings' : 'Mount the scene again with the current settings'} onClick={() => setMounted(!mounted)}>{mounted ? 'Unmount' : 'Mount'}</button>
       <label><input type="checkbox" checked={empty} onChange={(e) => setEmpty(e.target.checked)} /> Empty data</label>
       <label><input type="checkbox" checked={compare} onChange={(e) => setCompare(e.target.checked)} /> {kind === 'Hub' ? 'Track view' : 'Linked views'}</label>
-      {kind === 'Network' && <><label><input type="checkbox" checked={layers} onChange={(e) => setLayers(e.target.checked)} /> Air + road</label>
+      {kind === 'Network' && <><label><input type="checkbox" checked={flat} onChange={e=>setFlat(e.target.checked)}/> Flat routes + quiet ground</label><label><input type="checkbox" checked={layers} onChange={(e) => setLayers(e.target.checked)} /> Air + road</label>
         <label>Selection <select value={selection} onChange={(e) => setSelection(e.target.value)}><option value="none">None</option><option value="service">Service</option><option value="station">Station</option></select></label>
         {(['zoom-in', 'zoom-out', 'reset'] as const).map((action) => <button key={action} data-tooltip={action === 'reset' ? 'Restore the opening camera position' : action === 'zoom-in' ? 'Move closer to the network' : 'Show more of the network'} onClick={() => setCamera({ id: ++cameraId.current, action })}>{action}</button>)}
       </>}
