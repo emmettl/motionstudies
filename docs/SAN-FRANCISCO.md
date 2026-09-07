@@ -4,6 +4,8 @@
 
 **Catalogue status:** second-wave source investigation; title and signature study not yet admitted.
 
+**Naming direction — 7 September 2026:** **Grip** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#san-francisco). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 San Francisco is not a flat network laid over a picturesque city. Movement negotiates a three-dimensional obstacle: cable cars grip a moving cable to climb the northern hills, streetcars hold the waterfront and Market Street, Muni Metro alternates between street and subway, BART forms a deeper regional spine, and ferries leave the street grid altogether. Terrain and water do not decorate the transport system; they decide what kind of transport can exist.

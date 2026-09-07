@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; full source path passes, with crossing-classification work remaining.
 
+**Naming direction — 7 September 2026:** **Water Between** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#sydney). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Sydney is a rail city repeatedly interrupted by water, then connected again by bridges, tunnels and ferries. The local sentence is **water alternately acting as barrier, corridor and seam**. The strongest composition should show rail disappearing into fixed crossings while ferry services occupy the open harbour between them.

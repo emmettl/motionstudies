@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; terrain-led Carris proof passes, full ferry thesis remains incomplete.
 
+**Naming direction — 7 September 2026:** **Subida** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#lisbon). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Lisbon's trams, funiculars and ferries negotiate a city apparently designed to defeat wheels. The local sentence is **traction made visible by gradient**: ordinary routes bend around slopes, trams climb them, funiculars confront them directly and ferries escape onto the flat Tagus.

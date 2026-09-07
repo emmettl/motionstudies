@@ -4,6 +4,8 @@
 
 **Catalogue status:** source investigation complete; historically reproducible proof available, current full multimodal motion blocked.
 
+**Naming direction — 7 September 2026:** **İki Yaka** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#istanbul). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Istanbul is two continents made into one transport space. Ferries repeatedly cross the Bosphorus in the open while Marmaray passes beneath it; bridges carry road traffic above the same water. The local visual sentence is not merely a busy strait, but **one geographic division crossed at three different vertical states**.

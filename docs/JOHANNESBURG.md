@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility and care investigation complete; motion study blocked pending data partnership and local review.
 
+**Naming direction — 7 September 2026:** **Long Division** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#johannesburg). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Johannesburg's mobility still bears the spatial violence of apartheid: settlement, employment, distance and transport cost remain unevenly arranged across the city-region. The work could make that inherited geography visible through present movement, but only if it does not reduce people to flows between a privileged centre and an undifferentiated periphery.

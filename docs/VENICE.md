@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; strongest immediately buildable second-wave candidate.
 
+**Naming direction — 7 September 2026:** **Waterlines** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#venice). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Venice is a city whose streets move. Vaporetti turn canals and lagoon channels into public-transport corridors; islands become neighbourhoods and landing stages become stations. The local sentence is **water as the network itself**, not scenery behind a generic transit map.

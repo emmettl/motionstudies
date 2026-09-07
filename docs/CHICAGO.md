@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; technically strong, publication and vertical-classification gates remain.
 
+**Naming direction — 7 September 2026:** **Above Grade** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#chicago). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Chicago is the grid made three-dimensional by the `L`: the Loop bends above streets, turns around blocks and passes close enough to buildings that railway and architecture form one machine. The local sentence is **railway visibly threaded through the street canyon**, not simply an urban network over a rectilinear map.

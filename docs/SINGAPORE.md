@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; current rail proof viable, future-network layer requires separate planning semantics.
 
+**Naming direction — 7 September 2026:** **Lines Ahead** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#singapore). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Singapore's transport is deliberate state choreography: operating lines serve the city while new lines, stations and neighbourhoods are planned into its future form. The local sentence is **a network extending ahead of the city**.

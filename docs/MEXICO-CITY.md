@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; historical formal-network proof viable, current/informal thesis not yet sourced.
 
+**Naming direction — 7 September 2026:** **Más Ciudad** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#mexico-city). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Mexico City combines immense scale and altitude with dense formal transit and movement that is less legible in standard datasets. The local sentence is **a mapped system surrounded and crossed by mobility the map does not fully know**.

@@ -1,8 +1,12 @@
 # NORIKAE
 
+[Study repository](https://github.com/emmettl/norikae) · [Study index](README.md)
+
 **A Tokyo motion study**
 
 **Catalogue status:** preferred third-city investigation; unnumbered.
+
+**Naming direction — 7 September 2026:** **NORIKAE** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#tokyo). This is not a catalogue admission or a change to the dated source verdict.
 
 ## Thesis
 

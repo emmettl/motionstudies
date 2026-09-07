@@ -7,6 +7,7 @@
 - [Project goals](VISION.md)
 - [Overall roadmap and delivery history](../ROADMAP.md)
 - [Catalogue programme and admission criteria](CATALOGUE.md)
+- [Candidate names and the theses they imply](NAMING.md)
 - [Edition architecture and ownership](EDITIONS.md)
 - [Package extraction provenance](EXTRACTION.md) and [release process](RELEASING.md)
 
@@ -16,7 +17,7 @@
 | --- | --- | --- | --- |
 | 005 | [Gleislicht — Switzerland](GLEISLICHT.md) | [Open study](https://emmettl.github.io/gleislicht/) | [Repository](https://github.com/emmettl/gleislicht) |
 | 006 | [All Change — London](LONDON.md) | [Open study](https://emmettl.github.io/allchange/) | [Repository](https://github.com/emmettl/allchange) |
-| 007 | [Local / Express — New York](NEW-YORK.md) | Unpublished; [release gate](NEW-YORK-PUBLICATION.md) | Private repository |
+| 007 | [Local / Express — New York](NEW-YORK.md) | Unpublished; [release gate](NEW-YORK-PUBLICATION.md) | [Repository (private)](https://github.com/emmettl/local-express) |
 | 008 | [Correspondances — Paris](PARIS.md) | [Open study](https://emmettl.github.io/correspondances/) | [Repository](https://github.com/emmettl/correspondances) |
 
 ## Candidate city studies
@@ -35,12 +36,12 @@ These briefs retain their dated source audits, proposed compositions and publica
 - [San Francisco](SAN-FRANCISCO.md)
 - [Singapore](SINGAPORE.md)
 - [Sydney](SYDNEY.md)
-- [Tokyo / NORIKAE](TOKYO.md)
+- [Tokyo / NORIKAE](TOKYO.md) · [Repository](https://github.com/emmettl/norikae)
 - [Venice](VENICE.md)
 
 ## Global motion
 
-- [MANIFEST — World trade in motion](MANIFEST.md)
+- [MANIFEST — World trade in motion](MANIFEST.md) · [Repository](https://github.com/emmettl/manifest)
 
 ## Document ownership and history
 

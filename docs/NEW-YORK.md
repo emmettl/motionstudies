@@ -1,6 +1,6 @@
 # 007 — Local / Express
 
-[Study index](README.md) · [Publication review](NEW-YORK-PUBLICATION.md)
+[Edition repository (private)](https://github.com/emmettl/local-express) · [Study index](README.md) · [Publication review](NEW-YORK-PUBLICATION.md)
 
 Local / Express remains a private proof with Pages disabled. Implementation paths and commands below belong to its independent edition checkout.
 

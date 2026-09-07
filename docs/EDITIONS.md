@@ -2,12 +2,12 @@
 
 Motion Studies is a catalogue of authored transport works made with one visual instrument. Gleislicht is the Swiss work in that catalogue, not the public name of the engine and not a title future places inherit.
 
-| No. | Work | Place | Status |
-| --- | --- | --- | --- |
-| 005 | **Gleislicht** | Switzerland | Released |
-| 006 | **All Change** | London | Authored foundation |
-| 007 | **Local / Express** | New York | Interactive foundation; publication gated |
-| 008 | **Correspondances** | Paris | Interactive foundation |
+| No. | Work | Place | Status | Repository |
+| --- | --- | --- | --- | --- |
+| 005 | **Gleislicht** | Switzerland | Released | [Repository](https://github.com/emmettl/gleislicht) |
+| 006 | **All Change** | London | Authored foundation | [Repository](https://github.com/emmettl/allchange) |
+| 007 | **Local / Express** | New York | Interactive foundation; publication gated | [Repository (private)](https://github.com/emmettl/local-express) |
+| 008 | **Correspondances** | Paris | Interactive foundation | [Repository](https://github.com/emmettl/correspondances) |
 
 Each work receives a locally meaningful title and descriptor. The shared series identity appears as a quiet catalogue mark; the work title remains dominant.
 

@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; viable as measured aggregate reconstruction, not individual bicycle tracking.
 
+**Naming direction — 7 September 2026:** **Many Ways** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#amsterdam). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Amsterdam should make bicycles first-class moving entities and reveal a transport hierarchy fundamentally unlike a rail-led city. The local sentence is **the network is made by innumerable small movements**, with trams and metros appearing as another layer inside the bicycle field rather than its organising spine.

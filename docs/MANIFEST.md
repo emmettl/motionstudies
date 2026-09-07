@@ -1,5 +1,7 @@
 # MANIFEST
 
+[Study repository](https://github.com/emmettl/manifest) · [Study index](README.md)
+
 **World trade in motion**
 
 **Catalogue status:** unnumbered global-motion investigation.

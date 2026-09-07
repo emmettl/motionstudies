@@ -8,12 +8,12 @@ Motion Studies is an authored series, not a list of cities supported by a transp
 
 ## Numbered works
 
-| No. | Work | Place | Status | Defining argument |
-| --- | --- | --- | --- | --- |
-| 005 | **Gleislicht** | Switzerland | Released | A deliberately built national clockwork made visible through rail, terrain and Takt. |
-| 006 | **All Change** | London | Authored foundation | Physical London transforms into Beck-space while journeys continue uninterrupted. |
-| 007 | **Local / Express** | New York | Interactive foundation; publication gated | Local and express services compress, overtake and rejoin across geographic and diagrammatic New York. |
-| 008 | **Correspondances** | Paris | Interactive foundation | Dense Métro circulation and outward RER eruptions reveal the interchange between centre and banlieue. |
+| No. | Work | Place | Status | Defining argument | Repository |
+| --- | --- | --- | --- | --- | --- |
+| 005 | **Gleislicht** | Switzerland | Released | A deliberately built national clockwork made visible through rail, terrain and Takt. | [Repository](https://github.com/emmettl/gleislicht) |
+| 006 | **All Change** | London | Authored foundation | Physical London transforms into Beck-space while journeys continue uninterrupted. | [Repository](https://github.com/emmettl/allchange) |
+| 007 | **Local / Express** | New York | Interactive foundation; publication gated | Local and express services compress, overtake and rejoin across geographic and diagrammatic New York. | [Repository (private)](https://github.com/emmettl/local-express) |
+| 008 | **Correspondances** | Paris | Interactive foundation | Dense Métro circulation and outward RER eruptions reveal the interchange between centre and banlieue. | [Repository](https://github.com/emmettl/correspondances) |
 
 Numbers describe works, not software releases. A later work may reach production before an earlier experiment is complete, but a number is assigned only when its title and thesis are strong enough to survive implementation.
 
@@ -55,9 +55,11 @@ This ordering leaves room for discovery while keeping the gates honest. New York
 
 ## Unnumbered second wave
 
+The [naming study](NAMING.md) develops a preferred working title, two alternatives and a corresponding visual thesis for each of the fourteen city candidates. These are discussion proposals; they do not assign catalogue identities or alter the source verdicts below.
+
 These are strong candidates, not promises or an implementation queue. Each sentence is a visual hypothesis tested against sources, rights and a bounded composition. The completed audits below are feasibility verdicts, not commitments to build.
 
-- **NORIKAE — A Tokyo motion study** — the preferred next-city investigation. Neon would not be cosmetically imposed here: the railway already reads as circuitry. Overlapping operator empires, stacked lines, colossal stations, rapid and suburban services, and the Yamanote loop pulsing around the centre could let the physical city almost disappear beneath the transport system at night.
+- **[NORIKAE — A Tokyo motion study](https://github.com/emmettl/norikae)** — the preferred next-city investigation. Neon would not be cosmetically imposed here: the railway already reads as circuitry. Overlapping operator empires, stacked lines, colossal stations, rapid and suburban services, and the Yamanote loop pulsing around the centre could let the physical city almost disappear beneath the transport system at night.
 - **Hong Kong** — a vertical city forced into narrow strips between mountain and harbour: trains below, ferries across and towers above. The source audit points toward a surface-and-void study: exact harbour ferries and measured station volumes are strong, while individual MTR trajectories are not yet defensible from the official public data.
 - **[Istanbul](./ISTANBUL.md)** — two continents joined by ferries, bridges and a railway tunnel beneath the Bosphorus. A frozen 2018–2020 IBB multimodal GTFS makes an intentional historical proof possible, but no maintained official source presently unifies the defining rail and ferry motion.
 - **[Mumbai](./MUMBAI.md)** — suburban rail as a daily tide: tremendous directional surges into and out of the city. The thesis is blocked because neither a maintained official suburban timetable nor time-banded directional passenger evidence was found; frequency must not impersonate crowd flow.
@@ -71,7 +73,7 @@ These are strong candidates, not promises or an implementation queue. Each sente
 - **[Sydney](./SYDNEY.md)** — a rail city repeatedly interrupted by water, then reconnected by bridges and ferries. TfNSW's static, realtime and historical products give it the cleanest full observed-motion path in the survey; physical crossing states still need explicit sourcing.
 - **[Lisbon](./LISBON.md)** — trams, funiculars and ferries negotiating a city apparently designed to defeat wheels. A current Carris GTFS makes a tram/funicular terrain proof viable, but its all-bus mode coding requires an override and current open ferry motion was not established.
 - **[Berlin](./BERLIN.md)** — the Ringbahn as a moving definition of inside, pierced by S-Bahn and U-Bahn axes and met by an eastern tram field. VBB's current and archived CC BY 4.0 GTFS, trip-level realtime corrections and Berlin's permissive 3D geodata make a scheduled proof unusually clean; exact rail height and tunnel state still require compilation.
-- **MANIFEST — World trade in motion** — a planetary field of observed cargo vessels and tankers in which the lanes from China and the Gulf emerge through repetition and geographic choke points. AIS can reveal motion and broad vessel class, but commodity, origin and quantity require separately labelled inference or aggregate trade evidence.
+- **[MANIFEST — World trade in motion](https://github.com/emmettl/manifest)** — a planetary field of observed cargo vessels and tankers in which the lanes from China and the Gulf emerge through repetition and geographic choke points. AIS can reveal motion and broad vessel class, but commodity, origin and quantity require separately labelled inference or aggregate trade evidence.
 
 They remain deliberately unnumbered until each produces a title, a source path and a visual claim as specific as the first four works.
 

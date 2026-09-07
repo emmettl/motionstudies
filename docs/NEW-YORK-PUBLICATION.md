@@ -1,5 +1,7 @@
 # Local / Express publication review
 
+[Edition repository (private)](https://github.com/emmettl/local-express) · [Study brief](NEW-YORK.md)
+
 Reviewed 6 September 2026. This is an engineering release decision, not legal advice.
 
 ## Decision

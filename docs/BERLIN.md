@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; strong scheduled-motion and publication path, vertical track semantics still to compile.
 
+**Naming direction — 7 September 2026:** **Umlauf** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#berlin). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Berlin draws an inside with railway. The Ringbahn is simultaneously a circulating service, a chain of interchanges and a boundary used to describe the inner city; S-Bahn and U-Bahn axes repeatedly pierce it while the tram network enters as a predominantly eastern surface field.

@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; defining motion evidence blocked.
 
+**Naming direction — 7 September 2026:** **Up / Down** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#mumbai). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Mumbai suburban rail behaves like a daily tide: immense directional pressure runs south toward employment centres in the morning and reverses later in the day. The local sentence is **capacity experienced as direction**. A credible work would make passenger volume, not merely train frequency, change the apparent weight of the Western, Central and Harbour corridors.

@@ -4,6 +4,8 @@
 
 **Catalogue status:** second-wave source investigation; title and defining rail-motion path not yet admitted.
 
+**Naming direction — 7 September 2026:** **Surface / Void** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#hong-kong). This is not a catalogue admission or a change to the dated source verdict.
+
 ## Thesis under test
 
 Hong Kong is built on narrow habitable edges between mountain and harbour. Its transport repeatedly reveals and denies that terrain: ferries cross the open surface, trams hold the north shore of Hong Kong Island, rail disappears beneath the harbour and through the hills, and stations become deep vertical rooms before the network emerges again on viaducts and reclaimed ground.

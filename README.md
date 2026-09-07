@@ -11,7 +11,9 @@ The catalogue for authored studies of cities and movement, and the home of the s
 | Gleislicht · Switzerland | [Open study](https://emmettl.github.io/gleislicht/) | [gleislicht](https://github.com/emmettl/gleislicht) |
 | All Change · London | [Open study](https://emmettl.github.io/allchange/) | [allchange](https://github.com/emmettl/allchange) |
 | Correspondances · Paris | [Open study](https://emmettl.github.io/correspondances/) | [correspondances](https://github.com/emmettl/correspondances) |
-| Local / Express · New York | Private proof; publication held | Private repository |
+| Local / Express · New York | Private proof; publication held | [local-express (private)](https://github.com/emmettl/local-express) |
+| NORIKAE · Tokyo | [Investigation brief](docs/TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
+| MANIFEST · World trade | [Investigation brief](docs/MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
 
 [Project goals](docs/VISION.md) · [Overall roadmap](ROADMAP.md) · [City briefs and source audits](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 
@@ -28,7 +30,7 @@ See [package contracts](packages/README.md) and [extraction provenance](docs/EXT
 
 ## Repository ownership
 
-`packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances) and [Gleislicht](https://github.com/emmettl/gleislicht) consume exact published versions in independent repositories. Local / Express has a private repository while its publication hold remains unresolved.
+`packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances) and [Gleislicht](https://github.com/emmettl/gleislicht) consume exact published versions in independent repositories. [Local / Express](https://github.com/emmettl/local-express) has a private repository while its publication hold remains unresolved.
 
 The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The current coordinated prerelease is `0.1.0-alpha.2` under `next`, published with verified trusted publishing. Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
 
