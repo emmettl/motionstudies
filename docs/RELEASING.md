@@ -37,6 +37,6 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 Update all four `packages/*/package.json` versions and their internal dependency pins, plus the root and lab workspace dependency pins. Run `npm install --package-lock-only --ignore-scripts` to update the lockfile, commit, and let CI validate the release build. `npm run check:release` and `npm run release:dry-run` rehearse it locally without publishing. Dispatch `release.yml` on main with the committed version and mode **trusted**.
 
-The prepared `0.1.0-alpha.2` coordinated release adds shared desktop button help. After trusted publication, upgrade All Change, Correspondances, Gleislicht and the private Local / Express proof to its exact registry versions. They currently consume `0.1.0-alpha.1`. Edition changes update their own manifests and lockfiles and run their own regression gates. No vendored candidates or shared workspaces remain in the edition repositories.
+`0.1.0-alpha.2` adds shared desktop button help and was published through OIDC. All Change, Correspondances, Gleislicht and the private Local / Express proof consume its exact registry versions. Edition changes update their own manifests and lockfiles and run their own regression gates. No vendored candidates or shared workspaces remain in the edition repositories.
 
 References: [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) and [npm provenance](https://docs.npmjs.com/generating-provenance-statements/).

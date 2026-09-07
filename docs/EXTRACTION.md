@@ -10,4 +10,4 @@ During the initial rehearsal, All Change consumed private `0.0.0` tarballs with 
 
 ## Edition repositories
 
-The shared package and lab extraction is complete. Editions install exact `0.1.0-alpha.1` npm releases: All Change (London), Correspondances (Paris), Gleislicht (Switzerland), and the private Local / Express proof (New York). The latter retains its publication hold and has no Pages workflow. Each repository owns only its edition build, local data tools, artifacts and regression gates. London and Paris retain their former Gleislicht URLs through static compatibility redirects.
+The shared package and lab extraction is complete. Editions install exact `0.1.0-alpha.2` npm releases: All Change (London), Correspondances (Paris), Gleislicht (Switzerland), and the private Local / Express proof (New York). The latter retains its publication hold and has no Pages workflow. Each repository owns only its edition build, local data tools, artifacts and regression gates. London and Paris retain their former Gleislicht URLs through static compatibility redirects.
