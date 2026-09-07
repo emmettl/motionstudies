@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "private": true,
   "type": "module",
   "exports": {
@@ -16,10 +16,11 @@
     "./use-progressive-road-study": "./src/use-progressive-road-study.ts",
     "./tokens.css": "./src/tokens.css",
     "./shell.css": "./src/shell.css",
-    "./mobile-picker.css": "./src/components/mobile-picker.css"
+    "./mobile-picker.css": "./src/components/mobile-picker.css",
+    "./components/ButtonTooltips": "./src/components/ButtonTooltips.tsx"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.1"
+    "@motionstudies/core": "0.1.0-alpha.2"
   },
   "peerDependencies": {
     "react": "^19.2.8",
