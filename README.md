@@ -33,7 +33,7 @@ See [package contracts](packages/README.md) and [extraction provenance](docs/EXT
 
 `packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances) and [Gleislicht](https://github.com/emmettl/gleislicht) consume exact published versions in independent repositories. [Local / Express](https://github.com/emmettl/local-express) has a private repository while its publication hold remains unresolved.
 
-The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The current coordinated prerelease is `0.1.0-alpha.2` under `next`, published with verified trusted publishing. Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
+The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The current coordinated prerelease is `0.1.0-alpha.3` under `next`, published with verified trusted publishing in [run 34155462468](https://github.com/emmettl/motionstudies/actions/runs/34155462468). Editions upgrade their exact pins independently. Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
 
 ## Hosting
 

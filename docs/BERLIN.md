@@ -24,7 +24,7 @@ The City of Berlin's [Planwerk Innere Stadt](https://www.berlin.de/sen/stadtentw
 
 The [performance record](https://github.com/emmettl/umlauf/blob/main/docs/PERFORMANCE.md) includes measured limitations, not a green-device claim: software-rendered Chromium phone emulation averaged 59 fps in the Ring, 29 fps in crossings, 33 fps in circulation and 60 fps in Ostkreuz. Crossings still miss the proposed p95 frame target. Physical phone and Windows Edge measurements are open. Fourteen source/model tests and twenty desktop/phone functional/rendering checks pass locally.
 
-All Change's reusable flat-route visibility and rendering-work fixes are committed upstream for alpha.3 in [4c86b50](https://github.com/emmettl/motionstudies/commit/4c86b501b7abbd1d136e5f5a9cb4fa6b59022d82), with hosted checks passing. npm publication awaits explicit approval after automatic approval review rejected it; Berlin remains on published alpha.2 and its luminous renderer.
+All Change's reusable flat-route visibility and rendering-work fixes are committed upstream in [4c86b50](https://github.com/emmettl/motionstudies/commit/4c86b501b7abbd1d136e5f5a9cb4fa6b59022d82) and now published as alpha.3 after the successful [trusted release](https://github.com/emmettl/motionstudies/actions/runs/34155462468). The reviewed Berlin proof remains on alpha.2 and its luminous renderer; adopting alpha.3 requires an explicit edition pin update and consumer checks.
 
 A [publication review](https://github.com/emmettl/umlauf/blob/main/docs/REVIEW.md) and validated static archive are prepared. GitHub Pages cannot serve the private repository under the current plan. An owner-only Sites project was created, but source upload and deployment await explicit approval after automatic approval review rejected the private-source transfer. No Sites source or site version has been uploaded. The repository remains private, the title provisional and the edition unnumbered.
 
@@ -40,7 +40,7 @@ The third view studies Ostkreuz: upper Ringbahn platforms 11/12 and lower east�
 
 The platform inspection extension passes local validation and [hosted Node 24 CI](https://github.com/emmettl/umlauf/actions/runs/34140518392): thirteen source/model tests, fourteen Chromium desktop/phone browser checks, typecheck, lint, the independent-package boundary check and production build. Network and diagram payloads are approximately 123 KB and 49 KB gzip respectively; the station data loads on demand at 27.2 KB gzip. JavaScript including the shared renderer is approximately 328 KB gzip. Repeat station compilation was byte-identical. Phone emulation does not certify physical-device frame or memory budgets.
 
-This proof has no public deployment and assigns no catalogue number. The Ostkreuz view encodes relative ordering, without measured rail heights or approach gradients. Platform inspection now adds 1×–3× zoom and cited dimensions from DB InfraGO’s 31 August station record; see the [engineering review](https://github.com/emmettl/umlauf/blob/main/docs/ENGINEERING.md). Net built platform length and height above the adjacent rail are distinct from usable train length, mapped endpoints and absolute elevation. The next substantial source gate is a surveyed rail elevation/profile with a datum for the selected interchange and approaches. Terrain, water, buildings and realtime remain separate additions.
+This proof has no public deployment and assigns no catalogue number. The Ostkreuz view encodes relative ordering, without measured rail heights or approach gradients. Platform inspection now adds 1×–3× zoom and cited dimensions from DB InfraGO’s 31 August station record; see the [engineering review](https://github.com/emmettl/umlauf/blob/main/docs/ENGINEERING.md). Net built platform length and height above the adjacent rail are distinct from usable train length, mapped endpoints and absolute elevation. The next substantial source gate is a surveyed rail elevation/profile with a datum for the selected interchange and approaches. Official water context is now implemented as described above; terrain, buildings and realtime remain separate additions.
 
 ## Feasibility verdict — 6 September 2026
 
@@ -54,7 +54,7 @@ This proof has no public deployment and assigns no catalogue number. The Ostkreu
 | City, buildings and terrain | **Green** | Berlin publishes one-metre bare-earth terrain, citywide LoD2 buildings and ATKIS topography under the permissive Germany Zero licence. |
 | Track vertical state | **Amber** | GTFS shapes are two-dimensional. ATKIS and operator/engineering sources must establish elevated, embankment, surface and tunnel segments before the visual layers claim physical height. |
 
-Berlin passes the authoritative source and rights tests more cleanly than most second-wave candidates. It is ready for a source-pinned scheduled proof, but not yet for a metrically accurate section through every rail layer.
+Berlin passes the authoritative source and rights tests more cleanly than most second-wave candidates. Its source-pinned scheduled and relative interchange proofs are now implemented, but a metrically accurate section through every rail layer remains unproven.
 
 ## Inspected VBB static feed
 
@@ -156,7 +156,9 @@ Start with scheduled motion. Add recorded trip updates only after completeness f
 - [x] Retain a bounded ATKIS railway/structure slice, verify the Ringbahn-to-bridge reference and render the official bridge footprint.
 - [x] Review dated DB platform dimensions and engineering accounts; document the distinction between platform, roof and absolute rail height.
 - [ ] Extend infrastructure classification beyond the reviewed bridge and obtain measured rail/platform heights from engineering or classified survey evidence.
-- [ ] Crop DGM/LoD2 context and set a phone-first transfer/frame budget.
+- [x] Add optional official water context and measure the opening against a 575 KiB compressed transfer gate.
+- [ ] Improve crossings to meet the proposed frame target and complete physical-phone and Windows Edge review.
+- [ ] Crop DGM/LoD2 context only within the study's source and delivery budgets.
 - [ ] Record a complete two-hour realtime window only after the VBB coverage warning clears or completeness proves acceptable.
 - [ ] Find a durable title after the ring-and-crossing action survives the visual proof.
 

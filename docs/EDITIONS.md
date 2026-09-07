@@ -5,9 +5,9 @@ Motion Studies is a catalogue of authored transport works made with one visual i
 | No. | Work | Place | Status | Repository |
 | --- | --- | --- | --- | --- |
 | 005 | **Gleislicht** | Switzerland | Released | [Repository](https://github.com/emmettl/gleislicht) |
-| 006 | **All Change** | London | Authored foundation | [Repository](https://github.com/emmettl/allchange) |
+| 006 | **All Change** | London | Public authored foundation; full bus-catalogue expansion in progress | [Repository](https://github.com/emmettl/allchange) |
 | 007 | **Local / Express** | New York | Interactive foundation; publication gated | [Repository (private)](https://github.com/emmettl/local-express) |
-| 008 | **Correspondances** | Paris | Interactive foundation | [Repository](https://github.com/emmettl/correspondances) |
+| 008 | **Correspondances** | Paris | Public foundation; twelve-line implementation with eight-line default | [Repository](https://github.com/emmettl/correspondances) |
 
 Each work receives a locally meaningful title and descriptor. The shared series identity appears as a quiet catalogue mark; the work title remains dominant.
 
@@ -47,6 +47,6 @@ Alternate layouts are edition data, not alternate networks. `packages/core/src/d
 
 This is configuration-driven reuse, not a generic map skin. Every work should have a reason to exist, a name rooted in its place, and at least one visual study that could only belong there.
 
-The catalogue programme and admission criteria live in [CATALOGUE.md](./CATALOGUE.md). The next edition briefs are [NEW-YORK.md](./NEW-YORK.md) and [PARIS.md](./PARIS.md). Their numbers and theses are committed; both now have bounded, source-pinned interactive foundations, with New York publication gated pending MTA clarification and Paris carrying its Licence Mobilité provenance in the artifact.
+The catalogue programme and admission criteria live in [CATALOGUE.md](./CATALOGUE.md). [New York](./NEW-YORK.md) retains its bounded private foundation and MTA publication gate. [Paris](./PARIS.md) has a public foundation and now implements eight default lines plus two optional Métro groups, carrying Licence Mobilité provenance in its artifacts. [Berlin](./BERLIN.md) has a private scheduled and relative interchange proof; [Tokyo](./TOKYO.md) has a synthetic player awaiting real-source acquisition; [MANIFEST](./MANIFEST.md) has a public synthetic prototype and local observed regional review. Those three investigations remain unnumbered, and implementation does not itself establish deployment or publication approval.
 
 The concrete repository/package split is recorded in [the extraction seam](./EXTRACTION.md). Shared package and edition import boundaries are enforced in their respective CI workflows. The [widget lab](https://emmettl.github.io/motionstudies/lab/) and packed-consumer checks exercise public contracts before a coordinated release.

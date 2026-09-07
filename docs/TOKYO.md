@@ -10,6 +10,8 @@
 
 **Naming direction — 7 September 2026:** **NORIKAE** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#tokyo). This is not a catalogue admission or a change to the dated source verdict.
 
+**Implementation update — 7 September 2026:** the independent repository now contains an interactive synthetic player and an offline GTFS audit/compiler. Two fictional lines exercise shared rendering, playback, route focus and bilingual station selection. No real operator timetable, geometry or live feed has been acquired; importer compatibility is tested only against authored fixtures. The next step is authorized acquisition and inspection of a Toei archive, followed by the bounded real-source proof. Broader Metro/JR/private-operator rights remain separate gates. See the edition's [player guide](https://github.com/emmettl/norikae/blob/main/docs/PLAYER.md) and [source contract](https://github.com/emmettl/norikae/blob/main/docs/DATA.md).
+
 ## Thesis
 
 Tokyo does not need neon applied as decoration. Its railway already reads as circuitry: overlapping operator territories, lines passing above and below one another, rapid and suburban services pouring through colossal stations, and a loop pulsing around the centre. At night the physical city could almost disappear beneath the transport system.

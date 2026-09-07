@@ -10,7 +10,9 @@ Implementation paths and commands below belong to the edition repository. This b
 
 **All Change** is unmistakably London railway language: an instruction, a description of constant interchange, and a slightly ominous title for a glowing city after dark. It also names what is happening technically—the instrument is changing shape as it becomes capable of another place.
 
-London is the next Motion Studies work because its transport system offers a useful inversion of Switzerland: an intensely layered metropolitan network whose identity comes from interchange, radial pressure, orbital lines and the River Thames rather than a national clockface and Alpine geography.
+London offers a useful inversion of Switzerland: an intensely layered metropolitan network whose identity comes from interchange, radial pressure, orbital lines and the River Thames rather than a national clockface and Alpine geography.
+
+**Implementation update — 7 September 2026:** the independent public foundation includes the authored geographic/diagram transition, interchange pulse studies and progressive full-day layers. The latest committed diagram work keeps Elizabeth line services on authored corridors (`f54a062`). Full TfL bus-catalogue discovery and compilation are in progress in the edition checkout; the existing 26/N26 corridor remains the completed bus milestone until the broader coverage, service-day and payload checks are complete. This note records repository state, not deployment verification.
 
 ## Thesis: two simultaneous Londons
 

@@ -4,7 +4,17 @@
 
 **World trade in motion**
 
-**Catalogue status:** unnumbered global-motion investigation.
+**Catalogue status:** unnumbered; public synthetic prototype and local observed regional review implemented. Observed-data publication remains gated.
+
+## Implementation update — 7 September 2026
+
+The independent repository now implements a 60,000-vessel synthetic cargo/tanker fixture with 30-day progressive playback, world/regional views, vessel inspection and search across 135 ports. Port cards separately carry dated aggregate statistics for 52 ports; neither the synthetic vessels nor their schematic routes represent AIS observations or cargo contents. The public prototype remains unlinked from the Motion Studies site catalogue and has not earned a catalogue number.
+
+A local LA/Long Beach review retains 117,177 NOAA positions for 84 cargo-class vessels and 29 tankers over 1–3 January 2025. Its compiler preserves samples, splits gaps and conflicts, and labels observations separately from interpolation. This review is excluded from production builds. Dated shipping-line attribution and local fleet filters require supporting registry evidence; unknown operators remain Unknown. The public-artwork use review is still open.
+
+The fleet renderer now uses resident WebGL 2 geometry with a Canvas fallback. The recorded worst first view is 1.72 MiB gzip, above the original 1.5 MiB production target despite passing the temporary 2 MiB workload ceiling. Local M4 Max measurements and phone viewports do not certify physical-phone performance. These are implemented proofs with remaining delivery gates, not a finished observed global edition.
+
+Implementation evidence is recorded in the edition [README](https://github.com/emmettl/manifest/blob/main/README.md) at `9614d73`, [NOAA sample review](https://github.com/emmettl/manifest/blob/main/docs/NOAA-SAMPLE.md), [performance record](https://github.com/emmettl/manifest/blob/main/docs/PERFORMANCE.md) and [operator evidence](https://github.com/emmettl/manifest/blob/main/docs/OPERATORS.md). Provider requests are [prepared but unsent](https://github.com/emmettl/manifest/blob/main/docs/AIS-DATA-REQUESTS.md). Global Fishing Watch acquisition and comparable commercial evaluation slices remain future work; the synthetic field does not satisfy either source milestone.
 
 ## Thesis
 
@@ -166,4 +176,4 @@ MANIFEST earns a catalogue number only when it has:
 - a phone-budget world field plus one selected voyage with honest gaps;
 - a signature composition in which lanes emerge from movement rather than a generic animated world map.
 
-Until then it is a strong global-motion investigation, not a promised edition. The immediate proof is deliberately small: compile one rights-clean regional open dataset to validate the pipeline, prototype the global density field through Global Fishing Watch, and compare identical commercial evaluation slices before choosing whether individual world tracks are worth their rights and cost.
+Until then it remains an unnumbered investigation. The regional compiler and local NOAA observation review now exist; the next step is a source-approved publication path and review of a selected regional voyage, alongside meeting the production phone budget. Acquire the global density field through Global Fishing Watch and compare identical commercial evaluation slices before choosing whether individual world tracks are worth their rights and cost.

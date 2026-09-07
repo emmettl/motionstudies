@@ -12,6 +12,17 @@
 
 The stages below retain the delivery history from the first Swiss study through the wider catalogue. Future work follows the source and publication gates in each brief; no calendar dates are implied.
 
+## Current delivery position — 7 September 2026
+
+- **Shared platform:** alpha.3 is now published under `next`; the [trusted release run](https://github.com/emmettl/motionstudies/actions/runs/34155462468) passed verification and publication. Editions still need deliberate exact-pin upgrades to consume the renderer fixes.
+- **All Change:** the diagram, interchange and full-day studies are implemented. Full TfL bus-catalogue expansion is work in progress in the edition checkout, not a completed release milestone.
+- **Correspondances:** the default remains eight lines; optional Métro 2/6 and 5/7 groups bring the committed study to twelve lines, 1,516 morning journeys and 8,051 full-day journeys. See the [Paris brief](docs/PARIS.md) for payload and device-review limits.
+- **Umlauf:** the private, unnumbered Berlin proof implements the Ring, crossings, circulation transformation and relative Ostkreuz interchange. Crossing performance, physical-device review, measured rail elevations and private preview approval remain open.
+- **MANIFEST:** a public synthetic fleet prototype and a local observed NOAA sample now exist. Observed-data publication, global source acquisition and the production phone budget remain open.
+- **NORIKAE / Fietsen:** Tokyo has a synthetic player and offline importer awaiting the first real Toei archive; Amsterdam still needs counter coverage, sample measurements and their terms validated.
+
+These are repository implementation states, not verification that the latest commits are deployed. Source permissions, publication approval and catalogue admission remain separate gates.
+
 This is an iterative art-and-data project. Each stage should end in a coherent visual study rather than a long period of invisible infrastructure work.
 
 ## 0 — Motion language (now)
@@ -174,6 +185,7 @@ See [docs/AUTO.md](https://github.com/emmettl/gleislicht/blob/main/docs/AUTO.md)
 - [x] Add the first London-specific interchange pulse study across four contrasting hubs.
 - [x] Add a separately loaded 24-hour London surface study for scheduled River Bus and cable-car movement.
 - [x] Prove surface buses as a separate progressive corridor study with route 26/N26, shared-clock search and category isolation.
+- [ ] Complete and validate the in-progress full TfL bus-catalogue expansion, including route coverage, service-day semantics and progressive payloads.
 
 **Exit:** Gleislicht and All Change are independently authored Motion Studies, sharing runtime behaviour and visual grammar without sharing titles or place-specific assumptions.
 
@@ -198,8 +210,11 @@ See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/L
 - [ ] Hold further 007 Local / Express expansion and public release at the MTA licensing gate; retain its bounded proof as technical evidence.
 - [x] Build 008 Correspondances through a Métro/RER opening study, a continuous centre–periphery scale study and three source-backed interchange compositions.
 - [x] Give Correspondances an independent source-pinned shell, exact transfer evidence, official Seine/city context and a lazy 24-hour two-line study within a phone-first payload gate.
+- [x] Extend Correspondances to an eight-line default and optional Métro 2/6 and 5/7 groups, retaining independent morning/day loading and the continuous Cœur/Région transition.
+- [ ] Review the next bounded Paris Métro group against source, density and payload gates; obtain physical-phone and Windows Edge frame evidence before claiming performance on those devices.
 - [x] Begin the source and feasibility audit for **NORIKAE — A Tokyo motion study**: separate the durable Toei proof, conditional Tokyo Metro path and Challenge 2026-only Yamanote/private-railway coverage.
-- [ ] Resolve the ODPT browser-artifact and historical-refresh terms, then compile a rights-clean Toei 07:00–09:00 loop-and-crossings proof before attempting the complete operator lattice.
+- [x] Build NORIKAE's labelled synthetic player and offline GTFS audit/compiler against authored fixtures.
+- [ ] Acquire and inspect the first Toei archive through authorized ODPT access, retain its terms and compile a real 07:00–09:00 loop-and-crossings proof; resolve the broader Metro/JR/private-operator publication and historical-use gates separately.
 - [x] Begin San Francisco's source and feasibility audit: separate 511's strong historical/observed technical path from the unresolved 511/SFMTA public-artifact terms, and keep the title open until the vertical signature study is proven.
 - [ ] Resolve 511 browser-artifact, historical-use and sublicensing terms with MTC and SFMTA, then compile a bounded 08:00–10:00 hills-to-Bay proof over DataSF terrain.
 - [x] Begin Hong Kong's source and feasibility audit: separate exact ferry schedules, reconstructed surface headways, live MTR station forecasts and measured 3D station structure instead of presenting them as one kind of motion evidence.
@@ -207,10 +222,14 @@ See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/L
 - [x] Capture the wider city-thesis pipeline—without implying feasibility—for Istanbul, Mumbai, Venice, Amsterdam, Chicago, Singapore, Mexico City, Johannesburg, Sydney and Lisbon alongside the existing Tokyo, Hong Kong, Berlin and San Francisco candidates.
 - [x] Complete source, rights, motion-semantics, geography and bounded-proof feasibility studies for all ten wider city candidates.
 - [x] Complete Berlin's feasibility audit: verify VBB's current/archived schedule and realtime paths, distinguish replacement buses from same-named Ringbahn rail records, and isolate the remaining vertical-structure work.
-- [ ] Advance Venice, Sydney and Berlin to source-pinned proof acquisition; retain Singapore, Lisbon, Amsterdam and Chicago behind their stated access, coverage or publication gates.
+- [x] Build Berlin's source-pinned scheduled proof, geographic-to-circulation transition and relative Ostkreuz interchange with official bridge and water context.
+- [ ] Improve Berlin crossing performance, review physical devices, obtain measured rail elevations and complete the pending private preview approval; retain its unnumbered status until catalogue admission.
+- [ ] Advance Venice after retaining its exact feed licence and Sydney after validating a matching historical export; retain Singapore, Lisbon, Amsterdam and Chicago behind their stated access, coverage or publication gates.
 - [ ] Do not prototype Mumbai or Johannesburg until the missing authoritative movement evidence and, for Johannesburg, locally governed representation process exist.
 - [x] Audit **MANIFEST — World trade in motion**: distinguish observed AIS movement from self-reported vessel data, inferred port-to-port voyages and aggregate commodity evidence; gate global individual tracks on written derived-publication rights.
-- [ ] Prototype MANIFEST's global cargo/tanker field with non-commercial hourly vessel presence, compare identical commercial AIS evaluation slices at China/Gulf/choke-point coverage, and compile one rights-clean regional track proof before procurement.
+- [x] Build MANIFEST's explicitly synthetic 60,000-vessel public prototype, progressive 30-day playback, port context and local 72-hour NOAA observation review.
+- [ ] Secure MANIFEST's observed-data publication path and review one selected regional voyage; meet the production phone budget before treating the workload prototype as a finished edition.
+- [ ] Acquire non-commercial hourly global vessel presence and compare identical commercial AIS evaluation slices at China/Gulf/choke-point coverage before global procurement. Prepared provider requests remain unsent.
 - [ ] Keep every second-wave city and MANIFEST unnumbered until each has passed the catalogue admission test.
 
 **Exit:** every announced edition has a local argument, a defensible source model, an authored signature image and an independent payload budget; shared packages exist because three real works proved the seam.
