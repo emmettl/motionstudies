@@ -49,7 +49,7 @@ These priorities apply before label retention, editorial rank, distance, zoom ad
 
 `NationalNetworkScene` implements this policy in `@motionstudies/three`; editions supply selection state and retain ownership of their labels, typography and ordinary ranks. Use the complete enabled infrastructure as `referenceSnapshot` to retain branch endpoints through quiet timetable chunks. Reference and active snapshots may use different stop indexes: membership resolves names from each snapshot separately. Only station markers available in the displayed network can receive labels. No extra fetching or endpoint inference from route-index order or destination text is required.
 
-Regression coverage must include selected stations, branches and reverse directions, selected services, cleared selection, competing retained labels and reference snapshots with reordered stop tables. New edition adapters must preserve this policy. Adoption in existing editions requires the coordinated alpha.4 package release; exact alpha.2/alpha.3 registry pins do not update automatically.
+Regression coverage must include selected stations, branches and reverse directions, selected services, cleared selection, competing retained labels and reference snapshots with reordered stop tables. New edition adapters must preserve this policy. This policy ships in the coordinated alpha.4 release and has been adopted by all six editions using this scene. Consumers must still upgrade exact registry pins explicitly; see the [release and adoption record](RENDERER-ALPHA-4.md).
 
 ## Active movement counter
 

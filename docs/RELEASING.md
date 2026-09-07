@@ -40,3 +40,5 @@ Update all four `packages/*/package.json` versions and their internal dependency
 `0.1.0-alpha.2` adds shared desktop button help and was published through OIDC. All Change, Correspondances, Gleislicht and the private Local / Express proof consume its exact registry versions. Edition changes update their own manifests and lockfiles and run their own regression gates. No vendored candidates or shared workspaces remain in the edition repositories.
 
 References: [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) and [npm provenance](https://docs.npmjs.com/generating-provenance-statements/).
+
+`0.1.0-alpha.4` establishes selected-station and route-terminal label priority as shared renderer behaviour. Trusted publication and adoption in all six network-scene editions completed on 7 September 2026; see the [release record](RENDERER-ALPHA-4.md).
