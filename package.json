@@ -1,0 +1,49 @@
+{
+  "name": "motionstudies",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Motion Studies catalogue, shared packages and widget lab",
+  "workspaces": [
+    "packages/*",
+    "lab"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "lab": "vite --config lab/vite.config.mjs --host 127.0.0.1 --port 4174",
+    "build:lab": "tsc -p lab && vite build --config lab/vite.config.mjs",
+    "build:packages": "node scripts/build-packages.mjs",
+    "check:packed": "node scripts/check-packed-packages.mjs",
+    "check:packages": "tsc -p packages/core && tsc -p packages/three && tsc -p packages/web",
+    "check:architecture": "node scripts/check-edition-boundaries.mjs",
+    "typecheck": "npm run check:packages && tsc -p lab && tsc -p tsconfig.tests.json",
+    "lint": "oxlint",
+    "test": "vitest run",
+    "test:lab": "playwright test --config playwright.lab.config.ts",
+    "test:loaders": "playwright test --config playwright.loaders.config.ts",
+    "build": "npm run build:lab && node scripts/build-site.mjs"
+  },
+  "dependencies": {
+    "@motionstudies/core": "0.0.0",
+    "@motionstudies/three": "0.0.0",
+    "@motionstudies/web": "0.0.0",
+    "@react-three/fiber": "9.7.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "@babel/parser": "7.29.8",
+    "@playwright/test": "1.62.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@types/three": "0.185.4",
+    "@vitejs/plugin-react": "6.1.1",
+    "oxlint": "1.81.0",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
+  }
+}
