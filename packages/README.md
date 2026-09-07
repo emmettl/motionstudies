@@ -1,6 +1,6 @@
 # Motion Studies packages
 
-Private release candidates for the shared transport instrument. The source workspace and compiled distributions expose the same explicit, extensionless module subpaths. No registry publication is enabled yet.
+Shared packages for the Motion Studies transport instrument. The source workspace and compiled distributions expose the same explicit, extensionless module subpaths. The initial release is `0.1.0-alpha.0` under npm’s `next` tag.
 
 - `@motionstudies/core`: transport contracts, indexing, interpolation and visual theme contracts; no browser or Node dependencies.
 - `@motionstudies/three`: `NationalNetworkScene`, `HubPulseScene`, `StationFlowScene`, camera framing and label-mode contracts. React, React Three Fiber and Three.js are peers; rendering internals are not public subpaths.
@@ -23,4 +23,4 @@ Keep the resolver stable across renders. Manifest paths and their chunk paths ar
 
 Build release candidates with `npm run build:packages`. Distribution manifests and compiled ESM/declarations are written to `.package-dist/`; workspace manifests continue to point at source for fast local iteration. `npm run check:packed` packs and installs those distributions into a separate consumer, builds the lab and validates the public exports. No source aliases or workspace links are used in that consumer.
 
-Publication requires deliberately choosing versions, licence and registry settings and removing the private flag. Candidate packages remain private and unlicensed during preparation.
+Source workspace manifests always stay private. `npm run check:release` builds public candidates, tests their packed consumer and records the tested tarball hashes; `npm run release:dry-run` inspects the publication without writing to npm. The manual main-branch `release.yml` workflow publishes those same tarballs with public access and provenance. See [release instructions](https://github.com/emmettl/motionstudies/blob/main/docs/RELEASING.md) for bootstrap-token and trusted-publisher setup. All four shared packages are MIT-licensed; each distribution includes `LICENSE`.

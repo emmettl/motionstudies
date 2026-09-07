@@ -1,15 +1,20 @@
 import { cp, lstat, mkdir, mkdtemp, readFile, readdir, realpath, rm, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
 import { join, resolve } from 'node:path'
 import { tmpdir } from 'node:os'
 import { spawn, spawnSync } from 'node:child_process'
 import { setTimeout as delay } from 'node:timers/promises'
 import { buildPackages, packageNames, packageOutput, run } from './build-packages.mjs'
+import { releaseTag } from './release-policy.mjs'
 
 const root = resolve('.')
-await buildPackages()
+const release = process.argv.includes('--release')
+await buildPackages({ release })
 const tarballs = join(packageOutput, 'tarballs')
+await rm(tarballs, { recursive: true, force: true })
 await mkdir(tarballs, { recursive: true })
 const dependencies = {}
+const artifacts = []
 for (const name of packageNames) {
   const result = spawnSync('npm', ['pack', join(packageOutput, name), '--json', '--pack-destination', tarballs, '--cache', join(packageOutput, 'npm-cache')], { encoding: 'utf8' })
   if (result.status !== 0) throw new Error(result.stderr || 'npm pack failed')
@@ -20,6 +25,8 @@ for (const name of packageNames) {
     }
   }
   dependencies[`@motionstudies/${name}`] = `file:${join(tarballs, packed.filename)}`
+  const manifest = JSON.parse(await readFile(join(packageOutput, name, 'package.json'), 'utf8'))
+  artifacts.push({ name: manifest.name, version: manifest.version, file: packed.filename, integrity: `sha512-${createHash('sha512').update(await readFile(join(tarballs, packed.filename))).digest('base64')}` })
 }
 const consumer = await mkdtemp(join(tmpdir(), 'motion-studies-consumer-'))
 console.log(`Checking an isolated consumer at ${consumer}`)
@@ -89,6 +96,11 @@ try {
     env: { ...process.env, MOTION_LAB_URL: 'http://127.0.0.1:4175' },
   })
   console.log('Packed consumer passed: public imports, declarations, Node tooling, lab build and browser specimens.')
+  if (release) {
+    const sourceCommit = spawnSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' })
+    if (sourceCommit.status !== 0) throw new Error('Cannot identify the source commit')
+    await writeFile(join(tarballs, 'release.json'), `${JSON.stringify({ version: artifacts[0].version, tag: releaseTag(artifacts[0].version), sourceCommit: sourceCommit.stdout.trim(), packages: artifacts }, null, 2)}\n`)
+  }
 } finally {
   if (server) {
     const exited = new Promise((done) => server.once('close', done))

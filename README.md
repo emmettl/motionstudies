@@ -17,7 +17,7 @@ See [package contracts](packages/README.md) and [extraction provenance](docs/EXT
 
 `packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. All Change is being rehearsed in [emmettl/allchange](https://github.com/emmettl/allchange).
 
-The package and lab directories retain their Git history from Gleislicht. Candidate distributions remain private at `0.0.0`; nothing publishes to npm. Configure licensing, versions and registry access before the first release. Publish compiled `.package-dist/` output, never source workspace directories.
+The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The first coordinated npm release is `0.1.0-alpha.0` under `next`; only explicit release builds produce publishable compiled tarballs. The manual `release.yml` workflow supports a token bootstrap and subsequent OIDC releases. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
 
 ## Hosting
 
@@ -25,4 +25,4 @@ Checks run for pushes and pull requests. Only `main` deploys the catalogue plus 
 
 ## Local validation
 
-135 unit tests and 32 browser checks (8 packed lab, 24 loader regressions). Independent package/consumer typechecks, lint, architecture and catalogue/lab build pass. These are local Chromium/WebKit results; GitHub-hosted CI is a separate check.
+140 unit tests and 32 browser checks (8 packed lab, 24 loader regressions). Independent package/consumer typechecks, lint, architecture and catalogue/lab build pass. These are local Chromium/WebKit results; GitHub-hosted CI is a separate check.

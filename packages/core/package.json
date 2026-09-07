@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -30,5 +30,15 @@
     "./domain/train-time-index": "./src/domain/train-time-index.ts"
   },
   "description": "Transport contracts and motion primitives for Motion Studies.",
-  "sideEffects": false
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmettl/motionstudies.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/emmettl/motionstudies#readme",
+  "bugs": {
+    "url": "https://github.com/emmettl/motionstudies/issues"
+  },
+  "license": "MIT"
 }

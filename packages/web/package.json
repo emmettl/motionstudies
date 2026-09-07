@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -19,7 +19,7 @@
     "./mobile-picker.css": "./src/components/mobile-picker.css"
   },
   "dependencies": {
-    "@motionstudies/core": "0.0.0"
+    "@motionstudies/core": "0.1.0-alpha.0"
   },
   "peerDependencies": {
     "react": "^19.2.8",
@@ -28,5 +28,15 @@
   "description": "Browser controls and loaders for Motion Studies.",
   "sideEffects": [
     "**/*.css"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmettl/motionstudies.git",
+    "directory": "packages/web"
+  },
+  "homepage": "https://github.com/emmettl/motionstudies#readme",
+  "bugs": {
+    "url": "https://github.com/emmettl/motionstudies/issues"
+  },
+  "license": "MIT"
 }

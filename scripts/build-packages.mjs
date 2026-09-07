@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import { pathToFileURL } from 'node:url'
+import { validateReleaseManifests } from './release-policy.mjs'
 
 export const packageNames = ['core', 'data', 'three', 'web']
 export const packageOutput = resolve('.package-dist')
@@ -33,7 +34,9 @@ function compiledExport(value) {
   return path
 }
 
-export async function buildPackages() {
+export async function buildPackages({ release = false } = {}) {
+  const manifests = await Promise.all(packageNames.map(async (name) => JSON.parse(await readFile(resolve('packages', name, 'package.json'), 'utf8'))))
+  const releaseInfo = release ? validateReleaseManifests(manifests) : undefined
   await mkdir(packageOutput, { recursive: true })
   for (const name of packageNames) {
     const source = resolve('packages', name)
@@ -61,21 +64,26 @@ export async function buildPackages() {
     const distribution = {
       name: manifest.name,
       version: manifest.version,
-      private: true,
+      private: !release,
       type: 'module',
       description: manifest.description,
-      license: 'UNLICENSED',
+      license: manifest.license ?? 'UNLICENSED',
+      ...(manifest.repository ? { repository: manifest.repository } : {}),
+      ...(manifest.homepage ? { homepage: manifest.homepage } : {}),
+      ...(manifest.bugs ? { bugs: manifest.bugs } : {}),
+      ...(release ? { publishConfig: { access: 'public', registry: 'https://registry.npmjs.org/', tag: releaseInfo.tag } } : {}),
       ...(manifest.engines ? { engines: manifest.engines } : {}),
       exports: Object.fromEntries(Object.entries(manifest.exports).map(([key, value]) => [key, compiledExport(value)])),
-      files: ['**/*.js', '**/*.mjs', '**/*.d.ts', '**/*.d.mts', '**/*.css', 'README.md'],
+      files: ['**/*.js', '**/*.mjs', '**/*.d.ts', '**/*.d.mts', '**/*.css', 'README.md', 'LICENSE'],
       sideEffects: manifest.sideEffects ?? false,
       ...(manifest.dependencies ? { dependencies: manifest.dependencies } : {}),
       ...(manifest.peerDependencies ? { peerDependencies: manifest.peerDependencies } : {}),
     }
     await writeFile(join(output, 'package.json'), `${JSON.stringify(distribution, null, 2)}\n`)
     await cp(resolve('packages/README.md'), join(output, 'README.md'))
+    if (manifest.license) await cp(resolve('packages/LICENSE'), join(output, 'LICENSE'))
     console.log(`Built ${manifest.name}: ${Object.keys(distribution.exports).length} supported subpaths`)
   }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) await buildPackages()
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) await buildPackages({ release: process.argv.includes('--release') })
