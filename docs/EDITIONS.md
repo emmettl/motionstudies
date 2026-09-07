@@ -37,6 +37,14 @@ The engine deliberately does not fetch GTFS, proprietary APIs or GIS services at
 
 Alternate layouts are edition data, not alternate networks. `packages/core/src/domain/spatial-layout.ts` defines their stable identity contract and `packages/three/src/spatial-layout.ts` projects and blends them through the shared renderer. Playback owns one canonical service progress and samples each layout independently before blending positions. This lets an authored work move between geographic and topological space without duplicating journeys or losing time, search, selection and follow-camera state. Layout artifacts stay lazy and optional so editions without a meaningful second spatial language pay no transfer or runtime cost.
 
+## Active movement counter
+
+Every edition displaying a trains/vehicles-in-motion or active-journeys count must scope that count to the current station and service category or route selection, within the enabled network layers. Count only journeys active at the displayed clock time, including scheduled dwell and excluding cancelled services. Station selection means active journeys calling at that station, not only vehicles physically at its platforms. Clearing a selection restores the enabled network total; no matching active journeys displays zero.
+
+Resolve station membership against the current snapshot when progressive chunks or layers change. Memoize selection filtering separately from playback counting so the clock does not rebuild station membership on every frame. Keep other metrics, such as total scheduled calls, hub movements, and directional comparison cards, tied to their own explicit labels.
+
+The count is currently rendered by edition-owned shells. Apply this behavior in each consumer without importing sibling source or changing exact package pins merely to share UI code. Regression checks should pause the clock, select and clear a station/category, and verify both the narrowed count and restored total.
+
 ## Creating an edition
 
 1. Create an edition repository, install exact coordinated `@motionstudies/*` releases and add its typed catalogue in `src/editions/`.
