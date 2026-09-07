@@ -18,6 +18,16 @@ The local sentence is therefore **ring and crossing** rather than generic networ
 
 The City of Berlin's [Planwerk Innere Stadt](https://www.berlin.de/sen/stadtentwicklung/planung/planwerk-innere-stadt/) explicitly uses the area inside the S-Bahn Ring as its inner-city field. That makes the ring an urban proposition as well as a route geometry, but the planning boundary must remain contextual: trains do not prove a social, cultural or fare boundary by themselves.
 
+## Composition and review update — 7 September 2026
+
+[Umlauf d1edfeb](https://github.com/emmettl/umlauf/commit/d1edfeb444469d8d61704ae57fd0d569376dff9f) adds crossing-family controls, phone framing, lazy Ostkreuz scene code and an optional official Spree/canal/harbour crop. The [water audit](https://github.com/emmettl/umlauf/blob/main/docs/WATER.md) retains full requests, raw bytes and hashes, explicit CRS and polygon clipping with island holes. Timetable and authored-layout bytes are unchanged. The compressed opening including water is 533.2 KiB against a 575 KiB gate; water is lazy and opt-in on phones.
+
+The [performance record](https://github.com/emmettl/umlauf/blob/main/docs/PERFORMANCE.md) includes measured limitations, not a green-device claim: software-rendered Chromium phone emulation averaged 59 fps in the Ring, 29 fps in crossings, 33 fps in circulation and 60 fps in Ostkreuz. Crossings still miss the proposed p95 frame target. Physical phone and Windows Edge measurements are open. Fourteen source/model tests and twenty desktop/phone functional/rendering checks pass locally.
+
+All Change's reusable flat-route visibility and rendering-work fixes are committed upstream for alpha.3 in [4c86b50](https://github.com/emmettl/motionstudies/commit/4c86b501b7abbd1d136e5f5a9cb4fa6b59022d82), with hosted checks passing. npm publication awaits explicit approval after automatic approval review rejected it; Berlin remains on published alpha.2 and its luminous renderer.
+
+A [publication review](https://github.com/emmettl/umlauf/blob/main/docs/REVIEW.md) and validated static archive are prepared. GitHub Pages cannot serve the private repository under the current plan. An owner-only Sites project was created, but source upload and deployment await explicit approval after automatic approval review rejected the private-source transfer. No Sites source or site version has been uploaded. The repository remains private, the title provisional and the edition unnumbered.
+
 ## First implemented proof — 7 September 2026
 
 The independent Umlauf edition consumes exact published `@motionstudies/*` packages at `0.1.0-alpha.2`. It uses the retained, hash-verified 3 September VBB release for Monday 7 September, 07:00–09:00 Europe/Berlin. The opening carries 585 scheduled journeys across twelve selected line names, 397 platform/stop records and 1,170 directed path segments. S41 and S42 each contribute 36 trips overlapping the opening; the four named crossing hubs remain legible in the Ring view.
