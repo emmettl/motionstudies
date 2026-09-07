@@ -26,7 +26,8 @@ The [performance record](https://github.com/emmettl/umlauf/blob/main/docs/PERFOR
 
 All Change's reusable flat-route visibility and rendering-work fixes are committed upstream in [4c86b50](https://github.com/emmettl/motionstudies/commit/4c86b501b7abbd1d136e5f5a9cb4fa6b59022d82) and now published as alpha.3 after the successful [trusted release](https://github.com/emmettl/motionstudies/actions/runs/34155462468). The reviewed Berlin proof remains on alpha.2 and its luminous renderer; adopting alpha.3 requires an explicit edition pin update and consumer checks.
 
-A [publication review](https://github.com/emmettl/umlauf/blob/main/docs/REVIEW.md) and validated static archive are prepared. GitHub Pages cannot serve the private repository under the current plan. An owner-only Sites project was created, but source upload and deployment await explicit approval after automatic approval review rejected the private-source transfer. No Sites source or site version has been uploaded. The repository remains private, the title provisional and the edition unnumbered.
+The approved [private Sites review](https://umlauf-berlin-review.vndh2vk2v4.chatgpt.site) is deployed as version 1 from [Umlauf e4a1bfb](https://github.com/emmettl/umlauf/commit/e4a1bfbf954d6b22fb73d28f7e14645b50c1c875). Source/history upload and private deployment were explicitly approved; access is owner-only. The [publication review](https://github.com/emmettl/umlauf/blob/main/docs/REVIEW.md) records source rights and remaining editorial decisions. GitHub Pages remains unavailable under the private repository's current plan; repository visibility was not changed. The title remains provisional and the edition unnumbered.
+
 
 ## First implemented proof — 7 September 2026
 
