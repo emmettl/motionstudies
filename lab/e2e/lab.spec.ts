@@ -39,7 +39,10 @@ test('a controlled network supports playback, layouts, selection, layers and rem
   await expect.poll(async () => Number((await page.getByTestId('study-time').innerText()).split(' ')[0])).toBeGreaterThan(60)
   await page.getByRole('button', { name: 'Pause', exact: true }).click()
   const paused = await page.getByTestId('study-time').innerText()
-  await page.getByRole('combobox', { name: 'Selection', exact: true }).selectOption('service')
+  for (const selection of ['route', 'station', 'none', 'service']) {
+    await page.getByRole('combobox', { name: 'Selection', exact: true }).selectOption(selection)
+    await expect(page.locator('.scene-preview canvas')).toHaveCount(1)
+  }
   await page.getByLabel('Layout mix').focus()
   await page.keyboard.press('End')
   await page.getByLabel('Flat routes + quiet ground').check()

@@ -1,4 +1,57 @@
-import type { StationIndexEntry } from '@motionstudies/core/domain/network'
+import type {
+  NetworkRouteIndexEntry,
+  NetworkSnapshot,
+  NetworkTrain,
+  StationIndexEntry,
+} from '@motionstudies/core/domain/network'
+
+/** Shared selection semantics, independent of edition ranking and camera layout. */
+export function stationLabelSelection(
+  snapshot: Pick<NetworkSnapshot, 'stops' | 'trains'>,
+  selectedRoute?: NetworkRouteIndexEntry,
+  selectedTrain?: NetworkTrain,
+  referenceSnapshot = snapshot,
+): { stationNames: Set<string>; terminalNames: Set<string> } {
+  const stationNames = new Set<string>()
+  const terminalNames = new Set<string>()
+  const addTrain = (train: NetworkTrain, source: typeof snapshot) => {
+    train.stops.forEach(([stopIndex], index) => {
+      const name = source.stops[stopIndex]?.[2]
+      if (!name) return
+      stationNames.add(name)
+      if (index === 0 || index === train.stops.length - 1) terminalNames.add(name)
+    })
+  }
+  if (selectedTrain) {
+    addTrain(selectedTrain, snapshot)
+  } else if (selectedRoute) {
+    // Preserve membership if a selected route outlives its active timetable chunk.
+    for (const index of selectedRoute.stopIndexes) {
+      const name = snapshot.stops[index]?.[2]
+      if (name) stationNames.add(name)
+    }
+    // Stop indexes belong to their own snapshots. Join reference branches by
+    // station name, as the station index does, never by cross-snapshot indexes.
+    for (const source of referenceSnapshot === snapshot ? [snapshot] : [snapshot, referenceSnapshot]) {
+      for (const train of source.trains) {
+        if (train.route === selectedRoute.name && train.category === selectedRoute.category) addTrain(train, source)
+      }
+    }
+  }
+  return { stationNames, terminalNames }
+}
+
+/** Selection wins before retention, editorial rank, distance and collisions. */
+export function stationLabelPriority(
+  name: string,
+  selectedStationName: string | undefined,
+  terminalNames: ReadonlySet<string>,
+  emphasised: boolean,
+): number {
+  if (name === selectedStationName) return 0
+  if (terminalNames.has(name)) return 1
+  return emphasised ? 2 : 3
+}
 import {
   homeMapDistanceScale,
   type MapCameraFraming,

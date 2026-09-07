@@ -35,6 +35,8 @@ import {
 } from '@motionstudies/core/domain/train-time-index'
 import {
   compareStationLabelCandidates,
+  stationLabelSelection,
+  stationLabelPriority,
   MAX_STATION_LABELS,
   rankStationsForLabels,
   stationIndexAtScreenPoint,
@@ -2014,6 +2016,7 @@ function StationTapTarget({
 function StationLabels({
   stations,
   snapshot,
+  referenceSnapshot,
   projectedStops,
   selectedRoute,
   selectedStation,
@@ -2027,6 +2030,7 @@ function StationLabels({
 }: {
   readonly stations: readonly StationIndexEntry[]
   readonly snapshot: NetworkSnapshot
+  readonly referenceSnapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly selectedRoute?: NetworkRouteIndexEntry
   readonly selectedStation?: StationIndexEntry
@@ -2047,16 +2051,10 @@ function StationLabels({
   const cameraWasSampled = useRef(false)
   const cameraStableSeconds = useRef(Number.POSITIVE_INFINITY)
   const lineMapLabels = lineMapMix >= 0.72
-  const routeStationNames = useMemo(() => {
-    const stopIndexes = selectedTrain
-      ? selectedTrain.stops.map(([stopIndex]) => stopIndex)
-      : (selectedRoute?.stopIndexes ?? [])
-    return new Set(
-      stopIndexes
-        .map((stopIndex) => snapshot.stops[stopIndex]?.[2])
-        .filter((name): name is string => Boolean(name)),
-    )
-  }, [selectedRoute, selectedTrain, snapshot.stops])
+  const { stationNames: routeStationNames, terminalNames } = useMemo(
+    () => stationLabelSelection(snapshot, selectedRoute, selectedTrain, referenceSnapshot),
+    [snapshot, referenceSnapshot, selectedRoute, selectedTrain],
+  )
   const labels = useMemo(() => {
     const ranked = rankStationsForLabels(stations)
     const stationByName = new Map(ranked.map((station) => [station.name, station]))
@@ -2183,8 +2181,9 @@ function StationLabels({
         y: (-projected.y * 0.5 + 0.5) * size.height,
         distance: camera.position.distanceTo(label.position),
         depth: Math.max(0.01, -viewPosition.z),
-        priority:
-          label.station.name === selectedStation?.name ? 0 : label.emphasised ? 1 : 2,
+        priority: stationLabelPriority(
+          label.station.name, selectedStation?.name, terminalNames, label.emphasised,
+        ),
         rank: label.rank,
         retained,
       })
@@ -4270,6 +4269,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       <StationLabels
         stations={props.stations}
         snapshot={props.snapshot}
+        referenceSnapshot={props.referenceSnapshot}
         projectedStops={projectedStops}
         selectedRoute={props.selectedRoute}
         selectedStation={props.selectedStation}

@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/data",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "private": true,
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
@@ -26,7 +26,7 @@
     }
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.3"
+    "@motionstudies/core": "0.1.0-alpha.4"
   },
   "repository": {
     "type": "git",

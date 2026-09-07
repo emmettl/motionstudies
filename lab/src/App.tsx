@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { buildStationIndex, type StationIndexEntry } from '@motionstudies/core/domain/network'
+import { buildRouteIndex, buildStationIndex, type StationIndexEntry } from '@motionstudies/core/domain/network'
 import { callsAtHub } from '@motionstudies/core/domain/hub'
 import { NationalNetworkScene, type MapCameraCommand } from '@motionstudies/three/NationalNetworkScene'
 import { HubPulseScene } from '@motionstudies/three/HubPulseScene'
@@ -66,6 +66,7 @@ function RenderingStudy({ kind }: { kind: 'Network' | 'Hub' }) {
   const scene = (secondary = false) => <NationalNetworkScene snapshot={source} referenceSnapshot={network}
     isPlaying={playing && !secondary} time={time} onTime={setTime} playbackRate={4}
     stations={stations} trainLabelMode="on" cameraFraming={ATLAS_MAP_FRAMING} cameraCommand={camera}
+    selectedRoute={!empty && selection === 'route' ? buildRouteIndex(network)[0] : undefined}
     selectedTrain={!empty && selection === 'service' ? network.trains[0] : undefined}
     selectedStation={!empty && selection === 'station' ? station ?? stations[1] : undefined}
     onSelectStation={(next) => { setStation(next); setSelection('station') }}
@@ -79,7 +80,7 @@ function RenderingStudy({ kind }: { kind: 'Network' | 'Hub' }) {
       <label><input type="checkbox" checked={empty} onChange={(e) => setEmpty(e.target.checked)} /> Empty data</label>
       <label><input type="checkbox" checked={compare} onChange={(e) => setCompare(e.target.checked)} /> {kind === 'Hub' ? 'Track view' : 'Linked views'}</label>
       {kind === 'Network' && <><label><input type="checkbox" checked={flat} onChange={e=>setFlat(e.target.checked)}/> Flat routes + quiet ground</label><label><input type="checkbox" checked={layers} onChange={(e) => setLayers(e.target.checked)} /> Air + road</label>
-        <label>Selection <select value={selection} onChange={(e) => setSelection(e.target.value)}><option value="none">None</option><option value="service">Service</option><option value="station">Station</option></select></label>
+        <label>Selection <select value={selection} onChange={(e) => setSelection(e.target.value)}><option value="none">None</option><option value="route">Route</option><option value="service">Service</option><option value="station">Station</option></select></label>
         {(['zoom-in', 'zoom-out', 'reset'] as const).map((action) => <button key={action} data-tooltip={action === 'reset' ? 'Restore the opening camera position' : action === 'zoom-in' ? 'Move closer to the network' : 'Show more of the network'} onClick={() => setCamera({ id: ++cameraId.current, action })}>{action}</button>)}
       </>}
     </div>

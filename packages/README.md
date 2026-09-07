@@ -25,6 +25,10 @@ Build release candidates with `npm run build:packages`. Distribution manifests a
 
 Source workspace manifests always stay private. `npm run check:release` builds public candidates, tests their packed consumer and records the tested tarball hashes; `npm run release:dry-run` inspects the publication without writing to npm. The manual main-branch `release.yml` workflow publishes those same tarballs with public access and provenance. See [release instructions](https://github.com/emmettl/motionstudies/blob/main/docs/RELEASING.md) for bootstrap-token and trusted-publisher setup. All four shared packages are MIT-licensed; each distribution includes `LICENSE`.
 
+## Selection labels
+
+`NationalNetworkScene` gives the selected station first label priority, followed by the selected route's terminal stops (including branches), then intermediate stops. Selected services use their own endpoints. Priority precedes retained labels and ordinary rank/tier admission; clearing selection restores edition ranking. This is built in for every consumer, including geographic and diagram layouts. Supply complete enabled infrastructure as `referenceSnapshot` to preserve endpoints through timetable gaps; its stop indexes need not match the active snapshot. See the [edition behaviour contract](https://github.com/emmettl/motionstudies/blob/main/docs/EDITIONS.md#selection-and-station-labels).
+
 ## Button help
 
 `mountMotionStudy` installs one shared tooltip surface. Independent consumers such as the lab can render `ButtonTooltips` from `@motionstudies/web/components/ButtonTooltips` once instead. Put concise, action-oriented help in each button’s `data-tooltip`; icon buttons fall back to their `aria-label`. An empty `data-tooltip` opts out. Avoid native `title` attributes on these buttons, which can also appear during touch interaction.

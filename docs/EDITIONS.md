@@ -37,6 +37,20 @@ The engine deliberately does not fetch GTFS, proprietary APIs or GIS services at
 
 Alternate layouts are edition data, not alternate networks. `packages/core/src/domain/spatial-layout.ts` defines their stable identity contract and `packages/three/src/spatial-layout.ts` projects and blends them through the shared renderer. Playback owns one canonical service progress and samples each layout independently before blending positions. This lets an authored work move between geographic and topological space without duplicating journeys or losing time, search, selection and follow-camera state. Layout artifacts stay lazy and optional so editions without a meaningful second spatial language pay no transfer or runtime cost.
 
+## Selection and station labels
+
+Every edition with station, route or service search/selection uses the same label priority, regardless of input method or geographic/diagram layout:
+
+1. The selected station's label has first priority.
+2. Selecting a route promotes its terminal labels ahead of intermediate stops, including both directions, branch endpoints and advertised short turns. Selecting a particular service uses that journey's own first and last stops.
+3. Other stops on the selected route/service follow, then the edition's normal station hierarchy when no route/service is isolated.
+
+These priorities apply before label retention, editorial rank, distance, zoom admission and collision allocation. A previously visible intermediate stop must not suppress a newly selected terminal. Selected labels bypass ordinary rank/tier admission; viewport clipping and collisions between equally important labels still apply. Clearing selection restores normal density and ranking. Changing the clock or enabled layers must recompute membership without leaving stale selection priorities.
+
+`NationalNetworkScene` implements this policy in `@motionstudies/three`; editions supply selection state and retain ownership of their labels, typography and ordinary ranks. Use the complete enabled infrastructure as `referenceSnapshot` to retain branch endpoints through quiet timetable chunks. Reference and active snapshots may use different stop indexes: membership resolves names from each snapshot separately. Only station markers available in the displayed network can receive labels. No extra fetching or endpoint inference from route-index order or destination text is required.
+
+Regression coverage must include selected stations, branches and reverse directions, selected services, cleared selection, competing retained labels and reference snapshots with reordered stop tables. New edition adapters must preserve this policy. Adoption in existing editions requires the coordinated alpha.4 package release; exact alpha.2/alpha.3 registry pins do not update automatically.
+
 ## Active movement counter
 
 Every edition displaying a trains/vehicles-in-motion or active-journeys count must scope that count to the current station and service category or route selection, within the enabled network layers. Count only journeys active at the displayed clock time, including scheduled dwell and excluding cancelled services. Station selection means active journeys calling at that station, not only vehicles physically at its platforms. Clearing a selection restores the enabled network total; no matching active journeys displays zero.
