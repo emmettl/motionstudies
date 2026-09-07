@@ -28,7 +28,7 @@ The importer preserves agency, extended route type, route, service, trip, shape,
 
 The third view studies Ostkreuz: upper Ringbahn platforms 11/12 and lower east–west platforms 3–6, scheduled moving trains, selectable platform calls and source pathway links filtered to stairs/escalators or lifts. Level separation is adjustable and explicitly illustrative. Switching views preserves the shared service clock. The compiled station artifact retains 122 family records, twelve platforms, 1,818 directed pathway rows and 201 calls from overlapping journeys (153 arrivals inside the opening). Six platforms carry the selected S-Bahn services. The [edition's station evidence contract](https://github.com/emmettl/umlauf/blob/main/docs/OSTKREUZ.md) distinguishes source endpoints and ordinal levels from authored glyphs and connector strokes.
 
-Local validation and [hosted Node 24 CI](https://github.com/emmettl/umlauf/actions/runs/34138194955) passed twelve source/model tests, ten Chromium desktop/phone browser checks, typecheck, lint, the independent-package boundary check and production build. Network and diagram payloads are approximately 123 KB and 49 KB gzip respectively; the station data loads on demand at 27.2 KB gzip. JavaScript including the shared renderer is approximately 327 KB gzip. Repeat station compilation was byte-identical. Phone emulation does not certify physical-device frame or memory budgets.
+The official bridge extension passes local validation and [hosted Node 24 CI](https://github.com/emmettl/umlauf/actions/runs/34139406252): thirteen source/model tests, twelve Chromium desktop/phone browser checks, typecheck, lint, the independent-package boundary check and production build. Network and diagram payloads are approximately 123 KB and 49 KB gzip respectively; the station data loads on demand at 27.2 KB gzip. JavaScript including the shared renderer is approximately 327 KB gzip. Repeat station compilation was byte-identical. Phone emulation does not certify physical-device frame or memory budgets.
 
 This proof has no public deployment and assigns no catalogue number. The Ostkreuz view encodes relative ordering, without measured rail heights or approach gradients. The next substantial source gate is metric evidence for the selected interchange and railway approaches. Terrain, water, buildings and realtime remain separate additions.
 
@@ -90,15 +90,17 @@ Those records support an interchange graph and relative visual stacking. They do
 
 **7 September implementation follow-up:** an exact parent-station join for `de:11000:900120003` finds 122 Ostkreuz family records and 1,818 pathway rows whose endpoints both belong to that family. Track/platform codes 1–8 use level ID `9` (index `0`, `Straßenebene`); 11–14 use level ID `31` (index `2`, `Bahnsteig`). The station family also includes intermediate level ID `179` (index `1`, `Zwischengeschoss/Übergang`). These are source-relative level indexes, not metre heights. The join deliberately excludes similarly named Beeskow stops and unparented replacement stops. This evidence now drives the interactive relative interchange view. The [official DB station plan](https://www.bahnhof.de/downloads/station-plans/4809.pdf), retained with a checksum in the edition, visually corroborates the platform ordering; its artwork is not reproduced. No measured section or current lift availability is claimed.
 
-For the line layer, join VBB shapes to Berlin's [ATKIS Basis-DLM WFS](https://daten.berlin.de/datensaetze/atkis-basis-dlm-prasentationsdienst-wfs-d4316e05) and inspect its railway/transport-structure attributes. Any unresolved segment stays `verticalState: unknown`. Bare-earth occlusion is not proof that a line tunnels there.
+**Official geodata follow-up:** the [retained ATKIS audit](https://github.com/emmettl/umlauf/blob/main/docs/ATKIS.md) inspected 103 railway features, two station polygons and 21 transport structures around Ostkreuz. Ringbahn feature `DEBEATKB1bq0000X` explicitly references bridge polygon `DEBEATKB10000iKp` through `hdu`. Its exact footprint is now switchable in the station scene under Germany Zero 2.0; raw responses, schema, rights receipt and hashes are committed in the edition. All inspected coordinates are two-dimensional; no metre rail heights or individual platform boundaries were established. The bridge adds 1.2 KB gzip on demand. A repeat offline compilation was byte-identical.
+
+For the wider line layer, join VBB shapes to Berlin's [ATKIS Basis-DLM WFS](https://daten.berlin.de/datensaetze/atkis-basis-dlm-prasentationsdienst-wfs-d4316e05) and inspect its railway/transport-structure attributes. Any unresolved segment stays `verticalState: unknown`. Bare-earth occlusion is not proof that a line tunnels there.
 
 ## Terrain, buildings and water
 
 | Source | Use | Limit |
 | --- | --- | --- |
-| [ATKIS DGM, one-metre grid](https://daten.berlin.de/datensaetze/atkis-dgm-1m-rasterweite-fa02f9e1) | Current citywide bare-earth terrain, updated December 2025 | Removes buildings and engineered structures. It gives ground, not rail-deck or platform height. |
+| [ATKIS DGM, one-metre grid](https://daten.berlin.de/datensaetze/atkis-dgm-digitales-gelandemodell-fa02f9e1) | Citywide bare-earth terrain; catalogue updated December 2025 (not a new survey date) | Removes buildings and engineered structures. It gives ground, not rail-deck or platform height. |
 | [Berlin LoD2 building model](https://daten.berlin.de/datensaetze/3d-gebaudemodelle-im-level-of-detail-2-lod-2-3c7c49af) | Citywide cadastral footprints and generalised roof forms | Model state is April 2024; roofs are standardised representations, not survey-grade architectural detail. |
-| [ATKIS Basis-DLM WFS](https://daten.berlin.de/datensaetze/atkis-basis-dlm-prasentationsdienst-wfs-d4316e05) | Railway, transport structure, land and water context | Feature schema and vertical coverage must be inspected before it is treated as engineering geometry. |
+| [ATKIS Basis-DLM WFS](https://daten.berlin.de/datensaetze/atkis-basis-dlm-prasentationsdienst-wfs-d4316e05) | Railway, transport structure, land and water context | Ostkreuz rail/bridge schema and footprint inspected; no numeric heights found in the retained slice. Wider coverage remains unvalidated. |
 
 These Berlin sources use the [Datenlizenz Deutschland – Zero 2.0](https://www.govdata.de/dl-de/zero-2-0), providing a clean transformed-publication path. Preserve product date, CRS, height reference and resampling/simplification in the manifest even where attribution is not legally required.
 
@@ -141,7 +143,8 @@ Start with scheduled motion. Add recorded trip updates only after completeness f
 - [x] Decode one realtime snapshot and establish that it contains trip updates, not vehicle positions.
 - [x] Compile the selected Berlin agency/mode slice; validate source identities, both full-ring winding directions and replacement-route exclusion for the retained opening.
 - [x] Compile and render Ostkreuz relative levels, platform calls and pathway endpoints; retain an official station-plan cross-check and test shared-clock continuity.
-- [ ] Inspect ATKIS railway attributes and author above/surface/below-ground segments with confidence.
+- [x] Retain a bounded ATKIS railway/structure slice, verify the Ringbahn-to-bridge reference and render the official bridge footprint.
+- [ ] Extend infrastructure classification beyond the reviewed bridge and obtain measured rail/platform heights from engineering or classified survey evidence.
 - [ ] Crop DGM/LoD2 context and set a phone-first transfer/frame budget.
 - [ ] Record a complete two-hour realtime window only after the VBB coverage warning clears or completeness proves acceptable.
 - [ ] Find a durable title after the ring-and-crossing action survives the visual proof.
