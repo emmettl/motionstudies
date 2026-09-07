@@ -4,6 +4,8 @@
 
 **Catalogue status:** second-wave source investigation; title and signature study not yet admitted.
 
+**Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
+
 **Naming direction — 7 September 2026:** **Grip** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#san-francisco). This is not a catalogue admission or a change to the dated source verdict.
 
 ## Thesis under test
@@ -64,7 +66,7 @@ Before any derived timetable JSON enters a public build, obtain written answers 
 2. Does the reasonable-currency clause allow a clearly dated artwork compiled from the expressly offered historical feed to remain permanently available?
 3. Does the 511 agreement fully govern Muni data acquired through 511, or must the separate SFMTA Transit Data License also be accepted and flowed through?
 4. May the required 511 acknowledgement live in the persistent source panel rather than the minimal motion canvas, and is that sufficiently close to the data?
-5. What exactly counts as the launch documentation due within 30 days for an open-source, non-commercial exhibition page?
+5. **Resolved 7 September:** section 2(g) already identifies screenshots, press releases and live URLs as launch-documentation examples, alongside proof of attribution. Prepare a live URL and attribution screenshot within 30 days of an authorised launch; no general provider question is needed here.
 6. May a derived artifact be mirrored in a static repository or CDN when it contains only the selected service day and cannot reconstruct most of the regional feed?
 
 Until those answers are retained with the source manifest, 511 is suitable for research and an internal proof but amber for public deployment.

@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; technically strong, publication and vertical-classification gates remain.
 
+**Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
+
 **Naming direction — 7 September 2026:** **Above Grade** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#chicago). This is not a catalogue admission or a change to the dated source verdict.
 
 ## Thesis under test
@@ -44,7 +46,7 @@ The proposed artwork plausibly promotes public transport, but that is an interpr
 2. a compact, transformed timetable/geometry artifact may be hosted indefinitely after the source feed changes;
 3. a pinned historical ZIP may be retained privately and replayed publicly;
 4. route colours, station names and the letters `CTA`/`L` may be used without operator marks; and
-5. the required credit and update language may live in the methodology rather than permanently over the canvas.
+5. any additional dataset-specific notice applies to the particular archive. **7 September correction:** section III.6 makes ordinary CTA credit optional; its placement does not itself require permission. The purpose, update and termination questions above remain open.
 
 The City data portal's terms govern City-hosted footprints and GIS layers separately. USGS 3DEP elevation is public domain, but its capture/quality metadata should still be cited.
 

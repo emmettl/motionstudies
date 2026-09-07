@@ -4,6 +4,8 @@
 
 **Catalogue status:** feasibility investigation complete; current rail proof viable, future-network layer requires separate planning semantics.
 
+**Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
+
 **Naming direction — 7 September 2026:** **Lines Ahead** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#singapore). This is not a catalogue admission or a change to the dated source verdict.
 
 ## Thesis under test
@@ -37,7 +39,7 @@ The official [DataMall dynamic-data catalogue](https://datamall.lta.gov.sg/conte
 
 Access uses an Account Key. The static schedule should be the canonical trip/calendar identity; realtime updates must match it by the documented trip relationship and service date. Record endpoint version, retrieval timestamp in `Asia/Singapore`, response headers/schema and checksums. If trip IDs change between static releases, do not splice recorded updates across them.
 
-The [DataMall API Terms of Service](https://datamall.lta.gov.sg/content/datamall/en/api-terms-of-service.html) places datasets under the Singapore Open Data Licence and allows commercial and non-commercial API use subject to the service conditions and rate limit. Retain both licence and API-terms versions with each acquisition. Confirm that privately recorded realtime responses may be retained and transformed into a permanent public replay.
+The [DataMall API Terms of Service](https://datamall.lta.gov.sg/content/datamall/en/api-terms-of-service.html) places datasets under the Singapore Open Data Licence and allows commercial and non-commercial API use subject to the service conditions and rate limit. Retain both licence and API-terms versions with each acquisition. **7 September clarification:** the [Singapore Open Data Licence](https://data.gov.sg/open-data-licence) expressly covers perpetual reuse, modification, distribution and derived applications. Inspect the train endpoints for additional conditions; a blanket provider letter is not required solely because the output is a dated replay.
 
 DataMall's [on-request datasets](https://datamall.lta.gov.sg/content/datamall/en/on-request_datasets.html) include more detailed sources such as frequent bus locations and farecard transactions under application/data-sharing conditions. They are unnecessary for the opening and must not be treated as open merely because their descriptions are public.
 
@@ -82,7 +84,8 @@ Build a **current-versus-coming western corridor** after inspecting the feed: cu
 
 - [ ] Register DataMall access and inspect GTFS tables, coverage, calendars, shapes and identifiers.
 - [ ] Retain Singapore Open Data Licence and API Terms versions.
-- [ ] Confirm GTFS-RT recording, retention and derived-publication rights.
+- [x] Establish the published open-licence baseline for perpetual reuse and derived applications.
+- [ ] Inspect the actual train endpoints for additional terms and retain them with the acquired responses.
 - [ ] Acquire official geographic geometry for the chosen future segments or keep them diagrammatic.
 - [ ] Pin LTA project states and URA plan version to one planning snapshot.
 - [ ] Prevent all non-operating infrastructure from accepting trip events in the compiler schema.

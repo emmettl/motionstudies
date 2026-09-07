@@ -4,7 +4,13 @@
 
 **Catalogue status:** feasibility investigation complete; defining motion evidence blocked.
 
+**Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
+
 **Naming direction — 7 September 2026:** **Up / Down** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#mumbai). This is not a catalogue admission or a change to the dated source verdict.
+
+## Historical evidence lead — 7 September 2026
+
+The [readiness review](DATA-READINESS.md#mumbai-a-historical-lead-not-a-current-demand-feed) identifies official historical directional peak-period evidence and records the inspected pages and source hash. This narrows the earlier absence finding. A current, compatible, reusable demand/timetable package remains missing; use the [focused custodian questions](DATA-QUESTIONS.md#mumbai) before implementation.
 
 ## Thesis under test
 

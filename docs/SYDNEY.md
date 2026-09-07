@@ -2,7 +2,9 @@
 
 **An unnumbered Sydney motion study**
 
-**Catalogue status:** feasibility investigation complete; full source path passes, with crossing-classification work remaining.
+**Catalogue status:** strong documented source path and CC BY baseline; account/export validation, matching historical coverage and crossing classification remain open.
+
+**Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
 
 **Naming direction — 7 September 2026:** **Water Between** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#sydney). This is not a catalogue admission or a change to the dated source verdict.
 
@@ -51,7 +53,7 @@ For trains/metro, a position may be snapped or inferred by the producer. The imp
 
 The [TfNSW Open Data FAQ](https://opendata.transport.nsw.gov.au/faqs) states that Creative Commons Attribution datasets can be reused and redistributed with attribution. Retain the licence field and required credit for each dataset, along with account/API terms in force at acquisition.
 
-Before shipping a compact historical artifact, verify that exported historical realtime messages may be hosted indefinitely and whether an Open Data registration attribution phrase or link is required. Do not use TfNSW logos, network-map artwork or mode icons unless their separate brand rules allow it.
+**7 September clarification:** the [Data Licence page](https://opendata.transport.nsw.gov.au/datalicence) and inspected Hub Terms identify CC BY 4.0 as the dataset baseline. Compliant historical reuse does not require a generic extra permission letter. Retain the actual export terms, provider attribution and modification notice; verify account access and static/realtime overlap. Hub access conditions and third-party assets remain separate.
 
 ## Harbour, water and terrain
 
@@ -77,7 +79,8 @@ Use a historical weekday **07:00–09:00 Circular Quay–Harbour Bridge–lower 
 
 - [ ] Register TfNSW Open Data access and inventory static/realtime/historical bundles.
 - [ ] Select one date with complete matching static and GTFS-R coverage; hash all exports.
-- [ ] Confirm permanent transformed-publication rights and attribution.
+- [x] Establish the published CC BY 4.0 dataset baseline and attribution requirement.
+- [ ] Retain the chosen export's licence and any resource-specific conditions with its hashes.
 - [ ] Validate producer-specific trip IDs, extensions, timestamps and stale-message rules.
 - [ ] Acquire a simplified NSW hydrography/elevation crop and source crossing states.
 - [ ] Pass phone payload/frame gates with observed points and gaps still legible.

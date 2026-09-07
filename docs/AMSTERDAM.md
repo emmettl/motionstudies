@@ -1,27 +1,31 @@
-# Amsterdam — title to find
+# Fietsen — Amsterdam
 
-**An unnumbered Amsterdam motion study**
+**An Amsterdam motion study**
 
-**Catalogue status:** feasibility investigation complete; viable as measured aggregate reconstruction, not individual bicycle tracking.
+*Countless individual movements. A city taking shape.*
 
-**Naming direction — 7 September 2026:** **Many Ways** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#amsterdam). This is not a catalogue admission or a change to the dated source verdict.
+**Catalogue status:** medium delivery confidence; aggregate reconstruction is a candidate method, with actual counter coverage, measurement quality and publication terms still unverified.
+
+**Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
+
+**Naming direction — 7 September 2026:** **Fietsen** is the author's selected working title. See [name alternatives, proposed thesis and opening commitment](NAMING.md#amsterdam). The study remains unnumbered and its source gates remain open.
 
 ## Thesis under test
 
-Amsterdam should make bicycles first-class moving entities and reveal a transport hierarchy fundamentally unlike a rail-led city. The local sentence is **the network is made by innumerable small movements**, with trams and metros appearing as another layer inside the bicycle field rather than its organising spine.
+Fietsen names both bicycles and the act of cycling. The local sentence is **everyday cycling makes Amsterdam take shape**: countless small movements across bridges, along canals and through crossings accumulate into the city's rhythm, with trams and metros moving inside that field. The composition should reveal the structure of that everyday activity through the paths and connections that sustain it, including pauses and crossing constraints.
 
 The source problem is identity. Public bicycle counters observe directional volume, not named riders or complete trajectories. A responsible study can reconstruct count-conserving flows over the cycling graph; it cannot replay individual bicycles that were measured moving from origin to destination.
 
-## Feasibility verdict — 6 September 2026
+## Feasibility verdict — 6 September, amended 7 September 2026
 
 | Scope | Status | Defensible interpretation |
 | --- | --- | --- |
 | Bicycle network geometry | **Green** | Amsterdam publishes a topologically consistent walking/cycling network with bridge, tunnel and relative-height fields through unauthenticated REST, WFS and vector-tile endpoints. |
-| Bicycle motion | **Green as aggregate reconstruction / red as trajectories** | NDW publishes directional bicycle counts and an hourly aggregate Bicycle API. Counts can seed synthetic flow with explicit uncertainty; they do not identify individual routes. |
+| Bicycle motion | **Amber pending coverage / red as trajectories** | NDW documents directional bicycle counts and an hourly aggregate Bicycle API. Actual Amsterdam measurements have not been acquired or inspected. Counts may support synthetic flow with explicit uncertainty; they do not identify individual routes. |
 | Current public transport | **Green technically / amber on feed terms** | Dutch national public-transport data is distributed through NDOV Loket, including current GTFS. The exact operator release, retention terms and GVB coverage must be pinned before compilation. |
 | Modal hierarchy claim | **Amber** | A bounded area with adequate bicycle counter coverage can compare reconstructed bicycle volume with scheduled transit. Citywide gaps must not be filled with plausible-looking traffic. |
 
-Amsterdam passes with a narrower evidence contract than the thesis's natural visual temptation. Every bicycle should read as one particle of an aggregate model, not one observed person.
+Amsterdam's source gate remains open. If the coverage test passes, every bicycle should read as one particle of an aggregate model, not one observed person.
 
 ## Bicycle geometry
 
@@ -59,7 +63,7 @@ Scheduled trams, buses and metro can share the clock with aggregate bicycle flow
 
 ## Rights and privacy
 
-The Amsterdam API marks the cycling graph as public, but “public” is not a complete redistribution licence statement. Retain the City's applicable terms and the attribution obligations of incorporated source fields. Confirm NDW's reuse terms, credential conditions and historic-export retention before shipping transformed count artifacts.
+**7 September clarification:** the [national government catalogue](https://data.overheid.nl/dataset/7hgzsrxqwsgqhw) identifies the same cycling-network API and explicitly assigns CC BY 4.0. This resolves the missing baseline licence statement; retain it with the chosen release and field lineage. NDW counter-data terms, historical export and measurement-site coverage remain separate checks.
 
 Only aggregate counter values are needed. Do not use camera footage, device identifiers, Bluetooth/Wi-Fi detections or person-level trip records. Low counts may need coarser time bands even when the source is formally open, particularly if a location and period could make a person's movement unusually identifiable.
 
@@ -75,7 +79,21 @@ Only aggregate counter values are needed. Do not use camera footage, device iden
 
 ## Recommended proof
 
-Choose a **07:00–09:00 bridge-and-canal cell** only after plotting NDW counter coverage—likely a small central/eastern set of crossings rather than all Amsterdam. Render measured boundary pulses and deterministic, count-conserving bicycle flow over the Loopfietsnetwerk. Add scheduled GVB motion as a visibly different stratum. The proof fails if too few counters constrain the interior or if inferred particles dominate the image.
+Choose a **07:00–09:00 bridge-and-canal cell** only after plotting NDW counter coverage. No neighbourhood has yet been justified by measurements. Render measured boundary pulses and deterministic, count-conserving bicycle flow over the Loopfietsnetwerk. Add scheduled GVB motion as a visibly different stratum. The proof fails if too few counters constrain the interior or if inferred particles dominate the image.
+
+### Delivery confidence and resumption plan — 7 September 2026
+
+**Overall confidence: medium, not a calibrated probability.** Network access and the graph's reuse baseline are strong. Shared rendering infrastructure reduces implementation uncertainty, but it does not validate the bicycle-flow model. Actual Amsterdam counter coverage, completeness, between-counter ambiguity and the selected measurements' publication terms remain the decisive unknowns. No detector inventory or count sample has been obtained, and no provider has been contacted.
+
+Resume with a small data feasibility study producing a coverage map, an inspected sample morning, a provenance record and a scope decision:
+
+1. **Try the public download route first.** NDW's [bicycle product documentation](https://docs.ndw.nu/producten/fietsdata/) links the [Dexter bicycle open-data portal](https://dexter.ndw.nu/opendata/bicycle) and describes downloadable data. The portal returned only an application shell to the text browser in this review; its downloads and Amsterdam coverage have not been tested. For programmatic access, the [API instructions](https://docs.ndw.nu/data-uitwisseling/interface-beschrijvingen/fiets-api/) require OAuth and recommend requesting a bicycle-data service account from `mail@servicedeskndw.nu`. An account is not yet established as necessary for the initial download test.
+2. **Map the detector inventory.** Inspect locations, directions, active dates, permanent versus temporary installations and source ownership. Match sites to graph edges, recording ambiguous matches before choosing a boundary.
+3. **Inspect one week, then select one morning.** Quantify available versus expected intervals, quality flags, missing versus measured zero, revisions and timezone handling. The documented API aggregates to hours; finer animation would be modelled within those totals, not observed second-by-second motion. NDW describes mixed source aggregation and temporary installations, so do not assume uniform resolution or continuous coverage.
+4. **Test sensitivity between counters.** Compare plausible route allocations, including unknown entries/exits and storage within the boundary. Count conservation alone does not identify interior flow. Define acceptable uncertainty and suppression rules before judging the result; narrow the area or show measured crossings if plausible assumptions produce materially different pictures.
+5. **Preserve the evidence and decide.** Retain source files, dates, hashes, transformations, exact applicable terms and attribution, including conditions for lasting derived publication. A connected field advances only if coverage and sensitivity support it. Sparse coverage may justify a focused crossing study; that is a scope decision, not proof of the original wider field. If GVB is included, its feed gate must also pass.
+
+If the public export is insufficient, use the [prepared NDW questions](DATA-QUESTIONS.md#amsterdam) to request Amsterdam detector metadata, a sample week of directional counts, quality documentation and the governing reuse terms. These questions remain unsent.
 
 ### Source gate
 

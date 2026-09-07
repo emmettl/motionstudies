@@ -8,6 +8,7 @@
 - [Overall roadmap and delivery history](../ROADMAP.md)
 - [Catalogue programme and admission criteria](CATALOGUE.md)
 - [Candidate names and the theses they imply](NAMING.md)
+- [Data access and provenance readiness](DATA-READINESS.md) and [provider questions](DATA-QUESTIONS.md)
 - [Edition architecture and ownership](EDITIONS.md)
 - [Package extraction provenance](EXTRACTION.md) and [release process](RELEASING.md)
 
@@ -24,7 +25,7 @@
 
 These briefs retain their dated source audits, proposed compositions and publication gates. Inclusion is not a commitment to build or publish.
 
-- [Amsterdam](AMSTERDAM.md)
+- [Fietsen — Amsterdam](AMSTERDAM.md)
 - [Berlin](BERLIN.md)
 - [Chicago](CHICAGO.md)
 - [Hong Kong](HONG-KONG.md)

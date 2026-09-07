@@ -2,9 +2,17 @@
 
 **An unnumbered Istanbul motion study**
 
-**Catalogue status:** source investigation complete; historically reproducible proof available, current full multimodal motion blocked.
+**Catalogue status:** licence baseline resolved; historical calendar fidelity and current full multimodal motion remain blocked. The 7 September inspection supersedes the earlier historical-proof assessment.
+
+**Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
 
 **Naming direction — 7 September 2026:** **İki Yaka** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#istanbul). This is not a catalogue admission or a change to the dated source verdict.
+
+## Calendar correction — 7 September 2026
+
+A fresh inspection of the official agency, route, trip and calendar tables found eight agencies, 499 routes, 14,389 trips and 49 calendar rows. Many calendars span `20221231`–`20241231` despite the catalogue's 2018–2020 component dates. Joining services through trips and routes yields **zero shared active days in 2019 for Şehir Hatları and TCDD** in these tables. No calendar-exception resource was listed; stop times, frequencies and shapes were not re-inspected in this pass. Agency/route/trip CSVs failed UTF-8 decoding and were provisionally read as Windows-1254.
+
+The previous proposal for a coherent 2019 ferry/rail proof is therefore unverified and must not be compiled as history without corrected source evidence. Later calendar dates also do not prove that old timetables describe 2023–2024 service. Ask IBB whether validity dates were extended and obtain a verified common snapshot. See the [inspection and retrieval record](data-access-review-2026-09-07.json) and [IBB questions](DATA-QUESTIONS.md#istanbul). The amended verdict below incorporates this correction; neither the historical nor current full study is cleared.
 
 ## Thesis under test
 
@@ -12,16 +20,16 @@ Istanbul is two continents made into one transport space. Ferries repeatedly cro
 
 The opening composition should make Europe and Asia impossible to read as separate maps. A bounded field from Karakoy and Eminonu through Uskudar and Kadikoy could hold ferries on the surface and the Marmaray alignment structurally beneath them. It must not animate a present-day railway service from an obsolete timetable.
 
-## Feasibility verdict — 6 September 2026
+## Feasibility verdict — 6 September, amended 7 September 2026
 
 | Scope | Status | Defensible interpretation |
 | --- | --- | --- |
-| Historic multimodal network | **Green technically / amber for publication** | IBB's frozen public-transport GTFS contains Metro Istanbul, Marmaray/TCDD and five ferry operators with trips, stop times and shapes. Its operator components were last refreshed between 2018 and 2020 and the publisher says the dataset will not be updated. It can support a clearly dated historical work after the licence text is retained. |
+| Historic multimodal network | **Historical fidelity unresolved; licence baseline documented** | IBB's package contains rail and ferry components, but the 7 September table inspection found calendar dates inconsistent with the stated component ages and no shared 2019 Şehir Hatları/TCDD service days. A verified historical snapshot is required before a dated work can be claimed. |
 | Current IETT bus motion | **Green / amber for geometry** | IBB publishes a maintained IETT GTFS with calendar, routes, trips, stops and stop times. The catalogue does not list `shapes.txt`, so another authoritative geometry join is required. Buses are not the proposed edition's core. |
 | Current rail and ferry motion | **Red as one reproducible feed** | Current rail and ferry timetables exist on operator websites, but this audit found no maintained official machine-readable source covering the defining modes together. Metro Istanbul exposes timetable pages and Sehir Hatlari publishes timetable pages/PDFs; neither is a stable GTFS replacement. |
 | Bosphorus section | **Amber** | The water, shores and crossings are straightforward. Exact Marmaray alignment and depth/portal evidence, bridge deck elevation and ferry-course semantics still need source-specific validation. |
 
-Istanbul therefore passes only as either a deliberately historical study or a smaller present-day ferry reconstruction compiled from retained timetable documents. It does not yet pass as a current, full-network Motion Study.
+Istanbul does not yet pass for a shared historical rail/ferry day or a current full-network study. A smaller ferry reconstruction remains an investigation option if its own retained timetable and terms support it.
 
 ## Transport evidence
 
@@ -29,7 +37,7 @@ Istanbul therefore passes only as either a deliberately historical study or a sm
 
 The [IBB Open Data catalogue API](https://data.ibb.gov.tr/api/3/action/package_search?q=gtfs) describes a `Public Transport GTFS Data` package with `agency`, `calendar`, `frequencies`, `routes`, `shapes`, `stop_times`, `stops` and `trips`. The inspected agency table contains Sehir Hatlari, TCDD, Metro Istanbul, Minibus, Taxi Dolmus, IDO, Turyol and Dentur Avrasya. The route table contains 499 records and includes GTFS ferry routes.
 
-The package notes are decisive: its components were last updated from January 2018 to July 2020 and **will not be updated**. Preserve those component dates rather than presenting the package's later metadata timestamp as service currency. The feed is valuable precisely because it provides one coherent historic network; it is unsuitable as evidence of Istanbul today.
+The package notes say its components were last updated from January 2018 to July 2020 and **will not be updated**. Preserve those component dates rather than presenting the package's later metadata timestamp as service currency. They conflict with many downloaded calendar dates; neither a coherent historic network nor present-day validity has been established.
 
 The compiler would need to retain:
 
@@ -48,16 +56,16 @@ No official vehicle-position, trip-update or historical realtime archive suitabl
 
 ## Rights and publication gate
 
-The IBB package metadata identifies the **Istanbul Metropolitan Municipality Open Data License**, but the human-readable licence page returned access errors during this audit. That makes the catalogue label evidence of intent, not a sufficient retained legal record.
+**7 September update:** the [IBB Open Data Licence v1.0](https://data.ibb.gov.tr/license) was successfully retrieved and matched to the package licence URL. It expressly permits adaptation and perpetual commercial/non-commercial reuse of covered data with attribution and stated exclusions. The missing licence-text issue is resolved; separate operator resources and third-party material still need their own source conditions.
 
 Before public compilation:
 
 1. retain the full licence text and version that governs each downloaded package;
-2. confirm commercial exhibition, redistribution of transformed route geometry and indefinite hosting of compact artifacts;
+2. apply the retrieved licence's reuse and attribution conditions to covered IBB artifacts; request clarification only for a specific conflicting resource condition;
 3. establish whether operator-hosted timetable PDFs carry separate terms; and
 4. keep operator brands, maps, icons and liveries out unless separately permitted.
 
-Until those checks are complete, the source path is technically reproducible but publication remains amber.
+The baseline licence is now documented. A faithful shared service period remains unresolved following the calendar inspection, so neither a current work nor the previously suggested 2019 proof is cleared.
 
 ## Geography and vertical evidence
 
@@ -69,23 +77,25 @@ Marmaray must be treated conservatively. A schematic project alignment can estab
 
 | Visual claim | Required evidence | Current position |
 | --- | --- | --- |
-| A ferry departs at a stated time | Retained current or historic operator timetable and service-day rule | **Possible.** Historic GTFS is cleaner; current documents require manual versioning. |
+| A ferry departs at a stated time | Retained current or historic operator timetable and service-day rule | **Possible after period verification.** The downloaded calendar alone does not establish historical fidelity. |
 | A vessel follows an exact course | Observed track or authoritative navigational geometry | **Not established.** GTFS shapes are service geometry, not proof of an observed wake. |
-| A Marmaray train crosses beneath the strait | Matching timetable plus sourced alignment and tunnel classification | **Historic only from the audited feed.** Current train animation is blocked. |
+| A Marmaray train crosses beneath the strait | Matching timetable plus sourced alignment and tunnel classification | **Unresolved.** A compatible historical source period and current train source are both unverified. |
 | Three vertical crossing states coexist | Source-backed ferry surface, bridge deck and tunnel/rail section | **Promising**, with engineering geometry still to acquire. |
 | Passenger flows bind two continents | OD, count or fare-gate measurements | **Not established.** Frequency is not demand. |
 
 ## Recommended proof
 
-Build no current full-network prototype yet. The defensible first proof is a **labelled 2019 Bosphorus hour**, using the frozen IBB release to place ferries and Marmaray trips over a compact cross-strait section. Keep bridges structural unless a separate measured road-flow source is acquired. If historical framing weakens the intended work, pause instead and seek maintained operator data.
+Obtain a verified common source period before building the rail/ferry scene. The previously proposed **2019 Bosphorus hour is withdrawn as a ready proof** following the calendar inspection. A future bounded section can still keep bridges structural and distinguish scheduled ferry/rail movement, once the timetable period and geometry are established. Do not rewrite service dates merely to make the sources overlap.
 
 ### Source gate
 
-- [ ] Retain and review the IBB Open Data License text.
-- [ ] Download the frozen package again, record hashes and verify all service calendars for one 2019 date.
+- [x] Retrieve and review the IBB Open Data Licence v1.0 (7 September).
+- [ ] Obtain IBB's explanation of the calendar/component-date mismatch and a verified common historical snapshot.
+- [x] Retrieve and hash agency, routes, trips and calendar tables; inspect their joins (7 September).
+- [ ] Obtain and validate a source-backed common service date, without assuming 2019.
 - [ ] Measure route/shape/stop-time completeness by operator.
 - [ ] Source shore, bridge and Marmaray tunnel geometry with explicit vertical semantics.
 - [ ] Decide whether the historical date strengthens or compromises the thesis.
 - [ ] Obtain a maintained rail/ferry data path before describing the work as present-day Istanbul.
 
-**Exit:** Istanbul advances only if the historical proof reads as an intentional work, or maintained rail and ferry evidence replaces the frozen source without weakening reproducibility.
+**Exit:** Istanbul advances when verified rail and ferry evidence describes a common source period and the resulting dated proof reads as an intentional work. A current edition requires maintained sources for that current period.

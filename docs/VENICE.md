@@ -2,7 +2,9 @@
 
 **An unnumbered Venice motion study**
 
-**Catalogue status:** feasibility investigation complete; strongest immediately buildable second-wave candidate.
+**Catalogue status:** scheduled feed technically promising; exact ACTV navigation licence remains unresolved before public compilation.
+
+**Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
 
 **Naming direction — 7 September 2026:** **Waterlines** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#venice). This is not a catalogue admission or a change to the dated source verdict.
 

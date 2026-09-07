@@ -1,0 +1,336 @@
+{
+  "reviewDate": "2026-09-07",
+  "scope": "Selected official source documents/catalogues and four Istanbul GTFS tables; not a complete feed acquisition audit",
+  "rawCopies": "Temporary review copies were saved outside the repository; full raw documents and transport tables are not committed. Preserve authorised copies in the edition source archive before implementation.",
+  "retrievals": [
+    {
+      "file": "mumbai-business-plan.pdf",
+      "url": "https://www.mmrda.maharashtra.gov.in/sites/default/files/2021-09/Business%20Plan.pdf",
+      "retrievedAt": "2026-09-07T14:04:01.702771+00:00",
+      "status": 200,
+      "finalUrl": "https://www.mmrda.maharashtra.gov.in/sites/default/files/2021-09/Business%20Plan.pdf",
+      "contentType": "application/pdf",
+      "bytes": 28979998,
+      "sha256": "441128b1cb8a70d621d37a0313076d26018aa8280f8385347efcc0cd026fa76c",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "istanbul-gtfs.json",
+      "url": "https://data.ibb.gov.tr/api/3/action/package_search?q=gtfs",
+      "retrievedAt": "2026-09-07T14:04:01.703126+00:00",
+      "status": 200,
+      "finalUrl": "https://data.ibb.gov.tr/api/3/action/package_search?q=gtfs",
+      "contentType": "application/json;charset=utf-8",
+      "bytes": 29643,
+      "sha256": "e0505a07a6b0726e91829dea4a6acba29e72478fe3da1b35248506540f45a8db",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "amsterdam-graph.html",
+      "url": "https://api.data.amsterdam.nl/v1/docs/datasets/loopfietsnetwerk%40v1.html",
+      "retrievedAt": "2026-09-07T14:04:01.703257+00:00",
+      "status": 200,
+      "finalUrl": "https://api.data.amsterdam.nl/v1/docs/datasets/loopfietsnetwerk%40v1.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 120703,
+      "sha256": "5bee484b018e2f6c0b89f50698b98a7d5621ab651e371f9ce261dd9d2a05af8c",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "sfmta-gtfs.html",
+      "url": "https://www.sfmta.com/gtfs",
+      "retrievedAt": "2026-09-07T14:04:01.703357+00:00",
+      "status": 200,
+      "finalUrl": "https://www.sfmta.com/reports/gtfs-transit-data",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 37366,
+      "sha256": "10ba9aa8f0d6b729dd9682e5b29d4cf53bff2f35d6feeb06c20cb0ea4d31e125",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "odpt-license.html",
+      "url": "https://developer.odpt.org/terms/data_basic_license.html",
+      "retrievedAt": "2026-09-07T14:04:01.703447+00:00",
+      "status": 200,
+      "finalUrl": "https://developer.odpt.org/terms/data_basic_license.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 636,
+      "sha256": "54f082046f4f78fb5df5d9fc6d0752014dc8831f923aebc29d5c39abc1268a3e",
+      "contentAssessment": "HTML application shell only; licence/guideline body not extracted or reverified in this pass"
+    },
+    {
+      "file": "odpt-guideline.html",
+      "url": "https://developer.odpt.org/terms/data_basic_use_guideline.html",
+      "retrievedAt": "2026-09-07T14:04:01.916995+00:00",
+      "status": 200,
+      "finalUrl": "https://developer.odpt.org/terms/data_basic_use_guideline.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 636,
+      "sha256": "54f082046f4f78fb5df5d9fc6d0752014dc8831f923aebc29d5c39abc1268a3e",
+      "contentAssessment": "HTML application shell only; licence/guideline body not extracted or reverified in this pass"
+    },
+    {
+      "file": "lisbon-carris-catalogue.json",
+      "url": "https://dados.gov.pt/api/1/datasets/?q=carris&page_size=20",
+      "retrievedAt": "2026-09-07T14:04:02.055166+00:00",
+      "status": 200,
+      "finalUrl": "https://dados.gov.pt/api/1/datasets/?q=carris&page_size=20",
+      "contentType": "application/json",
+      "bytes": 100769,
+      "sha256": "f5c85f2c433e309b1db1abfbec2e9ef9d38ff23666b0bc974c42620bfc8725e0",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "sydney-historical.html",
+      "url": "https://opendata.transport.nsw.gov.au/dataset/historical-gtfs-and-gtfs-realtime",
+      "retrievedAt": "2026-09-07T14:04:02.075461+00:00",
+      "status": 200,
+      "finalUrl": "https://opendata.transport.nsw.gov.au/dataset/historical-gtfs-and-gtfs-realtime",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23171,
+      "sha256": "af4de7b0d31ad5a7543bf2c1c815b5a476535783f17c8f85b92b701e4910f869",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "venice-directory.html",
+      "url": "https://actv.avmspa.it/sites/default/files/attachments/opendata/",
+      "retrievedAt": "2026-09-07T14:04:02.190577+00:00",
+      "status": 200,
+      "finalUrl": "https://actv.avmspa.it/sites/default/files/attachments/opendata/",
+      "contentType": "text/html",
+      "bytes": 870,
+      "sha256": "a6c6ba51533f897972096709dcd099915ae459ca8e92c5079d1ca7fed545643d",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "istanbul-license.html",
+      "url": "https://data.ibb.gov.tr/license",
+      "retrievedAt": "2026-09-07T14:05:59.575564+00:00",
+      "status": 200,
+      "finalUrl": "https://data.ibb.gov.tr/license",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 25540,
+      "sha256": "c116d922a9fa84ddfed229e9381019d4645fb17e4da48ddb1db05592cf53a3cc",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "amsterdam-license.html",
+      "url": "https://data.overheid.nl/dataset/7hgzsrxqwsgqhw",
+      "retrievedAt": "2026-09-07T14:05:59.575976+00:00",
+      "status": 200,
+      "finalUrl": "https://data.overheid.nl/dataset/7hgzsrxqwsgqhw",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 42094,
+      "sha256": "9d77b63edf463d854c24a4bb1241af50a74ec9f33ed38c93ec915c3c4dad8f66",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "sydney-license.html",
+      "url": "https://opendata.transport.nsw.gov.au/datalicence",
+      "retrievedAt": "2026-09-07T14:05:59.576096+00:00",
+      "status": 200,
+      "finalUrl": "https://opendata.transport.nsw.gov.au/datalicence",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 39956,
+      "sha256": "afeff42e9be0745f607410cdff519b4a23a3b277480f03350704f31d75254896",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "sydney-portal-terms.pdf",
+      "url": "https://opendata.transport.nsw.gov.au/sites/default/files/2024-09/TfNSW-Open-Data-Portal-Terms.pdf",
+      "retrievedAt": "2026-09-07T14:05:59.576197+00:00",
+      "status": 200,
+      "finalUrl": "https://opendata.transport.nsw.gov.au/sites/default/files/2024-09/TfNSW-Open-Data-Portal-Terms.pdf",
+      "contentType": "application/pdf",
+      "bytes": 122407,
+      "sha256": "7be88910d4904d05dd0f57238788e58c527174fa8b618833d9b3b8c100ec0c25",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "sydney-acceptable-use.pdf",
+      "url": "https://opendata.transport.nsw.gov.au/sites/default/files/2024-09/TfNSW-Acceptable-Use-Policy.pdf",
+      "retrievedAt": "2026-09-07T14:05:59.576297+00:00",
+      "status": 200,
+      "finalUrl": "https://opendata.transport.nsw.gov.au/sites/default/files/2024-09/TfNSW-Acceptable-Use-Policy.pdf",
+      "contentType": "application/pdf",
+      "bytes": 121778,
+      "sha256": "890561a0622c9fa892ce2c54484efc68cfb10592a9debdb55efcfcf959db058a",
+      "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+    },
+    {
+      "file": "istanbul-agency.csv",
+      "url": "https://data.ibb.gov.tr/dataset/121a9892-7945-419a-9b89-49f6083926df/resource/42ae499d-ae9c-4906-ac5c-96e0c155e00b/download/agency.csv",
+      "retrievedAt": "2026-09-07T14:07:39.772884+00:00",
+      "status": 200,
+      "finalUrl": "https://data.ibb.gov.tr/dataset/121a9892-7945-419a-9b89-49f6083926df/resource/42ae499d-ae9c-4906-ac5c-96e0c155e00b/download/agency.csv",
+      "contentType": "text/csv",
+      "bytes": 1218,
+      "sha256": "651f34391e06b8a2ae6d69caa868a6b95b9364061e7ab53e55d30fa900e73656",
+      "contentAssessment": "Parsed for calendar/identity inspection; not a complete GTFS conformance audit"
+    },
+    {
+      "file": "istanbul-calendar.csv",
+      "url": "https://data.ibb.gov.tr/dataset/121a9892-7945-419a-9b89-49f6083926df/resource/c84ca913-29ac-4f15-87cd-076aef3dccd6/download/calendar.csv",
+      "retrievedAt": "2026-09-07T14:07:39.773305+00:00",
+      "status": 200,
+      "finalUrl": "https://data.ibb.gov.tr/dataset/121a9892-7945-419a-9b89-49f6083926df/resource/c84ca913-29ac-4f15-87cd-076aef3dccd6/download/calendar.csv",
+      "contentType": "text/csv",
+      "bytes": 1883,
+      "sha256": "97ec0e730189551053b4fbcddac2b801a9bcf76dc94cae6ad586feb7c1ec2d4f",
+      "contentAssessment": "Parsed for calendar/identity inspection; not a complete GTFS conformance audit"
+    },
+    {
+      "file": "istanbul-routes.csv",
+      "url": "https://data.ibb.gov.tr/dataset/121a9892-7945-419a-9b89-49f6083926df/resource/36b554c7-cae0-4b7e-978f-fc6a43664e88/download/routes.csv",
+      "retrievedAt": "2026-09-07T14:07:39.773440+00:00",
+      "status": 200,
+      "finalUrl": "https://data.ibb.gov.tr/dataset/121a9892-7945-419a-9b89-49f6083926df/resource/36b554c7-cae0-4b7e-978f-fc6a43664e88/download/routes.csv",
+      "contentType": "text/csv",
+      "bytes": 40394,
+      "sha256": "552adddb25d53bc1484b9c612f620c417cf2ed6dfc4da2387fa6fe8b5a655400",
+      "contentAssessment": "Parsed for calendar/identity inspection; not a complete GTFS conformance audit"
+    },
+    {
+      "file": "istanbul-trips.csv",
+      "url": "https://data.ibb.gov.tr/dataset/121a9892-7945-419a-9b89-49f6083926df/resource/dcee1700-e59f-4a5f-8009-f602045a4507/download/trips.csv",
+      "retrievedAt": "2026-09-07T14:07:39.773557+00:00",
+      "status": 200,
+      "finalUrl": "https://data.ibb.gov.tr/dataset/121a9892-7945-419a-9b89-49f6083926df/resource/dcee1700-e59f-4a5f-8009-f602045a4507/download/trips.csv",
+      "contentType": "text/csv",
+      "bytes": 688498,
+      "sha256": "34e059c18f52ec4a413cbf6da37cf1d6bde9982efdcee0987ca32e2f4915b517",
+      "contentAssessment": "Parsed for calendar/identity inspection; not a complete GTFS conformance audit"
+    }
+  ],
+  "istanbulInspection": {
+    "decoding": {
+      "agency": "cp1254 (inspection assumption)",
+      "calendar": "utf-8-sig",
+      "routes": "cp1254 (inspection assumption)",
+      "trips": "cp1254 (inspection assumption)"
+    },
+    "counts": {
+      "agency": 8,
+      "calendar": 49,
+      "routes": 499,
+      "trips": 14389
+    },
+    "agencyCalendars": [
+      {
+        "agency": "Şehirhatları A.Ş.",
+        "services": 12,
+        "matchedCalendars": 12,
+        "startDates": [
+          "20190101",
+          "20190401",
+          "20190501",
+          "20221231"
+        ],
+        "endDates": [
+          "20190303",
+          "20190430",
+          "20190506",
+          "20190603",
+          "20190917",
+          "20241231"
+        ]
+      },
+      {
+        "agency": "TCDD",
+        "services": 3,
+        "matchedCalendars": 3,
+        "startDates": [
+          "20191016",
+          "20221231"
+        ],
+        "endDates": [
+          "20241231"
+        ]
+      },
+      {
+        "agency": "Metro İstanbul",
+        "services": 9,
+        "matchedCalendars": 9,
+        "startDates": [
+          "20190506",
+          "20190902",
+          "20221231"
+        ],
+        "endDates": [
+          "20190603",
+          "20230902",
+          "20241231"
+        ]
+      },
+      {
+        "agency": "Minibus",
+        "services": 7,
+        "matchedCalendars": 7,
+        "startDates": [
+          "20221231"
+        ],
+        "endDates": [
+          "20241231"
+        ]
+      },
+      {
+        "agency": "Taksi Dolmus",
+        "services": 2,
+        "matchedCalendars": 2,
+        "startDates": [
+          "20221231"
+        ],
+        "endDates": [
+          "20241231"
+        ]
+      },
+      {
+        "agency": "IDO",
+        "services": 3,
+        "matchedCalendars": 3,
+        "startDates": [
+          "20221231"
+        ],
+        "endDates": [
+          "20241231"
+        ]
+      },
+      {
+        "agency": "Turyol",
+        "services": 6,
+        "matchedCalendars": 6,
+        "startDates": [
+          "20180801",
+          "20221231"
+        ],
+        "endDates": [
+          "20200801",
+          "20241231"
+        ]
+      },
+      {
+        "agency": "Dentur Avrasya",
+        "services": 7,
+        "matchedCalendars": 7,
+        "startDates": [
+          "20180801",
+          "20200530",
+          "20221231"
+        ],
+        "endDates": [
+          "20200915",
+          "20221231",
+          "20241231"
+        ]
+      }
+    ],
+    "common2019ServiceDays": {
+      "agencies": [
+        "Şehirhatları A.Ş.",
+        "TCDD"
+      ],
+      "count": 0,
+      "basis": "agency + routes + trips + calendar; no calendar_dates resource in the inspected catalogue; stop_times, frequencies and shapes not inspected in this pass"
+    }
+  }
+}

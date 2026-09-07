@@ -2,7 +2,7 @@
 
 **Working proposals — 7 September 2026**
 
-[Study index](README.md) · [Catalogue programme](CATALOGUE.md)
+[Study index](README.md) · [Catalogue programme](CATALOGUE.md) · [Data readiness](DATA-READINESS.md)
 
 A title should decide what the work is trying to show. It should suggest a sentence about the place, an action in the image and a reason to choose this city. These proposals cover all fourteen candidate cities; the four numbered works keep their identities, and MANIFEST remains the separately named global branch.
 
@@ -25,7 +25,7 @@ These studies already have independent repositories. Repository existence is sep
 
 | City | Preferred candidate | Alternatives | Core proposition |
 | --- | --- | --- | --- |
-| Amsterdam | **Many Ways** | Freewheel; Right of Way | Innumerable small bicycle movements make a network without a single organising spine. |
+| Amsterdam | **Fietsen** | Fietsstroom; Fietslicht | Everyday cycling across bridges and along canals makes Amsterdam take shape. |
 | Berlin | **Umlauf** | Innen / Außen; Ringwerk | A circulating railway continually draws and perforates the city's inside. |
 | Chicago | **Above Grade** | Streetwork; In the Loop | The street grid becomes a three-dimensional public railway. |
 | Hong Kong | **Surface / Void** | Between Levels; Harbour Section | Movement exposes the harbour and disappears into the mountain city. |
@@ -42,18 +42,22 @@ These studies already have independent repositories. Repository existence is sep
 
 ## Amsterdam
 
-**Many Ways — An Amsterdam motion study**
+**Fietsen — An Amsterdam motion study**
 
-**Thesis:** Amsterdam takes shape through innumerable small bicycle movements across bridges and along canals; rail and tram belong inside that field rather than automatically organising it.
+*Countless individual movements. A city taking shape.*
 
-The title makes multiplicity the subject. It can mean many paths, many acts of movement and many ways of reaching the same place. Its weakness is that it needs the Amsterdam descriptor and a convincing bicycle composition to acquire local specificity.
+**Selected by the author — 7 September 2026.** Working title; the study remains unnumbered.
 
-**Opening commitment:** begin with measured directional pulses at a few bridge crossings, then let a count-conserving bicycle field accumulate enough weight to change how the transit layer is read. An individual particle represents aggregate reconstruction, not an observed rider or a freely chosen route.
+**Thesis:** Everyday cycling makes Amsterdam take shape. Countless small movements across bridges, along canals and through crossings accumulate into the city's rhythm, with trams and metros moving inside that field.
 
-- **Freewheel** puts the bicycle and the sensation of continuous movement first. More immediate, but it can romanticise effortless freedom and underplay the infrastructure that makes cycling possible.
-- **Right of Way** makes street priority the thesis. Stronger if we deliberately expand into who receives space; counts alone cannot establish that argument, and the title must not imply bicycles always have legal priority.
+*Fietsen* means both “bicycles” and “to cycle”: the title holds the moving things and the act of moving together. Its ordinary language sets the tone for a work that reveals the structure of an everyday activity. The composition should let that activity draw attention to the paths and connections that sustain it.
 
-**Judgment:** Many Ways best matches the present evidence. Right of Way would be the more argumentative future work. [Amsterdam brief](AMSTERDAM.md).
+**Opening commitment:** begin with measured directional pulses at a few bridge crossings, then widen across connected canal-side paths as a count-conserving bicycle field makes the network legible. Preserve pauses and crossing constraints while scheduled trams move through the same composition. Individual particles represent aggregate reconstruction, not observed riders or measured route choices; the opening boundary still depends on adequate counter coverage.
+
+- **Fietsstroom** is a proposed bicycle + flow compound. It would make the collective current the central subject, with less emphasis on the ordinary act of cycling.
+- **Fietslicht** is a proposed bicycle + light title. It would make luminous traces the defining visual idea and intentionally echo Gleislicht.
+
+**Direction:** carry Fietsen and its thesis into the source proof and composition work. The line “Countless individual movements” describes the subject of the study; it does not change the aggregate evidence contract. [Amsterdam brief](AMSTERDAM.md).
 
 ## Berlin
 
@@ -256,4 +260,4 @@ The title joins water, service lines and the act of drawing. It leaves room for 
 
 Read each candidate in its full lockup: title, “A [city] motion study”, then the thesis sentence. The title should make that sentence easier to remember. Next, describe the first thirty seconds without explaining the name: the image should earn it.
 
-The clearest names to carry into a next design conversation are **Grip**, **Above Grade**, **Umlauf**, **Subida**, **İki Yaka**, **Up / Down**, **Waterlines** and the existing **NORIKAE**. **Many Ways**, **Más Ciudad** and **Long Division** need the most testing for specificity, register or representational framing. That editorial judgment is separate from which source audits currently permit a prototype.
+**Fietsen** is the author's selected Amsterdam working title. The other clearest names to carry into a next design conversation are **Grip**, **Above Grade**, **Umlauf**, **Subida**, **İki Yaka**, **Up / Down**, **Waterlines** and the existing **NORIKAE**. **Más Ciudad** and **Long Division** need the most testing for register or representational framing. That editorial judgment is separate from which source audits currently permit a prototype.

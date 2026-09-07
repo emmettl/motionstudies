@@ -19,6 +19,8 @@ Numbers describe works, not software releases. A later work may reach production
 
 ## Admission test
 
+The [data-readiness register](DATA-READINESS.md) separates resolved source conditions from account access, provider questions and evidence still needed before implementation. Its 7 September findings supersede the corresponding 6 September source verdicts below.
+
 A candidate enters the numbered catalogue only when it has all of the following:
 
 1. **A local sentence.** Its thesis cannot remain true if the place name is replaced with another city.
@@ -61,14 +63,14 @@ These are strong candidates, not promises or an implementation queue. Each sente
 
 - **[NORIKAE — A Tokyo motion study](https://github.com/emmettl/norikae)** — the preferred next-city investigation. Neon would not be cosmetically imposed here: the railway already reads as circuitry. Overlapping operator empires, stacked lines, colossal stations, rapid and suburban services, and the Yamanote loop pulsing around the centre could let the physical city almost disappear beneath the transport system at night.
 - **Hong Kong** — a vertical city forced into narrow strips between mountain and harbour: trains below, ferries across and towers above. The source audit points toward a surface-and-void study: exact harbour ferries and measured station volumes are strong, while individual MTR trajectories are not yet defensible from the official public data.
-- **[Istanbul](./ISTANBUL.md)** — two continents joined by ferries, bridges and a railway tunnel beneath the Bosphorus. A frozen 2018–2020 IBB multimodal GTFS makes an intentional historical proof possible, but no maintained official source presently unifies the defining rail and ferry motion.
-- **[Mumbai](./MUMBAI.md)** — suburban rail as a daily tide: tremendous directional surges into and out of the city. The thesis is blocked because neither a maintained official suburban timetable nor time-banded directional passenger evidence was found; frequency must not impersonate crowd flow.
-- **[Venice](./VENICE.md)** — a city whose streets move. ACTV's current, shape-complete navigation GTFS and accessible dated archives make the lagoon the strongest immediately buildable second-wave proof, subject to retaining the precise operator licence.
-- **[Amsterdam](./AMSTERDAM.md)** — bicycles as first-class moving entities. The city cycling graph and NDW directional counts support an aggregate, count-conserving reconstruction—not individual rider trajectories—and the opening boundary depends on measured counter coverage.
+- **[Istanbul](./ISTANBUL.md)** — two continents joined by ferries, bridges and a railway tunnel beneath the Bosphorus. IBB's licence is now documented, but fresh calendar inspection does not support the proposed shared 2019 ferry/rail window. Historical fidelity and maintained full rail/ferry coverage remain unresolved.
+- **[Mumbai](./MUMBAI.md)** — suburban rail as a daily tide: tremendous directional surges into and out of the city. The current thesis remains blocked on compatible schedules and demand evidence. A 7 September review found historical directional peak-period figures in an official report; its underlying tables, method and reuse conditions still need to be obtained. Frequency must not impersonate crowd flow.
+- **[Venice](./VENICE.md)** — a city whose streets move. ACTV's inspected, shape-complete navigation GTFS makes a scheduled lagoon proof technically promising; the exact operator licence remains unresolved.
+- **[Fietsen — Amsterdam](./AMSTERDAM.md)** — selected working title. Everyday cycling across bridges and along canals makes the city take shape: countless individual movements accumulating into a shared rhythm. Delivery confidence is medium: the graph has a clear reuse baseline, but actual NDW coverage, measurement quality, flow ambiguity and counter-data terms remain unverified. The [resumption plan](AMSTERDAM.md#delivery-confidence-and-resumption-plan--7-september-2026) begins with public downloads and a detector map.
 - **[Chicago](./CHICAGO.md)** — the grid, the Loop and elevated trains visibly threading through architecture. Current CTA GTFS makes the schedule straightforward; CTA's purpose-limited terms and source-backed rail/building heights gate the close architectural camera.
 - **San Francisco** — extreme terrain crossed by cable cars, streetcars, BART and ferries, made for absurd camera sweeps. The source audit keeps the spectacle tied to measured relief and distinct evidence for each mode.
 - **[Singapore](./SINGAPORE.md)** — transport as deliberate state choreography: planned growth and a network extending ahead of the city. LTA's new train GTFS/GTFS-Realtime path and formal project states make the study viable, provided future infrastructure is never animated before service begins.
-- **[Mexico City](./MEXICO-CITY.md)** — immense scale and altitude, with dense formal transit interacting with movement less legible in standard datasets. A CC BY 4.0 unified feed supports a 31 October 2022 historical formal-network proof; current and under-mapped movement remain unresolved.
+- **[Mexico City](./MEXICO-CITY.md)** — immense scale and altitude, with dense formal transit interacting with movement less legible in standard datasets. A CC BY 4.0 unified feed described as the 31 October 2022 version is a historical lead; actual service calendars must support the chosen day. Current and under-mapped movement remain unresolved.
 - **[Johannesburg](./JOHANNESBURG.md)** — mobility still bearing the spatial violence of apartheid. The full work is blocked pending a locally governed data partnership: official machine-readable service evidence is incomplete and omitting minibus taxis would reproduce a consequential source bias.
 - **[Sydney](./SYDNEY.md)** — a rail city repeatedly interrupted by water, then reconnected by bridges and ferries. TfNSW's static, realtime and historical products give it the cleanest full observed-motion path in the survey; physical crossing states still need explicit sourcing.
 - **[Lisbon](./LISBON.md)** — trams, funiculars and ferries negotiating a city apparently designed to defeat wheels. A current Carris GTFS makes a tram/funicular terrain proof viable, but its all-bus mode coding requires an override and current open ferry motion was not established.
@@ -79,21 +81,23 @@ They remain deliberately unnumbered until each produces a title, a source path a
 
 ## Second-wave feasibility result
 
+**Updated 7 September 2026:** Berlin / Umlauf is the strongest candidate on data readiness for a new scheduled edition. This recommendation does not change the programme order above or admit a numbered work. Other cities' documented access paths still require the concrete checks below.
+
 | Candidate | Verdict | First defensible action |
 | --- | --- | --- |
-| Venice | **Green** | Compile a source-pinned 06:00–08:00 ACTV lagoon proof. |
-| Sydney | **Green** | Select one complete historic 07:00–09:00 GTFS/GTFS-R harbour window. |
+| Venice | **Green technical / amber licence** | Identify and retain the exact ACTV navigation licence before a 06:00–08:00 lagoon proof. |
+| Sydney | **Strong source path / amber export validation** | Obtain and validate one matching historic 07:00–09:00 GTFS/GTFS-R harbour window. |
 | Berlin | **Green** | Compile a source-pinned 07:00–09:00 Ring and Crossings proof, with replacement buses and rail kept distinct. |
 | Singapore | **Green / amber** | Inspect the registered DataMall train feed, then separate operating and future states. |
-| Lisbon | **Green bounded / amber full thesis** | Compile a Carris slope proof; keep ferries structural. |
-| Amsterdam | **Green as reconstruction / amber coverage** | Map NDW bicycle counters before choosing the opening cell. |
+| Lisbon | **Green technical / amber licence and full thesis** | Resolve the actual Carris feed licence and mode taxonomy before a slope proof. |
+| Amsterdam | **Amber / medium delivery confidence** | Inspect NDW downloads, counter coverage, quality and terms, then test flow ambiguity before choosing the opening cell. |
 | Chicago | **Green technical / amber publication** | Resolve CTA artwork purpose and compile vertical Loop structure. |
-| Istanbul | **Amber historical / red current full thesis** | Decide whether a labelled 2019 Bosphorus study is artistically valid. |
+| Istanbul | **Historical fidelity unresolved / red current full thesis** | Resolve the calendar/component-date mismatch with IBB before selecting any historical window. |
 | Mexico City | **Amber historical / red current thesis** | Validate the 2022 formal feed and seek a current locally reviewed source partnership. |
 | Mumbai | **Red** | Request official suburban schedules and time-banded passenger evidence; do not prototype. |
 | Johannesburg | **Red** | Form a compensated local review/data partnership before visual development. |
 
-Green describes the source path, not catalogue admission. Venice, Sydney and Berlin still need titles, authored signature proofs and phone budgets; no city receives a number from this survey alone.
+Green describes the source path, not catalogue admission. Venice, Sydney and Berlin have naming candidates but still need authored signature proofs and phone budgets; no city receives a number from this survey alone.
 
 Tokyo's initial source and feasibility audit is recorded in [TOKYO.md](./TOKYO.md). It separates a durable Toei proof from the unresolved Tokyo Metro publication terms and the Challenge 2026-only Yamanote/private-railway coverage.
 
