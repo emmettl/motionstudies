@@ -89,7 +89,7 @@ They remain deliberately unnumbered until each produces a title, a source path a
 | --- | --- | --- |
 | Venice | **Green technical / amber licence** | Identify and retain the exact ACTV navigation licence before a 06:00–08:00 lagoon proof. |
 | Sydney | **Strong source path / amber export validation** | Obtain and validate one matching historic 07:00–09:00 GTFS/GTFS-R harbour window. |
-| Berlin / Umlauf | **Scheduled and relative interchange proofs implemented; unnumbered** | Review the [private preview](https://umlauf-berlin-review.vndh2vk2v4.chatgpt.site) with alpha.3, crossing filters and official water context; source measured interchange heights and check physical-phone performance. [Repository (private)](https://github.com/emmettl/umlauf). |
+| Berlin / Umlauf | **Scheduled and relative interchange proofs implemented; unnumbered** | Review the [private preview](https://umlauf-berlin-review.vndh2vk2v4.chatgpt.site) with alpha.3, two-direction inspection, authored Ring spacing, crossing filters and official water context; source measured interchange heights and check physical-phone performance. [Repository (private)](https://github.com/emmettl/umlauf). |
 | Singapore | **Green / amber** | Inspect the registered DataMall train feed, then separate operating and future states. |
 | Lisbon | **Green technical / amber licence and full thesis** | Resolve the actual Carris feed licence and mode taxonomy before a slope proof. |
 | Amsterdam | **Amber / medium delivery confidence** | Inspect NDW downloads, counter coverage, quality and terms, then test flow ambiguity before choosing the opening cell. |
