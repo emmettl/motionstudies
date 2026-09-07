@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
   "engines": {
-    "node": ">=20"
+    "node": ">=24.0.0"
   },
   "exports": {
     "./gtfs": {
