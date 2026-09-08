@@ -1,4 +1,5 @@
 import { foldSearchText } from './search-text.ts'
+import type { AirEndpoint } from './domain/air.ts'
 
 export interface AirSearchTrack {
   readonly id: string
@@ -7,6 +8,8 @@ export interface AirSearchTrack {
   readonly start: number
   readonly end: number
   readonly airportIds?: readonly string[]
+  readonly origin?: AirEndpoint
+  readonly destination?: AirEndpoint
 }
 
 export function airTrackSearchText(track: AirSearchTrack): string {

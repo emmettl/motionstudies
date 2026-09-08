@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "private": true,
   "type": "module",
   "exports": {
@@ -13,6 +13,7 @@
     "./domain/air-day": "./src/domain/air-day.ts",
     "./domain/air": "./src/domain/air.ts",
     "./domain/airport": "./src/domain/airport.ts",
+    "./domain/movement-board": "./src/domain/movement-board.ts",
     "./domain/boundary": "./src/domain/boundary.ts",
     "./domain/corridor": "./src/domain/corridor.ts",
     "./domain/hub": "./src/domain/hub.ts",

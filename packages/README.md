@@ -34,3 +34,42 @@ Source workspace manifests always stay private. `npm run check:release` builds p
 `mountMotionStudy` installs one shared tooltip surface. Independent consumers such as the lab can render `ButtonTooltips` from `@motionstudies/web/components/ButtonTooltips` once instead. Put concise, action-oriented help in each button’s `data-tooltip`; icon buttons fall back to their `aria-label`. An empty `data-tooltip` opts out. Avoid native `title` attributes on these buttons, which can also appear during touch interaction.
 
 Help appears after a short mouse hover or on keyboard focus when the primary pointer is fine and supports hover. Touch input suppresses it, including on hybrid devices. Escape, activation, scrolling and blur dismiss it. The tooltip stays inside the viewport, can itself be hovered, and temporarily extends `aria-describedby` without replacing existing descriptions. Copy and translations stay in the edition; rendering and input handling stay in this package. The Controls specimen and packed-consumer tests exercise this contract.
+
+## Airport heroes and split-flap boards
+
+`AirportHeroCard` provides an airport identity header and switchable departure/arrival boards. `SplitFlapBoard` is the underlying transport-neutral widget, also suitable for rail stations. Both use scoped package styles, semantic tables, full accessible cell values, keyboard-operable selection, contained horizontal scrolling and reduced-motion support. Only changed characters remount for the flap animation.
+
+```tsx
+import { AirportHeroCard } from '@motionstudies/web/components/AirportHeroCard'
+import '@motionstudies/web/airport-hero-card.css'
+
+<AirportHeroCard
+  key={airport.id}
+  airport={airport}
+  departures={departures}
+  arrivals={arrivals}
+  study={{ time, windowStart: metadata.windowStart, windowEnd: metadata.windowEnd }}
+  dateLabel={metadata.serviceDate}
+  note="Observed study · inferred directions; times are observations."
+  onSelectFlight={selectAirTrack}
+  selectedFlightId={selectedAirTrackId}
+/>
+```
+
+Entries have a stable `id`, a `service` label, and optional numeric `time`, `place`, `stand`, `status` and `tone` (`neutral`, `accent` or `warning`). Movement times and `study.time`, `windowStart`, and `windowEnd` must use the same study-relative seconds and service date. Do not parse display strings or normalize numeric times at midnight: an event after 24:00 retains its value above 86,400. `formatTime` optionally controls display formatting; the default uses the study's `formatServiceTime` helper. The header clock is derived directly from `study.time`, with no independent wall clock.
+
+The card sorts movements chronologically and shows up to eight rows per direction inside the intersection of the study bounds and a rolling window: ten minutes behind the playback clock and sixty minutes ahead, with inclusive endpoints. Override this with `horizon={{ lookBehindSeconds: 600, lookAheadSeconds: 3600 }}` and `maxRows`. Playback, backward seeking, changed study bounds and updated movement times all recalculate the rows. An out-of-study or invalid clock shows no movements; rows with missing or non-finite times are excluded because they cannot be placed in the window. Other unknown fields render as a dash. Labels include `studyTime`, `boardWindow` and `outsideWindow` for localization. Filtering does not infer operational statuses or clear the consumer's map selection when a row leaves the window.
+
+Consumers still own time coordinates, source interpretation and data loading. Supply movements for the displayed horizon, not just aircraft active at the current second, and use the selected study's bounds rather than an individual progressive chunk's bounds. Do not turn an approach-envelope association into a confirmed departure/arrival: unclassified tracks should remain outside these direction lists. Current `AirTrack` data does not supply scheduled times, routes or gates; leave those fields absent, use observation times only when clearly labelled, and explain any inference in the required `note`.
+
+Pass `labels` for edition translations, `loading`, or a localized `error` and `onRetry` for data states. The selected direction is local to each card; key the card by airport ID to reset it on selection changes. The Airports lab specimen exercises synthetic timetables, playback, scrubbing, study-window changes, incomplete observations, French labels, long destinations, updates and recovery. Edition adoption happens through their independently pinned package releases; adding this export does not update deployed studies.
+
+For a custom rail or transport board, import `SplitFlapBoard` from `@motionstudies/web/components/SplitFlapBoard` and `@motionstudies/web/split-flap-board.css`. Supply `columns` (`key`, `label`, `characters`) and `rows` (`id`, `cells`, optional `tone`). Cell text longer than its flap count is visually ellipsized, with the full value retained for assistive technology and hover. `onSelectRow`, `selectedRowId` and `selectionColumn` optionally make one cell per row selectable.
+
+The shared board also accepts `loading`, a localized `loadingMessage`, and `loadingRows` (default five). While loading, its decorative rows cycle through staggered letters and digits; they are hidden from assistive technology and cannot be selected. A single status message announces loading. When data arrives, characters flip through a short sequence and settle into their actual values; later changes animate only the changed characters. These CSS animations have no JavaScript timers and stop looping when loading ends or the board is removed. Reduced-motion users get static blank loading flaps and immediate final text. `AirportHeroCard` uses this shared loading treatment automatically. Use **Reload board** in the Airports lab to preview the complete loading-to-ready transition.
+
+Empty messages also appear on the flaps, in the widest column (the destination/origin column in airport cards), with the other columns blank. Longer localized messages wrap across display rows instead of being truncated. They settle with the same animation as flight details, and one hidden status announces the complete message to assistive technology. This also applies when the study clock moves into a window with no movements.
+
+Rail and other transport consumers can share the same time filtering through `movementBoardWindow(study, horizon)` and `movementsForBoard(entries, window, maxRows)` from `@motionstudies/core/domain/movement-board`. Format the returned numeric times when mapping them into `SplitFlapBoard` cells. The lab's rail board follows the same study clock and horizon as its airport card.
+
+`@motionstudies/data/air-endpoints` provides offline `enrichAirEndpoints` for existing air manifests, chunks and opening snapshots. Supply cached same-date global ADSB.lol heatmaps, an OurAirports CSV and the service date's local UTC offset. It associates only unambiguous low-altitude endpoints near a reference airport; cruise-only traces and uncertain routes stay unknown. Optional `AirEndpoint` origin/destination fields carry airport identity, observed boundary time and `observed-endpoint` evidence. `airportBoardMovements` maps full manifest entries to board rows without confusing playback chunk boundaries with flight endpoints. Input hashes and source/licence attribution are recorded in fixture metadata. These fields describe inferred observations, never flight schedules, gates or live status.

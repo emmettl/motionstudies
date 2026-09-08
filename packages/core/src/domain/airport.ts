@@ -1,5 +1,6 @@
 import type { AirTrack } from './air.ts'
 import { foldSearchText } from '../search-text.ts'
+import type { AirSearchTrack } from '../air-search.ts'
 
 export interface StudyAirport {
   readonly id: string
@@ -86,4 +87,26 @@ export function airportAirTrackIds(
       .filter((track) => airTrackServesAirport(track, airport))
       .map((track) => track.id),
   )
+}
+
+/** Board events come from full-flight endpoint evidence, not truncated playback chunks. */
+export function airportBoardMovements(aircraft: readonly AirSearchTrack[], airport: StudyAirport) {
+  const departures: { id: string; time: number; service: string; place?: string }[] = []
+  const arrivals: typeof departures = []
+  const seen = new Set<string>()
+  for (const track of aircraft) {
+    for (const direction of ['origin', 'destination'] as const) {
+      const endpoint = track[direction]
+      if (!endpoint || endpoint.icao !== airport.icao || !Number.isFinite(endpoint.time)) continue
+      const key = `${track.icaoAddress ?? track.id}:${direction}:${endpoint.time}`
+      if (seen.has(key)) continue
+      seen.add(key)
+      const other = direction === 'origin' ? track.destination : track.origin
+      const row = { id: track.id, time: endpoint.time, service: track.callsign,
+        place: other ? `${other.city || other.name} ${other.iata || other.icao}` : undefined }
+      const rows = direction === 'origin' ? departures : arrivals
+      rows.push(row)
+    }
+  }
+  return { departures, arrivals }
 }

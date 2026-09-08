@@ -6,6 +6,16 @@ export type AirSample = readonly [
   groundSpeedKnots: number,
 ]
 
+export interface AirEndpoint {
+  readonly icao: string
+  readonly iata: string
+  readonly name: string
+  readonly city: string
+  /** Study-local seconds at the observed approach/departure boundary; not a scheduled time. */
+  readonly time: number
+  readonly evidence: 'observed-endpoint'
+}
+
 export interface AirTrack {
   readonly id: string
   readonly icaoAddress?: string
@@ -13,6 +23,8 @@ export interface AirTrack {
   readonly start: number
   readonly end: number
   readonly airportIds?: readonly string[]
+  readonly origin?: AirEndpoint
+  readonly destination?: AirEndpoint
   readonly samples: readonly AirSample[]
 }
 

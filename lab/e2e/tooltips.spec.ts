@@ -52,7 +52,7 @@ test('help explains disabled controls and stays inside the viewport', async ({ p
   expect(box!.y).toBeGreaterThanOrEqual(8)
   expect(box!.x + box!.width).toBeLessThanOrEqual(viewport.width - 8)
   expect(box!.y + box!.height).toBeLessThanOrEqual(viewport.height - 8)
-  await page.getByRole('button', { name: '04 Data' }).click()
+  await page.getByRole('button', { name: /Data$/ }).click()
   await expect(tooltip).toHaveCount(0)
 })
 

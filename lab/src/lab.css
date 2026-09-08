@@ -39,4 +39,7 @@ h1 { font-size: clamp(32px, 4vw, 48px); letter-spacing: -1.5px; margin: 0; font-
 .readout { border: 1px solid #2d3a4c; border-radius: 8px; background: #0c1320; padding: 24px; margin-bottom: 24px; }
 .readout > span { color: #8dfaff; }
 pre { font-size: 14px; overflow: auto; }
+.airport-specimen { max-width: 880px; min-width: 0; }
+.airport-selection { display: block; margin-top: 16px; font-size: 13px; color: #a5b4c8; }
+.airport-study-timeline { max-width: 880px; padding-top: 0; margin-bottom: 24px; }
 @media (max-width: 800px) { .lab { grid-template-columns: 1fr; } .lab-sidebar { padding: 18px 20px; border-right: 0; border-bottom: 1px solid #253144; gap: 20px; } .lab-wordmark br { display: none; } .lab-sidebar nav { display: flex; flex-wrap: wrap; } .lab-sidebar > p { display: none; } .lab-main { padding: 24px 20px; } .theme-grid, .scene-grid.is-paired { grid-template-columns: 1fr; } .lab-sidebar nav button { padding: 6px 10px; } }

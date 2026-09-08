@@ -29,9 +29,9 @@
     "release:dry-run": "node scripts/publish-packages.mjs"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.4",
-    "@motionstudies/three": "0.1.0-alpha.4",
-    "@motionstudies/web": "0.1.0-alpha.4",
+    "@motionstudies/core": "0.1.0-alpha.5",
+    "@motionstudies/three": "0.1.0-alpha.5",
+    "@motionstudies/web": "0.1.0-alpha.5",
     "@react-three/fiber": "9.7.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",

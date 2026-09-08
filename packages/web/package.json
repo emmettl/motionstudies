@@ -1,9 +1,13 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "private": true,
   "type": "module",
   "exports": {
+    "./components/SplitFlapBoard": "./src/components/SplitFlapBoard.tsx",
+    "./components/AirportHeroCard": "./src/components/AirportHeroCard.tsx",
+    "./split-flap-board.css": "./src/components/split-flap-board.css",
+    "./airport-hero-card.css": "./src/components/airport-hero-card.css",
     "./components/MobilePicker": "./src/components/MobilePicker.tsx",
     "./data-url": "./src/data-url.ts",
     "./mount-motion-study": "./src/mount-motion-study.tsx",
@@ -20,7 +24,7 @@
     "./components/ButtonTooltips": "./src/components/ButtonTooltips.tsx"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.4"
+    "@motionstudies/core": "0.1.0-alpha.5"
   },
   "peerDependencies": {
     "react": "^19.2.8",

@@ -1,4 +1,4 @@
-import type { AirSnapshot, AirTrack } from './air.ts'
+import type { AirEndpoint, AirSnapshot, AirTrack } from './air.ts'
 
 export interface AirDayAircraft {
   readonly id: string
@@ -7,6 +7,8 @@ export interface AirDayAircraft {
   readonly start: number
   readonly end: number
   readonly airportIds?: readonly string[]
+  readonly origin?: AirEndpoint
+  readonly destination?: AirEndpoint
   readonly chunkIds: readonly string[]
 }
 

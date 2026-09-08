@@ -11,8 +11,9 @@ import { createDataUrlResolver } from '@motionstudies/web/data-url'
 import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-network-day'
 import { useObservedOperations } from '@motionstudies/web/use-observed-operations'
 import { air, emptyNetwork, layout, network, road, themes } from './fixtures.ts'
+import { AirportStudy } from './AirportStudy.tsx'
 
-const sections = ['Controls', 'Network', 'Hub', 'Data'] as const
+const sections = ['Controls', 'Network', 'Hub', 'Airports', 'Data'] as const
 const hub = { id: 'junction', name: 'Junction', displayName: 'Junction', character: 'Synthetic interchange' }
 const calls = callsAtHub(network, hub)
 const dataUrl = createDataUrlResolver(`${import.meta.env.BASE_URL}data/`)
@@ -120,6 +121,6 @@ export function App() {
   const [section, setSection] = useState<(typeof sections)[number]>('Controls')
   return <div className="lab"><aside className="lab-sidebar"><a className="lab-wordmark" href="./">Motion<br />Studies <span>Lab</span></a><nav aria-label="Specimens">{sections.map((name, index) => <button key={name} aria-current={section === name ? 'page' : undefined} onClick={() => setSection(name)}><small>0{index + 1}</small>{name}</button>)}</nav><p>Shared instrument<br /><span>Synthetic fixtures · v0</span></p></aside>
     <main className="lab-main"><header><div><p className="kicker">Package specimens</p><h1>{section}</h1></div><span className="lab-badge">Interactive</span></header>
-      {section === 'Controls' ? <ControlStudy /> : section === 'Data' ? <DataStudy /> : <RenderingStudy key={section} kind={section} />}
+      {section === 'Controls' ? <ControlStudy /> : section === 'Airports' ? <AirportStudy /> : section === 'Data' ? <DataStudy /> : <RenderingStudy key={section} kind={section} />}
     </main></div>
 }

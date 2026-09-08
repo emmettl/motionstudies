@@ -85,7 +85,7 @@ test('hub and track views accept sparse and empty calls', async ({ page }) => {
 })
 
 test('the lab displays real loader errors and recovers when its source changes', async ({ page }) => {
-  await page.getByRole('button', { name: '04 Data' }).click()
+  await page.getByRole('button', { name: /Data$/ }).click()
   await page.getByRole('button', { name: 'Enable loader' }).click()
   const output = page.getByTestId('data-status')
   await expect(output).toContainText('Ready')
