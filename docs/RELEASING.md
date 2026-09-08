@@ -35,6 +35,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Prepare subsequent versions
 
+`0.1.0-alpha.6` adds the shared Now clock, opt-in browser location and geographic location marker, with a synthetic Now specimen in the public widget lab. Eligibility belongs to each study: suitable representative data can convey the present without exact live positions. This release does not upgrade or enable Now in any edition.
+
 Update all four `packages/*/package.json` versions and their internal dependency pins, plus the root and lab workspace dependency pins. Run `npm install --package-lock-only --ignore-scripts` to update the lockfile, commit, and let CI validate the release build. `npm run check:release` and `npm run release:dry-run` rehearse it locally without publishing. Dispatch `release.yml` on main with the committed version and mode **trusted**.
 
 `0.1.0-alpha.2` adds shared desktop button help and was published through OIDC. All Change, Correspondances, Gleislicht and the private Local / Express proof consume its exact registry versions. Edition changes update their own manifests and lockfiles and run their own regression gates. No vendored candidates or shared workspaces remain in the edition repositories.

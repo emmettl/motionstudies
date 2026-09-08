@@ -105,6 +105,7 @@ import {
 import { AirTrafficLayer } from './AirTrafficLayer.tsx'
 import { projectAirPosition } from './air-projection.ts'
 import { RoadTrafficLayer } from './RoadTrafficLayer.tsx'
+import { createGlowPointTexture } from './glow-point-texture.ts'
 import {
   blendProjectedSpatialLayout,
   projectSpatialLayout,
@@ -126,6 +127,8 @@ export interface MapCameraCommand {
 }
 
 export interface NationalNetworkSceneProps {
+  /** Optional geographic position, hidden while the map morphs to a diagram. */
+  readonly userLocation?: { readonly longitude: number; readonly latitude: number }
   /** Quiet removes the reference grid while retaining the ground plane. */
   readonly groundStyle?: 'grid' | 'quiet'
   readonly boundary?: MapBoundary
@@ -3920,6 +3923,22 @@ function NetworkCamera({
   return null
 }
 
+function UserLocationMarker({ location, projection }: {
+  location: NonNullable<NationalNetworkSceneProps['userLocation']>
+  projection: NetworkProjection
+}) {
+  const texture = useMemo(() => createGlowPointTexture(), [])
+  useEffect(() => () => texture.dispose(), [texture])
+  return <group position={projectCoordinate([location.longitude, location.latitude], projection, 0.15)}>
+    <sprite scale={[0.055, 0.055, 1]} renderOrder={30}>
+      <spriteMaterial map={texture} color="#70caff" transparent opacity={0.65} sizeAttenuation={false} depthTest={false} depthWrite={false} />
+    </sprite>
+    <sprite scale={[0.015, 0.015, 1]} renderOrder={31}>
+      <spriteMaterial map={texture} color="#eaf8ff" transparent sizeAttenuation={false} depthTest={false} depthWrite={false} />
+    </sprite>
+  </group>
+}
+
 function NetworkWorld(props: NationalNetworkSceneProps) {
   const projection = useMemo(
     () => createNetworkProjection(props.referenceSnapshot),
@@ -4067,6 +4086,9 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       <fog attach="fog" args={['#050410', 34, 69]} />
       <ambientLight intensity={0.85} color="#7d87ff" />
       <NationalGround quiet={props.groundStyle === 'quiet'} />
+      {props.userLocation && (props.spatialLayoutMix ?? 0) === 0 &&
+        Number.isFinite(props.userLocation.longitude) && Number.isFinite(props.userLocation.latitude) &&
+        <UserLocationMarker location={props.userLocation} projection={projection} />}
       {props.lakes && (
         <LakeLayer
           lakes={props.lakes}

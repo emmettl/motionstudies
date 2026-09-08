@@ -22,6 +22,13 @@ h1 { font-size: clamp(32px, 4vw, 48px); letter-spacing: -1.5px; margin: 0; font-
 .kicker, .specimen-label { color: #93a2b7; font-size: 12px; text-transform: uppercase; letter-spacing: 1.6px; margin: 0 0 8px; }
 .lab-badge { font-size: 12px; color: #9be0c6; border: 1px solid #305346; padding: 5px 10px; border-radius: 20px; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-bottom: 20px; }
+.now-button { display: inline-flex; align-items: center; gap: 10px; }
+.now-button > span { width: 7px; height: 7px; border-radius: 50%; background: #73859e; }
+.now-button[aria-pressed="true"] { border-color: #70caff; background: #102839; }
+.now-button[aria-pressed="true"] > span { background: #b8e7ff; box-shadow: 0 0 12px 3px #70caff70; }
+.now-readout { display: flex; align-items: baseline; flex-wrap: wrap; gap: 20px; }
+.now-readout output { font-size: clamp(36px, 6vw, 64px); font-variant-numeric: tabular-nums; letter-spacing: -2px; }
+.now-readout span { color: #93a2b7; font-size: 14px; }
 .toolbar label { display: flex; gap: 8px; align-items: center; font-size: 14px; color: #c0cddd; }
 .theme-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .theme-panel { background: var(--background); border: 1px solid var(--line); color: var(--ink); padding: 48px 24px 64px; display: grid; gap: 24px; min-height: 300px; border-radius: 8px; }
