@@ -272,30 +272,33 @@ See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/L
 
 ## 9A — All Change: passenger flow and the rhythm of the city
 
-Planned expansion — 8 September 2026. Deepen the London study by revealing where people gather, transfer, disperse and wait. The preferred next feature is a bounded passenger-demand study, ahead of a broad Darwin rollout. Live National Rail remains a later operational strand; this sequence prioritises understanding the city's daily flow. Unchecked items below are proposals, not implemented features or verified source access.
+Implemented foundation — 8 September 2026. All Change now has a source-audited passenger-flow pulse at Bank/Monument and Stratford, demand hero cards across validated NUMBAT coverage, and dismissible station departure boards. The study distinguishes typical passenger demand from scheduled services. Live National Rail remains a later operational strand. Unchecked items below remain proposals or unfinished work.
 
-### A — Passenger pulse: Bank and Stratford first
+### A — Passenger pulse and wider station coverage
 
-- [ ] Audit a published TfL NUMBAT release: retain source year, typical-day category, terms, input hashes, station/platform identities and coverage. Confirm usable Bank and Stratford interchange flows before committing the visual design.
-- [ ] Compile a small, separately loaded artifact containing 15-minute directional link loads, station entries/exits, boarders/alighters and internal interchange flows where available. Do not infer unsupported origin–destination journeys from aggregate counts or extend TfL coverage to all National Rail services.
-- [ ] Build a passenger pulse at Bank and Stratford that distinguishes people entering the railway, leaving it and changing trains. Keep passenger volume visually distinct from service frequency and avoid double-counting transfers.
-- [ ] Surface available passenger-demand data on the hero card for any station with a validated source match, beyond the initial Bank/Stratford showcase. Show supported entry, exit and interchange counts for the current 15-minute study-clock interval, with a compact daily profile and current-time marker linking to the fuller passenger pulse where available. Label units, source year, typical-day category and covered modes or station areas; preserve measured zeroes and omit unavailable metrics rather than treating missing data as zero. Load details on selection and keep the card compact and accessible on phones.
-- [ ] Add an authored “Where does the morning go?” sequence, contrasting the morning and evening and showing directional demand along selected tracks in both geography and diagram layouts.
-- [ ] Keep typical-day passenger demand and the dated timetable explicitly identified. NUMBAT describes a modelled typical autumn day, not observed occupancy on an individual train on 4 September 2026. Do not attach aggregate loads to individual trains as measured counts.
+- [x] Audit the NUMBAT 2025 Friday release with source year/day type, terms, input hashes, station identities and interval totals. Validate Bank/Monument and Stratford interchange flows.
+- [x] Compile separately loaded station entry, exit and within-area interchange profiles. Ship 432 validated source areas matched to 440 app name variants; exclude 39 tram placeholder rows, retain unavailable metrics and keep separate source areas distinct. Withhold ambiguous changing totals at Clapham Junction and Norwood Junction.
+- [x] Build the Bank/Stratford passenger pulse with entering, leaving and changing streams, proportional volume marks, the shared study clock, pause/scrub, reduced motion, and morning/evening comparison controls. Keep the passenger and train-service views explicitly separate; schematic flows are not tracked paths or occupancy.
+- [x] Surface available passenger data on station hero cards beyond the initial showcase. Include 15-minute counts, selectable daily profiles, current markers, explicit source-area selectors, provenance and unavailable metrics. Load the catalogue and selected profile on demand, with retry and independent transfer budgets.
+- [x] Distinguish autumn 2025 typical Friday demand from the 4 September 2026 timetable, and preserve the 05:00–05:00 source traffic day without wrapping Saturday's tail onto Friday morning.
+- [ ] Add preceding-day demand for Friday before 05:00 after auditing the Thursday traffic-day tail.
+- [ ] Add directional link loads and boarders/alighters where supported; do not infer origin–destination journeys or attach aggregate loads to individual trains as measured counts.
+- [ ] Add an authored “Where does the morning go?” sequence with directional demand along selected tracks in geography and diagram layouts.
+- [ ] Complete a physical-phone review of the passenger composition. Desktop Chromium and iPhone WebKit emulation are covered by the integration checks; those are separate from physical-device evidence.
 
-**First milestone:** a visitor can compare Bank and Stratford, scrub through the day and understand each station's entry, exit and interchange rhythm. Their hero cards expose the supported demand measures at the selected time; the same card treatment works for every other station with validated coverage. Validate source mapping and aggregation, preserve the existing opening payload budget through lazy loading, and review the composition on desktop and a physical phone before widening coverage.
+**First milestone implemented:** visitors can compare Bank and Stratford, scrub the day and distinguish entry, exit and interchange rhythms. Other validated station selections expose their supported area profiles. The opening payload budget remains unchanged. Source details, matched/unmatched names, excluded metrics and reproduction live in All Change's `docs/PASSENGER-DEMAND.md` and `fixtures/passenger-demand/audit.json`.
 
-### A1 — Departure boards on station hero cards
+### A1 — Departure boards and dismissible hero cards
 
-The shared `SplitFlapBoard` already supports configurable columns and selectable rows, and All Change's separate `LondonNationalRailBoard` provides arrivals/departures, service selection, movement seeking and pulse links. These are the starting points for adaptation; station hero-card integration and its visual refinement remain future work.
+- [x] Reuse the shared split-flap widget in TfL station hero cards and the National Rail panel, independently of passenger-demand availability. Retain arrivals/departures, service selection, movement seeking and pulse links.
+- [x] Refine line/service labels, row limits, next-hour windows, line filters, long destinations, stable selection, accelerated playback and reduced motion for narrow cards.
+- [x] Align boards with the selected study clock, source date and loaded window; distinguish loading, partial coverage, errors/retry, no calls and the study boundary.
+- [x] Add top-right close controls and compact restore buttons that preserve map selection, playback and card state, including loading/error cards. Validate desktop and iPhone WebKit keyboard/touch flows.
+- [ ] Combine relevant TfL and National Rail calls without duplicates, retaining repeated visits and passenger-call restrictions. The current cards keep these timetable scopes separate.
+- [ ] Add platform and operational status fields only where supported; distinguish scheduled/predicted times, cancellations and freshness when live feeds are introduced.
+- [ ] Complete shared widget-lab and physical-device review for mixed-operator, terminal and limited-data cases. Keep these reviews separate from the completed London browser integration checks.
 
-- [ ] Audit and reuse the shared board widget and existing London call-selection logic to embed a compact departure board in station hero cards wherever timetable or operational calls are available. Keep board availability independent of passenger-demand coverage; a station can have either or both. Retain an arrivals option and the existing service-selection, movement and pulse interactions.
-- [ ] Adapt the presentation to rail: time, destination/origin and line or service identity, with operator, platform and operational remarks only where supported and useful. Combine relevant TfL and National Rail calls without duplicates, preserve repeated station visits and passenger-call restrictions, and make partial operator coverage clear.
-- [ ] Refine the board for frequent urban services, long station names and narrow phone cards: establish useful row limits, time horizons and line filters; preserve readable destinations, stable row identity and selection during updates; and tune flap animation for accelerated playback, scrubbing and reduced motion. Review the board and passenger-demand profile together so neither overwhelms the station identity.
-- [ ] Keep board times aligned with the selected study clock, service date and available window, including midnight continuations. Distinguish loading, partial data, failed downloads, no calls and the end of the study. When live data is added, separate scheduled and predicted times, cancellations and freshness rather than implying the historical board is live.
-- [ ] Validate the combined hero card in the widget lab and London integration with representative high-frequency, mixed-operator, terminal and limited-data stations. Check keyboard/touch selection, full accessible destination text, phone layout and animation behaviour before rolling it out across station selections.
-
-**Delivery:** refine the departure board alongside the first passenger hero cards. It can ship using existing timetable data without waiting for NUMBAT or Darwin access; any shared widget changes follow the normal package release and edition upgrade path.
+**Delivery:** the passenger pulse, wider demand cards and departure-board foundation are implemented. Shared widget changes continue through the normal package release and edition upgrade path.
 
 ### B — Cycle hire and movement above ground
 
@@ -318,7 +321,7 @@ The shared `SplitFlapBoard` already supports configurable columns and selectable
 
 The GLA High Streets Data Service's richer partnership footfall tools are restricted to subscribed boroughs and Business Improvement Districts; public reports and boundaries do not establish a reusable citywide hourly feed. Census 2021 commuting flows reflect pandemic conditions and must not stand in for contemporary daily demand. Broader pedestrian, mobile-location or event-driven flow studies remain dependent on suitable evidence and reuse rights.
 
-**Preferred sequence:** NUMBAT source audit → Bank/Stratford passenger pulse → one cycle-hire day → wider demand and selected street/crossing studies. Travel-time and after-midnight studies can build on existing timetable data after their routing and calendar checks. Continue Darwin as a separate live-operations phase after the first passenger-flow milestone.
+**Preferred sequence:** completed NUMBAT audit, Bank/Stratford passenger pulse and wider demand cards → one cycle-hire day → selected street/crossing studies and richer directional demand. Travel-time and after-midnight studies can build on existing timetable data after their routing and calendar checks. Continue Darwin as a separate live-operations phase after the first passenger-flow milestone.
 
 **Completion standard:** each addition answers a specific question about London; preserves selection, clock and the geography/diagram relationship where applicable; exposes dates, provenance, missing coverage and scheduled/observed/modelled distinctions; loads optional data progressively; and passes relevant source, aggregation, accessibility, reduced-motion, payload and device checks. Record implementation, physical-device review and publication separately.
 
