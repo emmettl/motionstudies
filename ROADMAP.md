@@ -184,7 +184,7 @@ The committed 4 September 2026 national full-day timetable already contains serv
 
 ### B — Lake Lucerne–Rigi: the first mountain-and-water composition
 
-- [ ] Build a separately loaded, full-day study linking lake boat services, the Vitznau and Arth-Goldau cogwheel approaches, and the Weggis–Rigi Kaltbad cableway, subject to route-level source validation.
+- [x] Deliver the first separately loaded, full-day **2D** Lake Lucerne–Rigi map: 190 scheduled movements across lake boats, both cogwheel approaches and the Weggis cableway, with operator search, mode filters and EN / DE / FR / IT labels. All 374 rail segments have FOT matches; the cableway uses exact installation 71.105. Boat paths are explicitly modelled inside the cartographic lake boundary, not validated shipping lanes. The full fixture is 13.1 KiB gzip (25 KiB study budget). Desktop/emulated-iPhone checks pass; publication and physical-device review remain open. See [Rigi study evidence and limits](https://github.com/emmettl/gleislicht/blob/main/docs/RIGI-STUDY.md).
 - [ ] Show the two railway approaches converging on the mountain, with selectable piers, valley stations, intermediate connections and summit destinations.
 - [ ] Join credible water routes, railway alignments and cableway paths; use explicit mode-appropriate fallbacks. Boat routes must stay on navigable water and must not inherit rail/road shoreline detours.
 - [ ] Extend measured terrain journeys to the mountain, with credible route elevations, steep gradients, lake context and camera behaviour suited to the ascent.
