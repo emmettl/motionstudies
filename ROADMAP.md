@@ -169,7 +169,7 @@ Planned expansion — 8 September 2026. Build towards a richly explorable Switze
 
 Dedicated local-network studies currently cover Zürich city, ZVV and Genève/TPG. National rail and nationwide PostBus provide broader coverage, but do not constitute complete regional multimodal studies. ZVV, Genève and Zürich city use morning artifacts; the separate Zürich tram contrast study already supports 24 hours.
 
-The committed 4 September 2026 national full-day timetable already contains services to Rigi Kulm, Jungfraujoch, Gornergrat, Pilatus Kulm and Rochers-de-Naye. Rigi, Jungfraujoch and Gornergrat services inspected in the 09:00–12:00 chunk are classified as `other`; Pilatus and Rochers-de-Naye appear as `regional`. This establishes a starting point for discovery, not complete mountain-network or geometry coverage. The importer accepts ferry, cableway and funicular modes but does not yet ingest `frequencies.txt`.
+The committed 4 September 2026 national full-day timetable already contains services to Rigi Kulm, Jungfraujoch, Gornergrat, Pilatus Kulm and Rochers-de-Naye. Rigi, Jungfraujoch and Gornergrat services inspected in the 09:00–12:00 chunk are classified as `other`; Pilatus and Rochers-de-Naye appear as `regional`. This establishes a starting point for discovery, not complete mountain-network or geometry coverage. The importer accepts ferry, cableway and funicular modes. The frequency increment below now ingests `frequencies.txt` with explicit exact-versus-illustrative semantics.
 
 ### A — Make existing mountain coverage discoverable
 
@@ -177,7 +177,7 @@ The committed 4 September 2026 national full-day timetable already contains serv
 - [ ] Audit mountain railway, funicular, cableway and boat coverage by operator, route, operating date and time window; report missing services and geometry separately.
 - [ ] Preserve source operator and transport-type evidence through preprocessing, and distinguish cogwheel/mountain services where supported rather than leaving them hidden in `other` or guessing from route names.
 - [ ] Add searchable mountain destinations, operator/line discovery and a mountain-service filter with clear category labels in EN / DE / FR / IT.
-- [ ] Implement and verify `frequencies.txt` semantics, including operating intervals, headways, `exact_times`, calendar exceptions and midnight boundaries. Keep frequency-generated movement distinguishable from exact scheduled departures.
+- [x] Implement and verify `frequencies.txt` semantics, including operating intervals, headways, `exact_times`, calendar exceptions and midnight boundaries. Stable generated identities preserve provenance through clipping and chunks; illustrative motion has distinct EN / DE / FR / IT labels. The first local ZVV fixture includes 29 representative Horgen–Meilen ferry runs. Importer/unit and desktop/emulated-iPhone browser checks pass; publication and physical-device review remain open. Direct ferry interpolation is not yet validated water-route geometry. See [frequency services and limits](https://github.com/emmettl/gleislicht/blob/main/docs/FREQUENCY-SERVICES.md).
 - [ ] Audit cableway geometry and vertical motion separately from rail and roads. Preserve continuous-circulation versus shuttle operation where sources establish it; illustrative cabins must not imply tracked vehicles or unsupported exact departures.
 
 **Exit:** visitors can find and isolate the mountain services already present, and the coverage audit explains what is still absent without overstating completeness.
