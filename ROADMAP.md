@@ -161,6 +161,83 @@ See [docs/LUFTRAUM.md](https://github.com/emmettl/gleislicht/blob/main/docs/LUFT
 
 See [docs/AUTO.md](https://github.com/emmettl/gleislicht/blob/main/docs/AUTO.md) for the data contract, reconstruction and recording path.
 
+## 8A — Gleislicht: regional depth, lakes and mountain railways
+
+Planned expansion — 8 September 2026. Build towards a richly explorable Switzerland: each new place should have a recognisable transport character, credible motion and a satisfying journey from overview to detail. The phases below give a preferred sequence, not calendar commitments. Existing completed milestones remain the foundation; unchecked items are future work.
+
+### Starting evidence
+
+Dedicated local-network studies currently cover Zürich city, ZVV and Genève/TPG. National rail and nationwide PostBus provide broader coverage, but do not constitute complete regional multimodal studies. ZVV, Genève and Zürich city use morning artifacts; the separate Zürich tram contrast study already supports 24 hours.
+
+The committed 4 September 2026 national full-day timetable already contains services to Rigi Kulm, Jungfraujoch, Gornergrat, Pilatus Kulm and Rochers-de-Naye. Rigi, Jungfraujoch and Gornergrat services inspected in the 09:00–12:00 chunk are classified as `other`; Pilatus and Rochers-de-Naye appear as `regional`. This establishes a starting point for discovery, not complete mountain-network or geometry coverage. The importer accepts ferry, cableway and funicular modes but does not yet ingest `frequencies.txt`.
+
+### A — Make existing mountain coverage discoverable
+
+- [ ] Audit mountain railway, funicular, cableway and boat coverage by operator, route, operating date and time window; report missing services and geometry separately.
+- [ ] Preserve source operator and transport-type evidence through preprocessing, and distinguish cogwheel/mountain services where supported rather than leaving them hidden in `other` or guessing from route names.
+- [ ] Add searchable mountain destinations, operator/line discovery and a mountain-service filter with clear category labels in EN / DE / FR / IT.
+- [ ] Implement and verify `frequencies.txt` semantics, including operating intervals, headways, `exact_times`, calendar exceptions and midnight boundaries. Keep frequency-generated movement distinguishable from exact scheduled departures.
+- [ ] Audit cableway geometry and vertical motion separately from rail and roads. Preserve continuous-circulation versus shuttle operation where sources establish it; illustrative cabins must not imply tracked vehicles or unsupported exact departures.
+
+**Exit:** visitors can find and isolate the mountain services already present, and the coverage audit explains what is still absent without overstating completeness.
+
+### B — Lake Lucerne–Rigi: the first mountain-and-water composition
+
+- [ ] Build a separately loaded, full-day study linking lake boat services, the Vitznau and Arth-Goldau cogwheel approaches, and the Weggis–Rigi Kaltbad cableway, subject to route-level source validation.
+- [ ] Show the two railway approaches converging on the mountain, with selectable piers, valley stations, intermediate connections and summit destinations.
+- [ ] Join credible water routes, railway alignments and cableway paths; use explicit mode-appropriate fallbacks. Boat routes must stay on navigable water and must not inherit rail/road shoreline detours.
+- [ ] Extend measured terrain journeys to the mountain, with credible route elevations, steep gradients, lake context and camera behaviour suited to the ascent.
+- [ ] Add an authored lake-to-summit sequence that follows the study clock through boat, railway and cableway scenes. Show scheduled interchange intervals without claiming guaranteed connections.
+- [ ] Keep quiet periods and seasonal non-operation visible as part of the composition; choose an initial service date that actually demonstrates the intended network.
+
+**Exit:** a visitor can explore a coherent lake-to-summit transport system, follow an individual ascent and understand its relationship to the wider Swiss network on both desktop and phone.
+
+### C — Broaden regional Switzerland
+
+Deliver Lausanne/Vaud or Basel/TNW first, choosing between them after a bounded source, geometry and payload audit. Continue through the remaining regions; each needs its own framing and signature scene.
+
+| Region | Intended character | Scope to establish |
+| --- | --- | --- |
+| Lausanne / Vaud | Métro and local rail connecting the city and its surroundings | tl métro/bus, LEB and regional rail; validate lake-service integration separately. |
+| Basel / TNW | A regional network crossing three national borders | BVB/BLT, regional rail and connecting buses; explicitly audit French and German coverage beyond the Swiss feed. |
+| Bern and surroundings | The existing national hub pulse spreading into its local network | BERNMOBIL, RBS, S-Bahn and connecting buses, with an authored hub-to-region transition. |
+| Ticino | Southern Switzerland and its connections into Italy | TILO, local buses and selected funicular/lake links; establish the Italian extent and source completeness. |
+| Graubünden | An Alpine railway network shaped by valleys and passes | RhB-led regional coverage, connecting PostBus services and selected mountain links, with closer terrain journeys. |
+
+- [ ] Produce a coverage matrix and bounded proof for each region before treating it as a complete network.
+- [ ] Retain source-language place names and real cross-border branches, with consistent translated controls.
+- [ ] Give every region full-day progressive loading, geographic context, search, category/line isolation and zoom-dependent detail.
+- [ ] Reuse authoritative national rail paths inside regional artifacts, replacing the current regional straight-stop rail interpolation where a credible match exists.
+- [ ] Validate local geometry independently by mode, operator and segment occurrence; expose unresolved fallbacks in provenance.
+
+**Exit:** each region feels authored for its own geography and transport rhythm, with transparent coverage and the same dependable exploration controls.
+
+### D — More Alpine and lake experiences
+
+- [ ] Develop Jungfrau as the next substantial mountain study: valley branches, Wengernalp and Jungfrau railways, and Eiger Express, with measured terrain and route-specific operating semantics.
+- [ ] Assess Gornergrat, Pilatus and Rochers-de-Naye as compact follow-camera journeys using the services already found in the national timetable.
+- [ ] Assess an Albula/Bernina journey within the Graubünden study, preserving credible curves, elevation, tunnels and international extent where supported.
+- [ ] Expand boat studies beyond Rigi to selected Lake Geneva, Lake Zürich and Ticino networks after auditing schedules, water geometry and seasonality.
+- [ ] Add a city–lake–mountain comparison on a shared service date and clock, extending the existing urban–rural contrast with distinct daily rhythms.
+
+**Exit:** the additional studies introduce meaningful differences in motion, terrain or connections; each is an independently satisfying experience with validated sources.
+
+### E — Make the growing collection feel complete
+
+- [ ] Expand existing ZVV, Genève and Zürich city multimodal studies to complete service days, retaining their lightweight opening views.
+- [ ] Add reproducible weekday/weekend and summer/winter selections using actual service calendars and independently versioned artifacts. Keep comparisons explicit when dates or observation sources differ.
+- [ ] Introduce a study browser organised by place and experience—national, regional, city, lake, mountain and journey—with clear names, previews, available dates, modes and time coverage.
+- [ ] Preserve orientation, selection and clock deliberately when moving between national, regional and journey views; explain unavailable times rather than silently substituting a different day.
+- [ ] Add shareable study links carrying the selected place, service date, time and supported focus state, with useful fallbacks when an artifact is unavailable.
+- [ ] Give each new study an authored opening composition and optional guided sequence; extend the adaptive soundtrack where the new setting warrants it.
+
+**Completion standard for every phase:** validate timetable semantics and source/geometry coverage; disclose scheduled, frequency-generated and observed motion accurately; retain attribution; keep EN / DE / FR / IT controls, keyboard/touch operation and reduced-motion behaviour coherent. Load optional studies on demand, preserve the existing 790 KiB compressed national opening budget unless deliberately revised, and establish measured per-study payload and frame-time budgets with desktop and physical-phone review. Mark implementation, device review and publication separately.
+
+**Preferred sequence:** A → B → first region from C → existing regional full-day upgrades from E → remaining regions and Alpine/lake studies. Frequency support and mode-specific geometry precede any study that depends on them; introduce the study browser as the catalogue grows.
+
+Reference sources for implementation audits: [Swiss GTFS and frequency semantics](https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/), [Rigi timetables](https://www.rigi.ch/en/inform/timetables), [Rigi access connections](https://www.rigi.ch/en/inform/arrival), [Jungfrau / Wengernalp network](https://www.jungfrau.ch/en-gb/corporate/jungfrau-railways/jungfraubahn-holding-ag/wengernalpbahn-ag/), [tl](https://www.t-l.ch/), [TNW](https://www.tnw.ch/en/) and [TILO](https://www.tilo.ch/en/chi-siamo/dati-e-fatti-tilo-new/). Operator pages establish intended network scope; they do not substitute for a validated machine-readable source or route geometry.
+
+
 ## 9 — Motion Studies / All Change
 
 - [x] Separate the visual language and CSS tokens from transport-domain types.
