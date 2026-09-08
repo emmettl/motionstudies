@@ -8,13 +8,13 @@ The catalogue for authored studies of cities and movement, and the home of the s
 
 | Study | Live page | Repository |
 | --- | --- | --- |
-| Gleislicht · Switzerland | [Open study](https://emmettl.github.io/gleislicht/) | [gleislicht](https://github.com/emmettl/gleislicht) |
-| All Change · London | [Open study](https://emmettl.github.io/allchange/) | [allchange](https://github.com/emmettl/allchange) |
-| Correspondances · Paris | [Open study](https://emmettl.github.io/correspondances/) | [correspondances](https://github.com/emmettl/correspondances) |
+| Gleislicht · Switzerland | [Open study](https://motionstudies.app/gleislicht/) | [gleislicht](https://github.com/emmettl/gleislicht) |
+| All Change · London | [Open study](https://motionstudies.app/allchange/) | [allchange](https://github.com/emmettl/allchange) |
+| Correspondances · Paris | [Open study](https://motionstudies.app/correspondances/) | [correspondances](https://github.com/emmettl/correspondances) |
 | Local / Express · New York | Private proof; publication held | [local-express (private)](https://github.com/emmettl/local-express) |
-| NORIKAE · Tokyo | [Investigation brief](docs/TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
-| MANIFEST · World trade | [Investigation brief](docs/MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
-| Umlauf · Berlin | [First proof and source contract](docs/BERLIN.md) | [umlauf (private)](https://github.com/emmettl/umlauf) |
+| NORIKAE · Tokyo | [Open study](https://motionstudies.app/norikae/) · [Brief](docs/TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
+| MANIFEST · World trade | [Open study](https://motionstudies.app/manifest/) · [Brief](docs/MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
+| Umlauf · Berlin | [Open study](https://motionstudies.app/umlauf/) · [Brief](docs/BERLIN.md) | [umlauf](https://github.com/emmettl/umlauf) |
 
 [Project goals](docs/VISION.md) · [Overall roadmap](ROADMAP.md) · [City briefs and source audits](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 
@@ -37,7 +37,7 @@ The package and lab directories retain their Git history from Gleislicht. Source
 
 ## Hosting
 
-Checks run for pushes and pull requests. Only `main` deploys the catalogue plus lab to GitHub Pages at `https://motionstudies.app/`. Cloudflare manages the domain DNS; the custom domain is configured in the repository’s Pages settings. The Actions deployment does not require a `CNAME` file. The catalogue links to the three independent public edition sites. Local / Express remains unpublished.
+Checks run for pushes and pull requests. Only `main` deploys the catalogue plus lab to GitHub Pages at `https://motionstudies.app/`. Cloudflare manages the domain DNS; the custom domain is configured in the repository’s Pages settings. The Actions deployment does not require a `CNAME` file. Cloudflare routes the six public edition paths to their independent GitHub Pages deployments; see [domain routing](docs/HOSTING.md). Local / Express remains unpublished.
 
 ## Local validation
 

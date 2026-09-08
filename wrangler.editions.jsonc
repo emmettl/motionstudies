@@ -1,0 +1,16 @@
+{
+  "name": "motionstudies-editions",
+  "main": "hosting/edition-router.mjs",
+  "compatibility_date": "2026-09-08",
+  "account_id": "8cac82a07417990e553f88793670f361",
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "motionstudies.app/gleislicht*", "zone_name": "motionstudies.app" },
+    { "pattern": "motionstudies.app/allchange*", "zone_name": "motionstudies.app" },
+    { "pattern": "motionstudies.app/correspondances*", "zone_name": "motionstudies.app" },
+    { "pattern": "motionstudies.app/umlauf*", "zone_name": "motionstudies.app" },
+    { "pattern": "motionstudies.app/norikae*", "zone_name": "motionstudies.app" },
+    { "pattern": "motionstudies.app/manifest*", "zone_name": "motionstudies.app" }
+  ]
+}
