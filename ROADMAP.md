@@ -298,7 +298,8 @@ Implemented foundation — 8 September 2026. All Change now has a source-audited
 - [x] Refine line/service labels, row limits, next-hour windows, line filters, long destinations, stable selection, accelerated playback and reduced motion for narrow cards.
 - [x] Align boards with the selected study clock, source date and loaded window; distinguish loading, partial coverage, errors/retry, no calls and the study boundary.
 - [x] Add top-right close controls and compact restore buttons that preserve map selection, playback and card state, including loading/error cards. Validate desktop and iPhone WebKit keyboard/touch flows.
-- [ ] Combine relevant TfL and National Rail calls without duplicates, retaining repeated visits and passenger-call restrictions. The current cards keep these timetable scopes separate.
+- [x] Combine TfL and National Rail calls at Stratford, Liverpool Street and Clapham Junction through either station entry point. Audited source IDs, service ownership and visit identities preserve repeated visits and passenger-call restrictions. Each source retains its loaded time range and independent retry; movement selection reaches the correct renderer. The board loads on selection within the unchanged opening budget. See All Change's `docs/COMBINED-STATION-BOARDS.md` for identities, source-call reconciliation and desktop/iPhone browser checks.
+- [ ] Extend combined boards to further interchanges after auditing source identities and coverage; complete physical-device and shared widget-lab review.
 - [ ] Add platform and operational status fields only where supported; distinguish scheduled/predicted times, cancellations and freshness when live feeds are introduced.
 - [ ] Complete shared widget-lab and physical-device review for mixed-operator, terminal and limited-data cases. Keep these reviews separate from the completed London browser integration checks.
 
