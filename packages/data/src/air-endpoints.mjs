@@ -89,7 +89,7 @@ export async function enrichAirEndpoints({ manifestPath, snapshotPaths = [], hea
       }
       const id = address & 0xffffff
       if (!wanted.has(id) || (address & 0x01000000)) continue
-      if ((latitude & 0x40000000) !== 0) {
+      if (latitude >= 0 && (latitude & 0x40000000) !== 0) {
         callsigns.set(id, buffer.subarray(offset + 8, offset + 16).toString('ascii').replaceAll('\0', '').trim().toUpperCase())
         continue
       }
@@ -134,6 +134,9 @@ export async function enrichAirEndpoints({ manifestPath, snapshotPaths = [], hea
       const full = byId.get(track.id)
       return { ...rest, ...(full?.origin ? { origin: full.origin } : {}), ...(full?.destination ? { destination: full.destination } : {}) }
     })
+    const bytes = Buffer.from(`${JSON.stringify(chunk)}\n`)
+    if ('bytes' in descriptor) descriptor.bytes = bytes.length
+    if ('sha256' in descriptor) descriptor.sha256 = createHash('sha256').update(bytes).digest('hex')
     writes.push([path, chunk])
   }
   writes.push([manifestPath, { ...manifest, metadata: { ...manifest.metadata, routeEnrichment: metadata }, aircraft }])
