@@ -15,6 +15,6 @@ Motion Studies is a series of authored works about how places move. Each edition
 
 Every stage should leave a coherent study that can be viewed and assessed. A new city begins with a local thesis, source audit and bounded proof. Its signature composition and publication path must be defensible before it earns a catalogue number or expands into a larger atlas.
 
-The shared/local boundary is now enforced through four coordinated npm packages. Shared changes are exercised in the [widget lab](https://emmettl.github.io/motionstudies/lab/), checked as packed consumers and released explicitly. Each edition chooses when to adopt a version and passes its own build and browser gates before deployment.
+The shared/local boundary is now enforced through four coordinated npm packages. Shared changes are exercised in the [widget lab](https://motionstudies.app/lab/), checked as packed consumers and released explicitly. Each edition chooses when to adopt a version and passes its own build and browser gates before deployment.
 
 See the [roadmap](../ROADMAP.md) for delivery history and outstanding work, the [catalogue programme](CATALOGUE.md) for admission criteria and priorities, and the [study index](README.md) for every place brief. The original Swiss goals are preserved in [Gleislicht](GLEISLICHT.md).

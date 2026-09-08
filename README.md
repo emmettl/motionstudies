@@ -1,6 +1,6 @@
 # Motion Studies
 
-**[Open Motion Studies catalogue](https://emmettl.github.io/motionstudies/)** · [Widget lab](https://emmettl.github.io/motionstudies/lab/)
+**[Open Motion Studies catalogue](https://motionstudies.app/)** · [Widget lab](https://motionstudies.app/lab/)
 
 The catalogue for authored studies of cities and movement, and the home of the shared transport packages and widget lab.
 
@@ -37,7 +37,7 @@ The package and lab directories retain their Git history from Gleislicht. Source
 
 ## Hosting
 
-Checks run for pushes and pull requests. Only `main` deploys the catalogue plus lab to Pages. The catalogue links to the three independent public edition sites. Local / Express remains unpublished.
+Checks run for pushes and pull requests. Only `main` deploys the catalogue plus lab to GitHub Pages at `https://motionstudies.app/`. Cloudflare manages the domain DNS; the custom domain is configured in the repository’s Pages settings. The Actions deployment does not require a `CNAME` file. The catalogue links to the three independent public edition sites. Local / Express remains unpublished.
 
 ## Local validation
 
