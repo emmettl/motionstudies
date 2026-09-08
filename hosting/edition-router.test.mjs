@@ -11,6 +11,11 @@ describe('public edition routing', () => {
     expect(new Uint8Array(await response.arrayBuffer())).toEqual(bytes)
     expect(response.headers.get('content-type')).toBe('application/octet-stream')
   })
+  it('redirects HTTP edition requests to HTTPS', async () => {
+    const response = await worker.fetch(new Request('http://motionstudies.app/gleislicht/data/file.json?v=2'))
+    expect(response.status).toBe(308)
+    expect(response.headers.get('location')).toBe('https://motionstudies.app/gleislicht/data/file.json?v=2')
+  })
   it('adds the trailing slash without losing query strings', async () => {
     const response = await worker.fetch(new Request('https://motionstudies.app/umlauf?view=water'))
     expect(response.status).toBe(308)

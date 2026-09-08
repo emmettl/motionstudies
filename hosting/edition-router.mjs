@@ -11,8 +11,9 @@ export default {
     if (!['GET', 'HEAD'].includes(request.method)) {
       return new Response('Method not allowed', { status: 405, headers: { Allow: 'GET, HEAD' } })
     }
-    if (url.pathname === `/${edition}`) {
-      url.pathname += '/'
+    if (url.protocol !== 'https:' || url.pathname === `/${edition}`) {
+      url.protocol = 'https:'
+      if (url.pathname === `/${edition}`) url.pathname += '/'
       return Response.redirect(url.href, 308)
     }
     const upstream = new URL(url.pathname + url.search, origin)
