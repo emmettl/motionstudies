@@ -1,5 +1,9 @@
 import { expect, test } from '@playwright/test'
 
+declare global {
+  interface Window { rejectTestLocation?: () => void }
+}
+
 test('Now follows the wall clock, leaves on scrub and speed changes, and catches up after a gap', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-09-08T11:59:00Z') })
   await page.clock.pauseAt(new Date('2026-09-08T12:00:00Z'))
@@ -50,7 +54,7 @@ test('a declined or late location response does not interrupt Now', async ({ pag
   await page.addInitScript(() => {
     Object.defineProperty(navigator, 'geolocation', { value: {
       getCurrentPosition: (_success: PositionCallback, error: PositionErrorCallback) => {
-        setTimeout(() => error({ code: 1 } as GeolocationPositionError), 300)
+        window.rejectTestLocation = () => error({ code: 1 } as GeolocationPositionError)
       },
     } })
   })
@@ -58,9 +62,12 @@ test('a declined or late location response does not interrupt Now', async ({ pag
   await page.getByRole('button', { name: '06 Now' }).click()
   await page.getByRole('button', { name: 'Now', exact: true }).click()
   await page.getByRole('button', { name: 'Use my location' }).click()
+  await expect(page.getByText('Finding your location…', { exact: true })).toBeVisible()
+  await page.evaluate(() => window.rejectTestLocation?.())
   await expect(page.getByText('Location permission was declined.', { exact: false })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Now', exact: true })).toHaveAttribute('aria-pressed', 'true')
   await page.getByRole('button', { name: 'Use my location' }).click()
   await page.getByRole('button', { name: 'Clear location' }).click()
+  await page.evaluate(() => window.rejectTestLocation?.())
   await expect(page.getByText('Location stays in this browser.', { exact: false })).toBeVisible()
 })
