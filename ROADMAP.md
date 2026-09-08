@@ -268,6 +268,61 @@ Reference sources for implementation audits: [Swiss GTFS and frequency semantics
 
 See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/LONDON.md](./docs/LONDON.md) for the second-edition plan.
 
+## 9A — All Change: passenger flow and the rhythm of the city
+
+Planned expansion — 8 September 2026. Deepen the London study by revealing where people gather, transfer, disperse and wait. The preferred next feature is a bounded passenger-demand study, ahead of a broad Darwin rollout. Live National Rail remains a later operational strand; this sequence prioritises understanding the city's daily flow. Unchecked items below are proposals, not implemented features or verified source access.
+
+### A — Passenger pulse: Bank and Stratford first
+
+- [ ] Audit a published TfL NUMBAT release: retain source year, typical-day category, terms, input hashes, station/platform identities and coverage. Confirm usable Bank and Stratford interchange flows before committing the visual design.
+- [ ] Compile a small, separately loaded artifact containing 15-minute directional link loads, station entries/exits, boarders/alighters and internal interchange flows where available. Do not infer unsupported origin–destination journeys from aggregate counts or extend TfL coverage to all National Rail services.
+- [ ] Build a passenger pulse at Bank and Stratford that distinguishes people entering the railway, leaving it and changing trains. Keep passenger volume visually distinct from service frequency and avoid double-counting transfers.
+- [ ] Surface available passenger-demand data on the hero card for any station with a validated source match, beyond the initial Bank/Stratford showcase. Show supported entry, exit and interchange counts for the current 15-minute study-clock interval, with a compact daily profile and current-time marker linking to the fuller passenger pulse where available. Label units, source year, typical-day category and covered modes or station areas; preserve measured zeroes and omit unavailable metrics rather than treating missing data as zero. Load details on selection and keep the card compact and accessible on phones.
+- [ ] Add an authored “Where does the morning go?” sequence, contrasting the morning and evening and showing directional demand along selected tracks in both geography and diagram layouts.
+- [ ] Keep typical-day passenger demand and the dated timetable explicitly identified. NUMBAT describes a modelled typical autumn day, not observed occupancy on an individual train on 4 September 2026. Do not attach aggregate loads to individual trains as measured counts.
+
+**First milestone:** a visitor can compare Bank and Stratford, scrub through the day and understand each station's entry, exit and interchange rhythm. Their hero cards expose the supported demand measures at the selected time; the same card treatment works for every other station with validated coverage. Validate source mapping and aggregation, preserve the existing opening payload budget through lazy loading, and review the composition on desktop and a physical phone before widening coverage.
+
+### A1 — Departure boards on station hero cards
+
+The shared `SplitFlapBoard` already supports configurable columns and selectable rows, and All Change's separate `LondonNationalRailBoard` provides arrivals/departures, service selection, movement seeking and pulse links. These are the starting points for adaptation; station hero-card integration and its visual refinement remain future work.
+
+- [ ] Audit and reuse the shared board widget and existing London call-selection logic to embed a compact departure board in station hero cards wherever timetable or operational calls are available. Keep board availability independent of passenger-demand coverage; a station can have either or both. Retain an arrivals option and the existing service-selection, movement and pulse interactions.
+- [ ] Adapt the presentation to rail: time, destination/origin and line or service identity, with operator, platform and operational remarks only where supported and useful. Combine relevant TfL and National Rail calls without duplicates, preserve repeated station visits and passenger-call restrictions, and make partial operator coverage clear.
+- [ ] Refine the board for frequent urban services, long station names and narrow phone cards: establish useful row limits, time horizons and line filters; preserve readable destinations, stable row identity and selection during updates; and tune flap animation for accelerated playback, scrubbing and reduced motion. Review the board and passenger-demand profile together so neither overwhelms the station identity.
+- [ ] Keep board times aligned with the selected study clock, service date and available window, including midnight continuations. Distinguish loading, partial data, failed downloads, no calls and the end of the study. When live data is added, separate scheduled and predicted times, cancellations and freshness rather than implying the historical board is live.
+- [ ] Validate the combined hero card in the widget lab and London integration with representative high-frequency, mixed-operator, terminal and limited-data stations. Check keyboard/touch selection, full accessible destination text, phone layout and animation behaviour before rolling it out across station selections.
+
+**Delivery:** refine the departure board alongside the first passenger hero cards. It can ship using existing timetable data without waiting for NUMBAT or Darwin access; any shared widget changes follow the normal package release and edition upgrade path.
+
+### B — Cycle hire and movement above ground
+
+- [ ] Audit and compile one complete Santander cycle-hire day, matching the existing study date if available or presenting a separately dated study. Retain recorded start/end stations and times, source coverage and exclusions.
+- [ ] Show dock-to-dock connections and net departures/returns to reveal short-distance circulation and neighbourhood imbalances. The records establish journey endpoints and duration, not actual street routes; label any routed reconstruction and do not imply all London cycling is represented.
+- [ ] Investigate the City of London's pedestrian, wheeling and cycle surveys for a bounded Square Mile composition. Confirm access to detailed counts, survey times and locations; report repeated crossings as counts rather than unique people and leave unmeasured streets unfilled.
+- [ ] Use published TfL bus speed, reliability and excess-waiting summaries to compare selected surface corridors. Keep reporting-period summaries separate from a particular day's motion; recorded observations are required before showing actual bus bunching or dated delays.
+
+**Exit:** the study connects railway interchange to evidenced surface movement, with each source's geographic and temporal coverage visible.
+
+### C — Distance, crossings and the city after midnight
+
+- [ ] Build “How far away is this place, really?”: from a selected station, reveal 15-, 30- and 45-minute reachable areas and how they change with departure time. Start with existing timetables plus validated walking links and interchange times; audit routing completeness before making door-to-door claims. TfL WebCAT/TIM is a reference and potential source subject to access and reuse checks; PTAL measures access to transport, not destination travel times.
+- [ ] Build “How does the Thames divide the city?” around selected crossings, comparing directional rail demand, scheduled buses, cycle-hire connections and pedestrian counts only where supported. Show differences in source dates and semantics; dock endpoints alone do not establish which bridge a cyclist used.
+- [ ] Build “What stays connected after midnight?” from existing full-day services: last departures, remaining night routes and widening service gaps. Preserve originating service days across midnight and add passenger demand only for supported periods. This can proceed without acquiring a new feed.
+- [ ] Assess PLA tidal information as a slower rhythm for the Thames composition after validating historical coverage, machine-readable access and reuse terms. Keep predicted tides, observed water levels and current direction distinct.
+- [ ] Assess London Air Quality Network readings as optional environmental context on a matching day. Distinguish measured locations from modelled surfaces and do not infer traffic causation from coincident concentration changes.
+
+### Source boundaries and delivery order
+
+The GLA High Streets Data Service's richer partnership footfall tools are restricted to subscribed boroughs and Business Improvement Districts; public reports and boundaries do not establish a reusable citywide hourly feed. Census 2021 commuting flows reflect pandemic conditions and must not stand in for contemporary daily demand. Broader pedestrian, mobile-location or event-driven flow studies remain dependent on suitable evidence and reuse rights.
+
+**Preferred sequence:** NUMBAT source audit → Bank/Stratford passenger pulse → one cycle-hire day → wider demand and selected street/crossing studies. Travel-time and after-midnight studies can build on existing timetable data after their routing and calendar checks. Continue Darwin as a separate live-operations phase after the first passenger-flow milestone.
+
+**Completion standard:** each addition answers a specific question about London; preserves selection, clock and the geography/diagram relationship where applicable; exposes dates, provenance, missing coverage and scheduled/observed/modelled distinctions; loads optional data progressively; and passes relevant source, aggregation, accessibility, reduced-motion, payload and device checks. Record implementation, physical-device review and publication separately.
+
+Reference sources for implementation audits: [TfL NUMBAT and open-data catalogue](https://tfl.gov.uk/info-for/open-data-users/our-open-data?intcmp=3671), [NUMBAT files](https://crowding.data.tfl.gov.uk/), [Santander journey files](https://cycling.data.tfl.gov.uk/), [City of London transport surveys](https://www.cityoflondon.gov.uk/services/streets/strategies-and-resources/transport-strategy), [TfL bus performance](https://tfl.gov.uk/corporate/publications-and-reports/buses-performance-data?intcmp=3089), [WebCAT](https://tfl.gov.uk/info-for/urban-planning-and-construction/planning-applications/planning-with-webcat?intcmp=25861), [PLA tidal information guide](https://pla.co.uk/sites/default/files/2024-04/PLA-%20Port-Information-Guide-2024.pdf), [London Air API](https://londonair.org.uk/LondonAir/API/), [GLA partnership access](https://data.london.gov.uk/high-street-data-service/hsds-partnership-data) and [ONS commuting-data limitations](https://blog.ons.gov.uk/2022/12/08/understanding-commuting-patterns-from-census-2021/).
+
+
 ## 10 — Catalogue programme
 
 - [x] Fix the first four-work catalogue: 005 Gleislicht, 006 All Change, 007 Local / Express and 008 Correspondances.
