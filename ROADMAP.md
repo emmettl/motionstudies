@@ -173,6 +173,7 @@ The committed 4 September 2026 national full-day timetable already contains serv
 
 ### A — Make existing mountain coverage discoverable
 
+- [x] Deliver the first source-type 116 cogwheel filter for the national morning and full-day views, with operator search, matching-feed catalogue validation and a repeatable source audit. The 4 September fixture contains 403 joined services; 14 Monte Generoso segment occurrences remain unresolved. Desktop Chromium and emulated iPhone WebKit checks pass; physical-device review and publication remain open. See [the first increment and coverage limits](https://github.com/emmettl/gleislicht/blob/main/docs/MOUNTAIN-TRANSPORT.md).
 - [ ] Audit mountain railway, funicular, cableway and boat coverage by operator, route, operating date and time window; report missing services and geometry separately.
 - [ ] Preserve source operator and transport-type evidence through preprocessing, and distinguish cogwheel/mountain services where supported rather than leaving them hidden in `other` or guessing from route names.
 - [ ] Add searchable mountain destinations, operator/line discovery and a mountain-service filter with clear category labels in EN / DE / FR / IT.
