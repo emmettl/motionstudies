@@ -2,19 +2,20 @@
 
 The catalogue and widget lab are built by this repository’s Pages workflow. GitHub Pages retains `motionstudies.app` as the custom domain and enforces HTTPS. Cloudflare DNS proxies the apex records; SSL/TLS uses Full (Strict) against GitHub’s valid origin certificate.
 
-The `motionstudies-editions` Worker forwards five public edition prefixes to the corresponding `https://emmettl.github.io/<edition>/` deployment:
+All six public editions are hosted directly by individual Cloudflare Workers Static Assets deployments. GitHub Pages remains available at each repository's original URL.
 
-| Path | Edition |
-| --- | --- |
-| `/allchange/` | London |
-| `/correspondances/` | Paris |
-| `/umlauf/` | Berlin |
-| `/norikae/` | Tokyo |
-| `/manifest/` | World trade |
+| Path | Edition | Cloudflare Worker |
+| --- | --- | --- |
+| `/gleislicht/` | Switzerland | `gleislicht-hosting` |
+| `/allchange/` | London | `allchange-hosting` |
+| `/correspondances/` | Paris | `correspondances-hosting` |
+| `/umlauf/` | Berlin | `umlauf-hosting` |
+| `/norikae/` | Tokyo | `norikae-hosting` |
+| `/manifest/` | World trade | `manifest-hosting` |
 
-Gleislicht at `/gleislicht/` is served directly by the `gleislicht-hosting` Worker described below. Each edition’s own workflow continues to publish its code and datasets. No copying or combined rebuild is required. Paths, queries, conditional requests and byte ranges are preserved; slashless edition paths redirect to their directory URL. Only GET and HEAD are forwarded. Cookies and authorization headers are not sent to GitHub. Other paths continue to the catalogue origin. New York is deliberately excluded while its publication hold remains unresolved.
+Each edition owns its `motionstudies.app/<edition>*` route. Prefix routes include slashless URLs with query strings; unmatched files return 404. The retired `motionstudies-editions` proxy has no routes. New York remains excluded while its publication hold is unresolved. MANIFEST's existing public route is retained without adding catalogue links; its published vessel data remains synthetic.
 
-The root and `/lab/` bypass the Worker. The DNS-only `www` record continues to GitHub Pages, which redirects it to the apex domain and preserves the path.
+The root and `/lab/` continue to the catalogue's GitHub Pages origin. The DNS-only `www` record redirects through GitHub Pages to the apex domain and preserves the path.
 
 ## Gleislicht Cloudflare hosting
 
@@ -58,6 +59,44 @@ To roll back a Cloudflare release, disable `cloudflare.yml` and republish an ear
 
 To restore the GitHub Pages proxy at `/gleislicht/`, first disable the production publishing workflow. Restore `gleislicht` to the proxy's edition allowlist and deploy its code before transferring `motionstudies.app/gleislicht*` back to `motionstudies-editions` in Cloudflare. Update both Wrangler configurations to reflect that ownership change before their next deployment. If old pilot redirects are still needed, retain exact `/gleislicht-pilot` and `/gleislicht-pilot/*` routes on `gleislicht-hosting`. The retired `gleislicht-hosting-pilot` Worker is retained without routes as a recovery snapshot and is no longer published by CI.
 
+## Other edition publishing
+
+`hosting/editions.json` explicitly allows All Change, Correspondances, Umlauf, Norikae and MANIFEST. `scripts/publish-edition.py` uses each edition's own successful main-branch `pages.yml` artifact, validates its required entry/data files and approved data paths, and copies source bytes under the edition's URL prefix. The existing Gleislicht publishing gates are preserved separately in its established publisher.
+
+The generic publisher also rejects archive traversal, links, special files, duplicate or reserved hosting files, unhashed `/assets/` filenames, oversized files and excessive file counts. MANIFEST's public manifest must remain labelled `synthetic` and `synthetic-only`; adding observed data requires a separate reviewed publication change. This deployment does not change any study's data or source labels.
+
+Each `wrangler.<edition>.jsonc` config names a separate `<edition>-hosting` Worker. `_release.json` records source repository, run, commit, file count, bytes and a content digest. Responses use `X-Motion-Studies-Hosting: cloudflare-static`. Hashed `/assets/*` files receive a one-year immutable browser TTL; documents, stable datasets and manifests revalidate, and release metadata uses `no-cache`. Data outside `/assets/`, including MANIFEST's demo chunks, retains revalidation.
+
+Each edition's `cloudflare.yml` follows its exact Pages workflow name (`Deploy Pages`, or `Deploy to GitHub Pages` for Norikae), and checks out this repository's publisher at a reviewed commit. It accepts only successful `main` releases from the same repository, serializes deployments and checks again for superseding releases immediately before publishing. After deployment it verifies live release identity, cache headers and absence of `noindex`. GitHub Pages publication succeeds independently of Cloudflare.
+
+### Verified rollout
+
+All five direct deployments were verified on 2026-09-09: live release identity, browser cache policies, main pages, analytics injection, playback/data loading and parallel GitHub Pages availability. The proxy now has zero routes.
+
+| Edition | Successful source Pages run | Files | MiB |
+| --- | --- | ---: | ---: |
+| allchange | [34340913917](https://github.com/emmettl/allchange/actions/runs/34340913917) | 1,777 | 67.5 |
+| correspondances | [34340909755](https://github.com/emmettl/correspondances/actions/runs/34340909755) | 218 | 31.8 |
+| umlauf | [34340912865](https://github.com/emmettl/umlauf/actions/runs/34340912865) | 11 | 3.0 |
+| norikae | [34340915029](https://github.com/emmettl/norikae/actions/runs/34340915029) | 6 | 1.2 |
+| manifest | [34340918207](https://github.com/emmettl/manifest/actions/runs/34340918207) | 41 | 129.6 |
+
+### CI activation
+
+The five `cloudflare` environments allow deployments only from the `main` branch. Their workflows remain gated by the repository variable `CLOUDFLARE_ENABLED` until `CLOUDFLARE_API_TOKEN` is configured in each environment. The credential needs the same existing Cloudflare account Workers Scripts edit and `motionstudies.app` Workers Routes edit plus Zone read permissions used by Gleislicht. Credential distribution requires approval; do not store plaintext in files, commits, logs or artifacts.
+
+After securely setting the five environment secrets, set each repository variable `CLOUDFLARE_ENABLED=true` and manually dispatch its `cloudflare.yml` with the latest successful Pages `source_run_id` to verify activation. Set the variable to `false` to pause publishing before rollback. The same workflow then follows successful Pages releases automatically. Advance its pinned hosting-tools commit when updating publisher code.
+
+Local publishing uses the existing authenticated `gh` and Wrangler login:
+
+```sh
+python3 scripts/test-edition-hosting.py
+python3 scripts/publish-edition.py --edition allchange --run RUN_ID
+python3 scripts/publish-edition.py --edition allchange --run RUN_ID --require-latest --deploy
+```
+
+The default performs a dry run. Successful publication cleans up its temporary payload; failed publication retains staging for recovery. To roll back a release, pause CI and publish an earlier successful Pages artifact without `--require-latest`, or select a previous deployment of that edition's Worker. To restore proxy hosting, deploy the retained router code and transfer only that edition's route back to `motionstudies-editions`, updating the affected Wrangler configurations before the next deployment.
+
 ## Visitor analytics
 
 Cloudflare Web Analytics covers both public hostnames. In the account's [Web Analytics dashboard](https://dash.cloudflare.com/8cac82a07417990e553f88793670f361/web-analytics/sites), select `motionstudies.app` or `emmettl.github.io`, or view all sites and filter by Host and Path to compare editions.
@@ -78,4 +117,4 @@ The existing Swiss and London live-data Workers include `https://motionstudies.a
 
 Check every edition document, its referenced JavaScript/CSS, and its initial data requests. Verify the catalogue, lab, www redirect and live-data CORS responses too. Existing GitHub Pages edition URLs remain available.
 
-To stop proxying an edition, remove its Cloudflare route (and its catalogue link) while retaining the independent edition site. To roll back all routing, remove the five proxy Worker routes and restore the catalogue links to their GitHub Pages URLs. DNS can remain proxied with Full (Strict); the catalogue origin is still GitHub Pages.
+To stop proxying an edition, remove its Cloudflare route (and its catalogue link) while retaining the independent edition site. To roll back all routing, transfer the affected routes to the retained proxy or remove them and restore catalogue links to their GitHub Pages URLs. DNS can remain proxied with Full (Strict); the catalogue origin is still GitHub Pages.

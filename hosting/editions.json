@@ -1,0 +1,36 @@
+{
+  "allchange": {
+    "required": [
+      "data/all-change-rail-led-morning.json",
+      "data/all-change-day-manifest.json"
+    ],
+    "data_pattern": "data/all-change[^/]*(?:/.*)?"
+  },
+  "correspondances": {
+    "required": [
+      "data/correspondances-morning.json",
+      "data/correspondances-day-manifest.json"
+    ],
+    "data_pattern": "data/correspondances[^/]*(?:/.*)?"
+  },
+  "umlauf": {
+    "required": [
+      "data/berlin-morning.json",
+      "data/ring-layout.json"
+    ],
+    "data_pattern": "data/(?:berlin-morning|berlin-water|ostkreuz-bridge|ostkreuz|lineage|ring-layout)\\.json"
+  },
+  "norikae": {
+    "required": [
+      "data/synthetic-preview.json"
+    ],
+    "data_pattern": "data/synthetic-preview\\.json"
+  },
+  "manifest": {
+    "required": [
+      "data/demo-study.json",
+      "data/ports.json"
+    ],
+    "data_pattern": "data/(?:demo/[^/]+-[0-9a-f]{12}\\.json|demo-study\\.json|ports\\.json|port-statistics\\.json|land\\.geojson)"
+  }
+}
