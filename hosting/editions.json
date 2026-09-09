@@ -32,5 +32,13 @@
       "data/ports.json"
     ],
     "data_pattern": "data/(?:demo/[^/]+-[0-9a-f]{12}\\.json|demo-study\\.json|ports\\.json|port-statistics\\.json|land\\.geojson)"
+  },
+  "grid84": {
+    "required": [
+      "data/hyde/index.json",
+      "data/hyde/popc_1961.json",
+      "data/hyde/popc_1961.bin.gz"
+    ],
+    "data_pattern": "data/hyde/(?:index\\.json|popc_[0-9]{4}\\.(?:json|bin\\.gz))"
   }
 }

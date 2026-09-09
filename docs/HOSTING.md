@@ -12,6 +12,7 @@ All six public editions are hosted directly by individual Cloudflare Workers Sta
 | `/umlauf/` | Berlin | `umlauf-hosting` |
 | `/norikae/` | Tokyo | `norikae-hosting` |
 | `/manifest/` | World trade | `manifest-hosting` |
+| `/grid84/` | Grid/84 Terminal Atlas (adjunct) | `grid84-hosting` |
 
 Each edition owns its `motionstudies.app/<edition>*` route. Prefix routes include slashless URLs with query strings; unmatched files return 404. The retired `motionstudies-editions` proxy has no routes. New York remains excluded while its publication hold is unresolved. MANIFEST's existing public route is retained without adding catalogue links; its published vessel data remains synthetic.
 
@@ -106,6 +107,14 @@ python3 scripts/publish-edition.py --edition allchange --run RUN_ID --require-la
 ```
 
 The default performs a dry run. Successful publication cleans up its temporary payload; failed publication retains staging for recovery. To roll back a release, pause CI and publish an earlier successful Pages artifact without `--require-latest`, or select a previous deployment of that edition's Worker. To restore proxy hosting, deploy the retained router code and transfer only that edition's route back to `motionstudies-editions`, updating the affected Wrangler configurations before the next deployment.
+
+## Grid/84 hosting
+
+[Grid/84](https://motionstudies.app/grid84/) is an adjunct, not an edition: a world-state playback engine with its execution studies, kept in the [grid84](https://github.com/emmettl/grid84) repository and hosted by the same publisher as `grid84-hosting` on `motionstudies.app/grid84*`. It is not listed in the catalogue.
+
+Its Pages artifact carries the application, the grids index and the HYDE 3.3 study grids under `data/hyde/` (about 66 MiB, every file under 5 MiB). HYDE is CC BY-NC-SA 4.0; the site is non-commercial and every readout that uses a grid names it and its licence. The GHSL tiles are not in the artifact: the site reads them across origins from the `grid84-grids` R2 bucket named in its grids index, whose CORS rule allows GET from any origin. The map's vector tiles come from OpenFreeMap and terrain from the AWS terrain tiles, as in development. The application uses hash routes under a relative base, so it runs unchanged under `/grid84/` and at its GitHub Pages URL.
+
+Publishing follows the generic path: `python3 scripts/publish-edition.py --edition grid84 --run RUN_ID [--deploy]`, and the repository's `cloudflare.yml` follows its successful main-branch `Deploy Pages` runs once its `cloudflare` environment holds `CLOUDFLARE_API_TOKEN` and the repository variable `CLOUDFLARE_ENABLED` is `true`.
 
 ## Visitor analytics
 
