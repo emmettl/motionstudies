@@ -20,7 +20,7 @@ The root and `/lab/` bypass the Worker. The DNS-only `www` record continues to G
 
 [Open Gleislicht](https://motionstudies.app/gleislicht/). The `gleislicht-hosting` Worker hosts a complete copy of a successful Gleislicht GitHub Pages artifact using Workers Static Assets. Files are served directly from Cloudflare storage, without a GitHub origin fetch, application Worker handler, R2 bucket or extra live-data service.
 
-`wrangler.gleislicht.jsonc` owns the exact `/gleislicht` route and `/gleislicht/*`, plus the old `/gleislicht-pilot` and `/gleislicht-pilot/*` routes for permanent redirects to the equivalent production paths. The edition proxy no longer owns a Gleislicht route. Catalogue links already use `/gleislicht/` and require no URL change. [GitHub Pages](https://emmettl.github.io/gleislicht/) remains an independently available parallel copy. The private Sites preview is a separate deployment.
+`wrangler.gleislicht.jsonc` owns `motionstudies.app/gleislicht*`, covering the production directory, slashless links with query strings, and old pilot links. `/gleislicht-pilot` and its subpaths permanently redirect to the equivalent production paths. Other unmatched suffixes return 404. The edition proxy no longer owns a Gleislicht route. Catalogue links already use `/gleislicht/` and require no URL change. [GitHub Pages](https://emmettl.github.io/gleislicht/) remains an independently available parallel copy. The private Sites preview is a separate deployment.
 
 The existing realtime CORS permissions and automatic Web Analytics injection apply to the production URL. Responses carry `X-Motion-Studies-Hosting: cloudflare-static`; the pilot's `noindex` directive is removed. Missing files return 404 instead of application HTML. Directory URLs receive a trailing slash, preserving relative asset and data URLs.
 
@@ -56,7 +56,7 @@ After publishing, check release metadata, page and referenced assets, initial JS
 
 To roll back a Cloudflare release, disable `cloudflare.yml` and republish an earlier successful Pages artifact locally without `--require-latest`, or select a previous deployment of `gleislicht-hosting` in Cloudflare. Re-enable CI when ready to follow new releases again.
 
-To restore the GitHub Pages proxy at `/gleislicht/`, first disable the production publishing workflow. Restore `gleislicht` to the proxy's edition allowlist and deploy the router with its former `motionstudies.app/gleislicht*` route. Once that fallback route exists, remove the two exact production routes from `gleislicht-hosting`; the broader proxy route then serves visitors. Keep the old pilot redirect routes assigned to `gleislicht-hosting`. The retired `gleislicht-hosting-pilot` Worker is retained without routes as a recovery snapshot and is no longer published by CI.
+To restore the GitHub Pages proxy at `/gleislicht/`, first disable the production publishing workflow. Restore `gleislicht` to the proxy's edition allowlist and deploy its code before transferring `motionstudies.app/gleislicht*` back to `motionstudies-editions` in Cloudflare. Update both Wrangler configurations to reflect that ownership change before their next deployment. If old pilot redirects are still needed, retain exact `/gleislicht-pilot` and `/gleislicht-pilot/*` routes on `gleislicht-hosting`. The retired `gleislicht-hosting-pilot` Worker is retained without routes as a recovery snapshot and is no longer published by CI.
 
 ## Visitor analytics
 

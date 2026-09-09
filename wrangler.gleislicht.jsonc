@@ -5,10 +5,10 @@
   "workers_dev": false,
   "preview_urls": false,
   "routes": [
-    { "pattern": "motionstudies.app/gleislicht", "zone_name": "motionstudies.app" },
-    { "pattern": "motionstudies.app/gleislicht/*", "zone_name": "motionstudies.app" },
-    { "pattern": "motionstudies.app/gleislicht-pilot", "zone_name": "motionstudies.app" },
-    { "pattern": "motionstudies.app/gleislicht-pilot/*", "zone_name": "motionstudies.app" }
+    {
+      "pattern": "motionstudies.app/gleislicht*",
+      "zone_name": "motionstudies.app"
+    }
   ],
   "assets": {
     "directory": ".hosting-assets",
