@@ -36,7 +36,7 @@ The workflow checks out these hosting tools at a reviewed commit, uses the editi
 
 CI serializes Cloudflare deployments without cancelling active uploads. `--require-latest` skips releases superseded by a newer successful Pages run, with a second check immediately before deployment. After publishing, the command verifies live release metadata, the long-lived asset versus revalidating document/data cache policies, and the absence of `noindex`, retrying briefly for edge propagation. A verification failure fails the workflow.
 
-The original [successful pilot CI publication](https://github.com/emmettl/gleislicht/actions/runs/34343835256) established the deployment credential and publishing gates on 2026-09-09. The old pilot workflow is disabled and replaced by the production workflow.
+The original [successful pilot CI publication](https://github.com/emmettl/gleislicht/actions/runs/34343835256) established the deployment credential and publishing gates on 2026-09-09. The old pilot workflow is disabled and replaced by the production workflow. The first [successful production CI publication](https://github.com/emmettl/gleislicht/actions/runs/34347417910) verified the promoted release and cache policies. Morning and full-day studies, analytics injection, query-preserving redirects, the parallel GitHub Pages site and the other five edition routes were also checked after promotion.
 
 For local publishing, use a completed, successful main-branch run of Gleislicht's `pages.yml`; the publisher rejects failed, pending, foreign-repository and other-workflow runs. The run must still have its `github-pages` artifact available. It already passed the edition's build, publication and browser gates.
 
