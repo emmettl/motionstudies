@@ -53,6 +53,10 @@ def stage_artifact(archive, destination, run):
                 raise ValueError("Asset exceeds Cloudflare's 25 MiB limit: " + name)
             if re.search(r"(^|/)(all-change|correspondances|local-express|new-york)", name):
                 raise ValueError("Foreign edition in Swiss artifact: " + name)
+            # Everything under /assets/ receives an immutable browser cache policy.
+            # Keep stable filenames out of that namespace as builds evolve.
+            if name.startswith("assets/") and not re.fullmatch(r"assets/[^/]+-[A-Za-z0-9_-]{8}\.[A-Za-z0-9.]+", name):
+                raise ValueError("Immutable asset must have a Vite content hash: " + name)
             files[name] = member
         if len(files) + 1 > MAX_FILES:
             raise ValueError("Artifact exceeds Cloudflare's free asset count limit")
@@ -89,6 +93,8 @@ def stage_artifact(archive, destination, run):
             "/gleislicht-pilot/*\n"
             "  X-Motion-Studies-Hosting: cloudflare-pilot\n"
             "  X-Robots-Tag: noindex\n"
+            "\n/gleislicht-pilot/assets/*\n"
+            "  Cache-Control: public, max-age=31536000, immutable\n"
             "\n/gleislicht-pilot/_release.json\n"
             "  Cache-Control: no-cache\n"
         )

@@ -68,6 +68,17 @@ class PilotPublicationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             pilot.stage_artifact(self.archive(entry), self.root / "assets", self.run)
 
+    def test_immutable_namespace_requires_hashed_filenames(self):
+        for name in ["assets/config.json", "assets/index.js", "assets/styles.css", "assets/nested/index.js"]:
+            with self.subTest(name=name), self.assertRaises(ValueError):
+                pilot.stage_artifact(self.archive(tarfile.TarInfo(name)), self.root / "assets", self.run)
+            self.assertFalse((self.root / "assets").exists())
+        staged = self.root / "assets"
+        pilot.stage_artifact(self.archive(tarfile.TarInfo("assets/index-BC56FVMz.js")), staged, self.run)
+        headers = (staged / "_headers").read_text()
+        immutable_rules = [rule for rule in headers.split("\n\n") if "immutable" in rule]
+        self.assertEqual(immutable_rules, ["/gleislicht-pilot/assets/*\n  Cache-Control: public, max-age=31536000, immutable"])
+
     def test_size_and_count_limits_are_enforced(self):
         from unittest.mock import patch
         archive = self.archive()

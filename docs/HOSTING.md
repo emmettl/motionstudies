@@ -25,6 +25,8 @@ The root and `/lab/` bypass the Worker. The DNS-only `www` record continues to G
 
 The pilot uses the same origin as the live edition, so the existing realtime CORS permissions and automatic Web Analytics injection apply. Filter analytics by `/gleislicht-pilot/` to distinguish pilot visits. Responses carry `X-Motion-Studies-Hosting: cloudflare-pilot` and `X-Robots-Tag: noindex`. Missing files return 404 instead of the application HTML. Directory URLs receive a trailing slash, preserving relative asset and data URLs.
 
+Content-hashed files under `/gleislicht-pilot/assets/` use `Cache-Control: public, max-age=31536000, immutable` for a one-year browser TTL. The publisher rejects files in that directory without Vite's eight-character filename hash. HTML, data manifests, stable-name datasets and root images retain Cloudflare's default `public, max-age=0, must-revalidate`; `_release.json` uses `no-cache`. Cloudflare manages its static asset cache separately from these browser directives.
+
 The initial pilot copies successful [Pages run 34328735854](https://github.com/emmettl/gleislicht/actions/runs/34328735854), commit `eafb3d257b9e04e9ae3fe2676cf359d51c41bfe8`: 882 source files, 757,479,618 bytes (722.4 MiB). The source files are copied byte for byte. [Release metadata](https://motionstudies.app/gleislicht-pilot/_release.json) records the source run, commit, file count and a digest of sorted paths and their SHA-256 content hashes. The pilot adds only release metadata and response headers.
 
 ### Update the pilot
