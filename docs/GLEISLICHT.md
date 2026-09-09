@@ -1,6 +1,6 @@
 # 005 — Gleislicht: study goals
 
-[Open Gleislicht](https://emmettl.github.io/gleislicht/) · [Edition repository](https://github.com/emmettl/gleislicht) · [Study index](README.md)
+[Open Gleislicht](https://motionstudies.app/gleislicht/) · [Edition repository](https://github.com/emmettl/gleislicht) · [Study index](README.md)
 
 These are the original Swiss study goals. Series-wide goals now live in [VISION.md](VISION.md); Swiss operational guides remain in the edition repository.
 

@@ -12,7 +12,39 @@
 
 The stages below retain the delivery history from the first Swiss study through the wider catalogue. Future work follows the source and publication gates in each brief; no calendar dates are implied.
 
-## Current delivery position — 7 September 2026
+## Gleislicht delivery update — 9 September 2026
+
+The Swiss edition has fulfilled the original atlas, terrain, regional/city, sound,
+language, aircraft and measured-road brief. Its public home is
+[https://motionstudies.app/gleislicht/](https://motionstudies.app/gleislicht/);
+GitHub Pages remains the validated artifact source and a public mirror.
+National AUTO already includes all 1,440 minutes of 8 September. Daily private
+road archiving is implemented separately from curated browser publication.
+
+Physical-device performance review is complete by owner acceptance: iPhone 17 Pro
+satisfactory, Fairphone 6 acceptable, the main Mac described as perfect and
+MacBook Neo smooth. Remaining Windows laptop limitations are accepted; substantial
+further optimisation is deferred. These are qualitative reports, not a measured
+benchmark of every study. Earlier Swiss device-review requests below are historical
+notes and do not remain release blockers.
+
+The realtime poller and credentials are provisioned. Its static-feed declaration
+has been corrected to `20260905`, matching the published national timetable;
+LIVE releases require matching dates/versions and a fresh health check. Service
+alerts remain a separate next increment. See the edition's
+[current operations record](https://github.com/emmettl/gleislicht/blob/main/docs/REALTIME.md)
+and [release provenance](https://motionstudies.app/gleislicht/_release.json) for
+verification of the deployed release rather than assuming repository HEAD is live.
+
+Luzern, Zug, Thurgau and Fribourg join the existing selectable regions. Aargau's
+222 flagged directed bus pairs and St Gallen's vector redistribution restrictions
+remain release gates. Eleven additional cantons have scoped opportunities;
+further coverage is optional expansion, not unfinished original scope. Seasonal,
+geometry and data-source exclusions still apply. The detailed stage notes below
+retain delivery history; current regional decisions live in
+[the edition integration record](https://github.com/emmettl/gleislicht/blob/main/docs/REGIONAL-FEED-INTEGRATION.md).
+
+## Historical delivery position — 7 September 2026
 
 - **Shared platform:** alpha.3 is now published under `next`; the [trusted release run](https://github.com/emmettl/motionstudies/actions/runs/34155462468) passed verification and publication. Editions still need deliberate exact-pin upgrades to consume the renderer fixes.
 - **All Change:** the diagram, interchange and full-day studies are implemented. Full TfL bus-catalogue expansion is work in progress in the edition checkout, not a completed release milestone.
@@ -87,7 +119,7 @@ The measured corridor decision is recorded in [docs/POSTBUS-CORRIDOR.md](https:/
 - [x] Visually distinguish scheduled and realtime-adjusted interpolation, including delayed-train rings and label offsets.
 - [x] Surface loading, feed mismatch, stale and offline fallbacks in a compact operations control.
 - [x] Ship an explicitly labelled deterministic demo so the complete interaction can be reviewed without credentials.
-- [ ] Provision the poller secret and URL, then regenerate current-day static artifacts before enabling LIVE by default.
+- [x] Provision the poller secret and URL and generate current-day static artifacts; gate default LIVE on a fresh, exactly matching feed/date. The September 9 feed-version correction and release verification are recorded in the edition operations guide.
 - [ ] Add service-alert presentation after the Trip Updates path has run reliably in production.
 
 The national GTFS-RT feed supplies trip updates and alerts, not vehicle positions. Unless another properly licensed position source is added, “live” means timetable motion corrected by realtime predictions—not GPS dots.
@@ -134,7 +166,7 @@ See [docs/REALTIME.md](https://github.com/emmettl/gleislicht/blob/main/docs/REAL
 - [x] Render aircraft as restrained magenta needles with short, ephemeral trails—never a permanent air network.
 - [x] Lazy-load the complete study only after the visitor selects **LUFT**.
 - [x] Make aircraft selectable and expose callsign, altitude, groundspeed, heading and a tilted follow camera.
-- [ ] Judge the visual experiment on real phones before considering a longer window, richer filtering or live polling.
+- [x] Complete release-level phone review by owner acceptance on iPhone 17 Pro and Fairphone 6. Full-day historical aircraft playback is implemented; live aircraft polling is a separate optional expansion.
 
 **Exit:** the observed sky reads as a sparse atmospheric stratum above the deliberately built rail lattice, while the opening national study remains railway-first and unchanged in payload.
 
@@ -154,8 +186,8 @@ See [docs/LUFTRAUM.md](https://github.com/emmettl/gleislicht/blob/main/docs/LUFT
 - [x] Build 609 measurement-ready directional sections and searchable A-road corridor focus.
 - [x] Resolve the final 10 interchange directions from FEDRO TMC point-to-road identifiers rather than proximity.
 - [x] Add a progressive national minute-study compiler, loader and section-flow renderer ready for recorded snapshots.
-- [ ] Begin authenticated one-minute snapshot recording and replace calibration values with a complete measured hour.
-- [ ] Judge the A1 composition on real phones before adding A2 Gotthard or a recorded full day.
+- [x] Record authenticated one-minute snapshots and publish all 1,440 minutes of 8 September across the accepted national-road topology; retain calibration as the disclosed fallback.
+- [x] Accept release-level phone performance; the recorded national full day is implemented. No separate per-road device benchmark is claimed.
 
 **Exit:** the three layers remain visually and methodologically distinct: scheduled rail journeys, observed aircraft trajectories and synthetic traffic reconstructed from aggregate measurement.
 
@@ -163,11 +195,11 @@ See [docs/AUTO.md](https://github.com/emmettl/gleislicht/blob/main/docs/AUTO.md)
 
 ## 8A — Gleislicht: regional depth, lakes and mountain railways
 
-Planned expansion — 8 September 2026. Build towards a richly explorable Switzerland: each new place should have a recognisable transport character, credible motion and a satisfying journey from overview to detail. The phases below give a preferred sequence, not calendar commitments. Existing completed milestones remain the foundation; unchecked items are future work.
+Expansion plan and delivery history — initially 8 September 2026. The September 9 delivery update above supersedes stale device-review and publication assumptions in the historical notes. Build towards a richly explorable Switzerland: each new place should have a recognisable transport character, credible motion and a satisfying journey from overview to detail. The phases below give a preferred sequence, not calendar commitments. Existing completed milestones remain the foundation; unchecked items are future work.
 
 ### Starting evidence
 
-Dedicated local-network studies currently cover Zürich city, ZVV and Genève/TPG. National rail and nationwide PostBus provide broader coverage, but do not constitute complete regional multimodal studies. ZVV, Genève and Zürich city use morning artifacts; the separate Zürich tram contrast study already supports 24 hours.
+Dedicated selectable studies now include Zürich city, ZVV, Genève/TPG, Lausanne, Basel, Bern, Solothurn, Nyon, Ticino, Valais, Graubünden, Riviera, Luzern, Zug, Thurgau and Fribourg. ZVV, Genève and Zürich city have progressively loaded full days alongside their morning views. National rail and nationwide PostBus provide broader coverage but do not establish complete cantonal multimodal coverage. Regional source inventories retain explicit admission/exclusion accounting.
 
 The committed 4 September 2026 national full-day timetable already contains services to Rigi Kulm, Jungfraujoch, Gornergrat, Pilatus Kulm and Rochers-de-Naye. Rigi, Jungfraujoch and Gornergrat services inspected in the 09:00–12:00 chunk are classified as `other`; Pilatus and Rochers-de-Naye appear as `regional`. This establishes a starting point for discovery, not complete mountain-network or geometry coverage. The importer accepts ferry, cableway and funicular modes. The frequency increment below now ingests `frequencies.txt` with explicit exact-versus-illustrative semantics.
 
@@ -251,11 +283,11 @@ Deliver Lausanne/Vaud or Basel/TNW first, choosing between them after a bounded 
 
 ### E — Make the growing collection feel complete
 
-- [ ] Expand existing ZVV, Genève and Zürich city multimodal studies to complete service days, retaining their lightweight opening views.
+- [x] Expand existing ZVV, Genève and Zürich city multimodal studies to complete service days, retaining their lightweight opening views.
 - [ ] Add reproducible weekday/weekend and summer/winter selections using actual service calendars and independently versioned artifacts. Keep comparisons explicit when dates or observation sources differ.
-- [ ] Introduce a study browser organised by place and experience—national, regional, city, lake, mountain and journey—with clear names, previews, available dates, modes and time coverage.
+- [x] Introduce a study browser with places and experiences, translated names/descriptions, available date and time controls, and independently loaded study data.
 - [ ] Preserve orientation, selection and clock deliberately when moving between national, regional and journey views; explain unavailable times rather than silently substituting a different day.
-- [ ] Add shareable study links carrying the selected place, service date, time and supported focus state, with useful fallbacks when an artifact is unavailable.
+- [x] Add shareable study links carrying the selected place, service date, time and supported focus state, with useful fallbacks when an artifact is unavailable.
 - [ ] Give each new study an authored opening composition and optional guided sequence; extend the adaptive soundtrack where the new setting warrants it.
 
 **Completion standard for every phase:** validate timetable semantics and source/geometry coverage; disclose scheduled, frequency-generated and observed motion accurately; retain attribution; keep EN / DE / FR / IT controls, keyboard/touch operation and reduced-motion behaviour coherent. Load optional studies on demand, preserve the existing 790 KiB compressed national opening budget unless deliberately revised, and establish measured per-study payload and frame-time budgets with desktop and physical-phone review. Mark implementation, device review and publication separately.
