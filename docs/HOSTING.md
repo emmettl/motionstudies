@@ -83,9 +83,19 @@ All five direct deployments were verified on 2026-09-09: live release identity, 
 
 ### CI activation
 
-The five `cloudflare` environments allow deployments only from the `main` branch. Their workflows remain gated by the repository variable `CLOUDFLARE_ENABLED` until `CLOUDFLARE_API_TOKEN` is configured in each environment. The credential needs the same existing Cloudflare account Workers Scripts edit and `motionstudies.app` Workers Routes edit plus Zone read permissions used by Gleislicht. Credential distribution requires approval; do not store plaintext in files, commits, logs or artifacts.
+The five `cloudflare` environments allow deployments only from the `main` branch. Each has `CLOUDFLARE_API_TOKEN` configured and its repository variable `CLOUDFLARE_ENABLED=true`. The credential has the same Cloudflare account Workers Scripts edit and `motionstudies.app` Workers Routes edit plus Zone read permissions used by Gleislicht. Keep plaintext only in the environment secret, never in files, commits, logs or artifacts. The approved one-time encrypted transfer workflow and its temporary artifact have been removed.
 
-After securely setting the five environment secrets, set each repository variable `CLOUDFLARE_ENABLED=true` and manually dispatch its `cloudflare.yml` with the latest successful Pages `source_run_id` to verify activation. Set the variable to `false` to pause publishing before rollback. The same workflow then follows successful Pages releases automatically. Advance its pinned hosting-tools commit when updating publisher code.
+Each `cloudflare.yml` now follows successful Pages releases automatically. A manual dispatch with the latest successful Pages `source_run_id` can retry a publication. Set `CLOUDFLARE_ENABLED=false` to pause publishing before rollback, and restore `true` to resume. Advance the pinned hosting-tools commit when updating publisher code.
+
+The first production CI deployments passed the publishing tests, deployed their selected Pages artifacts and verified live release identity and cache headers:
+
+| Edition | Verified CI deployment |
+| --- | --- |
+| allchange | [34397529428](https://github.com/emmettl/allchange/actions/runs/34397529428) |
+| correspondances | [34397534632](https://github.com/emmettl/correspondances/actions/runs/34397534632) |
+| umlauf | [34397540240](https://github.com/emmettl/umlauf/actions/runs/34397540240) |
+| norikae | [34397545350](https://github.com/emmettl/norikae/actions/runs/34397545350) |
+| manifest | [34397549859](https://github.com/emmettl/manifest/actions/runs/34397549859) |
 
 Local publishing uses the existing authenticated `gh` and Wrangler login:
 
