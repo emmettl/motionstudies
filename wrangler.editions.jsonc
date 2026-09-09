@@ -6,7 +6,6 @@
   "workers_dev": true,
   "preview_urls": false,
   "routes": [
-    { "pattern": "motionstudies.app/gleislicht*", "zone_name": "motionstudies.app" },
     { "pattern": "motionstudies.app/allchange*", "zone_name": "motionstudies.app" },
     { "pattern": "motionstudies.app/correspondances*", "zone_name": "motionstudies.app" },
     { "pattern": "motionstudies.app/umlauf*", "zone_name": "motionstudies.app" },

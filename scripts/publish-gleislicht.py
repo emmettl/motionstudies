@@ -18,7 +18,7 @@ import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = "emmettl/gleislicht"
-PREFIX = "gleislicht-pilot"
+PREFIX = "gleislicht"
 URL = "https://motionstudies.app/" + PREFIX + "/"
 MAX_FILE_BYTES = 25 * 1024 * 1024
 MAX_FILES = 20_000
@@ -54,17 +54,19 @@ def verify_deployment(release, edition):
     }
     for attempt in range(6):
         try:
-            request = urllib.request.Request(URL + "_release.json", headers={"User-Agent": "Gleislicht-Pilot-CI/1.0", "Cache-Control": "no-cache"})
+            request = urllib.request.Request(URL + "_release.json", headers={"User-Agent": "Gleislicht-Hosting-CI/1.0", "Cache-Control": "no-cache"})
             with urllib.request.urlopen(request, timeout=30) as response:
                 if json.load(response) != release:
                     raise ValueError("Published release metadata does not match this artifact")
             for path, expected in policies.items():
-                request = urllib.request.Request(URL + path, method="HEAD", headers={"User-Agent": "Gleislicht-Pilot-CI/1.0"})
+                request = urllib.request.Request(URL + path, method="HEAD", headers={"User-Agent": "Gleislicht-Hosting-CI/1.0"})
                 with urllib.request.urlopen(request, timeout=30) as response:
                     if response.headers.get("Cache-Control") != expected:
                         raise ValueError("Unexpected cache policy: " + path)
-                    if response.headers.get("X-Motion-Studies-Hosting") != "cloudflare-pilot":
-                        raise ValueError("Response did not come from the pilot: " + path)
+                    if "noindex" in response.headers.get("X-Robots-Tag", "").lower():
+                        raise ValueError("Production hosting must be indexable: " + path)
+                    if response.headers.get("X-Motion-Studies-Hosting") != "cloudflare-static":
+                        raise ValueError("Response did not come from Cloudflare hosting: " + path)
             print("Verified live release identity and cache policies", flush=True)
             return
         except (OSError, ValueError):
@@ -79,7 +81,7 @@ def validate_run(run):
             or run.get("path") != ".github/workflows/pages.yml"
             or run.get("repository", {}).get("full_name") != REPO
             or run.get("event") not in {"push", "schedule", "workflow_dispatch"}):
-        raise ValueError("Pilot requires a successful main-branch Gleislicht Pages run")
+        raise ValueError("Publishing requires a successful main-branch Gleislicht Pages run")
 
 
 def stage_artifact(archive, destination, run):
@@ -141,13 +143,16 @@ def stage_artifact(archive, destination, run):
         }
         (edition / "_release.json").write_text(json.dumps(release, indent=2) + "\n")
         (destination / "_headers").write_text(
-            "/gleislicht-pilot/*\n"
-            "  X-Motion-Studies-Hosting: cloudflare-pilot\n"
-            "  X-Robots-Tag: noindex\n"
-            "\n/gleislicht-pilot/assets/*\n"
+            "/gleislicht/*\n"
+            "  X-Motion-Studies-Hosting: cloudflare-static\n"
+            "\n/gleislicht/assets/*\n"
             "  Cache-Control: public, max-age=31536000, immutable\n"
-            "\n/gleislicht-pilot/_release.json\n"
+            "\n/gleislicht/_release.json\n"
             "  Cache-Control: no-cache\n"
+        )
+        (destination / "_redirects").write_text(
+            "/gleislicht-pilot /gleislicht/ 301\n"
+            "/gleislicht-pilot/* /gleislicht/:splat 301\n"
         )
         return release
 
@@ -164,7 +169,7 @@ def main():
         print("Skipping superseded Pages release:", args.run)
         return
     # Keep temporary payloads available if upload fails; print the directory for recovery.
-    stage = Path(tempfile.mkdtemp(prefix="gleislicht-pilot-"))
+    stage = Path(tempfile.mkdtemp(prefix="gleislicht-"))
     print("Staging:", stage, flush=True)
     subprocess.run([
         "gh", "run", "download", str(args.run), "--repo", REPO,
@@ -174,12 +179,12 @@ def main():
     print(json.dumps(release, indent=2), flush=True)
     command = [
         "npx", "--yes", "wrangler@4.129.0", "deploy",
-        "--config", str(ROOT / "wrangler.gleislicht-pilot.jsonc"),
+        "--config", str(ROOT / "wrangler.gleislicht.jsonc"),
         "--assets", str(stage / "assets"),
     ]
     subprocess.run(command + ["--dry-run", "--outdir", str(stage / "dry-run")], cwd=ROOT, check=True)
     if args.deploy:
-        # Recheck after download and staging, immediately before changing the pilot.
+        # Recheck after download and staging, immediately before changing the publisher.
         if args.require_latest and is_superseded(run, latest_successful_run()):
             print("Skipping Pages release superseded while staging:", args.run)
             shutil.rmtree(stage)

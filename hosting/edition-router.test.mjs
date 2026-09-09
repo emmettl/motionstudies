@@ -12,9 +12,9 @@ describe('public edition routing', () => {
     expect(response.headers.get('content-type')).toBe('application/octet-stream')
   })
   it('redirects HTTP edition requests to HTTPS', async () => {
-    const response = await worker.fetch(new Request('http://motionstudies.app/gleislicht/data/file.json?v=2'))
+    const response = await worker.fetch(new Request('http://motionstudies.app/allchange/data/file.json?v=2'))
     expect(response.status).toBe(308)
-    expect(response.headers.get('location')).toBe('https://motionstudies.app/gleislicht/data/file.json?v=2')
+    expect(response.headers.get('location')).toBe('https://motionstudies.app/allchange/data/file.json?v=2')
   })
   it('adds the trailing slash without losing query strings', async () => {
     const response = await worker.fetch(new Request('https://motionstudies.app/umlauf?view=water'))
@@ -34,7 +34,7 @@ describe('public edition routing', () => {
     expect(options.headers.get('if-none-match')).toBe('abc')
     expect(response.status).toBe(304)
   })
-  it.each(['/local-express/', '/gleislicht-other/', '/lab/'])('leaves %s at the catalogue origin', async (path) => {
+  it.each(['/gleislicht/', '/local-express/', '/gleislicht-other/', '/lab/'])('leaves %s at the catalogue origin', async (path) => {
     const upstream = vi.fn().mockResolvedValue(new Response('origin', { status: 404 }))
     vi.stubGlobal('fetch', upstream)
     const request = new Request(`https://motionstudies.app${path}`)
@@ -42,9 +42,9 @@ describe('public edition routing', () => {
     expect(upstream).toHaveBeenCalledWith(request)
   })
   it('keeps edition redirects on the custom domain', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.redirect('https://emmettl.github.io/gleislicht/data/', 301)))
-    const response = await worker.fetch(new Request('https://motionstudies.app/gleislicht/data'))
-    expect(response.headers.get('location')).toBe('https://motionstudies.app/gleislicht/data/')
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(Response.redirect('https://emmettl.github.io/allchange/data/', 301)))
+    const response = await worker.fetch(new Request('https://motionstudies.app/allchange/data'))
+    expect(response.headers.get('location')).toBe('https://motionstudies.app/allchange/data/')
   })
   it('rejects writes before contacting the origin', async () => {
     const upstream = vi.fn()

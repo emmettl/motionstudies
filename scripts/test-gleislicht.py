@@ -6,12 +6,12 @@ import tarfile
 import tempfile
 import unittest
 
-spec = importlib.util.spec_from_file_location("pilot", Path(__file__).with_name("publish-gleislicht-pilot.py"))
-pilot = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(pilot)
+spec = importlib.util.spec_from_file_location("publisher", Path(__file__).with_name("publish-gleislicht.py"))
+publisher = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(publisher)
 
 
-class PilotPublicationTests(unittest.TestCase):
+class PublicationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
@@ -43,23 +43,24 @@ class PilotPublicationTests(unittest.TestCase):
 
     def test_payload_bytes_and_release_provenance_are_preserved(self):
         staged = self.root / "assets"
-        release = pilot.stage_artifact(self.archive(), staged, self.run)
-        self.assertEqual((staged / "gleislicht-pilot/data/swiss-rail-morning.json").read_bytes(), b'{"serviceDate":"2026-09-09"}')
-        self.assertEqual(json.loads((staged / "gleislicht-pilot/_release.json").read_text()), release)
+        release = publisher.stage_artifact(self.archive(), staged, self.run)
+        self.assertEqual((staged / "gleislicht/data/swiss-rail-morning.json").read_bytes(), b'{"serviceDate":"2026-09-09"}')
+        self.assertEqual(json.loads((staged / "gleislicht/_release.json").read_text()), release)
         self.assertEqual(release["source_files"], 5)
-        self.assertIn("X-Robots-Tag: noindex", (staged / "_headers").read_text())
+        self.assertNotIn("noindex", (staged / "_headers").read_text())
+        self.assertEqual((staged / "_redirects").read_text(), "/gleislicht-pilot /gleislicht/ 301\n/gleislicht-pilot/* /gleislicht/:splat 301\n")
         self.assertFalse((staged / "index.html").exists())
 
     def test_unsuccessful_or_untrusted_workflow_is_rejected(self):
         for field, value in [("conclusion", "failure"), ("status", "in_progress"), ("head_branch", "feature"), ("path", ".github/workflows/other.yml"), ("event", "pull_request"), ("repository", {"full_name": "other/repo"})]:
             with self.subTest(field=field), self.assertRaises(ValueError):
-                pilot.validate_run({**self.run, field: value})
+                publisher.validate_run({**self.run, field: value})
 
     def test_newer_successful_release_prevents_stale_ci_deployment(self):
         newer = {**self.run, "id": 124, "run_number": 11}
-        self.assertTrue(pilot.is_superseded(self.run, newer))
-        self.assertFalse(pilot.is_superseded(newer, self.run))
-        self.assertFalse(pilot.is_superseded(self.run, self.run))
+        self.assertTrue(publisher.is_superseded(self.run, newer))
+        self.assertFalse(publisher.is_superseded(newer, self.run))
+        self.assertFalse(publisher.is_superseded(self.run, self.run))
 
     def test_live_verification_checks_release_and_cache_headers(self):
         from unittest.mock import patch
@@ -75,19 +76,27 @@ class PilotPublicationTests(unittest.TestCase):
                 policy = "public, max-age=31536000, immutable"
             elif request.full_url.endswith("_release.json"):
                 policy = "no-cache"
-            response.headers = {"Cache-Control": policy, "X-Motion-Studies-Hosting": "cloudflare-pilot"}
+            response.headers = {"Cache-Control": policy, "X-Motion-Studies-Hosting": "cloudflare-static"}
             return response
 
-        with patch.object(pilot.urllib.request, "urlopen", side_effect=response_for) as fetch:
-            pilot.verify_deployment(release, assets.parent)
+        with patch.object(publisher.urllib.request, "urlopen", side_effect=response_for) as fetch:
+            publisher.verify_deployment(release, assets.parent)
             self.assertEqual(fetch.call_count, 5)
-        with patch.object(pilot.urllib.request, "urlopen", side_effect=response_for), patch.object(pilot.time, "sleep"), self.assertRaises(ValueError):
-            pilot.verify_deployment({"run_id": 999}, assets.parent)
+        with patch.object(publisher.urllib.request, "urlopen", side_effect=response_for), patch.object(publisher.time, "sleep"), self.assertRaises(ValueError):
+            publisher.verify_deployment({"run_id": 999}, assets.parent)
+
+        def nonindexable_response(request, **kwargs):
+            response = response_for(request, **kwargs)
+            response.headers["X-Robots-Tag"] = "noindex"
+            return response
+
+        with patch.object(publisher.urllib.request, "urlopen", side_effect=nonindexable_response), patch.object(publisher.time, "sleep"), self.assertRaisesRegex(ValueError, "must be indexable"):
+            publisher.verify_deployment(release, assets.parent)
 
     def test_unsafe_and_foreign_paths_are_rejected_before_staging(self):
-        for name in ["../escaped", "/absolute", "data/local-express.json", "data/all-change/file.json", "new-york.html", "_headers", "index.html"]:
+        for name in ["../escaped", "/absolute", "data/local-express.json", "data/all-change/file.json", "new-york.html", "_headers", "_redirects", "index.html"]:
             with self.subTest(name=name), self.assertRaises(ValueError):
-                pilot.stage_artifact(self.archive(tarfile.TarInfo(name)), self.root / "assets", self.run)
+                publisher.stage_artifact(self.archive(tarfile.TarInfo(name)), self.root / "assets", self.run)
             self.assertFalse((self.root / "assets").exists())
 
     def test_symlinks_are_rejected(self):
@@ -95,25 +104,25 @@ class PilotPublicationTests(unittest.TestCase):
         entry.type = tarfile.SYMTYPE
         entry.linkname = "../../outside"
         with self.assertRaises(ValueError):
-            pilot.stage_artifact(self.archive(entry), self.root / "assets", self.run)
+            publisher.stage_artifact(self.archive(entry), self.root / "assets", self.run)
 
     def test_immutable_namespace_requires_hashed_filenames(self):
         for name in ["assets/config.json", "assets/index.js", "assets/styles.css", "assets/nested/index.js"]:
             with self.subTest(name=name), self.assertRaises(ValueError):
-                pilot.stage_artifact(self.archive(tarfile.TarInfo(name)), self.root / "assets", self.run)
+                publisher.stage_artifact(self.archive(tarfile.TarInfo(name)), self.root / "assets", self.run)
             self.assertFalse((self.root / "assets").exists())
         staged = self.root / "assets"
-        pilot.stage_artifact(self.archive(tarfile.TarInfo("assets/index-BC56FVMz.js")), staged, self.run)
+        publisher.stage_artifact(self.archive(tarfile.TarInfo("assets/index-BC56FVMz.js")), staged, self.run)
         headers = (staged / "_headers").read_text()
         immutable_rules = [rule for rule in headers.split("\n\n") if "immutable" in rule]
-        self.assertEqual(immutable_rules, ["/gleislicht-pilot/assets/*\n  Cache-Control: public, max-age=31536000, immutable"])
+        self.assertEqual(immutable_rules, ["/gleislicht/assets/*\n  Cache-Control: public, max-age=31536000, immutable"])
 
     def test_size_and_count_limits_are_enforced(self):
         from unittest.mock import patch
         archive = self.archive()
         for limit, value in [("MAX_FILE_BYTES", 1), ("MAX_FILES", 5)]:
-            with patch.object(pilot, limit, value), self.assertRaises(ValueError):
-                pilot.stage_artifact(archive, self.root / "assets", self.run)
+            with patch.object(publisher, limit, value), self.assertRaises(ValueError):
+                publisher.stage_artifact(archive, self.root / "assets", self.run)
 
 
 if __name__ == "__main__":

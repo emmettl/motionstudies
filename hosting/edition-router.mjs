@@ -1,4 +1,4 @@
-export const editions = ['gleislicht', 'allchange', 'correspondances', 'umlauf', 'norikae', 'manifest']
+export const editions = ['allchange', 'correspondances', 'umlauf', 'norikae', 'manifest']
 const origin = 'https://emmettl.github.io'
 const forwardedHeaders = ['accept', 'accept-encoding', 'if-none-match', 'if-modified-since', 'range', 'if-range']
 
