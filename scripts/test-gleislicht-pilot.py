@@ -17,7 +17,7 @@ class PilotPublicationTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         self.run = {
-            "id": 123, "status": "completed", "conclusion": "success",
+            "id": 123, "run_number": 10, "status": "completed", "conclusion": "success",
             "head_branch": "main", "path": ".github/workflows/pages.yml",
             "repository": {"full_name": "emmettl/gleislicht"}, "event": "push",
             "head_sha": "a" * 40, "html_url": "https://github.com/emmettl/gleislicht/actions/runs/123",
@@ -54,6 +54,35 @@ class PilotPublicationTests(unittest.TestCase):
         for field, value in [("conclusion", "failure"), ("status", "in_progress"), ("head_branch", "feature"), ("path", ".github/workflows/other.yml"), ("event", "pull_request"), ("repository", {"full_name": "other/repo"})]:
             with self.subTest(field=field), self.assertRaises(ValueError):
                 pilot.validate_run({**self.run, field: value})
+
+    def test_newer_successful_release_prevents_stale_ci_deployment(self):
+        newer = {**self.run, "id": 124, "run_number": 11}
+        self.assertTrue(pilot.is_superseded(self.run, newer))
+        self.assertFalse(pilot.is_superseded(newer, self.run))
+        self.assertFalse(pilot.is_superseded(self.run, self.run))
+
+    def test_live_verification_checks_release_and_cache_headers(self):
+        from unittest.mock import patch
+        assets = self.root / "edition/assets"
+        assets.mkdir(parents=True)
+        (assets / "index-BC56FVMz.js").write_text("export {}")
+        release = {"run_id": 123}
+
+        def response_for(request, **kwargs):
+            response = io.BytesIO(json.dumps(release).encode())
+            policy = "public, max-age=0, must-revalidate"
+            if "/assets/" in request.full_url:
+                policy = "public, max-age=31536000, immutable"
+            elif request.full_url.endswith("_release.json"):
+                policy = "no-cache"
+            response.headers = {"Cache-Control": policy, "X-Motion-Studies-Hosting": "cloudflare-pilot"}
+            return response
+
+        with patch.object(pilot.urllib.request, "urlopen", side_effect=response_for) as fetch:
+            pilot.verify_deployment(release, assets.parent)
+            self.assertEqual(fetch.call_count, 5)
+        with patch.object(pilot.urllib.request, "urlopen", side_effect=response_for), patch.object(pilot.time, "sleep"), self.assertRaises(ValueError):
+            pilot.verify_deployment({"run_id": 999}, assets.parent)
 
     def test_unsafe_and_foreign_paths_are_rejected_before_staging(self):
         for name in ["../escaped", "/absolute", "data/local-express.json", "data/all-change/file.json", "new-york.html", "_headers", "index.html"]:

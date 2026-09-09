@@ -31,7 +31,13 @@ The initial pilot copies successful [Pages run 34328735854](https://github.com/e
 
 ### Update the pilot
 
-The pilot is a manually refreshed snapshot, independent of scheduled GitHub Pages releases. Use a completed, successful main-branch run of Gleislicht's `pages.yml`; the publisher rejects failed, pending, foreign-repository and other-workflow runs. The run must still have its `github-pages` artifact available. It already passed the edition's build, publication and browser gates.
+Gleislicht's `cloudflare-pilot.yml` follows completed, successful main-branch `Deploy to GitHub Pages` runs, including scheduled timetable refreshes. It downloads that run's `github-pages` artifact and publishes it separately; a Cloudflare failure cannot fail or undo the completed GitHub Pages release. Failed Pages runs and pull requests do not publish. A manual workflow dispatch accepts a successful source run ID for retries.
+
+The workflow checks out these hosting tools at a reviewed commit, uses the edition repository's read-only `GITHUB_TOKEN` for artifact access, and reads `CLOUDFLARE_API_TOKEN` from its `cloudflare-pilot` environment. The environment permits deployments only from `main`. The Cloudflare token needs Workers Scripts edit for the account and Workers Routes edit plus Zone read for `motionstudies.app`; keep its value only in the environment secret. Never put a local Wrangler OAuth token in CI. Updating the publisher requires advancing the pinned hosting commit in the edition workflow.
+
+CI serializes pilot deployments without cancelling active uploads. `--require-latest` skips releases superseded by a newer successful Pages run, with a second check immediately before deployment. After publishing, the command verifies live release metadata and the long-lived asset versus revalidating document/data cache policies, retrying briefly for edge propagation. A verification failure fails the pilot workflow. Initial CI activation requires configuring the environment token; the existing pilot remains available while setup is pending.
+
+For local publishing, use a completed, successful main-branch run of Gleislicht's `pages.yml`; the publisher rejects failed, pending, foreign-repository and other-workflow runs. The run must still have its `github-pages` artifact available. It already passed the edition's build, publication and browser gates.
 
 With Python 3, Node/npm, an authenticated `gh` and a Wrangler login available:
 
@@ -41,13 +47,13 @@ python3 scripts/publish-gleislicht-pilot.py --run RUN_ID
 python3 scripts/publish-gleislicht-pilot.py --run RUN_ID --deploy
 ```
 
-The default is a dry run. `--deploy` also performs the dry run before publishing. The publisher downloads the existing artifact, validates archive paths, rejects links and foreign-edition data, enforces Cloudflare's 25 MiB per-file and 20,000-file limits, and stages it under the pilot URL prefix. It never rebuilds datasets or changes an edition checkout. The publishing command needs no new GitHub Actions secret. Successful publication removes its temporary download; dry-run and failed-upload staging directories are printed and retained for inspection.
+The default is a dry run. `--deploy` also performs the dry run before publishing. The publisher downloads the existing artifact, validates archive paths, rejects links and foreign-edition data, enforces Cloudflare's 25 MiB per-file and 20,000-file limits, and stages it under the pilot URL prefix. It never rebuilds datasets or changes an edition checkout. Local publishing can use the existing Wrangler login. Successful publication removes its temporary download; dry-run and failed-upload staging directories are printed and retained for inspection.
 
 After publishing, check the release metadata, page and referenced assets, initial JSON requests and live-data responses. Confirm an automatic analytics beacon is present in a browser HTML response and that the two existing Gleislicht addresses remain available. Static asset requests are free and unlimited under [Cloudflare's billing rules](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/); existing live-data Workers keep their own usage.
 
 ### Rollback and promotion
 
-To roll the pilot back, republish an earlier successful Pages artifact while it is retained, or use the pilot Worker's previous deployment in Cloudflare. To retire it, remove its two routes; this does not alter the live edition routes. Moving `/gleislicht/` to Cloudflare is a separate promotion: first arrange ongoing deployment of each verified Pages artifact, then change the live route and retain GitHub Pages as the parallel copy.
+To roll the pilot back, disable the edition's pilot workflow and republish an earlier successful Pages artifact locally without `--require-latest`, or use the pilot Worker's previous deployment in Cloudflare. Re-enable CI when ready to follow new releases again. To retire it, disable the workflow and remove its two routes; this does not alter the live edition routes. Moving `/gleislicht/` to Cloudflare is a separate promotion after verifying CI publishing, followed by a live-route change that retains GitHub Pages as the parallel copy.
 
 ## Visitor analytics
 

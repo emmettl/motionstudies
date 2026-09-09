@@ -13,6 +13,8 @@ import shutil
 import subprocess
 import tarfile
 import tempfile
+import time
+import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = "emmettl/gleislicht"
@@ -20,6 +22,55 @@ PREFIX = "gleislicht-pilot"
 URL = "https://motionstudies.app/" + PREFIX + "/"
 MAX_FILE_BYTES = 25 * 1024 * 1024
 MAX_FILES = 20_000
+
+
+def github_json(endpoint):
+    return json.loads(subprocess.check_output(["gh", "api", endpoint], text=True))
+
+
+def latest_successful_run():
+    result = github_json(f"repos/{REPO}/actions/workflows/pages.yml/runs?branch=main&status=success&per_page=1")
+    if not result["workflow_runs"]:
+        raise ValueError("No successful main-branch Pages release is available")
+    run = result["workflow_runs"][0]
+    validate_run(run)
+    return run
+
+
+def is_superseded(run, latest):
+    validate_run(run)
+    validate_run(latest)
+    return run["run_number"] < latest["run_number"]
+
+
+def verify_deployment(release, edition):
+    """Allow edge propagation, then check release identity and browser cache policy."""
+    hashed_asset = next(path for path in sorted((edition / "assets").iterdir()) if path.is_file())
+    policies = {
+        "": "public, max-age=0, must-revalidate",
+        "assets/" + hashed_asset.name: "public, max-age=31536000, immutable",
+        "data/swiss-rail-day-manifest.json": "public, max-age=0, must-revalidate",
+        "_release.json": "no-cache",
+    }
+    for attempt in range(6):
+        try:
+            request = urllib.request.Request(URL + "_release.json", headers={"User-Agent": "Gleislicht-Pilot-CI/1.0", "Cache-Control": "no-cache"})
+            with urllib.request.urlopen(request, timeout=30) as response:
+                if json.load(response) != release:
+                    raise ValueError("Published release metadata does not match this artifact")
+            for path, expected in policies.items():
+                request = urllib.request.Request(URL + path, method="HEAD", headers={"User-Agent": "Gleislicht-Pilot-CI/1.0"})
+                with urllib.request.urlopen(request, timeout=30) as response:
+                    if response.headers.get("Cache-Control") != expected:
+                        raise ValueError("Unexpected cache policy: " + path)
+                    if response.headers.get("X-Motion-Studies-Hosting") != "cloudflare-pilot":
+                        raise ValueError("Response did not come from the pilot: " + path)
+            print("Verified live release identity and cache policies", flush=True)
+            return
+        except (OSError, ValueError):
+            if attempt == 5:
+                raise
+            time.sleep(10)
 
 
 def validate_run(run):
@@ -105,11 +156,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", required=True, type=int, help="Successful GitHub Pages workflow run ID")
     parser.add_argument("--deploy", action="store_true", help="Publish after staging and Wrangler dry-run validation")
+    parser.add_argument("--require-latest", action="store_true", help="Skip superseded releases (used by CI)")
     args = parser.parse_args()
-    run = json.loads(subprocess.check_output([
-        "gh", "api", f"repos/{REPO}/actions/runs/{args.run}",
-    ], text=True))
+    run = github_json(f"repos/{REPO}/actions/runs/{args.run}")
     validate_run(run)
+    if args.require_latest and is_superseded(run, latest_successful_run()):
+        print("Skipping superseded Pages release:", args.run)
+        return
     # Keep temporary payloads available if upload fails; print the directory for recovery.
     stage = Path(tempfile.mkdtemp(prefix="gleislicht-pilot-"))
     print("Staging:", stage, flush=True)
@@ -126,7 +179,13 @@ def main():
     ]
     subprocess.run(command + ["--dry-run", "--outdir", str(stage / "dry-run")], cwd=ROOT, check=True)
     if args.deploy:
+        # Recheck after download and staging, immediately before changing the pilot.
+        if args.require_latest and is_superseded(run, latest_successful_run()):
+            print("Skipping Pages release superseded while staging:", args.run)
+            shutil.rmtree(stage)
+            return
         subprocess.run(command, cwd=ROOT, check=True)
+        verify_deployment(release, stage / "assets" / PREFIX)
         print("Published:", URL)
         shutil.rmtree(stage)
     else:
