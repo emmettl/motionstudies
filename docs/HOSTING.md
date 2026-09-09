@@ -17,6 +17,36 @@ Each edition’s own workflow continues to publish its code and datasets. No cop
 
 The root and `/lab/` bypass the Worker. The DNS-only `www` record continues to GitHub Pages, which redirects it to the apex domain and preserves the path.
 
+## Gleislicht Cloudflare pilot
+
+[Open the pilot](https://motionstudies.app/gleislicht-pilot/). The `gleislicht-hosting-pilot` Worker hosts a complete copy of a successful Gleislicht GitHub Pages artifact using Workers Static Assets. It serves files directly from Cloudflare storage. There is no GitHub origin fetch, application Worker handler, R2 bucket or extra live-data service in this deployment.
+
+`wrangler.gleislicht-pilot.jsonc` owns only the exact `/gleislicht-pilot` route and `/gleislicht-pilot/*`. These take precedence over the existing edition router's broader `/gleislicht*` pattern. `/gleislicht/` and `https://emmettl.github.io/gleislicht/` retain their existing hosting. The private Sites preview is a separate deployment and is unaffected.
+
+The pilot uses the same origin as the live edition, so the existing realtime CORS permissions and automatic Web Analytics injection apply. Filter analytics by `/gleislicht-pilot/` to distinguish pilot visits. Responses carry `X-Motion-Studies-Hosting: cloudflare-pilot` and `X-Robots-Tag: noindex`. Missing files return 404 instead of the application HTML. Directory URLs receive a trailing slash, preserving relative asset and data URLs.
+
+The initial pilot copies successful [Pages run 34328735854](https://github.com/emmettl/gleislicht/actions/runs/34328735854), commit `eafb3d257b9e04e9ae3fe2676cf359d51c41bfe8`: 882 source files, 757,479,618 bytes (722.4 MiB). The source files are copied byte for byte. [Release metadata](https://motionstudies.app/gleislicht-pilot/_release.json) records the source run, commit, file count and a digest of sorted paths and their SHA-256 content hashes. The pilot adds only release metadata and response headers.
+
+### Update the pilot
+
+The pilot is a manually refreshed snapshot, independent of scheduled GitHub Pages releases. Use a completed, successful main-branch run of Gleislicht's `pages.yml`; the publisher rejects failed, pending, foreign-repository and other-workflow runs. The run must still have its `github-pages` artifact available. It already passed the edition's build, publication and browser gates.
+
+With Python 3, Node/npm, an authenticated `gh` and a Wrangler login available:
+
+```sh
+python3 scripts/test-gleislicht-pilot.py
+python3 scripts/publish-gleislicht-pilot.py --run RUN_ID
+python3 scripts/publish-gleislicht-pilot.py --run RUN_ID --deploy
+```
+
+The default is a dry run. `--deploy` also performs the dry run before publishing. The publisher downloads the existing artifact, validates archive paths, rejects links and foreign-edition data, enforces Cloudflare's 25 MiB per-file and 20,000-file limits, and stages it under the pilot URL prefix. It never rebuilds datasets or changes an edition checkout. The publishing command needs no new GitHub Actions secret. Successful publication removes its temporary download; dry-run and failed-upload staging directories are printed and retained for inspection.
+
+After publishing, check the release metadata, page and referenced assets, initial JSON requests and live-data responses. Confirm an automatic analytics beacon is present in a browser HTML response and that the two existing Gleislicht addresses remain available. Static asset requests are free and unlimited under [Cloudflare's billing rules](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/); existing live-data Workers keep their own usage.
+
+### Rollback and promotion
+
+To roll the pilot back, republish an earlier successful Pages artifact while it is retained, or use the pilot Worker's previous deployment in Cloudflare. To retire it, remove its two routes; this does not alter the live edition routes. Moving `/gleislicht/` to Cloudflare is a separate promotion: first arrange ongoing deployment of each verified Pages artifact, then change the live route and retain GitHub Pages as the parallel copy.
+
 ## Visitor analytics
 
 Cloudflare Web Analytics covers both public hostnames. In the account's [Web Analytics dashboard](https://dash.cloudflare.com/8cac82a07417990e553f88793670f361/web-analytics/sites), select `motionstudies.app` or `emmettl.github.io`, or view all sites and filter by Host and Path to compare editions.

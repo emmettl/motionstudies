@@ -1,0 +1,16 @@
+{
+  "name": "gleislicht-hosting-pilot",
+  "account_id": "8cac82a07417990e553f88793670f361",
+  "compatibility_date": "2026-09-09",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "motionstudies.app/gleislicht-pilot", "zone_name": "motionstudies.app" },
+    { "pattern": "motionstudies.app/gleislicht-pilot/*", "zone_name": "motionstudies.app" }
+  ],
+  "assets": {
+    "directory": ".pilot-assets",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

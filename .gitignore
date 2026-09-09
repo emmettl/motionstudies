@@ -5,3 +5,6 @@ lab/dist/
 playwright-report/
 test-results/
 .DS_Store
+.wrangler/
+.pilot-assets/
+__pycache__/

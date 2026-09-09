@@ -24,6 +24,8 @@ jobs:
       - run: npm install --global npm@11.19.0 --ignore-scripts
       - run: npm ci
       - run: npm run typecheck && npm run lint && npm run check:architecture && npm test
+      - name: Check Cloudflare pilot publication gates
+        run: python3 scripts/test-gleislicht-pilot.py
       - run: npx playwright install --with-deps chromium webkit
       - run: npm run check:release && npm run release:dry-run && npm run test:loaders
       - run: npm run build
