@@ -12,6 +12,7 @@ All six public editions are hosted directly by individual Cloudflare Workers Sta
 | `/umlauf/` | Berlin | `umlauf-hosting` |
 | `/norikae/` | Tokyo | `norikae-hosting` |
 | `/manifest/` | World trade | `manifest-hosting` |
+| `/zugunruhe/` | Bird migration studies | `zugunruhe-hosting` |
 | `/grid84/` | Grid/84 Terminal Atlas (adjunct) | `grid84-hosting` |
 
 Each edition owns its `motionstudies.app/<edition>*` route. Prefix routes include slashless URLs with query strings; unmatched files return 404. The retired `motionstudies-editions` proxy has no routes. New York remains excluded while its publication hold is unresolved. MANIFEST's existing public route is retained without adding catalogue links; its published vessel data remains synthetic.
@@ -137,3 +138,18 @@ The existing Swiss and London live-data Workers include `https://motionstudies.a
 Check every edition document, its referenced JavaScript/CSS, and its initial data requests. Verify the catalogue, lab, www redirect and live-data CORS responses too. Existing GitHub Pages edition URLs remain available.
 
 To stop proxying an edition, remove its Cloudflare route (and its catalogue link) while retaining the independent edition site. To roll back all routing, transfer the affected routes to the retained proxy or remove them and restore catalogue links to their GitHub Pages URLs. DNS can remain proxied with Full (Strict); the catalogue origin is still GitHub Pages.
+
+## Zugunruhe hosting
+
+Zugunruhe follows the same verified Pages artifact publisher at
+`https://motionstudies.app/zugunruhe/`, with an independent
+`https://emmettl.github.io/zugunruhe/` copy. The artifact contains the three
+current study entries and frozen Layers/Archipelago builds. Observations and
+geography are bundled in hashed client assets; no raw source archives or live
+data service are required. Reproduction source snapshots are included alongside
+the frozen studies. The hosting adapter fixes internal links under the edition
+prefix while the saved renderer assets and local snapshots remain unchanged.
+
+`wrangler.zugunruhe.jsonc` owns only `motionstudies.app/zugunruhe*`. The
+`cloudflare` environment is restricted to main and follows successful Pages
+runs, using the same deployment credential provisioning as the other editions.
