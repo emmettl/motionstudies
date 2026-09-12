@@ -44,6 +44,10 @@ These briefs retain their dated source audits, proposed compositions and publica
 
 - [MANIFEST — World trade in motion](MANIFEST.md) · [Repository](https://github.com/emmettl/manifest)
 
+## Research for potential studies
+
+- [Flights over Europe](EUROPE-AIR-RESEARCH.md) — technical evidence, candidate visual theses and bounded experiments; the thesis and decision to build remain open.
+
 ## Document ownership and history
 
 Motion Studies owns the series goals, roadmap, city briefs and feasibility/publication decisions. Edition repositories own their implementation guides, source compilers, runtime fixtures and deployment instructions. Paths and commands in an implemented city's brief refer to that edition's checkout.
