@@ -35,6 +35,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Prepare subsequent versions
 
+`0.1.0-alpha.8` adds responsive bus and rail hero cards, dot-matrix and SBB layouts, and snapshot-based station departures. See [the release and adoption record](TRANSPORT-CARDS-ALPHA-8.md).
+
 `0.1.0-alpha.7` adds optional live airport boards, the shared offline ADS-B compiler and airport-card refinements. It also updates compatible build and test dependencies. See [the release and adoption record](AIRPORTS-ALPHA-7.md).
 
 `0.1.0-alpha.6` adds the shared Now clock, opt-in browser location and geographic location marker, with a synthetic Now specimen in the public widget lab. Eligibility belongs to each study: suitable representative data can convey the present without exact live positions. This release does not upgrade or enable Now in any edition.

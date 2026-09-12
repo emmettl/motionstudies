@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "private": true,
   "type": "module",
   "exports": {
@@ -33,7 +33,7 @@
     "./transport-hero-cards.css": "./src/components/transport-hero-cards.css"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.7"
+    "@motionstudies/core": "0.1.0-alpha.8"
   },
   "peerDependencies": {
     "react": "^19.2.8",
