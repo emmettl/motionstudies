@@ -43,6 +43,19 @@ The reference screenshot suggests the core spectacle: hundreds of journeys revea
 
 People fascinated by trains, Switzerland, maps, motion graphics or generative art. The first release is exploratory rather than a journey-planning tool: it should reward watching, scrubbing time and following a service.
 
+## SBB-style station hero adoption
+
+The shared `RailStationHeroCard` now includes `presentation="sbb"`, demonstrated in **Transport heroes → SBB departure board** in the Motion Studies lab. Its blue-and-white board shows service, departure time, destination and via stops, track and optional platform sectors. DE/FR/IT/EN fixture labels demonstrate edition-owned localization. The fixture is synthetic; this addition does not switch the published Gleislicht station panel.
+
+The edition currently imports the released `@motionstudies/web` alpha.7 package. Its `src/studies/StationCard.tsx` receives a `StationIndexEntry` and summary counts through `DetailCard`; it does not yet receive departure rows or the playback clock. Adoption requires a package version containing this component and the following edition-side wiring:
+
+- Pass the selected station's upcoming calls and study clock from `src/App.tsx` into the station panel, retaining its connections action and relevant summary information.
+- Match calls using `StationIndexEntry.stopIndexes` against `NetworkTrain.stops`. Use the call's departure time, omit terminal calls without an onward leg, filter/sort against the study window, and preserve IDs that let selection find the corresponding train. Do not derive a timetable from the summary `trainIds` count.
+- Map `route` to `service`, `headsign` (or the known final stop) to `destination`, the stop's known `platformCode` to `platform`, and the edition's category mapping to `serviceCategory`. Leave unknown platforms, sectors and operational statuses unknown. Realtime-adjusted stop times must not be relabelled as original scheduled times.
+- Import `@motionstudies/web/transport-hero-cards.css`, select `presentation="sbb"`, and pass the active edition locale's labels, clock formatting, source note, and controlled departure selection. Use `lineCount="auto"` with an explicit panel height.
+
+Component usage and row fields are documented in [the package guide](../packages/README.md#rail-bus-and-airport-hero-cards). SBB's own [general display guide](https://www.sbb.ch/en/travel-information/stations/services-station/station-customer-information/general-display-board.html) supplies the visual information hierarchy.
+
 ## Data stance
 
 Swiss GTFS Static is the source of scheduled services, stops, trips and shapes. GTFS Realtime enriches those schedules with trip updates and service alerts, but the official national feed currently does **not** publish vehicle positions. Consequently, most on-track positions will be an honest interpolation between timed stops and shapes, adjusted by realtime trip updates where available—not a claim of GPS tracking.

@@ -76,6 +76,86 @@ Pass `labels` for edition translations, `loading`, or a localized `error` and `o
 
 For a custom rail or transport board, import `SplitFlapBoard` from `@motionstudies/web/components/SplitFlapBoard` and `@motionstudies/web/split-flap-board.css`. Supply `columns` (`key`, `label`, `characters`) and `rows` (`id`, `cells`, optional `tone`). Cell text longer than its flap count is visually ellipsized, with the full value retained for assistive technology and hover. `onSelectRow`, `selectedRowId` and `selectionColumn` optionally make one cell per row selectable.
 
+For bus stops and local transport, `DotMatrixBoard` accepts the same rows, selection callbacks, loading state and empty/loading messages. It uses an amber 5 × 7 LED alphabet and its own scoped stylesheet; the flip-board stylesheet is not required. Consumers can switch components without remapping their data.
+
+```tsx
+import { DotMatrixBoard } from '@motionstudies/web/components/DotMatrixBoard'
+import '@motionstudies/web/dot-matrix-board.css'
+
+<DotMatrixBoard
+  label="Bus departures"
+  columns={[
+    { key: 'route', label: 'Route', characters: 4, minCharacters: 4 },
+    { key: 'destination', label: 'Destination', characters: 24 },
+    { key: 'time', label: 'Due', characters: 6, minCharacters: 6, align: 'right' },
+  ]}
+  rows={[{ id: 'bus-71', cells: { route: '71', destination: 'City Centre', time: '2 min' } }]}
+  lineCount="auto"
+  style={{ height: 360 }}
+/>
+```
+
+`lineCount` defaults to six display slots and accepts 1–30 (values outside that range are clamped; non-finite values use six). Fixed counts keep all slots and scale their contents to the available height, so dense boards need taller containers to remain readable. `"auto"` observes the actual container and fits 1–30 rows at a target `minRowHeight` of 34px. The default board height is 320px; use `style`, `className`, or `height: '100%'` inside a parent with a defined height. Unused slots stay blank; rows beyond the visible slots are omitted, without pagination or changes to consumer selection.
+
+For dot-matrix columns, `characters` is a width weight, while `minCharacters` reserves space before the remaining width is distributed. At very narrow widths all columns scale down. Long cell values are visually ellipsized, with their full original text available to assistive technology and on hover. Characters outside the bitmap alphabet (including accented names and non-Latin scripts) use SVG text as a visual fallback. `--matrix-ink` and `--matrix-unlit` customize the LEDs. Updates are immediate, with no flashing or scrolling animation. The **Bus boards** lab specimen exercises both presentations, height/width resizing, row counts, selection, long names, loading and empty states using synthetic timetable data.
+
+`variant="uk-rail"` gives the matrix a square black enclosure, mixed-case amber lettering, matrix column headings and horizontal display bands. Optional `heading` and `headingColumnSpan` replace the visual labels across the leading columns while preserving the individual accessible column headers. `footerLabel` and `clockLabel` add a matrix footer; the consumer owns clock formatting and updates. No live clock or pagination is inferred. `DotMatrixRow.note` adds a detail line and an accessible description on the selection button. Details consume one display slot and stay with their departure: if only one slot remains, the next departure with a detail waits until there is room for both. A one-line board still shows its first departure, retaining its full note for assistive technology.
+
+## Rail, bus and airport hero cards
+
+Hero cards have separate transport-specific APIs and visual identities, with shared display components underneath:
+
+| Card | Identity | Departure fields | Default display |
+| --- | --- | --- | --- |
+| `RailStationHeroCard` | Station name, optional code and locality | Scheduled time, destination, platform, expected time/status, via/service note | UK rail matrix |
+| `BusStopHeroCard` | Stop name, optional stop code and locality | Route, destination, due estimate, optional via | Bus dot matrix |
+| `AirportHeroCard` | IATA code, airport name and city | Flight, time, destination/origin, gate, remarks, direction tabs | Split flap |
+
+Import the new cards from `@motionstudies/web/components/RailStationHeroCard` or `@motionstudies/web/components/BusStopHeroCard`, plus `@motionstudies/web/transport-hero-cards.css` (which includes both board styles). Airport imports and study-window behavior remain as documented above.
+
+```tsx
+<RailStationHeroCard
+  station={{ name: 'Bristol Temple Meads', code: 'BRI', locality: 'Bristol' }}
+  departures={[{
+    id: 'train-1', time: '17:15', destination: 'Portsmouth Harbour',
+    platform: '9', expected: '17:22', via: 'Eastleigh',
+  }]}
+  lineCount="auto"
+  boardHeight={400}
+  clockLabel="16:49:26"
+  footerLabel="Study timetable"
+  note="Synthetic timetable. Example times, not a live service."
+/>
+
+<BusStopHeroCard
+  stop={{ name: 'Anchor Road', code: 'A1', locality: 'Bristol' }}
+  departures={[{ id: 'bus-1', route: '71', destination: 'City Centre', due: '2 min' }]}
+  lineCount={6}
+  note="Synthetic timetable. Example estimates, not a live service."
+/>
+```
+
+Rail and bus consumers supply already ordered and formatted departures, including their own filtering, timezones and freshness. Missing times, platforms and statuses stay unknown rather than becoming “On time”. Both cards accept `presentation` (`'uk-rail'`, `'dot-matrix'`, `'split-flap'`), `lineCount`, `boardHeight` in pixels, `minRowHeight`, `loading`, `error`, `onRetry`, localized `labels`, and controlled `onSelectDeparture`/`selectedDepartureId`. A required `note` explains the source. The matrix fits its container; the split-flap alternative contains scrolling and places any service details in an Information column. Fixed line counts represent physical matrix lines; in split-flap mode they limit departure rows. The **Transport heroes** lab compares all three cards, switches the new cards' presentations, and exercises details, row fitting, updates, long names and failure states.
+
+The rail card additionally accepts `presentation="sbb"`: a blue-and-white typographic departure board with service badges, scheduled time, destination/via information and prominent track numbers. This layout follows the information hierarchy in [SBB's general display guide](https://www.sbb.ch/en/travel-information/stations/services-station/station-customer-information/general-display-board.html). It uses ordinary text, including accented and non-Latin names. `RailDeparture.service` supplies a train label such as `IC 1`; optional `serviceCategory` (`'intercity'`, `'international'`, `'regional'`, `'suburban'`) selects the badge treatment. `platformSector` supplies a separate sector label when known. Expected times or disruption messages appear below the scheduled time; absence of a message does not manufacture an “On time” assertion.
+
+For this layout, `lineCount` counts departures with their inline detail, and `"auto"` fits rows using a default target height of 64px. Dense fixed counts reduce type size; long values remain in the accessible text and hover titles. Labels stay consumer-owned, including the added `service` column label. The lab's **SBB departure board** option selects a synthetic Zürich HB example with German, French, Italian and English labels. Both new board styles are included in `transport-hero-cards.css`.
+
+At compact widths the SBB layout stacks the service badge under the time, preserving destination space and the separate track column. Rail and bus hero padding follows the card width rather than the viewport. The lab includes a 240–980px width slider and Compact/Mobile/Panel/Wide presets, plus a 180–640px board-height control. The size regression suite covers seven card widths, four board heights, fixed and automatic line counts, long destinations, selection during updates, mobile viewports and loading/error states in Chromium and WebKit. Prefer `lineCount="auto"` for small panels; high fixed line counts deliberately trade text size for density.
+
+```tsx
+<RailStationHeroCard
+  presentation="sbb"
+  station={{ name: 'Zürich HB' }}
+  labels={{ station: 'Bahnhof', departures: 'Abfahrt', service: 'Zug', time: 'Zeit', destination: 'Nach', platform: 'Gleis' }}
+  departures={[{ id: 'example-1', service: 'IC 1', serviceCategory: 'intercity',
+    time: '09:02', destination: 'Genève-Aéroport', via: 'Bern · Lausanne', platform: '32', platformSector: 'ABCD' }]}
+  lineCount="auto"
+  boardHeight={430}
+  note="Synthetic timetable · Example data."
+/>
+```
+
 The shared board also accepts `loading`, a localized `loadingMessage`, and `loadingRows` (default five). While loading, its decorative rows cycle through staggered letters and digits; they are hidden from assistive technology and cannot be selected. A single status message announces loading. When data arrives, characters flip through a short sequence and settle into their actual values; later changes animate only the changed characters. These CSS animations have no JavaScript timers and stop looping when loading ends or the board is removed. Reduced-motion users get static blank loading flaps and immediate final text. `AirportHeroCard` uses this shared loading treatment automatically. Use **Reload board** in the Airports lab to preview the complete loading-to-ready transition.
 
 Empty messages also appear on the flaps, in the widest column (the destination/origin column in airport cards), with the other columns blank. Longer localized messages wrap across display rows instead of being truncated. They settle with the same animation as flight details, and one hidden status announces the complete message to assistive technology. This also applies when the study clock moves into a window with no movements.

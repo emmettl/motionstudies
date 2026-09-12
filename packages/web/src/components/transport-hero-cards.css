@@ -1,0 +1,39 @@
+@import './dot-matrix-board.css';
+@import './split-flap-board.css';
+@import './sbb-departure-board.css';
+
+.ms-bus-stop-hero, .ms-rail-station-hero { box-sizing: border-box; min-width: 0; container-type: inline-size; padding: clamp(12px, 4%, 24px); font-family: ui-sans-serif, system-ui, sans-serif; }
+.ms-bus-stop-hero *, .ms-rail-station-hero * { box-sizing: border-box; }
+.ms-bus-stop-hero { color: #e8ebe2; background: #2b3532; border: 1px solid #56645d; border-radius: 6px; }
+.ms-bus-stop-hero__identity { display: flex; align-items: center; gap: 18px; padding: 4px 0 24px; }
+.ms-bus-stop-hero__identity > div { min-width: 0; }
+.ms-bus-stop-hero__identity p { margin: 0; color: #b9c7be; font-size: 12px; line-height: 1.6; }
+.ms-bus-stop-hero__identity h2 { margin: 4px 0; font-size: clamp(24px, 5cqi, 40px); font-weight: 500; line-height: 1.1; letter-spacing: -.03em; overflow-wrap: anywhere; }
+.ms-bus-stop-hero__symbol { display: grid; place-items: center; flex-shrink: 0; width: 48px; height: 58px; background: #dfe7d9; color: #2b3532; border-radius: 2px; }
+.ms-bus-stop-hero__symbol svg { width: 32px; fill: none; stroke: currentColor; stroke-width: 2; }
+.ms-bus-stop-hero__code { margin-left: auto; text-align: right; flex-shrink: 0; }
+.ms-bus-stop-hero__code span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+.ms-bus-stop-hero__code strong { font-size: 28px; line-height: 1.2; font-weight: 500; }
+.ms-rail-station-hero { color: #f3f0e3; background: linear-gradient(120deg, #1d272c, #11191d); border: 1px solid #425057; border-top: 4px solid #d0b874; border-radius: 3px; }
+.ms-rail-station-hero__masthead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; color: #c9c8b9; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; }
+.ms-rail-station-hero__masthead strong { padding: 4px 7px; border: 1px solid #5a605b; font: 500 12px/1.2 ui-monospace, monospace; }
+.ms-rail-station-hero__identity { display: flex; align-items: center; gap: 18px; padding: 20px 0 24px; }
+.ms-rail-station-hero__identity > span { flex-shrink: 0; width: 42px; color: #e4d7b2; }
+.ms-rail-station-hero__identity svg { width: 100%; fill: none; stroke: currentColor; stroke-width: 3; }
+.ms-rail-station-hero__identity h2 { margin: 0; font-size: clamp(25px, 5cqi, 42px); line-height: 1.1; letter-spacing: -.035em; font-weight: 500; overflow-wrap: anywhere; }
+.ms-rail-station-hero[data-presentation='sbb'] { background: #0c1730; border-color: #405375; border-top: 4px solid #eb001b; }
+.ms-rail-station-hero[data-presentation='sbb'] .ms-rail-station-hero__identity > span { width: 44px; height: 40px; padding: 5px; color: #fff; background: #d70019; }
+.ms-rail-station-hero[data-presentation='sbb'] .ms-rail-station-hero__masthead { color: #b7c6e0; }
+.ms-transport-hero__note { margin-top: 16px; color: #b8c0b9; font-size: 11px; line-height: 1.6; overflow-wrap: anywhere; }
+.ms-transport-hero__error { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; min-height: 140px; padding: 24px; background: #111713; color: #ece8d6; }
+.ms-transport-hero__error button { min-height: 40px; padding: 8px 16px; font: inherit; background: #29352c; color: inherit; border: 1px solid #627465; border-radius: 3px; cursor: pointer; }
+.ms-transport-hero__error button:focus-visible { outline: 2px solid #f6cd46; outline-offset: 3px; }
+.ms-transport-hero__flap { overflow: auto; min-width: 0; }
+.ms-transport-hero__flap-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 12px 0; font: 12px/1.5 ui-monospace, monospace; color: #d8d6c1; }
+@container (max-width: 440px) {
+  .ms-bus-stop-hero__identity, .ms-rail-station-hero__identity { gap: 12px; }
+  .ms-bus-stop-hero__symbol { width: 36px; height: 46px; }
+  .ms-rail-station-hero__identity > span { width: 32px; }
+  .ms-bus-stop-hero__code strong { font-size: 20px; }
+  .ms-rail-station-hero .ms-dot-matrix-board { padding: 12px 8px; }
+}

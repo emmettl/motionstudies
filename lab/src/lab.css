@@ -47,6 +47,16 @@ h1 { font-size: clamp(32px, 4vw, 48px); letter-spacing: -1.5px; margin: 0; font-
 .readout > span { color: #8dfaff; }
 pre { font-size: 14px; overflow: auto; }
 .airport-specimen { max-width: 880px; min-width: 0; }
+.transport-hero-specimen { max-width: 980px; min-width: 0; width: 100%; }
+.bus-stop-specimen { width: 100%; max-width: 900px; padding: 20px; border: 1px solid #555953; background: #2a302e; border-radius: 6px; }
+.bus-stop-heading { display: flex; align-items: center; gap: 18px; padding: 6px 4px 24px; color: #e7e9df; }
+.bus-stop-heading > div { min-width: 0; }
+.bus-stop-heading h2 { margin: 2px 0 0; font-size: clamp(24px, 4vw, 38px); font-weight: 500; letter-spacing: -.5px; }
+.bus-stop-heading span { font-size: 14px; }
+.bus-stop-heading .bus-stop-symbol { display: grid; place-items: center; width: 44px; height: 44px; font-size: 32px; background: #e7e9df; color: #2a302e; flex-shrink: 0; }
+.bus-stop-code { margin-left: auto; text-align: right; line-height: 1.4; }
+.bus-board-frame { width: 100%; max-width: 100%; min-width: min(260px, 100%); min-height: 180px; resize: both; overflow: auto; }
+.bus-stop-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 16px 4px 0; font-size: 10px; letter-spacing: .08em; color: #a9b0a7; }
 .airport-selection { display: block; margin-top: 16px; font-size: 13px; color: #a5b4c8; }
 .airport-study-timeline { max-width: 880px; padding-top: 0; margin-bottom: 24px; }
 @media (max-width: 800px) { .lab { grid-template-columns: 1fr; } .lab-sidebar { padding: 18px 20px; border-right: 0; border-bottom: 1px solid #253144; gap: 20px; } .lab-wordmark br { display: none; } .lab-sidebar nav { display: flex; flex-wrap: wrap; } .lab-sidebar > p { display: none; } .lab-main { padding: 24px 20px; } .theme-grid, .scene-grid.is-paired { grid-template-columns: 1fr; } .lab-sidebar nav button { padding: 6px 10px; } }
