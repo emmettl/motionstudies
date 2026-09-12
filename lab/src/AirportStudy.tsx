@@ -79,7 +79,7 @@ export function AirportStudy() {
       <label><input type="checkbox" checked={observed} onChange={(event) => setObserved(event.target.checked)} /> Observed tracks only</label>
     </div>
     <div className="airport-specimen">
-      <AirportBoard live={{ baseUrl: '', edition: 'gleislicht', airport: 'ZRH' }} studyCard={{ airport:{ iata: 'NFL', name: 'Northfield International', city: 'Northfield' },
+      <AirportBoard live={{ baseUrl: import.meta.env.DEV ? '' : 'https://motionstudies.app', edition: 'gleislicht', airport: 'ZRH' }} studyCard={{ airport:{ iata: 'NFL', name: 'Northfield International', city: 'Northfield' },
         departures: state === 'empty' ? [] : departureRows, arrivals: state === 'empty' ? [] : arrivalRows,
         study, horizon, dateLabel: '08 SEP 2026',
         loading: state === 'loading', error: state === 'error' ? 'Airport movements unavailable.' : undefined,

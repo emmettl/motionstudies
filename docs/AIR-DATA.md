@@ -32,7 +32,7 @@ const artifact = await ingestAdsbHeatmaps({
 })
 ```
 
-Do not use a sibling repository path or a workspace alias in an edition's production script. Adopt a released package containing this export and keep the edition's package version pinned. This change prepares the shared package; it does not publish npm packages or change edition dependencies.
+Do not use a sibling repository path or a workspace alias in an edition's production script. Adopt a released package containing this export and keep the edition's package version pinned. The shared export is published in `0.1.0-alpha.7`; see the [release and adoption record](AIRPORTS-ALPHA-7.md) for consumer versions and validation.
 
 The current migration points are:
 
