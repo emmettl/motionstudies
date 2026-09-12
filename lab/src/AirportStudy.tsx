@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { formatServiceTime } from '@motionstudies/core/domain/network'
 import { movementBoardWindow, movementsForBoard } from '@motionstudies/core/domain/movement-board'
-import { AirportHeroCard, type AirportBoardEntry } from '@motionstudies/web/components/AirportHeroCard'
+import { type AirportBoardEntry } from '@motionstudies/web/components/AirportHeroCard'
+import { AirportBoard } from '@motionstudies/web/components/AirportBoard'
 import { SplitFlapBoard } from '@motionstudies/web/components/SplitFlapBoard'
 import '@motionstudies/web/airport-hero-card.css'
 
@@ -78,13 +79,13 @@ export function AirportStudy() {
       <label><input type="checkbox" checked={observed} onChange={(event) => setObserved(event.target.checked)} /> Observed tracks only</label>
     </div>
     <div className="airport-specimen">
-      <AirportHeroCard airport={{ iata: 'NFL', name: 'Northfield International', city: 'Northfield' }}
-        departures={state === 'empty' ? [] : departureRows} arrivals={state === 'empty' ? [] : arrivalRows}
-        study={study} horizon={horizon} dateLabel="08 SEP 2026"
-        loading={state === 'loading'} error={state === 'error' ? 'Airport movements unavailable.' : undefined}
-        onRetry={() => changeBoardState('ready')} onSelectFlight={setSelected} selectedFlightId={selected}
-        labels={french ? { airport: 'Aéroport', departures: 'Départs', arrivals: 'Arrivées', time: 'Heure', service: 'Vol', destination: 'Vers', origin: 'De', stand: 'Porte', status: 'Remarques', emptyDepartures: 'Aucun départ dans cette période.', emptyArrivals: 'Aucune arrivée dans cette période.', loading: 'Chargement des mouvements…', retry: 'Réessayer', studyTime: 'Heure de l’étude', boardWindow: 'Période affichée', outsideWindow: 'Hors période de l’étude' } : undefined}
-        note={observed ? 'Synthetic observed-track example · Directions inferred from approach traces. Times are observations; destinations and gates are unavailable.' : 'Synthetic timetable · Invented airport, flights and destinations. All times local.'} />
+      <AirportBoard live={{ baseUrl: '', edition: 'gleislicht', airport: 'ZRH' }} studyCard={{ airport:{ iata: 'NFL', name: 'Northfield International', city: 'Northfield' },
+        departures: state === 'empty' ? [] : departureRows, arrivals: state === 'empty' ? [] : arrivalRows,
+        study, horizon, dateLabel: '08 SEP 2026',
+        loading: state === 'loading', error: state === 'error' ? 'Airport movements unavailable.' : undefined,
+        onRetry: () => changeBoardState('ready'), onSelectFlight: setSelected, selectedFlightId: selected,
+        labels: french ? { airport: 'Aéroport', departures: 'Départs', arrivals: 'Arrivées', time: 'Heure', service: 'Vol', destination: 'Vers', origin: 'De', stand: 'Porte', status: 'Remarques', emptyDepartures: 'Aucun départ dans cette période.', emptyArrivals: 'Aucune arrivée dans cette période.', loading: 'Chargement des mouvements…', retry: 'Réessayer', studyTime: 'Heure de l’étude', boardWindow: 'Période affichée', outsideWindow: 'Hors période de l’étude' } : undefined,
+        note: observed ? 'Synthetic observed-track example · Directions inferred from approach traces. Times are observations; destinations and gates are unavailable.' : 'Synthetic timetable · Invented airport, flights and destinations. All times local.' }} />
     </div>
     <output className="airport-selection" data-testid="selected-flight">{selected ? `Selected flight: ${selected}` : 'Select a flight number to inspect its movement.'}</output>
     <p className="note">Scrub or play the study at 120× speed. Both airport directions and the rail board follow this clock, keeping the last 10 minutes and upcoming movements inside the selected study window. On narrow screens, scroll within the board to read every column.</p>

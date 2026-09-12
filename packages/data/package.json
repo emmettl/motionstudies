@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/data",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0-alpha.7",
   "private": true,
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
@@ -8,6 +8,10 @@
     "node": ">=24.0.0"
   },
   "exports": {
+    "./adsb-heatmap": {
+      "types": "./src/adsb-heatmap.d.mts",
+      "import": "./src/adsb-heatmap.mjs"
+    },
     "./air-endpoints": {
       "types": "./src/air-endpoints.d.mts",
       "import": "./src/air-endpoints.mjs"
@@ -30,7 +34,7 @@
     }
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.6"
+    "@motionstudies/core": "0.1.0-alpha.7"
   },
   "repository": {
     "type": "git",

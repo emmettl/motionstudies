@@ -1,21 +1,42 @@
 @import './split-flap-board.css';
 
-.ms-airport-hero { --airport-accent: #edc96b; color: #f0ecdd; background: linear-gradient(125deg, #292d27, #191d19 65%); border: 1px solid #4b4d40; border-radius: 12px; padding: clamp(16px, 3vw, 30px); box-shadow: 0 20px 60px #0003; font-family: ui-sans-serif, system-ui, sans-serif; min-width: 0; }
-.ms-airport-hero__masthead { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.ms-airport-hero { --airport-accent: #edc96b; container-type: inline-size; color: #f0ecdd; background: linear-gradient(125deg, #292d27, #191d19 65%); border: 1px solid #4b4d40; border-radius: 12px; padding: clamp(16px, 3vw, 30px); box-shadow: 0 20px 60px #0003; font-family: ui-sans-serif, system-ui, sans-serif; min-width: 0; }
+.ms-airport-hero__masthead { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; }
 .ms-airport-hero__eyebrow { color: var(--airport-accent); text-transform: uppercase; font-size: 10px; letter-spacing: .18em; }
 .ms-airport-hero__eyebrow > span { font-size: 18px; margin-right: 6px; }
-.ms-airport-hero__clock { color: #bebfac; font: 12px/1.5 ui-monospace, monospace; }
-.ms-airport-hero__window { color: #bebfac; font: 11px/1.5 ui-monospace, monospace; margin: 0 0 12px; }
-.ms-airport-hero__identity { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; padding: 22px 0 26px; }
-.ms-airport-hero__code { color: var(--airport-accent); font-size: clamp(54px, 8vw, 88px); font-weight: 650; line-height: .95; letter-spacing: -.065em; }
-.ms-airport-hero__identity h2 { flex: 1; min-width: 140px; max-width: 300px; color: #f0ecdd; font: 400 clamp(20px, 3vw, 27px)/1.15 ui-sans-serif, system-ui, sans-serif; letter-spacing: -.025em; margin: 0; overflow-wrap: anywhere; }
-.ms-airport-hero__runway { margin-left: auto; width: 54px; height: 62px; border-inline: 1px solid #797c6166; transform: skewY(-20deg); background: repeating-linear-gradient(to bottom, #b5b79266 0 8px, transparent 8px 16px) center / 2px 100% no-repeat; }
-.ms-airport-hero__directions { display: flex; gap: 22px; border-bottom: 1px solid #4b4d40; margin-bottom: 16px; }
-.ms-airport-hero__directions button { padding: 10px 0 12px; margin-bottom: -1px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: #b8baaa; font: 500 13px/1.4 ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
+.ms-airport-hero__date { color: #bebfac; font: 11px/1.5 ui-monospace, monospace; letter-spacing: .06em; }
+.ms-airport-hero__identity { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 18px 24px; padding: 18px 0 20px; }
+.ms-airport-hero__code { color: var(--airport-accent); font-size: clamp(54px, 10cqi, 82px); font-weight: 650; line-height: .95; letter-spacing: -.065em; }
+.ms-airport-hero__identity h2 { max-width: 300px; color: #f0ecdd; font: 400 clamp(20px, 3.3cqi, 27px)/1.15 ui-sans-serif, system-ui, sans-serif; letter-spacing: -.025em; margin: 0; overflow-wrap: anywhere; }
+.ms-airport-hero__clock { padding-left: 24px; border-left: 1px solid #797c6155; text-align: right; }
+.ms-airport-hero__clock-label { display: block; color: #bebfac; font-size: 10px; line-height: 1.5; letter-spacing: .12em; text-transform: uppercase; }
+.ms-airport-hero__clock-value { display: block; margin-top: 4px; color: #f0ecdd; font: 400 42px/1.1 ui-monospace, monospace; font-variant-numeric: tabular-nums; letter-spacing: -.06em; white-space: nowrap; }
+.ms-airport-hero__board-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0 20px; border-bottom: 1px solid #4b4d40; margin-bottom: 14px; }
+.ms-airport-hero__directions { display: flex; gap: 22px; }
+.ms-airport-hero__directions button { min-height: 44px; padding: 10px 0 12px; margin-bottom: -1px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: #b8baaa; font: 500 13px/1.4 ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
 .ms-airport-hero__directions button[aria-pressed='true'] { color: var(--airport-accent); border-bottom-color: var(--airport-accent); }
 .ms-airport-hero__directions button:hover { color: #f0ecdd; }
+.ms-airport-hero__window { color: #bebfac; font: 11px/1.5 ui-monospace, monospace; font-variant-numeric: tabular-nums; margin: 8px 0; }
 .ms-airport-hero button:focus-visible { outline: 2px solid var(--airport-accent); outline-offset: 4px; }
+.ms-airport-hero .ms-flap { font-size: 17px; }
+.ms-airport-hero .ms-split-flap-board__table th { color: #c4c3b0; font-size: 11px; letter-spacing: .12em; padding-bottom: 5px; }
 .ms-airport-hero__message { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 30px 0; margin: 0; font-size: 14px; color: #c5c7b6; }
 .ms-airport-hero__message button { background: #30352a; border: 1px solid #666b50; border-radius: 4px; color: var(--airport-accent); padding: 6px 12px; font: inherit; cursor: pointer; }
 .ms-airport-hero__note { color: #b8baaa; font-size: 11px; line-height: 1.6; margin-top: 14px; }
-@media (max-width: 480px) { .ms-airport-hero__runway { display: none; } .ms-airport-hero__directions { gap: 18px; } }
+@container (max-width: 600px) {
+  .ms-airport-hero__identity { grid-template-columns: auto minmax(0, 1fr); gap: 16px; }
+  .ms-airport-hero__clock { grid-column: 1 / -1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 0 0; border-left: 0; border-top: 1px solid #797c6155; text-align: left; }
+  .ms-airport-hero__clock-value { margin-top: 0; font-size: 32px; }
+}
+@container (max-width: 440px) {
+  .ms-airport-hero__board-header { gap: 4px; }
+  .ms-airport-hero__directions { width: 100%; gap: 20px; }
+  .ms-airport-hero__window { margin: 6px 0 10px; }
+}
+.ms-airport-board__modes { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; color: #b8baaa; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; }
+.ms-airport-board__modes button, .ms-airport-board__unavailable button { min-height: 44px; padding: 8px 16px; border: 1px solid #4b4d40; border-radius: 6px; color: #f0ecdd; background: #1d211c; font: inherit; cursor: pointer; }
+.ms-airport-board__modes button[aria-pressed='true'] { border-color: #edc96b; color: #edc96b; }
+.ms-airport-board__modes button:disabled { opacity: .5; cursor: default; }
+.ms-airport-board__modes button:focus-visible, .ms-airport-board__unavailable button:focus-visible { outline: 2px solid #edc96b; outline-offset: 3px; }
+.ms-airport-board__unavailable { padding: 28px; border: 1px solid #4b4d40; border-radius: 12px; color: #f0ecdd; background: #1d211c; font: 14px/1.6 ui-sans-serif, system-ui, sans-serif; }
+.ms-airport-board__detail { color: #b8baaa; font: 13px/1.6 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }

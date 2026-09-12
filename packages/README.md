@@ -5,7 +5,7 @@ Shared packages for the Motion Studies transport instrument. The source workspac
 - `@motionstudies/core`: transport contracts, indexing, interpolation and visual theme contracts; no browser or Node dependencies.
 - `@motionstudies/three`: `NationalNetworkScene`, `HubPulseScene`, `StationFlowScene`, camera framing and label-mode contracts. React, React Three Fiber and Three.js are peers; rendering internals are not public subpaths.
 - `@motionstudies/web`: picker, button tooltips, theme application, mounting, progressive loaders, observed operations and recording. Import `tokens.css` and `mobile-picker.css` for isolated widgets. `shell.css` is an optional full-page study shell scoped to `.motion-study`; `mountMotionStudy` applies that class. Fonts and edition layouts belong to consumers.
-- `@motionstudies/data`: Node-only GTFS readers, network chunking, merging and station ranking. ZIP reading requires `unzip` on the host. Source selection, provenance overrides and compilation commands belong to each edition.
+- `@motionstudies/data`: Node-only GTFS readers, ADS-B heatmap compilation, air endpoint enrichment, network chunking, merging and station ranking. ZIP reading requires `unzip` on the host. Source selection, provenance overrides and compilation commands belong to each edition.
 
 ```tsx
 import { MobilePicker } from '@motionstudies/web/components/MobilePicker'
@@ -83,3 +83,19 @@ Empty messages also appear on the flaps, in the widest column (the destination/o
 Rail and other transport consumers can share the same time filtering through `movementBoardWindow(study, horizon)` and `movementsForBoard(entries, window, maxRows)` from `@motionstudies/core/domain/movement-board`. Format the returned numeric times when mapping them into `SplitFlapBoard` cells. The lab's rail board follows the same study clock and horizon as its airport card.
 
 `@motionstudies/data/air-endpoints` provides offline `enrichAirEndpoints` for existing air manifests, chunks and opening snapshots. Supply cached same-date global ADSB.lol heatmaps, an OurAirports CSV and the service date's local UTC offset. It associates only unambiguous low-altitude endpoints near a reference airport; cruise-only traces and uncertain routes stay unknown. Optional `AirEndpoint` origin/destination fields carry airport identity, observed boundary time and `observed-endpoint` evidence. `airportBoardMovements` maps full manifest entries to board rows without confusing playback chunk boundaries with flight endpoints. Input hashes and source/licence attribution are recorded in fixture metadata. These fields describe inferred observations, never flight schedules, gates or live status.
+
+## Optional live airport feed
+
+`AirportBoard` from `@motionstudies/web/components/AirportBoard` adds Study/Now controls around an existing `AirportHeroCard` configuration. Pass `studyCard` with the usual card props and `live={{ baseUrl, edition, airport }}` for the shared service. Import `airport-hero-card.css`. `labels` localizes the wrapper's control and availability messages. The lower-level `useAirportFeed` hook and core `domain/live-airport` contract are also public exports.
+
+Live timestamps are Unix seconds and use the airport's timezone for display, independently of recorded service time. The wrapper does not pass live flight IDs to the recorded scene's selection callback. The recorded card remains mounted while hidden; the edition still owns playback and can pause its study when appropriate. Only Now mode fetches flight boards; checking capabilities does not query the paid provider. Stale results carry their retrieval time and disappear when expired. Source data never falls back to synthetic or recorded flights under a live label.
+
+See [service architecture and operations](../docs/LIVE-AIRPORTS.md). The Worker is deployed separately; npm publication and edition adoption remain explicit release steps.
+
+## Shared recorded air compilation
+
+`@motionstudies/data/adsb-heatmap` consolidates the offline heatmap pipeline previously copied between editions. `ingestAdsbHeatmaps` reads cached gzip slices, decodes observations, filters transport-scale tracks, splits flights, and writes either an opening snapshot or an indexed day with overlapping chunks. Source hashes, chunk hashes and ODbL attribution accompany the output. It makes no network requests.
+
+The same `decodeAdsbHeatmap` now powers `enrichAirEndpoints`; endpoint inference retains full coordinate precision, while playback compilation retains the existing five-decimal coordinates. `transportAirTracks` and `chunkAirSnapshot` are also available for consumers that assemble their own pipeline. All functions have public TypeScript declarations and work in the packed Node package.
+
+Editions supply geographic bounds, service date, explicit UTC offset, optional timezone, input files and output paths. Flight IDs and chunk overlap retain the existing contracts. The default splits known callsign changes and gaps over 30 minutes. Set `splitTracks: false` only when reproducing a legacy opening snapshot with one ID per aircraft. See [adoption and compatibility](../docs/AIR-DATA.md).

@@ -1,0 +1,84 @@
+{
+  "name": "motionstudies-airports",
+  "main": "services/airports/worker.ts",
+  "account_id": "8cac82a07417990e553f88793670f361",
+  "compatibility_date": "2026-09-12",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "motionstudies.app/api/airports/*",
+      "zone_name": "motionstudies.app"
+    }
+  ],
+  "vars": {
+    "FEED_CONFIG": {
+      "enabled": true,
+      "origins": [
+        "https://motionstudies.app",
+        "https://emmettl.github.io"
+      ],
+      "editions": {
+        "gleislicht": {
+          "enabled": true,
+          "airports": [
+            "ZRH"
+          ]
+        },
+        "allchange": {
+          "enabled": false,
+          "airports": []
+        },
+        "correspondances": {
+          "enabled": false,
+          "airports": []
+        }
+      },
+      "airports": {
+        "ZRH": {
+          "iata": "ZRH",
+          "name": "Zurich Airport",
+          "city": "Zürich",
+          "timeZone": "Europe/Zurich"
+        }
+      },
+      "refreshSeconds": 300,
+      "staleSeconds": 900,
+      "dailyUnitBudget": 1000,
+      "monthlyUnitBudget": 30000,
+      "credentialVersion": 1
+    }
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "AIRPORTS",
+        "class_name": "AirportCoordinator"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "AirportCoordinator"
+      ]
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "REQUEST_LIMITER",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 60,
+        "period": 60
+      }
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "BOARDS",
+      "bucket_name": "motionstudies-airport-cache"
+    }
+  ]
+}

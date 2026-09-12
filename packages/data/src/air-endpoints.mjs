@@ -3,6 +3,7 @@ import { dirname, join } from 'node:path'
 import { gunzipSync } from 'node:zlib'
 import { createHash } from 'node:crypto'
 import { parseCsvLine } from './gtfs.mjs'
+import { decodeAdsbHeatmap } from './adsb-heatmap.mjs'
 
 export function parseAirports(csv) {
   const [header, ...lines] = csv.trim().split(/\r?\n/)
@@ -71,36 +72,19 @@ export async function enrichAirEndpoints({ manifestPath, snapshotPaths = [], hea
   const tracks = [...manifest.aircraft, ...snapshots.flatMap(snapshot => snapshot.tracks)]
   const wanted = new Set(tracks.map(track => parseInt(track.icaoAddress ?? track.id.split('-')[0], 16)))
   const records = new Map()
-  const dayStart = Date.parse(`${date}T00:00:00Z`) - utcOffsetHours * 3600000
   const files = (await readdir(heatmapDirectory)).filter(file => file.endsWith('.bin.ttf')).sort()
   if (!files.length) throw new Error('No cached heatmap slices found')
   const sources = []
   for (const file of files) {
     const raw = await readFile(join(heatmapDirectory, file))
-    const buffer = gunzipSync(raw)
-    let time
-    const callsigns = new Map()
-    let used = false
-    for (let offset = 0; offset + 16 <= buffer.length; offset += 16) {
-      const address = buffer.readUInt32LE(offset), latitude = buffer.readInt32LE(offset + 4)
-      if (address === 0x0e7f7c9d) {
-        time = Math.round((Number((BigInt(latitude) << 32n) | BigInt(buffer.readUInt32LE(offset + 8))) - dayStart) / 1000)
-        continue
-      }
-      const id = address & 0xffffff
-      if (!wanted.has(id) || (address & 0x01000000)) continue
-      if (latitude >= 0 && (latitude & 0x40000000) !== 0) {
-        callsigns.set(id, buffer.subarray(offset + 8, offset + 16).toString('ascii').replaceAll('\0', '').trim().toUpperCase())
-        continue
-      }
-      if (time === undefined || time < 0 || time > 86400) continue
-      const altitude = buffer.readInt16LE(offset + 12), speed = buffer.readInt16LE(offset + 14)
-      if (altitude < 0 || speed < 0) continue
+    const used = decodeAdsbHeatmap(gunzipSync(raw), {
+      serviceDate: date, utcOffsetHours, windowStart: 0, windowEnd: 86400, addresses: wanted,
+    }, (id, sample) => {
       const samples = records.get(id) ?? []
-      samples.push([time, buffer.readInt32LE(offset + 8) / 1e6, latitude / 1e6, altitude * 25, speed / 10, callsigns.get(id) ?? samples.at(-1)?.[5] ?? ''])
+      sample[5] ??= samples.at(-1)?.[5] ?? ''
+      samples.push(sample)
       records.set(id, samples)
-      used = true
-    }
+    })
     if (used) sources.push({ file, sha256: createHash('sha256').update(raw).digest('hex') })
   }
   const csv = await readFile(airportCsvPath, 'utf8')

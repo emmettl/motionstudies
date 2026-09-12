@@ -56,27 +56,32 @@ export function AirportHeroCard({ airport, departures, arrivals, note, study, ho
   return <section className={`ms-airport-hero ${className}`} aria-labelledby={titleId}>
     <div className="ms-airport-hero__masthead">
       <span className="ms-airport-hero__eyebrow"><span aria-hidden="true">↗</span> {copy.airport} / {airport.city}</span>
-      <span className="ms-airport-hero__clock">{dateLabel && <>{dateLabel} · </>}{copy.studyTime} {Number.isFinite(study.time) ? formatTime(study.time) : '—'}</span>
+      {dateLabel && <span className="ms-airport-hero__date">{dateLabel}</span>}
     </div>
     <div className="ms-airport-hero__identity">
       <strong className="ms-airport-hero__code">{airport.iata}</strong>
       <h2 id={titleId}>{airport.name}</h2>
-      <span className="ms-airport-hero__runway" aria-hidden="true" />
+      <div className="ms-airport-hero__clock">
+        <span className="ms-airport-hero__clock-label">{copy.studyTime}</span>{' '}
+        <strong className="ms-airport-hero__clock-value">{Number.isFinite(study.time) ? formatTime(study.time) : '—'}</strong>
+      </div>
     </div>
-    <div className="ms-airport-hero__directions" role="group" aria-label={`${copy.departures} / ${copy.arrivals}`}>
-      {(['departures', 'arrivals'] as const).map((value) => <button type="button" key={value} aria-pressed={direction === value} aria-controls={boardId} onClick={() => setDirection(value)}>
-        <span aria-hidden="true">{value === 'departures' ? '↗' : '↘'}</span> {copy[value]}
-      </button>)}
+    <div className="ms-airport-hero__board-header">
+      <div className="ms-airport-hero__directions" role="group" aria-label={`${copy.departures} / ${copy.arrivals}`}>
+        {(['departures', 'arrivals'] as const).map((value) => <button type="button" key={value} aria-pressed={direction === value} aria-controls={boardId} onClick={() => setDirection(value)}>
+          <span aria-hidden="true">{value === 'departures' ? '↗' : '↘'}</span> {copy[value]}
+        </button>)}
+      </div>
+      <p className="ms-airport-hero__window">{window ? `${copy.boardWindow} ${formatTime(window.start)}–${formatTime(window.end)}` : copy.outsideWindow}</p>
     </div>
-    <p className="ms-airport-hero__window">{window ? `${copy.boardWindow} ${formatTime(window.start)}–${formatTime(window.end)}` : copy.outsideWindow}</p>
     <div id={boardId}>
       {error ? <div className="ms-airport-hero__message" role="status">{error}{onRetry && <button type="button" onClick={onRetry}>{copy.retry}</button>}</div>
         : <SplitFlapBoard label={`${airport.iata} ${copy[direction]}`} columns={[
           { key: 'time', label: copy.time, characters: 5 },
           { key: 'service', label: copy.service, characters: 7 },
-          { key: 'place', label: direction === 'departures' ? copy.destination : copy.origin, characters: 16 },
+          { key: 'place', label: direction === 'departures' ? copy.destination : copy.origin, characters: 18 },
           { key: 'stand', label: copy.stand, characters: 3 },
-          { key: 'status', label: copy.status, characters: 10 },
+          { key: 'status', label: copy.status, characters: 11 },
         ]} rows={rows} loading={loading} loadingMessage={copy.loading} loadingRows={rows.length || Math.min(maxRows, 5)} emptyMessage={direction === 'departures' ? copy.emptyDepartures : copy.emptyArrivals}
           selectionColumn="service" onSelectRow={onSelectFlight} selectedRowId={selectedFlightId} />}
     </div>

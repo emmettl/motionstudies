@@ -8,3 +8,7 @@ test-results/
 .wrangler/
 .hosting-assets/
 __pycache__/
+.dev.vars
+.dev.vars.*
+.env
+.env.*

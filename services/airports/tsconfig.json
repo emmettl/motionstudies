@@ -1,0 +1,6 @@
+{
+  "extends": "../../packages/tsconfig.shared.json",
+  "compilerOptions": { "lib": ["ES2022", "DOM", "DOM.Iterable"] },
+  "include": ["./*.ts"],
+  "exclude": ["./*.test.ts"]
+}

@@ -18,7 +18,7 @@
     "check:packed": "node scripts/check-packed-packages.mjs",
     "check:packages": "tsc -p packages/core && tsc -p packages/three && tsc -p packages/web",
     "check:architecture": "node scripts/check-edition-boundaries.mjs",
-    "typecheck": "npm run check:packages && tsc -p lab && tsc -p tsconfig.tests.json",
+    "typecheck": "npm run check:packages && tsc -p lab && tsc -p tsconfig.tests.json && npm run check:airports",
     "lint": "oxlint",
     "test": "vitest run",
     "test:lab": "playwright test --config playwright.lab.config.ts",
@@ -26,12 +26,14 @@
     "build": "npm run build:lab && node scripts/build-site.mjs",
     "build:release": "node scripts/build-packages.mjs --release",
     "check:release": "node scripts/check-packed-packages.mjs --release",
-    "release:dry-run": "node scripts/publish-packages.mjs"
+    "release:dry-run": "node scripts/publish-packages.mjs",
+    "check:airports": "tsc -p services/airports",
+    "dev:airports": "wrangler dev --config wrangler.airports.jsonc --port 8787"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.6",
-    "@motionstudies/three": "0.1.0-alpha.6",
-    "@motionstudies/web": "0.1.0-alpha.6",
+    "@motionstudies/core": "0.1.0-alpha.7",
+    "@motionstudies/three": "0.1.0-alpha.7",
+    "@motionstudies/web": "0.1.0-alpha.7",
     "@react-three/fiber": "9.7.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -39,14 +41,14 @@
   },
   "devDependencies": {
     "@babel/parser": "7.29.8",
-    "@playwright/test": "1.62.1",
+    "@playwright/test": "1.63.0",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.7",
     "@types/three": "0.185.4",
     "@vitejs/plugin-react": "6.1.1",
-    "oxlint": "1.81.0",
+    "oxlint": "1.82.0",
     "typescript": "7.0.2",
-    "vite": "8.2.2",
+    "vite": "8.3.0",
     "vitest": "5.0.0"
   },
   "packageManager": "npm@11.19.0"

@@ -47,10 +47,22 @@ try {
   }
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
     import { network } from './fixtures.ts'
+    import { decodeAdsbHeatmap, ingestAdsbHeatmaps, chunkAirSnapshot, type HeatmapSnapshot, type HeatmapManifest } from '@motionstudies/data/adsb-heatmap'
     import { parseGtfsTime, activeServices } from '@motionstudies/data/gtfs'
     import { chunkNetworkSnapshot } from '@motionstudies/data/network-chunks'
     import { mergeNetworkSnapshots } from '@motionstudies/data/merge-network'
     import { rankNetworkStations } from '@motionstudies/data/station-ranking'
+    export const decoded: number = decodeAdsbHeatmap(new Uint8Array(), {
+      serviceDate: '2026-09-04', utcOffsetHours: 0, windowStart: 0, windowEnd: 3600,
+    }, (_address, sample) => { const seconds: number = sample[0]; void seconds })
+    export async function airContracts(snapshot: HeatmapSnapshot) {
+      const options = { inputs: ['slice.bin.ttf'], output: 'air.json', serviceDate: '2026-09-04', utcOffsetHours: 0,
+        bounds: [-1, -1, 1, 1] as const, windowStart: 0, windowEnd: 3600 }
+      const opening: HeatmapSnapshot = await ingestAdsbHeatmaps(options)
+      const day: HeatmapManifest = await ingestAdsbHeatmaps({ ...options, chunkHours: 1 })
+      const hash: string = chunkAirSnapshot(snapshot, { chunkSeconds: 3600, stem: 'air' }).chunks[0].descriptor.sha256
+      return { opening, day, hash }
+    }
     export const seconds: number = parseGtfsTime('25:10:00')
     export const chunkCount: number = chunkNetworkSnapshot(network, 120, 'chunks').chunks.length
     export const merged = mergeNetworkSnapshots([network])
@@ -70,6 +82,8 @@ try {
       try { await import(hidden); throw new Error('Internal module exposed: '+hidden) }
       catch (error) { if (error.code !== 'ERR_PACKAGE_PATH_NOT_EXPORTED') throw error }
     }
+    const { decodeAdsbHeatmap } = await import('@motionstudies/data/adsb-heatmap')
+    if (decodeAdsbHeatmap(new Uint8Array(), { serviceDate: '2026-09-04', utcOffsetHours: 0, windowStart: 0, windowEnd: 60 }, () => {}) !== 0) throw new Error('Packed heatmap decoder failed')
     const { parseGtfsTime } = await import('@motionstudies/data/gtfs')
     if (parseGtfsTime('25:10:00') !== 90600) throw new Error('Packed Node tooling failed')
   `
