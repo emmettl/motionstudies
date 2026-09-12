@@ -40,3 +40,9 @@ The Norikae browser check exposed a keyboard-scrubbing race when Home is pressed
 Underfall has no configured Git remote, so its validated upgrade is committed locally. The other adoption commits are pushed to their existing remote branches. Gleislicht's working checkout was fast-forwarded after preserving and restoring its unrelated edits. The duplicate Gleislicht clone is not a separate edition. Private/gated content publication remains controlled by each edition's existing workflow.
 
 The production lab now calls the airport service at `motionstudies.app`; local development retains the same-origin proxy. Six live-airport browser cases passed against the production preview in Chromium and WebKit.
+
+## Remote workflow status at handoff
+
+The shared release and its package/catalogue checks succeeded. Umlauf, All Change, Manifest and Norikae main completed their publication workflows, and Local / Express completed its validation workflow. Correspondances checks, Zugunruhe publication and the final lab/catalogue follow-up are still queued or running. Norikae's development branch has no push-triggered workflow.
+
+Gleislicht's package/fixture checks succeeded, but its national timetable job stopped at the existing road-coverage requirement: today's generated timetable achieved 92.80%, below the required 95%. The [job log](https://github.com/emmettl/gleislicht/actions/runs/34712505305/job/103604325262) reports that no artifacts were written. The npm adoption is committed and installed; production deployment is blocked by this data-quality gate. Its other jobs were still running at handoff.
