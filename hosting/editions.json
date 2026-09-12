@@ -40,5 +40,14 @@
       "data/hyde/popc_1961.bin.gz"
     ],
     "data_pattern": "data/hyde/(?:index\\.json|popc_[0-9]{4}\\.(?:json|bin\\.gz))"
+  },
+  "zugunruhe": {
+    "required": [
+      "continent.html",
+      "network.html",
+      "studies/01-layers/index.html",
+      "studies/02-archipelago/index.html"
+    ],
+    "data_pattern": "(?!)"
   }
 }
