@@ -44,6 +44,25 @@ describe('package and edition boundaries', () => {
     await file('packages/web/src/index.ts', "export { value } from '@motionstudies/core/index'")
     expect(await checkEditionBoundaries(root)).toEqual([])
   })
+  it('permits the exact UK clock identifier in runtime and type declarations only', async () => {
+    const { root, file } = await fixture()
+    await file('packages/data/src/uk-service-day.mjs', "export const timezone = 'Europe/London'")
+    await file('packages/data/src/uk-service-day.d.mts', 'export declare const timezone: "Europe/London"')
+    expect(await checkEditionBoundaries(root)).toEqual([])
+    await file('packages/core/src/index.ts', "export const timezone = 'Europe/London'")
+    expect(await checkEditionBoundaries(root)).toEqual([
+      'packages/core/src/index.ts contains place-specific identity',
+    ])
+  })
+  it('still rejects edition identity inside the UK clock adapter', async () => {
+    const { root, file } = await fixture()
+    await file('packages/data/src/uk-service-day.mjs', "export const timezone = 'Europe/London'; export const edition = 'London'")
+    await file('packages/data/src/uk-service-day.d.mts', "export declare const edition: 'all-change'")
+    expect(await checkEditionBoundaries(root)).toEqual(expect.arrayContaining([
+      'packages/data/src/uk-service-day.mjs contains place-specific identity',
+      'packages/data/src/uk-service-day.d.mts contains place-specific identity',
+    ]))
+  })
   it('rejects arbitrary relative escapes and undeclared dependencies', async () => {
     const { root, file } = await fixture()
     await file('packages/core/src/index.ts', "export * from '../../../src/helper.ts'\nimport 'react'")
