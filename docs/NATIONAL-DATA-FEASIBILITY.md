@@ -177,6 +177,8 @@ Use UTC instants internally with Europe/London presentation and explicit operati
 
 ## Architecture and reuse
 
+The reusable [archive and processing proposal](ARCHIVE-AND-PROCESSING.md) develops this pipeline: original objects in R2, candidate Parquet tables and chunked weather arrays, batch compilation and optional operational queries. It includes storage scenarios, source-specific retention/redistribution rules and a bounded implementation proof. These remain options to evaluate, not a claim that the national archive or database has been deployed.
+
 The proposed pipeline is:
 
 ```text

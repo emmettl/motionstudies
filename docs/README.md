@@ -10,6 +10,7 @@
 - [Catalogue programme and admission criteria](CATALOGUE.md)
 - [Candidate names and the theses they imply](NAMING.md)
 - [Data access and provenance readiness](DATA-READINESS.md) and [provider questions](DATA-QUESTIONS.md)
+- [Archive and processing options](ARCHIVE-AND-PROCESSING.md): R2, analytical tables, gridded arrays and optional time-series databases; source-specific retention and redistribution
 - [Edition architecture and ownership](EDITIONS.md)
 - [Code and library consolidation proposal](ARCHITECTURE-CONSOLIDATION.md): application state ownership, renderer internals, data contracts and independent package consumption
 - [Package extraction provenance](EXTRACTION.md) and [release process](RELEASING.md)
