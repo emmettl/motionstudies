@@ -31,4 +31,6 @@ Deterministic particles and integrated trails illustrate an estimated field. The
 
 Make the evidence descent itself the signature action: continental motion, radar coverage, one site's altitude/time estimate and its method. Compare the three nights on consistent scales and make support, missingness and source dates easy to inspect. Review the latest local increment before describing it as public.
 
+**Shared extraction, 13 September 2026.** The continental estimate, currents integration, cloud-grid reading and daylight have been ported to `@motionstudies/core` as transport-neutral modules; see the [shared-field record](SHARED-FIELDS.md). The edition still runs its local copies. After the next coordinated release it should adopt the exact published version, replace the four modules with imports, keep its renderers and the −1 texture sentinel, and re-run the three-night audit to confirm identical fields.
+
 Sound remains an artistic strand to develop: generative music may express flow and altitude, building on the Swiss work's experience, but it should not suggest measured bird calls or a completed sonic implementation. The thesis and title should mature through these comparisons before catalogue admission.

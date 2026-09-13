@@ -19,6 +19,22 @@ This is an artistic and evidential commitment. Framing, light, projection and du
 
 The proposed [national study](NATIONAL-STUDY.md) develops this principle through England's differing local and long-distance service rhythms. Its [feasibility report](NATIONAL-DATA-FEASIBILITY.md) separates available foundations from the source and engineering proofs still needed.
 
+## The view from altitude — 13 September 2026
+
+The founding image of the series is the first orbital view: the whole of a country seen from a sub-orbital remove, with the knowledge that each point of light is a real bus or train moving at that place, at that minute. The feeling does not come from the pattern. A thousand invented points from the same altitude would look nearly identical and mean nothing. It comes from the pattern being true.
+
+This makes the evidence commitment aesthetic as well as ethical. Provenance, source dates and the distinction between scheduled, observed, estimated and reconstructed motion are what allow a light seen from altitude to be believed. Without that guarantee the view is decoration.
+
+The descent to a single journey matters mostly as a promise. A viewer will almost never choose one bus, but they can, and if they do it must lead into the story of that particular bus and back out again without losing time, place or identity. The capability is largely latent. Its job is to make the whole trustworthy, whether or not anyone descends. This is also why synthetic previews are not partial works: by this measure they are the absence of the work.
+
+Three consequences follow for the instrument:
+
+- **Sharpness encodes evidence.** A hard point of light is a measured thing at a known place. A haze is a value believed to exist somewhere in an area. Interpolated and modelled quantities should look diaphanous, both because it is more beautiful than a step and because it is more honest. Their softness is set by the measurement's resolution and recorded like any other provenance; smoothing for its own sake is a quiet falsehood. A recorded vehicle between two reports is itself an inference and may soften between them.
+- **Multiple clocks, not multiple datasets.** Transport is human time laid over a country. A second band earns its place only if it runs on a different period, or on the same period for a different reason, so that laying it beneath the transport figure changes what the pattern means: the solar day, the tide, the electricity demand that is a second witness to the same morning, the synoptic weather that is indifferent to the timetable. A conventional map answers where things are; these works answer what condition the country is in.
+- **Figure and ground.** The sharp populations are the subject. Conditions move beneath them and must recede rather than compete.
+
+The shared software is the loom, and the works are the cloth. Building the loom is legitimate engineering interest in itself, and much of the repository records it. It is necessary and not sufficient: the test of the instrument is whether it produces a work that could not exist without it.
+
 ## Delivery approach
 
 Every stage should leave a coherent study that can be viewed and assessed. A new city begins with a local thesis, source audit and bounded proof. Its signature composition and publication path must be defensible before it earns a catalogue number or expands into a larger atlas.

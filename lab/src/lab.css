@@ -42,6 +42,8 @@ h1 { font-size: clamp(32px, 4vw, 48px); letter-spacing: -1.5px; margin: 0; font-
 .timeline label { display: flex; align-items: center; gap: 16px; flex: 1; font-size: 14px; white-space: nowrap; }
 .timeline input { width: 100%; }
 .timeline output { min-width: 56px; text-align: right; font-variant-numeric: tabular-nums; }
+.field-specimen { max-width: 760px; min-width: 0; border: 1px solid #2d3a4c; border-radius: 8px; overflow: hidden; background: #05070c; }
+.field-specimen canvas { display: block; width: 100%; height: auto; cursor: crosshair; }
 .note { color: #93a2b7; font-size: 14px; max-width: 760px; margin: 24px 0; }
 .readout { border: 1px solid #2d3a4c; border-radius: 8px; background: #0c1320; padding: 24px; margin-bottom: 24px; }
 .readout > span { color: #8dfaff; }

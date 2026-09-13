@@ -35,6 +35,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Prepare subsequent versions
 
+The next coordinated version adds the [shared estimated-field, gridded-series, field-path and daylight modules](SHARED-FIELDS.md) to core with a lab specimen. They are prepared in the workspace without a version bump; assign the version when the release is cut.
+
 `0.1.0-alpha.14` adds opt-in panel layout, control styling and compact airport cards. See [the shared styling contract](PANEL-LAYOUT.md) and [release and adoption record](PANEL-LAYOUT-ALPHA-14.md).
 
 `0.1.0-alpha.13` published the [All Change foundations](ALLCHANGE-FOUNDATIONS.md): typed railway data tools, repeated timetable patterns and verified progressive loading, independent station-call sources, public renderer interfaces and observation-window compilation. Publication and edition adoption are recorded in [the alpha.13 release record](FOUNDATIONS-ALPHA-13.md).
