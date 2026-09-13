@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.11",
+  "version": "0.1.0-alpha.12",
   "private": true,
   "type": "module",
   "exports": {
@@ -34,10 +34,11 @@
     "./components/RailStationHeroCard": "./src/components/RailStationHeroCard.tsx",
     "./transport-hero-cards.css": "./src/components/transport-hero-cards.css",
     "./use-json-asset": "./src/use-json-asset.ts",
-    "./use-transition-value": "./src/use-transition-value.ts"
+    "./use-transition-value": "./src/use-transition-value.ts",
+    "./components/NetworkVehicleHeroCard": "./src/components/NetworkVehicleHeroCard.tsx"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.11"
+    "@motionstudies/core": "0.1.0-alpha.12"
   },
   "peerDependencies": {
     "react": "^19.2.8",
