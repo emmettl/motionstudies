@@ -1,0 +1,277 @@
+{
+  "checkedOn": "2026-09-13",
+  "legacyAllChangeCommit": "77be0d5",
+  "legacyUnderfallCommit": "3feaf4a",
+  "archiveSha256": "340a7601812494ef99fe0d6537b700a9b0ee92afcf0f790c5b0e7a19c2f3a215",
+  "workbooks": [
+    {
+      "table": "CB01",
+      "bytes": 1852267,
+      "sha256": "de4c2392d557d64b0ebb522ebc3955a087617e18afb1c0ba94704ae711ba29f4"
+    },
+    {
+      "table": "CB02",
+      "bytes": 1003313,
+      "sha256": "530b6cbdf590a0fdf0863cd4f241830bf734a9bfa2d163b9abb620cdee54d829"
+    },
+    {
+      "table": "CG01",
+      "bytes": 1467064,
+      "sha256": "cf5242b640e8165ad604a08f9d74890b1c6c27c9559a0ed3020509b2b629d59a"
+    },
+    {
+      "table": "CJ01",
+      "bytes": 2882055,
+      "sha256": "5accfb181b547685dad7bd140a27c3632f0587005cc982457603b98013e8b868"
+    },
+    {
+      "table": "LA01",
+      "bytes": 4194177,
+      "sha256": "ad88ec13ac99db283a3853b6baf5039832edd7ccedcefb76b12a35ae14f495d7"
+    },
+    {
+      "table": "LB01A",
+      "bytes": 4025333,
+      "sha256": "cbc90c9b1da81ee198c66223af62381e575dd00d5487d97b1cd4874e48fa1b55"
+    },
+    {
+      "table": "LB01B",
+      "bytes": 250792,
+      "sha256": "1fb6cedfde08f9454f064df022d9d3b58a1c46156b595cdfce4de0ed6976d815"
+    },
+    {
+      "table": "LC01",
+      "bytes": 3641239,
+      "sha256": "9c00954ac62283f57470b5a62ece3a1ad9d0a73c1deaed0d8d8fdd6e36d077f8"
+    },
+    {
+      "table": "PA01",
+      "bytes": 1842380,
+      "sha256": "2e1fd72723a176297dceb6db74b5e8959555c8d99b27b5343cdedb9d7c62d092"
+    },
+    {
+      "table": "PA02",
+      "bytes": 894734,
+      "sha256": "574e2d43fb50fc780eacd52dfa5252f7f99d1e55e7131a34f04f4035fce4e09a"
+    },
+    {
+      "table": "WA01",
+      "bytes": 571809,
+      "sha256": "6ecdfbe04ee2794384bfbb74cd8caa3716f9d0f64108acd868a3d62d92589112"
+    },
+    {
+      "table": "WA01A",
+      "bytes": 79854,
+      "sha256": "b483567fd7dd73d636cf40b711018b563d7826ec16cdaa95d3eedab5c95a4cfb"
+    },
+    {
+      "table": "WA03",
+      "bytes": 196968,
+      "sha256": "28b9d8ce7fd2329a17af124f1a96607cc35c27fb5714a51c8fe4e6a45893af52"
+    },
+    {
+      "table": "WA04",
+      "bytes": 1197804,
+      "sha256": "ebabc53ae18034d1b60949cd547a76b8d702c0db6b0590fbad1ac847335bea8a"
+    },
+    {
+      "table": "WA07",
+      "bytes": 531618,
+      "sha256": "c80e81432e1657aa88902d88cef99cd1587db5cf79075e8460cfd1e9b8d0ac35"
+    },
+    {
+      "table": "WB01",
+      "bytes": 10224377,
+      "sha256": "84733061debcdd81217c300f44f3ab2f086bb96a2d177004048a6ae23afab2ce"
+    },
+    {
+      "table": "WB02",
+      "bytes": 313111,
+      "sha256": "ec228f9bad297396e0d9bb81c423c2cddc4cf00c467682774556ab00928af405"
+    },
+    {
+      "table": "WC01",
+      "bytes": 4020532,
+      "sha256": "0a4a9e7c1ee9322763650a8da254cf8cb637854ebeca9997cbd8367625323dbb"
+    },
+    {
+      "table": "WC02",
+      "bytes": 2197750,
+      "sha256": "4473c907448b5f190bebfb99faa399f33bdcb5206715f6f84d8565d1957c1cf1"
+    },
+    {
+      "table": "WC03",
+      "bytes": 891226,
+      "sha256": "e822cba3114e605fbfd9d4432cd1337a3eabedd35a1a8f09c548d484f1072f22"
+    },
+    {
+      "table": "WE01",
+      "bytes": 2306311,
+      "sha256": "e66ec6a055401016cd58fb4ee8880ae1a3004bef0517fc88352396818dd5e8f5"
+    },
+    {
+      "table": "WF01A",
+      "bytes": 5624641,
+      "sha256": "4a26f328339903d32a299dace4545e29f955b01237dfa505de34f7e8cfd83eac"
+    },
+    {
+      "table": "WF01B",
+      "bytes": 775553,
+      "sha256": "c555ab9351a2b2f8ed18c4352ab4f45b5aef7f1d9051f8573aed8550b3202883"
+    },
+    {
+      "table": "WF02",
+      "bytes": 4783717,
+      "sha256": "8e0627b494c0015efb80dce3794ff6c8150bc442a97808191b748e6f79ebe9a1"
+    },
+    {
+      "table": "WF03",
+      "bytes": 2679482,
+      "sha256": "28d53700f62e4018f288456bcd64257de31662ee2b413aa6af6e3007638933c9"
+    },
+    {
+      "table": "WG02",
+      "bytes": 1424632,
+      "sha256": "6ac15d5533503fd97363ec219949acb90144492f56e02b0018808028a0650535"
+    },
+    {
+      "table": "WH01",
+      "bytes": 5180806,
+      "sha256": "1fd7e32ffc6ad493d874b90ce9a80b476a075cdadae3fd4146ff54a7a9104bac"
+    },
+    {
+      "table": "WH02",
+      "bytes": 3889698,
+      "sha256": "e11d5d317825342263e499581b82ba41f225fa8114cbb7945db9576100cd59ed"
+    },
+    {
+      "table": "WH02A",
+      "bytes": 32417,
+      "sha256": "04c75d64be6dcda470caf0430d756bbbacdbb3d0cc0df21a21a61152dcab044a"
+    },
+    {
+      "table": "WH03",
+      "bytes": 1951121,
+      "sha256": "f9ff242e6e13348469c47e91197be8fd88c43db41d1254765e451f189ecf55f5"
+    },
+    {
+      "table": "YA01",
+      "bytes": 2394178,
+      "sha256": "4e83691e6258d7faa34109f2cc9b3e2add7c413ee5eeed96e71ee58229dadd2f"
+    }
+  ],
+  "publicTables": [
+    {
+      "table": "NRT014",
+      "bytes": 1429614,
+      "sha256": "82c745b5ea3ae93b8fad947f417c9863e48624bb41066fc984f66a383d8b9643"
+    },
+    {
+      "table": "NRT051",
+      "bytes": 1044984,
+      "sha256": "d03a8933ea8fa407bbd0e2d7c3a9d092daf7111c5ed7e1357c80d1c3f437ed19"
+    },
+    {
+      "table": "NRT161",
+      "bytes": 3471926,
+      "sha256": "74231c3a45d34040fffadad9fda819c426e2fc77ddfd54833b0ba6f27b7d8fa0"
+    },
+    {
+      "table": "NRT180",
+      "bytes": 2643341,
+      "sha256": "a1e4f07d349a92aeb781a894414d21a209890311dcf9b53fff7d15ad50166d6c"
+    },
+    {
+      "table": "NRT181",
+      "bytes": 842868,
+      "sha256": "a6aaf5793ffd52f771f6f42bb24bf57b40e09a82fed6432d307167a6920824db"
+    },
+    {
+      "table": "NRT182",
+      "bytes": 336944,
+      "sha256": "733019b55e782cfd8fb1115c04697c868eec0ff29fe790c8f35574b46fd7eb85"
+    },
+    {
+      "table": "NRT183",
+      "bytes": 2899595,
+      "sha256": "07ce73d2b26e0c53845d8fd1fee6912a79ac77c2251b3392a419a41c1b8425db"
+    },
+    {
+      "table": "NRT184",
+      "bytes": 599426,
+      "sha256": "df03cfefdf6017e55fe2de1e45a54465fd7d842ee6d108891f4e06e551a7737b"
+    },
+    {
+      "table": "NRT185",
+      "bytes": 296083,
+      "sha256": "f189c039515ead38d7e93337671521505f7a543d54677d1aa7687e7a3d8c4b7c"
+    },
+    {
+      "table": "NRT186",
+      "bytes": 1108497,
+      "sha256": "e7c8a2755e91045b9035c2ef571a1535c3f53b43e8f4ea9bc120c042f22b4a3c"
+    },
+    {
+      "table": "NRT189",
+      "bytes": 865754,
+      "sha256": "6901a628bb91a027145ced7ef5c6fd308a98c63b67dcebb56c7b1c669816ae70"
+    },
+    {
+      "table": "NRT190",
+      "bytes": 242720,
+      "sha256": "be9380b69b6de3dfade353f39f2fa9ac8b096f3b81f2b3866c7b6695beb6b56a"
+    },
+    {
+      "table": "NRT191",
+      "bytes": 340020,
+      "sha256": "dfb5e93e4d09c1e3e906a5ea0a6eb2e38e68a8c2f28f0271242c5014d559d4ff"
+    }
+  ],
+  "geometryInputs": [
+    {
+      "file": "combined.json",
+      "bytes": 4454203,
+      "sha256": "a68d5a28d067b1d282c50fe536dcdd2dc2e8c00e79c1c679287f11a60ddc1d8e",
+      "role": "composed validation input"
+    },
+    {
+      "file": "south.json",
+      "bytes": 207419,
+      "sha256": "6d7181b109b31a72e3393fe3cdf07b9d42c2a6feec0fb45120d3c30c34f7fd2d",
+      "role": "fresh public OSM extract"
+    },
+    {
+      "file": "sw.json",
+      "bytes": 5325003,
+      "sha256": "05ff6a824b3b52b1d03b3f6db5c92dbda45e2aa2ce23d2f522a70042fd1c4728",
+      "role": "fresh public OSM extract"
+    },
+    {
+      "file": "west.json",
+      "bytes": 374728,
+      "sha256": "b8637372216a9092284e8d582f2b03e1b13c39f6c66fbfd8434a778a33b3cb81",
+      "role": "fresh public OSM extract"
+    }
+  ],
+  "proof": {
+    "bristolAcceptedColumns": 1004,
+    "bristolRejectedColumns": 255,
+    "bristolStationPairs": 47,
+    "bristolPublishedJourneys": 245,
+    "bristolStations": 23,
+    "bristolArtifacts": "rail.json, air.json, network-morning.json and all recording-window contents/hashes deeply equal; only reader/geometry provenance in manifest changes",
+    "londonWorkbookCount": 31,
+    "londonPublicRecords": 3138,
+    "londonJoinedJourneys": 8681,
+    "londonAddedPublicCalls": 1051,
+    "londonConnectedPaths": 474,
+    "londonGeometryFailures": 588,
+    "maximumGeometryLengthDifferenceKm": 0
+  },
+  "limitations": [
+    "Full historical London OSM cache unavailable. sw/west/south public extracts freshly retrieved; other regional Overpass requests timed out.",
+    "For join/graph parity, missing station identities and coordinates were taken from retained edition catalogue and network snapshots. This composed input was supplied identically to Python and JavaScript. It is validation input, not a publishable replacement source.",
+    "474 connected paths and way IDs, 588 failure reasons, joined journeys and public supplementation compare exactly on that composed input. This does not reproduce the complete historical London publication.",
+    "No production fixture was replaced. Python is a validation oracle only; the shared package/runtime consumer rail paths use Node and unzip."
+  ]
+}
