@@ -8,6 +8,8 @@
 
 For a bounded, recorded study, begin with an object archive, batch processing and small published artifacts. R2 is the proposed object store; Parquet is a candidate for tabular observations and schedules, and chunked arrays are a candidate for weather and other gridded fields. DuckDB can support transport analysis and compilation. Add a continuously available database when measured interactive or operational requirements justify one.
 
+The [cost-control policy](COST-CONTROL.md) constrains these options to approximately **$100/month for the whole series**, with a proposed $60 operating envelope and $40 reserve. Public traffic must not trigger unrestricted paid work. Retention needs both an age limit and a shared byte ceiling; lower expected storage prices alone do not satisfy the requirement.
+
 The archive preserves what the provider supplied. Normalized data makes it usable. The published study makes selected parts inexpensive to encounter. A query database can accelerate access without becoming the only surviving account of the evidence.
 
 This supports the series' central commitment: an aggregate retains a path to its constituents. That path can use precomputed indexes and bounded evidence extracts; inspecting one service does not inherently require a database query on every click.
@@ -18,7 +20,7 @@ This supports the series' central commitment: an aggregate retains a path to its
 | --- | --- | --- |
 | Source archive | R2 objects in original ZIP, GRIB, NetCDF, XML, JSON or other received format | Provider bytes, hashes, capture history and source/release context, retained only as permitted |
 | Normalized analytical data | Partitioned Parquet for tables; chunked arrays such as Zarr for grids | Canonical observations, units, identities, quality flags, corrections and source-record references |
-| Published study | Versioned manifests, aggregate tiles, time slices, group indexes and individual evidence extracts in R2 | Bounded browser delivery and a reproducible composition tied to specific inputs and compiler versions |
+| Published study | Versioned manifests, aggregate tiles, time slices, group indexes and individual evidence extracts served directly as static assets | Bounded browser delivery and a reproducible composition tied to specific inputs and compiler versions; private R2 may retain build copies within the archive quota |
 | Operational queries, if required | A relational/time-series database alongside the archive | Recent observations, indexes and frequently changing queries; rebuildable from the retained evidence within its permitted retention horizon |
 
 Keep raw storage private unless the relevant source permits the intended public redistribution. A public study artifact has its own publication decision; moving bytes to another format or storage tier does not change the source's rights.
@@ -94,6 +96,8 @@ Share capture, integrity, manifest and processing mechanisms when their contract
 
 ## Cost model and limits
 
+The following estimates compare data volumes, not permission to expand retention. Apply the [shared budget, traffic and retention controls](COST-CONTROL.md): initially propose a 30-day rolling window and at most 1,000 GB in R2 across all stored layers, including a finite allocation for selected study evidence. A year of retained data is a comparison case, not the default policy. Public delivery should use the direct static-asset path described there; public R2 reads would introduce visitor-dependent operation charges.
+
 At the reviewed R2 Standard rate of **$0.015 per GB-month**, storage is inexpensive, but operations are billed separately: Class A is $4.50 per million and Class B is $0.36 per million. R2 lists free egress. Actual bills apply allowances, billing-unit rounding and GB-month accounting; the estimates below omit those adjustments. Recheck the [official pricing](https://developers.cloudflare.com/r2/pricing/) before provisioning.
 
 | Illustrative material | Added per ordinary day | Monthly storage holding 30 days | Monthly storage holding 365 days |
@@ -116,5 +120,6 @@ Use one retained national bus hour and a small weather subset for the same inter
 3. Compile one national aggregate, one explicit group and one constituent/evidence lookup. Reconcile totals, preserve exclusion reasons and avoid double counting through a change of scale.
 4. Measure compilation time and peak memory, retained bytes by layer, object/request counts, regional and individual lookup latency, and browser transfer/decoded memory. Exercise nearby seeks and a cold lookup, not just a fully cached replay.
 5. Demonstrate a permitted retention expiry or removal using test fixtures, including dependent indexes and the visible evidence-availability state.
+6. Prove cost admission under concurrent collection, oversized inputs, failed cleanup and exhausted job budgets. Check that public replay and constituent inspection do not invoke unbounded paid services; preserve the last compiled edition when new work pauses. Follow the [cost-control proof](COST-CONTROL.md#current-position-and-next-proof).
 
-Use those results to choose partition/chunk sizes and decide whether static indexes suffice. Expand retention, add sources or introduce an operational database when the measured workload and source permissions support it. A shared archive is a candidate infrastructure relationship; each work retains its own artistic argument.
+Use those results to choose partition/chunk sizes and decide whether static indexes suffice. Expand retention, add sources or introduce an operational database when the measured workload, source permissions and shared operating allowance support it. A shared archive is a candidate infrastructure relationship; each work retains its own artistic argument.

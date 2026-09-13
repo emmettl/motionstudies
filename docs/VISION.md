@@ -24,6 +24,8 @@ Catalogue numbering and admission remain artistic and editorial decisions. Their
 
 Architecture should keep the cost of following curiosity low as the body of work grows. Maintaining yesterday's instruments should leave room to imagine tomorrow's.
 
+The series must also remain financially bounded: approximately **US$100/month in total** for its operating infrastructure. A surge in visitors must not create an open-ended bill, and preserved evidence must fit a finite collection. The [cost-control policy](COST-CONTROL.md) develops this constraint through static publication, bounded collection and processing, and explicit retention allowances. A recorded work should remain encounterable when new collection pauses.
+
 Be exact about data contracts, clocks, state and resource ownership, module boundaries, reproducibility and verification. Let shared libraries follow demonstrated technical relationships. Each work should be able to use the capabilities it needs while retaining its own composition and interpretation.
 
 Keep stable technical identifiers independent of mutable titles, catalogue numbers and groupings. Support rearrangement and reinterpretation without unnecessary code or data migrations. A preserved study should be able to remain fixed while another work evolves into a maintained tool.
