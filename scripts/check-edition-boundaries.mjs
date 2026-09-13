@@ -11,6 +11,14 @@ const packageGraph = {
 }
 const placeIdentity = /\b(?:Switzerland|Swiss|Zürich|Zurich|Genève|Geneva|London|TfL|GLA|New York|MTA|Paris|IDFM|gleislicht)\b|all-change|local-express|correspondances/i
 
+// The UK service-calendar adapter requires this IANA identifier. Permit only
+// the exact quoted protocol value in its implementation and declaration;
+// edition names and all other files retain the normal identity check.
+const ukClockFiles = new Set([
+  'packages/data/src/uk-service-day.mjs',
+  'packages/data/src/uk-service-day.d.mts',
+])
+
 function within(directory, path) {
   const child = relative(directory, path)
   return child === '' || (!child.startsWith(`..${sep}`) && child !== '..' && !child.startsWith(sep))
@@ -75,7 +83,10 @@ export async function checkEditionBoundaries(root = resolve('.')) {
       const label = relative(root, file)
       const source = await readFile(file, 'utf8')
       const test = /\.test\.[cm]?[jt]sx?$/.test(file)
-      if (!test && placeIdentity.test(source)) failures.push(`${label} contains place-specific identity`)
+      const identitySource = ukClockFiles.has(label.split(sep).join('/'))
+        ? source.replace(/(['"])Europe\/London\1/g, '')
+        : source
+      if (!test && placeIdentity.test(identitySource)) failures.push(`${label} contains place-specific identity`)
       if (/import\.meta\.env/.test(source)) failures.push(`${label} depends on the consumer's build environment`)
       for (const specifier of moduleReferences(source, file)) {
         if (specifier === undefined) {
