@@ -35,6 +35,18 @@
     "./network-chunk-cli": {
       "types": "./src/network-chunk-cli.d.mts",
       "import": "./src/network-chunk-cli.mjs"
+    },
+    "./source-store": {
+      "types": "./src/source-store.d.mts",
+      "import": "./src/source-store.mjs"
+    },
+    "./uk-service-day": {
+      "types": "./src/uk-service-day.d.mts",
+      "import": "./src/uk-service-day.mjs"
+    },
+    "./webtris": {
+      "types": "./src/webtris.d.mts",
+      "import": "./src/webtris.mjs"
     }
   },
   "dependencies": {
