@@ -16,6 +16,7 @@
 
 - [Shared panel layout and controls](PANEL-LAYOUT.md) — compact airport presentation, responsive clearances and [alpha.14 release record](PANEL-LAYOUT-ALPHA-14.md)
 - [All Change foundations](ALLCHANGE-FOUNDATIONS.md) — railway readers, timetable patterns, station calls, renderer interfaces and observation windows
+- [Zugunruhe's shared field contribution](SHARED-FIELDS.md) — estimated fields with support, gridded series, illustrative field paths and daylight; prepared for the next coordinated release, adoption tracked separately
 
 ## Numbered studies
 

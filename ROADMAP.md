@@ -13,9 +13,9 @@ The [study-status register](docs/STUDY-STATUS.md) reconciles nine edition checko
 - **Local / Express and NORIKAE:** parked at the author’s request on 13 September. Existing implementations and source questions are retained; development, acquisition and provider follow-up are paused. Local / Express keeps number 007 and its private proof; NORIKAE remains an unnumbered synthetic preview.
 - **MANIFEST:** software has advanced to alpha.9; observed-data publication review remains a separate gate.
 - **Underfall / Bristol:** local buses, rail/air, tides, bounded recording/replay and M32 detector study now have a [central brief](docs/BRISTOL.md). A full weekday recording remains to be acquired.
-- **Zugunruhe:** radar altitude, archipelago and continental-field studies now have a [central brief](docs/ZUGUNRUHE.md). The latest three-night increment is ahead of the served release.
+- **Zugunruhe:** radar altitude, archipelago and continental-field studies now have a [central brief](docs/ZUGUNRUHE.md). The latest three-night increment is ahead of the served release. Its field, currents, cloud and daylight models have been ported into the shared core package, unpublished, with a lab specimen; see the [shared-field record](docs/SHARED-FIELDS.md).
 
-The [national-study thesis](docs/NATIONAL-STUDY.md) and [technical feasibility research](docs/NATIONAL-DATA-FEASIBILITY.md) are research artifacts. London's reusable data tooling and the other studies' evidence practices give that proposal a stronger starting point; no national edition has been implemented by this update.
+The [national-study thesis](docs/NATIONAL-STUDY.md) and [technical feasibility research](docs/NATIONAL-DATA-FEASIBILITY.md) are research artifacts. London's reusable data tooling and the other studies' evidence practices give that proposal a stronger starting point; no national edition has been implemented by this update. Later on 13 September the thesis gained a [second axis](docs/NATIONAL-STUDY.md#a-second-axis-power-weather-and-light), power alongside weather and light, and the [vision](docs/VISION.md#the-view-from-altitude--13-september-2026) recorded the view-from-altitude principle behind it. Work on an England-wide study is commencing; what it will teach remains, literally, to be seen.
 
 ## Repository milestone — 7 September 2026
 
