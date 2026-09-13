@@ -1,0 +1,200 @@
+{
+ "kind": "power-source-probe",
+ "probedAt": "2026-09-13T21:30:00Z",
+ "method": "Unauthenticated GET requests to the Elexon Insights API and the NESO data portal (CKAN); aggregate counts only, no bulk data retained here. Elexon web pages returned a bot check; the Insights API did not.",
+ "elexonInsights": {
+  "base": "https://data.elexon.co.uk/bmrs/api/v1",
+  "authentication": "none required",
+  "referenceBmUnits": {
+   "count": 3071,
+   "withFuelType": 587,
+   "fuelTypes": {
+    "null": 2484,
+    "WIND": 284,
+    "OTHER": 103,
+    "CCGT": 65,
+    "NPSHYD": 36,
+    "OCGT": 26,
+    "BIOMASS": 18,
+    "PS": 16,
+    "NUCLEAR": 16,
+    "COAL": 10,
+    "INTELEC": 2,
+    "INTGRNL": 2,
+    "INTVKL": 2,
+    "INTNED": 1,
+    "INTEW": 1,
+    "INTFR": 1,
+    "INTIFA2": 1,
+    "INTIRL": 1,
+    "INTNSL": 1,
+    "INTNEM": 1
+   },
+   "bmUnitTypes": {
+    "I": 1300,
+    "G": 548,
+    "T": 506,
+    "S": 317,
+    "E": 175,
+    "V": 136,
+    "null": 89
+   },
+   "gspGroups": 14,
+   "coordinates": false
+  },
+  "B1610ActualGenerationPerUnit": {
+   "rowsPerSettlementPeriod": 9152,
+   "availabilityOn2026-09-13": {
+    "2026-09-01": {
+     "rows": 9152,
+     "settlementRunTypes": [
+      "II"
+     ]
+    },
+    "2026-09-08": {
+     "rows": 0,
+     "settlementRunTypes": []
+    },
+    "2026-09-07": {
+     "rows": 0,
+     "settlementRunTypes": []
+    },
+    "2026-09-05": {
+     "rows": 9152,
+     "settlementRunTypes": [
+      "II"
+     ]
+    },
+    "2026-09-03": {
+     "rows": 9152,
+     "settlementRunTypes": [
+      "II"
+     ]
+    }
+   },
+   "reading": "available about a week after the settlement date (initial interim run); not a live source"
+  },
+  "PNPhysicalNotifications": {
+   "rowsPerSettlementPeriod": 2685,
+   "fields": [
+    "bmUnit",
+    "nationalGridBmUnit",
+    "settlementDate",
+    "settlementPeriod",
+    "timeFrom",
+    "timeTo",
+    "levelFrom",
+    "levelTo"
+   ],
+   "reading": "declared per-unit output profiles, available ahead of real time and revised to gate closure"
+  },
+  "FUELINST": {
+   "fuelTypes": [
+    "BIOMASS",
+    "CCGT",
+    "COAL",
+    "INTELEC",
+    "INTEW",
+    "INTFR",
+    "INTGRNL",
+    "INTIFA2",
+    "INTIRL",
+    "INTNED",
+    "INTNEM",
+    "INTNSL",
+    "INTVKL",
+    "NPSHYD",
+    "NUCLEAR",
+    "OCGT",
+    "OIL",
+    "OTHER",
+    "PS",
+    "WIND"
+   ],
+   "cadenceMinutes": 5,
+   "reading": "live national generation by fuel type including eleven interconnectors"
+  },
+  "demandOutturn": {
+   "fields": [
+    "initialDemandOutturn",
+    "initialTransmissionSystemDemandOutturn",
+    "publishTime",
+    "settlementDate",
+    "settlementPeriod",
+    "startTime"
+   ],
+   "rowsFor2026-09-13By21:30Z": 44,
+   "reading": "half-hourly national demand (INDO) and transmission system demand (ITSDO), published shortly after each period"
+  }
+ },
+ "nesoDataPortal": {
+  "base": "https://api.neso.energy/api/3/action",
+  "licence": "NESO Open Data Licence v1.0",
+  "gspBoundaries": {
+   "dataset": "gis-boundaries-for-gb-grid-supply-points",
+   "version": "20220314 GeoJSON",
+   "features": 333,
+   "properties": [
+    "GSPGroup",
+    "GSPs"
+   ],
+   "bytes": 13409418,
+   "note": "approximate Thiessen-derived regions; newer 2025 versions published as shapefile ZIPs; GSP IDs link to Elexon GSP period data"
+  },
+  "gspLookup": {
+   "resource": "gsp_gnode_directconnect_region_lookup.csv",
+   "rows": 380,
+   "fields": [
+    "ng_id",
+    "ggd_id",
+    "gnode_id",
+    "gnode_name",
+    "gnode_lat",
+    "gnode_lon",
+    "gsp_id",
+    "gsp_name",
+    "gsp_lat",
+    "gsp_lon",
+    "dc_id",
+    "dc_name",
+    "dc_lat",
+    "dc_lon",
+    "region_id",
+    "region_name",
+    "has_pv",
+    "pes_id",
+    "pes_name"
+   ],
+   "coordinates": true
+  },
+  "tecRegister": {
+   "resource": "tec-register-11-september-2026.csv",
+   "rows": 2198,
+   "projectStatus": {
+    "Scoping": 1484,
+    "Built": 375,
+    "Consents Approved": 172,
+    "Awaiting Consents": 148,
+    "Under Construction/Commissioning": 19
+   },
+   "built": 375,
+   "builtMwConnected": 81774,
+   "coordinates": false,
+   "connectionSiteNamed": true
+  }
+ },
+ "desnzRepd": {
+  "page": "https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract",
+  "licence": "OGL v3.0 except where stated",
+  "threshold": "renewable electricity projects over 150 kW",
+  "coordinates": "x/y included since February 2021",
+  "latestExtract": "July 2026 (published 3 August 2026)",
+  "cadence": "quarterly",
+  "retrieved": false
+ },
+ "notVerified": [
+  "Elexon Open Settlement Data GSP period data (per-GSP half-hourly demand): format, lag and access, since elexon.co.uk blocks automated retrieval",
+  "REPD join rate to BM unit names",
+  "third-party components inside NESO datasets"
+ ]
+}
