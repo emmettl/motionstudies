@@ -1,0 +1,70 @@
+import { expect, test } from '@playwright/test'
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Vehicle heroes' }).click()
+})
+
+test('journey advances and rewinds, preserving selected stop identity without inferring a destination', async ({ page }) => {
+  const card = page.locator('.ms-vehicle-hero')
+  await expect(card.locator('.ms-vehicle-hero__next')).toContainText('Bern')
+  const fribourg = card.getByRole('button', { name: /Fribourg\/Freiburg/ })
+  await fribourg.focus()
+  await page.keyboard.press('Enter')
+  await expect(fribourg).toHaveAttribute('aria-pressed', 'true')
+  await page.getByRole('button', { name: 'Advance one stop' }).click()
+  await expect(card.locator('.ms-vehicle-hero__next')).toContainText('Fribourg/Freiburg')
+  await expect(fribourg).toHaveAttribute('aria-pressed', 'true')
+  await expect(card.getByRole('button', { name: /^Bern / })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Previous stop' }).click()
+  await expect(card.locator('.ms-vehicle-hero__next')).toContainText('Bern')
+  await page.getByLabel('Unknown destination').check()
+  await page.getByLabel('Missing times').check()
+  await expect(card.getByRole('heading')).toHaveText('Destination unavailable')
+  await expect(card.locator('[data-terminus]')).toHaveCount(0)
+  await expect(card.locator('.ms-vehicle-hero__timing')).toHaveCount(0)
+  await expect(card).not.toContainText('On time')
+  for (let index = 0; index < 5; index++) await page.getByRole('button', { name: 'Advance one stop' }).click()
+  await expect(card.getByRole('status')).toHaveText('No upcoming stops available.')
+  await expect(page.getByRole('button', { name: 'Advance one stop' })).toBeDisabled()
+  await expect(card.getByRole('heading')).toHaveText('Destination unavailable')
+})
+
+test('loading and errors hide calls, retry restores them, and labels translate', async ({ page }) => {
+  const card = page.locator('.ms-vehicle-hero')
+  await page.getByRole('combobox', { name: 'Vehicle state' }).selectOption('loading')
+  await expect(card).toHaveAttribute('aria-busy', 'true')
+  await expect(card.getByRole('status')).toHaveText('Loading upcoming stops…')
+  await expect(card.getByRole('button')).toHaveCount(0)
+  await page.getByRole('combobox', { name: 'Vehicle state' }).selectOption('error')
+  await expect(card).not.toContainText('Bern')
+  await card.getByRole('button', { name: 'Retry' }).click()
+  await expect(card.locator('.ms-vehicle-hero__next')).toContainText('Bern')
+  await page.getByRole('combobox', { name: 'Vehicle language' }).selectOption('de')
+  await expect(card).toContainText('Nächster Halt')
+  await expect(card).toContainText('Gleis 6')
+  await page.getByRole('combobox', { name: 'Vehicle state' }).selectOption('empty')
+  await expect(card.getByRole('status')).toHaveText('Keine weiteren Halte verfügbar.')
+})
+
+for (const presentation of ['uk-bus', 'uk-rail', 'yellow-bus', 'sbb']) {
+  test(`${presentation} contains long names at compact widths and supports stop selection`, async ({ page }, testInfo) => {
+    await page.getByRole('combobox', { name: 'Vehicle presentation' }).selectOption(presentation)
+    const card = page.locator('.ms-vehicle-hero')
+    await expect(card).toHaveAttribute('data-presentation', presentation)
+    await card.screenshot({ path: `/tmp/vehicle-hero-${presentation}-${testInfo.project.name}.png` })
+    await page.getByLabel('Long stop name').check()
+    for (const width of [240, 280, 360, 600, 900]) {
+      await card.evaluate((element, size) => { element.parentElement!.style.width = `${size}px` }, width)
+      expect(await card.evaluate((element) => element.scrollWidth <= element.clientWidth + 1)).toBe(true)
+      const names = card.locator('.ms-vehicle-hero__stop-name')
+      for (const name of await names.all()) expect(await name.evaluate((element) => element.scrollWidth <= element.clientWidth + 1)).toBe(true)
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    }
+    await card.getByRole('button').first().click()
+    await expect(card.getByRole('button').first()).toHaveAttribute('aria-pressed', 'true')
+    await page.getByLabel('Disruption').check()
+    await expect(card.getByRole('button').first()).toHaveAttribute('aria-pressed', 'true')
+    await expect(card).toContainText('Running approximately 8 minutes late')
+  })
+}
