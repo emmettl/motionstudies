@@ -48,6 +48,8 @@ try {
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
     import { network } from './fixtures.ts'
     import { useNetworkScene, type NetworkSceneExtensions, type NetworkSceneContext } from '@motionstudies/three/scene-extensions'
+    import { FLAT_NETWORK_MAP_STYLE, type NetworkMapStyle } from '@motionstudies/three/scene-style'
+    export const mapStyle: NetworkMapStyle = { ...FLAT_NETWORK_MAP_STYLE, categoryColors: { bus: '#ffcc00' } }
     import type { NationalNetworkSceneProps } from '@motionstudies/three/NationalNetworkScene'
     import type { HubFlowPolicy } from '@motionstudies/three/HubPulseScene'
     export const sceneHook: () => NetworkSceneContext = useNetworkScene
@@ -56,7 +58,7 @@ try {
       createCameraDriver: ({ camera, target }) => ({ update: () => { camera.lookAt(target); return false }, dispose() {} }),
       createTrailBackend: () => ({ available: false, reset(data) { void data().detours }, select() {}, submit() {}, takeFrame() { return undefined }, dispose() {} }),
     }
-    export const sceneOptions: Pick<NationalNetworkSceneProps, 'extensions' | 'children' | 'frameloop'> = { extensions, children: null, frameloop: 'demand' }
+    export const sceneOptions: Pick<NationalNetworkSceneProps, 'mapStyle' | 'extensions' | 'children' | 'frameloop'> = { mapStyle, extensions, children: null, frameloop: 'demand' }
     export const flowPolicy: HubFlowPolicy = { flowAllowed: (_call, flow) => flow === 'arrival' }
     import { decodeAdsbHeatmap, ingestAdsbHeatmaps, chunkAirSnapshot, type HeatmapSnapshot, type HeatmapManifest } from '@motionstudies/data/adsb-heatmap'
     import { parseGtfsTime, activeServices } from '@motionstudies/data/gtfs'
