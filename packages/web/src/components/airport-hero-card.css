@@ -40,3 +40,29 @@
 .ms-airport-board__modes button:focus-visible, .ms-airport-board__unavailable button:focus-visible { outline: 2px solid #edc96b; outline-offset: 3px; }
 .ms-airport-board__unavailable { padding: 28px; border: 1px solid #4b4d40; border-radius: 12px; color: #f0ecdd; background: #1d211c; font: 14px/1.6 ui-sans-serif, system-ui, sans-serif; }
 .ms-airport-board__detail { color: #b8baaa; font: 13px/1.6 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+
+/* Shared compact presentation, responsive to card width rather than the window. */
+.ms-airport-hero[data-density='compact'] { padding: 12px; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__identity { padding: 8px 0; gap: 12px; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__code { font-size: 40px; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__identity h2 { font-size: 20px; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__clock-value { font-size: 28px; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__directions { margin-bottom: 8px; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__directions button { padding: 6px 0 8px; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__window { margin-bottom: 8px; }
+.ms-airport-hero[data-density='compact'] .ms-split-flap-board { padding: 6px 8px 8px; }
+.ms-airport-hero[data-density='compact'] .ms-split-flap-board__table { border-spacing: 0 4px; }
+.ms-airport-hero[data-density='compact'] .ms-split-flap-board__select { min-height: 28px; }
+.ms-airport-hero[data-density='compact'] .ms-flap { font-size: 13px; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__note { margin-top: 8px; font-size: 10px; line-height: 1.4; }
+.ms-airport-hero[data-density='compact'] .ms-airport-hero__note a { color: inherit; }
+@container (min-width: 441px) {
+  .ms-airport-hero[data-density='compact'] .ms-airport-hero__identity { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .ms-airport-hero[data-density='compact'] .ms-airport-hero__clock { grid-column: auto; display: block; padding: 0 0 0 12px; border-top: 0; border-left: 1px solid #797c6155; text-align: right; }
+}
+@container (max-width: 440px) {
+  .ms-airport-hero[data-density='compact'] .ms-airport-hero__identity h2 { font-size: 16px; }
+}
+@media (pointer: coarse) {
+  .ms-airport-hero[data-density='compact'] .ms-split-flap-board__select { min-height: 44px; }
+}

@@ -8,9 +8,9 @@
     "build": "tsc -p tsconfig.json && vite build"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.13",
-    "@motionstudies/three": "0.1.0-alpha.13",
-    "@motionstudies/web": "0.1.0-alpha.13",
+    "@motionstudies/core": "0.1.0-alpha.14",
+    "@motionstudies/three": "0.1.0-alpha.14",
+    "@motionstudies/web": "0.1.0-alpha.14",
     "@react-three/fiber": "9.7.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",

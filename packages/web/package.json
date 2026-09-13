@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.13",
+  "version": "0.1.0-alpha.14",
   "private": true,
   "type": "module",
   "exports": {
@@ -36,10 +36,11 @@
     "./transport-hero-cards.css": "./src/components/transport-hero-cards.css",
     "./use-json-asset": "./src/use-json-asset.ts",
     "./use-transition-value": "./src/use-transition-value.ts",
-    "./components/NetworkVehicleHeroCard": "./src/components/NetworkVehicleHeroCard.tsx"
+    "./components/NetworkVehicleHeroCard": "./src/components/NetworkVehicleHeroCard.tsx",
+    "./study-layout.css": "./src/study-layout.css"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.13"
+    "@motionstudies/core": "0.1.0-alpha.14"
   },
   "peerDependencies": {
     "react": "^19.2.8",

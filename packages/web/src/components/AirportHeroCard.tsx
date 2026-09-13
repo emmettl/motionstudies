@@ -41,10 +41,12 @@ export interface AirportHeroCardProps {
   readonly selectedFlightId?: string
   readonly initialDirection?: 'departures' | 'arrivals'
   readonly className?: string
+  /** Compact panels retain the same controls and evidence in less vertical space. */
+  readonly density?: 'comfortable' | 'compact'
 }
 
 /** Shared airport selection hero. Supply a key={airport.id} to reset direction on airport changes. */
-export function AirportHeroCard({ airport, departures, arrivals, note, study, horizon, maxRows = 8, dateLabel, formatTime = formatServiceTime, labels, loading = false, error, onRetry, onSelectFlight, selectedFlightId, initialDirection = 'departures', className = '' }: AirportHeroCardProps) {
+export function AirportHeroCard({ airport, departures, arrivals, note, study, horizon, maxRows = 8, dateLabel, formatTime = formatServiceTime, labels, loading = false, error, onRetry, onSelectFlight, selectedFlightId, initialDirection = 'departures', className = '', density }: AirportHeroCardProps) {
   const [direction, setDirection] = useState(initialDirection)
   const titleId = useId()
   const boardId = useId()
@@ -53,7 +55,7 @@ export function AirportHeroCard({ airport, departures, arrivals, note, study, ho
   const entries = movementsForBoard(direction === 'departures' ? departures : arrivals, window, maxRows)
   const rows: SplitFlapRow[] = entries.map((entry) => ({ id: entry.id, tone: entry.tone,
     cells: { time: formatTime(entry.time!), service: entry.service, place: entry.place, stand: entry.stand, status: entry.status } }))
-  return <section className={`ms-airport-hero ${className}`} aria-labelledby={titleId}>
+  return <section className={`ms-airport-hero ${className}`} data-density={density} aria-labelledby={titleId}>
     <div className="ms-airport-hero__masthead">
       <span className="ms-airport-hero__eyebrow"><span aria-hidden="true">↗</span> {copy.airport} / {airport.city}</span>
       {dateLabel && <span className="ms-airport-hero__date">{dateLabel}</span>}

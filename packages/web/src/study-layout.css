@@ -1,0 +1,65 @@
+/* Opt-in overlay layout. Clearances describe the edition's surrounding controls. */
+.ms-study-layout {
+  --ms-layout-gap: 12px;
+  --ms-layout-gutter: clamp(16px, 3vw, 48px);
+  --ms-layout-top: 180px;
+  --ms-layout-bottom: 160px;
+  --ms-layout-end: 72px;
+  --ms-layer-panel: 6;
+  --ms-control-size: 36px;
+  --ms-control-radius: 2px;
+  --ms-control-border: var(--line, #c1ccff33);
+  --ms-control-surface: var(--panel, #070716ee);
+  --ms-control-ink: var(--ink, #f8f7ff);
+  --ms-control-accent: var(--cyan, #8dfaff);
+}
+
+.ms-study-layout .ms-study-panel {
+  --ms-panel-top: max(var(--ms-layout-top, 180px), env(safe-area-inset-top));
+  --ms-panel-bottom: max(var(--ms-layout-bottom, 160px), env(safe-area-inset-bottom));
+  --ms-panel-start: max(var(--ms-layout-gutter, 16px), env(safe-area-inset-left));
+  --ms-panel-end: max(var(--ms-layout-end, 72px), env(safe-area-inset-right));
+  position: absolute;
+  z-index: var(--ms-layer-panel, 6);
+  inset-block-start: var(--ms-panel-top);
+  inset-inline-start: var(--ms-panel-start);
+  box-sizing: border-box;
+  inline-size: min(var(--ms-panel-width, 560px), max(0px, calc(100% - var(--ms-panel-start) - var(--ms-panel-end))));
+  max-block-size: max(0px, calc(100% - var(--ms-panel-top) - var(--ms-panel-bottom)));
+  min-inline-size: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: var(--ms-layout-gap, 12px);
+}
+
+[data-ms-chrome='hidden'] .ms-study-panel {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ms-control {
+  box-sizing: border-box;
+  min-inline-size: var(--ms-control-size, 36px);
+  min-block-size: var(--ms-control-size, 36px);
+  padding: 6px 10px;
+  border: 1px solid var(--ms-control-border, #c1ccff33);
+  border-radius: var(--ms-control-radius, 2px);
+  background: var(--ms-control-surface, #070716ee);
+  color: var(--ms-control-ink, #f8f7ff);
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.ms-control:focus-visible {
+  outline: 2px solid var(--ms-control-accent, #8dfaff);
+  outline-offset: 2px;
+}
+.ms-control[aria-pressed='true'] { border-color: var(--ms-control-accent, #8dfaff); }
+.ms-control:disabled { opacity: .5; cursor: default; }
+.ms-control-group { display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; }
+.ms-control-strip { display: flex; max-inline-size: 100%; overflow-x: auto; overscroll-behavior-inline: contain; scroll-padding-inline: 4px; }
+.ms-control-strip > * { flex-shrink: 0; }
+.ms-panel-dismiss { position: sticky; inset-block-start: 0; float: inline-end; z-index: 2; margin: 0 0 8px 8px; }
+@media (pointer: coarse) {
+  .ms-study-layout { --ms-control-size: 44px; }
+}

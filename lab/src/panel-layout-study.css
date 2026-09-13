@@ -1,0 +1,4 @@
+.panel-layout-specimen { position: relative; max-width: 100%; overflow: hidden; background: #101827; --ms-layout-top: 72px; --ms-layout-bottom: 80px; --ms-layout-gutter: 12px; --ms-layout-end: 12px; --ms-control-surface: #182b3c; --ms-control-accent: #ffcf79; }
+.panel-layout-header, .panel-layout-footer { position: absolute; inset-inline: 12px; padding: 8px; background: #182b3c; }
+.panel-layout-header { top: 8px; }
+.panel-layout-footer { bottom: 8px; }
