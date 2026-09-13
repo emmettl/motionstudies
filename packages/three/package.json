@@ -10,6 +10,7 @@
     "./map-camera": "./src/map-camera.ts",
     "./train-labels": "./src/train-labels.ts",
     "./render-performance": "./src/render-performance.ts",
+    "./scene-picking": "./src/scene-picking.ts",
     "./scene-style": "./src/scene-style.ts",
     "./scene-extensions": "./src/scene-extensions.ts"
   },

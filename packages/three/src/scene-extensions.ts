@@ -1,7 +1,9 @@
-import { useContext } from 'react'
+import { useContext, type ComponentType } from 'react'
 import { NetworkSceneProviderContext } from './scene-context.ts'
-import type { PerspectiveCamera, Vector3 } from 'three'
-import type { NetworkTrain } from '@motionstudies/core/domain/network'
+import type { Camera, PerspectiveCamera, Scene, Vector3 } from 'three'
+import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network'
+import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road'
+import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
 import type { nationalRoadConditionsAtTime } from '@motionstudies/core/domain/road-day'
 import type { NationalNetworkSceneProps, NetworkProjection } from './NationalNetworkScene.tsx'
 import type { ProjectedNetworkPath } from './network-paths.ts'
@@ -56,7 +58,46 @@ export interface NetworkCameraDriver {
   dispose(): void
 }
 
+export interface DiagramStationsProps {
+  readonly snapshot: NetworkSnapshot
+  readonly projectedStops: readonly ProjectedPoint[]
+  readonly projectedPaths: readonly ProjectedNetworkPath[]
+  readonly routeColors: Readonly<Record<string, string>>
+  readonly opacity: number
+}
+
+export interface RoadOverlayProps {
+  readonly topology: RoadTopologySnapshot
+  readonly snapshot?: NationalRoadStudySnapshot
+  readonly projection: NetworkProjection
+  readonly subdued: boolean
+  readonly selectedRoadId?: string
+}
+
+export interface AircraftPickEvent {
+  readonly scene: Scene
+  readonly camera: Camera
+  readonly canvas: HTMLCanvasElement
+  readonly clientX: number
+  readonly clientY: number
+  readonly touch: boolean
+  readonly dragDistance: number
+}
+export interface AircraftPickingPolicy {
+  /** Omission retains the existing pointer-down selection behaviour. */
+  readonly event?: 'click' | 'pointerdown'
+  readonly accepts?: (event: AircraftPickEvent) => boolean
+}
+
 export interface NetworkSceneExtensions {
+  /** Use a child component for selection instead of the built-in station targets. */
+  readonly stationPicking?: 'default' | 'custom'
+  readonly aircraftPicking?: AircraftPickingPolicy
+  readonly DiagramStations?: ComponentType<DiagramStationsProps>
+  readonly RoadOverlay?: ComponentType<RoadOverlayProps>
+  /** Applied only to line-map route geometry; geographical route behaviour is unchanged. */
+  readonly diagramSegmentKey?: (train: NetworkTrain, segment: number, stops: readonly ProjectedPoint[]) => string
+  readonly diagramOrderedPoints?: (points: readonly ProjectedPoint[]) => readonly ProjectedPoint[]
   readonly trainPosition?: TrainPositionResolver
   readonly roadConditions?: typeof nationalRoadConditionsAtTime
   /** Pure constructor; reset/dispose are called by the renderer's effect lifecycle. */

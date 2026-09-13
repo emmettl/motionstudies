@@ -1,3 +1,4 @@
+import { setScenePickMetadata, setScenePickTrain } from './scene-picking.ts'
 import { PausedVehicleFrame } from './paused-vehicle-frame.ts'
 import { TrailFrameBudget } from './trail-frame-budget.ts'
 import { StationLabelFrame } from './station-label-frame.ts'
@@ -112,7 +113,7 @@ import {
   regionalCameraHeight,
   vehicleIsVisibleAtZoom,
 } from './regional-lod.ts'
-import { AirTrafficLayer } from './AirTrafficLayer.tsx'
+import { AirTrafficLayer, AirportMarker } from './AirTrafficLayer.tsx'
 import { projectAirPosition } from './air-projection.ts'
 import { RoadTrafficLayer } from './RoadTrafficLayer.tsx'
 import { createGlowPointTexture } from './glow-point-texture.ts'
@@ -137,6 +138,8 @@ export interface MapCameraCommand {
 }
 
 export interface NationalNetworkSceneProps {
+  /** Complete route reference for infrastructure; stop/path indexes must match snapshot. */
+  readonly infrastructureSnapshot?: NetworkSnapshot
   readonly mapStyle?: NetworkMapStyle
   /** Edition-owned scene components, mounted inside the map Canvas before moving vehicles. */
   readonly children?: ReactNode
@@ -409,14 +412,17 @@ function projectedTrainPosition(
 }
 
 function useProjectedTrainPosition() {
-  const resolver = useNetworkScene().props.extensions?.trainPosition
+  const { props } = useNetworkScene()
+  const resolver = props.extensions?.trainPosition
+  const elevation = props.mapStyle?.vehicleElevation
   return useMemo(() => {
-    if (!resolver) return projectedTrainPosition
-    return (...args: Parameters<typeof projectedTrainPosition>) => {
-      const result = resolver(args[0], args[1], args[2], args[3] ?? [], args[4] ?? EMPTY_LAKE_AVOIDING_PATHS)
-      return result === undefined ? projectedTrainPosition(...args) : result ?? undefined
+    if (!resolver && elevation === undefined) return projectedTrainPosition
+    return (...args: Parameters<typeof projectedTrainPosition>): ProjectedStop | undefined => {
+      const result = resolver?.(args[0], args[1], args[2], args[3] ?? [], args[4] ?? EMPTY_LAKE_AVOIDING_PATHS)
+      const point = result === undefined ? projectedTrainPosition(...args) : result ?? undefined
+      return point && elevation !== undefined ? [point[0], elevation, point[2]] : point
     }
-  }, [resolver])
+  }, [resolver, elevation])
 }
 
 function NationalGround({ quiet = false }: { readonly quiet?: boolean }) {
@@ -750,6 +756,7 @@ function CountryBorder({
 
 function RailGraph({
   snapshot,
+  infrastructureSnapshot = snapshot,
   projectedStops,
   projectedPaths,
   cameraFraming,
@@ -761,6 +768,7 @@ function RailGraph({
   trafficOverviewEmphasis = 0,
   lineMapStyle = false,
 }: {
+  readonly infrastructureSnapshot?: NetworkSnapshot
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -774,6 +782,7 @@ function RailGraph({
   readonly lineMapStyle?: boolean
 }) {
   const flat = useMapStyle().surface === 'flat'
+  const DiagramStations = useNetworkScene().props.extensions?.DiagramStations
   const { camera } = useThree()
   const stationMaterial = useRef<THREE.PointsMaterial>(null)
   const interchangeMaterial = useRef<THREE.PointsMaterial>(null)
@@ -831,6 +840,7 @@ function RailGraph({
     projectedStops.forEach((stop, index) => positions.set(stop, index * 3))
     const geometry = new THREE.BufferGeometry()
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    setScenePickMetadata(geometry, { stopIndexes: projectedStops.map((_, index) => index) })
     return geometry
   }, [projectedStops])
 
@@ -839,7 +849,7 @@ function RailGraph({
       string,
       { routes: Set<string>; stopIndex: number; rank: number }
     >()
-    for (const train of snapshot.trains) {
+    for (const train of infrastructureSnapshot.trains) {
       for (const [stopIndex] of train.stops) {
         const stop = snapshot.stops[stopIndex]
         if (!stop) continue
@@ -860,11 +870,13 @@ function RailGraph({
     }
     const stopPositions: number[] = []
     const interchangePositions: number[] = []
+    const stopIndexes: number[] = [], interchangeIndexes: number[] = []
     for (const { routes, stopIndex } of stationRoutes.values()) {
       const stop = projectedStops[stopIndex]
       if (!stop) continue
       const positions = routes.size < 2 ? stopPositions : interchangePositions
       positions.push(stop[0], stop[1], stop[2])
+      ;(routes.size < 2 ? stopIndexes : interchangeIndexes).push(stopIndex)
     }
     const stops = new THREE.BufferGeometry()
     stops.setAttribute(
@@ -876,8 +888,10 @@ function RailGraph({
       'position',
       new THREE.Float32BufferAttribute(interchangePositions, 3),
     )
+    setScenePickMetadata(stops, { stopIndexes })
+    setScenePickMetadata(interchanges, { stopIndexes: interchangeIndexes })
     return { stops, interchanges }
-  }, [projectedStops, snapshot.stops, snapshot.trains])
+  }, [projectedStops, snapshot.stops, infrastructureSnapshot.trains])
 
   useEffect(
     () => () => {
@@ -957,7 +971,7 @@ function RailGraph({
       {routeColors && routeColorMix > 0.001 && (
         <>
           <RouteIdentityLayer
-            snapshot={snapshot}
+            snapshot={infrastructureSnapshot}
             projectedStops={projectedStops}
             projectedPaths={projectedPaths}
             lakeAvoidingPaths={lakeAvoidingPaths}
@@ -966,7 +980,9 @@ function RailGraph({
             subdued={subdued}
             lineMapStyle={lineMapStyle}
           />
-          {lineMapStyle && (
+          {lineMapStyle && (DiagramStations ? <DiagramStations snapshot={infrastructureSnapshot}
+            projectedStops={projectedStops} projectedPaths={projectedPaths} routeColors={routeColors}
+            opacity={routeColorMix * (subdued ? 0.48 : 0.98)} /> : (
             <>
               <points
                 geometry={diagramStationGeometries.stops}
@@ -1008,7 +1024,7 @@ function RailGraph({
                 />
               </points>
             </>
-          )}
+          ))}
           {!lineMapStyle && (
             <points
               geometry={diagramStationGeometries.interchanges}
@@ -1115,12 +1131,14 @@ function RouteIdentityLayer({
   readonly subdued: boolean
   readonly lineMapStyle?: boolean
 }) {
+  const diagram = useMapStyle().diagram
+  const { diagramSegmentKey, diagramOrderedPoints } = useNetworkScene().props.extensions ?? {}
   const routes = useMemo(() => {
     const segmentRoutes = new Map<string, Set<string>>()
     for (const train of snapshot.trains) {
       if (!routeColors[train.route]) continue
       for (let index = 1; index < train.stops.length; index += 1) {
-        const key = routeSegmentKey(train, index - 1)
+        const key = lineMapStyle && diagramSegmentKey ? diagramSegmentKey(train, index - 1, projectedStops) : routeSegmentKey(train, index - 1)
         const names = segmentRoutes.get(key) ?? new Set<string>()
         names.add(train.route)
         segmentRoutes.set(key, names)
@@ -1140,7 +1158,7 @@ function RouteIdentityLayer({
         segments: new Set<string>(),
       }
       for (let index = 1; index < train.stops.length; index += 1) {
-        const key = routeSegmentKey(train, index - 1)
+        const key = lineMapStyle && diagramSegmentKey ? diagramSegmentKey(train, index - 1, projectedStops) : routeSegmentKey(train, index - 1)
         if (record.segments.has(key)) continue
         const points = segmentPoints(
           train,
@@ -1157,10 +1175,10 @@ function RouteIdentityLayer({
           sharedRoutes.length < 2 || laneIndex < 0
             ? 0
             : (laneIndex - (sharedRoutes.length - 1) / 2) *
-              (lineMapStyle ? 0.24 : 0.11)
+              (lineMapStyle ? diagram?.laneSpacing ?? 0.24 : 0.11)
         appendLineSegments(
           record.positions,
-          offsetProjectedPath(points, laneOffset),
+          offsetProjectedPath(lineMapStyle && diagramOrderedPoints ? diagramOrderedPoints(points) : points, laneOffset),
           0.075,
         )
       }
@@ -1178,15 +1196,15 @@ function RouteIdentityLayer({
         color: record.color,
         geometry,
         casing: lineMapStyle
-          ? diagramRibbonGeometry(record.positions, 0.16, 0.072)
+          ? diagramRibbonGeometry(record.positions, diagram?.casingWidth ?? 0.16, 0.072)
           : undefined,
         core: lineMapStyle
-          ? diagramRibbonGeometry(record.positions, 0.1, 0.078)
+          ? diagramRibbonGeometry(record.positions, diagram?.coreWidth ?? 0.1, 0.078)
           : undefined,
       }
     }).sort((first, second) => first.name.localeCompare(second.name, 'en'))
   }, [
-    lakeAvoidingPaths,
+    diagram, diagramSegmentKey, diagramOrderedPoints, lakeAvoidingPaths,
     lineMapStyle,
     projectedPaths,
     projectedStops,
@@ -2074,6 +2092,8 @@ function StationLabels({
   readonly lineMapMix?: number
 }) {
   const { camera, size } = useThree()
+  const stationStyle = useMapStyle().stationLabels
+  const labelRefreshSeconds = useRef(0)
   const sprites = useRef<Array<THREE.Sprite | null>>([])
   const textures = useRef(new Map<string, StationLabelTexture>())
   const retainedStationNames = useRef(new Set<string>())
@@ -2115,7 +2135,7 @@ function StationLabels({
   }, [cameraFraming, projectedStops, routeStationNames, selectedStation, stations])
   // These dependencies invalidate cached frame work when render inputs change.
   /* oxlint-disable react-hooks/exhaustive-deps */
-  const stationLabelFrame = useMemo(() => new StationLabelFrame(), [labels, selectedTrain, selectedRoute, selectedStation, terminalNames, cameraFraming, tierLimit, settleSeconds, hidden, lineMapMix, layoutTransitioning])
+  const stationLabelFrame = useMemo(() => new StationLabelFrame(), [stationStyle, labels, selectedTrain, selectedRoute, selectedStation, terminalNames, cameraFraming, tierLimit, settleSeconds, hidden, lineMapMix, layoutTransitioning])
   /* oxlint-enable react-hooks/exhaustive-deps */
 
   useEffect(
@@ -2152,17 +2172,19 @@ function StationLabels({
     cameraStableSeconds.current = cameraMoved
       ? 0
       : cameraStableSeconds.current + delta
+    labelRefreshSeconds.current += delta
     const canRepopulate = stationLabelsCanRepopulate(
       cameraStableSeconds.current,
       settleSeconds,
-    )
+    ) || labelRefreshSeconds.current >= (stationStyle?.refreshInterval ?? Infinity)
+    if (canRepopulate) labelRefreshSeconds.current = 0
     if (!stationLabelFrame.shouldUpdate(camera, size, canRepopulate, retainedStationNames.current)) return
     const budget = stableStationLabelBudget(
       stationLabelBudget(semanticHeight),
       retainedStationNames.current.size,
       canRepopulate,
     )
-    const rankLimit = stationLabelRankLimit(semanticHeight)
+    const rankLimit = (stationStyle?.rankLimit ?? stationLabelRankLimit)(semanticHeight)
     const projected = new THREE.Vector3()
     const viewPosition = new THREE.Vector3()
     const candidates: Array<{
@@ -2297,6 +2319,7 @@ function StationLabels({
       nextRetainedStationNames.add(label.station.name)
       sprite.visible = true
       sprite.position.copy(label.position)
+      setScenePickMetadata(sprite, { target: { kind: 'station', value: label.station } })
       sprite.center.set(textureEntry.anchorX, 0.5)
       const worldHeight = stationLabelWorldHeight(
         candidate.depth,
@@ -2584,6 +2607,7 @@ function TrainLabels({
         continue
       }
 
+      if (semanticCameraHeight >= (labelStyle?.maxCameraHeight?.[train.category] ?? Infinity)) continue
       const arrivalOpacity = trainLabelArrivalOpacity(
         localTime.current,
         train.end,
@@ -2692,6 +2716,7 @@ function TrainLabels({
 
       visibleLabelTrains.current.push(candidate.train)
       sprite.visible = true
+      setScenePickMetadata(sprite, { target: { kind: 'train', value: candidate.train } })
       sprite.renderOrder = candidate.selected && labelStyle?.selectedAboveStations ? MAP_LAYER.stationLabel + 1 : MAP_LAYER.trainLabel
       sprite.center.set(0.5, anchorY)
       const comparisonOffset =
@@ -3325,6 +3350,7 @@ function TrainSwarm({
         : !stationIncludesTrain || !categoryIncludesTrain || !routeIncludesTrain
           ? 0.025
           : 1
+      setScenePickTrain(mutableGeometry, activeCounts[markerKind], intensity < 0.1 ? undefined : train)
       mutableColors[offset] = color.r * intensity
       mutableColors[offset + 1] = color.g * intensity
       mutableColors[offset + 2] = color.b * intensity
@@ -3657,7 +3683,7 @@ function VehicleTrails({
 
   const opacity = [0.4, 0.22, 0.1]
   return (
-    <group position={[0, -0.035, 0]}>
+    <group position={[0, mapStyle.trailElevationOffset ?? -0.035, 0]}>
       {geometries.map((geometry, index) => (
         <lineSegments
           key={index}
@@ -4253,6 +4279,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       )}
       <RailGraph
         snapshot={props.snapshot}
+        infrastructureSnapshot={props.infrastructureSnapshot}
         projectedStops={projectedStops}
         projectedPaths={projectedPaths}
         cameraFraming={props.cameraFraming}
@@ -4274,6 +4301,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       />
       {(props.roadSnapshot || props.roadTopology) && (
         <RoadTrafficLayer
+          style={props.mapStyle?.roads}
+          Overlay={props.extensions?.RoadOverlay}
           snapshot={props.roadSnapshot}
           nationalSnapshot={props.nationalRoadSnapshot}
           conditionsAtTime={props.extensions?.roadConditions}
@@ -4293,8 +4322,14 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           )}
         />
       )}
+      {props.mapStyle?.airports?.independent && props.airports?.map(airport => (
+        <AirportMarker key={airport.id} airport={airport} projection={projection} showLabel
+          selected={airport.id === props.selectedAirport?.id} style={props.mapStyle?.airports} />
+      ))}
       {props.airSnapshot && (
         <AirTrafficLayer
+          airportStyle={props.mapStyle?.airports}
+          picking={props.extensions?.aircraftPicking}
           snapshot={props.airSnapshot}
           time={props.time}
           isPlaying={props.isPlaying}
@@ -4401,6 +4436,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             : 0
         }
       />
+      {props.extensions?.stationPicking !== 'custom' && (
       <StationTapTarget
         stations={props.stations}
         projectedStops={projectedStops}
@@ -4409,6 +4445,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           props.airCategorySelected ? undefined : props.onSelectStation
         }
       />
+      )}
       <TrainLabels
         {...props}
         projectedStops={projectedStops}

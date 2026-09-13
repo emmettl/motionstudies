@@ -1,3 +1,6 @@
+import { roadStrokeOpacity, type RoadInfrastructureStyle } from './scene-style.ts'
+import type { RoadOverlayProps } from './scene-extensions.ts'
+import type { ComponentType } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
@@ -23,11 +26,13 @@ const MAX_NATIONAL_LIGHT = 1_500
 const MAX_NATIONAL_HEAVY = 520
 
 function RoadTopology({
+  style,
   snapshot,
   projection,
   subdued,
   selectedRoadId,
 }: {
+  readonly style?: RoadInfrastructureStyle
   readonly snapshot: RoadTopologySnapshot
   readonly projection: NetworkProjection
   readonly subdued: boolean
@@ -115,17 +120,21 @@ function RoadTopology({
     <group>
       <lineSegments geometry={geometry.connectors} renderOrder={3}>
         <lineBasicMaterial
-          color="#bc8058"
+          color={style?.connectors?.color ?? '#bc8058'}
           transparent
-          opacity={selectedRoadId ? 0.003 : subdued ? 0.008 : 0.018}
+          opacity={roadStrokeOpacity(style?.connectors, selectedRoadId ? 0.003 : subdued ? 0.008 : 0.018, subdued, Boolean(selectedRoadId))}
+          depthTest={style?.connectors?.depthTest ?? true}
+          toneMapped={style?.connectors?.toneMapped ?? true}
           depthWrite={false}
         />
       </lineSegments>
       <lineSegments geometry={geometry.mainline} renderOrder={3}>
         <lineBasicMaterial
-          color="#ffb36b"
+          color={style?.mainline?.color ?? '#ffb36b'}
           transparent
-          opacity={selectedRoadId ? 0.008 : subdued ? 0.018 : 0.062}
+          opacity={roadStrokeOpacity(style?.mainline, selectedRoadId ? 0.008 : subdued ? 0.018 : 0.062, subdued, Boolean(selectedRoadId))}
+          depthTest={style?.mainline?.depthTest ?? true}
+          toneMapped={style?.mainline?.toneMapped ?? true}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
@@ -159,13 +168,13 @@ function RoadTopology({
           </lineSegments>
           <lineSegments geometry={geometry.selectedMainline} renderOrder={8}>
             <lineBasicMaterial
-              color="#fff1cf"
+              color={style?.selected?.color ?? '#fff1cf'}
               transparent
-              opacity={0.92}
+              opacity={roadStrokeOpacity(style?.selected, 0.92, subdued, true)}
               blending={THREE.AdditiveBlending}
-              depthTest={false}
+              depthTest={style?.selected?.depthTest ?? false}
               depthWrite={false}
-              toneMapped={false}
+              toneMapped={style?.selected?.toneMapped ?? false}
             />
           </lineSegments>
           <points geometry={geometry.selectedSites} renderOrder={9}>
@@ -514,6 +523,8 @@ function NationalRoadTrafficFlow({
 }
 
 export function RoadTrafficLayer({
+  style,
+  Overlay,
   snapshot,
   topology,
   time,
@@ -525,6 +536,8 @@ export function RoadTrafficLayer({
   nationalSnapshot,
   conditionsAtTime,
 }: {
+  readonly style?: RoadInfrastructureStyle
+  readonly Overlay?: ComponentType<RoadOverlayProps>
   readonly snapshot?: RoadTrafficSnapshot
   readonly topology?: RoadTopologySnapshot
   readonly time: number
@@ -562,12 +575,14 @@ export function RoadTrafficLayer({
     <group>
       {topology && (
         <RoadTopology
+          style={style}
           snapshot={topology}
           projection={projection}
           subdued={subdued}
           selectedRoadId={selectedRoadId}
         />
       )}
+      {topology && Overlay && <Overlay topology={topology} snapshot={nationalSnapshot} projection={projection} subdued={subdued} selectedRoadId={selectedRoadId} />}
       {nationalSnapshot && topology && (
         <NationalRoadTrafficFlow
           conditionsAtTime={conditionsAtTime}

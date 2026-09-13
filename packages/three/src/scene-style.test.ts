@@ -24,3 +24,13 @@ it('keeps centred and raised label collision bounds aligned with their sprite an
   expect(trainLabelCollisionBox(100, 100, 40, 20, FLAT_NETWORK_MAP_STYLE.trainLabels!.anchorY!))
     .toEqual({ left: 80, right: 120, top: 74, bottom: 94 })
 })
+
+it('keeps road defaults unless an explicit static or state-dependent style overrides them', async () => {
+  const { roadStrokeOpacity } = await import('./scene-style.ts')
+  expect(roadStrokeOpacity(undefined, 0.062, false, false)).toBe(0.062)
+  expect(roadStrokeOpacity({ opacity: 0 }, 0.062, false, false)).toBe(0)
+  const style = { opacity: ({ subdued, selected }: { subdued: boolean; selected: boolean }) => selected ? 0.25 : subdued ? 0.2 : 0.45 }
+  expect(roadStrokeOpacity(style, 0.062, false, false)).toBe(0.45)
+  expect(roadStrokeOpacity(style, 0.062, true, false)).toBe(0.2)
+  expect(roadStrokeOpacity(style, 0.062, true, true)).toBe(0.25)
+})
