@@ -1,0 +1,482 @@
+{
+  "releaseVersion": "0.1.0-alpha.15",
+  "sourceCommit": "f08013d54dabec4ddf7e93879a16dcb126847823",
+  "npmRun": 34777637695,
+  "prepublication": {
+    "shared": {
+      "unitTests": 272,
+      "packedBrowserPassed": 90,
+      "packedBrowserSkipped": 2,
+      "loaderBrowserPassed": 34
+    },
+    "underfall": {
+      "unitTests": 90,
+      "browserPassed": 10,
+      "remote": null
+    },
+    "allchange": {
+      "unitTests": 277,
+      "focusedBrowserPassed": 2,
+      "openingJavaScriptKiB": 344.4,
+      "limitKiB": 345
+    },
+    "correspondances": {
+      "unitTests": 25,
+      "focusedBrowserPassed": 8,
+      "openingJavaScriptKiB": 335.2,
+      "limitKiB": 340
+    },
+    "gleislicht": {
+      "unitTests": 1413,
+      "productionJavaScriptKiB": 359.7,
+      "limitKiB": 360,
+      "focusedBrowserPassed": 10
+    },
+    "zugunruhe": {
+      "unitTests": 70,
+      "focusedBrowserPassed": 2,
+      "concurrentMainPreserved": "9884f88adf937b05b2f034660a011579bb2a51f9"
+    }
+  },
+  "npmArtifacts": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.15",
+      "integrity": "sha512-UNajqTcp2pCu8gYoj1Tu5xUX658IH5ooZZt5w1w9Z/LR4QdesEoth0rXj5RMvbWSwpF3jhDTiuoXCbjq+Kw+GQ==",
+      "tarball": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.15.tgz"
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.15",
+      "integrity": "sha512-bd+oim9qngHjfyp3j3+hAlQxqhJLkTyDSyRGvFFfKW+CG6gRf4UlKeLFodXuoX8G0LaWbfXG1hNMk8WcpHRWKw==",
+      "tarball": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.15.tgz"
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.15",
+      "integrity": "sha512-YRvYOMKrXlxMpoU4io15PuVSPwxAnmS0EKLFQLUxqKvjOawiwDMaBSDVtYQXoRwifgvfApOrGEPJMJ32bxT4eA==",
+      "tarball": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.15.tgz"
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.15",
+      "integrity": "sha512-eN1OEyIpYNDO/494SQutFjF9CC3gzLTssAAytpob3bzOzEO3/Iz364dG2zfXLtymX5BZdx3Z1zufeQHoEeo4Yw==",
+      "tarball": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.15.tgz"
+    }
+  ],
+  "npmConclusion": "success",
+  "downstreamCommits": {
+    "correspondances": "c091f48666bdad7b4c85ebc100f693f8582a43ea",
+    "gleislicht": "e3bde9dfa9bcf80807b32d8a5484cb69440cbb37",
+    "allchange": "019fc32043b6cc0a3e46b8776163d7ed444fd4c3",
+    "umlauf": "4dc6b818cbbc6d891b88c2d6c8dadda5aad9ff3c",
+    "manifest": "c8e596d5f58ce200136fb952f00c7d65b8609785",
+    "zugunruhe": "93119c5f0b8f9bb5b13ce812c36977bb9b1e2988",
+    "local-express": "b6e0962336833db930ca112bdaf5977690623807",
+    "norikae": "18863ee704a6697f7a06afcc75499aa8b7d30348",
+    "underfall": "5c1e1f5fa9efbf1d8d74f88f39b1116d79153ae1"
+  },
+  "pagesRuns": {
+    "allchange": {
+      "conclusion": "success",
+      "databaseId": 34778272530,
+      "headSha": "019fc32043b6cc0a3e46b8776163d7ed444fd4c3",
+      "status": "completed"
+    },
+    "correspondances": {
+      "conclusion": "success",
+      "databaseId": 34778266147,
+      "headSha": "c091f48666bdad7b4c85ebc100f693f8582a43ea",
+      "status": "completed"
+    },
+    "gleislicht": {
+      "databaseId": 34779531554,
+      "headSha": "e3bde9dfa9bcf80807b32d8a5484cb69440cbb37",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "umlauf": {
+      "conclusion": "success",
+      "databaseId": 34778273911,
+      "headSha": "4dc6b818cbbc6d891b88c2d6c8dadda5aad9ff3c",
+      "status": "completed"
+    },
+    "manifest": {
+      "conclusion": "success",
+      "databaseId": 34778275447,
+      "headSha": "c8e596d5f58ce200136fb952f00c7d65b8609785",
+      "status": "completed"
+    },
+    "zugunruhe": {
+      "databaseId": 34779749846,
+      "headSha": "93119c5f0b8f9bb5b13ce812c36977bb9b1e2988",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "norikae": {
+      "conclusion": "success",
+      "databaseId": 34778279042,
+      "headSha": "18863ee704a6697f7a06afcc75499aa8b7d30348",
+      "status": "completed"
+    }
+  },
+  "published": {
+    "manifest": {
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34778392904,
+        "headSha": "c8e596d5f58ce200136fb952f00c7d65b8609785",
+        "status": "completed"
+      },
+      "marker": {
+        "repository": "emmettl/manifest",
+        "run_id": 34778275447,
+        "commit": "c8e596d5f58ce200136fb952f00c7d65b8609785",
+        "workflow_url": "https://github.com/emmettl/manifest/actions/runs/34778275447",
+        "source_files": 41,
+        "source_bytes": 135914395,
+        "content_sha256": "b516370a4796b92a45f2f028334c004e2b4e516a41613ba343144fbe78c60ebf"
+      }
+    },
+    "norikae": {
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34778380724,
+        "headSha": "18863ee704a6697f7a06afcc75499aa8b7d30348",
+        "status": "completed"
+      },
+      "marker": {
+        "repository": "emmettl/norikae",
+        "run_id": 34778279042,
+        "commit": "18863ee704a6697f7a06afcc75499aa8b7d30348",
+        "workflow_url": "https://github.com/emmettl/norikae/actions/runs/34778279042",
+        "source_files": 6,
+        "source_bytes": 1291707,
+        "content_sha256": "cd5494a5a16679b24c0d3f3175ba5f03e5017160ebcc28ba818ba2e418e85ffa"
+      }
+    },
+    "umlauf": {
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34778528016,
+        "headSha": "4dc6b818cbbc6d891b88c2d6c8dadda5aad9ff3c",
+        "status": "completed"
+      },
+      "marker": {
+        "repository": "emmettl/umlauf",
+        "run_id": 34778273911,
+        "commit": "4dc6b818cbbc6d891b88c2d6c8dadda5aad9ff3c",
+        "workflow_url": "https://github.com/emmettl/umlauf/actions/runs/34778273911",
+        "source_files": 11,
+        "source_bytes": 3159180,
+        "content_sha256": "5d6b0910319067d2b91c0fd01c779ff3c82544a897712ed1268a37ccf6af5743"
+      }
+    },
+    "allchange": {
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34778644095,
+        "headSha": "019fc32043b6cc0a3e46b8776163d7ed444fd4c3",
+        "status": "completed"
+      },
+      "marker": {
+        "repository": "emmettl/allchange",
+        "run_id": 34778272530,
+        "commit": "019fc32043b6cc0a3e46b8776163d7ed444fd4c3",
+        "workflow_url": "https://github.com/emmettl/allchange/actions/runs/34778272530",
+        "source_files": 1788,
+        "source_bytes": 70842967,
+        "content_sha256": "b1e00b48232cf06f75a2af0d0594d32ffdf229ec28f02de559d41f645c2a4704"
+      }
+    },
+    "zugunruhe": {
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34780760175,
+        "headSha": "93119c5f0b8f9bb5b13ce812c36977bb9b1e2988",
+        "status": "completed"
+      },
+      "marker": {
+        "repository": "emmettl/zugunruhe",
+        "run_id": 34779749846,
+        "commit": "93119c5f0b8f9bb5b13ce812c36977bb9b1e2988",
+        "workflow_url": "https://github.com/emmettl/zugunruhe/actions/runs/34779749846",
+        "source_files": 68,
+        "source_bytes": 66200492,
+        "content_sha256": "1f008ec21825318d6a4f746a0848922b063c97b9af74b665259b21982aaa9336"
+      }
+    },
+    "correspondances": {
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34780981181,
+        "headSha": "c091f48666bdad7b4c85ebc100f693f8582a43ea",
+        "status": "completed"
+      },
+      "marker": {
+        "repository": "emmettl/correspondances",
+        "run_id": 34778266147,
+        "commit": "c091f48666bdad7b4c85ebc100f693f8582a43ea",
+        "workflow_url": "https://github.com/emmettl/correspondances/actions/runs/34778266147",
+        "source_files": 222,
+        "source_bytes": 33363718,
+        "content_sha256": "2e99ae1004e1c247d5191a2f5006f50a15efdd9305a3a21a0cf6c862462d0713"
+      }
+    },
+    "gleislicht": {
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34781099116,
+        "headSha": "e3bde9dfa9bcf80807b32d8a5484cb69440cbb37",
+        "status": "completed"
+      },
+      "marker": {
+        "repository": "emmettl/gleislicht",
+        "run_id": 34779531554,
+        "commit": "e3bde9dfa9bcf80807b32d8a5484cb69440cbb37",
+        "workflow_url": "https://github.com/emmettl/gleislicht/actions/runs/34779531554",
+        "source_files": 126,
+        "source_bytes": 3153027,
+        "content_sha256": "4dfcf2b553ef3fec84440296c9764cff0513589781485a390c007e6aaf8f3239"
+      }
+    }
+  },
+  "statusSnapshot": {
+    "allchange": {
+      "status": "completed",
+      "conclusion": "success",
+      "running": [],
+      "failed": [],
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34778644095,
+        "headSha": "019fc32043b6cc0a3e46b8776163d7ed444fd4c3",
+        "status": "completed"
+      },
+      "liveCommit": "019fc32043b6cc0a3e46b8776163d7ed444fd4c3",
+      "liveRun": 34778272530
+    },
+    "correspondances": {
+      "status": "completed",
+      "conclusion": "success",
+      "running": [],
+      "failed": [],
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34780981181,
+        "headSha": "c091f48666bdad7b4c85ebc100f693f8582a43ea",
+        "status": "completed"
+      },
+      "liveCommit": "c091f48666bdad7b4c85ebc100f693f8582a43ea",
+      "liveRun": 34778266147
+    },
+    "umlauf": {
+      "status": "completed",
+      "conclusion": "success",
+      "running": [],
+      "failed": [],
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34778528016,
+        "headSha": "4dc6b818cbbc6d891b88c2d6c8dadda5aad9ff3c",
+        "status": "completed"
+      },
+      "liveCommit": "4dc6b818cbbc6d891b88c2d6c8dadda5aad9ff3c",
+      "liveRun": 34778273911
+    },
+    "manifest": {
+      "status": "completed",
+      "conclusion": "success",
+      "running": [],
+      "failed": [],
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34778392904,
+        "headSha": "c8e596d5f58ce200136fb952f00c7d65b8609785",
+        "status": "completed"
+      },
+      "liveCommit": "c8e596d5f58ce200136fb952f00c7d65b8609785",
+      "liveRun": 34778275447
+    },
+    "norikae": {
+      "status": "completed",
+      "conclusion": "success",
+      "running": [],
+      "failed": [],
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34778380724,
+        "headSha": "18863ee704a6697f7a06afcc75499aa8b7d30348",
+        "status": "completed"
+      },
+      "liveCommit": "18863ee704a6697f7a06afcc75499aa8b7d30348",
+      "liveRun": 34778279042
+    },
+    "gleislicht": {
+      "status": "completed",
+      "conclusion": "success",
+      "running": [],
+      "failed": [],
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34781099116,
+        "headSha": "e3bde9dfa9bcf80807b32d8a5484cb69440cbb37",
+        "status": "completed"
+      },
+      "liveCommit": "e3bde9dfa9bcf80807b32d8a5484cb69440cbb37",
+      "liveRun": 34779531554
+    },
+    "zugunruhe": {
+      "status": "completed",
+      "conclusion": "success",
+      "running": [],
+      "failed": [],
+      "cloudflare": {
+        "conclusion": "success",
+        "databaseId": 34780760175,
+        "headSha": "93119c5f0b8f9bb5b13ce812c36977bb9b1e2988",
+        "status": "completed"
+      },
+      "liveCommit": "93119c5f0b8f9bb5b13ce812c36977bb9b1e2988",
+      "liveRun": 34779749846
+    }
+  },
+  "registryAvailabilityGate": {
+    "unitTests": 4,
+    "verifiedActualRelease": true,
+    "commit": "f6a133eafe26a02ebe8108a4af97d331bac0ad35"
+  },
+  "localSynchronization": {
+    "allCheckoutsUseAlpha15": true,
+    "swissPackageScriptEditsPreserved": true,
+    "norikaeFeatureBranchCommit": "42d1926",
+    "norikaeFeatureBranchCheck": "passed",
+    "bristolRemote": null,
+    "localExpressDeploymentWorkflow": null,
+    "swissFinalCommit": "e3bde9dfa9bcf80807b32d8a5484cb69440cbb37",
+    "zugunruheFinalCommit": "93119c5f0b8f9bb5b13ce812c36977bb9b1e2988",
+    "unrelatedSharedAndSwissEditsPreserved": true
+  },
+  "supersededPagesRuns": {
+    "gleislicht": {
+      "run": {
+        "conclusion": "",
+        "databaseId": 34778270092,
+        "headSha": "03b0da82c273c42251b1aeb2f366edff53324af3",
+        "status": "in_progress"
+      },
+      "commit": "03b0da82c273c42251b1aeb2f366edff53324af3"
+    },
+    "zugunruhe": {
+      "run": {
+        "conclusion": "failure",
+        "databaseId": 34778276756,
+        "headSha": "3a85e477d9941b2537ef253f16568c816a0bc357",
+        "status": "completed"
+      },
+      "commit": "3a85e477d9941b2537ef253f16568c816a0bc357",
+      "failure": "Camera return used the capped playback delta; elapsed animation exceeded the unchanged 60-second assertion."
+    }
+  },
+  "completedBrowserChecks": {
+    "allchange": [
+      {
+        "job": "check / Browser tests (desktop-chromium, 1/2)",
+        "passed": 15,
+        "duration": "4.3m"
+      },
+      {
+        "job": "check / Browser tests (iphone-webkit, 1/1)",
+        "passed": 30,
+        "duration": "4.9m"
+      },
+      {
+        "job": "check / Browser tests (iphone-webkit, 1/1)",
+        "passed": 1,
+        "duration": "7.7s"
+      },
+      {
+        "job": "check / Browser tests (desktop-chromium, 2/2)",
+        "passed": 14,
+        "duration": "4.4m"
+      }
+    ],
+    "umlauf": [
+      {
+        "job": "check / check",
+        "passed": 32,
+        "duration": "4.1m"
+      }
+    ],
+    "manifest": [
+      {
+        "job": "check / check",
+        "passed": 31,
+        "duration": "52.5s"
+      }
+    ],
+    "norikae": [
+      {
+        "job": "build",
+        "passed": 12,
+        "duration": "26.2s"
+      }
+    ],
+    "zugunruhe": [
+      {
+        "job": "check / browser (chromium)",
+        "passed": 18,
+        "duration": "17.1m"
+      },
+      {
+        "job": "check / browser (webkit)",
+        "passed": 16,
+        "duration": "6.0m"
+      }
+    ],
+    "correspondances": [
+      {
+        "job": "check / check",
+        "passed": 238,
+        "duration": "51.5m"
+      }
+    ],
+    "gleislicht": [
+      {
+        "job": "Browser tests (desktop-chromium, 1/2)",
+        "passed": 26,
+        "duration": "10.1m"
+      },
+      {
+        "job": "Browser tests (iphone-webkit, 1/1)",
+        "passed": 50,
+        "duration": "9.0m"
+      },
+      {
+        "job": "Browser tests (desktop-chromium, 2/2)",
+        "passed": 27,
+        "duration": "17.3m"
+      },
+      {
+        "job": "build",
+        "passed": 4,
+        "duration": "27.0s"
+      }
+    ]
+  },
+  "publicationPolicy": {
+    "npmDistTag": "next",
+    "versions": "exact registry pins",
+    "artifactIntegrity": "all four registry SHA512s match tested release artifacts",
+    "editionVerification": "GitHub Pages and Cloudflare success plus public commit and source run marker"
+  },
+  "existingBrowserSkips": {
+    "sharedPackedConsumer": 2,
+    "allchange": 1,
+    "correspondances": 2,
+    "zugunruheWebkit": 2,
+    "gleislicht": 2
+  },
+  "verifiedAt": "2026-09-13T20:34:52.678391+00:00",
+  "rolloutComplete": true
+}
