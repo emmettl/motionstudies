@@ -7,7 +7,7 @@ const parse = (raw: unknown) => {
   if (typeof value.name !== 'string') throw new Error('Invalid asset')
   return value
 }
-function Controllers() {
+export function Controllers() {
   const [url, setUrl] = useState('a')
   const [enabled, setEnabled] = useState(false)
   const [target, setTarget] = useState(0)
