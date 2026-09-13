@@ -224,7 +224,7 @@ The University of Glasgow UBDC archive offers historical timetable snapshots, wi
 
 ### Specific unresolved acquisition questions
 
-- **BODS:** current national response bytes and identifiers, conversion losses, usable London AVL coverage, current account limits, and any historical raw-location offering beyond the early-2026 research finding.
+- **BODS:** current national response bytes and identifiers, conversion losses, usable London AVL coverage, current account limits, and any historical raw-location offering beyond the early-2026 research finding. The account exists through Underfall, whose collector, store and windowing already handle bounded recordings. Underfall's `data:bus:probe` command (13 September 2026) measures one national response in full, reporting bytes, gzip bytes, activity/vehicle/operator counts, repeated samples, missing journey references, observation ages and a per-day projection without retaining records; its report sets the collector's limits before a national window is recorded.
 - **Network Rail:** account access, exact current feed licence, retained/public source-extract rights, current message rate, matching schedule/reference releases, timestamp behaviour and any replay facility.
 - **TfL/TNDS:** duplication, complete-day validity, applicable notices and the precise boundary between a source file and a national derived artifact.
 - **UK expansion:** Translink bulk/archive terms and identifiers; Scottish/Welsh observed coverage; cross-border continuity and local-mode completeness.
