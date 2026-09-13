@@ -1,0 +1,31 @@
+{
+  "version": "0.1.0-alpha.14",
+  "tag": "next",
+  "sourceCommit": "cecf50b470de7c3ff54c86e445a3dc058e15c2c7",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.14",
+      "file": "motionstudies-core-0.1.0-alpha.14.tgz",
+      "integrity": "sha512-+P4axtQDHmZkvtILvFkQhtrjlwfYQa7JrxWs2OIgFdXcqZh/E0PV9phaPkQ7viThrIPEt92M9BENp5bPqHoVuA=="
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.14",
+      "file": "motionstudies-data-0.1.0-alpha.14.tgz",
+      "integrity": "sha512-n2dkgoT4rF88fMhmfXKu90Ox01ebkm9EbGaPcN9wLcJolmlMDY16S10hxbcfRj+jLhLR0jEa0EXXnQq7QAqX/Q=="
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.14",
+      "file": "motionstudies-three-0.1.0-alpha.14.tgz",
+      "integrity": "sha512-FYH0K98kR1GNoSBHkDy0bBmVsDeDU3tBbpNZWTO1TkmB/LZYul/F/tJkT2ptRgW+dqnZnSCbKumOlSODj6AlEA=="
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.14",
+      "file": "motionstudies-web-0.1.0-alpha.14.tgz",
+      "integrity": "sha512-DALLJA94HfZIwfdmW39AmX+USpBfBIJA1qM3p0UnGmqR9dWIYrSAaeY16ER4o/ijI0p0ZmMf7kqckMU0ip0q0Q=="
+    }
+  ]
+}

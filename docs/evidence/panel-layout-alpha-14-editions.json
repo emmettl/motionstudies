@@ -1,0 +1,51 @@
+{
+  "packageVersion": "0.1.0-alpha.14",
+  "verifiedAt": "2026-09-13T13:35:34.092458+00:00",
+  "editions": [
+    {
+      "edition": "allchange",
+      "url": "https://motionstudies.app/allchange/",
+      "provenanceUrl": "https://motionstudies.app/allchange/_release.json",
+      "cloudflareRun": "https://github.com/emmettl/allchange/actions/runs/34758107122",
+      "live": {
+        "repository": "emmettl/allchange",
+        "run_id": 34757733539,
+        "commit": "f56c43ccb39b989f7d287a7e81d11331e4123a1f",
+        "workflow_url": "https://github.com/emmettl/allchange/actions/runs/34757733539",
+        "source_files": 1788,
+        "source_bytes": 70842480,
+        "content_sha256": "204f021dbcb0d5cc95a529980d6e6e65c272eb886b97ff656011589eb4433734"
+      }
+    },
+    {
+      "edition": "correspondances",
+      "url": "https://motionstudies.app/correspondances/",
+      "provenanceUrl": "https://motionstudies.app/correspondances/_release.json",
+      "cloudflareRun": "https://github.com/emmettl/correspondances/actions/runs/34760173282",
+      "live": {
+        "repository": "emmettl/correspondances",
+        "run_id": 34758185400,
+        "commit": "cc9983c49db9acc38ec28c87032d5eed3023dfd5",
+        "workflow_url": "https://github.com/emmettl/correspondances/actions/runs/34758185400",
+        "source_files": 222,
+        "source_bytes": 33363261,
+        "content_sha256": "b57a09780cc332567d359f94c4e89d2616276a39a968d051c1df25b5734fe525"
+      }
+    },
+    {
+      "edition": "gleislicht",
+      "url": "https://motionstudies.app/gleislicht/",
+      "provenanceUrl": "https://motionstudies.app/gleislicht/_release.json",
+      "cloudflareRun": "https://github.com/emmettl/gleislicht/actions/runs/34759953211",
+      "live": {
+        "repository": "emmettl/gleislicht",
+        "run_id": 34758697375,
+        "commit": "7e275c24ca1de879a26ac3beb7abd61e098a785c",
+        "workflow_url": "https://github.com/emmettl/gleislicht/actions/runs/34758697375",
+        "source_files": 126,
+        "source_bytes": 3153060,
+        "content_sha256": "4d726bc874b5ef7a02c917a366f9ebdcac31b9797d22302d3692cbc61574dd02"
+      }
+    }
+  ]
+}
