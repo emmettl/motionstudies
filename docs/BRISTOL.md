@@ -29,6 +29,14 @@ The M32 proof is a separate full-day matrix and Explore table with fixed scales,
 
 Replay now loads five-minute windows with a bounded three-window cache. Recording has capture indexes, store health, storage budgets, resumability and a fixed deadline of at most 24 elapsed hours; a 25-hour civil day requires separate captures. These mechanisms are implemented, but the full weekday recording has not yet been acquired.
 
+## Contribution to the shared instrument — 13 September 2026
+
+Underfall now contributes infrastructure back to Motion Studies. [PR #6](https://github.com/emmettl/motionstudies/pull/6), merged at `efe748d`, extracts bounded source capture and hash-checked offline replay, UK civil/service-day helpers, WebTRIS report normalization and an aggregate-road evidence model. The source implementation is the inspected Underfall `6ef70b3`; the [shared transport record](SHARED-GROUND-TRANSPORT.md) owns the contracts and validation.
+
+This contribution preserves distinctions established by the Bristol work: source-local interval labels versus verified UTC times, missing values versus measured zero, detector passages versus unique vehicles, and illustrative geometry versus provider-defined links. Each aggregate sample keeps source-record references. It supplies part of the route back from a visual field to its evidence, while national aggregation and constituent lookup remain to be built.
+
+An isolated consumer proof replaced about 230 lines of duplicated acquisition, clock and report logic and passed Underfall's 79 tests against candidate package distributions. The contribution was published in `0.1.0-alpha.12`; Underfall adopted those registry pins with vehicle cards. Replacing its old acquisition/report wrappers is part of the next foundations adoption, alongside the JavaScript railway readers and geometry helpers. Publication, exact-version adoption and the use of new exports are recorded separately.
+
 ## Next proof
 
 Acquire and audit a complete weekday before making claims about Bristol's daily rhythm. Reconcile bus freshness, unmatched identities, rail coverage and the dates of the air and water sources. Bristol Parkway and other ambiguous railway mappings need explicit resolution before coverage expands. Public timetable times, broader rail coverage and airport-board activation are separate increments.

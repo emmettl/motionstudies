@@ -8,6 +8,8 @@ This reconciliation records what the edition checkouts actually contain, what th
 
 The series now extends beyond transport. Bristol tests human schedules against tidal rhythms; Zugunruhe tests migration and atmospheric fields. The common artistic question is becoming clearer: how can an aggregate remain connected to the evidence from which it was made? Each study must name its smallest supported unit. A scheduled journey, a recorded vehicle report, a detector interval and a radar density estimate are different kinds of evidence.
 
+**Underfall contribution, later on 13 September:** [PR #6](https://github.com/emmettl/motionstudies/pull/6) merged shared source capture, UK service-day clocks, WebTRIS normalization and aggregate-road evidence at `efe748d`. An isolated Underfall consumer passed its 79 tests against candidate distributions. The modules were subsequently published in `0.1.0-alpha.12`, and Underfall adopted those pins with vehicle cards. The [transport contribution record](SHARED-GROUND-TRANSPORT.md) distinguishes publication from adopting the new acquisition/report wrappers. This advances the national study's evidence infrastructure without establishing a national dataset or renderer.
+
 ## Programme status
 
 **Programme decision — 13 September 2026:** Local / Express and NORIKAE are parked at the author’s request. Development, source acquisition and provider follow-up are paused. Existing work and open questions are retained for a possible return; they are outside the active programme. Local / Express keeps number 007 and its private proof; NORIKAE remains unnumbered with its existing synthetic preview.

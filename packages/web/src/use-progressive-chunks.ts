@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { DataUrlResolver } from './data-url.ts'
 
 interface ChunkDescriptor {
@@ -15,6 +15,8 @@ export interface ProgressiveChunkAdapter<Manifest, Descriptor, Chunk> {
   readonly adjacentChunks: (manifest: Manifest, current: Descriptor) => readonly Descriptor[]
   readonly readChunk: (response: Response, descriptor: Descriptor) => Promise<Chunk>
   readonly optional?: boolean
+  readonly validateManifest?: (manifest: Manifest) => void
+  readonly retainAdjacentOnly?: boolean
 }
 
 interface ResourceState<Manifest, Chunk> {
@@ -40,6 +42,11 @@ export function useProgressiveChunks<
 ) {
   const key = resolveAssetUrl(manifestFile)
   const [stored, setStored] = useState<ResourceState<Manifest, Chunk>>({ key, chunks: {} })
+  const [attempt, setAttempt] = useState(0)
+  const retry = useCallback(() => {
+    setStored(current => current.key === key ? { ...current, manifestError: false, failedChunk: undefined, unavailable: false } : current)
+    setAttempt(value => value + 1)
+  }, [key])
   // Reset during render so no effect (or consumer) sees another source's data.
   // Late responses are also rejected below, independently of fetch cancellation.
   const state: ResourceState<Manifest, Chunk> = stored.key === key ? stored : { key, chunks: {} }
@@ -70,6 +77,7 @@ export function useProgressiveChunks<
         if (!Array.isArray(next.chunks) || !next.chunks.length) {
           throw new Error('Day manifest has no chunks')
         }
+        adapter.validateManifest?.(next)
         if (!controller.signal.aborted) {
           setStored((current) => current.key === key
             ? { ...current, manifest: next, manifestError: false }
@@ -82,7 +90,7 @@ export function useProgressiveChunks<
       }
     })()
     return () => controller.abort()
-  }, [active, adapter, key, manifest, unavailable])
+  }, [active, adapter, attempt, key, manifest, unavailable])
 
   useEffect(() => {
     if (!active || !manifest || !descriptor) return
@@ -101,7 +109,9 @@ export function useProgressiveChunks<
           const next = await adapter.readChunk(response, candidate)
           if (!controller.signal.aborted) {
             setStored((current) => current.key === key
-              ? { ...current, chunks: { ...current.chunks, [candidate.id]: next },
+              ? { ...current, chunks: { ...(adapter.retainAdjacentOnly
+                  ? Object.fromEntries(Object.entries(current.chunks).filter(([id]) => adapter.adjacentChunks(manifest, descriptor).some(item => item.id === id)))
+                  : current.chunks), [candidate.id]: next },
                   failedChunk: current.failedChunk === candidate.id ? undefined : current.failedChunk }
               : current)
           }
@@ -113,7 +123,7 @@ export function useProgressiveChunks<
       })()
     }
     return () => controller.abort()
-  }, [active, adapter, chunks, descriptor, key, manifest, resolveAssetUrl])
+  }, [active, adapter, attempt, chunks, descriptor, key, manifest, resolveAssetUrl])
 
   return {
     manifest,
@@ -122,5 +132,6 @@ export function useProgressiveChunks<
     loading: active && !unavailable && !error && (!manifest || !chunkReady),
     unavailable: Boolean(unavailable),
     error,
+    retry,
   }
 }

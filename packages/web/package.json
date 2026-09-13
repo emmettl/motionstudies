@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.12",
+  "version": "0.1.0-alpha.13",
   "private": true,
   "type": "module",
   "exports": {
@@ -19,6 +19,7 @@
     "./use-observed-operations": "./src/use-observed-operations.ts",
     "./use-progressive-air-day": "./src/use-progressive-air-day.ts",
     "./use-progressive-network-day": "./src/use-progressive-network-day.ts",
+    "./use-pattern-network-day": "./src/use-pattern-network-day.ts",
     "./use-progressive-road-study": "./src/use-progressive-road-study.ts",
     "./tokens.css": "./src/tokens.css",
     "./shell.css": "./src/shell.css",
@@ -38,7 +39,7 @@
     "./components/NetworkVehicleHeroCard": "./src/components/NetworkVehicleHeroCard.tsx"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.12"
+    "@motionstudies/core": "0.1.0-alpha.13"
   },
   "peerDependencies": {
     "react": "^19.2.8",

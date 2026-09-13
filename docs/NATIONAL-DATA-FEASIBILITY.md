@@ -193,8 +193,14 @@ Immutable published editions can then use static object storage and a CDN. Preco
 
 ### What the current shared code provides
 
+**Underfall contribution — 13 September 2026:** [PR #6](https://github.com/emmettl/motionstudies/pull/6) has merged additional evidence infrastructure into Motion Studies at `efe748d`. The [shared transport record](SHARED-GROUND-TRANSPORT.md) documents an isolated Underfall consumer proof and the remaining publication/adoption steps. These modules were subsequently published in `0.1.0-alpha.12`; wrapper adoption and the further [All Change foundations](ALLCHANGE-FOUNDATIONS.md) are tracked separately. The national study now has more of its acquisition and measurement foundations implemented; a national archive, aggregate hierarchy and constituent lookup remain unbuilt.
+
 | Existing code | Reusable foundation | Gap for this study |
 | --- | --- | --- |
+| [Source store](../packages/data/src/source-store.mjs) | Bounded HTTP/local capture, immutable objects, capture history and hash-checked offline replay. | Capture is bounded in memory, not streaming to disk; national payload sizes and provider-specific request policies still need proof. |
+| [UK service-day helpers](../packages/data/src/uk-service-day.mjs) | UK civil-day boundaries, overlapping UTC dates and the separate GTFS noon-based origin, including DST cases. | Does not establish the meaning of provider-local report timestamps or solve every timezone. |
+| [WebTRIS normalization](../packages/data/src/webtris.mjs) | Report labels, nullable measurements, length classes and duplicate/conflict audits retained through aggregate conversion. | Pagination and capture orchestration remain edition-owned; London's existing hourly light/heavy conversion requires an explicit migration review. |
+| [Aggregate-road evidence](../packages/core/src/domain/aggregate-road.ts) | Provider/dataset/site identities, per-sample source references, explicit interval kinds and separate geometry associations; duplicate slots unavailable. | Detector intervals are the finest evidence here. National spatial delivery, cross-source aggregation and constituent lookup are not implemented by this model. |
 | [GTFS helpers](../packages/data/src/gtfs.mjs) | Streaming ZIP-entry rows, service-time parsing and mode helpers. | National calendar/shape validation and bounded-memory joins still need proof. |
 | [Network merging](../packages/data/src/merge-network.mjs) | Common-day checks and stop/path remapping. | It preserves journey IDs as supplied and deduplicates stops by source ID; namespace providers first and explicitly reconcile overlaps. |
 | [Network chunk compiler](../packages/data/src/network-chunks.mjs) | Temporal chunks and integrity descriptors. | Manifest retains shared stops/paths; whole-country geometry needs spatial/scale partitioning. Journeys overlap chunks, so aggregate counting must deduplicate. |

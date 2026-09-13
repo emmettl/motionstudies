@@ -1,3 +1,7 @@
+import { setScenePickMetadata } from './scene-picking.ts'
+import type { AirportInfrastructureStyle } from './scene-style.ts'
+import type { AircraftPickingPolicy } from './scene-extensions.ts'
+import type { ThreeEvent } from '@react-three/fiber'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
@@ -359,12 +363,14 @@ function createAirportLabelTexture(airport: StudyAirport): AirportLabelTexture {
   return { texture, aspect: canvas.width / canvas.height }
 }
 
-function AirportMarker({
+export function AirportMarker({
+  style,
   airport,
   projection,
   showLabel,
   selected,
 }: {
+  readonly style?: AirportInfrastructureStyle
   readonly airport: StudyAirport
   readonly projection: AirProjection
   readonly showLabel: boolean
@@ -394,6 +400,12 @@ function AirportMarker({
     () => () => labelTexture.texture.dispose(),
     [labelTexture.texture],
   )
+
+  useEffect(() => {
+    const target = { kind: 'airport' as const, value: airport }
+    if (marker.current) setScenePickMetadata(marker.current, { target })
+    if (label.current) setScenePickMetadata(label.current, { target })
+  }, [airport, showLabel])
 
   useFrame(({ clock }) => {
     const projected = new THREE.Vector3(...position).applyMatrix4(
@@ -438,6 +450,7 @@ function AirportMarker({
             transparent
             opacity={selected ? 1 : 0.9}
             blending={THREE.AdditiveBlending}
+            fog={style?.fog ?? true}
             depthTest={false}
             depthWrite={false}
           />
@@ -449,6 +462,7 @@ function AirportMarker({
             transparent
             opacity={0.94}
             blending={THREE.AdditiveBlending}
+            fog={style?.fog ?? true}
             depthTest={false}
             depthWrite={false}
           />
@@ -460,6 +474,7 @@ function AirportMarker({
             transparent
             opacity={selected ? 0.68 : 0.44}
             blending={THREE.AdditiveBlending}
+            fog={style?.fog ?? true}
             depthTest={false}
             depthWrite={false}
           />
@@ -471,11 +486,12 @@ function AirportMarker({
         />
       </group>
       {showLabel && (
-        <sprite ref={label} renderOrder={20}>
+        <sprite ref={label} renderOrder={style?.labelRenderOrder ?? 20}>
           <spriteMaterial
             map={labelTexture.texture}
             transparent
             opacity={selected ? 1 : 0.92}
+            fog={style?.fog ?? true}
             depthTest={false}
             depthWrite={false}
             toneMapped={false}
@@ -487,6 +503,8 @@ function AirportMarker({
 }
 
 export function AirTrafficLayer({
+  airportStyle,
+  picking,
   snapshot,
   time,
   isPlaying,
@@ -500,6 +518,8 @@ export function AirTrafficLayer({
   labelMode,
   subdued = false,
 }: {
+  readonly airportStyle?: AirportInfrastructureStyle
+  readonly picking?: AircraftPickingPolicy
   readonly snapshot: AirSnapshot
   readonly time: number
   readonly isPlaying: boolean
@@ -513,6 +533,7 @@ export function AirTrafficLayer({
   readonly labelMode: TrainLabelMode
   readonly subdued?: boolean
 }) {
+  const { scene, camera, gl } = useThree()
   const localTime = useRef(time)
   const aircraftRef = useRef<readonly CurrentAircraft[]>([])
   const aircraftTransform = useMemo(() => new THREE.Object3D(), [])
@@ -691,15 +712,21 @@ export function AirTrafficLayer({
   }, [airportTrackIds, projection, snapshot.tracks, time])
   useEffect(() => () => trailGeometry.dispose(), [trailGeometry])
 
+  const selectAircraft = (event: ThreeEvent<PointerEvent | MouseEvent>) => {
+    if (event.instanceId === undefined) return
+    if (picking?.accepts && !picking.accepts({ scene, camera, canvas: gl.domElement,
+      clientX: event.clientX, clientY: event.clientY, dragDistance: event.delta,
+      touch: 'pointerType' in event.nativeEvent && event.nativeEvent.pointerType === 'touch' })) return
+    event.stopPropagation()
+    const track = aircraftRef.current[event.instanceId]?.track
+    if (track) onSelectTrack?.(track.id)
+  }
+
   return (
     <>
       <group
-      onPointerDown={(event) => {
-        if (event.instanceId === undefined) return
-        event.stopPropagation()
-        const track = aircraftRef.current[event.instanceId]?.track
-        if (track) onSelectTrack?.(track.id)
-      }}
+      onPointerDown={picking?.event === 'click' ? undefined : selectAircraft}
+      onClick={picking?.event === 'click' ? selectAircraft : undefined}
     >
       <lineSegments geometry={trailGeometry} renderOrder={15}>
         <lineBasicMaterial
@@ -776,8 +803,9 @@ export function AirTrafficLayer({
         selectedTrackId={selectedTrackId}
         airportTrackIds={airportTrackIds}
       />
-      {visibleAirports.map((airport) => (
+      {!airportStyle?.independent && visibleAirports.map((airport) => (
         <AirportMarker
+          style={airportStyle}
           key={airport.id}
           airport={airport}
           projection={projection}

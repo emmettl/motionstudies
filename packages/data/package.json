@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/data",
-  "version": "0.1.0-alpha.12",
+  "version": "0.1.0-alpha.13",
   "private": true,
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
@@ -8,6 +8,10 @@
     "node": ">=24.0.0"
   },
   "exports": {
+    "./observation-windows": {
+      "types": "./src/observation-windows.d.mts",
+      "import": "./src/observation-windows.mjs"
+    },
     "./adsb-heatmap": {
       "types": "./src/adsb-heatmap.d.mts",
       "import": "./src/adsb-heatmap.mjs"
@@ -47,10 +51,31 @@
     "./webtris": {
       "types": "./src/webtris.d.mts",
       "import": "./src/webtris.mjs"
+    },
+    "./rail-wtt": {
+      "types": "./src/rail-wtt.d.mts",
+      "import": "./src/rail-wtt.mjs"
+    },
+    "./rail-journeys": {
+      "types": "./src/rail-journeys.d.mts",
+      "import": "./src/rail-journeys.mjs"
+    },
+    "./rail-routing": {
+      "types": "./src/rail-routing.d.mts",
+      "import": "./src/rail-routing.mjs"
+    },
+    "./rail-public-calls": {
+      "types": "./src/rail-public-calls.d.mts",
+      "import": "./src/rail-public-calls.mjs"
+    },
+    "./rail-geometry": {
+      "types": "./src/rail-geometry.d.mts",
+      "import": "./src/rail-geometry.mjs"
     }
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.12"
+    "@motionstudies/core": "0.1.0-alpha.13",
+    "fast-xml-parser": "5.11.1"
   },
   "repository": {
     "type": "git",

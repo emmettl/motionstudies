@@ -25,6 +25,14 @@ Build release candidates with `npm run build:packages`. Distribution manifests a
 
 Source workspace manifests always stay private. `npm run check:release` builds public candidates, tests their packed consumer and records the tested tarball hashes; `npm run release:dry-run` inspects the publication without writing to npm. The manual main-branch `release.yml` workflow publishes those same tarballs with public access and provenance. See [release instructions](https://github.com/emmettl/motionstudies/blob/main/docs/RELEASING.md) for bootstrap-token and trusted-publisher setup. All four shared packages are MIT-licensed; each distribution includes `LICENSE`.
 
+## Timetable patterns, station calls and observation windows
+
+`@motionstudies/core/domain/network-patterns` provides a transport-neutral repeated-schedule codec. `@motionstudies/web/use-pattern-network-day` lazily decodes current/adjacent chunks after verifying byte length and SHA-256; it exposes retry and drops old-source state when the manifest URL changes. Supply stable options and a stable asset resolver. Format/category options support existing edition wire contracts.
+
+`@motionstudies/core/domain/station-calls` supplies station calls, independent source status, namespaced source combination and upcoming-call filtering. Source IDs, repeated visits and acquired windows survive combination. Consumers supply interchange IDs and passenger restrictions; matching display names do not collapse services.
+
+`@motionstudies/data/observation-windows` compiles bounded acquired records into hashed windows with explicit time semantics, conflict policy and acquisition-gap reporting. It preserves supplied record IDs, values and source references. It uses elapsed UTC seconds, including 23/25-hour study days, and performs no acquisition or inference. See [contracts, limits and parity evidence](../docs/ALLCHANGE-FOUNDATIONS.md).
+
 ## Now and browser location
 
 `useNowClock` from `@motionstudies/web/use-now-clock` follows the wall clock on each animation frame, so returning from a suspended tab catches up immediately. Call `start()` from a Now button, set the consumer's playback rate to 1, and render its `time` while `active`. With `NationalNetworkScene`, pass `isPlaying={false}` while this external clock owns time. Call `stop()` before pausing, seeking or changing speed, and retain the last clock time for ordinary playback. Clear moving vehicle selections on entry to keep the camera still; panning and zooming remain available.
@@ -217,3 +225,7 @@ The renderer now shares active GPU upload ranges, paused frame reuse, label and 
 Edition chunk scripts can call `runNetworkChunkCli()` from `@motionstudies/data/network-chunk-cli`. It accepts the existing `--input`, `--manifest`, `--opening`, `--chunk-hours`, `--opening-start`, `--opening-end`, and `--focus` arguments. Source acquisition, provenance, output paths and command invocation remain edition-owned.
 
 For timetable-backed vehicle selections, `NetworkVehicleHeroCard` from `@motionstudies/web/components/NetworkVehicleHeroCard` accepts `snapshot`, `train`, playback `time`, a required source `note` and the vehicle card's presentation/state/label options. Import `vehicle-hero-card.css`. It resolves the selected train ID against the current snapshot, retaining destination identity but showing no stale calls when that ID is absent. Calls stay in journey order, use stable journey/call IDs and follow backward seeking. During dwell the heading becomes `atStopLabel` (default “At stop”) and the time is the departure; otherwise it is the upcoming arrival. Times are formatted with `formatServiceTime` by default, without normalizing after midnight or adding delay twice. Use `showTimes={false}` for frequency-modelled journeys, and explain the model in `note`. The core `vehicleCalls` helper is also exported from `@motionstudies/core/domain/vehicle-calls` for custom adapters. Selection callback IDs refer to calls, not station indexes.
+
+### Railway preparation
+
+`@motionstudies/data/rail-wtt`, `rail-journeys`, `rail-public-calls`, `rail-routing` and `rail-geometry` expose typed offline railway preparation. XLSX reading, dated source-column audits, UID/date joins, public-call anchors and connected OSM paths preserve source evidence. Editions supply regional identities, calendar exceptions and clipping policy. Node 24+ and `unzip` are required; no Python runtime is shipped. See `docs/SHARED-RAIL-READERS.md` in the source repository for calendar limits and parity evidence.

@@ -1,3 +1,4 @@
+import { infrastructureExtensions, infrastructureStyle, inactiveNetwork, specimenAirports, specimenRoads } from './infrastructure-specimen.ts'
 import { FLAT_NETWORK_MAP_STYLE } from '@motionstudies/three/scene-style'
 import { NetworkStyleProbe } from './NetworkStyleProbe.tsx'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
@@ -63,16 +64,19 @@ function RenderingStudy({ kind }: { kind: 'Network' | 'Hub' }) {
   const [compare, setCompare] = useState(false)
   const [layers, setLayers] = useState(false)
   const [flat,setFlat]=useState(false)
+  const [infrastructure, setInfrastructure] = useState(false)
   const [palette, setPalette] = useState(false)
-  const mapStyle = useMemo(() => ({ ...(flat ? FLAT_NETWORK_MAP_STYLE : {}), categoryColors: palette ? { regional: '#ff3366', intercity: '#ff3366', metro: '#ff3366', bus: '#ffcc00', other: '#ff3366' } : undefined }), [flat, palette])
+  const mapStyle = useMemo(() => ({ ...(flat ? FLAT_NETWORK_MAP_STYLE : {}), ...(infrastructure ? infrastructureStyle : {}), categoryColors: palette ? { regional: '#ff3366', intercity: '#ff3366', metro: '#ff3366', bus: '#ffcc00', other: '#ff3366' } : undefined }), [flat, palette, infrastructure])
   const [mounted, setMounted] = useState(true)
   const [selection, setSelection] = useState('none')
   const [station, setStation] = useState<StationIndexEntry>()
   const [camera, setCamera] = useState<MapCameraCommand>()
-  const source = empty ? emptyNetwork : network
+  const source = empty ? infrastructure ? inactiveNetwork : emptyNetwork : network
   const stations = useMemo(() => buildStationIndex(source), [source])
   const cameraId = useRef(0)
   const scene = (secondary = false) => <NationalNetworkScene snapshot={source} referenceSnapshot={network}
+    infrastructureSnapshot={infrastructure ? network : undefined} extensions={infrastructure ? infrastructureExtensions : undefined}
+    airports={infrastructure ? specimenAirports : undefined} roadTopology={infrastructure ? specimenRoads : undefined}
     isPlaying={playing && !secondary} time={time} onTime={setTime} playbackRate={4}
     stations={stations} trainLabelMode="on" cameraFraming={ATLAS_MAP_FRAMING} cameraCommand={camera}
     selectedRoute={!empty && selection === 'route' ? buildRouteIndex(network)[0] : undefined}
@@ -89,6 +93,7 @@ function RenderingStudy({ kind }: { kind: 'Network' | 'Hub' }) {
       <label><input type="checkbox" checked={empty} onChange={(e) => setEmpty(e.target.checked)} /> Empty data</label>
       <label><input type="checkbox" checked={compare} onChange={(e) => setCompare(e.target.checked)} /> {kind === 'Hub' ? 'Track view' : 'Linked views'}</label>
       {kind === 'Network' && <><label><input type="checkbox" checked={flat} onChange={e=>setFlat(e.target.checked)}/> Flat routes + quiet ground</label><label><input type="checkbox" checked={layers} onChange={(e) => setLayers(e.target.checked)} /> Air + road</label>
+        <label><input type="checkbox" checked={infrastructure} onChange={e => setInfrastructure(e.target.checked)} /> Infrastructure interfaces</label>
         <label><input type="checkbox" checked={palette} onChange={e => setPalette(e.target.checked)} /> Alternate category palette</label>
         <label>Selection <select value={selection} onChange={(e) => setSelection(e.target.value)}><option value="none">None</option><option value="route">Route</option><option value="service">Service</option><option value="station">Station</option></select></label>
         {(['zoom-in', 'zoom-out', 'reset'] as const).map((action) => <button key={action} data-tooltip={action === 'reset' ? 'Restore the opening camera position' : action === 'zoom-in' ? 'Move closer to the network' : 'Show more of the network'} onClick={() => setCamera({ id: ++cameraId.current, action })}>{action}</button>)}
