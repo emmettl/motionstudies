@@ -28,6 +28,7 @@ import { stationLabelWorldHeight } from './station-labels.ts'
 import type { TrainLabelMode } from './train-labels.ts'
 import {
   airportLabelsAreVisible,
+  airportLabelParts,
   airportsForMap,
 } from './airport-markers.ts'
 
@@ -314,9 +315,8 @@ function createAirportLabelTexture(airport: StudyAirport): AirportLabelTexture {
   const codeFont = '700 25px "DM Mono", ui-monospace, monospace'
   const nameFont = '600 20px Helvetica, Arial, sans-serif'
   const height = 58
-  const code = airport.iata.toUpperCase()
-  const name = (airport.mapLabel ?? airport.city).toUpperCase()
-  const gap = 17
+  const { code, name } = airportLabelParts(airport)
+  const gap = name ? 17 : 0
   const horizontalPadding = 20
   if (!context) {
     canvas.width = 230

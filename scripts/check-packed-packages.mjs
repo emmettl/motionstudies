@@ -47,6 +47,8 @@ try {
   }
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
     import { network } from './fixtures.ts'
+    import { mountMotionStudy, type MotionStudyMountOptions } from '@motionstudies/web/mount-motion-study'
+    export const mountPresentation = (theme: MotionStudyMountOptions['theme']) => mountMotionStudy({ id: 'independent-consumer', theme }, null)
     import { encodeNetworkPatterns, decodeNetworkPatterns } from '@motionstudies/core/domain/network-patterns'
     import { stationCalls, combinedStationCalls, stationSourceStatus } from '@motionstudies/core/domain/station-calls'
     import { usePatternNetworkDay } from '@motionstudies/web/use-pattern-network-day'
@@ -102,7 +104,7 @@ try {
         await import('@motionstudies/'+name+'/'+path.slice(2))
       }
     }
-    for (const hidden of ['@motionstudies/web/use-progressive-chunks', '@motionstudies/three/network-paths']) {
+    for (const hidden of ['@motionstudies/web/use-progressive-chunks', '@motionstudies/three/network-paths', '@motionstudies/three/label-textures']) {
       try { await import(hidden); throw new Error('Internal module exposed: '+hidden) }
       catch (error) { if (error.code !== 'ERR_PACKAGE_PATH_NOT_EXPORTED') throw error }
     }

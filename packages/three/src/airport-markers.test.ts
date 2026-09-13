@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import type { StudyAirport } from '@motionstudies/core/domain/airport'
 import {
   airportLabelsAreVisible,
+  airportLabelParts,
   airportsForMap,
 } from './airport-markers.ts'
 
@@ -47,4 +48,9 @@ describe('airport map emphasis', () => {
     expect(airportLabelsAreVisible('on')).toBe(true)
     expect(airportLabelsAreVisible('off')).toBe(false)
   })
+})
+
+it('abbreviated airports render the code once while named airports retain their name', () => {
+  expect(airportLabelParts({ ...heathrow, mapLabel: 'lhr' })).toEqual({ code: 'LHR', name: '' })
+  expect(airportLabelParts(heathrow)).toEqual({ code: 'LHR', name: 'HEATHROW' })
 })

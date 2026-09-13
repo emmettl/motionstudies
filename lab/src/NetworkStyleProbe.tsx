@@ -8,11 +8,20 @@ export function NetworkStyleProbe() {
   useFrame(() => {
     let flatStrokes = 0, customRoutes = 0, roadOverlays = 0
     const airports: string[] = [], trains: string[] = [], stopIndexes: number[] = [], heights: number[] = []
-    const colors: number[] = [], labels: string[] = []
+    const colors: number[] = [], labels: string[] = [], airportResources: string[] = [], airportLabels: string[] = []
     scene.traverse((object: Object3D & { geometry?: BufferGeometry; material?: Material; isLineSegments?: boolean; isSprite?: boolean }) => {
       const material = object.material
       const metadata = scenePickMetadata(object)
-      if (metadata?.target?.kind === 'airport' && object.visible) airports.push(metadata.target.value.id)
+      if (metadata?.target?.kind === 'airport') {
+        let visible = object.visible
+        for (let parent = object.parent; parent; parent = parent.parent) visible &&= parent.visible
+        if (visible) airports.push(metadata.target.value.id)
+        if (object.geometry) airportResources.push(object.geometry.uuid)
+        if (object.isSprite) {
+          airportResources.push((material as SpriteMaterial).map?.uuid ?? '')
+          if (visible) airportLabels.push(metadata.target.value.id)
+        }
+      }
       if (object.userData.specimenRoutes) customRoutes += object.userData.specimenRoutes
       if (object.userData.specimenRoadOverlay) roadOverlays++
       if (object.geometry) {
@@ -29,7 +38,7 @@ export function NetworkStyleProbe() {
       if (color) for (let i = 0; i < Math.min(color.array.length, 24); i++) colors.push(Number(color.array[i].toFixed(5)))
       if (object.isSprite && object.visible && [16, 21].includes(object.renderOrder)) labels.push((material as SpriteMaterial).map?.uuid ?? '')
     })
-    gl.domElement.setAttribute('data-style-audit', JSON.stringify({ flatStrokes, colors, labels, airports, trains, stopIndexes, heights, customRoutes, roadOverlays }))
+    gl.domElement.setAttribute('data-style-audit', JSON.stringify({ flatStrokes, colors, labels, airportResources, airportLabels, airports, trains, stopIndexes, heights, customRoutes, roadOverlays }))
   })
   return null
 }

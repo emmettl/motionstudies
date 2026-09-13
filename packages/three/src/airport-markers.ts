@@ -16,3 +16,10 @@ export function airportsForMap(
 export function airportLabelsAreVisible(labelMode: TrainLabelMode): boolean {
   return labelMode !== 'off'
 }
+
+/** A configured abbreviation equal to the code is a single label, not repeated text. */
+export function airportLabelParts(airport: StudyAirport) {
+  const code = airport.iata.toUpperCase()
+  const label = (airport.mapLabel ?? airport.city).toUpperCase()
+  return { code, name: label === code ? '' : label }
+}

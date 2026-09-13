@@ -31,6 +31,10 @@ export interface RoadInfrastructureStyle {
 export interface AirportInfrastructureStyle {
   /** Show configured airports independently of flight data and flight-label visibility. */
   readonly independent?: boolean
+  /** Hide independent infrastructure without unmounting its GPU resources or allowing picks. */
+  readonly visible?: boolean
+  /** Label visibility for independent infrastructure; markers remain visible. */
+  readonly showLabels?: boolean
   readonly labelRenderOrder?: number
   readonly fog?: boolean
 }

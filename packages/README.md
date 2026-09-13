@@ -229,3 +229,7 @@ For timetable-backed vehicle selections, `NetworkVehicleHeroCard` from `@motions
 ### Railway preparation
 
 `@motionstudies/data/rail-wtt`, `rail-journeys`, `rail-public-calls`, `rail-routing` and `rail-geometry` expose typed offline railway preparation. XLSX reading, dated source-column audits, UID/date joins, public-call anchors and connected OSM paths preserve source evidence. Editions supply regional identities, calendar exceptions and clipping policy. Node 24+ and `unzip` are required; no Python runtime is shipped. See `docs/SHARED-RAIL-READERS.md` in the source repository for calendar limits and parity evidence.
+
+`mountMotionStudy({ id, theme }, application)` requires presentation identity only; a full `MotionStudyEdition` remains accepted. Applications own their data catalogue and loading lifecycle.
+
+For independent airport infrastructure, `mapStyle.airports.visible` hides the mounted group without rebuilding GPU resources, and `showLabels` controls its labels separately. Both default to `true`. Set these from the edition's layout and label controls; airport abbreviations equal to their IATA code are rendered once.
