@@ -1,6 +1,6 @@
 # Shared ground-transport foundations
 
-This additive extraction supports Underfall's road work and the national study's evidence requirements. It leaves existing road classes and renderer defaults unchanged. It is rebased onto the published alpha.11 styling release (including vehicle hero cards at main `e4e941b`), without a version bump. Coordinate the next package version with the active vehicle hero-card task. The review branch is approved for GitHub; these transport additions have not been published to npm.
+This additive extraction supports Underfall's road work and the national study's evidence requirements. It leaves existing road classes and renderer defaults unchanged. It was merged in PR #6 and published with `0.1.0-alpha.12`. The [vehicle-card release record](VEHICLE-CARDS-ALPHA-12.md) records registry publication and edition pins. Adoption of the new Underfall wrappers is part of the further [All Change foundations](ALLCHANGE-FOUNDATIONS.md).
 
 ## Public modules
 
@@ -19,7 +19,7 @@ Capture remains bounded in memory, not streaming-to-disk. Reuse by a national co
 
 ## Consumer proof
 
-An isolated Underfall adoption replaces about 230 lines of duplicate acquisition, clock and report interpretation with imports and a small provider-specific wrapper. Four private package tarballs built from this branch were unpacked into the isolated consumer, with no workspace-source imports. The running Underfall checkout and its registry pins are unchanged until publication.
+The original isolated Underfall proof replaced about 230 lines of duplicate acquisition, clock and report interpretation with imports and a small provider-specific wrapper. Four private package tarballs were unpacked into the isolated consumer, with no workspace-source imports. Underfall subsequently adopted alpha.12 registry pins with vehicle cards; the wrapper migration is being combined with its railway extraction.
 
 Validation on 13 September 2026:
 
@@ -32,10 +32,10 @@ London's WebTRIS consumer is deliberately not silently migrated: it converts len
 
 ## Adoption and subsequent work
 
-1. The additive branch has been rebased after the styling release, preserving its versions and exports. Coordinate and bump all four packages together through the existing release process; do not publish these additions under alpha.11.
+1. Publication completed in alpha.12 through the coordinated release process.
 2. Apply the prepared Underfall wrapper migration and pin all four packages to that exact published version, with a normal lockfile update. Re-run its checks against registry artifacts, replacing candidate tarballs.
 3. Use the scene extension API to build aggregate roads in the main map, then prove the renderer contract with a second edition. A shared screen must still preserve incompatible source clocks.
-4. Extract observation-window machinery with provider-neutral identities and explicit mode policies; package the proven rail readers and geometry helper. These are subsequent extractions, not part of this release.
+4. Observation-window machinery, typed railway readers and geometry helpers now form the next [foundations extraction](ALLCHANGE-FOUNDATIONS.md); they were not included in alpha.12.
 5. Build spatial/temporal constituent lookup for the national brief's overview → group → service → source-record transition. The present series/source references establish a seam; they do not yet implement national aggregation or spatial delivery.
 
 Post-alpha.11 validation: the rebased tree passes 243 shared unit tests and the full typecheck, lint and architecture gates. The architecture check permits the exact quoted IANA timezone identifier only in the UK clock implementation/declaration, while regression tests retain the edition-identity restriction elsewhere. The original packed Underfall proof above remains based on the pre-rebase candidate; repeat adoption against the eventual registry release.

@@ -35,6 +35,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Prepare subsequent versions
 
+`0.1.0-alpha.13` prepares the [All Change foundations](ALLCHANGE-FOUNDATIONS.md): typed railway data tools, repeated timetable patterns and verified progressive loading, independent station-call sources, public renderer interfaces and observation-window compilation. Publication and edition adoption are recorded in [the alpha.13 release record](FOUNDATIONS-ALPHA-13.md).
+
 `0.1.0-alpha.8` adds responsive bus and rail hero cards, dot-matrix and SBB layouts, and snapshot-based station departures. See [the release and adoption record](TRANSPORT-CARDS-ALPHA-8.md).
 
 `0.1.0-alpha.7` adds optional live airport boards, the shared offline ADS-B compiler and airport-card refinements. It also updates compatible build and test dependencies. See [the release and adoption record](AIRPORTS-ALPHA-7.md).

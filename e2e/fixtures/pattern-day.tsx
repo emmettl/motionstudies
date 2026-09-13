@@ -2,7 +2,7 @@ import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { usePatternNetworkDay } from '@motionstudies/web/use-pattern-network-day'
 const asset = (path: string) => `/patterns/${path}`
-function PatternDay() {
+export function PatternDay() {
   const [active, setActive] = useState(false), [time, setTime] = useState(5), [name, setName] = useState('a')
   const state = usePatternNetworkDay(`${name}.json`, active, time, asset)
   return <>

@@ -12,6 +12,9 @@
 - [Data access and provenance readiness](DATA-READINESS.md) and [provider questions](DATA-QUESTIONS.md)
 - [Edition architecture and ownership](EDITIONS.md)
 - [Package extraction provenance](EXTRACTION.md) and [release process](RELEASING.md)
+- [Underfall's shared ground-transport contribution](SHARED-GROUND-TRANSPORT.md) — capture, UK clocks, WebTRIS interpretation and aggregate-road evidence; publication and adoption tracked separately
+
+- [All Change foundations](ALLCHANGE-FOUNDATIONS.md) — railway readers, timetable patterns, station calls, renderer interfaces and observation windows
 
 ## Numbered studies
 

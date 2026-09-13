@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.12",
+  "version": "0.1.0-alpha.13",
   "private": true,
   "type": "module",
   "exports": {
@@ -39,7 +39,7 @@
     "./components/NetworkVehicleHeroCard": "./src/components/NetworkVehicleHeroCard.tsx"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.12"
+    "@motionstudies/core": "0.1.0-alpha.13"
   },
   "peerDependencies": {
     "react": "^19.2.8",
