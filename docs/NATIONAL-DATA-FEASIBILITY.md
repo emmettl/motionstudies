@@ -117,7 +117,7 @@ DfT records **30,558 local buses in England at March 2025**, with 99% equipped f
 
 ### Explicit capacity model
 
-All numbers below are **engineering scenarios**, not measured feed volumes. GB/MB use decimal bytes; proposed browser budgets below use binary MiB.
+The numbers in this sizing section are **engineering scenarios**, not measured feed volumes. They predate the [first national bus-archive measurement](#specific-unresolved-acquisition-questions), which now supplies a measured Sunday-evening baseline; the scenarios remain sensitivity cases rather than observations. GB/MB use decimal bytes; proposed browser budgets below use binary MiB.
 
 For an ordinary 24-hour day, with `N` average records returned per snapshot and polling interval `s` seconds:
 
@@ -214,6 +214,8 @@ For every aggregate, store its source release, interval, spatial definition, mea
 
 ## Bounded proof and decision gates
 
+**Progress, later on 13 September 2026:** the national bus archive has been measured once and Underfall now implements bounded national collection. The probe discarded the payload after analysis; it is not a retained recording. The next bus proof is a retained weekday-morning hour with source archives, observation-age reporting, deduplication across captures and explicit journey-linkage gaps. Matching schedule acquisition and national rail evidence remain separate requirements.
+
 1. **Acquire compatible evidence.** Inspect one dated static national release and a 60-minute observed window, plus surrounding schedule/observation context. Use BODS and Network Rail accounts if available through the normal project setup. Inventory TfL overlap and source notices. Obtain actual file sizes, unique counts, source latency and subscription limits.
 2. **Audit contrasting places.** Use one busy interchange region and one smaller-town/rural area within that same window. Publish the coverage denominator and unmatched records before selecting the most attractive scene. Keep England's national field explicitly scheduled if national observations are not yet acquired; do not call a local observation sample an observed national day.
 3. **Prove the evidence chain.** One national aggregate, one defined group, one service and one original record. Check contributions, duplicate handling, retained identity, source exports and visible gaps. An account-free historical schedule proof remains useful, but cannot validate the observed thesis.
@@ -235,6 +237,6 @@ Resolve these from actual releases and supplied terms first. Provider questions 
 
 ## Audit limitations and decision
 
-The BODS download-header check, retried with host networking after sandbox DNS failure, returned a login redirect; the subsequent login HEAD response was 403. This establishes that the unauthenticated path did not yield a dataset, not that the user's credentials are invalid. No national payload was downloaded and no empirical completeness, latency or compression claim is made. Published archive sizes and the arithmetic scenarios above are deliberately distinguished.
+The initial BODS download-header check returned a login redirect and a subsequent 403. That earlier result did not establish invalid credentials or rule out national access. The later Underfall probe successfully fetched and measured the national bulk archive, superseding the initial acquisition uncertainty. Its report establishes one response's compressed and expanded sizes, contents, request/decode timings and observation ages. The payload was discarded after analysis. National completeness, position accuracy, weekday-peak volumes and sustained collection performance remain unverified; the per-day figures are linear projections from one Sunday-evening response, not a recorded day.
 
 Proceed to a source-bounded prototype after acquisition checks. The national data scale appears manageable with offline compilation and selective delivery. The distinctive engineering work is maintaining evidence and contribution identity across aggregation, rather than merely drawing more vehicles. The artistic decision remains whether the resulting differences of rhythm sustain the [proposed thesis](NATIONAL-STUDY.md).
