@@ -30,7 +30,9 @@
     "./dot-matrix-board.css": "./src/components/dot-matrix-board.css",
     "./components/BusStopHeroCard": "./src/components/BusStopHeroCard.tsx",
     "./components/RailStationHeroCard": "./src/components/RailStationHeroCard.tsx",
-    "./transport-hero-cards.css": "./src/components/transport-hero-cards.css"
+    "./transport-hero-cards.css": "./src/components/transport-hero-cards.css",
+    "./use-json-asset": "./src/use-json-asset.ts",
+    "./use-transition-value": "./src/use-transition-value.ts"
   },
   "dependencies": {
     "@motionstudies/core": "0.1.0-alpha.8"

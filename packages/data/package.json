@@ -31,6 +31,10 @@
     "./merge-network": {
       "types": "./src/merge-network.d.mts",
       "import": "./src/merge-network.mjs"
+    },
+    "./network-chunk-cli": {
+      "types": "./src/network-chunk-cli.d.mts",
+      "import": "./src/network-chunk-cli.mjs"
     }
   },
   "dependencies": {
