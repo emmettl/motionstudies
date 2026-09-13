@@ -1,3 +1,8 @@
+import { PausedVehicleFrame } from './paused-vehicle-frame.ts'
+import { TrailFrameBudget } from './trail-frame-budget.ts'
+import { StationLabelFrame } from './station-label-frame.ts'
+import { LabelFrameBudget } from './label-frame-budget.ts'
+import { updateActiveGeometry } from './active-geometry.ts'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { createContext, useContext, useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
@@ -2085,6 +2090,10 @@ function StationLabels({
       } satisfies StationLabelDatum
     })
   }, [cameraFraming, projectedStops, routeStationNames, selectedStation, stations])
+  // These dependencies invalidate cached frame work when render inputs change.
+  /* oxlint-disable react-hooks/exhaustive-deps */
+  const stationLabelFrame = useMemo(() => new StationLabelFrame(), [labels, selectedTrain, selectedRoute, selectedStation, terminalNames, cameraFraming, tierLimit, settleSeconds, hidden, lineMapMix, layoutTransitioning])
+  /* oxlint-enable react-hooks/exhaustive-deps */
 
   useEffect(
     () => () => {
@@ -2124,6 +2133,7 @@ function StationLabels({
       cameraStableSeconds.current,
       settleSeconds,
     )
+    if (!stationLabelFrame.shouldUpdate(camera, size, canRepopulate, retainedStationNames.current)) return
     const budget = stableStationLabelBudget(
       stationLabelBudget(semanticHeight),
       retainedStationNames.current.size,
@@ -2448,6 +2458,15 @@ function TrainLabels({
     [],
   )
 
+  const labelFrameBudget = useMemo(() => new LabelFrameBudget(), [])
+  const visibleLabelTrains = useRef<NetworkTrain[]>([])
+  // These dependencies invalidate cached frame work when render inputs change.
+  /* oxlint-disable react-hooks/exhaustive-deps */
+  const labelInputs = useMemo(() => ({}), [snapshot, projectedStops, projectedPaths,
+    selectedTrain, comparisonTrains, selectedRoute, selectedStation, selectedCategory,
+    airCategorySelected, roadCategorySelected, trainLabelMode, isPlaying, playbackRate,
+    trainTimeIndex, cameraFraming, layoutTransitioning, routeColors, routeColorMix, lakeAvoidingPaths])
+  /* oxlint-enable react-hooks/exhaustive-deps */
   useFrame((_, delta) => {
     if (isPlaying) {
       localTime.current += delta * playbackRate
@@ -2456,6 +2475,11 @@ function TrainLabels({
       }
     }
 
+    const labelWork = labelFrameBudget.update(labelInputs, camera, size.width, size.height,
+      localTime.current, delta, isPlaying, playbackRate)
+    if (labelWork === 'idle') return
+    const labelTrains = labelWork === 'all' ? trainsNearTime(trainTimeIndex, localTime.current) : visibleLabelTrains.current
+    visibleLabelTrains.current = []
     sprites.current.forEach((sprite) => {
       if (sprite) sprite.visible = false
     })
@@ -2496,7 +2520,7 @@ function TrainLabels({
       comparisonIndex: number
     }> = []
 
-    for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
+    for (const train of labelTrains) {
       const selected =
         train.id === selectedTrain?.id || comparisonTrainIds.has(train.id)
       const retained = retainedTrainIds.current.has(train.id)
@@ -2645,6 +2669,7 @@ function TrainLabels({
       visibleTextureKeys.add(textureKey)
       nextRetainedTrainIds.add(candidate.train.id)
 
+      visibleLabelTrains.current.push(candidate.train)
       sprite.visible = true
       const comparisonOffset =
         candidate.comparisonIndex < 0
@@ -3078,6 +3103,7 @@ function TrainSwarm({
   const glow = useRef<THREE.Points>(null)
   const localTime = useRef(time)
   const lastReport = useRef(0)
+  const uiFrameBudget = useMemo(() => new TrailFrameBudget(), [])
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
     [selectedStation],
@@ -3188,6 +3214,12 @@ function TrainSwarm({
     [geometries, realtimeGeometry],
   )
 
+  // These dependencies invalidate cached frame work when render inputs change.
+  /* oxlint-disable react-hooks/exhaustive-deps */
+  const pausedFrame = useMemo(() => new PausedVehicleFrame(), [snapshot, projectedStops, projectedPaths,
+    lakeAvoidingPaths, selectedTrain, comparisonTrains, selectedRoute, selectedCategory,
+    airCategorySelected, selectedStation, cameraFraming, trainPalette, geometries, trainTimeIndex])
+  /* oxlint-enable react-hooks/exhaustive-deps */
   useFrame((state, delta) => {
     if (isPlaying) {
       localTime.current += delta * playbackRate
@@ -3196,6 +3228,11 @@ function TrainSwarm({
       }
     }
 
+    const visibleBus = vehicleIsVisibleAtZoom('bus', state.camera.position.y, cameraFraming)
+    const visibleTram = vehicleIsVisibleAtZoom('tram', state.camera.position.y, cameraFraming)
+    const pausedVisibility = Number(visibleBus) + 2 * Number(visibleTram)
+    if (!pausedFrame.needsUpdate(isPlaying, localTime.current, pausedVisibility)) return
+    pausedFrame.record(localTime.current, pausedVisibility)
     const activeCounts: Record<VehicleMarkerKind, number> = {
       rail: 0,
       tram: 0,
@@ -3211,12 +3248,7 @@ function TrainSwarm({
           selectedCategory === train.category,
       )
       if (
-        !vehicleIsVisibleAtZoom(
-          train.category,
-          state.camera.position.y,
-          cameraFraming,
-          focused,
-        )
+        !(focused || (train.category === 'bus' ? visibleBus : train.category === 'tram' ? visibleTram : true))
       ) {
         continue
       }
@@ -3275,17 +3307,14 @@ function TrainSwarm({
 
     VEHICLE_MARKER_KINDS.forEach((kind) => {
       const mutableGeometry = geometries[kind]
-      mutableGeometry.getAttribute('position').needsUpdate = true
-      mutableGeometry.getAttribute('color').needsUpdate = true
-      mutableGeometry.setDrawRange(0, activeCounts[kind])
+      updateActiveGeometry(mutableGeometry, activeCounts[kind])
     })
-    realtimeGeometry.getAttribute('position').needsUpdate = true
-    realtimeGeometry.setDrawRange(0, activeRealtimeCount)
+    updateActiveGeometry(realtimeGeometry, activeRealtimeCount)
     if (points.current) points.current.frustumCulled = false
     if (glow.current) glow.current.frustumCulled = false
 
     // A paused scene follows the consumer's clock, including in linked views.
-    if (isPlaying && state.clock.elapsedTime - lastReport.current > 0.1) {
+    if (isPlaying && state.clock.elapsedTime - lastReport.current > (selectedTrain || comparisonTrains?.length ? 0.1 : uiFrameBudget.interval(delta) * 3)) {
       lastReport.current = state.clock.elapsedTime
       onTime(localTime.current)
     }
@@ -3426,6 +3455,7 @@ function VehicleTrails({
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const localTime = useRef(time)
   const lastUpdate = useRef(-1)
+  const trailFrameBudget = useMemo(() => new TrailFrameBudget(), [])
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
     [selectedStation],
@@ -3500,6 +3530,12 @@ function VehicleTrails({
     [geometries],
   )
 
+  // These dependencies invalidate cached frame work when render inputs change.
+  /* oxlint-disable react-hooks/exhaustive-deps */
+  const pausedFrame = useMemo(() => new PausedVehicleFrame(), [snapshot, projectedStops, projectedPaths,
+    lakeAvoidingPaths, selectedTrain, comparisonTrains, selectedRoute, selectedCategory,
+    airCategorySelected, selectedStation, cameraFraming, trainPalette, geometries, trainTimeIndex])
+  /* oxlint-enable react-hooks/exhaustive-deps */
   useFrame(({ clock, camera }, delta) => {
     if (isPlaying) {
       localTime.current += delta * playbackRate
@@ -3507,7 +3543,12 @@ function VehicleTrails({
         localTime.current = snapshot.metadata.windowStart
       }
     }
-    if (clock.elapsedTime - lastUpdate.current < 1 / 30) return
+    const visibleBus = vehicleIsVisibleAtZoom('bus', camera.position.y, cameraFraming)
+    const visibleTram = vehicleIsVisibleAtZoom('tram', camera.position.y, cameraFraming)
+    const pausedVisibility = Number(visibleBus) + 2 * Number(visibleTram)
+    if (!pausedFrame.needsUpdate(isPlaying, localTime.current, pausedVisibility)) return
+    if (!trailFrameBudget.shouldUpdateTrail(delta, clock.elapsedTime - lastUpdate.current, !isPlaying)) return
+    pausedFrame.record(localTime.current, pausedVisibility)
     lastUpdate.current = clock.elapsedTime
 
     const sampleTimes = vehicleTrailSampleTimes(localTime.current)
@@ -3528,16 +3569,12 @@ function VehicleTrails({
       if (selectedCategory && train.category !== selectedCategory) continue
       if (selectedStation && !selectedStationTrainIds.has(train.id)) continue
       if (
-        !vehicleIsVisibleAtZoom(
-          train.category,
-          camera.position.y,
-          cameraFraming,
-          Boolean(selectedTrain || selectedRoute || selectedCategory || selectedStation),
-        )
+        !(Boolean(selectedTrain || selectedRoute || selectedCategory || selectedStation) || (train.category === 'bus' ? visibleBus : train.category === 'tram' ? visibleTram : true))
       ) {
         continue
       }
 
+      if (train.realtime?.status === 'cancelled' || localTime.current < train.start || sampleTimes[VEHICLE_TRAIL_SEGMENTS] > train.end) continue
       const samples = sampleTimes.map((sampleTime) =>
         projectedTrainPosition(
           train,
@@ -3562,18 +3599,16 @@ function VehicleTrails({
         const offset = segmentCounts[index] * 6
         positionArrays[index].set(current, offset)
         positionArrays[index].set(previous, offset + 3)
-        colorArrays[index].set(
-          [color.r, color.g, color.b, color.r, color.g, color.b],
-          offset,
-        )
+        const colors = colorArrays[index]
+        colors[offset] = colors[offset + 3] = color.r
+        colors[offset + 1] = colors[offset + 4] = color.g
+        colors[offset + 2] = colors[offset + 5] = color.b
         segmentCounts[index] += 1
       }
     }
 
     geometries.forEach((geometry, index) => {
-      geometry.getAttribute('position').needsUpdate = true
-      geometry.getAttribute('color').needsUpdate = true
-      geometry.setDrawRange(0, segmentCounts[index] * 2)
+      updateActiveGeometry(geometry, segmentCounts[index] * 2)
     })
   })
 

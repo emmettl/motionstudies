@@ -66,7 +66,7 @@ export function projectedPathRunsForward(
   from: ProjectedPathPoint,
 ): boolean {
   const first = path.points[0]
-  const last = path.points.at(-1)
+  const last = path.points[path.points.length - 1]
   if (!first || !last) return true
   const distanceToFirst =
     (first[0] - from[0]) ** 2 +

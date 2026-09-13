@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0-alpha.9",
   "private": true,
   "type": "module",
   "exports": {
@@ -30,7 +30,8 @@
     "./domain/spatial-layout": "./src/domain/spatial-layout.ts",
     "./domain/train-time-index": "./src/domain/train-time-index.ts",
     "./domain/live-airport": "./src/domain/live-airport.ts",
-    "./domain/station-departures": "./src/domain/station-departures.ts"
+    "./domain/station-departures": "./src/domain/station-departures.ts",
+    "./domain/vehicle-counts": "./src/domain/vehicle-counts.ts"
   },
   "description": "Transport contracts and motion primitives for Motion Studies.",
   "sideEffects": false,

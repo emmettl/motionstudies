@@ -1,3 +1,4 @@
+const airLabelCollator = new Intl.Collator('en', { numeric: true })
 import type { TrainLabelMode } from './train-labels.ts'
 
 export const MAX_AIR_LABELS = 20
@@ -56,7 +57,7 @@ export function compareAirLabelCandidates(
   return (
     Number(second.retained) - Number(first.retained) ||
     Number(secondHasCallsign) - Number(firstHasCallsign) ||
-    first.callsign.localeCompare(second.callsign, 'en', { numeric: true }) ||
-    first.id.localeCompare(second.id, 'en', { numeric: true })
+    airLabelCollator.compare(first.callsign, second.callsign) ||
+    airLabelCollator.compare(first.id, second.id)
   )
 }

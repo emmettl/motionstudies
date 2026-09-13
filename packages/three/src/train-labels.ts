@@ -1,3 +1,5 @@
+const trainLabelCollator = new Intl.Collator('de-CH', { numeric: true })
+const trainIdentityCollator = new Intl.Collator(undefined, { sensitivity: 'accent' })
 import type { ServiceCategory } from '@motionstudies/core/domain/network'
 
 export type TrainLabelMode = 'auto' | 'on' | 'off'
@@ -11,9 +13,7 @@ export function trainLabelIdentity(route: string, shortName: string): string {
   if (!routeLabel) return serviceLabel
   if (!serviceLabel) return routeLabel
   if (
-    routeLabel.localeCompare(serviceLabel, undefined, {
-      sensitivity: 'accent',
-    }) === 0
+    trainIdentityCollator.compare(routeLabel, serviceLabel) === 0
   ) {
     return routeLabel
   }
@@ -112,7 +112,7 @@ export function compareTrainLabelCandidates(
   return (
     trainLabelPriority(first.category) - trainLabelPriority(second.category) ||
     Number(second.retained) - Number(first.retained) ||
-    first.id.localeCompare(second.id, 'de-CH', { numeric: true })
+    trainLabelCollator.compare(first.id, second.id)
   )
 }
 

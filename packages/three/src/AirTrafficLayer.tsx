@@ -514,9 +514,8 @@ export function AirTrafficLayer({
   readonly subdued?: boolean
 }) {
   const localTime = useRef(time)
-  const aircraftRef = useRef<readonly CurrentAircraft[]>(
-    currentAircraft(snapshot, time, projection),
-  )
+  const aircraftRef = useRef<readonly CurrentAircraft[]>([])
+  const aircraftTransform = useMemo(() => new THREE.Object3D(), [])
   const bodyRef = useRef<THREE.InstancedMesh>(null)
   const wingRef = useRef<THREE.InstancedMesh>(null)
   const hitRef = useRef<THREE.InstancedMesh>(null)
@@ -561,7 +560,7 @@ export function AirTrafficLayer({
     const hit = hitRef.current
     if (!body || !wing || !hit) return
 
-    const transform = new THREE.Object3D()
+    const transform = aircraftTransform
     const trailHeadPositions = trailHeadGeometry.getAttribute('position')
       .array as Float32Array
     let trailHeadCount = 0
@@ -630,7 +629,7 @@ export function AirTrafficLayer({
     }
     for (const mesh of [body, wing, hit]) {
       mesh.count = aircraft.length
-      mesh.instanceMatrix.needsUpdate = true
+      if (mesh !== hit) mesh.instanceMatrix.needsUpdate = true
       if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true
     }
     trailHeadGeometry.getAttribute('position').needsUpdate = true
@@ -756,11 +755,12 @@ export function AirTrafficLayer({
       </instancedMesh>
       <instancedMesh
         ref={hitRef}
+        name="aircraft-hit-targets"
         args={[undefined, undefined, snapshot.tracks.length]}
         frustumCulled={false}
       >
         <sphereGeometry args={[0.62, 6, 6]} />
-        <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        <meshBasicMaterial visible={false} transparent opacity={0} depthWrite={false} />
       </instancedMesh>
       <pointLight
         ref={selectedLightRef}

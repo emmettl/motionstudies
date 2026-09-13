@@ -1,3 +1,4 @@
+import { batchHubLines } from './batch-hub-lines.ts'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
@@ -107,6 +108,9 @@ function TickMarks() {
       })
       group.add(new THREE.Line(geometry, material))
     })
+    const batches = batchHubLines(group.children as THREE.Line<THREE.BufferGeometry, THREE.LineBasicMaterial>[])
+    group.clear()
+    group.add(...batches)
     return group
   }, [])
 
@@ -311,7 +315,7 @@ function CorridorSpokes({
 }) {
   const geometries = useMemo(() => {
     const seen = new Set<string>()
-    return calls.flatMap((call, index) => {
+    const lines = calls.flatMap((call, index) => {
       const directions = [
         {
           angle: directionForStop(call.hubStop, call.previousStop, index),
@@ -343,6 +347,7 @@ function CorridorSpokes({
         return [{ key, line: new THREE.Line(geometry, material) }]
       })
     })
+    return batchHubLines(lines.map(entry => entry.line)).map((line, index) => ({ key: `batch:${index}`, line }))
   }, [calls, selectedCategory])
 
   useEffect(

@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/data",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0-alpha.9",
   "private": true,
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
@@ -31,10 +31,14 @@
     "./merge-network": {
       "types": "./src/merge-network.d.mts",
       "import": "./src/merge-network.mjs"
+    },
+    "./network-chunk-cli": {
+      "types": "./src/network-chunk-cli.d.mts",
+      "import": "./src/network-chunk-cli.mjs"
     }
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.8"
+    "@motionstudies/core": "0.1.0-alpha.9"
   },
   "repository": {
     "type": "git",
