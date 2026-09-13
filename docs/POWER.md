@@ -56,6 +56,8 @@ For a chosen study day, at least eight days later:
 
 The Insights API needs no key and is open; requests should still be few, dated and cached. The NESO portal reserves throttling.
 
+**Implemented 13 September 2026** as Underfall's `data:power:day` command, on the shared source store beside the bus tools: one bounded request per settlement period for settled generation and for physical notifications, one each for the fuel mix and demand, and the unit register, supply-point lookup, boundaries and current TEC register. Every response is a dated, hashed object served from the store on rerun; an unsettled period fails without being cached; `--offline` replays. The compiled day carries settled quantities with their run types, declared profiles, register fields, national aggregates, both attribution statements with the data year, an audit and the source records. Units are marked `unplaced`; placement is the next step. Nothing has been captured yet.
+
 ## What this axis can and cannot say
 
 It can show which stations were running, at what output, when the country's morning demand rose, and how much of that morning came from wind, gas, nuclear and cables. It can place that beside the bus and rail field on the same clock. It cannot show consumption below a grid supply point except as an estimate, cannot attribute any unit's output to any place's demand, and cannot say why a unit ran. The demand haze must never corroborate a transport reading, because both would then be drawn from settlement density.
