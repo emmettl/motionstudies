@@ -30,17 +30,21 @@ Validation passed: 271 shared unit tests; type, lint and architecture checks; 14
 
 | Edition | Adoption commit | Validation |
 | --- | --- | --- |
-| All Change | `ddef445`, budget follow-up `9bcce69` | All five foundations; 277 unit tests, type/lint/boundary, fixture/worker checks, 35 broad browser passes plus eight focused station/observed-mode passes; one existing desktop frame-cadence skip |
+| All Change | `ddef445`, budget follow-up `9bcce69`, board-preview fix `7cd9618` | All five foundations; 277 unit tests, type/lint/boundary, fixture/worker checks, 35 broad browser passes plus eight focused station/observed-mode passes; one existing desktop frame-cadence skip |
 | Underfall | `15417e6` (local; no Git remote) | Railway and source-store/service-day/WebTRIS wrappers; 80 tests, build/lint and complete retained fixture parity |
 | Gleislicht | `f9c931b` | Exact pins, public picking/style interfaces; 1,410 unit tests, build/lint/architecture, airport/map/road and lazy road-search browser checks |
 | Correspondances | `385952c` | Exact pins and public renderer interfaces; 25 unit tests, build/lint/boundary/budgets and production airport/vehicle-card checks |
 | Umlauf | `058465e` | Exact pins; 17 tests, build/lint/boundary/budget |
 | Manifest | `be261ba` | Exact pins; 70 tests, type/build/boundary/budget |
-| Zugunruhe | `6d4026b` | Exact pins on the current soundtrack/cloud work; 66 tests and build |
+| Zugunruhe | `6d4026b`, browser-readiness follow-up `5348469` | Exact pins on the current soundtrack/cloud work; 66 tests and build; WebKit 15 passes and two expected skips |
 
 CI runs Node 24, whose gzip output differs from local Node 26. Final London and Swiss payload checks were repeated using the exact Node 24.20.0 runtime. Existing limits were retained: London's opening JavaScript is 344.4/345 KiB and its station board 7.9/8 KiB; Swiss opening JavaScript is 359.9/360 KiB. Optional bus-board, observation and road helper code now loads on demand and has separately enforced bounds and browser fetch checks.
 
-Deployment status at this update: Umlauf and Manifest passed both Pages and Cloudflare publication. London, Paris, Swiss and Zugunruhe rollout checks are being completed by the coordinating sessions. Underfall is a local study with no remote to publish.
+Deployment status at this update: Umlauf and Manifest passed both Pages and Cloudflare publication. Gleislicht's [Cloudflare publication](https://github.com/emmettl/gleislicht/actions/runs/34756977575) and [public-freshness check](https://github.com/emmettl/gleislicht/actions/runs/34757024447) passed for `f9c931b`; its Pages queue remains active. Underfall is a local study with no remote to publish.
+
+London's alpha.13 full CI passed both desktop shards, the build/compiler/budget checks and mobile frame cadence. One iPhone interaction exposed a vehicle card overlapping the combined board's movement button. The fix keeps a call preview in the board until movement is requested, with explicit absence/visibility assertions; 12 repeated desktop/phone checks passed. It landed as `7cd9618`, followed by alpha.14 adoption `f56c43c`.
+
+The separately authorized [alpha.14 panel-layout rollout](PANEL-LAYOUT-ALPHA-14.md) now carries the same foundations into London (`f56c43c`), Paris (`ca120e0`) and Switzerland (`000e023`). Their remaining CI/hosting checks are owned by the **Find shared refactoring candidates** session. Zugunruhe's remaining Chromium and hosting checks are owned by **Review README and peer projects**. These publications are still in progress; source adoption must not be read as proof that every public host has advanced. The release record above describes the verified alpha.13 registry adoption, even where the coordinating session subsequently advances exact pins to alpha.14.
 
 Local / Express and NORIKAE remain parked and are excluded from this rollout. Existing unrelated Swiss and Zugunruhe work was preserved.
 
