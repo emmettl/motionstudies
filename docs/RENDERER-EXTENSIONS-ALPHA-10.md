@@ -36,10 +36,14 @@ All four packages were published as `0.1.0-alpha.10` under the npm `next` tag on
 
 | Edition / main | Adoption commit | Validation |
 | --- | --- | --- |
-| All Change | `ddf6220` | 280 unit tests, typecheck, lint, registry boundaries, build and transfer budgets; 12 Chromium/WebKit rail, bus and renderer checks |
+| All Change | `aab3f18` | 280 unit tests, typecheck, lint, registry boundaries, build and transfer budgets; 12 Chromium/WebKit rail, bus and renderer checks plus 4 startup/quiet-state cases |
 | Correspondances | `bba2eaa` | 25 unit tests, typecheck, lint, registry boundaries, build and all layer/transfer budgets; 18 Chromium/WebKit arc, morph, airport and renderer checks |
 | Gleislicht | `455ba82` | 1,410 unit tests after incorporating concurrent main changes, typecheck, lint, registry boundaries, build and transfer budgets; worker/paused geometry checks and 4 passing orbital handover checks |
 
 The shared release passed 223 unit tests, 72 packed browser specimens (2 touch-inapplicable tests skipped), and all 32 loader/extension browser checks. Final edition installations use registry lockfiles with integrity hashes. All 83 compiled JavaScript files from the four installed packages match the browser-tested candidate byte for byte. The initial orbital test failure was caused by absent generated movement fixtures in the isolated checkout; preparing the normal data fixtures resolved it on Chromium and WebKit.
 
 The London, Paris and Swiss main branches are pushed. Their existing hosted deployment workflows run separately from the completed local validation above. Other editions retain alpha.9 in this pass because they do not need these extension integrations. Visual styling, picking, Paris geometry morphing, shared search behaviour and general tooling consolidation remain future work.
+
+London's first hosted build measured 345.6 KiB against its unchanged 345 KiB JavaScript ceiling. Follow-up `aab3f18` defers quiet-map artwork until the map is quiet and gives that layer its own 3 KiB budget. Startup and quiet-state browser checks pass on desktop and iPhone; the local opening falls to 343.4 KiB. The hosted follow-up check is tracked separately from the initial adoption.
+
+The ordinary local checkouts are updated and use installed alpha.10 registry packages. Gleislicht's 16 pre-existing local edits were preserved: unrelated file hashes match, its App patch is identical, and its package manifest differs only by the new shared dependency pins. Its restored local checkout passes typecheck and registry boundaries. The shared checkout's concurrently edited documentation remains local and unstaged.
