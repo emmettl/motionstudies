@@ -19,6 +19,7 @@
     "./use-observed-operations": "./src/use-observed-operations.ts",
     "./use-progressive-air-day": "./src/use-progressive-air-day.ts",
     "./use-progressive-network-day": "./src/use-progressive-network-day.ts",
+    "./use-pattern-network-day": "./src/use-pattern-network-day.ts",
     "./use-progressive-road-study": "./src/use-progressive-road-study.ts",
     "./tokens.css": "./src/tokens.css",
     "./shell.css": "./src/shell.css",

@@ -21,6 +21,8 @@
     "./domain/lakes": "./src/domain/lakes.ts",
     "./domain/map-reference": "./src/domain/map-reference.ts",
     "./domain/network-day": "./src/domain/network-day.ts",
+    "./domain/network-patterns": "./src/domain/network-patterns.ts",
+    "./domain/station-calls": "./src/domain/station-calls.ts",
     "./domain/network-layers": "./src/domain/network-layers.ts",
     "./domain/network": "./src/domain/network.ts",
     "./domain/operations": "./src/domain/operations.ts",

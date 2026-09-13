@@ -47,6 +47,17 @@ try {
   }
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
     import { network } from './fixtures.ts'
+    import { encodeNetworkPatterns, decodeNetworkPatterns } from '@motionstudies/core/domain/network-patterns'
+    import { stationCalls, combinedStationCalls, stationSourceStatus } from '@motionstudies/core/domain/station-calls'
+    import { usePatternNetworkDay } from '@motionstudies/web/use-pattern-network-day'
+    import { compileObservationWindows, jsonArtifact } from '@motionstudies/data/observation-windows'
+    export const patternLoader = usePatternNetworkDay
+    export const patternRoundTrip = decodeNetworkPatterns(encodeNetworkPatterns({ windowStart: 0, windowEnd: 3600, trains: [] }))
+    export const calls = stationCalls(network, { name: 'Central', stopIds: ['station:1'] })
+    export const combinedCalls = combinedStationCalls(network.metadata.serviceDate, [{ id: 'operator', snapshot: network, selection: { name: 'Central' }, windowStart: 0, windowEnd: 3600 }])
+    export const sourceState = stationSourceStatus({ id: 'operator', snapshot: network, selection: { name: 'Central' }, windowStart: 0, windowEnd: 3600 }, network.metadata.serviceDate, 0, 3600)
+    export const archive = compileObservationWindows([{ id: 'capture', timeUtc: '2026-09-04T00:00:00Z', value: { measured: 0 } }], { startUtc: '2026-09-04T00:00:00Z', endUtc: '2026-09-04T01:00:00Z', sourceId: 'fixture', evidenceKind: 'measurement', timeBasis: 'measurement' })
+    export const artifactHash: string = jsonArtifact(archive.manifest).sha256
     import { useNetworkScene, type NetworkSceneExtensions, type NetworkSceneContext } from '@motionstudies/three/scene-extensions'
     import { FLAT_NETWORK_MAP_STYLE, type NetworkMapStyle } from '@motionstudies/three/scene-style'
     export const mapStyle: NetworkMapStyle = { ...FLAT_NETWORK_MAP_STYLE, categoryColors: { bus: '#ffcc00' } }

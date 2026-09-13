@@ -8,6 +8,10 @@
     "node": ">=24.0.0"
   },
   "exports": {
+    "./observation-windows": {
+      "types": "./src/observation-windows.d.mts",
+      "import": "./src/observation-windows.mjs"
+    },
     "./adsb-heatmap": {
       "types": "./src/adsb-heatmap.d.mts",
       "import": "./src/adsb-heatmap.mjs"
