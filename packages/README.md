@@ -164,6 +164,28 @@ Rail and other transport consumers can share the same time filtering through `mo
 
 `@motionstudies/data/air-endpoints` provides offline `enrichAirEndpoints` for existing air manifests, chunks and opening snapshots. Supply cached same-date global ADSB.lol heatmaps, an OurAirports CSV and the service date's local UTC offset. It associates only unambiguous low-altitude endpoints near a reference airport; cruise-only traces and uncertain routes stay unknown. Optional `AirEndpoint` origin/destination fields carry airport identity, observed boundary time and `observed-endpoint` evidence. `airportBoardMovements` maps full manifest entries to board rows without confusing playback chunk boundaries with flight endpoints. Input hashes and source/licence attribution are recorded in fixture metadata. These fields describe inferred observations, never flight schedules, gates or live status.
 
+## Vehicle hero cards
+
+`VehicleHeroCard` shows one vehicle's destination, next stop and remaining calling points. Import it from `@motionstudies/web/components/VehicleHeroCard` with `@motionstudies/web/vehicle-hero-card.css`. The **Vehicle heroes** lab compares `uk-bus` (amber onboard display), `uk-rail` (dark rail display), `yellow-bus` (yellow next-stop panel) and `sbb` (blue next-stop panel with a red service badge). These are presentation studies, not official operator components.
+
+```tsx
+<VehicleHeroCard
+  presentation="sbb"
+  vehicle={{ service: 'IC 1', operator: 'SBB CFF FFS', destination: 'Genève-Aéroport' }}
+  stops={[
+    { id: 'bern', name: 'Bern', time: '10:28', platform: '6' },
+    { id: 'fribourg', name: 'Fribourg/Freiburg', time: '10:56' },
+  ]}
+  note="Synthetic journey · Example calls and times."
+  onSelectStop={selectStation}
+  selectedStopId={selectedStationId}
+/>
+```
+
+Consumers supply remaining `stops` in journey order and update them with playback, seeking or observations; the card has no independent clock. The first supplied call is the next stop. Optional `time`, `platform` and `detail` are consumer-formatted; absent values stay absent. `vehicle.destination` is optional and shows an explicit unavailable label when missing. The final supplied stop is never inferred to be the destination: set `isDestination` only when confirmed, especially when data is progressively chunked. Empty calls mean no upcoming stops are available, without asserting that the vehicle has arrived.
+
+The required `note` explains provenance. Optional `status`, `statusTone`, `clockLabel`, localized `labels`, `loading`, `error` and `onRetry` follow the consumer's data; the component never manufactures an on-time status. Loading and errors hide the calling points. Stop selection is controlled through stable call IDs and does not alter playback or clear when a call leaves the list. All supplied calls are shown, with wrapping names and container-based compact layouts. The lab exercises advance/rewind, unknown destinations/times, localization, disruption, recovery and narrow widths. Edition adoption requires its own package upgrade and data adapter.
+
 ## Optional live airport feed
 
 `AirportBoard` from `@motionstudies/web/components/AirportBoard` adds Study/Now controls around an existing `AirportHeroCard` configuration. Pass `studyCard` with the usual card props and `live={{ baseUrl, edition, airport }}` for the shared service. Import `airport-hero-card.css`. `labels` localizes the wrapper's control and availability messages. The lower-level `useAirportFeed` hook and core `domain/live-airport` contract are also public exports.

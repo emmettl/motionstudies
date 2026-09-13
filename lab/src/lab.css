@@ -48,6 +48,7 @@ h1 { font-size: clamp(32px, 4vw, 48px); letter-spacing: -1.5px; margin: 0; font-
 pre { font-size: 14px; overflow: auto; }
 .airport-specimen { max-width: 880px; min-width: 0; }
 .transport-hero-specimen { max-width: 980px; min-width: 0; width: 100%; }
+.vehicle-study-intro { margin: -12px 0 28px; color: #a5b4c8; font-size: 18px; }
 .bus-stop-specimen { width: 100%; max-width: 900px; padding: 20px; border: 1px solid #555953; background: #2a302e; border-radius: 6px; }
 .bus-stop-heading { display: flex; align-items: center; gap: 18px; padding: 6px 4px 24px; color: #e7e9df; }
 .bus-stop-heading > div { min-width: 0; }

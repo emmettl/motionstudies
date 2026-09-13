@@ -29,6 +29,8 @@
     "./components/DotMatrixBoard": "./src/components/DotMatrixBoard.tsx",
     "./dot-matrix-board.css": "./src/components/dot-matrix-board.css",
     "./components/BusStopHeroCard": "./src/components/BusStopHeroCard.tsx",
+    "./components/VehicleHeroCard": "./src/components/VehicleHeroCard.tsx",
+    "./vehicle-hero-card.css": "./src/components/vehicle-hero-card.css",
     "./components/RailStationHeroCard": "./src/components/RailStationHeroCard.tsx",
     "./transport-hero-cards.css": "./src/components/transport-hero-cards.css",
     "./use-json-asset": "./src/use-json-asset.ts",
