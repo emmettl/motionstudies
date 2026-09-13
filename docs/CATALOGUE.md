@@ -2,7 +2,7 @@
 
 [Open catalogue](https://emmettl.github.io/motionstudies/) · [Project goals](VISION.md) · [Roadmap](../ROADMAP.md) · [Study index](README.md)
 
-Gleislicht, All Change and Correspondances now have independent public Pages sites. Local / Express remains a private proof. The artistic stages below describe the works beyond that deployment milestone.
+**Reconciled 13 September 2026.** Gleislicht, All Change and Correspondances have public editions; Local / Express remains private. Berlin is public, Tokyo and MANIFEST have public synthetic previews, Zugunruhe has a public radar-derived study, and Bristol has a local research implementation. The [status register](STUDY-STATUS.md) records inspected and served revisions separately. Public implementation does not itself admit a numbered work.
 
 Motion Studies is an authored series, not a list of cities supported by a transport renderer. Every numbered work must make a visual argument about how its place moves, how that movement becomes data and what the local map teaches people to believe about distance.
 
@@ -11,9 +11,9 @@ Motion Studies is an authored series, not a list of cities supported by a transp
 | No. | Work | Place | Status | Defining argument | Repository |
 | --- | --- | --- | --- | --- | --- |
 | 005 | **Gleislicht** | Switzerland | Released | A deliberately built national clockwork made visible through rail, terrain and Takt. | [Repository](https://github.com/emmettl/gleislicht) |
-| 006 | **All Change** | London | Public authored foundation; full bus-catalogue expansion in progress | Physical London transforms into Beck-space while journeys continue uninterrupted. | [Repository](https://github.com/emmettl/allchange) |
-| 007 | **Local / Express** | New York | Interactive foundation; publication gated | Local and express services compress, overtake and rejoin across geographic and diagrammatic New York. | [Repository (private)](https://github.com/emmettl/local-express) |
-| 008 | **Correspondances** | Paris | Public foundation; twelve-line implementation with eight-line default | Dense Métro circulation and outward RER eruptions reveal the interchange between centre and banlieue. | [Repository](https://github.com/emmettl/correspondances) |
+| 006 | **All Change** | London | Public multimodal study; full bus-catalogue artifact with audited gaps, National Rail, demand and cycle studies | Physical London transforms into Beck-space while journeys continue uninterrupted. | [Repository](https://github.com/emmettl/allchange) |
+| 007 | **Local / Express** | New York | Parked; private proof retained, publication question open | Local and express services compress, overtake and rejoin across geographic and diagrammatic New York. | [Repository (private)](https://github.com/emmettl/local-express) |
+| 008 | **Correspondances** | Paris | 32-line implementation with eight-line default; public served revision tracked separately | Dense Métro circulation and outward RER/Transilien movement reveal the interchange between centre and banlieue. | [Repository](https://github.com/emmettl/correspondances) |
 
 Numbers describe works, not software releases. A later work may reach production before an earlier experiment is complete, but a number is assigned only when its title and thesis are strong enough to survive implementation.
 
@@ -35,16 +35,19 @@ A candidate enters the numbered catalogue only when it has all of the following:
 
 The programme is deliberately gated rather than calendar-driven:
 
-1. Sustain **All Change**'s implemented diagram, pulse and progressive-day studies. Complete the in-progress full TfL bus-catalogue expansion with coverage, service-day and payload validation before marking it delivered.
-2. Keep the bounded **Local / Express** proof as technical evidence, but leave New York in a licensing-question-shaped siding: no public release or larger authored expansion until the MTA publication gate has a defensible answer.
-3. Sustain **Correspondances**'s implemented correspondence director and continuous centre–periphery transition. Its eight-line default now has optional Métro 2/6 and 5/7 groups; review further bounded additions and obtain physical-phone/Windows Edge frame evidence.
-4. Advance **NORIKAE — A Tokyo motion study** from its synthetic player and offline importer to an acquired, inspected Toei source proof. The broader operator rights and catalogue admission remain open. Berlin's parallel scheduled and relative interchange proofs now need performance, measured-height and private-preview review.
-5. Advance **MANIFEST — World trade in motion** from its public synthetic prototype and local NOAA sample to a source-approved regional publication and selected-voyage review. Global presence acquisition, commercial evaluation and the production phone budget remain open.
-6. Maintain the repository/package boundary now proved by the implemented works: shared packages and the widget lab live in Motion Studies, and each edition consumes exact npm releases with its own regression gates. Extend public contracts only when real studies demonstrate the need.
+**Programme decision — 13 September 2026:** Local / Express and NORIKAE are parked at the author’s request. Development, source acquisition and provider follow-up are paused. Existing work and open questions are retained for a possible return; they are outside the active programme. Local / Express keeps number 007 and its private proof; NORIKAE remains unnumbered with its existing synthetic preview.
 
-This ordering leaves room for discovery while keeping the gates honest. New York retains its thesis and number, but technical readiness does not outrank unresolved publication terms; Tokyo can advance on its own merits without being treated as a substitute skin or a way around that question.
+1. Sustain **All Change**'s diagram, pulse, full bus-catalogue, National Rail and progressive-day studies. Resolve remaining bus branches, unmatched Eurostar timings and Friday-night/Saturday coverage. Preserve the separate source dates of passenger demand, cycling, road observations and timetables.
+2. Sustain **Correspondances**'s correspondence director and continuous centre–periphery transition across the implemented 32-line scope: complete Métro/RER, nine Transilien lines and T3a/T3b. Keep the eight-line default bounded; obtain physical-phone/Windows Edge frame evidence before claiming performance on those devices.
+3. Continue **Umlauf / Berlin**'s public scheduled and relative interchange study through measured heights, physical-device evidence and authorial admission.
+4. Advance **MANIFEST — World trade in motion** from its public synthetic prototype and local NOAA sample to a source-approved regional publication and selected-voyage review. Global presence acquisition, commercial evaluation and the production phone budget remain open.
+5. Maintain the repository/package boundary now proved by the implemented works: shared packages and the widget lab live in Motion Studies, and each edition consumes exact npm releases with its own regression gates. Extend public contracts only when real studies demonstrate the need.
 
-The 7 September reconciliation reflects committed edition documentation and local repository history, not a fresh edition-deployment audit. London's full bus-catalogue expansion is still uncommitted work. Paris's twelve-line implementation is recorded at `da5678d`; MANIFEST's current prototype at `9614d73`. Shared alpha.3 renderer fixes are now published after the successful [trusted release run](https://github.com/emmettl/motionstudies/actions/runs/34155462468); edition adoption requires deliberate exact-pin upgrades.
+The parked studies can be revisited when the author chooses. A change in source availability or terms does not automatically resume either study.
+
+The 13 September reconciliation supersedes the earlier bus-expansion and twelve-line summaries. All nine inspected editions pin their consumed shared packages to alpha.9; the [adoption record](REFACTORING-ALPHA-9.md) retains their checks. Switzerland, Paris and Zugunruhe serve earlier revisions than their inspected checkouts, and Tokyo serves main rather than its development branch. The status register records these differences without treating repository HEAD as deployed.
+
+**Parallel implemented investigations:** [Underfall / Bristol](BRISTOL.md) compares human schedules and tidal rhythms through recorded buses, scheduled rail, observed air and detector evidence. Its next acquisition is a complete weekday. [Zugunruhe](ZUGUNRUHE.md) compares radar-derived migration and atmospheric fields across scales and nights; its central question is how a continuous image exposes the scattered measurements behind it. Both remain unnumbered. The [national-study proposal](NATIONAL-STUDY.md) draws on these evidence practices and London's reusable sources; it is still research.
 
 ## Shared infrastructure prompted by 007 and 008
 
@@ -63,7 +66,7 @@ The [naming study](NAMING.md) develops a preferred working title, two alternativ
 
 These are strong candidates, not promises or an implementation queue. Each sentence is a visual hypothesis tested against sources, rights and a bounded composition. The completed audits below are feasibility verdicts, not commitments to build.
 
-- **[NORIKAE — A Tokyo motion study](https://github.com/emmettl/norikae)** — the preferred next-city investigation. Neon would not be cosmetically imposed here: the railway already reads as circuitry. Overlapping operator empires, stacked lines, colossal stations, rapid and suburban services, and the Yamanote loop pulsing around the centre could let the physical city almost disappear beneath the transport system at night.
+- **[NORIKAE — A Tokyo motion study](https://github.com/emmettl/norikae)** — parked at the author’s request; the thesis below is retained for a possible return. Neon would not be cosmetically imposed here: the railway already reads as circuitry. Overlapping operator empires, stacked lines, colossal stations, rapid and suburban services, and the Yamanote loop pulsing around the centre could let the physical city almost disappear beneath the transport system at night.
 - **Hong Kong** — a vertical city forced into narrow strips between mountain and harbour: trains below, ferries across and towers above. The source audit points toward a surface-and-void study: exact harbour ferries and measured station volumes are strong, while individual MTR trajectories are not yet defensible from the official public data.
 - **[Istanbul](./ISTANBUL.md)** — two continents joined by ferries, bridges and a railway tunnel beneath the Bosphorus. IBB's licence is now documented, but fresh calendar inspection does not support the proposed shared 2019 ferry/rail window. Historical fidelity and maintained full rail/ferry coverage remain unresolved.
 - **[Mumbai](./MUMBAI.md)** — suburban rail as a daily tide: tremendous directional surges into and out of the city. The current thesis remains blocked on compatible schedules and demand evidence. A 7 September review found historical directional peak-period figures in an official report; its underlying tables, method and reuse conditions still need to be obtained. Frequency must not impersonate crowd flow.
@@ -81,7 +84,9 @@ These are strong candidates, not promises or an implementation queue. Each sente
 
 They remain deliberately unnumbered until each produces a title, a source path and a visual claim as specific as the first four works.
 
-## Second-wave feasibility result
+## Second-wave feasibility result — source review of 6–7 September 2026
+
+Source verdicts in this section retain their original dates and were not revalidated in the 13 September implementation review. Current delivery and publication state is recorded above and in the status register.
 
 **Updated 7 September 2026:** Berlin / Umlauf is the strongest candidate on data readiness for a new scheduled edition. This recommendation does not change the programme order above or admit a numbered work. Other cities' documented access paths still require the concrete checks below.
 
@@ -89,7 +94,7 @@ They remain deliberately unnumbered until each produces a title, a source path a
 | --- | --- | --- |
 | Venice | **Green technical / amber licence** | Identify and retain the exact ACTV navigation licence before a 06:00–08:00 lagoon proof. |
 | Sydney | **Strong source path / amber export validation** | Obtain and validate one matching historic 07:00–09:00 GTFS/GTFS-R harbour window. |
-| Berlin / Umlauf | **Scheduled and relative interchange proofs implemented; unnumbered** | Review the [public Pages edition](https://emmettl.github.io/umlauf/) with alpha.3, two-direction inspection, authored Ring spacing, continuous Ostkreuz travel, zoom-dependent station labels, crossing filters and official water context; source measured interchange heights and check physical-phone performance. [Repository](https://github.com/emmettl/umlauf). |
+| Berlin / Umlauf | **Public scheduled and relative interchange study; unnumbered** | Review the [public edition](https://motionstudies.app/umlauf/); source measured interchange heights and check physical-phone performance. Current alpha.9 adoption is recorded in the status register. [Repository](https://github.com/emmettl/umlauf). |
 | Singapore | **Green / amber** | Inspect the registered DataMall train feed, then separate operating and future states. |
 | Lisbon | **Green technical / amber licence and full thesis** | Resolve the actual Carris feed licence and mode taxonomy before a slope proof. |
 | Amsterdam | **Amber / medium delivery confidence** | Inspect NDW downloads, counter coverage, quality and terms, then test flow ambiguity before choosing the opening cell. |

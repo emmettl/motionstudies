@@ -10,6 +10,12 @@
 
 **Naming direction — 7 September 2026:** **Umlauf** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#berlin). This is not a catalogue admission or a change to the dated source verdict.
 
+## Current state — 13 September 2026
+
+The source repository and edition are public. The inspected checkout and [public release metadata](https://motionstudies.app/umlauf/_release.json) both identify `16beccf`, with shared packages pinned to alpha.9. The pinned 7 September 07:00–09:00 scheduled proof contains 585 journeys across twelve lines, 397 stop records and 1,170 segments. Ring, crossings, circulation and the Ostkreuz interchange are implemented.
+
+The interchange combines source-backed relative levels, an official bridge footprint and cited platform dimensions. It does not establish surveyed absolute rail/platform elevations. Those heights, physical-device performance and the work's eventual title/number remain separate questions. Private-preview approval is no longer an outstanding milestone; the older review and publication steps below are delivery history. See the [series status record](STUDY-STATUS.md).
+
 ## Thesis under test
 
 Berlin draws an inside with railway. The Ringbahn is simultaneously a circulating service, a chain of interchanges and a boundary used to describe the inner city; S-Bahn and U-Bahn axes repeatedly pierce it while the tram network enters as a predominantly eastern surface field.

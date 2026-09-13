@@ -4,6 +4,8 @@
 
 These are focused question sets for the provider or source custodian. Use the common description with the relevant city questions. Keep written answers with the exact source release and the identity/authority of the respondent. A technical support answer about endpoint availability is not automatically a licence amendment.
 
+**Programme update — 13 September 2026:** Local / Express and NORIKAE are parked. New York and Tokyo questions are retained as drafts for a possible return; provider follow-up is paused.
+
 ## Common description
 
 Motion Studies is a series of authored browser artworks about how places move. We want to retain an identified source release privately for reproducibility, compile a bounded dated period into compact timetable/geometry or observation data, and serve that derived artifact from our own static site. Browser users necessarily receive the artifact. The work would identify the provider, date and transformations, distinguish schedules, forecasts and observations, and avoid suggesting official endorsement. We also want to understand the permitted treatment of screenshots, exhibition recordings and source-code publication. Please identify the terms governing those uses and any conditions specific to the requested dataset.

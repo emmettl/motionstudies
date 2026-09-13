@@ -12,7 +12,26 @@ Implementation paths and commands below belong to the edition repository. This b
 
 London offers a useful inversion of Switzerland: an intensely layered metropolitan network whose identity comes from interchange, radial pressure, orbital lines and the River Thames rather than a national clockface and Alpine geography.
 
-**Implementation update — 7 September 2026:** the independent public foundation includes the authored geographic/diagram transition, interchange pulse studies and progressive full-day layers. The latest committed diagram work keeps Elizabeth line services on authored corridors (`f54a062`). Full TfL bus-catalogue discovery and compilation are in progress in the edition checkout; the existing 26/N26 corridor remains the completed bus milestone until the broader coverage, service-day and payload checks are complete. This note records repository state, not deployment verification.
+## Current state — 13 September 2026
+
+The inspected checkout and [public release metadata](https://motionstudies.app/allchange/_release.json) both identify `da94953`. The geographic/diagram transition now sits within a much broader London study. The full bus-catalogue artifact is implemented with audited gaps; route 26/N26 is its original corridor milestone, not the current extent. Shared packages are pinned to alpha.9. See the [series status record](STUDY-STATUS.md) for the limits of deployment verification.
+
+| Layer or study | Current retained scope | Evidence boundary |
+| --- | --- | --- |
+| TfL rail | 11,177 journeys, 508 stops, twelve two-hour chunks for 4 September 2026 | Scheduled interpolation, including recurring timetable sources |
+| TfL buses | 103,117 journeys, 19,756 stops, 670 active routes out of 672 advertised, same study day | Audited with gaps; branch-origin issues remain; not observed running |
+| London National Rail | 8,362 journeys, eleven service families, 300 active stations and a 4 km fringe | Working timetable/public eNRT reconciliation; London scope, not all Great Britain. The coverage inventory includes one additional closed station |
+| International | 55 St Pancras Eurostar calls; 40 supported HS1 movements, fifteen timetable-only services | Unmatched or conflicting London timings stay explicit |
+| River / cable | 492 journeys and 26 stops | Scheduled River Bus and cableway interpolation |
+| Passenger demand | NUMBAT 2025 typical autumn Friday; 432 validated areas | Entry, exit and interchange estimates, not tracked people or train occupancy |
+| Cycle hire | Four separate dates, 28–31 May 2026; Friday has 31,247 included journeys and 792 docks | Recorded dock endpoints and times; straight connections are schematic, not observed street routes |
+| Roads | 5 September 2025; 232 reporting detector sites from 304 candidates | Observed aggregate flow/speed, reconstructed streams; missing readings remain gaps |
+
+Combined TfL/National Rail station boards, separate King's Cross/St Pancras rail areas and the Eurostar board are implemented. **After Midnight** covers early Friday, including the previous Thursday's service tail; it is not a completed Friday-night/Saturday study. The Central line **Morning Flow** composition compares typical demand across seven stations and twelve directed links in 96 quarter-hour intervals; it does not assign loads to individual trains.
+
+The three-line Victoria/Jubilee/Elizabeth prediction collector and two-hour replay compiler are implemented. Collector health and a complete observed weekday were not verified in this reconciliation. Aviation remains a separately evidenced observation layer. Each source keeps its date: putting these layers on one clock does not make May cycling, autumn demand, historical roads and September schedules contemporaneous.
+
+Implementation records: [combined boards](https://github.com/emmettl/allchange/blob/da94953/docs/COMBINED-STATION-BOARDS.md), [passenger demand](https://github.com/emmettl/allchange/blob/da94953/docs/PASSENGER-DEMAND.md), [Morning Flow](https://github.com/emmettl/allchange/blob/da94953/docs/MORNING-FLOW.md), [cycle hire](https://github.com/emmettl/allchange/blob/da94953/docs/CYCLE-HIRE.md) and [After Midnight](https://github.com/emmettl/allchange/blob/da94953/docs/AFTER-MIDNIGHT.md). The [national-study inventory](NATIONAL-DATA-FEASIBILITY.md#all-change-inventory--local-inspection-13-september-2026) records measured artifact volumes and the sharing plan.
 
 ## Thesis: two simultaneous Londons
 
@@ -92,7 +111,7 @@ Run `npm run data:london:proofs` to refresh the bounded adapter proofs, or use t
 
 ### Observed operations collector
 
-`motionstudies-london-operations` is the bounded first operational study. Once per minute it requests the complete arrival-prediction sets for the Victoria, Jubilee and Elizabeth lines plus their current status, groups predictions by TfL vehicle identity and writes both a compact latest snapshot and an immutable gzip observation to the existing private R2 bucket. The observation model retains predicted stop calls rather than inventing GPS coordinates. A future compiler can join consecutive observations to static route geometry and publish an explicitly prediction-derived replay.
+`motionstudies-london-operations` is the bounded first operational study. Its configured once-per-minute collection requests the complete arrival-prediction sets for the Victoria, Jubilee and Elizabeth lines plus their current status, groups predictions by TfL vehicle identity and writes both a compact latest snapshot and an immutable gzip observation to the existing private R2 bucket. The observation model retains predicted stop calls rather than inventing GPS coordinates. The implemented R2 export and two-hour compiler join observations to static route geometry for an explicitly prediction-derived replay; implementation alone does not establish current collector health or a complete archived day.
 
 The three-line collector uses four TfL requests per minute. It works within the anonymous allowance for initial verification, while `TFL_API_KEY` should be installed as the Worker secret for sustained recording. See [CLOUDFLARE.md](https://github.com/emmettl/allchange/blob/main/docs/CLOUDFLARE.md).
 
@@ -128,9 +147,9 @@ The source is the ADSB.lol historical heatmap release for 4 September 2026, crop
 
 The optional **ROAD** study reconstructs traffic on the M1, M3, M4, M11, M23, M25 and M40 from National Highways WebTRIS observations. It does not represent tracked automobiles. Each warm light particle is a deterministic visual sample of the measured directional flow, while particle speed and the heavier amber stream follow the detector's mean speed and vehicle-length classes. Selecting ROAD applies the same highlight/dim convention as a rail category; searching a motorway isolates its corridor and frames it geographically.
 
-The first full-day artifact records Friday 5 September 2025, a comparable historical weekday because observations for the railway study's future 2026 date do not yet exist. The compiler samples 304 active mainline detector directions at roughly one-kilometre spacing on radial roads and two-kilometre spacing around the M25. It joins them into 292 directional motorway sections and preserves all 96 quarter-hour WebTRIS observations with complete selected-site coverage. This date remains visible in the selection card so the composition never implies that the road and rail layers are contemporaneous observations.
+The retained full-day artifact records Friday 5 September 2025. The corrected audit accepts 232 reporting sites from 304 candidates and excludes 7,470 incomplete records; it does not establish complete observations at all 304 sites. Missing intervals remain gaps. This historical date stays visible so the composition never implies that road and rail are contemporaneous observations.
 
-Topology, a small manifest and four six-hour motion chunks are fetched only after ROAD is enabled. The complete optional study is about 222 KiB compressed; the largest motion chunk is about 43 KiB. `npm run data:london:roads` deterministically rebuilds the artifacts from the official site inventory and daily-report API, while the London payload gate validates coverage, time sequence and size. The methodology remains explicit: **traffic-flow reconstruction / no vehicle tracking**.
+Topology, a manifest and four six-hour motion chunks are fetched only after ROAD is enabled. The original milestone measured about 222 KiB compressed, with a largest motion chunk of about 43 KiB; those are historical measurements, not a fresh benchmark of the corrected artifact. `npm run data:london:roads` rebuilds from the official site inventory and daily-report API. The methodology remains explicit: **traffic-flow reconstruction / no vehicle tracking**.
 
 ## SURFACE — Thames crossings
 
@@ -138,7 +157,9 @@ The optional **SURFACE** study adds the three currently advertised scheduled Riv
 
 The 492-journey artifact contains 26 source-identified stops and 77 route-path segments, and is about 21 KiB compressed. It stays outside the opening request graph. River and cable movements retain separate `ferry` and `cableway` categories, remain searchable by route or stop, and can be isolated through the same legend policy as rail. `npm run data:london:surface` rebuilds the file from TfL route sequences and Journey Planner timetables; the compiler records source hashes and states that positions are scheduled interpolation rather than observed craft or cabin telemetry.
 
-## BUS — street current 001
+## BUS — original street current 001
+
+The following records the first corridor milestone. The current full-catalogue scope is documented above; these counts and payloads apply only to that earlier proof.
 
 The first bus study is deliberately a corridor rather than London's entire bus network. Route 26 crosses central London from Victoria to Hackney Wick through Fleet Street, St Paul's, Bank and Liverpool Street; N26 extends the same visual argument north-east to Walthamstow and Chingford. It is a useful street-level counterpoint to the railway because its path repeatedly touches major interchanges while remaining visibly shaped by roads.
 
@@ -195,7 +216,7 @@ Sources:
 
 ### LDN 2 — Day, pulse and dual geometry
 
-- [x] Add a complete Friday study with 10,455 journeys in twelve progressively loaded two-hour chunks.
+- [x] Add a complete Friday study in twelve progressively loaded two-hour chunks; the original 10,455-journey milestone has grown to 11,177 in the current rail artifact.
 - [x] Keep the 24-hour topology and movements out of the opening request graph; verify chunk size and SHA-256 before adoption.
 - [x] Compile an independent Beck-inspired diagram baseline with stable stop identities, route-path indexes and octilinear geometry.
 - [x] Replace generic graph relaxation with a London-shaped central lens, shared interchange cells and direction-invariant schematic bends.
@@ -212,6 +233,10 @@ Sources:
 
 ### LDN 3 — Surface city
 
+- [x] Compile the full TfL bus-catalogue artifact: 103,117 journeys across 670 active routes, with explicit branch and coverage gaps and progressive loading.
+- [x] Add London National Rail, combined station boards and a separately audited Eurostar board with bounded HS1 movements.
+- [x] Add typical-day passenger pulse/link-flow studies, four dated cycle-hire days and an early-Friday after-midnight composition.
+- [ ] Resolve remaining bus branch gaps, unsupported Eurostar timings and Friday-night/Saturday calendar coverage; retain separate physical-device review of the newer compositions.
 - [x] Add the first separately loaded bus corridor study—route 26/N26—without shipping the complete bus network in the opening scene.
 - [x] Add a separately loaded 24-hour River Bus and cable-car study where the Thames and east-London crossing add geographic meaning.
 - [x] Establish a deliberate central-London contrast between subterranean rail and street-level bus flow.

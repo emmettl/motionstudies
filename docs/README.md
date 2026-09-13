@@ -5,6 +5,7 @@
 ## Programme and shared work
 
 - [Project goals](VISION.md)
+- [Current study status — 13 September 2026](STUDY-STATUS.md): inspected implementations, served revisions, evidence boundaries and remaining work
 - [Overall roadmap and delivery history](../ROADMAP.md)
 - [Catalogue programme and admission criteria](CATALOGUE.md)
 - [Candidate names and the theses they imply](NAMING.md)
@@ -18,15 +19,26 @@
 | --- | --- | --- | --- |
 | 005 | [Gleislicht — Switzerland](GLEISLICHT.md) | [Open study](https://emmettl.github.io/gleislicht/) | [Repository](https://github.com/emmettl/gleislicht) |
 | 006 | [All Change — London](LONDON.md) | [Open study](https://emmettl.github.io/allchange/) | [Repository](https://github.com/emmettl/allchange) |
-| 007 | [Local / Express — New York](NEW-YORK.md) | Unpublished; [release gate](NEW-YORK-PUBLICATION.md) | [Repository (private)](https://github.com/emmettl/local-express) |
+| 007 | [Local / Express — New York](NEW-YORK.md) | Parked; unpublished; [release gate](NEW-YORK-PUBLICATION.md) | [Repository (private)](https://github.com/emmettl/local-express) |
 | 008 | [Correspondances — Paris](PARIS.md) | [Open study](https://emmettl.github.io/correspondances/) | [Repository](https://github.com/emmettl/correspondances) |
+
+## Implemented, unnumbered studies
+
+- [Umlauf — Berlin](BERLIN.md) · [Public study](https://motionstudies.app/umlauf/) · [Repository](https://github.com/emmettl/umlauf)
+- [NORIKAE — Tokyo](TOKYO.md) — **parked** · [Existing synthetic preview](https://motionstudies.app/norikae/) · [Repository](https://github.com/emmettl/norikae); real-source acquisition paused
+- [Underfall — Bristol](BRISTOL.md) — local research edition; recorded buses, rail/air, tides and M32 detector study
+- [Zugunruhe — European bird migration](ZUGUNRUHE.md) · [Public study](https://motionstudies.app/zugunruhe/) · [Repository](https://github.com/emmettl/zugunruhe); latest local increment ahead of served revision
+- [MANIFEST — World trade in motion](MANIFEST.md) · [Repository](https://github.com/emmettl/manifest); public synthetic prototype, local observed review
+
+Local / Express and NORIKAE are parked as of 13 September; their briefs retain the work and open questions for a possible return.
+
+Implementation does not allocate a catalogue number. The status register distinguishes current source from served releases and keeps source/publication limits explicit.
 
 ## Candidate city studies
 
 These briefs retain their dated source audits, proposed compositions and publication gates. Inclusion is not a commitment to build or publish.
 
 - [Fietsen — Amsterdam](AMSTERDAM.md)
-- [Umlauf — Berlin](BERLIN.md) · [First proof repository (private)](https://github.com/emmettl/umlauf)
 - [Chicago](CHICAGO.md)
 - [Hong Kong](HONG-KONG.md)
 - [Istanbul](ISTANBUL.md)
@@ -37,15 +49,11 @@ These briefs retain their dated source audits, proposed compositions and publica
 - [San Francisco](SAN-FRANCISCO.md)
 - [Singapore](SINGAPORE.md)
 - [Sydney](SYDNEY.md)
-- [Tokyo / NORIKAE](TOKYO.md) · [Repository](https://github.com/emmettl/norikae)
 - [Venice](VENICE.md)
-
-## Global motion
-
-- [MANIFEST — World trade in motion](MANIFEST.md) · [Repository](https://github.com/emmettl/manifest)
 
 ## Research for potential studies
 
+- [A national motion study — England, Great Britain or the UK](NATIONAL-STUDY.md) — refined artistic thesis and composition, with a [technical feasibility report](NATIONAL-DATA-FEASIBILITY.md) covering sources, volumes, timeliness, accuracy and the evidence chain between aggregate and individual records.
 - [Flights over Europe](EUROPE-AIR-RESEARCH.md) — technical evidence, candidate visual theses and bounded experiments; the thesis and decision to build remain open.
 
 ## Document ownership and history

@@ -1,5 +1,7 @@
 # Local / Express publication review
 
+**Programme update — 13 September 2026:** Local / Express is parked at the author’s request. This review is retained for a possible return; publication follow-up is paused and the private proof remains unpublished.
+
 [Edition repository (private)](https://github.com/emmettl/local-express) · [Study brief](NEW-YORK.md)
 
 Reviewed 6 September 2026. This is an engineering release decision, not legal advice.

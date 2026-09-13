@@ -4,13 +4,19 @@
 
 **A Tokyo motion study**
 
-**Catalogue status:** preferred third-city investigation; unnumbered.
+**Parked — 13 September 2026, at the author’s request.** NORIKAE remains unnumbered, with its synthetic preview and importer retained. Development, real-source acquisition and provider follow-up are paused. The milestones below are a resumption record, not active work.
 
 **Data-readiness update — 7 September 2026:** see the [current access/provenance register](DATA-READINESS.md#city-by-city-register) and [focused provider questions](DATA-QUESTIONS.md). Later findings there supersede the corresponding open questions in this dated audit.
 
 **Naming direction — 7 September 2026:** **NORIKAE** is the preferred working candidate for discussion. See [name alternatives, proposed thesis and opening commitment](NAMING.md#tokyo). This is not a catalogue admission or a change to the dated source verdict.
 
 **Implementation update — 7 September 2026:** the independent repository now contains an interactive synthetic player and an offline GTFS audit/compiler. Two fictional lines exercise shared rendering, playback, route focus and bilingual station selection. No real operator timetable, geometry or live feed has been acquired; importer compatibility is tested only against authored fixtures. The next step is authorized acquisition and inspection of a Toei archive, followed by the bounded real-source proof. Broader Metro/JR/private-operator rights remain separate gates. See the edition's [player guide](https://github.com/emmettl/norikae/blob/main/docs/PLAYER.md) and [source contract](https://github.com/emmettl/norikae/blob/main/docs/DATA.md).
+
+## Current state — 13 September 2026
+
+The inspected `codex/synthetic-player` branch is `bd0ec22`; main is `a0fd730`. Both have adopted alpha.9, and [public release metadata](https://motionstudies.app/norikae/_release.json) identifies main's `a0fd730`, not the development branch. The player still uses two fictional lines. Its offline GTFS audit/compiler has not been validated against an acquired real Toei archive; synthetic importer tests do not close that source milestone.
+
+If the author returns to this study, the first source step is acquisition and inspection of the bounded Toei dataset, with its then-current terms and coverage checked again. The dated Metro/JR/other-operator questions below are separate and were not re-reviewed here. See the [series status record](STUDY-STATUS.md).
 
 ## Thesis
 

@@ -1,13 +1,13 @@
 # Motion Studies
 
-Motion Studies is a catalogue of authored transport works made with one visual instrument. Gleislicht is the Swiss work in that catalogue, not the public name of the engine and not a title future places inherit.
+Motion Studies is a catalogue of authored works about movement made with one visual instrument. Gleislicht is the Swiss work in that catalogue, not the public name of the engine and not a title future places inherit. The [13 September status register](STUDY-STATUS.md) distinguishes source implementation, public release and the evidence each study contains.
 
 | No. | Work | Place | Status | Repository |
 | --- | --- | --- | --- | --- |
 | 005 | **Gleislicht** | Switzerland | Released | [Repository](https://github.com/emmettl/gleislicht) |
-| 006 | **All Change** | London | Public authored foundation; full bus-catalogue expansion in progress | [Repository](https://github.com/emmettl/allchange) |
-| 007 | **Local / Express** | New York | Interactive foundation; publication gated | [Repository (private)](https://github.com/emmettl/local-express) |
-| 008 | **Correspondances** | Paris | Public foundation; twelve-line implementation with eight-line default | [Repository](https://github.com/emmettl/correspondances) |
+| 006 | **All Change** | London | Public multimodal study; full bus-catalogue artifact with audited gaps | [Repository](https://github.com/emmettl/allchange) |
+| 007 | **Local / Express** | New York | Parked; private proof retained, publication question open | [Repository (private)](https://github.com/emmettl/local-express) |
+| 008 | **Correspondances** | Paris | 32-line implementation with eight-line default; served revision tracked separately | [Repository](https://github.com/emmettl/correspondances) |
 
 Each work receives a locally meaningful title and descriptor. The shared series identity appears as a quiet catalogue mark; the work title remains dominant.
 
@@ -69,6 +69,6 @@ The count is currently rendered by edition-owned shells. Apply this behavior in 
 
 This is configuration-driven reuse, not a generic map skin. Every work should have a reason to exist, a name rooted in its place, and at least one visual study that could only belong there.
 
-The catalogue programme and admission criteria live in [CATALOGUE.md](./CATALOGUE.md). [New York](./NEW-YORK.md) retains its bounded private foundation and MTA publication gate. [Paris](./PARIS.md) has a public foundation and now implements eight default lines plus two optional Métro groups, carrying Licence Mobilité provenance in its artifacts. [Berlin](./BERLIN.md) has a private scheduled and relative interchange proof; [Tokyo](./TOKYO.md) has a synthetic player awaiting real-source acquisition; [MANIFEST](./MANIFEST.md) has a public synthetic prototype and local observed regional review. Those three investigations remain unnumbered, and implementation does not itself establish deployment or publication approval.
+The catalogue programme and admission criteria live in [CATALOGUE.md](./CATALOGUE.md). [New York](./NEW-YORK.md) is parked, retaining its private corridor proof and MTA publication question. [Paris](./PARIS.md) implements all Métro/RER lines, nine Transilien lines and T3a/T3b, carrying Licence Mobilité provenance in its artifacts. [Berlin](./BERLIN.md) has a public scheduled and relative interchange study; [Tokyo](./TOKYO.md) is parked, retaining its public synthetic player with real-source acquisition paused; [MANIFEST](./MANIFEST.md) has a public synthetic prototype and local observed regional review. [Bristol](BRISTOL.md) has a local multimodal/tidal research edition, and [Zugunruhe](ZUGUNRUHE.md) has a public radar-derived migration study. Those five investigations remain unnumbered. Their inspected package pins are alpha.9; current implementation and served revisions are recorded separately.
 
 The concrete repository/package split is recorded in [the extraction seam](./EXTRACTION.md). Shared package and edition import boundaries are enforced in their respective CI workflows. The [widget lab](https://emmettl.github.io/motionstudies/lab/) and packed-consumer checks exercise public contracts before a coordinated release.

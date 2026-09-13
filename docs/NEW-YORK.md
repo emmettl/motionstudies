@@ -2,11 +2,17 @@
 
 [Edition repository (private)](https://github.com/emmettl/local-express) · [Study index](README.md) · [Publication review](NEW-YORK-PUBLICATION.md)
 
-Local / Express remains a private proof with Pages disabled. Implementation paths and commands below belong to its independent edition checkout.
+**Parked — 13 September 2026, at the author’s request.** Local / Express retains number 007 and its private proof with Pages disabled. Development, acquisition and publication follow-up are paused. The milestones below are a resumption record, not active work. Implementation paths and commands below belong to its independent edition checkout.
 
 **A New York motion study**
 
 *The same city, stopping differently.*
+
+## Current state — 13 September 2026
+
+The inspected private checkout at `407014f` pins shared packages to alpha.9. The bounded Lexington corridor contains 1,063 full-day scheduled journeys and 1,255 compiler-derived order reversals; 207 passing events belong to the morning proof. These are timetable relationships, not observed train overtakes. The current implementation includes shared station departures and fixes to the overtake comparison; it is not a wider New York network acquisition.
+
+The repository remains private and Pages disabled. The existing [publication review](NEW-YORK-PUBLICATION.md) remains open; no new provider answer or licence determination was obtained in this documentation update. The [series status record](STUDY-STATUS.md) separates that hold from the implemented software and its recorded alpha.9 validation.
 
 ## Thesis
 

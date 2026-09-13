@@ -8,6 +8,16 @@ Implementation paths and commands below belong to the edition repository. This b
 
 *Le centre respire; la région répond.*
 
+## Current state — 13 September 2026
+
+The inspected edition at `4e06d7a` now implements **32 lines: all sixteen Métro lines, RER A–E, nine Transilien lines and T3a/T3b**. The pinned 4 September 2026 service day contains **3,141 morning journeys and 17,088 full-day journeys** across the complete selectable ground network. The eight-line default remains at 977 morning journeys; further groups load independently with their own morning/day artifacts. Shared package pins are alpha.9.
+
+The progression is now concrete: Métro/RER supplies 2,503 morning and 13,878 daily journeys; Transilien brings that to 2,967 / 16,147; T3a/T3b brings it to 3,141 / 17,088. See the edition's [complete Métro record](https://github.com/emmettl/correspondances/blob/4e06d7a/docs/METRO-COMPLETE.md), [Transilien](https://github.com/emmettl/correspondances/blob/4e06d7a/docs/TRANSILIEN.md) and [tram study](https://github.com/emmettl/correspondances/blob/4e06d7a/docs/TRAM.md).
+
+The continuous **Cœur / Région** scale and correspondence director remain the authored centre of the work. Optional AIR adds 4,385 observed track segments and 211,089 samples across the day, with 501 morning segments; these are ADS-B observations, not flight plans. Ground services remain scheduled motion, and interchange opportunities do not prove passenger transfers.
+
+[Public release metadata](https://motionstudies.app/correspondances/_release.json) identifies `75a501f`, earlier than inspected HEAD. This brief records implementation; it does not imply that the latest package upgrade is deployed. The older payload/frame figures below remain dated measurements. Physical-phone and Windows Edge performance evidence, other tram lines, buses and operational rail observations remain separate work. See the [series status record](STUDY-STATUS.md).
+
 ## Thesis
 
 Paris is an illuminated nervous system at two scales. Inside the périphérique, Métro circulation is dense, repetitive and almost cellular. RER services pass through that core and erupt into the banlieues, making the regional city suddenly enormous. The defining act is not another map morph for its own sake, but a continuous change of scale in which interchange binds centre and periphery.
@@ -34,7 +44,7 @@ The companion composition is a breathing scale transition: the Métro core remai
 
 An optional AIR layer now replays aircraft from the same 4 September 2026 service day as the railway: 501 morning flight segments and a 4,385-segment day index with twelve lazy two-hour chunks. Aircraft stay on the shared clock and can be searched, selected and followed. CDG, Orly and Le Bourget provide airport context, with approach-envelope associations explicitly labelled as inferred. The dated ADSB.lol/ODbL observations remain distinct from scheduled IDFM trains; aircraft data loads only after activation. The [edition AIR guide](https://github.com/emmettl/correspondances/blob/main/docs/AIR.md) records provenance, filters, source hashes, payload gates and regeneration commands.
 
-## Source audit
+## Source audit and delivery history — 4–7 September 2026
 
 Île-de-France Mobilités' PRIM portal is the authoritative first source. Its GTFS Datahub export describes the next 30 days across Métro, RER, train, tram, bus and coach services from 75 operators and is regenerated three times daily. It includes routes, stops, trips, calendars and stop times, plus `stop_extensions.txt` for stop / stop-area / interchange-zone identity, `pathways.txt` for walking links inside stations and `transfers.txt` for walking correspondence times. That is unusually well aligned with this edition's thesis: scheduled connection opportunity can be modelled without pretending to observe passenger movement.
 
@@ -52,7 +62,7 @@ A source-pinned scope audit now measures the complete Métro/RER morning before 
 
 The second additional layer adds **RER C + RER D + RER E**, taking the default regional composition to eight lines and 977 morning journeys. Its 322-journey opening artifact is 101.1 KiB gzip; the complete 1,422-journey day again uses twelve independent chunks, all below 65 KiB. Both layers start enabled. The compact Couches menu lets viewers turn either layer off. The base view can render before the additional layers finish, and a failed layer leaves the base usable. The default opening budget includes both layers, with a 625 KiB gzip ceiling; full-day manifests and chunks still load only after selecting 24H.
 
-**Implementation update — 7 September 2026:** the eight-line density review and continuous scale tuning are complete. Two optional groups now extend that baseline: **Arcs du Métro** adds lines 2/6 (248 morning and 1,495 full-day journeys), and **Traversées du Métro** adds lines 5/7, including both southern branches of line 7 (291 morning and 1,573 full-day journeys). Each group loads, retries and follows the 24-hour clock independently. With both enabled, twelve lines carry 1,516 morning and 8,051 full-day journeys; nine Métro lines remain outside the runtime.
+**Historical milestone — 7 September 2026:** the eight-line density review and continuous scale tuning were complete. **Arcs du Métro** added lines 2/6 (248 morning and 1,495 full-day journeys), and **Traversées du Métro** added lines 5/7, including both southern branches of line 7 (291 morning and 1,573 full-day journeys). Each group loaded, retried and followed the 24-hour clock independently. With both enabled, twelve lines carried 1,516 morning and 8,051 full-day journeys. The nine Métro lines outside that milestone have since been implemented, as recorded above.
 
 At edition commit `da5678d`, the recorded default opening is 592.2 KiB gzip against its 625 KiB gate; activating both optional groups brings the initial composition to 709.8 KiB against 750 KiB. The twelve-line review records 65 passing Chromium/WebKit browser checks and local M4 Max Chrome samples around 60 fps. These do not establish Windows Edge or physical-phone performance, or verify deployment of that commit. See the edition's [density review](https://github.com/emmettl/correspondances/blob/main/docs/DENSITY.md), [Métro arcs](https://github.com/emmettl/correspondances/blob/main/docs/METRO-ARCS.md) and [Métro crossings](https://github.com/emmettl/correspondances/blob/main/docs/METRO-CROSSINGS.md).
 
@@ -101,9 +111,10 @@ Sources:
 - [x] Review the eight-line regional density and tune the continuous Cœur/Région transition before extending the network.
 - [x] Add optional Métro 2/6 arcs and Métro 5/7 crossings, each with independent morning/day loading, retry, source and payload checks.
 - [x] Add scale-aware station and mission label tiers, with place names leading the centre view and vehicle labels reserved for closer zoom.
-- [ ] Assess the remaining nine Métro lines as further bounded groups against source, payload, visual and frame gates.
+- [x] Add the remaining nine Métro lines as independently loaded groups, completing all sixteen Métro lines and five RER lines.
+- [x] Add nine Transilien lines and T3a/T3b with independent loading, source audits and full-day playback; complete selectable scope is 32 lines.
 - [ ] Capture Windows Edge and physical-phone frame measurements; local desktop and phone-viewport checks do not certify those devices.
-- Consider Transilien and tram only when they strengthen the centre–periphery argument.
+- [ ] Assess further tram and bus additions against the centre–periphery argument and their own coverage and payload gates.
 
 ### PAR 4 — Observed city
 

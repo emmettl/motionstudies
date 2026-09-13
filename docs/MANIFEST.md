@@ -6,7 +6,13 @@
 
 **Catalogue status:** unnumbered; public synthetic prototype and local observed regional review implemented. Observed-data publication remains gated.
 
-## Implementation update — 7 September 2026
+## Current state — 13 September 2026
+
+The inspected checkout and [public release metadata](https://motionstudies.app/manifest/_release.json) both identify `a5ea179`. The edition consumes exact alpha.9 web components. Public scope remains the synthetic 60,000-vessel prototype; the observed NOAA review is local and excluded from production. The work remains unnumbered and unlinked from the public site catalogue.
+
+The prototype contains 1,088,589 route samples, 24,406 positioned vessels at the opening, thirty progressive day chunks, search across 135 ports and separate statistics for 52 ports. Those counts describe a workload and composition proof, not acquired global AIS coverage. The last recorded worst first view is 1.72 MiB gzip against the original 1.5 MiB target and temporary 2 MiB ceiling; no fresh physical-phone benchmark or observed-data publication decision is implied. See the [series status record](STUDY-STATUS.md).
+
+## Implementation history — 7 September 2026
 
 The independent repository now implements a 60,000-vessel synthetic cargo/tanker fixture with 30-day progressive playback, world/regional views, vessel inspection and search across 135 ports. Port cards separately carry dated aggregate statistics for 52 ports; neither the synthetic vessels nor their schematic routes represent AIS observations or cargo contents. The public prototype remains unlinked from the Motion Studies site catalogue and has not earned a catalogue number.
 

@@ -2,6 +2,21 @@
 
 [Project goals](docs/VISION.md) · [Study index](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 
+## Current delivery position — 13 September 2026
+
+The [study-status register](docs/STUDY-STATUS.md) reconciles nine edition checkouts with public release metadata. All inspected editions consume exact alpha.9 packages; deployment is tracked separately from local source. The older dated milestones below remain history, not a current release inventory.
+
+- **Gleislicht:** original scope accepted; national PostBus, station departures and prepared two-day timetable releases now implemented. Latest committed and uncommitted interface work is ahead of the served revision.
+- **All Change:** full bus-catalogue artifact implemented with audited gaps, alongside London National Rail, combined boards, Eurostar, passenger-demand/link-flow studies, four cycle-hire days and early-Friday after-midnight coverage. Current source revision is served.
+- **Correspondances:** complete Métro/RER, nine Transilien lines and T3a/T3b now provide 32 selectable lines and 17,088 daily journeys, retaining the eight-line default. Served revision precedes the latest package upgrade.
+- **Umlauf:** source and study public; inspected alpha.9 revision served. Measured absolute heights, device evidence and catalogue admission remain open.
+- **Local / Express and NORIKAE:** parked at the author’s request on 13 September. Existing implementations and source questions are retained; development, acquisition and provider follow-up are paused. Local / Express keeps number 007 and its private proof; NORIKAE remains an unnumbered synthetic preview.
+- **MANIFEST:** software has advanced to alpha.9; observed-data publication review remains a separate gate.
+- **Underfall / Bristol:** local buses, rail/air, tides, bounded recording/replay and M32 detector study now have a [central brief](docs/BRISTOL.md). A full weekday recording remains to be acquired.
+- **Zugunruhe:** radar altitude, archipelago and continental-field studies now have a [central brief](docs/ZUGUNRUHE.md). The latest three-night increment is ahead of the served release.
+
+The [national-study thesis](docs/NATIONAL-STUDY.md) and [technical feasibility research](docs/NATIONAL-DATA-FEASIBILITY.md) are research artifacts. London's reusable data tooling and the other studies' evidence practices give that proposal a stronger starting point; no national edition has been implemented by this update.
+
 ## Repository milestone — 7 September 2026
 
 - [x] Move shared packages, the widget lab and catalogue into Motion Studies.
@@ -28,10 +43,11 @@ further optimisation is deferred. These are qualitative reports, not a measured
 benchmark of every study. Earlier Swiss device-review requests below are historical
 notes and do not remain release blockers.
 
-The realtime poller and credentials are provisioned. Its static-feed declaration
-has been corrected to `20260905`, matching the published national timetable;
-LIVE releases require matching dates/versions and a fresh health check. Service
-alerts remain a separate next increment. See the edition's
+At this milestone, the realtime poller and credentials were provisioned and its
+static-feed declaration was corrected to `20260905`. The later prepared two-day
+release/calendar work supersedes that manually pinned arrangement. LIVE releases
+still require matching identities, dates/versions and a fresh health check. Service
+alerts remain a separate increment. See the edition's
 [current operations record](https://github.com/emmettl/gleislicht/blob/main/docs/REALTIME.md)
 and [release provenance](https://motionstudies.app/gleislicht/_release.json) for
 verification of the deployed release rather than assuming repository HEAD is live.
@@ -321,7 +337,8 @@ Reference sources for implementation audits: [Swiss GTFS and frequency semantics
 - [x] Add the first London-specific interchange pulse study across four contrasting hubs.
 - [x] Add a separately loaded 24-hour London surface study for scheduled River Bus and cable-car movement.
 - [x] Prove surface buses as a separate progressive corridor study with route 26/N26, shared-clock search and category isolation.
-- [ ] Complete and validate the in-progress full TfL bus-catalogue expansion, including route coverage, service-day semantics and progressive payloads.
+- [x] Compile and validate the full TfL bus-catalogue artifact with service-day semantics and progressive payloads: 103,117 journeys across 670 active routes, with explicit remaining branch/coverage gaps.
+- [ ] Resolve the remaining audited bus gaps before making a complete-network claim.
 
 **Exit:** Gleislicht and All Change are independently authored Motion Studies, sharing runtime behaviour and visual grammar without sharing titles or place-specific assumptions.
 
@@ -412,14 +429,15 @@ Reference sources for implementation audits: [TfL NUMBAT and open-data catalogue
 - [x] Enforce a 390 KiB compressed first-view budget and desktop/iPhone browser gates for the New York foundation.
 - [x] Use the third viable edition as the extraction trigger for private `@motionstudies/core`, `@motionstudies/three` and `@motionstudies/web` workspaces with real package imports.
 - [x] Split shared packages and edition shells into repositories; publish coordinated npm releases after validating their public contracts and packed consumers.
-- [ ] Hold further 007 Local / Express expansion and public release at the MTA licensing gate; retain its bounded proof as technical evidence.
+- **Parked:** 007 Local / Express development and publication follow-up; retain the private proof and MTA question for a possible return.
 - [x] Build 008 Correspondances through a Métro/RER opening study, a continuous centre–periphery scale study and three source-backed interchange compositions.
 - [x] Give Correspondances an independent source-pinned shell, exact transfer evidence, official Seine/city context and a lazy 24-hour two-line study within a phone-first payload gate.
 - [x] Extend Correspondances to an eight-line default and optional Métro 2/6 and 5/7 groups, retaining independent morning/day loading and the continuous Cœur/Région transition.
-- [ ] Review the next bounded Paris Métro group against source, density and payload gates; obtain physical-phone and Windows Edge frame evidence before claiming performance on those devices.
+- [x] Complete all sixteen Paris Métro lines and five RER lines, then add nine Transilien lines and T3a/T3b through independent source-audited layers; retain the eight-line default.
+- [ ] Obtain physical-phone and Windows Edge frame evidence for the expanded Paris study before claiming performance on those devices.
 - [x] Begin the source and feasibility audit for **NORIKAE — A Tokyo motion study**: separate the durable Toei proof, conditional Tokyo Metro path and Challenge 2026-only Yamanote/private-railway coverage.
 - [x] Build NORIKAE's labelled synthetic player and offline GTFS audit/compiler against authored fixtures.
-- [ ] Acquire and inspect the first Toei archive through authorized ODPT access, retain its terms and compile a real 07:00–09:00 loop-and-crossings proof; resolve the broader Metro/JR/private-operator publication and historical-use gates separately.
+- **Parked:** NORIKAE development, first Toei acquisition and broader operator follow-up. Retain the synthetic proof and source-gate checklist for a possible return.
 - [x] Begin San Francisco's source and feasibility audit: separate 511's strong historical/observed technical path from the unresolved 511/SFMTA public-artifact terms, and keep the title open until the vertical signature study is proven.
 - [ ] Resolve 511 browser-artifact, historical-use and sublicensing terms with MTC and SFMTA, then compile a bounded 08:00–10:00 hills-to-Bay proof over DataSF terrain.
 - [x] Begin Hong Kong's source and feasibility audit: separate exact ferry schedules, reconstructed surface headways, live MTR station forecasts and measured 3D station structure instead of presenting them as one kind of motion evidence.
@@ -428,7 +446,8 @@ Reference sources for implementation audits: [TfL NUMBAT and open-data catalogue
 - [x] Complete source, rights, motion-semantics, geography and bounded-proof feasibility studies for all ten wider city candidates.
 - [x] Complete Berlin's feasibility audit: verify VBB's current/archived schedule and realtime paths, distinguish replacement buses from same-named Ringbahn rail records, and isolate the remaining vertical-structure work.
 - [x] Build Berlin's source-pinned scheduled proof, geographic-to-circulation transition and relative Ostkreuz interchange with official bridge and water context.
-- [ ] Improve Berlin crossing performance, review physical devices, obtain measured rail elevations and complete the pending private preview approval; retain its unnumbered status until catalogue admission.
+- [x] Publish the approved Berlin source and study; the inspected alpha.9 revision is served as of 13 September.
+- [ ] Review Berlin crossing performance on physical devices and obtain measured rail elevations; retain its unnumbered status until catalogue admission.
 - [ ] Advance Venice after retaining its exact feed licence and Sydney after validating a matching historical export; retain Singapore, Lisbon, Amsterdam and Chicago behind their stated access, coverage or publication gates.
 - [ ] Do not prototype Mumbai or Johannesburg until the missing authoritative movement evidence and, for Johannesburg, locally governed representation process exist.
 - [x] Audit **MANIFEST — World trade in motion**: distinguish observed AIS movement from self-reported vessel data, inferred port-to-port voyages and aggregate commodity evidence; gate global individual tracks on written derived-publication rights.

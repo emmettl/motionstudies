@@ -2,7 +2,17 @@
 
 [Open Gleislicht](https://motionstudies.app/gleislicht/) · [Edition repository](https://github.com/emmettl/gleislicht) · [Study index](README.md)
 
-These are the original Swiss study goals. Series-wide goals now live in [VISION.md](VISION.md); Swiss operational guides remain in the edition repository.
+This brief retains the original Swiss study goals alongside the current delivery position. Series-wide goals live in [VISION.md](VISION.md); Swiss operational guides remain in the edition repository.
+
+## Current state — 13 September 2026
+
+The original atlas, terrain, regional/city, soundtrack, four-language, aircraft and measured-road scope is implemented. The owner accepted its physical-device performance on 9 September, including the remaining Windows limitations. That acceptance is evidence for the reviewed scope, not a benchmark of every subsequent addition.
+
+The inspected committed baseline is `1a082bf`, with exact alpha.9 package pins. National **AUTO** retains all 1,440 minutes of 8 September 2026 across 718 accepted directional detector sites and 609 sections; its moving particles reconstruct measured flow rather than track cars. The optional national **PostBus** layer contains 32,390 scheduled trips, 821 source route IDs and 21,274 platform stops for 8 September. Its agency-801 scope includes active cross-border branches but excludes the previous day's tail. The road-path audit matches 99.79% of stop movements, retaining 1,010 fallback movements rather than implying perfect geometry. See the [national PostBus record](https://github.com/emmettl/gleislicht/blob/1a082bf/docs/POSTBUS-NATIONAL.md).
+
+Station departure cards are implemented. Prepared two-day timetable releases and the separation of application and immutable data releases replace the earlier manually pinned feed-date arrangement; realtime identity must match the selected release calendar. Live health still needs its own check, and TripUpdates do not establish GPS positions or complete service-alert coverage. The edition's [operations record](https://github.com/emmettl/gleislicht/blob/1a082bf/docs/REALTIME.md) owns those details.
+
+[Public release metadata](https://motionstudies.app/gleislicht/_release.json) serves the earlier `6d2c781`. Additional compact-desktop/interface changes are uncommitted in the local checkout and are not counted as a release. See the [series status record](STUDY-STATUS.md) before equating implementation, owner acceptance and deployment. Further regional, seasonal and vertical-geometry work remains governed by the edition's source audits.
 
 ## The idea
 
@@ -45,14 +55,9 @@ People fascinated by trains, Switzerland, maps, motion graphics or generative ar
 
 ## SBB-style station hero adoption
 
-The shared `RailStationHeroCard` now includes `presentation="sbb"`, demonstrated in **Transport heroes → SBB departure board** in the Motion Studies lab. Its blue-and-white board shows service, departure time, destination and via stops, track and optional platform sectors. DE/FR/IT/EN fixture labels demonstrate edition-owned localization. The fixture is synthetic; this addition does not switch the published Gleislicht station panel.
+The earlier adoption proposal is implemented in the inspected baseline. `src/studies/StationCard.tsx` receives the network snapshot and study clock, selects the edition's `StationDeparturesCard` with `presentation="sbb"`, supplies EN/DE/FR/IT labels and preserves train selection and the connections action. Supported bus stops receive the corresponding bus departure presentation; unsupported cases retain a summary fallback. The edition consumes exact alpha.9 packages.
 
-The edition currently imports the released `@motionstudies/web` alpha.7 package. Its `src/studies/StationCard.tsx` receives a `StationIndexEntry` and summary counts through `DetailCard`; it does not yet receive departure rows or the playback clock. Adoption requires a package version containing this component and the following edition-side wiring:
-
-- Pass the selected station's upcoming calls and study clock from `src/App.tsx` into the station panel, retaining its connections action and relevant summary information.
-- Match calls using `StationIndexEntry.stopIndexes` against `NetworkTrain.stops`. Use the call's departure time, omit terminal calls without an onward leg, filter/sort against the study window, and preserve IDs that let selection find the corresponding train. Do not derive a timetable from the summary `trainIds` count.
-- Map `route` to `service`, `headsign` (or the known final stop) to `destination`, the stop's known `platformCode` to `platform`, and the edition's category mapping to `serviceCategory`. Leave unknown platforms, sectors and operational statuses unknown. Realtime-adjusted stop times must not be relabelled as original scheduled times.
-- Import `@motionstudies/web/transport-hero-cards.css`, select `presentation="sbb"`, and pass the active edition locale's labels, clock formatting, source note, and controlled departure selection. Use `lineCount="auto"` with an explicit panel height.
+The shared lab fixture remains synthetic, while the edition's rows come from its network snapshot. Unknown platform sectors or operational fields must remain unknown, and realtime-adjusted calls must not be relabelled as original scheduled times. Implementation here does not establish that local HEAD is the public revision.
 
 Component usage and row fields are documented in [the package guide](../packages/README.md#rail-bus-and-airport-hero-cards). SBB's own [general display guide](https://www.sbb.ch/en/travel-information/stations/services-station/station-customer-information/general-display-board.html) supplies the visual information hierarchy.
 
