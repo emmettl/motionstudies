@@ -1,6 +1,6 @@
 # Shared ground-transport foundations
 
-This additive extraction supports Underfall's road work and the national study's evidence requirements. It leaves existing road classes and renderer defaults unchanged. It is prepared after alpha.10, without a version bump: the concurrent styling work owns alpha.11. Release and edition adoption must follow that work with the next coordinated package version.
+This additive extraction supports Underfall's road work and the national study's evidence requirements. It leaves existing road classes and renderer defaults unchanged. It is rebased onto the published alpha.11 styling release (main `99f4805`), without a version bump. Coordinate the next package version with the active vehicle hero-card task. Remote push authorization is still pending; these transport additions have not been published.
 
 ## Public modules
 
@@ -32,8 +32,10 @@ London's WebTRIS consumer is deliberately not silently migrated: it converts len
 
 ## Adoption and subsequent work
 
-1. Rebase this additive branch after the styling release. Preserve that release's package versions and styling exports. Bump all four packages together through the existing release process; do not publish these additions under the existing alpha.10 version.
+1. The additive branch has been rebased after the styling release, preserving its versions and exports. Once push authorization is resolved, coordinate and bump all four packages together through the existing release process; do not publish these additions under alpha.11.
 2. Apply the prepared Underfall wrapper migration and pin all four packages to that exact published version, with a normal lockfile update. Re-run its checks against registry artifacts, replacing candidate tarballs.
 3. Use the scene extension API to build aggregate roads in the main map, then prove the renderer contract with a second edition. A shared screen must still preserve incompatible source clocks.
 4. Extract observation-window machinery with provider-neutral identities and explicit mode policies; package the proven rail readers and geometry helper. These are subsequent extractions, not part of this release.
 5. Build spatial/temporal constituent lookup for the national brief's overview → group → service → source-record transition. The present series/source references establish a seam; they do not yet implement national aggregation or spatial delivery.
+
+Post-alpha.11 validation: the rebased tree passes 241 shared unit tests. The original packed Underfall proof above remains based on the pre-rebase candidate; repeat adoption against the eventual registry release.
