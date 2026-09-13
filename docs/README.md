@@ -4,13 +4,14 @@
 
 ## Programme and shared work
 
-- [Project goals](VISION.md)
+- [Project vision and goals](VISION.md): the creative premise, the world in miniature, and what these ask of the engineering
 - [Current study status — 13 September 2026](STUDY-STATUS.md): inspected implementations, served revisions, evidence boundaries and remaining work
 - [Overall roadmap and delivery history](../ROADMAP.md)
 - [Catalogue programme and admission criteria](CATALOGUE.md)
 - [Candidate names and the theses they imply](NAMING.md)
 - [Data access and provenance readiness](DATA-READINESS.md) and [provider questions](DATA-QUESTIONS.md)
 - [Edition architecture and ownership](EDITIONS.md)
+- [Code and library consolidation proposal](ARCHITECTURE-CONSOLIDATION.md): application state ownership, renderer internals, data contracts and independent package consumption
 - [Package extraction provenance](EXTRACTION.md) and [release process](RELEASING.md)
 - [Underfall's shared ground-transport contribution](SHARED-GROUND-TRANSPORT.md) — capture, UK clocks, WebTRIS interpretation and aggregate-road evidence; publication and adoption tracked separately
 

@@ -1,6 +1,34 @@
 # Motion Studies — project goals
 
-Motion Studies is a series of authored works about how places move. Each edition should make a visual argument rooted in its geography, transport culture and evidence. The catalogue brings those works together; shared software supports their common behaviour.
+Motion Studies is an evolving series of authored works about how the world moves, mediated through technology. Each work develops its own subject through geography, human activity, natural processes and evidence. The catalogue brings those works into relation; shared software supports the technical behaviour they have in common.
+
+## Creative premise
+
+Articulated by the author on 13 September 2026: “a desire to see the world mediated through technology” and “creative engineering unburdened by the human labour of actually doing the engineering”.
+
+The creative act includes specifying an instrument through which the world can be perceived: choosing what it notices, how it treats time, what it brings into relation and what remains unresolved. Engineering is an artistic material. AI-assisted implementation makes unusually particular instruments feasible, including experiments whose value only becomes apparent once they can be seen and used.
+
+The author's attention can move towards curiosity, composition and judgment while the engineering agent carries implementation, verification and routine maintenance. Whether a movement is truthful, a visual relationship reveals anything or an interaction deserves its complexity remains a consequential judgment. Working instruments make those questions available to experience.
+
+The series itself emerged from Gleislicht. Its direction should remain open to further discoveries of that kind. Works have greater or lesser technical overlap: a bird-migration study may develop primarily as an artwork, while Underfall may acquire practical value as a Bristol exploration or planning tool. These possibilities can coexist and evolve; neither fixes a template for the rest of the series.
+
+## The world in miniature
+
+At the level of the gesamtkunstwerk—the whole project as a composed work—the catalogue may become part of the artistic material: “a perversely detailed system”, “a precise cartography of a (somewhat) imagined world”. Numbering, reserved ranges, gaps and relationships between series can carry weight. A distinction between nature studies and cities is one possible organising idea, not an adopted numbering scheme.
+
+This aesthetic discipline is emergent and malleable. A later organising idea can cast existing works into a new light. Titles, numbers and groupings may retrospectively make a relationship legible as that relationship becomes compelling. Such classification is itself an act of authorship. Precise observations can inhabit an imagined arrangement without changing what the observations support.
+
+Catalogue numbering and admission remain artistic and editorial decisions. Their unresolved form does not prevent rigorous engineering, and technical reuse should not determine their eventual shape.
+
+## What this asks of the engineering
+
+Architecture should keep the cost of following curiosity low as the body of work grows. Maintaining yesterday's instruments should leave room to imagine tomorrow's.
+
+Be exact about data contracts, clocks, state and resource ownership, module boundaries, reproducibility and verification. Let shared libraries follow demonstrated technical relationships. Each work should be able to use the capabilities it needs while retaining its own composition and interpretation.
+
+Keep stable technical identifiers independent of mutable titles, catalogue numbers and groupings. Support rearrangement and reinterpretation without unnecessary code or data migrations. A preserved study should be able to remain fixed while another work evolves into a maintained tool.
+
+The [code and library consolidation proposal](ARCHITECTURE-CONSOLIDATION.md) develops the immediate engineering work. Its priorities and implementation choices can change; this creative purpose is the criterion against which they should be judged.
 
 ## What the series should achieve
 
@@ -37,7 +65,7 @@ The shared software is the loom, and the works are the cloth. Building the loom 
 
 ## Delivery approach
 
-Every stage should leave a coherent study that can be viewed and assessed. A new city begins with a local thesis, source audit and bounded proof. Its signature composition and publication path must be defensible before it earns a catalogue number or expands into a larger atlas.
+Every stage should leave a coherent study that can be viewed and assessed. A new investigation begins with a provisional subject, source audit and bounded proof. Its composition can develop through making and encountering the work. Public release needs a defensible evidence and publication path; catalogue placement and numbering follow the emerging artistic discipline of the series.
 
 The shared/local boundary is now enforced through four coordinated npm packages. Shared changes are exercised in the [widget lab](https://motionstudies.app/lab/), checked as packed consumers and released explicitly. Each edition chooses when to adopt a version and passes its own build and browser gates before deployment.
 
