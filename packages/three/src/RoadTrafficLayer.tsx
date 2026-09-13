@@ -346,6 +346,7 @@ function NationalRoadTrafficFlow({
   playbackRate,
   selectedRoadId,
   subdued,
+  conditionsAtTime = nationalRoadConditionsAtTime,
 }: {
   readonly snapshot: NationalRoadStudySnapshot
   readonly topology: RoadTopologySnapshot
@@ -355,6 +356,7 @@ function NationalRoadTrafficFlow({
   readonly playbackRate: number
   readonly selectedRoadId?: string
   readonly subdued: boolean
+  readonly conditionsAtTime?: typeof nationalRoadConditionsAtTime
 }) {
   const localTime = useRef(time)
   const lightsRef = useRef<THREE.InstancedMesh>(null)
@@ -402,7 +404,7 @@ function NationalRoadTrafficFlow({
     const conditionsFor = (siteIndex: number) => {
       const existing = conditionCache.current.get(siteIndex)
       if (existing) return existing
-      const value = nationalRoadConditionsAtTime(
+      const value = conditionsAtTime(
         snapshot,
         siteIndex,
         localTime.current,
@@ -521,6 +523,7 @@ export function RoadTrafficLayer({
   subdued = false,
   selectedRoadId,
   nationalSnapshot,
+  conditionsAtTime,
 }: {
   readonly snapshot?: RoadTrafficSnapshot
   readonly topology?: RoadTopologySnapshot
@@ -531,6 +534,7 @@ export function RoadTrafficLayer({
   readonly subdued?: boolean
   readonly selectedRoadId?: string
   readonly nationalSnapshot?: NationalRoadStudySnapshot
+  readonly conditionsAtTime?: typeof nationalRoadConditionsAtTime
 }) {
   const corridors = useMemo(
     () =>
@@ -566,6 +570,7 @@ export function RoadTrafficLayer({
       )}
       {nationalSnapshot && topology && (
         <NationalRoadTrafficFlow
+          conditionsAtTime={conditionsAtTime}
           snapshot={nationalSnapshot}
           topology={topology}
           projection={projection}

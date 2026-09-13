@@ -50,3 +50,5 @@ References: [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/)
 `0.1.0-alpha.4` establishes selected-station and route-terminal label priority as shared renderer behaviour. Trusted publication and adoption in all six network-scene editions completed on 7 September 2026; see the [release record](RENDERER-ALPHA-4.md).
 
 `0.1.0-alpha.9` upstreams shared renderer performance, indexed train positions and movement counters, and adds optional JSON asset loading, scalar transitions and the network chunk CLI. It follows the alpha.8 transport board release. Edition adoption must remove overlapping renderer transforms before upgrading; see [refactoring and adoption](REFACTORING-ALPHA-9.md).
+
+`0.1.0-alpha.10` adds typed scene children, train and road resolvers, trail backend and camera lifecycles, Canvas scheduling, and hub flow policy. See [renderer extensions and edition migration](RENDERER-EXTENSIONS-ALPHA-10.md).

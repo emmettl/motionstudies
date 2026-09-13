@@ -4,7 +4,10 @@ import { StationLabelFrame } from './station-label-frame.ts'
 import { LabelFrameBudget } from './label-frame-budget.ts'
 import { updateActiveGeometry } from './active-geometry.ts'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { createContext, useContext, useEffect, useMemo, useRef } from 'react'
+import { createContext, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
+import { useNetworkScene, type NetworkSceneExtensions, type NetworkCameraDriver } from './scene-extensions.ts'
+import { NetworkSceneProviderContext } from './scene-context.ts'
+import { applyTrailFrame } from './trail-frame.ts'
 import * as THREE from 'three'
 import type {
   BoundaryCoordinate,
@@ -132,6 +135,12 @@ export interface MapCameraCommand {
 }
 
 export interface NationalNetworkSceneProps {
+  /** Edition-owned scene components, mounted inside the map Canvas before moving vehicles. */
+  readonly children?: ReactNode
+  readonly extensions?: NetworkSceneExtensions
+  /** Allows an external scene handover to suspend rendering without unmounting the map. */
+  readonly frameloop?: 'always' | 'demand' | 'never'
+
   /** Optional geographic position, hidden while the map morphs to a diagram. */
   readonly userLocation?: { readonly longitude: number; readonly latitude: number }
   /** Quiet removes the reference grid while retaining the ground plane. */
@@ -402,6 +411,17 @@ function projectedTrainPosition(
     0.2,
     THREE.MathUtils.lerp(from[2], to[2], position.progress),
   ]
+}
+
+function useProjectedTrainPosition() {
+  const resolver = useNetworkScene().props.extensions?.trainPosition
+  return useMemo(() => {
+    if (!resolver) return projectedTrainPosition
+    return (...args: Parameters<typeof projectedTrainPosition>) => {
+      const result = resolver(args[0], args[1], args[2], args[3] ?? [], args[4] ?? EMPTY_LAKE_AVOIDING_PATHS)
+      return result === undefined ? projectedTrainPosition(...args) : result ?? undefined
+    }
+  }, [resolver])
 }
 
 function NationalGround({ quiet = false }: { readonly quiet?: boolean }) {
@@ -2429,6 +2449,7 @@ function TrainLabels({
 }) {
   const { camera, size } = useThree()
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
+  const resolveTrainPosition = useProjectedTrainPosition()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
   const textures = useRef(new Map<string, TrainLabelTexture>())
   const retainedTrainIds = useRef(new Set<string>())
@@ -2462,7 +2483,7 @@ function TrainLabels({
   const visibleLabelTrains = useRef<NetworkTrain[]>([])
   // These dependencies invalidate cached frame work when render inputs change.
   /* oxlint-disable react-hooks/exhaustive-deps */
-  const labelInputs = useMemo(() => ({}), [snapshot, projectedStops, projectedPaths,
+  const labelInputs = useMemo(() => ({}), [resolveTrainPosition, snapshot, projectedStops, projectedPaths,
     selectedTrain, comparisonTrains, selectedRoute, selectedStation, selectedCategory,
     airCategorySelected, roadCategorySelected, trainLabelMode, isPlaying, playbackRate,
     trainTimeIndex, cameraFraming, layoutTransitioning, routeColors, routeColorMix, lakeAvoidingPaths])
@@ -2559,7 +2580,7 @@ function TrainLabels({
         playbackRate,
       )
       if (arrivalOpacity <= 0) continue
-      const position = projectedTrainPosition(
+      const position = resolveTrainPosition(
         train,
         Math.min(localTime.current, train.end),
         projectedStops,
@@ -3099,6 +3120,7 @@ function TrainSwarm({
   readonly trainTimeIndex: TrainTimeIndex
 }) {
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
+  const resolveTrainPosition = useProjectedTrainPosition()
   const points = useRef<THREE.Points>(null)
   const glow = useRef<THREE.Points>(null)
   const localTime = useRef(time)
@@ -3216,7 +3238,7 @@ function TrainSwarm({
 
   // These dependencies invalidate cached frame work when render inputs change.
   /* oxlint-disable react-hooks/exhaustive-deps */
-  const pausedFrame = useMemo(() => new PausedVehicleFrame(), [snapshot, projectedStops, projectedPaths,
+  const pausedFrame = useMemo(() => new PausedVehicleFrame(), [resolveTrainPosition, snapshot, projectedStops, projectedPaths,
     lakeAvoidingPaths, selectedTrain, comparisonTrains, selectedRoute, selectedCategory,
     airCategorySelected, selectedStation, cameraFraming, trainPalette, geometries, trainTimeIndex])
   /* oxlint-enable react-hooks/exhaustive-deps */
@@ -3252,7 +3274,7 @@ function TrainSwarm({
       ) {
         continue
       }
-      const position = projectedTrainPosition(
+      const position = resolveTrainPosition(
         train,
         localTime.current,
         projectedStops,
@@ -3453,8 +3475,12 @@ function VehicleTrails({
   readonly trainTimeIndex: TrainTimeIndex
 }) {
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
+  const resolveTrainPosition = useProjectedTrainPosition()
   const localTime = useRef(time)
   const lastUpdate = useRef(-1)
+  const createTrailBackend = useNetworkScene().props.extensions?.createTrailBackend
+  const trailBackend = useMemo(() => createTrailBackend?.(), [createTrailBackend])
+  const previousPausedTrail = useRef<{ inputs?: object; visibility?: string; worker?: boolean; time?: number }>({})
   const trailFrameBudget = useMemo(() => new TrailFrameBudget(), [])
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
@@ -3532,10 +3558,23 @@ function VehicleTrails({
 
   // These dependencies invalidate cached frame work when render inputs change.
   /* oxlint-disable react-hooks/exhaustive-deps */
-  const pausedFrame = useMemo(() => new PausedVehicleFrame(), [snapshot, projectedStops, projectedPaths,
+  const pausedFrame = useMemo(() => new PausedVehicleFrame(), [resolveTrainPosition, snapshot, projectedStops, projectedPaths,
     lakeAvoidingPaths, selectedTrain, comparisonTrains, selectedRoute, selectedCategory,
     airCategorySelected, selectedStation, cameraFraming, trainPalette, geometries, trainTimeIndex])
+  const pausedTrailTime = isPlaying ? undefined : time
+  const trailSelection = useMemo(() => ({}), [pausedFrame, isPlaying, pausedTrailTime])
   /* oxlint-enable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    previousPausedTrail.current = {}
+    if (!trailBackend) return
+    if (!snapshot.trains.length) { trailBackend.dispose(); return }
+    trailBackend.reset(() => ({ trains: snapshot.trains, stops: projectedStops, paths: projectedPaths,
+      detours: [...lakeAvoidingPaths], colors: snapshot.trains.map(train => {
+        const color = trainPalette.get(train.id) ?? palette[train.category] ?? palette.other
+        return [color.r, color.g, color.b]
+      }) }))
+    return () => trailBackend.dispose()
+  }, [trailBackend, snapshot.trains, projectedStops, projectedPaths, lakeAvoidingPaths, trainPalette, palette])
   useFrame(({ clock, camera }, delta) => {
     if (isPlaying) {
       localTime.current += delta * playbackRate
@@ -3546,10 +3585,25 @@ function VehicleTrails({
     const visibleBus = vehicleIsVisibleAtZoom('bus', camera.position.y, cameraFraming)
     const visibleTram = vehicleIsVisibleAtZoom('tram', camera.position.y, cameraFraming)
     const pausedVisibility = Number(visibleBus) + 2 * Number(visibleTram)
-    if (!pausedFrame.needsUpdate(isPlaying, localTime.current, pausedVisibility)) return
-    if (!trailFrameBudget.shouldUpdateTrail(delta, clock.elapsedTime - lastUpdate.current, !isPlaying)) return
+    const trailVisibility = String(visibleBus) + String(visibleTram)
+    if (trailBackend) {
+      trailBackend.select(trailSelection, trailVisibility)
+      const completed = trailBackend.takeFrame()
+      if (completed) {
+        applyTrailFrame(geometries, completed)
+        if (!trailBackend.available) previousPausedTrail.current.inputs = undefined
+      }
+      if (!isPlaying && previousPausedTrail.current.inputs === trailSelection &&
+          previousPausedTrail.current.visibility === trailVisibility &&
+          previousPausedTrail.current.worker === trailBackend.available &&
+          previousPausedTrail.current.time === localTime.current) return
+    } else if (!pausedFrame.needsUpdate(isPlaying, localTime.current, pausedVisibility)) return
+    if (!trailFrameBudget.shouldUpdateTrail(delta, clock.elapsedTime - lastUpdate.current, !trailBackend && !isPlaying)) return
     pausedFrame.record(localTime.current, pausedVisibility)
     lastUpdate.current = clock.elapsedTime
+    previousPausedTrail.current = { inputs: trailSelection, visibility: trailVisibility, worker: trailBackend?.available, time: localTime.current }
+    const workerActive = Boolean(trailBackend?.available)
+    const workerTrainIds: string[] = []
 
     const sampleTimes = vehicleTrailSampleTimes(localTime.current)
     const segmentCounts = new Array<number>(VEHICLE_TRAIL_SEGMENTS).fill(0)
@@ -3575,8 +3629,9 @@ function VehicleTrails({
       }
 
       if (train.realtime?.status === 'cancelled' || localTime.current < train.start || sampleTimes[VEHICLE_TRAIL_SEGMENTS] > train.end) continue
+      if (workerActive) { workerTrainIds.push(train.id); continue }
       const samples = sampleTimes.map((sampleTime) =>
-        projectedTrainPosition(
+        resolveTrainPosition(
           train,
           sampleTime,
           projectedStops,
@@ -3607,6 +3662,7 @@ function VehicleTrails({
       }
     }
 
+    if (workerActive) { trailBackend!.submit(localTime.current, workerTrainIds); return }
     geometries.forEach((geometry, index) => {
       updateActiveGeometry(geometry, segmentCounts[index] * 2)
     })
@@ -3650,11 +3706,12 @@ function SelectedTrainMarker({
   readonly color?: string
 }) {
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
+  const resolveTrainPosition = useProjectedTrainPosition()
   const marker = useRef<THREE.Group>(null)
 
   useFrame((state) => {
     if (!marker.current) return
-    const position = projectedTrainPosition(
+    const position = resolveTrainPosition(
       train,
       time,
       projectedStops,
@@ -3718,9 +3775,21 @@ function NetworkCamera({
 }) {
   const { camera, gl, size } = useThree()
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
+  const resolveTrainPosition = useProjectedTrainPosition()
   const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
   const desiredTarget = useMemo(() => new THREE.Vector3(), [])
   const currentTarget = useMemo(() => new THREE.Vector3(), [])
+  const createCameraDriver = useNetworkScene().props.extensions?.createCameraDriver
+  const cameraDriver = useRef<NetworkCameraDriver | undefined>(undefined)
+  useEffect(() => {
+    if (!createCameraDriver || !(camera instanceof THREE.PerspectiveCamera)) return
+    const driver = createCameraDriver({ camera, target: currentTarget, projection: airProjection })
+    cameraDriver.current = driver
+    return () => {
+      cameraDriver.current = undefined
+      driver.dispose()
+    }
+  }, [createCameraDriver, camera, currentTarget, airProjection])
   const mapTarget = useRef(new THREE.Vector3())
   const distanceScale = useRef(1)
   const localTime = useRef(time)
@@ -3894,11 +3963,12 @@ function NetworkCamera({
   }, [gl, minimumDistanceScale, selectedAirTrack, selectedTrain])
 
   useFrame((_, delta) => {
+    if (cameraDriver.current?.update(delta)) return
     if (isPlaying) {
       localTime.current += delta * playbackRate
     }
     const trainPosition = selectedTrain
-      ? projectedTrainPosition(
+      ? resolveTrainPosition(
           selectedTrain,
           localTime.current,
           projectedStops,
@@ -4117,6 +4187,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
   )
 
   return (
+    <NetworkSceneProviderContext.Provider value={{ props, projection, projectedStops, projectedPaths, lakeAvoidingPaths }}>
     <LakeAvoidingPathsContext.Provider value={lakeAvoidingPaths}>
       <fog attach="fog" args={['#050410', 34, 69]} />
       <ambientLight intensity={0.85} color="#7d87ff" />
@@ -4214,6 +4285,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         <RoadTrafficLayer
           snapshot={props.roadSnapshot}
           nationalSnapshot={props.nationalRoadSnapshot}
+          conditionsAtTime={props.extensions?.roadConditions}
           topology={props.roadTopology}
           time={props.time}
           isPlaying={props.isPlaying}
@@ -4305,6 +4377,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           selectedCategory={props.selectedCategory}
         />
       )}
+      {props.children}
       <VehicleTrails
         {...props}
         projectedStops={projectedStops}
@@ -4366,12 +4439,14 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         spatialLayoutMix={props.spatialLayoutMix}
       />
     </LakeAvoidingPathsContext.Provider>
+    </NetworkSceneProviderContext.Provider>
   )
 }
 
 export function NationalNetworkScene(props: NationalNetworkSceneProps) {
   return (
     <Canvas
+      frameloop={props.frameloop}
       camera={{ position: [0, 37, 26], fov: 44, near: 0.1, far: 120 }}
       dpr={[1, 1.65]}
       gl={{ antialias: true, alpha: false }}

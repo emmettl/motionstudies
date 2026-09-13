@@ -11,7 +11,15 @@ import {
 import { SERVICE_COLORS } from '@motionstudies/core/theme'
 import { createGlowPointTexture } from './glow-point-texture.ts'
 
-interface HubPulseSceneProps {
+export interface HubFlowPolicy {
+  readonly flowAllowed?: (call: HubCall, flow: 'arrival' | 'departure') => boolean
+  readonly cycleOffset?: (call: HubCall, time: number, cycle: number) => number
+  readonly visible?: (call: HubCall, time: number, horizon: number) => boolean
+}
+
+export interface HubPulseSceneProps {
+  /** Keeps source-specific boarding and timetable recurrence rules in the edition. */
+  readonly flowPolicy?: HubFlowPolicy
   readonly timeline: NetworkSnapshot['metadata']
   readonly hub: HubDefinition
   readonly calls: readonly HubCall[]
@@ -309,9 +317,11 @@ function HubDestinationLabels({ calls }: { readonly calls: readonly HubCall[] })
 function CorridorSpokes({
   calls,
   selectedCategory,
+  flowPolicy,
 }: {
   readonly calls: readonly HubCall[]
   readonly selectedCategory?: ServiceCategory
+  readonly flowPolicy?: HubFlowPolicy
 }) {
   const geometries = useMemo(() => {
     const seen = new Set<string>()
@@ -325,8 +335,8 @@ function CorridorSpokes({
           angle: directionForStop(call.hubStop, call.nextStop, index + Math.PI),
           flow: 'departure',
         },
-      ]
-      return directions.flatMap(({ angle, flow }) => {
+      ] as const
+      return directions.filter(({ flow }) => flowPolicy?.flowAllowed?.(call, flow) !== false).flatMap(({ angle, flow }) => {
         const key = `${flow}:${Math.round(angle * 28)}:${call.train.category}`
         if (seen.has(key)) return []
         seen.add(key)
@@ -348,7 +358,7 @@ function CorridorSpokes({
       })
     })
     return batchHubLines(lines.map(entry => entry.line)).map((line, index) => ({ key: `batch:${index}`, line }))
-  }, [calls, selectedCategory])
+  }, [calls, selectedCategory, flowPolicy])
 
   useEffect(
     () => () =>
@@ -400,6 +410,7 @@ function HubTraffic({
   timeline,
   playbackRate,
   selectedCategory,
+  flowPolicy,
 }: Omit<HubPulseSceneProps, 'hub'>) {
   const points = useRef<THREE.Points>(null)
   const glow = useRef<THREE.Points>(null)
@@ -471,9 +482,10 @@ function HubTraffic({
     calls.forEach((call, index) => {
       const cycle = timeline.windowEnd - timeline.windowStart
       const midpoint = (call.arrival + call.departure) / 2
-      const cycleOffset = Math.round((localTime.current - midpoint) / cycle) * cycle
+      const cycleOffset = flowPolicy?.cycleOffset?.(call, localTime.current, cycle) ?? Math.round((localTime.current - midpoint) / cycle) * cycle
       const arrival = call.arrival + cycleOffset
       const departure = call.departure + cycleOffset
+      if (flowPolicy?.visible?.(call, localTime.current, pulseHorizon) === false) return
       if (
         localTime.current < arrival - pulseHorizon ||
         localTime.current > departure + pulseHorizon
@@ -628,6 +640,7 @@ function HubWorld(props: HubPulseSceneProps) {
         showTaktOverlay={props.showTaktOverlay}
       />
       <CorridorSpokes
+        flowPolicy={props.flowPolicy}
         calls={props.calls}
         selectedCategory={props.selectedCategory}
       />
