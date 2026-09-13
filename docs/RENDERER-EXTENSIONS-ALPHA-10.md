@@ -29,3 +29,17 @@ Edition-specific visual styling, picking and Paris geometry morphing still use a
 ## Verification
 
 Shared browser regressions cover projection updates, child cleanup, resolver replacement and fallback, camera ownership and disposal, asynchronous trail frames and synchronous fallback. Trail-frame unit tests verify active-buffer uploads and atomic rejection of invalid frames. Edition regressions exercise their actual worker, camera, rail and spatial-layout integrations.
+
+## Publication and adoption
+
+All four packages were published as `0.1.0-alpha.10` under the npm `next` tag on 13 September 2026. [PR #4](https://github.com/emmettl/motionstudies/pull/4) merged as `741bdb4`; [trusted publication](https://github.com/emmettl/motionstudies/actions/runs/34748536561) passed verification and publication with npm provenance.
+
+| Edition / main | Adoption commit | Validation |
+| --- | --- | --- |
+| All Change | `ddf6220` | 280 unit tests, typecheck, lint, registry boundaries, build and transfer budgets; 12 Chromium/WebKit rail, bus and renderer checks |
+| Correspondances | `bba2eaa` | 25 unit tests, typecheck, lint, registry boundaries, build and all layer/transfer budgets; 18 Chromium/WebKit arc, morph, airport and renderer checks |
+| Gleislicht | `455ba82` | 1,410 unit tests after incorporating concurrent main changes, typecheck, lint, registry boundaries, build and transfer budgets; worker/paused geometry checks and 4 passing orbital handover checks |
+
+The shared release passed 223 unit tests, 72 packed browser specimens (2 touch-inapplicable tests skipped), and all 32 loader/extension browser checks. Final edition installations use registry lockfiles with integrity hashes. All 83 compiled JavaScript files from the four installed packages match the browser-tested candidate byte for byte. The initial orbital test failure was caused by absent generated movement fixtures in the isolated checkout; preparing the normal data fixtures resolved it on Chromium and WebKit.
+
+The London, Paris and Swiss main branches are pushed. Their existing hosted deployment workflows run separately from the completed local validation above. Other editions retain alpha.9 in this pass because they do not need these extension integrations. Visual styling, picking, Paris geometry morphing, shared search behaviour and general tooling consolidation remain future work.
