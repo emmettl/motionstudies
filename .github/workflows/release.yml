@@ -85,3 +85,6 @@ jobs:
         run: node scripts/publish-packages.mjs --publish
         env:
           NODE_AUTH_TOKEN: ''
+      - name: Verify published registry artifacts
+        timeout-minutes: 15
+        run: node scripts/verify-published-packages.mjs

@@ -12,3 +12,5 @@ Bristol's first application pilot separates loading from playback intent. A reco
 The controller remains local until a second consumer demonstrates the same lifecycle semantics. The larger station/selection renderer extraction and the remaining authored Paris/Swiss geometry and picking adaptations are separate follow-up work; this release does not claim to remove every edition transform.
 
 Validation: 272 shared unit tests; type, lint and architecture checks; 90 packed-consumer browser checks (two existing skips); 34 loader browser checks. Downstream validation and publication receipts are recorded after release.
+
+The alpha.15 rollout exposed npm's asynchronous publication processing: accepted packages were not all immediately installable. The release workflow now waits for each exact registry version and compares its integrity with the tested artifact before reporting publication complete. The wait retries temporary absence/network failures for up to twenty passes; an artifact mismatch fails immediately.
