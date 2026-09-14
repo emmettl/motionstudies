@@ -6,6 +6,8 @@
 
 A working renderer is not evidence that a city's source path is ready. Before committing to an authored scene, establish that its defining claim can be supported by an obtainable, dated source and a defensible publication path. This register separates unanswered provider questions from ordinary acquisition and validation work.
 
+The [archive and processing proposal](ARCHIVE-AND-PROCESSING.md#provenance-publication-and-retention) records how source findings should govern acquisition, retention, processing, reuse between editions, public display and redistribution separately. Storage format and software licensing do not extend dataset permissions; existing terms should be applied directly where they establish the intended rights.
+
 This pass reviewed all fourteen candidate briefs, inspected public terms and catalogues, checked the existing Tokyo source contract, and retained temporary review copies of selected official documents. It did not register accounts, obtain gated feeds, contact providers or approve a city for publication. Direct retrieval URLs, timestamps and hashes are recorded in [the retrieval record](data-access-review-2026-09-07.json). A successful HTML fetch may be only an application shell; the record distinguishes that from readable evidence. Earlier feed counts and checksums remain dated observations in the city briefs, not fresh measurements from this review.
 
 ## Questions we can close or narrow now

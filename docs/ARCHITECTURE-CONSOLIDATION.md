@@ -76,6 +76,8 @@ For the pilot's data path, make these contracts explicit:
 
 Package release version, data schema version and a particular recording's identity are separate facts. Reuse established domain contracts where they fit. Bird density fields, recorded vehicle positions and scheduled journeys can share mechanical helpers without sharing one motion model.
 
+The [archive and processing options](ARCHIVE-AND-PROCESSING.md) extend these boundaries from source capture through analytical storage and published artifacts. Object archives, tabular observations, gridded fields and an optional query database have different responsibilities. Evaluate them through a bounded recording, with source-specific retention and redistribution, rather than making one database or storage format a prerequisite for every edition.
+
 **Deliverable:** a documented and checked producer-to-consumer contract for Bristol's recording path, using its existing manifests. Corrupt, unsupported or mismatched data fails clearly; absent observations remain distinct from zero activity. Reference fixtures and replay checks protect meaning as well as shape.
 
 ## 4. Library ergonomics and independent consumption

@@ -177,6 +177,8 @@ Use UTC instants internally with Europe/London presentation and explicit operati
 
 ## Architecture and reuse
 
+The reusable [archive and processing proposal](ARCHIVE-AND-PROCESSING.md) develops this pipeline: original objects in R2, candidate Parquet tables and chunked weather arrays, batch compilation and optional operational queries. It includes storage scenarios, source-specific retention/redistribution rules and a bounded implementation proof. These remain options to evaluate, not a claim that the national archive or database has been deployed.
+
 The proposed pipeline is:
 
 ```text
@@ -189,7 +191,7 @@ dated schedules + received events + dated geometry
 
 Collection belongs server-side. Append raw messages or snapshots with source time, receipt time, hash and release/version context. Normalize incrementally into date/operator/time partitions; an embedded analytical database or partitioned columnar files are suitable candidates. Measure peak memory before selecting a particular engine. A persistent rail feed requires a long-running consumer or equivalent durable connection service; a periodic static-site build is not a collector.
 
-Immutable published editions can then use static object storage and a CDN. Precompute the opening composition and common groups. Arbitrary national queries may eventually need a server query layer; they should not require loading the full archive into a phone. Raw evidence can be served through small indexed extracts plus optional full downloadable partitions where licensed.
+Immutable published editions should use direct static-asset hosting under the [series cost-control policy](COST-CONTROL.md), within an approximately $100/month total budget across all editions. Precompute the opening composition, common groups and permitted constituent extracts. Arbitrary national queries may eventually need a server query layer; they should not require loading the full archive into a phone. Such queries and full partition downloads require both source permission and a proven cost bound before enabling them. The private archive has finite retention by age and total bytes; public popularity must not increase collection or processing work.
 
 ### What the current shared code provides
 

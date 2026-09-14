@@ -1,5 +1,7 @@
 # Domain routing
 
+The [series cost-control policy](COST-CONTROL.md) sets an approximately $100/month total operating ceiling and distinguishes direct static hosting from metered live-data and R2 paths. Its proposed quotas are not yet a verified account-wide spending guarantee. Hosting changes must preserve that distinction; audit browser data requests as well as the page-serving route.
+
 The catalogue and widget lab are built by this repository’s Pages workflow. GitHub Pages retains `motionstudies.app` as the custom domain and enforces HTTPS. Cloudflare DNS proxies the apex records; SSL/TLS uses Full (Strict) against GitHub’s valid origin certificate.
 
 All six public editions are hosted directly by individual Cloudflare Workers Static Assets deployments. GitHub Pages remains available at each repository's original URL.
