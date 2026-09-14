@@ -38,6 +38,7 @@
     "./domain/vehicle-calls": "./src/domain/vehicle-calls.ts",
     "./domain/supported-field": "./src/domain/supported-field.ts",
     "./domain/gridded-series": "./src/domain/gridded-series.ts",
+    "./domain/published-day": "./src/domain/published-day.ts",
     "./domain/field-paths": "./src/domain/field-paths.ts",
     "./domain/daylight": "./src/domain/daylight.ts"
   },
