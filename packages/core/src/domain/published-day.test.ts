@@ -1,7 +1,7 @@
 import {it,expect} from 'vitest'
-import {gzipSync} from 'node:zlib'
 import {cellKey,cellOf,fetchTransport,inflateIfGzipped,journeyAt,openPublishedDay,partFor,positionAt,sliceNameAt,sliceStart,type DayTransport,type Pack} from './published-day.ts'
 
+const gz=async(text:string)=>new Uint8Array(await new Response(new Blob([text]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer())
 const t0=Date.parse('2026-09-15T00:00:00Z')/1000
 const packA:Pack={date:'2026-09-15',operator:'OPA',part:0,parts:2,vehicles:{'1':{track:[[t0+60,-2.60,51.45],[t0+120,-2.61,51.45],[t0+3600,-2.60,51.55]],journeys:[[t0+60,'1','j1'],[t0+120,'2','j2'],[t0+3600,'1','j1']]}}}
 const packB:Pack={date:'2026-09-15',operator:'OPB',part:0,parts:1,vehicles:{'9':{track:[[t0+420,-1.5,52.4]],journeys:[[t0+420,'1','j1']]}}}
@@ -10,7 +10,7 @@ const files:Record<string,string|Uint8Array>={
  'index.json':JSON.stringify({date:'2026-09-15',operators:[{ref:'OPA',vehicles:3,samples:5,parts:[{file:'packs/OPA.0.json.gz',bytes:1,vehicles:1,samples:3,refs:['1']},{file:'packs/OPA.1.json.gz',bytes:1,vehicles:2,samples:2,refs:['2','3']}]},{ref:'OPB',vehicles:1,samples:1,parts:[{file:'packs/OPB.json.gz',bytes:1,vehicles:1,samples:1}]}]}),
  'slices/00-00.json':JSON.stringify({slice:'2026-09-15T00:00:00Z',cells:[[-2.7,51.4,2,2],[-2.6,51.4,1,1]]}),
  'members/00-00.json':JSON.stringify({slice:'2026-09-15T00:00:00Z',cells:{'-2.7,51.4':[[0,'1'],[0,'2']],'-2.6,51.4':[[0,'1']]}}),
- 'packs/OPA.0.json.gz':new Uint8Array(gzipSync(JSON.stringify(packA))),'packs/OPB.json.gz':new Uint8Array(gzipSync(JSON.stringify(packB))),
+ 'packs/OPA.0.json.gz':await gz(JSON.stringify(packA)),'packs/OPB.json.gz':await gz(JSON.stringify(packB)),
 }
 const loads:string[]=[]
 const transport:DayTransport={text:async p=>{loads.push(p);const f=files[p];if(typeof f!=='string')throw new Error('missing '+p);return f},bytes:async p=>{loads.push(p);const f=files[p];if(!(f instanceof Uint8Array))throw new Error('missing '+p);return f}}
@@ -42,7 +42,7 @@ it('bytes already decoded by a server that declared the encoding pass through un
  const plain=new TextEncoder().encode('{"x":1}'),calls:number[]=[]
  const inflate=async(b:Uint8Array)=>{calls.push(b.length);return plain}
  expect(await inflateIfGzipped(plain,inflate)).toBe(plain);expect(calls).toEqual([])
- expect(await inflateIfGzipped(new Uint8Array(gzipSync('{"x":1}')),inflate)).toBe(plain);expect(calls.length).toBe(1)
+ expect(await inflateIfGzipped(await gz('{"x":1}'),inflate)).toBe(plain);expect(calls.length).toBe(1)
 })
 it('the fetch transport reads text and bytes under a base and surfaces HTTP failures by path',async()=>{
  const fetchImpl=async(u:string)=>u.endsWith('/manifest.json')?new Response('{"a":1}'):new Response(null,{status:404})
