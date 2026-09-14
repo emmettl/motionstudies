@@ -58,6 +58,33 @@ Maintain a billing-cycle ledger of fixed commitments, incurred variable costs an
 
 Provider-enforced quotas or fixed-price service terms provide stronger protection than our own counters. Software admission bounds cooperative workloads only when all writers and cost paths obey it. If a publicly reachable metered path cannot be bounded before billing occurs, it does not meet the strict budget requirement and must be removed, moved or left disabled. This design does not claim that Cloudflare exposes a universal $100 account cutoff.
 
+## All-in estimate for the Parquet and R2 pipeline — 14 September 2026
+
+Built from the [recorded national hour](ARCHIVE-AND-PROCESSING.md#first-implementation-proof) and prices reread from Cloudflare on 14 September: Standard storage $0.015 and Infrequent Access $0.01 per GB-month, Class A writes $4.50 per million ($9.00 Infrequent Access), Class B reads $0.36 per million ($0.90), Infrequent Access retrieval $0.01 per GB with a 30-day minimum, egress free, and a monthly free tier on Standard of 10 GB, one million writes and ten million reads; static-asset requests on Workers are free and unlimited. Storage bills on peak daily usage, so a 30-day window with lifecycle deletion lag is costed at 31 days. The measured hour was a weekday midday; nights are lighter, so day figures are near an upper bound.
+
+**Measured per day, projected from the hour**
+
+| Layer | Per day | Basis |
+| --- | ---: | --- |
+| Original archives | 6.71 GB | 2.33 MB × 2,880 captures |
+| Deduplicated samples, Parquet | 0.62 GB | 25.8 MB × 24 |
+| Published artifacts: packs, slices, tiles | 0.45 GB | 18 MB packs + 0.66 MB slices + 0.1 MB tiles, × 24 |
+| **Total retained per day** | **7.78 GB** | |
+
+**Scenarios, monthly**
+
+| Scenario | Storage | Standard | Archives in Infrequent Access |
+| --- | ---: | ---: | ---: |
+| Intended: rolling 31 days of everything | 241 GB | $3.47 | $2.58 storage + $0.78 archive writes |
+| Plus rainfall radar at 1.15 GB per day | +36 GB | +$0.54 | +$0.54 |
+| Twelve selected days kept indefinitely | 93 GB | $1.40 | $1.00 |
+| The full 250 GB selected-evidence allocation | 32 complete days | $3.73 | $2.66 |
+| Continuous year, for comparison only | 2,840 GB | $42.59 | over the storage ceiling; excluded |
+
+Operations: about 12,000 writes a day, of which 8,760 are per-operator-per-hour packs, 360,000 a month, inside the free million on Standard; only Infrequent Access archive writes are billable. Compilation runs on the author's Mac against the local copy before upload, so retrieval and read operations are near zero; a re-compilation from R2 costs about 2,900 reads and no egress. Ingress is free; the home uplink carries 7.8 GB a day, an average of 0.7 Mbit/s. The Mac draws perhaps 22 kWh a month if it would otherwise be off, an electricity cost rather than a cloud one. Power-axis data is 13 MB a day and does not register.
+
+**All-in for the intended operation with weather: about $4.00 a month on Standard, $3.90 with archives in Infrequent Access**, against the $15 object-storage allowance and the $60 operating envelope. The one path that changes this is public reads from R2 itself: at twenty reads per visitor session, 1,000 sessions a day are free, 50,000 cost $7.20 and 500,000 cost $104. Publishing the day's roughly 9,100 static files, 450 MB, through Workers Static Assets keeps visitor traffic at zero regardless of volume, which is why raw buckets stay private and the published descent is static. Whether static assets require the paid Workers plan should be confirmed on the account before publication; the requests themselves are documented as free.
+
 ## Current position and next proof
 
 The checked-in edition hosting configurations already use direct Static Assets, without an application handler. The retired edition proxy has no configured routes. That is a useful foundation, not a complete spending audit: [hosting documentation](HOSTING.md) records separate London/Swiss live-data Workers and Grid/84's public R2-backed GHSL tiles. The shared airport service also has its own Worker configuration. Their current deployment, plan, usage and reachable billing paths need inspection, including auxiliary hostnames and cross-origin browser requests.
