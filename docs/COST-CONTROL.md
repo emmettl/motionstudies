@@ -38,6 +38,8 @@ An application counter, per-IP rate limit or API key is insufficient if an unlim
 
 ## Bound retention by age and bytes
 
+**Adopted 14 September 2026:** a rolling window of N days for continuous collection, with the ability to save particular study days out of the window into the selected-evidence allocation. Saving a day pins its archives, normalised table and published artifacts against expiry and consumes selected allowance; it is an authored decision recorded in a small ledger, made within the window, and the day's settled power data arrives about a week after the day, so a day is judged complete no earlier than that. N starts at 30.
+
 Start new continuous collections with a **30-day rolling window**, shortened where source terms require. This is a default for new collection, not an instruction to delete existing archives. Add a **1,000 GB total R2 storage ceiling** across the series, including original files, normalized partitions, derivatives, staging, backups and incomplete uploads. A separate store or database needs its own finite capacity and a place in the same dollar budget.
 
 Reserve, initially, up to **250 GB for selected study evidence**, **650 GB for rolling data** and **100 GB for staging and cleanup headroom**. These are shared allocations. Promoting a day to the selected collection consumes its remaining allowance; it never grants perpetual additional space. A published study should retain its required evidence within that allocation and source policy. If evidence is withdrawn, explicitly revise its availability and reproducibility claims.
