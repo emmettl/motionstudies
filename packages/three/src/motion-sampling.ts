@@ -32,6 +32,8 @@ export class MotionSampleWindow {
     if (time < this.start - tolerance || time > this.end + tolerance) return 'seek'
     if (playing && (time >= this.end || time < this.start)) return 'update'
     if (Number.isFinite(this.grid) && time >= this.grid + VEHICLE_TRAIL_HISTORY_STEP_SECONDS) return 'update'
+    // Paused geometry collapses onto the clock so raw buffers describe what is drawn.
+    if (!playing && this.start !== this.end) return 'update'
     return 'none'
   }
 

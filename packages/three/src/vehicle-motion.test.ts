@@ -16,12 +16,10 @@ it('indexes journeys, stamps placements per pass and forgets them on invalidatio
   expect(table.placed(0)).toBe(false)
   table.generation += 1
   expect(table.placed(1)).toBe(false)
-  expect(table.placedBefore(1)).toBe(true)
-  expect(table.placedBefore(0)).toBe(false)
   table.targets[3] = 4
   table.targetTime = 30
   table.invalidate()
-  expect(table.placedBefore(1)).toBe(false)
+  expect(table.generation).toBe(0)
   expect(Number.isNaN(table.targets[3])).toBe(true)
   expect(Number.isNaN(table.targetTime)).toBe(true)
 })

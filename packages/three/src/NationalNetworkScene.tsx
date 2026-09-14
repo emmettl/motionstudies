@@ -3157,6 +3157,7 @@ function VehicleMotion({
     trailGrid: NaN,
     trailsStale: true,
     lastSeekAt: -Infinity,
+    scrubbing: false,
   })
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
@@ -3246,10 +3247,11 @@ function VehicleMotion({
   const runPass = (now: number, step: number, bounded: boolean, clock: number,
     visibleBus: boolean, visibleTram: boolean) => {
     const state = frame.current
-    const includeTrails = clock - state.lastSeekAt >= TRAIL_SETTLE_SECONDS
+    // A lone seek refills history at once; a run of seeks waits for the clock to settle.
+    const includeTrails = !state.scrubbing || clock - state.lastSeekAt >= TRAIL_SETTLE_SECONDS
     const { positions, targets, stamps, history } = motion
     const previousValid = Number.isFinite(sampleWindow.end) && motion.targetTime === sampleWindow.end
-    const keep = previousValid && now >= sampleWindow.start && now <= sampleWindow.end
+    const keep = previousValid && isPlaying && now >= sampleWindow.start && now <= sampleWindow.end
     const continues = !keep && previousValid && isPlaying && sampleWindow.continues(now)
     const start = keep ? sampleWindow.start : continues ? sampleWindow.end : now
     const end = keep ? sampleWindow.end : start + step
@@ -3435,19 +3437,21 @@ function VehicleMotion({
       current.geometry = geometryInputs
       motion.invalidate()
       sampleWindow.record(NaN, NaN, NaN)
-      current.lastSeekAt = clock
     }
     const interval = sampleBudget.interval(delta)
     const step = markerStepSeconds(isPlaying, playbackRate, interval)
     let kind = sampleWindow.plan(now, isPlaying, playbackRate, step)
-    if (kind === 'seek') current.lastSeekAt = clock
+    if (kind === 'seek') {
+      current.scrubbing = clock - current.lastSeekAt < TRAIL_SETTLE_SECONDS
+      current.lastSeekAt = clock
+    }
     const visibleBus = vehicleIsVisibleAtZoom('bus', state.camera.position.y, cameraFraming)
     const visibleTram = vehicleIsVisibleAtZoom('tram', state.camera.position.y, cameraFraming)
     const bounded = groundViewBounds(state.camera, vehicleElevation, viewBounds)
     if (kind === 'none') {
       if (current.inputs !== styleInputs || current.visibility !== Number(visibleBus) + 2 * Number(visibleTram)) kind = 'update'
       else if (current.culled && (!bounded || !boundsContain(cullBounds, viewBounds))) kind = 'update'
-      else if (current.trailsStale && clock - current.lastSeekAt >= TRAIL_SETTLE_SECONDS) kind = 'update'
+      else if (current.trailsStale && (!current.scrubbing || clock - current.lastSeekAt >= TRAIL_SETTLE_SECONDS)) kind = 'update'
     }
     if (kind !== 'none') runPass(now, step, bounded, clock, visibleBus, visibleTram)
     mixUniform.value.set(sampleWindow.mix(now), trailGridMix(now, current.trailGrid))

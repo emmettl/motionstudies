@@ -30,11 +30,6 @@ export class VehicleMotionTable {
     return this.stamps[index] === this.generation && this.generation > 0
   }
 
-  /** Whether the previous pass placed this journey. */
-  placedBefore(index: number): boolean {
-    return this.generation > 1 && this.stamps[index] === this.generation - 1
-  }
-
   /** Forget every sample; positions and history no longer describe the geometry. */
   invalidate(): void {
     this.targets.fill(NaN)
