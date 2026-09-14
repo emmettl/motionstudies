@@ -1,0 +1,105 @@
+{
+  "note": "Probe of the Met Office Weather DataHub Land Observations API from Bristol on 14 September 2026, two calls of the daily 360; the key travels only as a header and is never recorded. Locations are identified by six-character geohash, area and region; the API returns no coordinates.",
+  "probe": "met-office-land-observations",
+  "startedAt": "2026-09-14T21:43:28.361Z",
+  "finishedAt": "2026-09-14T21:43:29.148Z",
+  "point": {
+    "lat": 51.45,
+    "lon": -2.58
+  },
+  "calls": 2,
+  "nearest": {
+    "status": 200,
+    "bytes": 607,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "date": "Mon, 14 Sep 2026 21:43:28 GMT"
+    },
+    "locations": [
+      {
+        "geohash": "gcnjmb",
+        "area": "South Gloucestershire",
+        "region": "sw",
+        "country": "England",
+        "olson_time_zone": "Europe/London"
+      },
+      {
+        "geohash": "gcnsfx",
+        "area": "Wiltshire",
+        "region": "sw",
+        "country": "England",
+        "olson_time_zone": "Europe/London"
+      },
+      {
+        "geohash": "gcn45v",
+        "area": "Somerset",
+        "region": "sw",
+        "country": "England",
+        "olson_time_zone": "Europe/London"
+      },
+      {
+        "geohash": "gcjs3t",
+        "area": "Vale of Glamorgan",
+        "region": "wl",
+        "country": "Wales",
+        "olson_time_zone": "Europe/London"
+      },
+      {
+        "geohash": "gcneqb",
+        "area": "Wiltshire",
+        "region": "sw",
+        "country": "England",
+        "olson_time_zone": "Europe/London"
+      }
+    ]
+  },
+  "observations": {
+    "geohash": "gcnjmb",
+    "status": 200,
+    "bytes": 10553,
+    "headers": {
+      "content-type": "application/json; charset=utf-8",
+      "date": "Mon, 14 Sep 2026 21:43:29 GMT"
+    },
+    "summary": {
+      "rows": 48,
+      "first": "2026-09-12T22:00:00.000Z",
+      "last": "2026-09-14T21:00:00.000Z",
+      "spanHours": 47,
+      "cadenceMinutes": 60,
+      "irregularGaps": 0,
+      "nulls": {
+        "datetime": 0,
+        "humidity": 0,
+        "mslp": 0,
+        "pressure_tendency": 0,
+        "temperature": 0,
+        "visibility": 0,
+        "weather_code": 0,
+        "wind_direction": 0,
+        "wind_gust": 0,
+        "wind_speed": 0
+      },
+      "extraFields": [],
+      "latest": {
+        "pressure_tendency": "F",
+        "wind_gust": 3.9,
+        "datetime": "2026-09-14T21:00:00Z",
+        "visibility": 57640,
+        "weather_code": 8,
+        "humidity": 94,
+        "wind_speed": 2.5,
+        "mslp": 1019,
+        "temperature": 18.84,
+        "wind_direction": "SSW"
+      }
+    }
+  },
+  "budget": {
+    "dailyLimit": 360,
+    "stations": 150,
+    "callsPerStationPerDayOnFreePlan": 2.4,
+    "coverageWindowHours": 48,
+    "note": "One call returns one station; the free plan of 360 calls a day covers all 150 stations about twice a day, each call carrying 48 hours, so hourly observations can be collected with up to a day of latency but not live. Discovery of the 150 stations is by nearest lookups, at most five per call, and is a one-off to cache."
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "note": "Published day compiled from the two normalised receipt hours of the recorded national hour (11:42 to 12:42 UTC); a partial day, kept as the first measurement of the compiler. The file list is omitted.",
+  "date": "2026-09-14",
+  "compiledAt": "2026-09-14T21:34:56.376Z",
+  "hours": {
+    "present": [
+      "2026-09-14T11",
+      "2026-09-14T12"
+    ],
+    "missing": [
+      "2026-09-14T00",
+      "2026-09-14T01",
+      "2026-09-14T02",
+      "2026-09-14T03",
+      "2026-09-14T04",
+      "2026-09-14T05",
+      "2026-09-14T06",
+      "2026-09-14T07",
+      "2026-09-14T08",
+      "2026-09-14T09",
+      "2026-09-14T10",
+      "2026-09-14T13",
+      "2026-09-14T14",
+      "2026-09-14T15",
+      "2026-09-14T16",
+      "2026-09-14T17",
+      "2026-09-14T18",
+      "2026-09-14T19",
+      "2026-09-14T20",
+      "2026-09-14T21",
+      "2026-09-14T22",
+      "2026-09-14T23"
+    ],
+    "inputs": [
+      {
+        "hour": "2026-09-14T11",
+        "captures": 36,
+        "collectionId": "8ccffecb-290a-4505-9cb4-bd1967aa0ceb",
+        "normalisedAt": "2026-09-14T16:07:35.426Z"
+      },
+      {
+        "hour": "2026-09-14T12",
+        "captures": 84,
+        "collectionId": "8ccffecb-290a-4505-9cb4-bd1967aa0ceb",
+        "normalisedAt": "2026-09-14T16:07:35.426Z"
+      }
+    ]
+  },
+  "stats": {
+    "samples": 2001468,
+    "vehicles": 26432,
+    "operators": 362,
+    "slices": 135,
+    "excludedRejected": 9879,
+    "excludedOutsideDay": 1168,
+    "memberEntries": 314821
+  },
+  "slices": 135,
+  "packs": {
+    "files": 362,
+    "bytes": 18394295,
+    "largest": {
+      "file": "packs/TFLO.json.gz",
+      "bytes": 3300350,
+      "vehicles": 7521,
+      "samples": 402317
+    },
+    "oversized": [],
+    "partBytes": 20971520,
+    "samplesPerPart": 2097152,
+    "bytesPerSample": 9.19
+  },
+  "files": 634,
+  "bytes": 24224552,
+  "timings": {
+    "count_excluded": 13,
+    "load": 188,
+    "stats": 10,
+    "operators": 7,
+    "slice_list": 4,
+    "slices_and_members": 934,
+    "packs": 4896
+  }
+}

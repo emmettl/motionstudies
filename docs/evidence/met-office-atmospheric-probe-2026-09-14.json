@@ -1,0 +1,145 @@
+{
+  "note": "Listing only; no allowance spent. Orders are built in the DataHub web interface; the API serves the files of an order's latest runs as GRIB2 through a redirect. The free plan is 1 GB a month, and a file's size is only known once downloaded, so the first download of any new order is capped and measured.",
+  "probe": "met-office-atmospheric-models",
+  "startedAt": "2026-09-14T21:47:22.282Z",
+  "finishedAt": "2026-09-14T21:47:22.790Z",
+  "calls": 2,
+  "runs": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json",
+      "date": "Mon, 14 Sep 2026 21:47:22 GMT"
+    },
+    "models": [
+      {
+        "modelId": "mo-uk",
+        "completeRuns": 24,
+        "runHours": [
+          "00",
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "latestRun": "2026-09-14T17:00:00Z",
+        "earliestRun": "2026-09-13T18:00:00Z"
+      },
+      {
+        "modelId": "mo-uk-latlon",
+        "completeRuns": 24,
+        "runHours": [
+          "00",
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "latestRun": "2026-09-14T17:00:00Z",
+        "earliestRun": "2026-09-13T18:00:00Z"
+      },
+      {
+        "modelId": "mo-global",
+        "completeRuns": 4,
+        "runHours": [
+          "00",
+          "06",
+          "12",
+          "18"
+        ],
+        "latestRun": "2026-09-14T12:00:00Z",
+        "earliestRun": "2026-09-13T18:00:00Z"
+      },
+      {
+        "modelId": "mo-mogrepsg",
+        "completeRuns": 4,
+        "runHours": [
+          "00",
+          "06",
+          "12",
+          "18"
+        ],
+        "latestRun": "2026-09-14T12:00:00Z",
+        "earliestRun": "2026-09-13T18:00:00Z"
+      },
+      {
+        "modelId": "mo-mogrepsuk",
+        "completeRuns": 24,
+        "runHours": [
+          "00",
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "latestRun": "2026-09-14T17:00:00Z",
+        "earliestRun": "2026-09-13T18:00:00Z"
+      }
+    ]
+  },
+  "orders": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/json",
+      "date": "Mon, 14 Sep 2026 21:47:22 GMT"
+    },
+    "count": 0,
+    "list": []
+  }
+}
