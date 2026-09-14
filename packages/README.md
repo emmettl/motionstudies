@@ -234,6 +234,10 @@ For timetable-backed vehicle selections, `NetworkVehicleHeroCard` from `@motions
 
 For independent airport infrastructure, `mapStyle.airports.visible` hides the mounted group without rebuilding GPU resources, and `showLabels` controls its labels separately. Both default to `true`. Set these from the edition's layout and label controls; airport abbreviations equal to their IATA code are rendered once.
 
+## Compression at rest in the source store
+
+`capture` and `importCapture` accept `compression: 'gzip'`. The object is stored as `objects/<sha256>.gz` when gzip saves at least ten percent, otherwise raw; the record keeps the raw content hash and byte count as identity and adds `storedBytes` and `encoding`. `readCapture` and the new `readObject(store, hash, expectedBytes)` follow either form, verify the raw hash after expansion, and refuse output beyond the recorded size. `compactObjects(store, { minimumSaving })` compresses existing raw objects in place, verifying each before removing the raw file; records are not rewritten, since reads do not depend on them. Already-compressed sources such as ZIP archives stay raw. Use `storedBytes` for storage accounting and `bytes` for provenance.
+
 ## Estimated fields, gridded series, field paths and daylight
 
 These transport-neutral modules came from Zugunruhe's radar-field studies and serve any work that renders a continuous surface between scattered instruments, a gridded weather product, illustrative flow, or the sun's position: modelled electricity demand between substations, rain radar, model wind, or a terminator crossing a national field. They are pure functions with no dependencies. See [the shared-field record](../docs/SHARED-FIELDS.md) for provenance and adoption.

@@ -14,6 +14,9 @@ Station departure cards are implemented. Prepared two-day timetable releases and
 
 [Public release metadata](https://motionstudies.app/gleislicht/_release.json) serves the earlier `6d2c781`. Additional compact-desktop/interface changes are uncommitted in the local checkout and are not counted as a release. See the [series status record](STUDY-STATUS.md) before equating implementation, owner acceptance and deployment. Further regional, seasonal and vertical-geometry work remains governed by the edition's source audits.
 
+
+**Continuous local capture — 14 September 2026.** The realtime worker keeps only the latest normalised snapshot, so Switzerland has never had a recorded observed day. From 15 September the CI Mac records the worker's public output once a minute through Underfall's generic collector, about 0.9 MB and 770 trip updates per capture, with the Bearer key staying at the edge; the first complete Swiss civil day was scheduled from Swiss midnight. A recorded day of trip updates against the matching static release is the material for showing what actually ran against the Takt, and for the service-alerts increment. Raw protobuf capture would need the key on the recording host. See the [recording guide](https://github.com/emmettl/underfall/blob/main/docs/RECORDING-WINDOWS.md).
+
 ## The idea
 
 **Gleislicht: Switzerland in motion** makes the Swiss railway system feel alive rather than diagrammatic. It is a data visualisation, but its emotional register is a late-night window seat: dark valleys, bright infrastructure, distant signals and trains leaving traces through the landscape.

@@ -1,0 +1,236 @@
+{
+ "kind": "national-archive-proof",
+ "ranAt": "2026-09-14T13:39:13.446Z",
+ "host": "author Mac, local batch",
+ "collection": "8ccffecb-290a-4505-9cb4-bd1967aa0ceb (national hour, 14 September 2026 11:42\u201312:42 UTC)",
+ "staging": {
+  "captures": 120,
+  "reports": 3246269,
+  "archiveBytes": 280400000,
+  "expandedBytesApprox": 3617000000,
+  "stagingGzipBytes": 120382561,
+  "ms": 145840,
+  "note": "archive byte total from the recording summary; staging replayed the immutable objects without contacting the provider"
+ },
+ "normalise": {
+  "timings": {
+   "read_reports": 501,
+   "read_captures": 1,
+   "dedupe": 354,
+   "stats": 13,
+   "write_samples": 231,
+   "write_captures": 1
+  },
+  "stats": {
+   "samples": 2000059,
+   "vehicles": 27111,
+   "reports": 3246269,
+   "conflicts": 0,
+   "out_of_bounds": 9831,
+   "future": 7,
+   "without_journey_ref": 397515,
+   "first_observed": "2026-09-13 13:43:17+02",
+   "last_observed": "2026-09-14 14:41:41+02",
+   "operators": 365
+  }
+ },
+ "compile": {
+  "timings": {
+   "load": 1,
+   "tiles": 18,
+   "slice_totals": 1,
+   "direct_totals": 43,
+   "busiest_cell": 4,
+   "group_members": 36,
+   "write_tiles": 4
+  },
+  "window": {
+   "from": "2026-09-14T11:42:28Z",
+   "to": "2026-09-14T12:41:58Z",
+   "slices": 12,
+   "staleSlices": 265,
+   "samplesInWindow": 1864896,
+   "staleSamples": 125325
+  },
+  "group": {
+   "rule": "samples observed in the five minutes from 2026-09-14T12:30:00Z within the 0.1\u00b0 cell at -0.2,51.5",
+   "slice": "2026-09-14T12:30:00Z",
+   "cell": [
+    -0.2,
+    51.5
+   ],
+   "members": 847,
+   "samples": 4340,
+   "membersReconcile": true
+  },
+  "evidence": {
+   "operator_ref": "TFLO",
+   "vehicle_ref": "LK67ENO",
+   "samples": 71,
+   "coldLookupMs": [
+    3,
+    2,
+    2,
+    2,
+    2
+   ]
+  },
+  "publish": {
+   "slices": 277,
+   "packs": 365,
+   "packGzipBytes": 17961468,
+   "largestPack": {
+    "operator": "TFLO",
+    "vehicles": 7682,
+    "gzipBytes": 3238049,
+    "jsonBytes": 13052561
+   }
+  }
+ },
+ "inWindowReconciliation": [
+  {
+   "slice": "2026-09-14T11:45:00Z",
+   "inWindow": true,
+   "cells": 1535,
+   "tileSamples": 164339,
+   "directSamples": 164339,
+   "samplesReconcile": true,
+   "tileVehicleSum": 23959,
+   "distinctVehicles": 20788,
+   "vehiclesCrossingCells": 3171
+  },
+  {
+   "slice": "2026-09-14T11:50:00Z",
+   "inWindow": true,
+   "cells": 1561,
+   "tileSamples": 164533,
+   "directSamples": 164533,
+   "samplesReconcile": true,
+   "tileVehicleSum": 24026,
+   "distinctVehicles": 20808,
+   "vehiclesCrossingCells": 3218
+  },
+  {
+   "slice": "2026-09-14T11:55:00Z",
+   "inWindow": true,
+   "cells": 1533,
+   "tileSamples": 162987,
+   "directSamples": 162987,
+   "samplesReconcile": true,
+   "tileVehicleSum": 23921,
+   "distinctVehicles": 20810,
+   "vehiclesCrossingCells": 3111
+  },
+  {
+   "slice": "2026-09-14T12:00:00Z",
+   "inWindow": true,
+   "cells": 1547,
+   "tileSamples": 164739,
+   "directSamples": 164739,
+   "samplesReconcile": true,
+   "tileVehicleSum": 24018,
+   "distinctVehicles": 20790,
+   "vehiclesCrossingCells": 3228
+  },
+  {
+   "slice": "2026-09-14T12:05:00Z",
+   "inWindow": true,
+   "cells": 1560,
+   "tileSamples": 164389,
+   "directSamples": 164389,
+   "samplesReconcile": true,
+   "tileVehicleSum": 23974,
+   "distinctVehicles": 20810,
+   "vehiclesCrossingCells": 3164
+  },
+  {
+   "slice": "2026-09-14T12:10:00Z",
+   "inWindow": true,
+   "cells": 1577,
+   "tileSamples": 166399,
+   "directSamples": 166399,
+   "samplesReconcile": true,
+   "tileVehicleSum": 24127,
+   "distinctVehicles": 20853,
+   "vehiclesCrossingCells": 3274
+  },
+  {
+   "slice": "2026-09-14T12:15:00Z",
+   "inWindow": true,
+   "cells": 1562,
+   "tileSamples": 165405,
+   "directSamples": 165405,
+   "samplesReconcile": true,
+   "tileVehicleSum": 24031,
+   "distinctVehicles": 20827,
+   "vehiclesCrossingCells": 3204
+  },
+  {
+   "slice": "2026-09-14T12:20:00Z",
+   "inWindow": true,
+   "cells": 1561,
+   "tileSamples": 163907,
+   "directSamples": 163907,
+   "samplesReconcile": true,
+   "tileVehicleSum": 24164,
+   "distinctVehicles": 20871,
+   "vehiclesCrossingCells": 3293
+  },
+  {
+   "slice": "2026-09-14T12:25:00Z",
+   "inWindow": true,
+   "cells": 1553,
+   "tileSamples": 163786,
+   "directSamples": 163786,
+   "samplesReconcile": true,
+   "tileVehicleSum": 24033,
+   "distinctVehicles": 20888,
+   "vehiclesCrossingCells": 3145
+  },
+  {
+   "slice": "2026-09-14T12:30:00Z",
+   "inWindow": true,
+   "cells": 1546,
+   "tileSamples": 166952,
+   "directSamples": 166952,
+   "samplesReconcile": true,
+   "tileVehicleSum": 24193,
+   "distinctVehicles": 20923,
+   "vehiclesCrossingCells": 3270
+  },
+  {
+   "slice": "2026-09-14T12:35:00Z",
+   "inWindow": true,
+   "cells": 1554,
+   "tileSamples": 165825,
+   "directSamples": 165825,
+   "samplesReconcile": true,
+   "tileVehicleSum": 24155,
+   "distinctVehicles": 20860,
+   "vehiclesCrossingCells": 3295
+  },
+  {
+   "slice": "2026-09-14T12:40:00Z",
+   "inWindow": true,
+   "cells": 1428,
+   "tileSamples": 51635,
+   "directSamples": 51635,
+   "samplesReconcile": true,
+   "tileVehicleSum": 20781,
+   "distinctVehicles": 20008,
+   "vehiclesCrossingCells": 773
+  }
+ ],
+ "bytes": {
+  "archives": null,
+  "staging": 120382561,
+  "samplesParquet": 25768001,
+  "capturesParquet": 13022,
+  "tilesParquet": 67774,
+  "publishSlices": 686467,
+  "publishPacks": 17961468,
+  "snapshotsInStore": 2512931493
+ },
+ "peakRssBytes": 6373326848,
+ "model": "One hour, one machine, in-memory DuckDB. Sizes and timings are measurements of this run; day figures elsewhere are linear projections."
+}
