@@ -43,6 +43,12 @@ Edition-owned glyphs publish metadata with `setScenePickMetadata`. Reusable vehi
 buffers can update individual entries with `setScenePickTrain`. Passing undefined
 to the metadata setter removes an entry. Treat returned arrays as read-only.
 
+Moving-vehicle geometry interpolates on the GPU between its `position` and
+`positionTo` attributes. Read a vertex's displayed point with
+`scenePickVertex(geometry, index, out)` rather than the raw attribute; it applies
+the interpolation phase recorded by `setSceneMotionMix`, and returns the raw
+position for geometry without a target attribute.
+
 Set `stationPicking: 'custom'` when mounting an edition-owned selection component
 as a scene child. `aircraftPicking` can select on click and reject a candidate using
 the event coordinates, drag distance, camera and scene—for example, to prioritize

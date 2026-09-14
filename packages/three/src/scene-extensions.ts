@@ -18,34 +18,6 @@ export type TrainPositionResolver = (
   paths: readonly ProjectedNetworkPath[], detours: LakeAvoidingPathMap,
 ) => ProjectedPoint | null | undefined
 
-export interface TrailDataset {
-  readonly trains: readonly NetworkTrain[]
-  readonly stops: readonly ProjectedPoint[]
-  readonly paths: readonly ProjectedNetworkPath[]
-  readonly detours: readonly (readonly [string, ProjectedNetworkPath])[]
-  readonly colors: readonly (readonly number[])[]
-}
-
-/** Three history segments, with counts expressed in line segments (two vertices each). */
-export interface TrailFrame {
-  readonly positions: readonly Float32Array[]
-  readonly colors: readonly Float32Array[]
-  readonly counts: readonly number[]
-}
-
-/** Optional asynchronous trail computation. The renderer retains synchronous fallback.
- * select must invalidate late results when its key or visibility changes. reset must
- * discard the previous dataset. dispose must be idempotent and permit a later reset.
- */
-export interface TrailBackend {
-  readonly available: boolean
-  reset(data: () => TrailDataset): void
-  select(key: object, visibility: string): void
-  submit(time: number, trainIds: string[]): void
-  takeFrame(): TrailFrame | undefined
-  dispose(): void
-}
-
 export interface NetworkCameraContext {
   readonly camera: PerspectiveCamera
   /** Mutable target owned by the renderer; retain this object when handing control back. */
@@ -100,8 +72,6 @@ export interface NetworkSceneExtensions {
   readonly diagramOrderedPoints?: (points: readonly ProjectedPoint[]) => readonly ProjectedPoint[]
   readonly trainPosition?: TrainPositionResolver
   readonly roadConditions?: typeof nationalRoadConditionsAtTime
-  /** Pure constructor; reset/dispose are called by the renderer's effect lifecycle. */
-  readonly createTrailBackend?: () => TrailBackend
   /** Registered after mount and disposed on replacement, projection changes or unmount. */
   readonly createCameraDriver?: (context: NetworkCameraContext) => NetworkCameraDriver
 }
