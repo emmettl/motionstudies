@@ -33,6 +33,9 @@ The three-line Victoria/Jubilee/Elizabeth prediction collector and two-hour repl
 
 Implementation records: [combined boards](https://github.com/emmettl/allchange/blob/da94953/docs/COMBINED-STATION-BOARDS.md), [passenger demand](https://github.com/emmettl/allchange/blob/da94953/docs/PASSENGER-DEMAND.md), [Morning Flow](https://github.com/emmettl/allchange/blob/da94953/docs/MORNING-FLOW.md), [cycle hire](https://github.com/emmettl/allchange/blob/da94953/docs/CYCLE-HIRE.md) and [After Midnight](https://github.com/emmettl/allchange/blob/da94953/docs/AFTER-MIDNIGHT.md). The [national-study inventory](NATIONAL-DATA-FEASIBILITY.md#all-change-inventory--local-inspection-13-september-2026) records measured artifact volumes and the sharing plan.
 
+
+**Continuous local capture — 14 September 2026.** Two London feeds now record on the CI Mac through Underfall's generic collector, without a Worker or a key: arrival predictions for all twenty TfL rail lines once a minute, about 8.6 MB and 9,500 predictions per capture, and every cycle-hire dock's occupancy once a minute, about 2.2 MB. The first complete civil day of both was scheduled for 15 September alongside the national bus day, whose archive also carries TfL's 7,600 bus vehicles every 30 seconds. These give All Change an observed day for buses, a whole-network prediction record instead of the three-line Worker collector, and the dock-by-dock cycling tide. Compilation into study artifacts is separate work; see the [recording guide](https://github.com/emmettl/underfall/blob/main/docs/RECORDING-WINDOWS.md).
+
 ## Thesis: two simultaneous Londons
 
 The edition is not merely transport moving around London. Its subject is the gap between two equally real conceptions of the city:
