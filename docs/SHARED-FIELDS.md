@@ -25,6 +25,8 @@ Retained in the edition: the per-band uniform wind shader, five-minute profile i
 
 ## Specimen and validation
 
+The lab's **Published day** specimen opens a trimmed copy of the day compiled from the recorded national hour (three slices, two small operators) through `@motionstudies/core/domain/published-day`, draws a slice's cells, lets a cell be picked for its members, and opens one member's pack to draw its track and read its journey at the slice; every figure shown is read from the files. Its browser test descends from the manifest to a cell to one vehicle and moves between slices.
+
 The lab's **Fields** specimen exercises all four modules with a synthetic archipelago: seven instruments on a 0.1° grid, one silent for part of the study, one without vectors, an invented cover series rendered as haze, trails that end where support ends, and a terminator crossing from the east as the clock advances. Brightness is the estimate, opacity is support; clicking reads the estimate, cover and sun altitude at a place. Its browser test checks a supported reading beside an instrument, an unsupported reading beyond reach, the effect of widening the kernel, and the silent instrument appearing and disappearing with the clock.
 
 Workspace validation on 13 September 2026: 296 shared unit tests; core, lab and test typechecks; lint; architecture boundaries; the packed-consumer check including the new browser specimen in Chromium and WebKit. These are local results, not a published release.
