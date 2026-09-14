@@ -35,7 +35,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Prepare subsequent versions
 
-The next coordinated version adds the [shared estimated-field, gridded-series, field-path and daylight modules](SHARED-FIELDS.md) to core with a lab specimen. They are prepared in the workspace without a version bump; assign the version when the release is cut.
+The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
 
 `0.1.0-alpha.14` adds opt-in panel layout, control styling and compact airport cards. See [the shared styling contract](PANEL-LAYOUT.md) and [release and adoption record](PANEL-LAYOUT-ALPHA-14.md).
 
