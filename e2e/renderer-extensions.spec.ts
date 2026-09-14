@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 const state = async (page: import('@playwright/test').Page) => page.evaluate(() => {
   const probe = (globalThis as unknown as { rendererExtensionProbe: {
     positions: number; starts: number; disposals: number; childMounts: number; childDisposals: number;
-    resets: number; submissions: number; backendDisposals: number; ids: string[]; stop: number[];
+    stop: number[];
     camera?: { position: { toArray(): number[] } };
     scene?: { traverse(callback: (object: { renderOrder: number; isPoints?: boolean; isLineSegments?: boolean;
       geometry?: { drawRange: { count: number }; getAttribute(name: string): { array: ArrayLike<number> } } }) => void): void };
@@ -36,24 +36,20 @@ test('scene children follow projection and position overrides invalidate paused 
   expect((await state(page)).childMounts).toBe(1)
 })
 
-test('camera and trail backends release ownership on replacement and unmount', async ({ page }) => {
+test('camera drivers release ownership on replacement and unmount, and trails follow markers', async ({ page }) => {
+  await expect.poll(async () => (await state(page)).trails.some(values => values.length > 0)).toBe(true)
   await page.getByRole('button', { name: 'Toggle driver' }).click()
   await expect.poll(async () => (await state(page)).camera).toEqual([7, 25, 18])
   await page.getByRole('button', { name: 'Toggle driver' }).click()
   await expect.poll(async () => (await state(page)).disposals).toBe(1)
   await expect.poll(async () => (await state(page)).camera).not.toEqual([7, 25, 18])
-  await page.getByRole('button', { name: 'Toggle backend' }).click()
-  await expect.poll(async () => (await state(page)).submissions).toBeGreaterThan(0)
-  await expect.poll(async () => (await state(page)).trails.some(values => values.length === 6 && values[0] === 7 && values[3] === 8)).toBe(true)
-  expect((await state(page)).ids.sort()).toEqual(['one', 'two'])
-  await page.getByRole('button', { name: 'Toggle backend' }).click()
-  await expect.poll(async () => (await state(page)).backendDisposals).toBeGreaterThan(0)
-  await expect.poll(async () => (await state(page)).trails.some(values => values.length === 6 && values[0] === 7 && values[3] === 8)).toBe(false)
+  await page.getByLabel('Position').selectOption('hidden')
+  await expect.poll(async () => (await state(page)).trails.every(values => values.length === 0)).toBe(true)
+  await page.getByLabel('Position').selectOption('default')
+  await expect.poll(async () => (await state(page)).trails.some(values => values.length > 0)).toBe(true)
   await page.getByRole('button', { name: 'Toggle driver' }).click()
-  await page.getByRole('button', { name: 'Toggle backend' }).click()
   const before = await state(page)
   await page.getByRole('button', { name: 'Toggle scene' }).click()
   await expect.poll(async () => (await state(page)).disposals).toBe(before.disposals + 1)
-  await expect.poll(async () => (await state(page)).backendDisposals).toBeGreaterThan(before.backendDisposals)
   expect((await state(page)).childDisposals).toBe(1)
 })

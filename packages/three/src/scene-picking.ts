@@ -1,5 +1,6 @@
 import type { NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain/network'
 import type { StudyAirport } from '@motionstudies/core/domain/airport'
+import type { BufferGeometry, Vector3 } from 'three'
 
 export type ScenePickTarget =
   | { readonly kind: 'train'; readonly value: NetworkTrain }
@@ -31,4 +32,27 @@ export function setScenePickTrain(geometry: object, index: number, train: Networ
   let value = metadata.get(geometry)
   if (!value?.trains) { value = { ...value, trains: [] }; metadata.set(geometry, value) }
   ;(value.trains as (NetworkTrain | undefined)[])[index] = train
+}
+
+const motionMix = new WeakMap<object, number>()
+
+/** Record the GPU interpolation phase of a geometry whose vertices move toward `positionTo`. */
+export function setSceneMotionMix(geometry: object, mix: number): void {
+  motionMix.set(geometry, mix)
+}
+
+/**
+ * The displayed position of one vertex. Moving-vehicle geometry interpolates on
+ * the GPU between `position` and `positionTo`; picking must read the same point.
+ */
+export function scenePickVertex(geometry: BufferGeometry, index: number, out: Vector3): Vector3 {
+  const position = geometry.getAttribute('position')
+  out.fromBufferAttribute(position, index)
+  const target = geometry.getAttribute('positionTo')
+  const mix = motionMix.get(geometry)
+  if (!target || !mix) return out
+  out.x += (target.getX(index) - out.x) * mix
+  out.y += (target.getY(index) - out.y) * mix
+  out.z += (target.getZ(index) - out.z) * mix
+  return out
 }

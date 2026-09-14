@@ -1,6 +1,5 @@
 import { stationLabelTexture, createTrainLabelTexture, type StationLabelTexture, type TrainLabelTexture } from './label-textures.ts'
-import { setScenePickMetadata, setScenePickTrain } from './scene-picking.ts'
-import { PausedVehicleFrame } from './paused-vehicle-frame.ts'
+import { setSceneMotionMix, setScenePickMetadata, setScenePickTrain } from './scene-picking.ts'
 import { TrailFrameBudget } from './trail-frame-budget.ts'
 import { StationLabelFrame } from './station-label-frame.ts'
 import { LabelFrameBudget } from './label-frame-budget.ts'
@@ -9,7 +8,6 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { createContext, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { useNetworkScene, type NetworkSceneExtensions, type NetworkCameraDriver } from './scene-extensions.ts'
 import { NetworkSceneProviderContext } from './scene-context.ts'
-import { applyTrailFrame } from './trail-frame.ts'
 import { networkRouteColor as mixedRouteColor, trainLabelCollisionBox, type NetworkMapStyle } from './scene-style.ts'
 import { compactMapLines, stationLabelBoxes, emptyLabelBoxes } from './map-cartography.ts'
 import * as THREE from 'three'
@@ -81,8 +79,29 @@ import { edgeTrafficWeights } from './traffic-weights.ts'
 import {
   VEHICLE_TRAIL_SEGMENTS,
   VEHICLE_TRAIL_STEP_SECONDS,
-  vehicleTrailSampleTimes,
 } from './vehicle-trails.ts'
+import {
+  VEHICLE_TRAIL_HISTORY_LENGTH,
+  VEHICLE_TRAIL_HISTORY_STEP_SECONDS,
+  trailGridMix,
+  trailGridStart,
+} from './vehicle-history.ts'
+import { VehicleMotionTable } from './vehicle-motion.ts'
+import {
+  MARKER_SAMPLE_INTERVAL,
+  MARKER_SAMPLE_INTERVAL_REDUCED,
+  MotionSampleWindow,
+  TRAIL_SETTLE_SECONDS,
+  markerStepSeconds,
+} from './motion-sampling.ts'
+import { createMotionLerp } from './motion-lerp.ts'
+import {
+  boundsContain,
+  createGroundBounds,
+  expandBounds,
+  groundViewBounds,
+  segmentTouchesBounds,
+} from './view-culling.ts'
 import {
   applyMapZoom,
   ATLAS_MAP_FRAMING,
@@ -2365,18 +2384,18 @@ function TrainLabels({
   routeColors,
   spatialLayoutMix = 0,
   routeColorMix = spatialLayoutMix,
+  motion,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly trainTimeIndex: TrainTimeIndex
+  readonly motion: VehicleMotionTable
 }) {
   const mapStyle = useMapStyle()
   const labelStyle = mapStyle.trainLabels
   const categoryColors = mapStyle.categoryColors
   const elevation = labelStyle?.elevation ?? 0.76
   const { camera, size } = useThree()
-  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
-  const resolveTrainPosition = useProjectedTrainPosition()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
   const textures = useRef(new Map<string, TrainLabelTexture>())
   const retainedTrainIds = useRef(new Set<string>())
@@ -2410,10 +2429,10 @@ function TrainLabels({
   const visibleLabelTrains = useRef<NetworkTrain[]>([])
   // These dependencies invalidate cached frame work when render inputs change.
   /* oxlint-disable react-hooks/exhaustive-deps */
-  const labelInputs = useMemo(() => ({}), [mapStyle, resolveTrainPosition, snapshot, projectedStops, projectedPaths,
+  const labelInputs = useMemo(() => ({}), [mapStyle, motion, snapshot, projectedStops, projectedPaths,
     selectedTrain, comparisonTrains, selectedRoute, selectedStation, selectedCategory,
     airCategorySelected, roadCategorySelected, trainLabelMode, isPlaying, playbackRate,
-    trainTimeIndex, cameraFraming, layoutTransitioning, routeColors, routeColorMix, lakeAvoidingPaths])
+    trainTimeIndex, cameraFraming, layoutTransitioning, routeColors, routeColorMix])
   /* oxlint-enable react-hooks/exhaustive-deps */
   useFrame((_, delta) => {
     if (isPlaying) {
@@ -2509,14 +2528,15 @@ function TrainLabels({
         playbackRate,
       )
       if (arrivalOpacity <= 0) continue
-      const position = resolveTrainPosition(
-        train,
-        Math.min(localTime.current, train.end),
-        projectedStops,
-        projectedPaths,
-        lakeAvoidingPaths,
-      )
-      if (!position) continue
+      // The motion layer places journeys once per sampling pass; labels
+      // follow those positions instead of sampling paths again.
+      const trainIndex = motion.index.get(train)
+      if (trainIndex === undefined || !motion.placed(trainIndex)) continue
+      const position: ProjectedStop = [
+        motion.positions[trainIndex * 3],
+        motion.positions[trainIndex * 3 + 1],
+        motion.positions[trainIndex * 3 + 2],
+      ]
       projected.set(position[0], elevation, position[2])
       viewPosition.copy(projected).applyMatrix4(camera.matrixWorldInverse)
       projected.project(camera)
@@ -3050,7 +3070,41 @@ function useVehiclePalette(snapshot: NetworkSnapshot, routeColors: Readonly<Reco
   return { palette, trainPalette }
 }
 
-function TrainSwarm({
+/** Journeys whose scheduled chord lies this far outside the view are not sampled. */
+const VEHICLE_CULL_MARGIN = 0.3
+const VEHICLE_TRAIL_HISTORY_SPAN =
+  (VEHICLE_TRAIL_HISTORY_LENGTH - 1) * VEHICLE_TRAIL_HISTORY_STEP_SECONDS
+
+interface MotionArrays {
+  readonly from: Float32Array
+  readonly to: Float32Array
+  readonly color?: Float32Array
+}
+
+function motionArrays(geometry: THREE.BufferGeometry): MotionArrays {
+  return {
+    from: geometry.getAttribute('position').array as Float32Array,
+    to: geometry.getAttribute('positionTo').array as Float32Array,
+    color: geometry.getAttribute('color')?.array as Float32Array | undefined,
+  }
+}
+
+function motionGeometry(vertices: number, color: boolean): THREE.BufferGeometry {
+  const geometry = new THREE.BufferGeometry()
+  geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(vertices * 3), 3))
+  geometry.setAttribute('positionTo', new THREE.BufferAttribute(new Float32Array(vertices * 3), 3))
+  if (color) geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(vertices * 3), 3))
+  geometry.setDrawRange(0, 0)
+  return geometry
+}
+
+/**
+ * Moving vehicles and their trails. A sampling pass places every visible
+ * journey at the start and end of a short study-time window; the GPU
+ * interpolates between them on every frame. Trails read brackets from the
+ * journey's sampled history, so only crossed grid times cost a path lookup.
+ */
+function VehicleMotion({
   snapshot,
   projectedStops,
   projectedPaths,
@@ -3069,19 +3123,42 @@ function TrainSwarm({
   routeColors,
   spatialLayoutMix = 0,
   routeColorMix = spatialLayoutMix,
+  motion,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly trainTimeIndex: TrainTimeIndex
+  readonly motion: VehicleMotionTable
 }) {
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const resolveTrainPosition = useProjectedTrainPosition()
-  const points = useRef<THREE.Points>(null)
-  const glow = useRef<THREE.Points>(null)
-  const categoryColors = useMapStyle().categoryColors
+  const mapStyle = useMapStyle()
+  const categoryColors = mapStyle.categoryColors
+  const flat = mapStyle.surface === 'flat'
+  const vehicleElevation = mapStyle.vehicleElevation ?? 0.2
   const localTime = useRef(time)
   const lastReport = useRef(0)
   const uiFrameBudget = useMemo(() => new TrailFrameBudget(), [])
+  const sampleBudget = useMemo(
+    () => new TrailFrameBudget(MARKER_SAMPLE_INTERVAL, MARKER_SAMPLE_INTERVAL_REDUCED),
+    [],
+  )
+  const sampleWindow = useMemo(() => new MotionSampleWindow(), [])
+  const mixUniform = useMemo(() => ({ value: new THREE.Vector2() }), [])
+  const lerp = useMemo(() => createMotionLerp(mixUniform), [mixUniform])
+  const viewBounds = useMemo(() => createGroundBounds(), [])
+  const cullBounds = useMemo(() => createGroundBounds(), [])
+  const scratch = useMemo(() => new Float32Array(12), [])
+  const frame = useRef({
+    inputs: undefined as object | undefined,
+    geometry: undefined as object | undefined,
+    visibility: -1,
+    culled: false,
+    trailGrid: NaN,
+    trailsStale: true,
+    lastSeekAt: -Infinity,
+    scrubbing: false,
+  })
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
     [selectedStation],
@@ -3106,41 +3183,33 @@ function TrainSwarm({
     [],
   )
   const { palette, trainPalette } = useVehiclePalette(snapshot, routeColors, routeColorMix, categoryColors)
-  const geometries = useMemo(() => {
-    const categoryCounts: Record<VehicleMarkerKind, number> = {
-      rail: 0,
-      tram: 0,
-      bus: 0,
-    }
+  const markerGeometries = useMemo(() => {
+    const categoryCounts: Record<VehicleMarkerKind, number> = { rail: 0, tram: 0, bus: 0 }
     snapshot.trains.forEach((train) => {
       categoryCounts[vehicleMarkerKind(train.category)] += 1
     })
     return Object.fromEntries(
-      VEHICLE_MARKER_KINDS.map((kind) => {
-        const geometry = new THREE.BufferGeometry()
-        const length = categoryCounts[kind] * 3
-        geometry.setAttribute(
-          'position',
-          new THREE.BufferAttribute(new Float32Array(length), 3),
-        )
-        geometry.setAttribute(
-          'color',
-          new THREE.BufferAttribute(new Float32Array(length), 3),
-        )
-        geometry.setDrawRange(0, 0)
-        return [kind, geometry]
-      }),
+      VEHICLE_MARKER_KINDS.map((kind) => [kind, motionGeometry(categoryCounts[kind], true)]),
     ) as Record<VehicleMarkerKind, THREE.BufferGeometry>
   }, [snapshot.trains])
-  const realtimeGeometry = useMemo(() => {
-    const geometry = new THREE.BufferGeometry()
-    geometry.setAttribute(
-      'position',
-      new THREE.BufferAttribute(new Float32Array(snapshot.trains.length * 3), 3),
-    )
-    geometry.setDrawRange(0, 0)
-    return geometry
-  }, [snapshot.trains])
+  const realtimeGeometry = useMemo(
+    () => motionGeometry(snapshot.trains.length, false),
+    [snapshot.trains],
+  )
+  const trailGeometries = useMemo(
+    () =>
+      Array.from({ length: VEHICLE_TRAIL_SEGMENTS }, (_, segment) => {
+        const vertices = snapshot.trains.length * 2
+        const geometry = motionGeometry(vertices, true)
+        // The head segment starts on the marker itself; every other vertex
+        // follows the trail history phase.
+        const phase = new Float32Array(vertices).fill(1)
+        if (segment === 0) for (let index = 0; index < vertices; index += 2) phase[index] = 0
+        geometry.setAttribute('motionPhase', new THREE.BufferAttribute(phase, 1))
+        return geometry
+      }),
+    [snapshot.trains.length],
+  )
 
   useEffect(() => {
     localTime.current = time
@@ -3148,50 +3217,70 @@ function TrainSwarm({
 
   useEffect(
     () => () => {
-      lightTextures.halo.dispose()
-      lightTextures.orb.dispose()
-      lightTextures.spark.dispose()
-      lightTextures.realtime.dispose()
-      lightTextures.tram.dispose()
-      lightTextures.bus.dispose()
+      Object.values(lightTextures).forEach((texture) => texture.dispose())
     },
     [lightTextures],
   )
 
   useEffect(
     () => () => {
-      Object.values(geometries).forEach((geometry) => geometry.dispose())
+      Object.values(markerGeometries).forEach((geometry) => geometry.dispose())
       realtimeGeometry.dispose()
     },
-    [geometries, realtimeGeometry],
+    [markerGeometries, realtimeGeometry],
+  )
+  useEffect(
+    () => () => {
+      trailGeometries.forEach((geometry) => geometry.dispose())
+    },
+    [trailGeometries],
   )
 
-  // These dependencies invalidate cached frame work when render inputs change.
+  // Geometry inputs invalidate every sample; style inputs only redraw from them.
   /* oxlint-disable react-hooks/exhaustive-deps */
-  const pausedFrame = useMemo(() => new PausedVehicleFrame(), [resolveTrainPosition, snapshot, projectedStops, projectedPaths,
-    lakeAvoidingPaths, selectedTrain, comparisonTrains, selectedRoute, selectedCategory,
-    airCategorySelected, selectedStation, cameraFraming, trainPalette, geometries, trainTimeIndex])
+  const geometryInputs = useMemo(() => ({}), [resolveTrainPosition, snapshot, projectedStops, projectedPaths,
+    lakeAvoidingPaths, motion, markerGeometries, trailGeometries, trainTimeIndex])
+  const styleInputs = useMemo(() => ({}), [geometryInputs, selectedTrain, comparisonTrains, selectedRoute,
+    selectedCategory, airCategorySelected, selectedStation, cameraFraming, trainPalette, palette])
   /* oxlint-enable react-hooks/exhaustive-deps */
-  useFrame((state, delta) => {
-    if (isPlaying) {
-      localTime.current += delta * playbackRate
-      if (localTime.current > snapshot.metadata.windowEnd) {
-        localTime.current = snapshot.metadata.windowStart
-      }
-    }
 
-    const visibleBus = vehicleIsVisibleAtZoom('bus', state.camera.position.y, cameraFraming)
-    const visibleTram = vehicleIsVisibleAtZoom('tram', state.camera.position.y, cameraFraming)
-    const pausedVisibility = Number(visibleBus) + 2 * Number(visibleTram)
-    if (!pausedFrame.needsUpdate(isPlaying, localTime.current, pausedVisibility)) return
-    pausedFrame.record(localTime.current, pausedVisibility)
-    const activeCounts: Record<VehicleMarkerKind, number> = {
-      rail: 0,
-      tram: 0,
-      bus: 0,
-    }
-    let activeRealtimeCount = 0
-    for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
+  const runPass = (now: number, step: number, bounded: boolean, clock: number,
+    visibleBus: boolean, visibleTram: boolean) => {
+    const state = frame.current
+    // A lone seek refills history at once; a run of seeks waits for the clock to settle.
+    const includeTrails = !state.scrubbing || clock - state.lastSeekAt >= TRAIL_SETTLE_SECONDS
+    const { positions, targets, stamps, history } = motion
+    const previousValid = Number.isFinite(sampleWindow.end) && motion.targetTime === sampleWindow.end
+    const keep = previousValid && isPlaying && now >= sampleWindow.start && now <= sampleWindow.end
+    const continues = !keep && previousValid && isPlaying && sampleWindow.continues(now)
+    const start = keep ? sampleWindow.start : continues ? sampleWindow.end : now
+    const end = keep ? sampleWindow.end : start + step
+    const gridEnd = trailGridStart(now)
+    const cull = bounded ? expandBounds(viewBounds, VEHICLE_CULL_MARGIN, cullBounds) : undefined
+    motion.generation += 1
+    const generation = motion.generation
+    state.inputs = styleInputs
+    state.visibility = Number(visibleBus) + 2 * Number(visibleTram)
+    state.culled = Boolean(cull)
+    state.trailsStale = !includeTrails
+    state.trailGrid = gridEnd
+
+    const markers = Object.fromEntries(
+      VEHICLE_MARKER_KINDS.map((kind) => [kind, motionArrays(markerGeometries[kind])]),
+    ) as Record<VehicleMarkerKind, MotionArrays>
+    const counts: Record<VehicleMarkerKind, number> = { rail: 0, tram: 0, bus: 0 }
+    const realtime = motionArrays(realtimeGeometry)
+    let realtimeCount = 0
+    const trails = trailGeometries.map(motionArrays)
+    const trailCounts = new Array<number>(VEHICLE_TRAIL_SEGMENTS).fill(0)
+    let historyTrain: NetworkTrain | undefined
+    const historySampler = (sampleTime: number) => historyTrain
+      ? resolveTrainPosition(historyTrain, Math.min(sampleTime, historyTrain.end), projectedStops, projectedPaths, lakeAvoidingPaths)
+      : undefined
+
+    for (const train of trainsNearTime(trainTimeIndex, now)) {
+      const trainIndex = motion.index.get(train)
+      if (trainIndex === undefined) continue
       const focused = Boolean(
         selectedTrain?.id === train.id ||
           comparisonTrainIds.has(train.id) ||
@@ -3199,82 +3288,209 @@ function TrainSwarm({
           (selectedStation && selectedStationTrainIds.has(train.id)) ||
           selectedCategory === train.category,
       )
-      if (
-        !(focused || (train.category === 'bus' ? visibleBus : train.category === 'tram' ? visibleTram : true))
-      ) {
+      if (!(focused || (train.category === 'bus' ? visibleBus : train.category === 'tram' ? visibleTram : true))) {
         continue
       }
-      const position = resolveTrainPosition(
-        train,
-        localTime.current,
-        projectedStops,
-        projectedPaths,
-        lakeAvoidingPaths,
-      )
-      if (!position) continue
-      const markerKind = vehicleMarkerKind(train.category)
-      const mutableGeometry = geometries[markerKind]
-      const positionAttribute = mutableGeometry.getAttribute(
-        'position',
-      ) as THREE.BufferAttribute
-      const colorAttribute = mutableGeometry.getAttribute(
-        'color',
-      ) as THREE.BufferAttribute
-      const mutablePositions = positionAttribute.array as Float32Array
-      const mutableColors = colorAttribute.array as Float32Array
-      const offset = activeCounts[markerKind] * 3
-      mutablePositions.set(position, offset)
-      const color =
-        trainPalette.get(train.id) ?? palette[train.category] ?? palette.other
-      const stationIncludesTrain =
-        !selectedStation || selectedStationTrainIds.has(train.id)
-      const categoryIncludesTrain =
-        !selectedCategory || selectedCategory === train.category
-      const routeIncludesTrain =
-        !selectedRoute || selectedRouteTrainIds.has(train.id)
-      const intensity = airCategorySelected
-        ? 0.025
-        : comparisonTrains?.length
+      const ended = now > train.end
+      if (cull && !focused) {
+        const scheduled = positionForTrain(train, ended ? train.end : now)
+        if (scheduled) {
+          const from = projectedStops[scheduled.fromStop]
+          const to = projectedStops[scheduled.toStop]
+          if (from && to && !segmentTouchesBounds(from[0], from[2], to[0], to[2], cull)) continue
+        }
+      }
+      const base = trainIndex * 3
+      const placedBefore = stamps[trainIndex] === generation - 1 && generation > 1
+      let hasFrom = false
+      let hasTo = false
+      let hasTerminal = false
+      if (!ended) {
+        if (keep && placedBefore) {
+          scratch[0] = positions[base]
+          scratch[1] = positions[base + 1]
+          scratch[2] = positions[base + 2]
+          hasFrom = true
+        } else if (continues && placedBefore && !Number.isNaN(targets[base])) {
+          scratch[0] = targets[base]
+          scratch[1] = targets[base + 1]
+          scratch[2] = targets[base + 2]
+          hasFrom = true
+        } else {
+          const point = resolveTrainPosition(train, start, projectedStops, projectedPaths, lakeAvoidingPaths)
+          if (point) { scratch[0] = point[0]; scratch[1] = point[1]; scratch[2] = point[2]; hasFrom = true }
+        }
+        if (keep && placedBefore && !Number.isNaN(targets[base])) {
+          scratch[3] = targets[base]
+          scratch[4] = targets[base + 1]
+          scratch[5] = targets[base + 2]
+          hasTo = true
+        } else if (end > start) {
+          const point = resolveTrainPosition(train, end, projectedStops, projectedPaths, lakeAvoidingPaths)
+          if (point) { scratch[3] = point[0]; scratch[4] = point[1]; scratch[5] = point[2]; hasTo = true }
+        }
+        // A journey starting or ending inside the window holds its known position.
+        if (hasFrom && !hasTo) { scratch[3] = scratch[0]; scratch[4] = scratch[1]; scratch[5] = scratch[2]; hasTo = true }
+        else if (!hasFrom && hasTo) { scratch[0] = scratch[3]; scratch[1] = scratch[4]; scratch[2] = scratch[5]; hasFrom = true }
+      } else {
+        // Arrival labels and collapsing trails stay at the terminal.
+        const point = resolveTrainPosition(train, train.end, projectedStops, projectedPaths, lakeAvoidingPaths)
+        if (point) {
+          scratch[0] = scratch[3] = point[0]
+          scratch[1] = scratch[4] = point[1]
+          scratch[2] = scratch[5] = point[2]
+        }
+        if (point) {
+          hasTerminal = true
+          positions[base] = point[0]; positions[base + 1] = point[1]; positions[base + 2] = point[2]
+          stamps[trainIndex] = generation
+        }
+      }
+      if (hasFrom) {
+        positions[base] = scratch[0]; positions[base + 1] = scratch[1]; positions[base + 2] = scratch[2]
+        stamps[trainIndex] = generation
+      }
+      if (hasTo) { targets[base] = scratch[3]; targets[base + 1] = scratch[4]; targets[base + 2] = scratch[5] }
+      else targets[base] = NaN
+
+      const stationIncludesTrain = !selectedStation || selectedStationTrainIds.has(train.id)
+      const categoryIncludesTrain = !selectedCategory || selectedCategory === train.category
+      const routeIncludesTrain = !selectedRoute || selectedRouteTrainIds.has(train.id)
+      const included = !airCategorySelected && (
+        comparisonTrains?.length
           ? comparisonTrainIds.has(train.id)
-            ? 1
-            : 0.025
-        : selectedTrain
-        ? selectedTrain.id === train.id
-          ? 1
-          : 0.025
-        : !stationIncludesTrain || !categoryIncludesTrain || !routeIncludesTrain
-          ? 0.025
-          : 1
-      setScenePickTrain(mutableGeometry, activeCounts[markerKind], intensity < 0.1 ? undefined : train)
-      mutableColors[offset] = color.r * intensity
-      mutableColors[offset + 1] = color.g * intensity
-      mutableColors[offset + 2] = color.b * intensity
-      activeCounts[markerKind] += 1
-      if (train.realtime?.status === 'adjusted' || train.operations) {
-        const realtimePositions = realtimeGeometry.getAttribute('position')
-          .array as Float32Array
-        realtimePositions.set(position, activeRealtimeCount * 3)
-        activeRealtimeCount += 1
+          : selectedTrain
+            ? selectedTrain.id === train.id
+            : stationIncludesTrain && categoryIncludesTrain && routeIncludesTrain
+      )
+      const intensity = included ? 1 : 0.025
+      const color = trainPalette.get(train.id) ?? palette[train.category] ?? palette.other
+
+      if (hasFrom) {
+        const markerKind = vehicleMarkerKind(train.category)
+        const arrays = markers[markerKind]
+        const slot = counts[markerKind]
+        const offset = slot * 3
+        arrays.from[offset] = scratch[0]; arrays.from[offset + 1] = scratch[1]; arrays.from[offset + 2] = scratch[2]
+        arrays.to[offset] = scratch[3]; arrays.to[offset + 1] = scratch[4]; arrays.to[offset + 2] = scratch[5]
+        arrays.color![offset] = color.r * intensity
+        arrays.color![offset + 1] = color.g * intensity
+        arrays.color![offset + 2] = color.b * intensity
+        setScenePickTrain(markerGeometries[markerKind], slot, intensity < 0.1 ? undefined : train)
+        counts[markerKind] += 1
+        if (train.realtime?.status === 'adjusted' || train.operations) {
+          const realtimeOffset = realtimeCount * 3
+          realtime.from[realtimeOffset] = scratch[0]; realtime.from[realtimeOffset + 1] = scratch[1]; realtime.from[realtimeOffset + 2] = scratch[2]
+          realtime.to[realtimeOffset] = scratch[3]; realtime.to[realtimeOffset + 1] = scratch[4]; realtime.to[realtimeOffset + 2] = scratch[5]
+          realtimeCount += 1
+        }
+      }
+
+      if (!includeTrails || !included || !(hasFrom || hasTerminal)) continue
+      if (now < train.start || gridEnd - VEHICLE_TRAIL_HISTORY_SPAN > train.end) continue
+      historyTrain = train
+      history.fill(trainIndex, gridEnd, historySampler)
+      // scratch[0..5]: previous vertex (from, to); scratch[6..11]: this bracket.
+      for (let segment = 0; segment < VEHICLE_TRAIL_SEGMENTS; segment += 1) {
+        const gridTime = gridEnd - (segment + 1) * VEHICLE_TRAIL_STEP_SECONDS
+        if (!history.read(trainIndex, gridTime, scratch, 6)) break
+        if (!history.read(trainIndex, gridTime + VEHICLE_TRAIL_HISTORY_STEP_SECONDS, scratch, 9)) break
+        const arrays = trails[segment]
+        const offset = trailCounts[segment] * 6
+        for (let component = 0; component < 3; component += 1) {
+          arrays.from[offset + component] = scratch[component]
+          arrays.to[offset + component] = scratch[3 + component]
+          arrays.from[offset + 3 + component] = scratch[6 + component]
+          arrays.to[offset + 3 + component] = scratch[9 + component]
+        }
+        const colors = arrays.color!
+        colors[offset] = colors[offset + 3] = color.r
+        colors[offset + 1] = colors[offset + 4] = color.g
+        colors[offset + 2] = colors[offset + 5] = color.b
+        trailCounts[segment] += 1
+        for (let component = 0; component < 6; component += 1) scratch[component] = scratch[6 + component]
       }
     }
 
     VEHICLE_MARKER_KINDS.forEach((kind) => {
-      const mutableGeometry = geometries[kind]
-      updateActiveGeometry(mutableGeometry, activeCounts[kind])
+      updateActiveGeometry(markerGeometries[kind], counts[kind])
     })
-    updateActiveGeometry(realtimeGeometry, activeRealtimeCount)
-    if (points.current) points.current.frustumCulled = false
-    if (glow.current) glow.current.frustumCulled = false
+    updateActiveGeometry(realtimeGeometry, realtimeCount)
+    trailGeometries.forEach((geometry, segment) => {
+      updateActiveGeometry(geometry, trailCounts[segment] * 2)
+    })
+    sampleWindow.record(start, end, gridEnd)
+    motion.targetTime = end
+  }
+
+  useFrame((state, delta) => {
+    if (isPlaying) {
+      localTime.current += delta * playbackRate
+      if (localTime.current > snapshot.metadata.windowEnd) {
+        localTime.current = snapshot.metadata.windowStart
+      }
+    }
+    const now = localTime.current
+    const clock = state.clock.elapsedTime
+    const current = frame.current
+    if (current.geometry !== geometryInputs) {
+      current.geometry = geometryInputs
+      motion.invalidate()
+      sampleWindow.record(NaN, NaN, NaN)
+    }
+    const interval = sampleBudget.interval(delta)
+    const step = markerStepSeconds(isPlaying, playbackRate, interval)
+    let kind = sampleWindow.plan(now, isPlaying, playbackRate, step)
+    if (kind === 'seek') {
+      current.scrubbing = clock - current.lastSeekAt < TRAIL_SETTLE_SECONDS
+      current.lastSeekAt = clock
+    }
+    const visibleBus = vehicleIsVisibleAtZoom('bus', state.camera.position.y, cameraFraming)
+    const visibleTram = vehicleIsVisibleAtZoom('tram', state.camera.position.y, cameraFraming)
+    const bounded = groundViewBounds(state.camera, vehicleElevation, viewBounds)
+    if (kind === 'none') {
+      if (current.inputs !== styleInputs || current.visibility !== Number(visibleBus) + 2 * Number(visibleTram)) kind = 'update'
+      else if (current.culled && (!bounded || !boundsContain(cullBounds, viewBounds))) kind = 'update'
+      else if (current.trailsStale && (!current.scrubbing || clock - current.lastSeekAt >= TRAIL_SETTLE_SECONDS)) kind = 'update'
+    }
+    if (kind !== 'none') runPass(now, step, bounded, clock, visibleBus, visibleTram)
+    mixUniform.value.set(sampleWindow.mix(now), trailGridMix(now, current.trailGrid))
+    VEHICLE_MARKER_KINDS.forEach((markerKind) => {
+      setSceneMotionMix(markerGeometries[markerKind], mixUniform.value.x)
+    })
+    setSceneMotionMix(realtimeGeometry, mixUniform.value.x)
 
     // A paused scene follows the consumer's clock, including in linked views.
-    if (isPlaying && state.clock.elapsedTime - lastReport.current > (selectedTrain || comparisonTrains?.length ? 0.1 : uiFrameBudget.interval(delta) * 3)) {
-      lastReport.current = state.clock.elapsedTime
-      onTime(localTime.current)
+    if (isPlaying && clock - lastReport.current > (selectedTrain || comparisonTrains?.length ? 0.1 : uiFrameBudget.interval(delta) * 3)) {
+      lastReport.current = clock
+      onTime(now)
     }
   })
 
+  const trailOpacity = [0.4, 0.22, 0.1]
   return (
     <>
+      <group position={[0, mapStyle.trailElevationOffset ?? -0.035, 0]}>
+        {trailGeometries.map((geometry, index) => (
+          <lineSegments
+            key={index}
+            geometry={geometry}
+            frustumCulled={false}
+            renderOrder={flat ? 5 : 3 + index}
+          >
+            <lineBasicMaterial
+              {...lerp.phased}
+              vertexColors
+              transparent
+              opacity={trailOpacity[index]}
+              blending={THREE.AdditiveBlending}
+              depthTest={!flat}
+              depthWrite={false}
+              toneMapped={false}
+            />
+          </lineSegments>
+        ))}
+      </group>
       {VEHICLE_MARKER_KINDS.map((kind) => {
         const isCityVehicle = kind === 'tram' || kind === 'bus'
         const glyphTexture =
@@ -3286,12 +3502,12 @@ function TrainSwarm({
         return (
           <group key={kind}>
             <points
-              ref={kind === 'rail' ? glow : undefined}
-              geometry={geometries[kind]}
+              geometry={markerGeometries[kind]}
               frustumCulled={false}
               renderOrder={MAP_LAYER.vehicleGlow}
             >
               <pointsMaterial
+                {...lerp.points}
                 vertexColors
                 map={lightTextures.halo}
                 size={isCityVehicle ? 7.5 : 9}
@@ -3316,12 +3532,12 @@ function TrainSwarm({
               />
             </points>
             <points
-              ref={kind === 'rail' ? points : undefined}
-              geometry={geometries[kind]}
+              geometry={markerGeometries[kind]}
               frustumCulled={false}
               renderOrder={MAP_LAYER.vehicleCore}
             >
               <pointsMaterial
+                {...lerp.points}
                 vertexColors
                 map={glyphTexture}
                 size={kind === 'rail' ? 4.6 : 6.2}
@@ -3337,11 +3553,12 @@ function TrainSwarm({
             </points>
             {kind === 'rail' && (
               <points
-                geometry={geometries[kind]}
+                geometry={markerGeometries[kind]}
                 frustumCulled={false}
                 renderOrder={MAP_LAYER.vehicleSpark}
               >
                 <pointsMaterial
+                  {...lerp.points}
                   vertexColors
                   map={lightTextures.spark}
                   size={1.8}
@@ -3365,6 +3582,7 @@ function TrainSwarm({
         renderOrder={MAP_LAYER.focusMarkerGlow}
       >
         <pointsMaterial
+          {...lerp.points}
           color="#8dfaff"
           map={lightTextures.realtime}
           size={10}
@@ -3379,225 +3597,6 @@ function TrainSwarm({
         />
       </points>
     </>
-  )
-}
-
-function VehicleTrails({
-  snapshot,
-  projectedStops,
-  projectedPaths,
-  selectedTrain,
-  comparisonTrains,
-  selectedRoute,
-  selectedCategory,
-  airCategorySelected,
-  selectedStation,
-  isPlaying,
-  time,
-  playbackRate,
-  trainTimeIndex,
-  cameraFraming,
-  routeColors,
-  spatialLayoutMix = 0,
-  routeColorMix = spatialLayoutMix,
-}: NationalNetworkSceneProps & {
-  readonly projectedStops: readonly ProjectedStop[]
-  readonly projectedPaths: readonly ProjectedNetworkPath[]
-  readonly trainTimeIndex: TrainTimeIndex
-}) {
-  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
-  const resolveTrainPosition = useProjectedTrainPosition()
-  const mapStyle = useMapStyle()
-  const categoryColors = mapStyle.categoryColors
-  const flat = mapStyle.surface === 'flat'
-  const localTime = useRef(time)
-  const lastUpdate = useRef(-1)
-  const createTrailBackend = useNetworkScene().props.extensions?.createTrailBackend
-  const trailBackend = useMemo(() => createTrailBackend?.(), [createTrailBackend])
-  const previousPausedTrail = useRef<{ inputs?: object; visibility?: string; worker?: boolean; time?: number }>({})
-  const trailFrameBudget = useMemo(() => new TrailFrameBudget(), [])
-  const selectedStationTrainIds = useMemo(
-    () => new Set(selectedStation?.trainIds ?? []),
-    [selectedStation],
-  )
-  const selectedRouteTrainIds = useMemo(
-    () => new Set(selectedRoute?.trainIds ?? []),
-    [selectedRoute],
-  )
-  const comparisonTrainIds = useMemo(
-    () => new Set(comparisonTrains?.map((train) => train.id) ?? []),
-    [comparisonTrains],
-  )
-  const { palette, trainPalette } = useVehiclePalette(snapshot, routeColors, routeColorMix, categoryColors)
-  const geometries = useMemo(
-    () =>
-      Array.from({ length: VEHICLE_TRAIL_SEGMENTS }, () => {
-        const geometry = new THREE.BufferGeometry()
-        geometry.setAttribute(
-          'position',
-          new THREE.BufferAttribute(
-            new Float32Array(snapshot.trains.length * 6),
-            3,
-          ),
-        )
-        geometry.setAttribute(
-          'color',
-          new THREE.BufferAttribute(
-            new Float32Array(snapshot.trains.length * 6),
-            3,
-          ),
-        )
-        geometry.setDrawRange(0, 0)
-        return geometry
-      }),
-    [snapshot.trains.length],
-  )
-
-  useEffect(() => {
-    localTime.current = time
-  }, [time])
-
-  useEffect(
-    () => () => {
-      geometries.forEach((geometry) => geometry.dispose())
-    },
-    [geometries],
-  )
-
-  // These dependencies invalidate cached frame work when render inputs change.
-  /* oxlint-disable react-hooks/exhaustive-deps */
-  const pausedFrame = useMemo(() => new PausedVehicleFrame(), [resolveTrainPosition, snapshot, projectedStops, projectedPaths,
-    lakeAvoidingPaths, selectedTrain, comparisonTrains, selectedRoute, selectedCategory,
-    airCategorySelected, selectedStation, cameraFraming, trainPalette, geometries, trainTimeIndex])
-  const pausedTrailTime = isPlaying ? undefined : time
-  const trailSelection = useMemo(() => ({}), [pausedFrame, isPlaying, pausedTrailTime])
-  /* oxlint-enable react-hooks/exhaustive-deps */
-  useEffect(() => {
-    previousPausedTrail.current = {}
-    if (!trailBackend) return
-    if (!snapshot.trains.length) { trailBackend.dispose(); return }
-    trailBackend.reset(() => ({ trains: snapshot.trains, stops: projectedStops, paths: projectedPaths,
-      detours: [...lakeAvoidingPaths], colors: snapshot.trains.map(train => {
-        const color = trainPalette.get(train.id) ?? palette[train.category] ?? palette.other
-        return [color.r, color.g, color.b]
-      }) }))
-    return () => trailBackend.dispose()
-  }, [trailBackend, snapshot.trains, projectedStops, projectedPaths, lakeAvoidingPaths, trainPalette, palette])
-  useFrame(({ clock, camera }, delta) => {
-    if (isPlaying) {
-      localTime.current += delta * playbackRate
-      if (localTime.current > snapshot.metadata.windowEnd) {
-        localTime.current = snapshot.metadata.windowStart
-      }
-    }
-    const visibleBus = vehicleIsVisibleAtZoom('bus', camera.position.y, cameraFraming)
-    const visibleTram = vehicleIsVisibleAtZoom('tram', camera.position.y, cameraFraming)
-    const pausedVisibility = Number(visibleBus) + 2 * Number(visibleTram)
-    const trailVisibility = String(visibleBus) + String(visibleTram)
-    if (trailBackend) {
-      trailBackend.select(trailSelection, trailVisibility)
-      const completed = trailBackend.takeFrame()
-      if (completed) {
-        applyTrailFrame(geometries, completed)
-        if (!trailBackend.available) previousPausedTrail.current.inputs = undefined
-      }
-      if (!isPlaying && previousPausedTrail.current.inputs === trailSelection &&
-          previousPausedTrail.current.visibility === trailVisibility &&
-          previousPausedTrail.current.worker === trailBackend.available &&
-          previousPausedTrail.current.time === localTime.current) return
-    } else if (!pausedFrame.needsUpdate(isPlaying, localTime.current, pausedVisibility)) return
-    if (!trailFrameBudget.shouldUpdateTrail(delta, clock.elapsedTime - lastUpdate.current, !trailBackend && !isPlaying)) return
-    pausedFrame.record(localTime.current, pausedVisibility)
-    lastUpdate.current = clock.elapsedTime
-    previousPausedTrail.current = { inputs: trailSelection, visibility: trailVisibility, worker: trailBackend?.available, time: localTime.current }
-    const workerActive = Boolean(trailBackend?.available)
-    const workerTrainIds: string[] = []
-
-    const sampleTimes = vehicleTrailSampleTimes(localTime.current)
-    const segmentCounts = new Array<number>(VEHICLE_TRAIL_SEGMENTS).fill(0)
-    const positionArrays = geometries.map(
-      (geometry) =>
-        geometry.getAttribute('position').array as Float32Array,
-    )
-    const colorArrays = geometries.map(
-      (geometry) => geometry.getAttribute('color').array as Float32Array,
-    )
-
-    for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
-      if (airCategorySelected) continue
-      if (comparisonTrains?.length && !comparisonTrainIds.has(train.id)) continue
-      if (selectedTrain && train.id !== selectedTrain.id) continue
-      if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
-      if (selectedCategory && train.category !== selectedCategory) continue
-      if (selectedStation && !selectedStationTrainIds.has(train.id)) continue
-      if (
-        !(Boolean(selectedTrain || selectedRoute || selectedCategory || selectedStation) || (train.category === 'bus' ? visibleBus : train.category === 'tram' ? visibleTram : true))
-      ) {
-        continue
-      }
-
-      if (train.realtime?.status === 'cancelled' || localTime.current < train.start || sampleTimes[VEHICLE_TRAIL_SEGMENTS] > train.end) continue
-      if (workerActive) { workerTrainIds.push(train.id); continue }
-      const samples = sampleTimes.map((sampleTime) =>
-        resolveTrainPosition(
-          train,
-          sampleTime,
-          projectedStops,
-          projectedPaths,
-          lakeAvoidingPaths,
-        ),
-      )
-      const color =
-        trainPalette.get(train.id) ?? palette[train.category] ?? palette.other
-
-      for (let index = 0; index < VEHICLE_TRAIL_SEGMENTS; index += 1) {
-        const current = samples[index]
-        const previous = samples[index + 1]
-        if (!current || !previous) continue
-        const distanceSquared =
-          (current[0] - previous[0]) ** 2 +
-          (current[2] - previous[2]) ** 2
-        if (distanceSquared < 0.000001) continue
-
-        const offset = segmentCounts[index] * 6
-        positionArrays[index].set(current, offset)
-        positionArrays[index].set(previous, offset + 3)
-        const colors = colorArrays[index]
-        colors[offset] = colors[offset + 3] = color.r
-        colors[offset + 1] = colors[offset + 4] = color.g
-        colors[offset + 2] = colors[offset + 5] = color.b
-        segmentCounts[index] += 1
-      }
-    }
-
-    if (workerActive) { trailBackend!.submit(localTime.current, workerTrainIds); return }
-    geometries.forEach((geometry, index) => {
-      updateActiveGeometry(geometry, segmentCounts[index] * 2)
-    })
-  })
-
-  const opacity = [0.4, 0.22, 0.1]
-  return (
-    <group position={[0, mapStyle.trailElevationOffset ?? -0.035, 0]}>
-      {geometries.map((geometry, index) => (
-        <lineSegments
-          key={index}
-          geometry={geometry}
-          frustumCulled={false}
-          renderOrder={flat ? 5 : 3 + index}
-        >
-          <lineBasicMaterial
-            vertexColors
-            transparent
-            opacity={opacity[index]}
-            blending={THREE.AdditiveBlending}
-            depthTest={!flat}
-            depthWrite={false}
-            toneMapped={false}
-          />
-        </lineSegments>
-      ))}
-    </group>
   )
 }
 
@@ -4053,6 +4052,10 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
     return new THREE.Vector3(x, 0, z)
   }, [projection, props.snapshot])
   const hasContext = Boolean(props.contextSnapshot && contextProjectedStops)
+  const motion = useMemo(
+    () => new VehicleMotionTable(props.snapshot.trains),
+    [props.snapshot],
+  )
   const trainTimeIndex = useMemo(
     () =>
       buildTrainTimeIndex(
@@ -4303,17 +4306,12 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         />
       )}
       {props.children}
-      <VehicleTrails
+      <VehicleMotion
         {...props}
         projectedStops={projectedStops}
         projectedPaths={projectedPaths}
         trainTimeIndex={trainTimeIndex}
-      />
-      <TrainSwarm
-        {...props}
-        projectedStops={projectedStops}
-        projectedPaths={projectedPaths}
-        trainTimeIndex={trainTimeIndex}
+        motion={motion}
       />
       <StationLabels
         stations={props.stations}
@@ -4349,6 +4347,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         projectedStops={projectedStops}
         projectedPaths={projectedPaths}
         trainTimeIndex={trainTimeIndex}
+        motion={motion}
       />
       <NetworkCamera
         selectedTrain={props.selectedTrain}

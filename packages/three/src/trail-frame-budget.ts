@@ -1,4 +1,6 @@
-/** Give moving markers priority when the browser cannot sustain smooth frames. */
+/** Give moving markers priority when the browser cannot sustain smooth frames.
+ * The full interval applies on smooth frames; the reduced interval applies
+ * after sustained load and is retained until a few seconds of recovery. */
 export class TrailFrameBudget {
   private averageFrame = 1 / 60
   private recoverySeconds = 0
@@ -6,7 +8,7 @@ export class TrailFrameBudget {
   private updatedPreviousFrame = false
   private longFrames = 0
 
-  constructor(private readonly fullInterval = 1 / 30) {}
+  constructor(private readonly fullInterval = 1 / 30, private readonly reducedInterval = 1 / 15) {}
 
   shouldUpdateTrail(delta: number, elapsedSinceUpdate: number, force = false): boolean {
     const interval = this.interval(delta)
@@ -29,7 +31,7 @@ export class TrailFrameBudget {
     // frames still need a budget, even when each one exceeds 250 ms.
     if (Number.isFinite(delta) && delta >= 0.25) {
       this.longFrames++
-      if (this.longFrames < 2) return this.reduced ? 1 / 15 : this.fullInterval
+      if (this.longFrames < 2) return this.reduced ? this.reducedInterval : this.fullInterval
       delta = 0.25
     } else this.longFrames = 0
     if (Number.isFinite(delta) && delta > 0) {
@@ -43,6 +45,6 @@ export class TrailFrameBudget {
         if (this.recoverySeconds >= 3) this.reduced = false
       }
     }
-    return this.reduced ? 1 / 15 : this.fullInterval
+    return this.reduced ? this.reducedInterval : this.fullInterval
   }
 }
