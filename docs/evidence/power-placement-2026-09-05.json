@@ -1,0 +1,426 @@
+{
+ "kind": "power-placement-audit",
+ "date": "2026-09-05",
+ "placedAt": "2026-09-14",
+ "compiledFrom": "7402168b27863e394c4d9050c4dd123cd4f1fbe3a719191d4821b140cbcd4d5e",
+ "audit": {
+  "units": 9152,
+  "generationUnits": 451,
+  "generationPlaced": 267,
+  "generationCapacityMw": 83303,
+  "generationCapacityPlacedMw": 46085,
+  "methods": {
+   "curated": 0,
+   "site": 195,
+   "connection": 72,
+   "aggregate": 2866,
+   "interconnector": 1223,
+   "unplaced": 4796
+  },
+  "repd": {
+   "rows": 14657,
+   "operational": 3132,
+   "withCoordinates": 3130,
+   "northernIreland": 119,
+   "converted": 3011
+  },
+  "tec": {
+   "rows": 2198,
+   "built": 375,
+   "connectionResolved": 211
+  },
+  "curated": 0,
+  "compiledBytes": 13370547,
+  "compiledSha256": "91adf60e0e52d02a6fd60406793cbef840fc83d2eed814470c75a3c11515d31c"
+ },
+ "byFuel": {
+  "OTHER": {
+   "units": 90,
+   "placed": 49,
+   "capacityMw": 5205,
+   "capacityPlacedMw": 2793,
+   "methods": {
+    "aggregate": 6,
+    "site": 28,
+    "unplaced": 35,
+    "connection": 21
+   }
+  },
+  "WIND": {
+   "units": 232,
+   "placed": 160,
+   "capacityMw": 30464,
+   "capacityPlacedMw": 22324,
+   "methods": {
+    "aggregate": 11,
+    "unplaced": 61,
+    "site": 147,
+    "connection": 13
+   }
+  },
+  "BIOMASS": {
+   "units": 12,
+   "placed": 8,
+   "capacityMw": 3661,
+   "capacityPlacedMw": 3074,
+   "methods": {
+    "aggregate": 1,
+    "site": 8,
+    "unplaced": 3
+   }
+  },
+  "NPSHYD": {
+   "units": 22,
+   "placed": 9,
+   "capacityMw": 1106,
+   "capacityPlacedMw": 351,
+   "methods": {
+    "aggregate": 1,
+    "unplaced": 12,
+    "connection": 9
+   }
+  },
+  "CCGT": {
+   "units": 58,
+   "placed": 18,
+   "capacityMw": 31635,
+   "capacityPlacedMw": 10473,
+   "methods": {
+    "unplaced": 40,
+    "connection": 18
+   }
+  },
+  "OCGT": {
+   "units": 20,
+   "placed": 5,
+   "capacityMw": 1335,
+   "capacityPlacedMw": 605,
+   "methods": {
+    "connection": 5,
+    "unplaced": 15
+   }
+  },
+  "INTELEC": {
+   "units": 2,
+   "placed": 0,
+   "capacityMw": 2075,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 2
+   }
+  },
+  "INTNED": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 1478,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "INTEW": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 531,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "INTFR": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 2014,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "INTGRNL": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 1400,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "INTIFA2": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 1100,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "INTIRL": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 402,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "INTNSL": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 1400,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "INTVKL": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 1400,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "INTNEM": {
+   "units": 1,
+   "placed": 0,
+   "capacityMw": 1020,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "interconnector": 1
+   }
+  },
+  "PS": {
+   "units": 16,
+   "placed": 12,
+   "capacityMw": 3058,
+   "capacityPlacedMw": 2693,
+   "methods": {
+    "site": 12,
+    "unplaced": 4
+   }
+  },
+  "NUCLEAR": {
+   "units": 14,
+   "placed": 6,
+   "capacityMw": 6410,
+   "capacityPlacedMw": 3771,
+   "methods": {
+    "unplaced": 8,
+    "connection": 6
+   }
+  },
+  "COAL": {
+   "units": 6,
+   "placed": 0,
+   "capacityMw": 1290,
+   "capacityPlacedMw": 0,
+   "methods": {
+    "unplaced": 6
+   }
+  }
+ },
+ "largestUnplaced": [
+  {
+   "bmUnit": "T_HUMR-1",
+   "fuelType": "CCGT",
+   "name": "HUMR-1",
+   "leadParty": "VPI Immingham LLP",
+   "capacityMw": 1283,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_MRWD-1",
+   "fuelType": "CCGT",
+   "name": "Marchwood Power Ltd",
+   "leadParty": "Marchwood Power Limited",
+   "capacityMw": 920,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_LAGA-1",
+   "fuelType": "CCGT",
+   "name": "Langage Power Station",
+   "leadParty": "EP UK INVESTMENTS LIMITED",
+   "capacityMw": 905,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_KEAD-2",
+   "fuelType": "CCGT",
+   "name": "Keadby-2 Main",
+   "leadParty": "Keadby Generation Limited",
+   "capacityMw": 890,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_COSO-1",
+   "fuelType": "CCGT",
+   "name": "Coryton Power Station",
+   "leadParty": "Coryton Energy Company Ltd",
+   "capacityMw": 856.186,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_SHBA-1",
+   "fuelType": "CCGT",
+   "name": "SOUTH HUMBER BANK P/S PHASE 1",
+   "leadParty": "EP UK INVESTMENTS LIMITED",
+   "capacityMw": 821.4,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_ROCK-1",
+   "fuelType": "CCGT",
+   "name": "Rocksavage Power Station",
+   "leadParty": "Rocksavage Power Company Ltd",
+   "capacityMw": 810,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_DIDCB5",
+   "fuelType": "CCGT",
+   "name": "Didcot B main unit 5",
+   "leadParty": "RWE Generation UK plc",
+   "capacityMw": 770,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_KEAD-1",
+   "fuelType": "CCGT",
+   "name": "KGL CCGT 1",
+   "leadParty": "Keadby Generation Limited",
+   "capacityMw": 764,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_MEDP-1",
+   "fuelType": "CCGT",
+   "name": "Medway Power",
+   "leadParty": "Medway Power Ltd",
+   "capacityMw": 750,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_RYHPS-1",
+   "fuelType": "CCGT",
+   "name": "T_RYHPS-1",
+   "leadParty": "VPI Power Limited",
+   "capacityMw": 720.98,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_DIDCB6",
+   "fuelType": "CCGT",
+   "name": "Didcot B main unit 6",
+   "leadParty": "RWE Generation UK plc",
+   "capacityMw": 720,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_TORN-2",
+   "fuelType": "NUCLEAR",
+   "name": "Torness Generator 2",
+   "leadParty": "EDF Energy Nuclear Generation",
+   "capacityMw": 700,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_SIZB-1",
+   "fuelType": "NUCLEAR",
+   "name": "Sizewell B Genrator 1",
+   "leadParty": "EDF Energy Nuclear Generation",
+   "capacityMw": 656.92,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_TORN-1",
+   "fuelType": "NUCLEAR",
+   "name": "Torness Generator 1",
+   "leadParty": "EDF Energy Nuclear Generation",
+   "capacityMw": 652,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_DRAXX-5",
+   "fuelType": "COAL",
+   "name": "T_DRAXX-5",
+   "leadParty": "Drax Power Ltd",
+   "capacityMw": 645,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_DRAXX-6",
+   "fuelType": "COAL",
+   "name": "T_DRAXX-6",
+   "leadParty": "Drax Power Ltd",
+   "capacityMw": 645,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_SIZB-2",
+   "fuelType": "NUCLEAR",
+   "name": "Sizewell B Genrator 2",
+   "leadParty": "EDF Energy Nuclear Generation",
+   "capacityMw": 630,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_SHBA-2",
+   "fuelType": "CCGT",
+   "name": "SOUTH HUMBER BANK P/S PHASE 2",
+   "leadParty": "EP UK INVESTMENTS LIMITED",
+   "capacityMw": 580,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  },
+  {
+   "bmUnit": "T_PEMB-11",
+   "fuelType": "CCGT",
+   "name": "Pembroke Unit 11",
+   "leadParty": "RWE Generation UK plc",
+   "capacityMw": 475,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_PEMB-21",
+   "fuelType": "CCGT",
+   "name": "Pembroke Unit 21",
+   "leadParty": "RWE Generation UK plc",
+   "capacityMw": 475,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_PEMB-31",
+   "fuelType": "CCGT",
+   "name": "Pembroke Unit 31",
+   "leadParty": "RWE Generation UK plc",
+   "capacityMw": 475,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_PEMB-41",
+   "fuelType": "CCGT",
+   "name": "Pembroke Unit 41",
+   "leadParty": "RWE Generation UK plc",
+   "capacityMw": 475,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_PEMB-51",
+   "fuelType": "CCGT",
+   "name": "Pembroke Unit 51",
+   "leadParty": "RWE Generation UK plc",
+   "capacityMw": 475,
+   "reason": "No confident site or connection match."
+  },
+  {
+   "bmUnit": "T_CARR-1",
+   "fuelType": "CCGT",
+   "name": "Carrington Power Ltd - Unit 1",
+   "leadParty": "Carrington Power Ltd",
+   "capacityMw": 470,
+   "reason": "TEC project matched but its connection site did not resolve to a supply point."
+  }
+ ],
+ "model": "Aggregate audit of one placement run; unit names and lead parties are public register fields. Coordinates are not included here."
+}
