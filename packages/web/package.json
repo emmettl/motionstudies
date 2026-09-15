@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.19",
+  "version": "0.1.0-alpha.20",
   "private": true,
   "type": "module",
   "exports": {
@@ -41,7 +41,7 @@
     "./fonts.css": "./src/fonts.css"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.19"
+    "@motionstudies/core": "0.1.0-alpha.20"
   },
   "peerDependencies": {
     "react": "^19.2.8",
