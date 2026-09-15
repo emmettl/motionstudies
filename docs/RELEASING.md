@@ -37,6 +37,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
 
+`0.1.0-alpha.18` loads desktop button help lazily from `mountMotionStudy`, removing it from every edition's opening bundle. See [the deferred button help record](TOOLTIPS-ALPHA-18.md).
+
 `0.1.0-alpha.17` gives every vehicle its own interpolation window and refreshes due journeys within an adaptive per-frame budget, caps trail history sampling under load and skips culling when the whole network is in view. See [the budgeted motion release record](MOTION-ALPHA-17.md).
 
 `0.1.0-alpha.16` moves vehicle interpolation onto the GPU, rebuilds trails from sampled history, skips offscreen journeys and removes the trail backend extension. Edition pickers adopt `scenePickVertex`. See [the vehicle motion release record](MOTION-ALPHA-16.md).
