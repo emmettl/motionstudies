@@ -55,6 +55,8 @@ try {
   }
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
     import { network } from './fixtures.ts'
+    import { readPowerDay, unitPower, sumPower, fuelMixAt, type PowerDay } from '@motionstudies/core/domain/power-day'
+    export const powerContract = (input: unknown) => { const day: PowerDay = readPowerDay(input); return [sumPower(day, day.units, 0), fuelMixAt(day, 0), day.units[0] ? unitPower(day, day.units[0], 0) : null] }
     import { mountMotionStudy, type MotionStudyMountOptions } from '@motionstudies/web/mount-motion-study'
     export const mountPresentation = (theme: MotionStudyMountOptions['theme']) => mountMotionStudy({ id: 'independent-consumer', theme }, null)
     import { encodeNetworkPatterns, decodeNetworkPatterns } from '@motionstudies/core/domain/network-patterns'

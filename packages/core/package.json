@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.1.0-alpha.20",
+  "version": "0.1.0-alpha.21",
   "private": true,
   "type": "module",
   "exports": {
@@ -40,7 +40,8 @@
     "./domain/gridded-series": "./src/domain/gridded-series.ts",
     "./domain/published-day": "./src/domain/published-day.ts",
     "./domain/field-paths": "./src/domain/field-paths.ts",
-    "./domain/daylight": "./src/domain/daylight.ts"
+    "./domain/daylight": "./src/domain/daylight.ts",
+    "./domain/power-day": "./src/domain/power-day.ts"
   },
   "description": "Transport contracts and motion primitives for Motion Studies.",
   "sideEffects": false,

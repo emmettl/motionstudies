@@ -37,6 +37,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
 
+`0.1.0-alpha.21` adds the opt-in `@motionstudies/core/domain/power-day` contract, validated reader, interval lookup, declared-plan lookup and explicit-membership sums. It preserves energy versus power units, missingness, signed quantities, settlement runs and source linkage. The recorder writer and England reader are its first consumers; other editions need no adoption for this feature.
+
 `0.1.0-alpha.20` makes two changes.
 
 - **Boundary tube cap.** `NationalNetworkScene`'s cap rises from 920 to 8,192 segments, with the curve's arc-length sampling matched to the segment count, so a national coastline is drawn through every vertex instead of being smoothed. Gleislicht's outline moves from 920 to 926 segments. The built scene grows by 50 bytes raw and 19 bytes gzipped. This is on Gleislicht's opening path, which had about 0.2 KiB of CI headroom after alpha.18, so check its **Check mobile bundle budget** step on CI when adopting.
