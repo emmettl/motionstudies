@@ -38,6 +38,115 @@
       "integrity": "sha512-H4YI24+4l889aoSgtOwV/CP1u2yQSzlT33+DJEolevgh2VOF2Nshz5c/RMhtil+5I2NtIkb1oZMeyb4HXULTEQ=="
     }
   ],
-  "downstream": {},
-  "rolloutComplete": false
+  "downstream": {
+    "allchange": {
+      "commits": [
+        "36a8525",
+        "171310d"
+      ],
+      "result": "deployed",
+      "note": "first push failed the Node 24 opening JavaScript check at 347.7 KiB; limit raised to 348 KiB in 171310d",
+      "live": "LondonNetworkScene-B9KWMFEs.js",
+      "runs": [
+        "Publish to Cloudflare: skipped https://github.com/emmettl/allchange/actions/runs/34992135373",
+        "Deploy Pages: failure https://github.com/emmettl/allchange/actions/runs/34991970661",
+        "Publish to Cloudflare: success https://github.com/emmettl/allchange/actions/runs/34993264363",
+        "Deploy Pages: success https://github.com/emmettl/allchange/actions/runs/34992394554"
+      ]
+    },
+    "correspondances": {
+      "commits": [
+        "7c14619"
+      ],
+      "result": "deployed",
+      "live": "ParisNetworkScene-DiY8CAdy.js",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/correspondances/actions/runs/34997875419",
+        "Deploy Pages: success https://github.com/emmettl/correspondances/actions/runs/34991973624"
+      ]
+    },
+    "umlauf": {
+      "commits": [
+        "8d976ee"
+      ],
+      "result": "deployed",
+      "live": "index-Cb5J125y.js",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/umlauf/actions/runs/34992503485",
+        "Deploy Pages: success https://github.com/emmettl/umlauf/actions/runs/34991975993"
+      ]
+    },
+    "manifest": {
+      "commits": [
+        "927250c"
+      ],
+      "result": "deployed; web package only",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/manifest/actions/runs/34992168926",
+        "Deploy Pages: success https://github.com/emmettl/manifest/actions/runs/34991979297"
+      ]
+    },
+    "zugunruhe": {
+      "commits": [
+        "be0d8f1"
+      ],
+      "result": "deployed; web package only",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/zugunruhe/actions/runs/34994041190",
+        "Deploy Pages: success https://github.com/emmettl/zugunruhe/actions/runs/34991986618"
+      ]
+    },
+    "norikae": {
+      "commits": [
+        "ab00d20"
+      ],
+      "featureBranchCommit": "ed4d98c",
+      "result": "deployed from main",
+      "live": "NationalNetworkScene-BjMccFlq.js",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/norikae/actions/runs/34992247290",
+        "Validate: success https://github.com/emmettl/norikae/actions/runs/34991991355",
+        "Deploy to GitHub Pages: success https://github.com/emmettl/norikae/actions/runs/34991991276"
+      ]
+    },
+    "local-express": {
+      "commits": [
+        "6ca3186"
+      ],
+      "result": "validated; no deployment workflow",
+      "runs": [
+        "Check Local / Express: success https://github.com/emmettl/local-express/actions/runs/34991985417"
+      ]
+    },
+    "gleislicht": {
+      "commits": [
+        "c29cffe"
+      ],
+      "result": "not deployed: opening JavaScript 360.6 KiB on Node 24 CI against a fixed 360 KiB limit; resolved by alpha.18",
+      "runs": [
+        "Check public freshness: skipped https://github.com/emmettl/gleislicht/actions/runs/34992811711",
+        "Publish to Cloudflare: skipped https://github.com/emmettl/gleislicht/actions/runs/34992805745",
+        "Deploy to GitHub Pages: failure https://github.com/emmettl/gleislicht/actions/runs/34992266841"
+      ]
+    },
+    "underfall": {
+      "commits": [
+        "f89b287"
+      ],
+      "remote": null,
+      "result": "local gates pass; no Git remote"
+    }
+  },
+  "rolloutComplete": false,
+  "liveVerification": {
+    "method": "crawl of each deployed chunk graph for the motion-lerp-windowed program key and absence of motion-lerp-points",
+    "verifiedAt": "2026-09-15"
+  },
+  "terrainComparison": {
+    "spec": "gleislicht e2e/terrain-smoke.spec.ts, iphone-webkit, one worker, three runs each",
+    "alpha17Failed": 5,
+    "alpha16Failed": 4,
+    "of": 24,
+    "error": "ResizeObserver loop completed with undelivered notifications"
+  }
 }
