@@ -57,3 +57,23 @@ it('records absent positions and refills after backwards or distant seeks', () =
   calls.length = 0
   expect(history.fill(0, 600, sampler(calls))).toBe(10)
 })
+
+it('caps samples per fill, leaving older grid times unknown until they are refilled', () => {
+  const history = new VehicleHistory(1)
+  const calls: number[] = []
+  expect(history.fill(0, 990, sampler(calls), 4)).toBe(4)
+  expect(calls).toEqual([945, 960, 975, 990])
+  const out = new Float32Array(3)
+  expect(history.read(0, 945, out, 0)).toBe(true)
+  expect(history.read(0, 930, out, 0)).toBe(false)
+  expect(history.read(0, 855, out, 0)).toBe(false)
+  calls.length = 0
+  expect(history.fill(0, 1005, sampler(calls), 4)).toBe(1)
+  expect(calls).toEqual([1005])
+  calls.length = 0
+  history.fill(0, 1200, sampler(calls), 0)
+  expect(calls).toEqual([1200])
+  expect(history.read(0, 1185, out, 0)).toBe(false)
+  calls.length = 0
+  expect(history.fill(0, 1215, sampler(calls))).toBe(1)
+})

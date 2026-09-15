@@ -1,8 +1,12 @@
-import type { Material, Vector2, WebGLProgramParametersWithUniforms } from 'three'
+import type { Material, WebGLProgramParametersWithUniforms } from 'three'
 
-/** x: marker phase inside the sampling window; y: trail phase inside the history grid. */
-export interface MotionMixUniform {
-  readonly value: Vector2
+/**
+ * `clock` is the study time drawn this frame. `stale` is how far, in study
+ * seconds, the clock may leave a vertex's window before the vertex is hidden.
+ */
+export interface MotionUniforms {
+  readonly clock: { value: number }
+  readonly stale: { value: number }
 }
 
 export interface MotionLerpProps {
@@ -10,40 +14,40 @@ export interface MotionLerpProps {
   readonly customProgramCacheKey: () => string
 }
 
-export interface MotionLerp {
-  /** Points and single-phase vertices follow the marker phase. */
-  readonly points: MotionLerpProps
-  /** Trail vertices choose the marker or trail phase through a `motionPhase` attribute. */
-  readonly phased: MotionLerpProps
+export const MOTION_LERP_DECLARATIONS =
+  'attribute vec3 positionTo;\nattribute vec2 motionTime;\nuniform float motionClock;\nuniform float motionStale;\n'
+export const MOTION_LERP_VERTEX =
+  'float motionSpan = max( motionTime.y - motionTime.x, 1e-3 );\n' +
+  'vec3 transformed = mix( position, positionTo, clamp( ( motionClock - motionTime.x ) / motionSpan, 0.0, 1.0 ) );'
+/** A reversed window marks an empty slot; a clock far outside the window marks a slot not yet refreshed. */
+export const MOTION_HIDE_VERTEX =
+  'if ( motionTime.y < motionTime.x || motionClock > motionTime.y + motionStale || motionClock < motionTime.x - motionStale ) {\n' +
+  '\tgl_Position = vec4( 2.0, 2.0, 2.0, 1.0 );\n\tgl_PointSize = 0.0;\n}\n#include <fog_vertex>'
+
+export function motionLerpVertexShader(source: string): string {
+  return MOTION_LERP_DECLARATIONS + source
+    .replace('#include <begin_vertex>', MOTION_LERP_VERTEX)
+    .replace('#include <fog_vertex>', MOTION_HIDE_VERTEX)
 }
 
-const ATTRIBUTES = 'attribute vec3 positionTo;\nuniform vec2 motionMix;\n'
-const PHASE_ATTRIBUTE = 'attribute float motionPhase;\n'
-export const MOTION_LERP_POINTS = 'vec3 transformed = mix( position, positionTo, motionMix.x );'
-export const MOTION_LERP_PHASED =
-  'vec3 transformed = mix( position, positionTo, mix( motionMix.x, motionMix.y, motionPhase ) );'
-
-export function motionLerpVertexShader(source: string, phased: boolean): string {
-  const declarations = phased ? ATTRIBUTES + PHASE_ATTRIBUTE : ATTRIBUTES
-  return declarations + source.replace(
-    '#include <begin_vertex>',
-    phased ? MOTION_LERP_PHASED : MOTION_LERP_POINTS,
-  )
+export function createMotionUniforms(): MotionUniforms {
+  return { clock: { value: 0 }, stale: { value: 0 } }
 }
 
 /**
- * Built-in materials move their vertices from `position` toward `positionTo`
- * on the GPU, so buffers need uploading only when the sampling window moves.
+ * Built-in point and line materials move each vertex from `position` toward
+ * `positionTo` across its own `motionTime` window, so every journey can be
+ * refreshed on its own schedule while all of them move every frame.
  */
-export function createMotionLerp(uniform: MotionMixUniform): MotionLerp {
-  const props = (phased: boolean): MotionLerpProps => ({
+export function createMotionLerp(uniforms: MotionUniforms): MotionLerpProps {
+  return {
     onBeforeCompile: (shader) => {
-      shader.uniforms.motionMix = uniform
-      shader.vertexShader = motionLerpVertexShader(shader.vertexShader, phased)
+      shader.uniforms.motionClock = uniforms.clock
+      shader.uniforms.motionStale = uniforms.stale
+      shader.vertexShader = motionLerpVertexShader(shader.vertexShader)
     },
-    customProgramCacheKey: () => (phased ? 'motion-lerp-phased' : 'motion-lerp-points'),
-  })
-  return { points: props(false), phased: props(true) }
+    customProgramCacheKey: () => 'motion-lerp-windowed',
+  }
 }
 
 export function applyMotionLerp(material: Material, props: MotionLerpProps): void {

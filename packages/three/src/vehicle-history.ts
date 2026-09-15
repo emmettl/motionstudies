@@ -43,8 +43,13 @@ export class VehicleHistory {
     this.latest.fill(NaN)
   }
 
-  /** Bring one journey's ring up to gridEnd, sampling only missing grid times. Returns samples taken. */
-  fill(index: number, gridEnd: number, sample: HistorySampler): number {
+  /**
+   * Bring one journey's ring up to gridEnd, sampling only missing grid times.
+   * At most `maxSamples` newest times are sampled; older missing times stay
+   * unknown, so a struggling frame shortens trails instead of stalling.
+   * Returns samples taken.
+   */
+  fill(index: number, gridEnd: number, sample: HistorySampler, maxSamples = VEHICLE_TRAIL_HISTORY_LENGTH): number {
     const latest = this.latest[index]
     if (latest === gridEnd) return 0
     const span = (VEHICLE_TRAIL_HISTORY_LENGTH - 1) * VEHICLE_TRAIL_HISTORY_STEP_SECONDS
@@ -52,6 +57,11 @@ export class VehicleHistory {
     let time = Number.isNaN(latest) || latest < earliest || latest > gridEnd
       ? earliest
       : latest + VEHICLE_TRAIL_HISTORY_STEP_SECONDS
+    const limit = Math.max(1, Math.min(VEHICLE_TRAIL_HISTORY_LENGTH, Math.floor(maxSamples)))
+    const newest = gridEnd - (limit - 1) * VEHICLE_TRAIL_HISTORY_STEP_SECONDS
+    for (; time < newest; time += VEHICLE_TRAIL_HISTORY_STEP_SECONDS) {
+      this.samples[(index * VEHICLE_TRAIL_HISTORY_LENGTH + slot(time)) * 3] = NaN
+    }
     let taken = 0
     for (; time <= gridEnd; time += VEHICLE_TRAIL_HISTORY_STEP_SECONDS) {
       const base = (index * VEHICLE_TRAIL_HISTORY_LENGTH + slot(time)) * 3

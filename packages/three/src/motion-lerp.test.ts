@@ -1,39 +1,39 @@
 import { expect, it } from 'vitest'
-import { LineBasicMaterial, PointsMaterial, ShaderChunk, ShaderLib, Vector2 } from 'three'
+import { LineBasicMaterial, PointsMaterial, ShaderLib } from 'three'
 import {
-  MOTION_LERP_PHASED,
-  MOTION_LERP_POINTS,
+  MOTION_HIDE_VERTEX,
+  MOTION_LERP_VERTEX,
   applyMotionLerp,
   createMotionLerp,
+  createMotionUniforms,
   motionLerpVertexShader,
 } from './motion-lerp.ts'
 
-it('replaces the built-in vertex origin in the point and line shaders', () => {
+it('replaces the vertex origin and hides empty or stale slots in point and line shaders', () => {
   for (const source of [ShaderLib.points.vertexShader, ShaderLib.basic.vertexShader]) {
     expect(source).toContain('#include <begin_vertex>')
-    const points = motionLerpVertexShader(source, false)
-    expect(points).toContain(MOTION_LERP_POINTS)
-    expect(points).not.toContain('#include <begin_vertex>')
-    expect(points).toContain('attribute vec3 positionTo;')
-    expect(points).not.toContain('motionPhase')
-    const phased = motionLerpVertexShader(source, true)
-    expect(phased).toContain(MOTION_LERP_PHASED)
-    expect(phased).toContain('attribute float motionPhase;')
+    expect(source).toContain('#include <fog_vertex>')
+    const shader = motionLerpVertexShader(source)
+    expect(shader).toContain(MOTION_LERP_VERTEX)
+    expect(shader).toContain(MOTION_HIDE_VERTEX)
+    expect(shader).not.toContain('#include <begin_vertex>')
+    expect(shader.match(/#include <fog_vertex>/g)).toHaveLength(1)
+    expect(shader).toContain('attribute vec2 motionTime;')
+    expect(shader.indexOf(MOTION_LERP_VERTEX)).toBeLessThan(shader.indexOf('gl_Position = vec4( 2.0'))
   }
-  expect(ShaderChunk.begin_vertex).toContain('vec3 transformed = vec3( position );')
 })
 
-it('shares one uniform across materials and keys their programs apart', () => {
-  const uniform = { value: new Vector2(0.25, 0.5) }
-  const lerp = createMotionLerp(uniform)
+it('shares one clock and stale uniform across materials and one program key', () => {
+  const uniforms = createMotionUniforms()
+  const lerp = createMotionLerp(uniforms)
   const points = new PointsMaterial()
   const lines = new LineBasicMaterial()
-  applyMotionLerp(points, lerp.points)
-  applyMotionLerp(lines, lerp.phased)
+  applyMotionLerp(points, lerp)
+  applyMotionLerp(lines, lerp)
   const compiled = { uniforms: {} as Record<string, unknown>, vertexShader: ShaderLib.points.vertexShader }
   points.onBeforeCompile(compiled as never, undefined as never)
-  expect(compiled.uniforms.motionMix).toBe(uniform)
-  expect(compiled.vertexShader).toContain(MOTION_LERP_POINTS)
-  expect(points.customProgramCacheKey()).not.toBe(lines.customProgramCacheKey())
+  expect(compiled.uniforms.motionClock).toBe(uniforms.clock)
+  expect(compiled.uniforms.motionStale).toBe(uniforms.stale)
+  expect(points.customProgramCacheKey()).toBe(lines.customProgramCacheKey())
   expect(new PointsMaterial().customProgramCacheKey()).not.toBe(points.customProgramCacheKey())
 })
