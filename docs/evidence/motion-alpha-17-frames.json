@@ -1,0 +1,372 @@
+{
+  "experiment": "All Change frame profile, alpha.16 against alpha.17",
+  "method": "production build served by vite preview; scripts/profile-london-frames.mjs --headless --angle metal --width 1280 --height 720 --dpr 1 --study-time 27900 --playback-rate 30 --settle 4000 --buses, at 24x and 8x CPU throttling; alpha.17 overlaid from the tested package build into the same checkout",
+  "machine": "Apple M4 Max, headless Chromium with ANGLE Metal",
+  "caveat": "Single local runs on a throttled fast machine; not a Windows Edge measurement",
+  "runs": {
+    "alpha16-24x": {
+      "capturedAt": "2026-09-15T13:28:26.640Z",
+      "platform": "darwin",
+      "browserVersion": "153.0.8010.12",
+      "settings": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "duration": 5000,
+        "fps": 60,
+        "cpu-throttle": 24,
+        "settle": 4000,
+        "channel": "chromium",
+        "headless": true,
+        "studyTime": "27900",
+        "playbackRate": "30",
+        "profiling": false,
+        "angle": "metal",
+        "buses": true,
+        "rail": false,
+        "airRoads": false
+      },
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Unspecified Version)",
+        "canvas": {
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "errors": [],
+      "scenarios": [
+        {
+          "name": "opening",
+          "studyTime": 27990,
+          "frames": 297,
+          "meanFps": 59.2,
+          "p50Ms": 16.7,
+          "p95Ms": 16.7,
+          "p99Ms": 33.3,
+          "maxMs": 33.4,
+          "overBudgetPercent": 64.31,
+          "overOneAndHalfBudgetsPercent": 1.35,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 3117.29,
+            "ScriptDuration": 2153.95,
+            "LayoutDuration": 97.38,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 7.25
+        },
+        {
+          "name": "all-buses",
+          "studyTime": 27990,
+          "frames": 95,
+          "meanFps": 18.94,
+          "p50Ms": 16.7,
+          "p95Ms": 133.4,
+          "p99Ms": 150,
+          "maxMs": 150,
+          "overBudgetPercent": 77.89,
+          "overOneAndHalfBudgetsPercent": 40,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 4815.86,
+            "ScriptDuration": 4464.24,
+            "LayoutDuration": 47.51,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 46.99
+        },
+        {
+          "name": "selected-bus-route",
+          "studyTime": 27980,
+          "frames": 117,
+          "meanFps": 23.32,
+          "p50Ms": 16.7,
+          "p95Ms": 133.3,
+          "p99Ms": 133.3,
+          "maxMs": 133.4,
+          "overBudgetPercent": 76.92,
+          "overOneAndHalfBudgetsPercent": 35.04,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 4584.74,
+            "ScriptDuration": 4101.85,
+            "LayoutDuration": 52.82,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 35.06
+        }
+      ]
+    },
+    "alpha16-8x": {
+      "capturedAt": "2026-09-15T13:29:15.262Z",
+      "platform": "darwin",
+      "browserVersion": "153.0.8010.12",
+      "settings": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "duration": 5000,
+        "fps": 60,
+        "cpu-throttle": 8,
+        "settle": 4000,
+        "channel": "chromium",
+        "headless": true,
+        "studyTime": "27900",
+        "playbackRate": "30",
+        "profiling": false,
+        "angle": "metal",
+        "buses": true,
+        "rail": false,
+        "airRoads": false
+      },
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Unspecified Version)",
+        "canvas": {
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "errors": [],
+      "scenarios": [
+        {
+          "name": "opening",
+          "studyTime": 28020,
+          "frames": 301,
+          "meanFps": 60,
+          "p50Ms": 16.7,
+          "p95Ms": 16.7,
+          "p99Ms": 16.8,
+          "maxMs": 16.8,
+          "overBudgetPercent": 62.79,
+          "overOneAndHalfBudgetsPercent": 0,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 800.23,
+            "ScriptDuration": 594.18,
+            "LayoutDuration": 28.09,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 1.97
+        },
+        {
+          "name": "all-buses",
+          "studyTime": 28010,
+          "frames": 271,
+          "meanFps": 53.84,
+          "p50Ms": 16.7,
+          "p95Ms": 33.3,
+          "p99Ms": 33.4,
+          "maxMs": 50.1,
+          "overBudgetPercent": 64.58,
+          "overOneAndHalfBudgetsPercent": 11.07,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 1721.03,
+            "ScriptDuration": 1531.17,
+            "LayoutDuration": 16.82,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 5.65
+        },
+        {
+          "name": "selected-bus-route",
+          "studyTime": 28010,
+          "frames": 277,
+          "meanFps": 55.22,
+          "p50Ms": 16.7,
+          "p95Ms": 33.3,
+          "p99Ms": 33.4,
+          "maxMs": 50,
+          "overBudgetPercent": 66.79,
+          "overOneAndHalfBudgetsPercent": 8.3,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 1730.18,
+            "ScriptDuration": 1488.28,
+            "LayoutDuration": 8.13,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 5.37
+        }
+      ]
+    },
+    "alpha17-24x": {
+      "capturedAt": "2026-09-15T13:30:27.806Z",
+      "platform": "darwin",
+      "browserVersion": "153.0.8010.12",
+      "settings": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "duration": 5000,
+        "fps": 60,
+        "cpu-throttle": 24,
+        "settle": 4000,
+        "channel": "chromium",
+        "headless": true,
+        "studyTime": "27900",
+        "playbackRate": "30",
+        "profiling": false,
+        "angle": "metal",
+        "buses": true,
+        "rail": false,
+        "airRoads": false
+      },
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Unspecified Version)",
+        "canvas": {
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "errors": [],
+      "scenarios": [
+        {
+          "name": "opening",
+          "studyTime": 27990,
+          "frames": 301,
+          "meanFps": 60,
+          "p50Ms": 16.7,
+          "p95Ms": 16.7,
+          "p99Ms": 16.8,
+          "maxMs": 16.8,
+          "overBudgetPercent": 62.46,
+          "overOneAndHalfBudgetsPercent": 0,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 2439.66,
+            "ScriptDuration": 1774.72,
+            "LayoutDuration": 54.34,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 5.9
+        },
+        {
+          "name": "all-buses",
+          "studyTime": 27990,
+          "frames": 221,
+          "meanFps": 44.05,
+          "p50Ms": 16.7,
+          "p95Ms": 33.4,
+          "p99Ms": 50,
+          "maxMs": 50,
+          "overBudgetPercent": 76.02,
+          "overOneAndHalfBudgetsPercent": 33.94,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 4642.5,
+            "ScriptDuration": 3997.18,
+            "LayoutDuration": 62.35,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 18.09
+        },
+        {
+          "name": "selected-bus-route",
+          "studyTime": 27980,
+          "frames": 244,
+          "meanFps": 48.32,
+          "p50Ms": 16.7,
+          "p95Ms": 33.4,
+          "p99Ms": 50,
+          "maxMs": 50.1,
+          "overBudgetPercent": 72.54,
+          "overOneAndHalfBudgetsPercent": 20.9,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 4705.2,
+            "ScriptDuration": 3979.13,
+            "LayoutDuration": 35.95,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 16.31
+        }
+      ]
+    },
+    "alpha17-8x": {
+      "capturedAt": "2026-09-15T13:31:16.077Z",
+      "platform": "darwin",
+      "browserVersion": "153.0.8010.12",
+      "settings": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "duration": 5000,
+        "fps": 60,
+        "cpu-throttle": 8,
+        "settle": 4000,
+        "channel": "chromium",
+        "headless": true,
+        "studyTime": "27900",
+        "playbackRate": "30",
+        "profiling": false,
+        "angle": "metal",
+        "buses": true,
+        "rail": false,
+        "airRoads": false
+      },
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Unspecified Version)",
+        "canvas": {
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "errors": [],
+      "scenarios": [
+        {
+          "name": "opening",
+          "studyTime": 28020,
+          "frames": 301,
+          "meanFps": 60,
+          "p50Ms": 16.7,
+          "p95Ms": 16.7,
+          "p99Ms": 16.8,
+          "maxMs": 16.8,
+          "overBudgetPercent": 62.13,
+          "overOneAndHalfBudgetsPercent": 0,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 825.9,
+            "ScriptDuration": 594.12,
+            "LayoutDuration": 22.71,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 1.97
+        },
+        {
+          "name": "all-buses",
+          "studyTime": 28020,
+          "frames": 300,
+          "meanFps": 59.8,
+          "p50Ms": 16.7,
+          "p95Ms": 16.8,
+          "p99Ms": 16.8,
+          "maxMs": 33.3,
+          "overBudgetPercent": 61.33,
+          "overOneAndHalfBudgetsPercent": 0.33,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 2277.68,
+            "ScriptDuration": 2039.98,
+            "LayoutDuration": 16.47,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 6.8
+        },
+        {
+          "name": "selected-bus-route",
+          "studyTime": 28020,
+          "frames": 301,
+          "meanFps": 60,
+          "p50Ms": 16.7,
+          "p95Ms": 16.8,
+          "p99Ms": 16.8,
+          "maxMs": 16.8,
+          "overBudgetPercent": 60.47,
+          "overOneAndHalfBudgetsPercent": 0,
+          "mainThreadMilliseconds": {
+            "TaskDuration": 2351.96,
+            "ScriptDuration": 2071.24,
+            "LayoutDuration": 8.94,
+            "RecalcStyleDuration": 0
+          },
+          "scriptMsPerFrame": 6.88
+        }
+      ]
+    }
+  }
+}

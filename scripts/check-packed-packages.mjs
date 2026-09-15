@@ -71,13 +71,17 @@ try {
       createCameraDriver: ({ camera, target }) => ({ update: () => { camera.lookAt(target); return false }, dispose() {} }),
     }
     export const sceneOptions: Pick<NationalNetworkSceneProps, 'mapStyle' | 'extensions' | 'children' | 'frameloop'> = { mapStyle, extensions, children: null, frameloop: 'demand' }
-    import { scenePickVertex, setSceneMotionMix } from '@motionstudies/three/scene-picking'
-    import { VehicleHistory, MotionSampleWindow, groundViewBounds, createGroundBounds } from '@motionstudies/three/render-performance'
+    import { scenePickVertex, setSceneMotionMix, setSceneMotionClock } from '@motionstudies/three/scene-picking'
+    import { VehicleHistory, VehicleMotionTable, MotionFrameBudget, motionLookahead, updateDirtyGeometry, groundViewBounds, createGroundBounds } from '@motionstudies/three/render-performance'
     import { BufferGeometry, PerspectiveCamera, Vector3 } from 'three'
     export const pickedVertex: Vector3 = scenePickVertex(new BufferGeometry(), 0, new Vector3())
     setSceneMotionMix(new BufferGeometry(), 0.5)
     export const historySamples: number = new VehicleHistory(1).fill(0, 90, () => undefined)
-    export const motionPass: string = new MotionSampleWindow().plan(0, true, 30, 3)
+    setSceneMotionClock(new BufferGeometry(), 100, 30)
+    export const motionDue: boolean = new VehicleMotionTable([]).due(0, 0, true, 1)
+    export const motionBudget: number = new MotionFrameBudget().update(1 / 60)
+    export const motionWindow: number = motionLookahead(true, 30, 0.2)
+    updateDirtyGeometry(new BufferGeometry(), 0, -1, 0)
     export const bounded: boolean = groundViewBounds(new PerspectiveCamera(), 0.2, createGroundBounds())
     export const flowPolicy: HubFlowPolicy = { flowAllowed: (_call, flow) => flow === 'arrival' }
     import { decodeAdsbHeatmap, ingestAdsbHeatmaps, chunkAirSnapshot, type HeatmapSnapshot, type HeatmapManifest } from '@motionstudies/data/adsb-heatmap'

@@ -1,9 +1,9 @@
 import { stationLabelTexture, createTrainLabelTexture, type StationLabelTexture, type TrainLabelTexture } from './label-textures.ts'
-import { setSceneMotionMix, setScenePickMetadata, setScenePickTrain } from './scene-picking.ts'
+import { setSceneMotionClock, setScenePickMetadata, setScenePickTrain } from './scene-picking.ts'
 import { TrailFrameBudget } from './trail-frame-budget.ts'
 import { StationLabelFrame } from './station-label-frame.ts'
 import { LabelFrameBudget } from './label-frame-budget.ts'
-import { updateActiveGeometry } from './active-geometry.ts'
+import { updateDirtyGeometry } from './active-geometry.ts'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { createContext, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { useNetworkScene, type NetworkSceneExtensions, type NetworkCameraDriver } from './scene-extensions.ts'
@@ -83,24 +83,33 @@ import {
 import {
   VEHICLE_TRAIL_HISTORY_LENGTH,
   VEHICLE_TRAIL_HISTORY_STEP_SECONDS,
-  trailGridMix,
   trailGridStart,
 } from './vehicle-history.ts'
-import { VehicleMotionTable } from './vehicle-motion.ts'
 import {
-  MARKER_SAMPLE_INTERVAL,
-  MARKER_SAMPLE_INTERVAL_REDUCED,
-  MotionSampleWindow,
+  MOTION_CULLED,
+  MOTION_HIDDEN,
+  MOTION_MOVING,
+  MOTION_STALE,
+  MOTION_TERMINAL,
+  VehicleMotionTable,
+  type MotionState,
+} from './vehicle-motion.ts'
+import {
+  CONVERGE_BUDGET_MS,
+  MotionCycle,
+  MotionFrameBudget,
   TRAIL_SETTLE_SECONDS,
-  markerStepSeconds,
-} from './motion-sampling.ts'
-import { createMotionLerp } from './motion-lerp.ts'
+  motionLookahead,
+  motionStaleSeconds,
+} from './motion-schedule.ts'
+import { createMotionLerp, createMotionUniforms } from './motion-lerp.ts'
 import {
   boundsContain,
   createGroundBounds,
   expandBounds,
   groundViewBounds,
   segmentTouchesBounds,
+  type GroundBounds,
 } from './view-culling.ts'
 import {
   applyMapZoom,
@@ -2426,6 +2435,7 @@ function TrainLabels({
   )
 
   const labelFrameBudget = useMemo(() => new LabelFrameBudget(), [])
+  const labelPoint = useMemo(() => new Float32Array(3), [])
   const visibleLabelTrains = useRef<NetworkTrain[]>([])
   // These dependencies invalidate cached frame work when render inputs change.
   /* oxlint-disable react-hooks/exhaustive-deps */
@@ -2443,6 +2453,7 @@ function TrainLabels({
     }
 
     const stationBoxes = labelStyle?.avoidStationLabels ? stationLabelBoxes.get(camera) ?? emptyLabelBoxes : emptyLabelBoxes
+    const labelStale = motionStaleSeconds(isPlaying, playbackRate)
     const labelWork = labelFrameBudget.update(labelInputs, camera, size.width, size.height,
       localTime.current, delta, isPlaying, playbackRate, stationBoxes)
     if (labelWork === 'idle') return
@@ -2528,15 +2539,11 @@ function TrainLabels({
         playbackRate,
       )
       if (arrivalOpacity <= 0) continue
-      // The motion layer places journeys once per sampling pass; labels
-      // follow those positions instead of sampling paths again.
+      // The motion layer schedules journeys on a frame budget; labels follow
+      // the position it draws instead of sampling paths again.
       const trainIndex = motion.index.get(train)
-      if (trainIndex === undefined || !motion.placed(trainIndex)) continue
-      const position: ProjectedStop = [
-        motion.positions[trainIndex * 3],
-        motion.positions[trainIndex * 3 + 1],
-        motion.positions[trainIndex * 3 + 2],
-      ]
+      if (trainIndex === undefined || !motion.displayed(trainIndex, localTime.current, labelStale, labelPoint)) continue
+      const position: ProjectedStop = [labelPoint[0], labelPoint[1], labelPoint[2]]
       projected.set(position[0], elevation, position[2])
       viewPosition.copy(projected).applyMatrix4(camera.matrixWorldInverse)
       projected.project(camera)
@@ -3074,35 +3081,87 @@ function useVehiclePalette(snapshot: NetworkSnapshot, routeColors: Readonly<Reco
 const VEHICLE_CULL_MARGIN = 0.3
 const VEHICLE_TRAIL_HISTORY_SPAN =
   (VEHICLE_TRAIL_HISTORY_LENGTH - 1) * VEHICLE_TRAIL_HISTORY_STEP_SECONDS
+/** History samples one journey may take per refresh once frames are struggling. */
+const REDUCED_TRAIL_HISTORY_SAMPLES = 4
+/** Playing journeys refresh before their chord ends, so markers never stall at its end. */
+const MOTION_REFRESH_FRACTION = 0.8
+/** Check elapsed time after this many refreshes; clock reads are not free. */
+const MOTION_BUDGET_CHECK = 16
 
-interface MotionArrays {
+interface MotionBuffers {
+  readonly geometry: THREE.BufferGeometry
   readonly from: Float32Array
   readonly to: Float32Array
+  readonly times: Float32Array
   readonly color?: Float32Array
+  readonly vertices: number
+  /** Inclusive changed vertex range for this frame. */
+  readonly dirty: [number, number]
+  /** Visible journeys drawing into this buffer; zero draws nothing. */
+  shown: number
 }
 
-function motionArrays(geometry: THREE.BufferGeometry): MotionArrays {
-  return {
-    from: geometry.getAttribute('position').array as Float32Array,
-    to: geometry.getAttribute('positionTo').array as Float32Array,
-    color: geometry.getAttribute('color')?.array as Float32Array | undefined,
-  }
-}
-
-function motionGeometry(vertices: number, color: boolean): THREE.BufferGeometry {
+function motionBuffers(vertices: number, color: boolean): MotionBuffers {
   const geometry = new THREE.BufferGeometry()
-  geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(vertices * 3), 3))
-  geometry.setAttribute('positionTo', new THREE.BufferAttribute(new Float32Array(vertices * 3), 3))
-  if (color) geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(vertices * 3), 3))
+  const from = new Float32Array(vertices * 3)
+  const to = new Float32Array(vertices * 3)
+  const times = new Float32Array(vertices * 2)
+  // A reversed window marks an empty slot.
+  for (let vertex = 0; vertex < vertices; vertex += 1) times[vertex * 2] = 1
+  geometry.setAttribute('position', new THREE.BufferAttribute(from, 3))
+  geometry.setAttribute('positionTo', new THREE.BufferAttribute(to, 3))
+  geometry.setAttribute('motionTime', new THREE.BufferAttribute(times, 2))
+  const colors = color ? new Float32Array(vertices * 3) : undefined
+  if (colors) geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
   geometry.setDrawRange(0, 0)
-  return geometry
+  return { geometry, from, to, times, color: colors, vertices, dirty: [Infinity, -Infinity], shown: 0 }
+}
+
+function markMotionDirty(buffers: MotionBuffers, first: number, last = first) {
+  if (first < buffers.dirty[0]) buffers.dirty[0] = first
+  if (last > buffers.dirty[1]) buffers.dirty[1] = last
+}
+
+function writeMotionVertex(buffers: MotionBuffers, vertex: number, source: Float32Array, fromOffset: number,
+  toOffset: number, start: number, end: number) {
+  const offset = vertex * 3
+  for (let component = 0; component < 3; component += 1) {
+    buffers.from[offset + component] = source[fromOffset + component]
+    buffers.to[offset + component] = source[toOffset + component]
+  }
+  buffers.times[vertex * 2] = start
+  buffers.times[vertex * 2 + 1] = end
+  markMotionDirty(buffers, vertex)
+}
+
+function hideMotionVertex(buffers: MotionBuffers, vertex: number) {
+  buffers.times[vertex * 2] = 1
+  buffers.times[vertex * 2 + 1] = 0
+  markMotionDirty(buffers, vertex)
+}
+
+function flushMotionBuffers(buffers: MotionBuffers) {
+  updateDirtyGeometry(buffers.geometry, buffers.dirty[0], buffers.dirty[1], buffers.shown > 0 ? buffers.vertices : 0)
+  buffers.dirty[0] = Infinity
+  buffers.dirty[1] = -Infinity
+}
+
+interface MotionRefresh {
+  readonly now: number
+  readonly lookahead: number
+  readonly gridEnd: number
+  readonly includeTrails: boolean
+  readonly cull: GroundBounds | undefined
+  readonly maxHistory: number
+  readonly viewGeneration: number
 }
 
 /**
- * Moving vehicles and their trails. A sampling pass places every visible
- * journey at the start and end of a short study-time window; the GPU
- * interpolates between them on every frame. Trails read brackets from the
- * journey's sampled history, so only crossed grid times cost a path lookup.
+ * Moving vehicles and their trails. Every journey owns a stable buffer slot
+ * and its own study-time window; the GPU moves each vertex across its window
+ * every frame. Each frame refreshes only the journeys that are due, within a
+ * time budget that adapts to the device, so JavaScript cost per frame stays
+ * bounded however many vehicles are in service.
  */
 function VehicleMotion({
   snapshot,
@@ -3118,11 +3177,11 @@ function VehicleMotion({
   selectedCategory,
   airCategorySelected,
   selectedStation,
-  trainTimeIndex,
   cameraFraming,
   routeColors,
   spatialLayoutMix = 0,
   routeColorMix = spatialLayoutMix,
+  layoutTransitioning = false,
   motion,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
@@ -3136,28 +3195,30 @@ function VehicleMotion({
   const categoryColors = mapStyle.categoryColors
   const flat = mapStyle.surface === 'flat'
   const vehicleElevation = mapStyle.vehicleElevation ?? 0.2
+  const trains = snapshot.trains
   const localTime = useRef(time)
   const lastReport = useRef(0)
   const uiFrameBudget = useMemo(() => new TrailFrameBudget(), [])
-  const sampleBudget = useMemo(
-    () => new TrailFrameBudget(MARKER_SAMPLE_INTERVAL, MARKER_SAMPLE_INTERVAL_REDUCED),
-    [],
-  )
-  const sampleWindow = useMemo(() => new MotionSampleWindow(), [])
-  const mixUniform = useMemo(() => ({ value: new THREE.Vector2() }), [])
-  const lerp = useMemo(() => createMotionLerp(mixUniform), [mixUniform])
+  const frameBudget = useMemo(() => new MotionFrameBudget(), [])
+  const cycle = useMemo(() => new MotionCycle(), [])
+  const uniforms = useMemo(() => createMotionUniforms(), [])
+  const lerp = useMemo(() => createMotionLerp(uniforms), [uniforms])
   const viewBounds = useMemo(() => createGroundBounds(), [])
-  const cullBounds = useMemo(() => createGroundBounds(), [])
+  const expandedView = useMemo(() => createGroundBounds(), [])
+  const cullReference = useMemo(() => createGroundBounds(), [])
   const scratch = useMemo(() => new Float32Array(12), [])
   const frame = useRef({
-    inputs: undefined as object | undefined,
     geometry: undefined as object | undefined,
+    style: undefined as object | undefined,
     visibility: -1,
-    culled: false,
-    trailGrid: NaN,
-    trailsStale: true,
+    previousTime: NaN,
     lastSeekAt: -Infinity,
     scrubbing: false,
+    converge: true,
+    cursor: 0,
+    viewGeneration: 1,
+    culling: false,
+    active: 0,
   })
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
@@ -3183,33 +3244,53 @@ function VehicleMotion({
     [],
   )
   const { palette, trainPalette } = useVehiclePalette(snapshot, routeColors, routeColorMix, categoryColors)
-  const markerGeometries = useMemo(() => {
-    const categoryCounts: Record<VehicleMarkerKind, number> = { rail: 0, tram: 0, bus: 0 }
-    snapshot.trains.forEach((train) => {
-      categoryCounts[vehicleMarkerKind(train.category)] += 1
+  const layout = useMemo(() => {
+    const counts = [0, 0, 0]
+    const kinds = new Uint8Array(trains.length)
+    const slots = new Uint32Array(trains.length)
+    const realtimeSlots = new Int32Array(trains.length).fill(-1)
+    let realtimeCount = 0
+    trains.forEach((train, index) => {
+      const kind = VEHICLE_MARKER_KINDS.indexOf(vehicleMarkerKind(train.category))
+      kinds[index] = kind
+      slots[index] = counts[kind]
+      counts[kind] += 1
+      if (train.realtime?.status === 'adjusted' || train.operations) {
+        realtimeSlots[index] = realtimeCount
+        realtimeCount += 1
+      }
     })
-    return Object.fromEntries(
-      VEHICLE_MARKER_KINDS.map((kind) => [kind, motionGeometry(categoryCounts[kind], true)]),
-    ) as Record<VehicleMarkerKind, THREE.BufferGeometry>
-  }, [snapshot.trains])
-  const realtimeGeometry = useMemo(
-    () => motionGeometry(snapshot.trains.length, false),
-    [snapshot.trains],
+    return { counts, kinds, slots, realtimeSlots, realtimeCount }
+  }, [trains])
+  const flags = useMemo(() => ({
+    // 255 forces the first style sweep to classify every journey.
+    eligible: new Uint8Array(trains.length).fill(255),
+    included: new Uint8Array(trains.length).fill(255),
+    focused: new Uint8Array(trains.length).fill(255),
+    intensity: new Float32Array(trains.length),
+    markerShown: new Uint8Array(trains.length),
+    trailShown: new Uint8Array(trains.length * VEHICLE_TRAIL_SEGMENTS),
+    trailPending: new Uint8Array(trains.length),
+  }), [trains])
+  const markerBuffers = useMemo(
+    () => VEHICLE_MARKER_KINDS.map((_, kind) => motionBuffers(layout.counts[kind], true)),
+    [layout],
   )
-  const trailGeometries = useMemo(
-    () =>
-      Array.from({ length: VEHICLE_TRAIL_SEGMENTS }, (_, segment) => {
-        const vertices = snapshot.trains.length * 2
-        const geometry = motionGeometry(vertices, true)
-        // The head segment starts on the marker itself; every other vertex
-        // follows the trail history phase.
-        const phase = new Float32Array(vertices).fill(1)
-        if (segment === 0) for (let index = 0; index < vertices; index += 2) phase[index] = 0
-        geometry.setAttribute('motionPhase', new THREE.BufferAttribute(phase, 1))
-        return geometry
-      }),
-    [snapshot.trains.length],
+  const realtimeBuffers = useMemo(() => motionBuffers(layout.realtimeCount, false), [layout])
+  const trailBuffers = useMemo(
+    () => Array.from({ length: VEHICLE_TRAIL_SEGMENTS }, () => motionBuffers(trains.length * 2, true)),
+    [trains],
   )
+  const networkBounds = useMemo(() => {
+    const bounds = { minX: Infinity, maxX: -Infinity, minZ: Infinity, maxZ: -Infinity }
+    for (const stop of projectedStops) {
+      if (stop[0] < bounds.minX) bounds.minX = stop[0]
+      if (stop[0] > bounds.maxX) bounds.maxX = stop[0]
+      if (stop[2] < bounds.minZ) bounds.minZ = stop[2]
+      if (stop[2] > bounds.maxZ) bounds.maxZ = stop[2]
+    }
+    return bounds
+  }, [projectedStops])
 
   useEffect(() => {
     localTime.current = time
@@ -3224,135 +3305,87 @@ function VehicleMotion({
 
   useEffect(
     () => () => {
-      Object.values(markerGeometries).forEach((geometry) => geometry.dispose())
-      realtimeGeometry.dispose()
+      markerBuffers.forEach((buffers) => buffers.geometry.dispose())
+      realtimeBuffers.geometry.dispose()
     },
-    [markerGeometries, realtimeGeometry],
+    [markerBuffers, realtimeBuffers],
   )
   useEffect(
     () => () => {
-      trailGeometries.forEach((geometry) => geometry.dispose())
+      trailBuffers.forEach((buffers) => buffers.geometry.dispose())
     },
-    [trailGeometries],
+    [trailBuffers],
   )
 
-  // Geometry inputs invalidate every sample; style inputs only redraw from them.
+  // Geometry inputs invalidate every sample; style inputs recolour and reclassify.
   /* oxlint-disable react-hooks/exhaustive-deps */
   const geometryInputs = useMemo(() => ({}), [resolveTrainPosition, snapshot, projectedStops, projectedPaths,
-    lakeAvoidingPaths, motion, markerGeometries, trailGeometries, trainTimeIndex])
+    lakeAvoidingPaths, motion, markerBuffers, trailBuffers, flags])
   const styleInputs = useMemo(() => ({}), [geometryInputs, selectedTrain, comparisonTrains, selectedRoute,
     selectedCategory, airCategorySelected, selectedStation, cameraFraming, trainPalette, palette])
   /* oxlint-enable react-hooks/exhaustive-deps */
 
-  const runPass = (now: number, step: number, bounded: boolean, clock: number,
-    visibleBus: boolean, visibleTram: boolean) => {
-    const state = frame.current
-    // A lone seek refills history at once; a run of seeks waits for the clock to settle.
-    const includeTrails = !state.scrubbing || clock - state.lastSeekAt >= TRAIL_SETTLE_SECONDS
-    const { positions, targets, stamps, history } = motion
-    const previousValid = Number.isFinite(sampleWindow.end) && motion.targetTime === sampleWindow.end
-    const keep = previousValid && isPlaying && now >= sampleWindow.start && now <= sampleWindow.end
-    const continues = !keep && previousValid && isPlaying && sampleWindow.continues(now)
-    const start = keep ? sampleWindow.start : continues ? sampleWindow.end : now
-    const end = keep ? sampleWindow.end : start + step
-    const gridEnd = trailGridStart(now)
-    const cull = bounded ? expandBounds(viewBounds, VEHICLE_CULL_MARGIN, cullBounds) : undefined
-    motion.generation += 1
-    const generation = motion.generation
-    state.inputs = styleInputs
-    state.visibility = Number(visibleBus) + 2 * Number(visibleTram)
-    state.culled = Boolean(cull)
-    state.trailsStale = !includeTrails
-    state.trailGrid = gridEnd
+  const setMotion = (index: number, state: MotionState, validFrom: number, validTo: number) => {
+    const previous = motion.state[index]
+    if (previous === MOTION_MOVING || previous === MOTION_CULLED) frame.current.active -= 1
+    if (state === MOTION_MOVING || state === MOTION_CULLED) frame.current.active += 1
+    motion.set(index, state, validFrom, validTo)
+  }
 
-    const markers = Object.fromEntries(
-      VEHICLE_MARKER_KINDS.map((kind) => [kind, motionArrays(markerGeometries[kind])]),
-    ) as Record<VehicleMarkerKind, MotionArrays>
-    const counts: Record<VehicleMarkerKind, number> = { rail: 0, tram: 0, bus: 0 }
-    const realtime = motionArrays(realtimeGeometry)
-    let realtimeCount = 0
-    const trails = trailGeometries.map(motionArrays)
-    const trailCounts = new Array<number>(VEHICLE_TRAIL_SEGMENTS).fill(0)
-    let historyTrain: NetworkTrain | undefined
-    const historySampler = (sampleTime: number) => historyTrain
-      ? resolveTrainPosition(historyTrain, Math.min(sampleTime, historyTrain.end), projectedStops, projectedPaths, lakeAvoidingPaths)
-      : undefined
+  /** Marker chord is read from scratch[0..2] (from) and scratch[3..5] (to). */
+  const setMarker = (index: number, show: boolean, start = 0, end = 0) => {
+    const buffers = markerBuffers[layout.kinds[index]]
+    const slot = layout.slots[index]
+    const realtimeSlot = layout.realtimeSlots[index]
+    const wasShown = flags.markerShown[index] === 1
+    if (show) {
+      writeMotionVertex(buffers, slot, scratch, 0, 3, start, end)
+      if (realtimeSlot >= 0) writeMotionVertex(realtimeBuffers, realtimeSlot, scratch, 0, 3, start, end)
+    } else if (wasShown) {
+      hideMotionVertex(buffers, slot)
+      if (realtimeSlot >= 0) hideMotionVertex(realtimeBuffers, realtimeSlot)
+    }
+    if (show === wasShown) return
+    const change = show ? 1 : -1
+    buffers.shown += change
+    if (realtimeSlot >= 0) realtimeBuffers.shown += change
+    flags.markerShown[index] = show ? 1 : 0
+    setScenePickTrain(buffers.geometry, slot, show && flags.intensity[index] >= 0.1 ? trains[index] : undefined)
+  }
 
-    for (const train of trainsNearTime(trainTimeIndex, now)) {
-      const trainIndex = motion.index.get(train)
-      if (trainIndex === undefined) continue
-      const focused = Boolean(
-        selectedTrain?.id === train.id ||
-          comparisonTrainIds.has(train.id) ||
-          (selectedRoute && selectedRouteTrainIds.has(train.id)) ||
-          (selectedStation && selectedStationTrainIds.has(train.id)) ||
-          selectedCategory === train.category,
-      )
-      if (!(focused || (train.category === 'bus' ? visibleBus : train.category === 'tram' ? visibleTram : true))) {
-        continue
-      }
-      const ended = now > train.end
-      if (cull && !focused) {
-        const scheduled = positionForTrain(train, ended ? train.end : now)
-        if (scheduled) {
-          const from = projectedStops[scheduled.fromStop]
-          const to = projectedStops[scheduled.toStop]
-          if (from && to && !segmentTouchesBounds(from[0], from[2], to[0], to[2], cull)) continue
-        }
-      }
-      const base = trainIndex * 3
-      const placedBefore = stamps[trainIndex] === generation - 1 && generation > 1
-      let hasFrom = false
-      let hasTo = false
-      let hasTerminal = false
-      if (!ended) {
-        if (keep && placedBefore) {
-          scratch[0] = positions[base]
-          scratch[1] = positions[base + 1]
-          scratch[2] = positions[base + 2]
-          hasFrom = true
-        } else if (continues && placedBefore && !Number.isNaN(targets[base])) {
-          scratch[0] = targets[base]
-          scratch[1] = targets[base + 1]
-          scratch[2] = targets[base + 2]
-          hasFrom = true
-        } else {
-          const point = resolveTrainPosition(train, start, projectedStops, projectedPaths, lakeAvoidingPaths)
-          if (point) { scratch[0] = point[0]; scratch[1] = point[1]; scratch[2] = point[2]; hasFrom = true }
-        }
-        if (keep && placedBefore && !Number.isNaN(targets[base])) {
-          scratch[3] = targets[base]
-          scratch[4] = targets[base + 1]
-          scratch[5] = targets[base + 2]
-          hasTo = true
-        } else if (end > start) {
-          const point = resolveTrainPosition(train, end, projectedStops, projectedPaths, lakeAvoidingPaths)
-          if (point) { scratch[3] = point[0]; scratch[4] = point[1]; scratch[5] = point[2]; hasTo = true }
-        }
-        // A journey starting or ending inside the window holds its known position.
-        if (hasFrom && !hasTo) { scratch[3] = scratch[0]; scratch[4] = scratch[1]; scratch[5] = scratch[2]; hasTo = true }
-        else if (!hasFrom && hasTo) { scratch[0] = scratch[3]; scratch[1] = scratch[4]; scratch[2] = scratch[5]; hasFrom = true }
-      } else {
-        // Arrival labels and collapsing trails stay at the terminal.
-        const point = resolveTrainPosition(train, train.end, projectedStops, projectedPaths, lakeAvoidingPaths)
-        if (point) {
-          scratch[0] = scratch[3] = point[0]
-          scratch[1] = scratch[4] = point[1]
-          scratch[2] = scratch[5] = point[2]
-        }
-        if (point) {
-          hasTerminal = true
-          positions[base] = point[0]; positions[base + 1] = point[1]; positions[base + 2] = point[2]
-          stamps[trainIndex] = generation
-        }
-      }
-      if (hasFrom) {
-        positions[base] = scratch[0]; positions[base + 1] = scratch[1]; positions[base + 2] = scratch[2]
-        stamps[trainIndex] = generation
-      }
-      if (hasTo) { targets[base] = scratch[3]; targets[base + 1] = scratch[4]; targets[base + 2] = scratch[5] }
-      else targets[base] = NaN
+  const hideTrail = (index: number, fromSegment: number) => {
+    for (let segment = fromSegment; segment < VEHICLE_TRAIL_SEGMENTS; segment += 1) {
+      const flag = index * VEHICLE_TRAIL_SEGMENTS + segment
+      if (flags.trailShown[flag] !== 1) continue
+      const buffers = trailBuffers[segment]
+      hideMotionVertex(buffers, index * 2)
+      hideMotionVertex(buffers, index * 2 + 1)
+      buffers.shown -= 1
+      flags.trailShown[flag] = 0
+    }
+  }
 
+  /** Segment vertices are read from scratch[0..5] (older end) and scratch[6..11] (newer bracket). */
+  const showTrailSegment = (index: number, segment: number, headStart: number, headEnd: number,
+    tailStart: number, tailEnd: number) => {
+    const buffers = trailBuffers[segment]
+    writeMotionVertex(buffers, index * 2, scratch, 0, 3, headStart, headEnd)
+    writeMotionVertex(buffers, index * 2 + 1, scratch, 6, 9, tailStart, tailEnd)
+    const flag = index * VEHICLE_TRAIL_SEGMENTS + segment
+    if (flags.trailShown[flag] === 1) return
+    buffers.shown += 1
+    flags.trailShown[flag] = 1
+  }
+
+  const sweepStyle = (visibleBus: boolean, visibleTram: boolean) => {
+    for (let index = 0; index < trains.length; index += 1) {
+      const train = trains[index]
+      const focused = selectedTrain?.id === train.id ||
+        comparisonTrainIds.has(train.id) ||
+        Boolean(selectedRoute && selectedRouteTrainIds.has(train.id)) ||
+        Boolean(selectedStation && selectedStationTrainIds.has(train.id)) ||
+        selectedCategory === train.category
+      const eligible = focused || (train.category === 'bus' ? visibleBus : train.category === 'tram' ? visibleTram : true)
       const stationIncludesTrain = !selectedStation || selectedStationTrainIds.has(train.id)
       const categoryIncludesTrain = !selectedCategory || selectedCategory === train.category
       const routeIncludesTrain = !selectedRoute || selectedRouteTrainIds.has(train.id)
@@ -3365,100 +3398,296 @@ function VehicleMotion({
       )
       const intensity = included ? 1 : 0.025
       const color = trainPalette.get(train.id) ?? palette[train.category] ?? palette.other
-
-      if (hasFrom) {
-        const markerKind = vehicleMarkerKind(train.category)
-        const arrays = markers[markerKind]
-        const slot = counts[markerKind]
-        const offset = slot * 3
-        arrays.from[offset] = scratch[0]; arrays.from[offset + 1] = scratch[1]; arrays.from[offset + 2] = scratch[2]
-        arrays.to[offset] = scratch[3]; arrays.to[offset + 1] = scratch[4]; arrays.to[offset + 2] = scratch[5]
-        arrays.color![offset] = color.r * intensity
-        arrays.color![offset + 1] = color.g * intensity
-        arrays.color![offset + 2] = color.b * intensity
-        setScenePickTrain(markerGeometries[markerKind], slot, intensity < 0.1 ? undefined : train)
-        counts[markerKind] += 1
-        if (train.realtime?.status === 'adjusted' || train.operations) {
-          const realtimeOffset = realtimeCount * 3
-          realtime.from[realtimeOffset] = scratch[0]; realtime.from[realtimeOffset + 1] = scratch[1]; realtime.from[realtimeOffset + 2] = scratch[2]
-          realtime.to[realtimeOffset] = scratch[3]; realtime.to[realtimeOffset + 1] = scratch[4]; realtime.to[realtimeOffset + 2] = scratch[5]
-          realtimeCount += 1
-        }
-      }
-
-      if (!includeTrails || !included || !(hasFrom || hasTerminal)) continue
-      if (now < train.start || gridEnd - VEHICLE_TRAIL_HISTORY_SPAN > train.end) continue
-      historyTrain = train
-      history.fill(trainIndex, gridEnd, historySampler)
-      // scratch[0..5]: previous vertex (from, to); scratch[6..11]: this bracket.
+      const buffers = markerBuffers[layout.kinds[index]]
+      const slot = layout.slots[index]
+      buffers.color![slot * 3] = color.r * intensity
+      buffers.color![slot * 3 + 1] = color.g * intensity
+      buffers.color![slot * 3 + 2] = color.b * intensity
       for (let segment = 0; segment < VEHICLE_TRAIL_SEGMENTS; segment += 1) {
-        const gridTime = gridEnd - (segment + 1) * VEHICLE_TRAIL_STEP_SECONDS
-        if (!history.read(trainIndex, gridTime, scratch, 6)) break
-        if (!history.read(trainIndex, gridTime + VEHICLE_TRAIL_HISTORY_STEP_SECONDS, scratch, 9)) break
-        const arrays = trails[segment]
-        const offset = trailCounts[segment] * 6
-        for (let component = 0; component < 3; component += 1) {
-          arrays.from[offset + component] = scratch[component]
-          arrays.to[offset + component] = scratch[3 + component]
-          arrays.from[offset + 3 + component] = scratch[6 + component]
-          arrays.to[offset + 3 + component] = scratch[9 + component]
-        }
-        const colors = arrays.color!
+        const colors = trailBuffers[segment].color!
+        const offset = index * 6
         colors[offset] = colors[offset + 3] = color.r
         colors[offset + 1] = colors[offset + 4] = color.g
         colors[offset + 2] = colors[offset + 5] = color.b
-        trailCounts[segment] += 1
-        for (let component = 0; component < 6; component += 1) scratch[component] = scratch[6 + component]
+      }
+      const previousIntensity = flags.intensity[index]
+      flags.intensity[index] = intensity
+      if (flags.markerShown[index] === 1 && (previousIntensity >= 0.1) !== (intensity >= 0.1)) {
+        setScenePickTrain(buffers.geometry, slot, intensity >= 0.1 ? train : undefined)
+      }
+      const eligibleFlag = eligible ? 1 : 0
+      const includedFlag = included ? 1 : 0
+      const focusedFlag = focused ? 1 : 0
+      if (flags.eligible[index] === eligibleFlag && flags.included[index] === includedFlag &&
+        flags.focused[index] === focusedFlag) continue
+      flags.eligible[index] = eligibleFlag
+      flags.included[index] = includedFlag
+      flags.focused[index] = focusedFlag
+      if (!eligible) setMarker(index, false)
+      if (!eligible || !included) hideTrail(index, 0)
+      setMotion(index, MOTION_STALE, -Infinity, Infinity)
+    }
+    markerBuffers.forEach((buffers) => markMotionDirty(buffers, 0, buffers.vertices - 1))
+    trailBuffers.forEach((buffers) => markMotionDirty(buffers, 0, buffers.vertices - 1))
+  }
+
+  let historyTrain: NetworkTrain | undefined
+  const historySampler = (sampleTime: number) => historyTrain
+    ? resolveTrainPosition(historyTrain, Math.min(sampleTime, historyTrain.end), projectedStops, projectedPaths, lakeAvoidingPaths)
+    : undefined
+
+  const refresh = (index: number, context: MotionRefresh) => {
+    const { now, lookahead, gridEnd, includeTrails, cull, maxHistory, viewGeneration } = context
+    const train = trains[index]
+    const hideAll = () => {
+      setMarker(index, false)
+      hideTrail(index, 0)
+      flags.trailPending[index] = 0
+    }
+    if (flags.eligible[index] !== 1 || train.realtime?.status === 'cancelled') {
+      hideAll()
+      setMotion(index, MOTION_HIDDEN, -Infinity, Infinity)
+      return
+    }
+    if (now < train.start) {
+      hideAll()
+      setMotion(index, MOTION_HIDDEN, -Infinity, train.start - 1e-3)
+      return
+    }
+    if (cull && flags.focused[index] !== 1) {
+      const scheduled = positionForTrain(train, Math.min(now, train.end))
+      const from = scheduled && projectedStops[scheduled.fromStop]
+      const to = scheduled && projectedStops[scheduled.toStop]
+      if (from && to && !segmentTouchesBounds(from[0], from[2], to[0], to[2], cull)) {
+        hideAll()
+        setMotion(index, MOTION_CULLED, now - lookahead, now + lookahead)
+        motion.viewStamps[index] = viewGeneration
+        return
       }
     }
 
-    VEHICLE_MARKER_KINDS.forEach((kind) => {
-      updateActiveGeometry(markerGeometries[kind], counts[kind])
-    })
-    updateActiveGeometry(realtimeGeometry, realtimeCount)
-    trailGeometries.forEach((geometry, segment) => {
-      updateActiveGeometry(geometry, trailCounts[segment] * 2)
-    })
-    sampleWindow.record(start, end, gridEnd)
-    motion.targetTime = end
+    const base = index * 3
+    const trailUntil = train.end + VEHICLE_TRAIL_HISTORY_SPAN
+    let headStart: number
+    let headEnd: number
+    if (now > train.end) {
+      // Arrival labels and collapsing trails stay at the terminal.
+      if (motion.state[index] !== MOTION_TERMINAL) {
+        const point = resolveTrainPosition(train, train.end, projectedStops, projectedPaths, lakeAvoidingPaths)
+        if (!point) {
+          hideAll()
+          setMotion(index, MOTION_HIDDEN, train.end, Infinity)
+          return
+        }
+        for (let component = 0; component < 3; component += 1) motion.from[base + component] = point[component]
+      }
+      setMarker(index, false)
+      for (let component = 0; component < 3; component += 1) {
+        scratch[component] = scratch[3 + component] = motion.from[base + component]
+      }
+      motion.windows[index * 2] = motion.windows[index * 2 + 1] = train.end
+      setMotion(index, MOTION_TERMINAL, train.end, Infinity)
+      if (now > trailUntil) {
+        hideTrail(index, 0)
+        flags.trailPending[index] = 0
+        return
+      }
+      headStart = train.end
+      headEnd = trailUntil
+    } else {
+      const start = motion.windows[index * 2]
+      const end = motion.windows[index * 2 + 1]
+      let hasFrom = false
+      if (isPlaying && motion.state[index] === MOTION_MOVING && now >= start && now <= end + lookahead * 0.5) {
+        // Continue from the drawn position; the new chord still ends exactly on the route.
+        const mix = end > start ? Math.min(1, Math.max(0, (now - start) / (end - start))) : 0
+        for (let component = 0; component < 3; component += 1) {
+          const from = motion.from[base + component]
+          scratch[component] = from + (motion.to[base + component] - from) * mix
+        }
+        hasFrom = true
+      } else {
+        const point = resolveTrainPosition(train, now, projectedStops, projectedPaths, lakeAvoidingPaths)
+        if (point) {
+          scratch[0] = point[0]; scratch[1] = point[1]; scratch[2] = point[2]
+          hasFrom = true
+        }
+      }
+      const chordEnd = isPlaying ? Math.min(now + lookahead, train.end) : now
+      let hasTo = false
+      if (chordEnd > now) {
+        const point = resolveTrainPosition(train, chordEnd, projectedStops, projectedPaths, lakeAvoidingPaths)
+        if (point) {
+          scratch[3] = point[0]; scratch[4] = point[1]; scratch[5] = point[2]
+          hasTo = true
+        }
+      }
+      if (!hasFrom && !hasTo) {
+        hideAll()
+        setMotion(index, MOTION_HIDDEN, now - lookahead, now + lookahead)
+        return
+      }
+      if (!hasTo) { scratch[3] = scratch[0]; scratch[4] = scratch[1]; scratch[5] = scratch[2] }
+      else if (!hasFrom) { scratch[0] = scratch[3]; scratch[1] = scratch[4]; scratch[2] = scratch[5] }
+      for (let component = 0; component < 3; component += 1) {
+        motion.from[base + component] = scratch[component]
+        motion.to[base + component] = scratch[3 + component]
+      }
+      motion.windows[index * 2] = now
+      motion.windows[index * 2 + 1] = chordEnd
+      setMarker(index, true, now, chordEnd)
+      const refreshAt = isPlaying ? now + (chordEnd - now) * MOTION_REFRESH_FRACTION : now
+      setMotion(index, MOTION_MOVING, now, refreshAt)
+      headStart = now
+      headEnd = chordEnd
+    }
+
+    if (flags.included[index] !== 1 || gridEnd - VEHICLE_TRAIL_HISTORY_SPAN > train.end) {
+      hideTrail(index, 0)
+      flags.trailPending[index] = 0
+      return
+    }
+    if (!includeTrails) {
+      hideTrail(index, 0)
+      flags.trailPending[index] = 1
+      return
+    }
+    flags.trailPending[index] = 0
+    historyTrain = train
+    motion.history.fill(index, gridEnd, historySampler, maxHistory)
+    let drawn = 0
+    let segmentStart = headStart
+    let segmentEnd = headEnd
+    for (let segment = 0; segment < VEHICLE_TRAIL_SEGMENTS; segment += 1) {
+      const gridTime = gridEnd - (segment + 1) * VEHICLE_TRAIL_STEP_SECONDS
+      if (!motion.history.read(index, gridTime, scratch, 6)) break
+      if (!motion.history.read(index, gridTime + VEHICLE_TRAIL_HISTORY_STEP_SECONDS, scratch, 9)) break
+      // Every history vertex moves across the grid step now in progress.
+      showTrailSegment(index, segment, segmentStart, segmentEnd, gridEnd, gridEnd + VEHICLE_TRAIL_HISTORY_STEP_SECONDS)
+      for (let component = 0; component < 6; component += 1) scratch[component] = scratch[6 + component]
+      segmentStart = gridEnd
+      segmentEnd = gridEnd + VEHICLE_TRAIL_HISTORY_STEP_SECONDS
+      drawn = segment + 1
+    }
+    hideTrail(index, drawn)
+    if (isPlaying) {
+      // Crossing the next grid time moves every bracket forward.
+      motion.validTo[index] = Math.min(motion.validTo[index], gridEnd + VEHICLE_TRAIL_HISTORY_STEP_SECONDS)
+    }
   }
 
   useFrame((state, delta) => {
+    const current = frame.current
+    let seek = !Number.isFinite(current.previousTime)
     if (isPlaying) {
       localTime.current += delta * playbackRate
       if (localTime.current > snapshot.metadata.windowEnd) {
         localTime.current = snapshot.metadata.windowStart
+        seek = true
       }
     }
     const now = localTime.current
     const clock = state.clock.elapsedTime
-    const current = frame.current
+    if (!seek) {
+      const expected = current.previousTime + (isPlaying ? delta * playbackRate : 0)
+      seek = isPlaying
+        ? Math.abs(now - expected) > Math.max(1, playbackRate * 0.25)
+        : now !== current.previousTime
+    }
+    current.previousTime = now
+
     if (current.geometry !== geometryInputs) {
       current.geometry = geometryInputs
       motion.invalidate()
-      sampleWindow.record(NaN, NaN, NaN)
+      current.active = 0
+      for (const buffers of trailBuffers) {
+        for (let vertex = 0; vertex < buffers.vertices; vertex += 1) {
+          buffers.times[vertex * 2] = 1
+          buffers.times[vertex * 2 + 1] = 0
+        }
+        buffers.shown = 0
+        markMotionDirty(buffers, 0, buffers.vertices - 1)
+      }
+      flags.trailShown.fill(0)
+      flags.trailPending.fill(0)
+      seek = true
     }
-    const interval = sampleBudget.interval(delta)
-    const step = markerStepSeconds(isPlaying, playbackRate, interval)
-    let kind = sampleWindow.plan(now, isPlaying, playbackRate, step)
-    if (kind === 'seek') {
+    if (seek) {
+      // A lone seek refills trails at once; a run of seeks waits for the clock to settle.
       current.scrubbing = clock - current.lastSeekAt < TRAIL_SETTLE_SECONDS
       current.lastSeekAt = clock
+      current.converge = true
     }
+
     const visibleBus = vehicleIsVisibleAtZoom('bus', state.camera.position.y, cameraFraming)
     const visibleTram = vehicleIsVisibleAtZoom('tram', state.camera.position.y, cameraFraming)
-    const bounded = groundViewBounds(state.camera, vehicleElevation, viewBounds)
-    if (kind === 'none') {
-      if (current.inputs !== styleInputs || current.visibility !== Number(visibleBus) + 2 * Number(visibleTram)) kind = 'update'
-      else if (current.culled && (!bounded || !boundsContain(cullBounds, viewBounds))) kind = 'update'
-      else if (current.trailsStale && (!current.scrubbing || clock - current.lastSeekAt >= TRAIL_SETTLE_SECONDS)) kind = 'update'
+    const visibility = Number(visibleBus) + 2 * Number(visibleTram)
+    if (current.style !== styleInputs || current.visibility !== visibility) {
+      current.style = styleInputs
+      current.visibility = visibility
+      sweepStyle(visibleBus, visibleTram)
+      current.converge = true
     }
-    if (kind !== 'none') runPass(now, step, bounded, clock, visibleBus, visibleTram)
-    mixUniform.value.set(sampleWindow.mix(now), trailGridMix(now, current.trailGrid))
-    VEHICLE_MARKER_KINDS.forEach((markerKind) => {
-      setSceneMotionMix(markerGeometries[markerKind], mixUniform.value.x)
+
+    // Culling only helps when part of the network is outside the expanded view.
+    let cull: GroundBounds | undefined
+    if (groundViewBounds(state.camera, vehicleElevation, viewBounds)) {
+      expandBounds(viewBounds, VEHICLE_CULL_MARGIN, expandedView)
+      if (!boundsContain(expandedView, networkBounds)) cull = cullReference
+    }
+    if (Boolean(cull) !== current.culling || (cull && !boundsContain(cullReference, viewBounds))) {
+      current.viewGeneration += 1
+      current.culling = Boolean(cull)
+      if (cull) Object.assign(cullReference, expandedView)
+    }
+
+    const includeTrails = !current.scrubbing || clock - current.lastSeekAt >= TRAIL_SETTLE_SECONDS
+    const stale = motionStaleSeconds(isPlaying, playbackRate)
+    const behind = isPlaying && cycle.seconds * playbackRate > stale * 0.6
+    const measured = frameBudget.update(delta, behind)
+    const transitioning = layoutTransitioning || (spatialLayoutMix > 0 && spatialLayoutMix < 1)
+    const budget = transitioning ? Infinity : current.converge ? Math.max(measured, CONVERGE_BUDGET_MS) : measured
+    const context: MotionRefresh = {
+      now,
+      lookahead: motionLookahead(isPlaying, playbackRate, cycle.seconds),
+      gridEnd: trailGridStart(now),
+      includeTrails,
+      cull,
+      maxHistory: frameBudget.reduced ? REDUCED_TRAIL_HISTORY_SAMPLES : VEHICLE_TRAIL_HISTORY_LENGTH,
+      viewGeneration: current.viewGeneration,
+    }
+
+    const count = trains.length
+    const started = performance.now()
+    let index = count ? current.cursor % count : 0
+    let refreshed = 0
+    let exhausted = false
+    for (let scanned = 0; scanned < count; scanned += 1) {
+      if (motion.due(index, now, isPlaying, context.viewGeneration) ||
+        (includeTrails && flags.trailPending[index] === 1)) {
+        refresh(index, context)
+        refreshed += 1
+        if (refreshed % MOTION_BUDGET_CHECK === 0 && performance.now() - started > budget) {
+          exhausted = true
+          index = index + 1 === count ? 0 : index + 1
+          break
+        }
+      }
+      index = index + 1 === count ? 0 : index + 1
+    }
+    current.cursor = index
+    if (!exhausted) current.converge = false
+    cycle.record(refreshed, delta, exhausted, current.active)
+
+    markerBuffers.forEach((buffers) => {
+      flushMotionBuffers(buffers)
+      setSceneMotionClock(buffers.geometry, now, stale)
     })
-    setSceneMotionMix(realtimeGeometry, mixUniform.value.x)
+    flushMotionBuffers(realtimeBuffers)
+    setSceneMotionClock(realtimeBuffers.geometry, now, stale)
+    trailBuffers.forEach(flushMotionBuffers)
+    uniforms.clock.value = now
+    uniforms.stale.value = stale
 
     // A paused scene follows the consumer's clock, including in linked views.
     if (isPlaying && clock - lastReport.current > (selectedTrain || comparisonTrains?.length ? 0.1 : uiFrameBudget.interval(delta) * 3)) {
@@ -3471,15 +3700,15 @@ function VehicleMotion({
   return (
     <>
       <group position={[0, mapStyle.trailElevationOffset ?? -0.035, 0]}>
-        {trailGeometries.map((geometry, index) => (
+        {trailBuffers.map((buffers, index) => (
           <lineSegments
             key={index}
-            geometry={geometry}
+            geometry={buffers.geometry}
             frustumCulled={false}
             renderOrder={flat ? 5 : 3 + index}
           >
             <lineBasicMaterial
-              {...lerp.phased}
+              {...lerp}
               vertexColors
               transparent
               opacity={trailOpacity[index]}
@@ -3491,7 +3720,8 @@ function VehicleMotion({
           </lineSegments>
         ))}
       </group>
-      {VEHICLE_MARKER_KINDS.map((kind) => {
+      {VEHICLE_MARKER_KINDS.map((kind, kindIndex) => {
+        const geometry = markerBuffers[kindIndex].geometry
         const isCityVehicle = kind === 'tram' || kind === 'bus'
         const glyphTexture =
           kind === 'tram'
@@ -3502,12 +3732,12 @@ function VehicleMotion({
         return (
           <group key={kind}>
             <points
-              geometry={markerGeometries[kind]}
+              geometry={geometry}
               frustumCulled={false}
               renderOrder={MAP_LAYER.vehicleGlow}
             >
               <pointsMaterial
-                {...lerp.points}
+                {...lerp}
                 vertexColors
                 map={lightTextures.halo}
                 size={isCityVehicle ? 7.5 : 9}
@@ -3532,12 +3762,12 @@ function VehicleMotion({
               />
             </points>
             <points
-              geometry={markerGeometries[kind]}
+              geometry={geometry}
               frustumCulled={false}
               renderOrder={MAP_LAYER.vehicleCore}
             >
               <pointsMaterial
-                {...lerp.points}
+                {...lerp}
                 vertexColors
                 map={glyphTexture}
                 size={kind === 'rail' ? 4.6 : 6.2}
@@ -3553,12 +3783,12 @@ function VehicleMotion({
             </points>
             {kind === 'rail' && (
               <points
-                geometry={markerGeometries[kind]}
+                geometry={geometry}
                 frustumCulled={false}
                 renderOrder={MAP_LAYER.vehicleSpark}
               >
                 <pointsMaterial
-                  {...lerp.points}
+                  {...lerp}
                   vertexColors
                   map={lightTextures.spark}
                   size={1.8}
@@ -3577,12 +3807,12 @@ function VehicleMotion({
         )
       })}
       <points
-        geometry={realtimeGeometry}
+        geometry={realtimeBuffers.geometry}
         frustumCulled={false}
         renderOrder={MAP_LAYER.focusMarkerGlow}
       >
         <pointsMaterial
-          {...lerp.points}
+          {...lerp}
           color="#8dfaff"
           map={lightTextures.realtime}
           size={10}
