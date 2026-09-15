@@ -1,0 +1,317 @@
+{
+  "recorded": "2026-09-15",
+  "host": "Apple M4 Max, Playwright 1.63 Chromium headless shell, ANGLE Metal",
+  "device": "Playwright Pixel 7 descriptor",
+  "throttling": {
+    "requestLatencyMs": 562.5,
+    "downloadKbps": 1474.56,
+    "uploadKbps": 675,
+    "cpuSlowdown": 4,
+    "source": "Lighthouse DevTools mobile preset"
+  },
+  "notes": [
+    "Medians of cold loads with cache disabled.",
+    "First map frame is the first animation frame with WebGL draw calls.",
+    "Gleislicht variants serve the document through Playwright, including the control, so absolute times start about 0.5 s earlier than a normal load.",
+    "Gleislicht baseline used release 654e764; variants used 6b84f2c, unchanged before and after the runs."
+  ],
+  "baseline": {
+    "gleislicht": {
+      "release": "654e764cc1901dab1d6481cdd1e0c06f2f87db12",
+      "runs": 5,
+      "firstPaintMs": 2136,
+      "firstMapFrameMs": 8655,
+      "firstPaintRunsMs": [
+        2120,
+        2152,
+        2124,
+        2136,
+        3756
+      ],
+      "firstMapFrameRunsMs": [
+        8655,
+        8668,
+        8627,
+        8635,
+        10278
+      ]
+    },
+    "allchange": {
+      "runs": 3,
+      "firstPaintMs": 2164,
+      "firstMapFrameMs": 6621,
+      "firstPaintRunsMs": [
+        2144,
+        2208,
+        2164
+      ],
+      "firstMapFrameRunsMs": [
+        6595,
+        6664,
+        6621
+      ]
+    },
+    "correspondances": {
+      "runs": 3,
+      "firstPaintMs": 2088,
+      "firstMapFrameMs": 6558,
+      "firstPaintRunsMs": [
+        2336,
+        2052,
+        2088
+      ],
+      "firstMapFrameRunsMs": [
+        6668,
+        6532,
+        6558
+      ]
+    },
+    "umlauf": {
+      "runs": 3,
+      "firstPaintMs": 3212,
+      "firstMapFrameMs": 4822,
+      "firstPaintRunsMs": [
+        3240,
+        3212,
+        3204
+      ],
+      "firstMapFrameRunsMs": [
+        4857,
+        4822,
+        4795
+      ]
+    },
+    "zugunruhe": {
+      "runs": 3,
+      "firstPaintMs": 2960,
+      "firstMapFrameMs": 2953,
+      "firstPaintRunsMs": [
+        3148,
+        2960,
+        2864
+      ],
+      "firstMapFrameRunsMs": [
+        2982,
+        2953,
+        2856
+      ]
+    },
+    "norikae": {
+      "runs": 3,
+      "firstPaintMs": 1812,
+      "firstMapFrameMs": 4684,
+      "firstPaintRunsMs": [
+        1824,
+        1788,
+        1812
+      ],
+      "firstMapFrameRunsMs": [
+        4689,
+        4652,
+        4684
+      ]
+    },
+    "manifest": {
+      "runs": 3,
+      "firstPaintMs": 2060,
+      "firstMapFrameMs": 13275,
+      "firstPaintRunsMs": [
+        2120,
+        2060,
+        2032
+      ],
+      "firstMapFrameRunsMs": [
+        13487,
+        13275,
+        13110
+      ]
+    }
+  },
+  "gleislichtVariants": {
+    "release": "6b84f2c53960889d2e3be328a54617ec8b45bab1",
+    "preloadedData": [
+      "https://data.motionstudies.app/gleislicht/releases/…/calendar/2026-09-15/swiss-rail-morning.json",
+      "https://data.motionstudies.app/gleislicht/releases/…/swiss-lakes.json",
+      "https://data.motionstudies.app/gleislicht/releases/…/swiss-boundary.json"
+    ],
+    "preloadedScene": [
+      "GleislichtNetworkScene-BprQdlPl.js",
+      "react-three-fiber.esm-BSGTEvob.js",
+      "glow-point-texture-Z_uKL0Sw.js",
+      "trail-frame-budget-DPbKaml7.js"
+    ],
+    "variants": {
+      "control": {
+        "runs": 5,
+        "firstPaintMs": 1668,
+        "firstMapFrameMs": 8180,
+        "firstPaintRunsMs": [
+          1668,
+          1656,
+          1680,
+          1652,
+          1668
+        ],
+        "firstMapFrameRunsMs": [
+          8197,
+          8180,
+          8192,
+          8163,
+          8136
+        ]
+      },
+      "preload data": {
+        "runs": 5,
+        "firstPaintMs": 2444,
+        "firstMapFrameMs": 7172,
+        "firstPaintRunsMs": [
+          2444,
+          2448,
+          2436,
+          2420,
+          2480
+        ],
+        "firstMapFrameRunsMs": [
+          7172,
+          7189,
+          7172,
+          7151,
+          7221
+        ]
+      },
+      "preload scene": {
+        "runs": 5,
+        "firstPaintMs": 2376,
+        "firstMapFrameMs": 7129,
+        "firstPaintRunsMs": [
+          2356,
+          2376,
+          2372,
+          2388,
+          2384
+        ],
+        "firstMapFrameRunsMs": [
+          7129,
+          7146,
+          7133,
+          7106,
+          7108
+        ]
+      },
+      "preload data+scene": {
+        "runs": 5,
+        "firstPaintMs": 3212,
+        "firstMapFrameMs": 7053,
+        "firstPaintRunsMs": [
+          3244,
+          3212,
+          3276,
+          3208,
+          3212
+        ],
+        "firstMapFrameRunsMs": [
+          7091,
+          7053,
+          7161,
+          7036,
+          7016
+        ]
+      },
+      "preload both+defer realtime": {
+        "runs": 5,
+        "firstPaintMs": 3220,
+        "firstMapFrameMs": 6272,
+        "firstPaintRunsMs": [
+          3228,
+          3220,
+          3220,
+          3216,
+          3204
+        ],
+        "firstMapFrameRunsMs": [
+          6272,
+          6296,
+          6261,
+          6248,
+          6273
+        ]
+      },
+      "defer realtime": {
+        "runs": 5,
+        "firstPaintMs": 1672,
+        "firstMapFrameMs": 7399,
+        "firstPaintRunsMs": [
+          1652,
+          1672,
+          1672,
+          1680,
+          1672
+        ],
+        "firstMapFrameRunsMs": [
+          7387,
+          7400,
+          7399,
+          7399,
+          7393
+        ]
+      },
+      "skeleton": {
+        "runs": 5,
+        "firstPaintMs": 1520,
+        "firstMapFrameMs": 8219,
+        "firstPaintRunsMs": [
+          1528,
+          1520,
+          1512,
+          1548,
+          1496
+        ],
+        "firstMapFrameRunsMs": [
+          8242,
+          8203,
+          8219,
+          8225,
+          8127
+        ]
+      },
+      "skeleton, no font import": {
+        "runs": 5,
+        "firstPaintMs": 880,
+        "firstMapFrameMs": 7752,
+        "firstPaintRunsMs": [
+          880,
+          880,
+          916,
+          872,
+          904
+        ],
+        "firstMapFrameRunsMs": [
+          7760,
+          7741,
+          7785,
+          7752,
+          7728
+        ]
+      },
+      "all": {
+        "runs": 5,
+        "firstPaintMs": 1768,
+        "firstMapFrameMs": 6251,
+        "firstPaintRunsMs": [
+          1768,
+          1756,
+          1776,
+          1804,
+          1768
+        ],
+        "firstMapFrameRunsMs": [
+          6251,
+          6239,
+          6273,
+          6288,
+          6233
+        ]
+      }
+    }
+  }
+}

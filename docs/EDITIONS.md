@@ -64,7 +64,7 @@ The count is currently rendered by edition-owned shells. Apply this behavior in 
 1. Create an edition repository, install exact coordinated `@motionstudies/*` releases and add its typed catalogue in `src/editions/`.
 2. Compile one coherent two-hour opening study and the matching geographic context.
 3. Give it a root `index.html` and TypeScript entry; reuse the published engine and renderer while keeping edition-specific chrome in its own study shell.
-4. Add progressive 24-hour chunks only after the opening payload remains within budget.
+4. Add progressive 24-hour chunks only after the opening payload remains within budget. Profile the first map frame on a throttled phone, not only the byte budget; see [first view on a phone](./FIRST-VIEW.md).
 5. Add local modes and authored studies where they reveal something distinctive about the place.
 
 This is configuration-driven reuse, not a generic map skin. Every work should have a reason to exist, a name rooted in its place, and at least one visual study that could only belong there.
