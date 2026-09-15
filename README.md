@@ -11,10 +11,12 @@ The catalogue for authored studies of cities and movement, and the home of the s
 | Gleislicht · Switzerland | [Open study](https://motionstudies.app/gleislicht/) | [gleislicht](https://github.com/emmettl/gleislicht) |
 | All Change · London | [Open study](https://motionstudies.app/allchange/) | [allchange](https://github.com/emmettl/allchange) |
 | Correspondances · Paris | [Open study](https://motionstudies.app/correspondances/) | [correspondances](https://github.com/emmettl/correspondances) |
-| Local / Express · New York | Private proof; publication held | [local-express (private)](https://github.com/emmettl/local-express) |
-| NORIKAE · Tokyo | [Open study](https://motionstudies.app/norikae/) · [Brief](docs/TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
+| Local / Express · New York | Parked; private proof, publication held | [local-express (private)](https://github.com/emmettl/local-express) |
+| NORIKAE · Tokyo | Parked; [synthetic preview](https://motionstudies.app/norikae/) · [Brief](docs/TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
 | MANIFEST · World trade | [Open study](https://motionstudies.app/manifest/) · [Brief](docs/MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
 | Umlauf · Berlin | [Open study](https://motionstudies.app/umlauf/) · [Brief](docs/BERLIN.md) | [umlauf](https://github.com/emmettl/umlauf) |
+| Zugunruhe · European bird migration | [Open study](https://motionstudies.app/zugunruhe/) · [Brief](docs/ZUGUNRUHE.md) | [zugunruhe](https://github.com/emmettl/zugunruhe) |
+| Underfall · Bristol | Local research edition; not deployed · [Brief](docs/BRISTOL.md) | Local checkout |
 
 [Project goals](docs/VISION.md) · [Overall roadmap](ROADMAP.md) · [City briefs and source audits](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 
@@ -31,14 +33,14 @@ See [package contracts](packages/README.md) and [extraction provenance](docs/EXT
 
 ## Repository ownership
 
-`packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances) and [Gleislicht](https://github.com/emmettl/gleislicht) consume exact published versions in independent repositories. [Local / Express](https://github.com/emmettl/local-express) has a private repository while its publication hold remains unresolved.
+`packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. Nine downstream projects consume exact published versions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances), [Gleislicht](https://github.com/emmettl/gleislicht), Umlauf, MANIFEST, Zugunruhe and NORIKAE live in independent public repositories. [Local / Express](https://github.com/emmettl/local-express) has a private repository while its publication hold remains unresolved, and Underfall is a local checkout. See the [alpha.15 rollout](docs/CONSOLIDATION-ALPHA-15.md#verified-rollout).
 
-The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The current coordinated prerelease is `0.1.0-alpha.3` under `next`, published with verified trusted publishing in [run 34155462468](https://github.com/emmettl/motionstudies/actions/runs/34155462468). Editions upgrade their exact pins independently. Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
+The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The latest verified coordinated prerelease is `0.1.0-alpha.15` under `next`, published through [trusted release run 34777637695](https://github.com/emmettl/motionstudies/actions/runs/34777637695) with registry integrity checked against the tested artifacts. The workspace is prepared at `0.1.0-alpha.16`; its [publication and adoption](docs/MOTION-ALPHA-16.md#publication-and-adoption) are not yet recorded. Editions upgrade their exact pins independently. Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
 
 ## Hosting
 
-Checks run for pushes and pull requests. Only `main` deploys the catalogue plus lab to GitHub Pages at `https://motionstudies.app/`. Cloudflare manages the domain DNS; the custom domain is configured in the repository’s Pages settings. The Actions deployment does not require a `CNAME` file. Cloudflare routes the six public edition paths to their independent GitHub Pages deployments; see [domain routing](docs/HOSTING.md). Local / Express remains unpublished.
+Checks run for pushes and pull requests. Only `main` deploys the catalogue plus lab to GitHub Pages at `https://motionstudies.app/`. Cloudflare manages the domain DNS; the custom domain is configured in the repository’s Pages settings. The Actions deployment does not require a `CNAME` file. Seven public editions are hosted directly by individual Cloudflare Workers Static Assets deployments under `motionstudies.app`, with GitHub Pages copies retained; see [domain routing](docs/HOSTING.md). Local / Express remains unpublished.
 
 ## Local validation
 
-140 unit tests and 32 browser checks (8 packed lab, 24 loader regressions). Independent package/consumer typechecks, lint, architecture and catalogue/lab build pass. These are local Chromium/WebKit results; GitHub-hosted CI is a separate check.
+At the alpha.15 release: 272 shared unit tests, 90 packed-consumer browser checks with two existing skips and 34 loader browser checks, alongside type, lint and architecture checks. See the [release record](docs/CONSOLIDATION-ALPHA-15.md). These are local Chromium/WebKit results; GitHub-hosted CI is a separate check.
