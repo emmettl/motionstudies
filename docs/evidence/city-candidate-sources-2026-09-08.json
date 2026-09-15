@@ -1,0 +1,484 @@
+{
+ "kind": "city-candidate-source-audit",
+ "reviewDate": "2026-09-08",
+ "scope": "First source audit for the Helsinki and Los Angeles candidates: licence and terms pages, the HSL GTFS archive, the Metro rail and bus GTFS archives, FMI and Digitraffic service descriptions; not a complete feed acquisition audit",
+ "rawCopies": "Temporary review copies were saved outside the repository; full raw documents and transport tables are not committed. Preserve authorised copies in the edition source archive before implementation.",
+ "clientNote": "Retrievals used curl with a descriptive User-Agent. hsl.fi answered with a JavaScript challenge (403); its licence was taken from the HRI catalogue record instead. Timestamps are UTC; the review date is the author's local date.",
+ "retrievals": [
+  {
+   "file": "hsl.zip",
+   "url": "https://dev.hsl.fi/gtfs/hsl.zip",
+   "retrievedAt": "2026-09-07T23:09:24.052280+00:00",
+   "status": 200,
+   "finalUrl": "https://infopalvelut.storage.hsldev.com/gtfs/hsl.zip",
+   "contentType": "application/zip",
+   "bytes": 72861231,
+   "sha256": "930dc6048b3815efdaf5efa51bc054fc22c285fc0d4d99328baf6fcbbabeaf4f",
+   "contentAssessment": "Feed archive retrieved and structurally inspected; counts recorded in HELSINKI.md; not a licence receipt"
+  },
+  {
+   "file": "hri-hsl-gtfs.html",
+   "url": "https://hri.fi/data/en_GB/dataset/hsl-reittiopas-api",
+   "retrievedAt": "2026-09-07T23:09:29.459015+00:00",
+   "status": 200,
+   "finalUrl": "https://hri.fi/data/en_GB/dataset/hsl-reittiopas-api",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 45143,
+   "sha256": "b05ef614b384d780db0e82bd36b275bf2e1dae35ff5e723803b14bfe7c943cf6",
+   "contentAssessment": "Catalogue record read: maintainer HSL, licence Creative Commons Attribution 4.0"
+  },
+  {
+   "file": "hsl-open-data.html",
+   "url": "https://www.hsl.fi/en/hsl/open-data",
+   "retrievedAt": "2026-09-07T23:09:26.739723+00:00",
+   "status": 403,
+   "finalUrl": "https://www.hsl.fi/en/hsl/open-data",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 5513,
+   "sha256": "5703f185aa0f248d0696f5c1459ffb175e9fd7901cbcf1e4253e862b3f40f792",
+   "contentAssessment": "HTML application shell or access challenge only; body not readable by the audit client"
+  },
+  {
+   "file": "hsl-avoindata.html",
+   "url": "https://www.hsl.fi/avoindata",
+   "retrievedAt": "2026-09-07T23:13:15.289102+00:00",
+   "status": 403,
+   "finalUrl": "https://www.hsl.fi/avoindata",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 5492,
+   "sha256": "5388e356280b924bb0b0be48b98ae7eb1f16a929cd65d6833b99a6fede7fc950",
+   "contentAssessment": "HTML application shell or access challenge only; body not readable by the audit client"
+  },
+  {
+   "file": "digitransit-hfp.html",
+   "url": "https://digitransit.fi/en/developers/apis/5-realtime-api/vehicle-positions/",
+   "retrievedAt": "2026-09-07T23:09:27.152255+00:00",
+   "status": 200,
+   "finalUrl": "https://digitransit.fi/en/developers/apis/5-realtime-api/vehicle-positions/",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 59170,
+   "sha256": "1de0319d0e2e825706cfce4bed47fb2ea1952801910390563034b5f13981a8bd",
+   "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+  },
+  {
+   "file": "digitransit-hfp-detail.html",
+   "url": "https://digitransit.fi/en/developers/apis/5-realtime-api/vehicle-positions/high-frequency-positioning/",
+   "retrievedAt": "2026-09-07T23:11:18.508145+00:00",
+   "status": 200,
+   "finalUrl": "https://digitransit.fi/en/developers/apis/5-realtime-api/vehicle-positions/high-frequency-positioning/",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 140544,
+   "sha256": "c7fbf0151190944a2671b5298270fe15d5ae5ecb1d1bdc946a4ddfdeed79c718",
+   "contentAssessment": "HFP specification read: transport_mode includes ferry; vessel labels and proof-of-concept occupancy for Suomenlinna ferries; no stop events for ferries"
+  },
+  {
+   "file": "digitransit-terms.html",
+   "url": "https://digitransit.fi/en/developers/apis/7-terms-of-use/",
+   "retrievedAt": "2026-09-07T23:13:13.770802+00:00",
+   "status": 200,
+   "finalUrl": "https://digitransit.fi/en/developers/apis/7-terms-of-use/",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 72736,
+   "sha256": "8ef678ac71c5c8d0d3798593dfca6c40fd04ef29313333c9c485b279cff1f262",
+   "contentAssessment": "Terms read: CC BY 4.0 on data given out now and in the past; registration and subscription key required; OSM-derived data ODbL; attribution '© Digitransit YYYY' plus receipt date/time"
+  },
+  {
+   "file": "suomenlinna-hfp-README.md",
+   "url": "https://raw.githubusercontent.com/HSLdevcom/suomenlinna-ferry-hfp/master/README.md",
+   "retrievedAt": "2026-09-07T23:09:27.760846+00:00",
+   "status": 200,
+   "finalUrl": "https://raw.githubusercontent.com/HSLdevcom/suomenlinna-ferry-hfp/master/README.md",
+   "contentType": "text/plain; charset=utf-8",
+   "bytes": 2203,
+   "sha256": "a231962a2875ffe8dbecca334985037e25a6f553a5dc3e95ab59f1339782ae45",
+   "contentAssessment": "HSL tool README: ferry HFP is produced by matching Digitraffic vessel positions to scheduled GTFS trips"
+  },
+  {
+   "file": "digitraffic-marine.html",
+   "url": "https://www.digitraffic.fi/en/marine-traffic/",
+   "retrievedAt": "2026-09-07T23:11:18.977677+00:00",
+   "status": 200,
+   "finalUrl": "https://www.digitraffic.fi/en/marine-traffic/",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 67874,
+   "sha256": "eb692f138486fc56e776768a1c366427bf441ad62f7e1e373d812bf2917bbe56",
+   "contentAssessment": "Marine API overview read: AIS vessel locations and metadata endpoints"
+  },
+  {
+   "file": "digitraffic-terms.html",
+   "url": "https://www.digitraffic.fi/en/terms-of-service/",
+   "retrievedAt": "2026-09-07T23:11:19.192348+00:00",
+   "status": 200,
+   "finalUrl": "https://www.digitraffic.fi/en/terms-of-service/",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 40837,
+   "sha256": "f8fc688a519ef5e13ae33f795256295a3ee342df6c9067eae0ba8479ec0387cc",
+   "contentAssessment": "Terms read: Fintraffic open data CC BY 4.0 including remix and commercial use"
+  },
+  {
+   "file": "digitraffic-marine-openapi.json",
+   "url": "https://meri.digitraffic.fi/swagger/openapi.json",
+   "retrievedAt": "2026-09-07T23:13:15.630676+00:00",
+   "status": 200,
+   "finalUrl": "https://meri.digitraffic.fi/swagger/openapi.json",
+   "contentType": "application/json",
+   "bytes": 63986,
+   "sha256": "45005619e0d43ce42c6ffe0057567a30e914c1d924683bfcd57d348ee53fe2a1",
+   "contentAssessment": "OpenAPI read: /api/ais/v1/locations accepts mmsi and a timestamp interval; history depth not documented"
+  },
+  {
+   "file": "fmi-licence.html",
+   "url": "https://en.ilmatieteenlaitos.fi/open-data-licence",
+   "retrievedAt": "2026-09-07T23:10:23.599404+00:00",
+   "status": 200,
+   "finalUrl": "https://en.ilmatieteenlaitos.fi/open-data-licence",
+   "contentType": "text/html;charset=utf-8",
+   "bytes": 283048,
+   "sha256": "7e7d9ace8b6cb49cda228ff3ac87d3d6c6e5068241957699937b3a7878b488ef",
+   "contentAssessment": "Licence read: CC BY 4.0 for the FMI open data service"
+  },
+  {
+   "file": "fmi-wfs-capabilities.xml",
+   "url": "https://opendata.fmi.fi/wfs?request=GetCapabilities",
+   "retrievedAt": "2026-09-07T23:11:17.043470+00:00",
+   "status": 200,
+   "finalUrl": "https://opendata.fmi.fi/wfs?request=GetCapabilities",
+   "contentType": "text/xml; charset=UTF-8",
+   "bytes": 32860,
+   "sha256": "7a8dc535cb640d2c9515819efd9601f41ba186445a274566f41753dd0fb4ff7c",
+   "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+  },
+  {
+   "file": "fmi-wfs-storedqueries.xml",
+   "url": "https://opendata.fmi.fi/wfs?request=ListStoredQueries",
+   "retrievedAt": "2026-09-07T23:13:14.141657+00:00",
+   "status": 200,
+   "finalUrl": "https://opendata.fmi.fi/wfs?request=ListStoredQueries",
+   "contentType": "text/xml; charset=UTF-8",
+   "bytes": 66273,
+   "sha256": "6f435e81ab689c2ddcdc2f5d9c181d5d9a105426d71fecb6a0b7575ac8a9c140",
+   "contentAssessment": "151 stored queries listed, including fmi::observations::seaice::manual::timevaluepair and mareograph observations"
+  },
+  {
+   "file": "fmi-ice-conditions.html",
+   "url": "https://en.ilmatieteenlaitos.fi/ice-conditions",
+   "retrievedAt": "2026-09-07T23:13:15.135655+00:00",
+   "status": 200,
+   "finalUrl": "https://en.ilmatieteenlaitos.fi/ice-conditions",
+   "contentType": "text/html;charset=utf-8",
+   "bytes": 299338,
+   "sha256": "12c41a6c8292264220d5f25a2e511451b1d3af06da31bd65af5fec80c30e5817",
+   "contentAssessment": "Page read: Baltic ice chart PDF published Mondays and Thursdays in autumn, daily during ice growth; simplified and reference charts weekly"
+  },
+  {
+   "file": "fmi-datasets.html",
+   "url": "https://en.ilmatieteenlaitos.fi/open-data-sets-available",
+   "retrievedAt": "2026-09-07T23:11:18.267833+00:00",
+   "status": 200,
+   "finalUrl": "https://en.ilmatieteenlaitos.fi/open-data-sets-available",
+   "contentType": "text/html;charset=utf-8",
+   "bytes": 287651,
+   "sha256": "9eac2693b48a6ca5700b109bb810edce9a02989e27a6db774410ba58f26214fe",
+   "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+  },
+  {
+   "file": "nls-licence.html",
+   "url": "https://www.maanmittauslaitos.fi/en/opendata-licence-cc40",
+   "retrievedAt": "2026-09-07T23:10:27.180284+00:00",
+   "status": 200,
+   "finalUrl": "https://www.maanmittauslaitos.fi/en/opendata-licence-cc40",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 38788,
+   "sha256": "d73f36c9d62eec10b7b26b1723ef3700ab3ef37ec58532f2dab568846d077bd6",
+   "contentAssessment": "Licence read: NLS open data CC BY 4.0; name licensor, dataset and retrieval time"
+  },
+  {
+   "file": "pems-home.html",
+   "url": "https://pems.dot.ca.gov/",
+   "retrievedAt": "2026-09-07T23:09:30.943269+00:00",
+   "status": 200,
+   "finalUrl": "https://pems.dot.ca.gov/",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 22289,
+   "sha256": "a2f14a75670de059906fb96a99a74c6001e35703ceca8cd716521f4494a95438",
+   "contentAssessment": "Page read: account required, approval one to two business days"
+  },
+  {
+   "file": "pems-clearinghouse.html",
+   "url": "https://pems.dot.ca.gov/?dnode=Clearinghouse",
+   "retrievedAt": "2026-09-07T23:11:21.671736+00:00",
+   "status": 200,
+   "finalUrl": "https://pems.dot.ca.gov/?dnode=Clearinghouse",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 22316,
+   "sha256": "39e3653b18bf57adb23f5923f5e3f0cc8b822bba45129f39cb4c882fc36ca95e",
+   "contentAssessment": "Same account gate as home page; clearinghouse listing not visible without login"
+  },
+  {
+   "file": "pems-tou.html",
+   "url": "https://pems.dot.ca.gov/?view=tou",
+   "retrievedAt": "2026-09-07T23:12:15.759696+00:00",
+   "status": 200,
+   "finalUrl": "https://pems.dot.ca.gov/?view=tou",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 25189,
+   "sha256": "3330a9981d6bf56794db82b2cd3816a972cb1c3bad556ccbc9e8124e007e5fda",
+   "contentAssessment": "Conditions of Use read: information 'unless otherwise indicated, is considered in the public domain'; copyrighted items such as photographs may be marked otherwise"
+  },
+  {
+   "file": "caltrans-conditions.html",
+   "url": "https://dot.ca.gov/conditions-of-use",
+   "retrievedAt": "2026-09-07T23:11:20.308041+00:00",
+   "status": 200,
+   "finalUrl": "https://dot.ca.gov/conditions-of-use",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 37929,
+   "sha256": "1d4eb1b83b1b85d3be549c21b518a8a93483466b05274c4223869485de41a6ff",
+   "contentAssessment": "Caltrans Conditions of Use read: same public-domain ownership statement"
+  },
+  {
+   "file": "pems-source.html",
+   "url": "https://dot.ca.gov/programs/traffic-operations/mpr/pems-source",
+   "retrievedAt": "2026-09-07T23:09:32.204635+00:00",
+   "status": 200,
+   "finalUrl": "https://dot.ca.gov/programs/traffic-operations/mpr/pems-source",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 29455,
+   "sha256": "a4502f5fae00d33eaabe1cc56786abdaec3a76b810c1ec46fcc5c8dedbb60691",
+   "contentAssessment": "Page read: nearly 40,000 detectors; Archived Data User Service with over ten years of data; detector sensitivity adjustments noted"
+  },
+  {
+   "file": "pems-data.html",
+   "url": "https://dot.ca.gov/programs/traffic-operations/mpr/pems-data",
+   "retrievedAt": "2026-09-07T23:09:33.400656+00:00",
+   "status": 200,
+   "finalUrl": "https://dot.ca.gov/programs/traffic-operations/mpr/pems-data",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 36903,
+   "sha256": "9d6da36b604a04b057dcf513e73cf452b1d426ea0a2db78d6a5bed41f5583827",
+   "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+  },
+  {
+   "file": "caltrans-shn.html",
+   "url": "https://gisdata-caltrans.opendata.arcgis.com/datasets/Caltrans::state-highway-network-lines/about",
+   "retrievedAt": "2026-09-07T23:11:25.728668+00:00",
+   "status": 200,
+   "finalUrl": "https://gisdata-caltrans.opendata.arcgis.com/datasets/Caltrans::state-highway-network-lines/about",
+   "contentType": "text/html; charset=utf-8",
+   "bytes": 33232,
+   "sha256": "8a079db637f537d9a19e046c5d1399d645c24886fd187cda486152ea4c212b13",
+   "contentAssessment": "HTML application shell or access challenge only; body not readable by the audit client"
+  },
+  {
+   "file": "metro-gtfs-rail.zip",
+   "url": "https://gitlab.com/LACMTA/gtfs_rail/-/raw/master/gtfs_rail.zip",
+   "retrievedAt": "2026-09-07T23:09:35.411683+00:00",
+   "status": 200,
+   "finalUrl": "https://gitlab.com/LACMTA/gtfs_rail/-/raw/master/gtfs_rail.zip",
+   "contentType": "application/octet-stream",
+   "bytes": 1318257,
+   "sha256": "fb7af59a72e2060b2b7a51048835e35770570714195ee1e4c1af38cba757bfc0",
+   "contentAssessment": "Feed archive retrieved and structurally inspected; counts recorded in LOS-ANGELES.md; feed_license empty"
+  },
+  {
+   "file": "metro-gtfs-bus.zip",
+   "url": "https://gitlab.com/LACMTA/gtfs_bus/-/raw/master/gtfs_bus.zip",
+   "retrievedAt": "2026-09-07T23:09:36.711761+00:00",
+   "status": 200,
+   "finalUrl": "https://gitlab.com/LACMTA/gtfs_bus/-/raw/master/gtfs_bus.zip",
+   "contentType": "application/octet-stream",
+   "bytes": 22244988,
+   "sha256": "93275d4b50eb22afcfe64f3fe8fd918dfb5fa43600be2e267658e5f2719eda33",
+   "contentAssessment": "Feed archive retrieved and structurally inspected; counts recorded in LOS-ANGELES.md; feed_license empty"
+  },
+  {
+   "file": "metro-gtfs-rail-README.md",
+   "url": "https://gitlab.com/LACMTA/gtfs_rail/-/raw/master/README.md",
+   "retrievedAt": "2026-09-07T23:11:24.722648+00:00",
+   "status": 200,
+   "finalUrl": "https://gitlab.com/LACMTA/gtfs_rail/-/raw/master/README.md",
+   "contentType": "text/plain; charset=utf-8",
+   "bytes": 3599,
+   "sha256": "5f2efeaab54d9b358767f4486bf11e6438b300db7035f9a6b90609466c9c0dc5",
+   "contentAssessment": "README dated 2026-09-05 01:30 PDT; rail export updated daily"
+  },
+  {
+   "file": "metro-gtfs-bus-README.md",
+   "url": "https://gitlab.com/LACMTA/gtfs_bus/-/raw/master/README.md",
+   "retrievedAt": "2026-09-07T23:11:25.087388+00:00",
+   "status": 200,
+   "finalUrl": "https://gitlab.com/LACMTA/gtfs_bus/-/raw/master/README.md",
+   "contentType": "text/plain; charset=utf-8",
+   "bytes": 28911,
+   "sha256": "494a05d106eb799ffdaebf6b23cf8411b3a31b79e119f14d7b39703ebcfbdbc6",
+   "contentAssessment": "README change log; bus export updated at shakeups and event services"
+  },
+  {
+   "file": "metro-developer.html",
+   "url": "https://developer.metro.net/",
+   "retrievedAt": "2026-09-07T23:09:34.922045+00:00",
+   "status": 200,
+   "finalUrl": "https://developer.metro.net/",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 91583,
+   "sha256": "9b90f0c6fba49e565f70d24bbac1cf76c4372a906601f4fe9c0a3281cd81954d",
+   "contentAssessment": "Source document or catalogue inspected; not proof that a production feed is ready"
+  },
+  {
+   "file": "metro-gtfs-page.html",
+   "url": "https://developer.metro.net/gtfs-schedule-data/",
+   "retrievedAt": "2026-09-07T23:12:18.487869+00:00",
+   "status": 200,
+   "finalUrl": "https://developer.metro.net/gtfs-schedule-data/",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 86217,
+   "sha256": "857dadd84e57c694a9582b7f91a2f7c454c8f0dcec5c00c496acae13d79da827",
+   "contentAssessment": "Page read: separate rail and bus feeds since 2016; master/current/next GitLab branches"
+  },
+  {
+   "file": "metro-terms-conditions.html",
+   "url": "https://developer.metro.net/terms-conditions/",
+   "retrievedAt": "2026-09-07T23:12:17.121678+00:00",
+   "status": 200,
+   "finalUrl": "https://developer.metro.net/terms-conditions/",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 93680,
+   "sha256": "51a387834ea970ac8f6e34f0cf8daa4ab6243a9106d9218afb2ac2c11f567cb1",
+   "contentAssessment": "Terms read: 2.1(b) no modification, 2.1(c) reproduce only in the form provided, 2.1(e) no unauthorised redistribution, 5.4 removal on termination; no open licence"
+  },
+  {
+   "file": "metro-terms.html",
+   "url": "https://www.metro.net/about/terms-of-use/",
+   "retrievedAt": "2026-09-07T23:11:24.333044+00:00",
+   "status": 404,
+   "finalUrl": "https://www.metro.net/about/terms-of-use/",
+   "contentType": "text/html; charset=UTF-8",
+   "bytes": 175544,
+   "sha256": "ab6db9e632a92dcaae041f589a182801f61b3fd5aadd3f104ae7368be82d666e",
+   "contentAssessment": "Not found; the governing developer terms are at developer.metro.net"
+  }
+ ],
+ "helsinkiInspection": {
+  "archive": "hsl.zip",
+  "feedVersion": "2026-09-05 06:32:39",
+  "serverLastModified": "2026-09-05T04:00:13Z",
+  "calendar": "20260904-20261102",
+  "tables": [
+   "agency",
+   "areas",
+   "calendar",
+   "calendar_dates",
+   "emissions",
+   "fare_attributes",
+   "fare_rules",
+   "feed_info",
+   "routes",
+   "shapes",
+   "stops",
+   "stop_areas",
+   "stop_times",
+   "transfers",
+   "translations",
+   "trips",
+   "trips2"
+  ],
+  "counts": {
+   "routes": 465,
+   "stops": 8344,
+   "trips": 367833,
+   "stopTimes": 10260579,
+   "shapePoints": 484017,
+   "services": 7276,
+   "calendarDates": 111
+  },
+  "routeTypes": {
+   "0": 28,
+   "1": 4,
+   "4": 3,
+   "109": 13,
+   "701": 356,
+   "702": 14,
+   "704": 46,
+   "900": 1
+  },
+  "waterRoutes": [
+   {
+    "id": "1019",
+    "short": "19",
+    "name": "Kauppatori-Suomenlinna"
+   },
+   {
+    "id": "1019E",
+    "short": "19E",
+    "name": "Katajanokka-Suomenlinna"
+   },
+   {
+    "id": "1017",
+    "short": "17",
+    "name": "Meritullintori-Kruunuvuorenranta"
+   }
+  ],
+  "sampleDay": "2026-09-09",
+  "sampleDayTrips": {
+   "water": 149,
+   "waterByRoute": {
+    "19": 94,
+    "17": 39,
+    "19E": 16
+   },
+   "tram": 2507,
+   "metro": 622
+  },
+  "waterFirstLastDeparture": [
+   "06:00:00",
+   "26:20:00"
+  ],
+  "waterTripDurationSeconds": {
+   "min": 900,
+   "median": 900,
+   "max": 900
+  },
+  "waterShapes": 6,
+  "waterShapePoints": 147
+ },
+ "losAngelesInspection": {
+  "rail": {
+   "archive": "metro-gtfs-rail.zip",
+   "feedId": "us_ca_lacmta_rail",
+   "feedLicense": "",
+   "calendar": "20260905-20260919",
+   "counts": {
+    "routes": 6,
+    "stops": 463,
+    "trips": 7796,
+    "stopTimes": 154890,
+    "shapePoints": 17590,
+    "services": 24,
+    "calendarDates": 8
+   },
+   "routeTypes": {
+    "0": 4,
+    "1": 2
+   }
+  },
+  "bus": {
+   "archive": "metro-gtfs-bus.zip",
+   "feedId": "us_ca_lacmta_bus",
+   "feedLicense": "",
+   "calendar": "20260607-20261212",
+   "counts": {
+    "routes": 114,
+    "stops": 11892,
+    "trips": 33614,
+    "stopTimes": 2106179,
+    "shapePoints": 344948,
+    "services": 129,
+    "calendarDates": 7064
+   },
+   "routeTypes": {
+    "3": 114
+   }
+  },
+  "pems": "Not downloaded; account required. Public-domain statement and archive description recorded from retrieved pages."
+ }
+}

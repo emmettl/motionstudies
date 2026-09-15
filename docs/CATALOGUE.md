@@ -62,7 +62,7 @@ The 13 September reconciliation supersedes the earlier bus-expansion and twelve-
 
 ## Unnumbered second wave
 
-The [naming study](NAMING.md) develops a preferred working title, two alternatives and a corresponding visual thesis for each of the fourteen city candidates. These are discussion proposals; they do not assign catalogue identities or alter the source verdicts below.
+The [naming study](NAMING.md) develops a preferred working title, two alternatives and a corresponding visual thesis for each of the sixteen city candidates. These are discussion proposals; they do not assign catalogue identities or alter the source verdicts below.
 
 These are strong candidates, not promises or an implementation queue. Each sentence is a visual hypothesis tested against sources, rights and a bounded composition. The completed audits below are feasibility verdicts, not commitments to build.
 
@@ -79,6 +79,8 @@ These are strong candidates, not promises or an implementation queue. Each sente
 - **[Johannesburg](./JOHANNESBURG.md)** — mobility still bearing the spatial violence of apartheid. The full work is blocked pending a locally governed data partnership: official machine-readable service evidence is incomplete and omitting minibus taxis would reproduce a consequential source bias.
 - **[Sydney](./SYDNEY.md)** — a rail city repeatedly interrupted by water, then reconnected by bridges and ferries. TfNSW's static, realtime and historical products give it the cleanest full observed-motion path in the survey; physical crossing states still need explicit sourcing.
 - **[Lisbon](./LISBON.md)** — trams, funiculars and ferries negotiating a city apparently designed to defeat wheels. A current Carris GTFS makes a tram/funicular terrain proof viable, but its all-bus mode coding requires an override and current open ferry motion was not established.
+- **[Railo — Helsinki](./HELSINKI.md)** — added 8 September 2026. The sea freezes and the streets on it keep running: a scheduled ferry line sails through open water in September and a broken channel in February while the ice grows and retreats around it. Related to Underfall's schedule-against-tide comparison, but its clock is the season and its evidence of interaction is a recorded track diverging from the scheduled line. HSL, Digitransit, Fintraffic, FMI and NLS sources are all explicit CC BY 4.0; the winter must be recorded under the rolling-window cost policy before the full thesis can be shown.
+- **[Backup — Los Angeles](./LOS-ANGELES.md)** — added 8 September 2026. The freeway is the public network and its rhythm is a wave that travels backwards against the traffic. The only candidate city about the car; Underfall's M32 matrix and the national study already establish detector intervals as evidence, so the signature must be the backward-moving front along a long corridor, not a larger matrix. PeMS is public domain but account-gated; Metro's developer terms block a transformed transit layer as written.
 - **[Umlauf — Berlin](./BERLIN.md)** — the Ringbahn as a moving definition of inside, pierced by S-Bahn and U-Bahn axes and met by an eastern tram field. The [independent proof](https://github.com/emmettl/umlauf) now implements a source-pinned scheduled morning, geographic-to-circulation transition and Ostkreuz relative interchange view with an official bridge footprint. Measured rail/platform heights and authored catalogue admission remain open.
 - **[MANIFEST — World trade in motion](https://github.com/emmettl/manifest)** — a public synthetic 60,000-vessel prototype and a local NOAA observation review now test the proposed global work. The intended China/Gulf field still needs observed global sources and publication rights. AIS can reveal motion and broad vessel class, but commodity, origin and quantity require separately labelled inference or aggregate trade evidence.
 
@@ -103,8 +105,10 @@ Source verdicts in this section retain their original dates and were not revalid
 | Mexico City | **Amber historical / red current thesis** | Validate the 2022 formal feed and seek a current locally reviewed source partnership. |
 | Mumbai | **Red** | Request official suburban schedules and time-banded passenger evidence; do not prototype. |
 | Johannesburg | **Red** | Form a compensated local review/data partnership before visual development. |
+| Helsinki (reviewed 8 September) | **Green scheduled / amber observed archive** | Build the September harbour proof from the hashed HSL feed; register a Digitransit key and run a bounded ferry-only smoke recording before admitting a winter collector. |
+| Los Angeles (reviewed 8 September) | **Green public-domain source / amber account; red Metro terms** | Register a PeMS account, download one District 7 corridor-day of 5-minute station data and fit it to the shared aggregate-road contract; send the Metro questions before any transit layer. |
 
-Green describes the source path, not catalogue admission. Venice and Sydney still need acquired source packages and authored signature proofs. Berlin has implemented signature proofs, but measured heights, performance and authorial review remain open; no city receives a number from this survey alone.
+Green describes the source path, not catalogue admission. Venice and Sydney still need acquired source packages and authored signature proofs. Helsinki and Los Angeles were reviewed on 8 September, after the table's original survey; their audits are in their briefs and the [evidence record](evidence/city-candidate-sources-2026-09-08.json), and neither has an authored proof. Berlin has implemented signature proofs, but measured heights, performance and authorial review remain open; no city receives a number from this survey alone.
 
 Tokyo's initial source and feasibility audit is recorded in [TOKYO.md](./TOKYO.md). It separates a durable Toei proof from the unresolved Tokyo Metro publication terms and the Challenge 2026-only Yamanote/private-railway coverage.
 

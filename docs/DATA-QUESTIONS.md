@@ -136,6 +136,23 @@ Toei's catalogue already states CC BY 4.0 and the credit names. Its first practi
 - What provider credit and modification notice should accompany the artifact and a recording made from it?
 - Are dated releases complete snapshots, and is their continued availability guaranteed or should users retain the precise release themselves?
 
+## Los Angeles
+
+**Routes:** Metro developer programme through the [terms page](https://developer.metro.net/terms-conditions/) and the contact given on the [developer site](https://developer.metro.net/); PeMS support only after registration, with a specific failed request.
+
+For Metro:
+
+- Clause 2.1(b) prohibits modifying the Transport Information and 2.1(c) requires reproduction only in the form provided. Does a compiled, dated timetable/geometry artifact served to browser users fall outside those clauses, or is written permission required?
+- Clause 2.1(e) refers to terms prohibiting unauthorised redistribution. Which terms are those, and does static browser delivery of a derived artifact constitute redistribution?
+- Under 5.4, what happens to an explicitly historical artifact and exported recordings if the Services terminate or the feed changes?
+- `feed_info.txt` carries an empty `feed_license`. Is there an open licence Metro intends for the GitLab feeds?
+
+For PeMS, register first. The Conditions of Use already state the public-domain position; ask only if the clearinghouse imposes a download restriction or the station files carry different terms.
+
+## Helsinki: validate before asking
+
+HSL, Digitransit, Fintraffic, FMI and NLS all publish explicit CC BY 4.0 terms. Register a Digitransit key and inspect live ferry HFP first. Contact Digitransit or Fintraffic only to ask whether historical HFP or AIS positions can be supplied for a stated period, and FMI only if ice-chart geometry is not discoverable through the WFS. Attribution must include "© Digitransit" with the receipt date and time; keep OpenStreetMap-derived data out of the CC BY artifact.
+
 ## Sydney and Singapore: validate before asking
 
 These have explicit open-licence baselines. Use the registered account to inspect the requested resources first. Contact support with a specific failed request or conflicting condition, rather than asking for rights already granted in the published licence.

@@ -9,7 +9,7 @@
 - [Overall roadmap and delivery history](../ROADMAP.md)
 - [Catalogue programme and admission criteria](CATALOGUE.md)
 - [Candidate names and the theses they imply](NAMING.md)
-- [Data access and provenance readiness](DATA-READINESS.md) and [provider questions](DATA-QUESTIONS.md)
+- [Data access and provenance readiness](DATA-READINESS.md) and [provider questions](DATA-QUESTIONS.md); [8 September candidate source audit](evidence/city-candidate-sources-2026-09-08.json)
 - [Archive and processing options](ARCHIVE-AND-PROCESSING.md): R2, analytical tables, gridded arrays and optional time-series databases; source-specific retention and redistribution
 - [Cost control](COST-CONTROL.md): $100/month series ceiling, traffic-spike protection, finite retention and proposed enforcement; live compliance still needs verification
 - [Edition architecture and ownership](EDITIONS.md)
@@ -48,10 +48,12 @@ These briefs retain their dated source audits, proposed compositions and publica
 
 - [Fietsen — Amsterdam](AMSTERDAM.md)
 - [Chicago](CHICAGO.md)
+- [Railo — Helsinki](HELSINKI.md) — added 8 September
 - [Hong Kong](HONG-KONG.md)
 - [Istanbul](ISTANBUL.md)
 - [Johannesburg](JOHANNESBURG.md)
 - [Lisbon](LISBON.md)
+- [Backup — Los Angeles](LOS-ANGELES.md) — added 8 September
 - [Mexico City](MEXICO-CITY.md)
 - [Mumbai](MUMBAI.md)
 - [San Francisco](SAN-FRANCISCO.md)

@@ -4,7 +4,7 @@
 
 [Study index](README.md) · [Catalogue programme](CATALOGUE.md) · [Data readiness](DATA-READINESS.md)
 
-A title should decide what the work is trying to show. It should suggest a sentence about the place, an action in the image and a reason to choose this city. These proposals cover all fourteen candidate cities; the four numbered works keep their identities, and MANIFEST remains the separately named global branch.
+A title should decide what the work is trying to show. It should suggest a sentence about the place, an action in the image and a reason to choose this city. These proposals cover all sixteen candidate cities; the four numbered works keep their identities, and MANIFEST remains the separately named global branch.
 
 The first choice below is an editorial recommendation for discussion, not an assigned edition identity. Alternatives represent different possible works, rather than interchangeable labels. Source feasibility remains as recorded in each dated city brief; this naming pass does not refresh those audits. Local-language meanings are distinguished from our own interpretations. Local readers should test register and associations before adoption; availability and name collisions have not been cleared.
 
@@ -20,7 +20,8 @@ These studies already have independent repositories. Repository existence is sep
 | Correspondances | Paris | [Study brief](PARIS.md) | [correspondances](https://github.com/emmettl/correspondances) |
 | NORIKAE | Tokyo | [Study brief](TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
 | MANIFEST | World trade | [Study brief](MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
-| Umlauf (working title) | Berlin | [Study brief](BERLIN.md) | [umlauf (private)](https://github.com/emmettl/umlauf) |
+| Umlauf (working title) | Berlin | [Study brief](BERLIN.md) | [umlauf](https://github.com/emmettl/umlauf) |
+| Zugunruhe | European bird migration | [Study brief](ZUGUNRUHE.md) | [zugunruhe](https://github.com/emmettl/zugunruhe) |
 
 ## Working slate
 
@@ -29,10 +30,12 @@ These studies already have independent repositories. Repository existence is sep
 | Amsterdam | **Fietsen** | Fietsstroom; Fietslicht | Everyday cycling across bridges and along canals makes Amsterdam take shape. |
 | Berlin | **Umlauf** | Innen / Außen; Ringwerk | A circulating railway continually draws and perforates the city's inside. |
 | Chicago | **Above Grade** | Streetwork; In the Loop | The street grid becomes a three-dimensional public railway. |
+| Helsinki | **Railo** | Sula; Open Water | The sea freezes and the streets on it keep running. |
 | Hong Kong | **Surface / Void** | Between Levels; Harbour Section | Movement exposes the harbour and disappears into the mountain city. |
 | Istanbul | **İki Yaka** | Between Shores; The Other Side | Repeated crossings make two shores into one daily transport space. |
 | Johannesburg | **Long Division** | Unequal Reach; Ways Through | Inherited spatial separation is paid for in present journeys. |
 | Lisbon | **Subida** | By Degrees; Against the Slope | The gradient makes each means of moving explain itself. |
+| Los Angeles | **Backup** | Stop and Go; SigAlert | The freeway's rhythm is a wave that travels backwards against the traffic. |
 | Mexico City | **Más Ciudad** | Mapa Abierto; Beyond the Lines | There is more city in motion than the formal transport map can contain. |
 | Mumbai | **Up / Down** | Tidal; Peak Direction | The same railway has a different weight in each direction and at each hour. |
 | San Francisco | **Grip** | Relief; The Slot | Hill, tunnel and water determine how the city gains and releases traction. |
@@ -89,6 +92,23 @@ The technical phrase also suggests an altered viewpoint. It tells us where to pu
 - **In the Loop** has immediate geographic and conversational recognition. It is less distinctive and does less to demand a three-dimensional scene.
 
 **Judgment:** Above Grade gives the clearest instruction to both the renderer and the viewer. [Chicago brief](CHICAGO.md).
+
+## Helsinki
+
+**Railo — A Helsinki motion study**
+
+**Proposed 8 September 2026.**
+
+**Thesis:** The sea freezes and the streets on it keep running. A scheduled ferry line holds its place through the year while the water around it changes state, so the season, not the hour, becomes the work's clock.
+
+*Railo* is the Finnish word for a crack or lead in sea ice: the open water a vessel keeps or finds through a frozen surface. The title names the physical thing the ferry makes. Reading that lead as the persistence of a public street is our interpretation. The word and its register need a Finnish reader's confirmation before adoption; it has not been checked against local usage or name collisions.
+
+**Opening commitment:** begin with a September harbour morning in which the Suomenlinna and Kruunuvuorenranta ferries move as scheduled lines among the shore trams. The signature scene then holds the same scheduled line while its recorded winter track diverges and the ice extent changes around it. The observed track must be a recording made during the 2026–27 season; nothing about the ice may be inferred from the schedule.
+
+- **Sula** — open, unfrozen water — names the condition rather than the act. Softer and more atmospheric; it risks reading as a weather word rather than a transport one.
+- **Open Water** is the English gloss. Clear, but it gives up the local voice and suggests a rescue or swimming context.
+
+**Judgment:** Railo is the strongest candidate because it names something the ferry physically makes. [Helsinki brief](HELSINKI.md).
 
 ## Hong Kong
 
@@ -149,6 +169,23 @@ The paired words describe the work's perceptual action. “Void” means the phy
 - **Against the Slope** gives the work a clear physical problem. It is more descriptive and risks making the city sound like an engineering obstacle alone.
 
 **Judgment:** Subida is concise, physical and locally voiced. Lisbon owns ascent; San Francisco's Grip owns the mechanism of gaining traction. [Lisbon brief](LISBON.md).
+
+## Los Angeles
+
+**Backup — A Los Angeles motion study**
+
+**Proposed 8 September 2026.**
+
+**Thesis:** The freeway is Los Angeles's public network, and its rhythm is a wave that travels backwards against the traffic. No vehicle in it has an identity; what exists is a condition of the road measured at fixed points.
+
+"Backup" is ordinary Los Angeles traffic speech for a queue on the freeway, and it is also the physical action the work shows: the tail of a queue moving upstream while every car in it moves downstream. The word tells the renderer what to draw. Its computing sense is a known collision that a local reader should weigh.
+
+**Opening commitment:** open on one corridor in plan as station measurements pulse, then rotate the corridor into a time–space diagram — traffic engineering's own picture — while the same measured states persist. Between stations the field is interpolation and must look like it. No particles that imply a car with continuity.
+
+- **Stop and Go** names the oscillation drivers feel. It is immediately local and legible, but it follows the paired-word pattern already used by Local / Express and Up / Down.
+- **SigAlert** is the most specifically Los Angeles term, but it names an incident broadcast with a proprietary origin and would centre the exception rather than the daily wave.
+
+**Judgment:** Backup gives the clearest instruction to the image; Stop and Go is the safer counterproposal if the collision with the computing sense proves distracting. [Los Angeles brief](LOS-ANGELES.md).
 
 ## Mexico City
 
@@ -261,4 +298,4 @@ The title joins water, service lines and the act of drawing. It leaves room for 
 
 Read each candidate in its full lockup: title, “A [city] motion study”, then the thesis sentence. The title should make that sentence easier to remember. Next, describe the first thirty seconds without explaining the name: the image should earn it.
 
-**Fietsen** is the author's selected Amsterdam working title. The other clearest names to carry into a next design conversation are **Grip**, **Above Grade**, **Umlauf**, **Subida**, **İki Yaka**, **Up / Down**, **Waterlines** and the existing **NORIKAE**. **Más Ciudad** and **Long Division** need the most testing for register or representational framing. That editorial judgment is separate from which source audits currently permit a prototype.
+**Fietsen** is the author's selected Amsterdam working title. The other clearest names to carry into a next design conversation are **Grip**, **Above Grade**, **Umlauf**, **Subida**, **İki Yaka**, **Up / Down**, **Waterlines** and the existing **NORIKAE**. **Más Ciudad** and **Long Division** need the most testing for register or representational framing. **Railo** and **Backup**, proposed on 8 September, have not yet had local-reader review. That editorial judgment is separate from which source audits currently permit a prototype.
