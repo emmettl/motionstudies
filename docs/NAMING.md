@@ -22,6 +22,7 @@ These studies already have independent repositories. Repository existence is sep
 | MANIFEST | World trade | [Study brief](MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
 | Umlauf (working title) | Berlin | [Study brief](BERLIN.md) | [umlauf](https://github.com/emmettl/umlauf) |
 | Zugunruhe | European bird migration | [Study brief](ZUGUNRUHE.md) | [zugunruhe](https://github.com/emmettl/zugunruhe) |
+| Unnamed national study (slug only) | England | [Study brief](NATIONAL-STUDY.md) | [england (private)](https://github.com/emmettl/england) |
 
 ## Working slate
 
