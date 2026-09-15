@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "kind": "common-day-preparation",
+  "date": "2026-09-14",
+  "preparedAt": "2026-09-15T22:30:24.812Z",
+  "files": [
+    {
+      "path": "power-context.json",
+      "bytes": 1710282,
+      "sha256": "132e9a5d137fe945d2f7e73be36ae48dc728da163c67bf96fec25c2c450a439f"
+    },
+    {
+      "path": "tide.json",
+      "bytes": 14348,
+      "sha256": "cc10279e028bcc5ec091ba707b891e958d50421af6e47b95e14c3e0f7b34e99e"
+    },
+    {
+      "path": "air.json",
+      "bytes": 57238,
+      "sha256": "08270614bd9c160fc66e6ea0f140b5adf0fef03a469880350e5ed67a53f6d1c4"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 8395,
+      "sha256": "8ee1b93ae667a63738ce3b409ac23caaaf81def98c05acf67a38ee0a08b73f26"
+    }
+  ],
+  "privateSourceStore": "/Users/louisemmett/Developer/Projects/motionstudies-recorder/work/common-day-2026-09-14",
+  "bus": {
+    "releasePath": "/Users/louisemmett/Developer/Projects/england/public/data/bus/2026-09-14/release.json",
+    "releaseSha256": "233896410724bf39966581f6e67515f71490ef90fa1b4581abf262511ef9731f",
+    "captureStart": "2026-09-14T11:42:27.004Z",
+    "captureEnd": "2026-09-14T12:42:27.004Z",
+    "dayConvention": "UTC observation partition; capture interval is the supported recording, not a full service day"
+  },
+  "suggestedReviewInterval": {
+    "fromUtc": "2026-09-14T12:15:00.000Z",
+    "toUtc": "2026-09-14T12:30:00.000Z",
+    "reason": "Inside the bus capture, with consecutive tide readings; avoids the missing 12:00 UTC gauge reading. Per-vehicle and aircraft gaps remain visible."
+  },
+  "coverage": {
+    "powerFuelInstants": 288,
+    "powerDemandPeriods": 48,
+    "tideValid": 91,
+    "tideExpected": 96,
+    "tideGapWithinBusHour": "2026-09-14T12:00:00.000Z",
+    "airTracks": 25,
+    "airSamples": 445,
+    "airIdentities": 20,
+    "airRawBytes": 70254176
+  },
+  "readiness": {
+    "bus": "Existing England release; unchanged",
+    "power": "Aggregate context prepared; per-unit settlement not established",
+    "tide": "Source-verified; preserve five missing readings",
+    "air": "Source-verified regional tracks; airport endpoints not established",
+    "rail": "Prepared in the parallel rail-readiness task",
+    "ui": "No UI or default recording changed"
+  },
+  "compiler": {
+    "packagePins": {
+      "@motionstudies/core": "0.1.0-alpha.18",
+      "@motionstudies/three": "0.1.0-alpha.18",
+      "@motionstudies/web": "0.1.0-alpha.18"
+    },
+    "localAdapterHashes": {
+      "underfall/scripts/feeds/tide.mjs": "8d35432cd9ca3a93bf2dabd4ccdff069bfd378c49a0ac40f56b52a89e423ff4c",
+      "underfall/scripts/feeds/air-replay.mjs": "d5ac9918d42814f92b4e7405c09a9146a2d8965e457a3e1f7282d8eb3adf10e3"
+    },
+    "installedDataVersion": "0.1.0-alpha.18"
+  }
+}

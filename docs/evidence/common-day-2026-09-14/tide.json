@@ -1,0 +1,568 @@
+{
+  "schemaVersion": 1,
+  "kind": "water-level-series",
+  "serviceDate": "2026-09-14",
+  "timezone": "Europe/London",
+  "startUtc": "2026-09-13T23:00:00.000Z",
+  "endUtc": "2026-09-14T23:00:00.000Z",
+  "durationSeconds": 86400,
+  "station": {
+    "id": "E72639",
+    "name": "Avonmouth Portbury",
+    "longitude": -2.728468,
+    "latitude": 51.49999
+  },
+  "measure": "E72639-level-tidal_level-Mean-15_min-mAOD",
+  "unit": "mAOD",
+  "datum": "Ordnance Datum",
+  "intervalSeconds": 900,
+  "representation": "Observed point levels; no current velocity or whole-river surface is inferred",
+  "samples": [
+    {
+      "timeUtc": "2026-09-13T23:15:00.000Z",
+      "secondsSinceStart": 900,
+      "level": 1.958
+    },
+    {
+      "timeUtc": "2026-09-13T23:30:00.000Z",
+      "secondsSinceStart": 1800,
+      "level": 1.399
+    },
+    {
+      "timeUtc": "2026-09-13T23:45:00.000Z",
+      "secondsSinceStart": 2700,
+      "level": 0.864
+    },
+    {
+      "timeUtc": "2026-09-14T00:00:00.000Z",
+      "secondsSinceStart": 3600,
+      "level": 0.342
+    },
+    {
+      "timeUtc": "2026-09-14T00:15:00.000Z",
+      "secondsSinceStart": 4500,
+      "level": -0.165
+    },
+    {
+      "timeUtc": "2026-09-14T00:30:00.000Z",
+      "secondsSinceStart": 5400,
+      "level": -0.655
+    },
+    {
+      "timeUtc": "2026-09-14T00:45:00.000Z",
+      "secondsSinceStart": 6300,
+      "level": -1.143
+    },
+    {
+      "timeUtc": "2026-09-14T01:00:00.000Z",
+      "secondsSinceStart": 7200,
+      "level": -1.625
+    },
+    {
+      "timeUtc": "2026-09-14T01:15:00.000Z",
+      "secondsSinceStart": 8100,
+      "level": -2.094
+    },
+    {
+      "timeUtc": "2026-09-14T01:30:00.000Z",
+      "secondsSinceStart": 9000,
+      "level": -2.552
+    },
+    {
+      "timeUtc": "2026-09-14T01:45:00.000Z",
+      "secondsSinceStart": 9900,
+      "level": -2.997
+    },
+    {
+      "timeUtc": "2026-09-14T02:15:00.000Z",
+      "secondsSinceStart": 11700,
+      "level": -3.806
+    },
+    {
+      "timeUtc": "2026-09-14T02:30:00.000Z",
+      "secondsSinceStart": 12600,
+      "level": -4.167
+    },
+    {
+      "timeUtc": "2026-09-14T02:45:00.000Z",
+      "secondsSinceStart": 13500,
+      "level": -4.502
+    },
+    {
+      "timeUtc": "2026-09-14T03:00:00.000Z",
+      "secondsSinceStart": 14400,
+      "level": -4.801
+    },
+    {
+      "timeUtc": "2026-09-14T03:15:00.000Z",
+      "secondsSinceStart": 15300,
+      "level": -5.069
+    },
+    {
+      "timeUtc": "2026-09-14T03:30:00.000Z",
+      "secondsSinceStart": 16200,
+      "level": -5.279
+    },
+    {
+      "timeUtc": "2026-09-14T03:45:00.000Z",
+      "secondsSinceStart": 17100,
+      "level": -5.394
+    },
+    {
+      "timeUtc": "2026-09-14T04:00:00.000Z",
+      "secondsSinceStart": 18000,
+      "level": -5.234
+    },
+    {
+      "timeUtc": "2026-09-14T04:15:00.000Z",
+      "secondsSinceStart": 18900,
+      "level": -4.632
+    },
+    {
+      "timeUtc": "2026-09-14T04:30:00.000Z",
+      "secondsSinceStart": 19800,
+      "level": -3.889
+    },
+    {
+      "timeUtc": "2026-09-14T04:45:00.000Z",
+      "secondsSinceStart": 20700,
+      "level": -3.176
+    },
+    {
+      "timeUtc": "2026-09-14T05:00:00.000Z",
+      "secondsSinceStart": 21600,
+      "level": -2.53
+    },
+    {
+      "timeUtc": "2026-09-14T05:15:00.000Z",
+      "secondsSinceStart": 22500,
+      "level": -1.871
+    },
+    {
+      "timeUtc": "2026-09-14T05:30:00.000Z",
+      "secondsSinceStart": 23400,
+      "level": -1.185
+    },
+    {
+      "timeUtc": "2026-09-14T05:45:00.000Z",
+      "secondsSinceStart": 24300,
+      "level": -0.58
+    },
+    {
+      "timeUtc": "2026-09-14T06:00:00.000Z",
+      "secondsSinceStart": 25200,
+      "level": 0.119
+    },
+    {
+      "timeUtc": "2026-09-14T06:15:00.000Z",
+      "secondsSinceStart": 26100,
+      "level": 0.868
+    },
+    {
+      "timeUtc": "2026-09-14T06:30:00.000Z",
+      "secondsSinceStart": 27000,
+      "level": 1.632
+    },
+    {
+      "timeUtc": "2026-09-14T06:45:00.000Z",
+      "secondsSinceStart": 27900,
+      "level": 2.394
+    },
+    {
+      "timeUtc": "2026-09-14T07:00:00.000Z",
+      "secondsSinceStart": 28800,
+      "level": 3.166
+    },
+    {
+      "timeUtc": "2026-09-14T07:15:00.000Z",
+      "secondsSinceStart": 29700,
+      "level": 3.895
+    },
+    {
+      "timeUtc": "2026-09-14T07:30:00.000Z",
+      "secondsSinceStart": 30600,
+      "level": 4.616
+    },
+    {
+      "timeUtc": "2026-09-14T07:45:00.000Z",
+      "secondsSinceStart": 31500,
+      "level": 5.235
+    },
+    {
+      "timeUtc": "2026-09-14T08:00:00.000Z",
+      "secondsSinceStart": 32400,
+      "level": 5.77
+    },
+    {
+      "timeUtc": "2026-09-14T08:15:00.000Z",
+      "secondsSinceStart": 33300,
+      "level": 6.24
+    },
+    {
+      "timeUtc": "2026-09-14T08:30:00.000Z",
+      "secondsSinceStart": 34200,
+      "level": 6.591
+    },
+    {
+      "timeUtc": "2026-09-14T08:45:00.000Z",
+      "secondsSinceStart": 35100,
+      "level": 6.811
+    },
+    {
+      "timeUtc": "2026-09-14T09:00:00.000Z",
+      "secondsSinceStart": 36000,
+      "level": 6.905
+    },
+    {
+      "timeUtc": "2026-09-14T09:30:00.000Z",
+      "secondsSinceStart": 37800,
+      "level": 6.611
+    },
+    {
+      "timeUtc": "2026-09-14T09:45:00.000Z",
+      "secondsSinceStart": 38700,
+      "level": 6.16
+    },
+    {
+      "timeUtc": "2026-09-14T10:15:00.000Z",
+      "secondsSinceStart": 40500,
+      "level": 5.009
+    },
+    {
+      "timeUtc": "2026-09-14T10:30:00.000Z",
+      "secondsSinceStart": 41400,
+      "level": 4.375
+    },
+    {
+      "timeUtc": "2026-09-14T10:45:00.000Z",
+      "secondsSinceStart": 42300,
+      "level": 3.712
+    },
+    {
+      "timeUtc": "2026-09-14T11:00:00.000Z",
+      "secondsSinceStart": 43200,
+      "level": 3.071
+    },
+    {
+      "timeUtc": "2026-09-14T11:15:00.000Z",
+      "secondsSinceStart": 44100,
+      "level": 2.447
+    },
+    {
+      "timeUtc": "2026-09-14T11:30:00.000Z",
+      "secondsSinceStart": 45000,
+      "level": 1.859
+    },
+    {
+      "timeUtc": "2026-09-14T11:45:00.000Z",
+      "secondsSinceStart": 45900,
+      "level": 1.311
+    },
+    {
+      "timeUtc": "2026-09-14T12:15:00.000Z",
+      "secondsSinceStart": 47700,
+      "level": 0.273
+    },
+    {
+      "timeUtc": "2026-09-14T12:30:00.000Z",
+      "secondsSinceStart": 48600,
+      "level": -0.227
+    },
+    {
+      "timeUtc": "2026-09-14T12:45:00.000Z",
+      "secondsSinceStart": 49500,
+      "level": -0.713
+    },
+    {
+      "timeUtc": "2026-09-14T13:00:00.000Z",
+      "secondsSinceStart": 50400,
+      "level": -1.192
+    },
+    {
+      "timeUtc": "2026-09-14T13:15:00.000Z",
+      "secondsSinceStart": 51300,
+      "level": -1.671
+    },
+    {
+      "timeUtc": "2026-09-14T13:30:00.000Z",
+      "secondsSinceStart": 52200,
+      "level": -2.127
+    },
+    {
+      "timeUtc": "2026-09-14T13:45:00.000Z",
+      "secondsSinceStart": 53100,
+      "level": -2.577
+    },
+    {
+      "timeUtc": "2026-09-14T14:00:00.000Z",
+      "secondsSinceStart": 54000,
+      "level": -3.01
+    },
+    {
+      "timeUtc": "2026-09-14T14:15:00.000Z",
+      "secondsSinceStart": 54900,
+      "level": -3.423
+    },
+    {
+      "timeUtc": "2026-09-14T14:30:00.000Z",
+      "secondsSinceStart": 55800,
+      "level": -3.81
+    },
+    {
+      "timeUtc": "2026-09-14T14:45:00.000Z",
+      "secondsSinceStart": 56700,
+      "level": -4.168
+    },
+    {
+      "timeUtc": "2026-09-14T15:00:00.000Z",
+      "secondsSinceStart": 57600,
+      "level": -4.499
+    },
+    {
+      "timeUtc": "2026-09-14T15:15:00.000Z",
+      "secondsSinceStart": 58500,
+      "level": -4.793
+    },
+    {
+      "timeUtc": "2026-09-14T15:30:00.000Z",
+      "secondsSinceStart": 59400,
+      "level": -5.053
+    },
+    {
+      "timeUtc": "2026-09-14T15:45:00.000Z",
+      "secondsSinceStart": 60300,
+      "level": -5.251
+    },
+    {
+      "timeUtc": "2026-09-14T16:00:00.000Z",
+      "secondsSinceStart": 61200,
+      "level": -5.329
+    },
+    {
+      "timeUtc": "2026-09-14T16:15:00.000Z",
+      "secondsSinceStart": 62100,
+      "level": -5.041
+    },
+    {
+      "timeUtc": "2026-09-14T16:30:00.000Z",
+      "secondsSinceStart": 63000,
+      "level": -4.348
+    },
+    {
+      "timeUtc": "2026-09-14T16:45:00.000Z",
+      "secondsSinceStart": 63900,
+      "level": -3.593
+    },
+    {
+      "timeUtc": "2026-09-14T17:00:00.000Z",
+      "secondsSinceStart": 64800,
+      "level": -2.9
+    },
+    {
+      "timeUtc": "2026-09-14T17:15:00.000Z",
+      "secondsSinceStart": 65700,
+      "level": -2.256
+    },
+    {
+      "timeUtc": "2026-09-14T17:30:00.000Z",
+      "secondsSinceStart": 66600,
+      "level": -1.576
+    },
+    {
+      "timeUtc": "2026-09-14T17:45:00.000Z",
+      "secondsSinceStart": 67500,
+      "level": -0.933
+    },
+    {
+      "timeUtc": "2026-09-14T18:00:00.000Z",
+      "secondsSinceStart": 68400,
+      "level": -0.31
+    },
+    {
+      "timeUtc": "2026-09-14T18:15:00.000Z",
+      "secondsSinceStart": 69300,
+      "level": 0.433
+    },
+    {
+      "timeUtc": "2026-09-14T18:30:00.000Z",
+      "secondsSinceStart": 70200,
+      "level": 1.164
+    },
+    {
+      "timeUtc": "2026-09-14T18:45:00.000Z",
+      "secondsSinceStart": 71100,
+      "level": 1.905
+    },
+    {
+      "timeUtc": "2026-09-14T19:00:00.000Z",
+      "secondsSinceStart": 72000,
+      "level": 2.651
+    },
+    {
+      "timeUtc": "2026-09-14T19:15:00.000Z",
+      "secondsSinceStart": 72900,
+      "level": 3.393
+    },
+    {
+      "timeUtc": "2026-09-14T19:30:00.000Z",
+      "secondsSinceStart": 73800,
+      "level": 4.098
+    },
+    {
+      "timeUtc": "2026-09-14T19:45:00.000Z",
+      "secondsSinceStart": 74700,
+      "level": 4.742
+    },
+    {
+      "timeUtc": "2026-09-14T20:00:00.000Z",
+      "secondsSinceStart": 75600,
+      "level": 5.312
+    },
+    {
+      "timeUtc": "2026-09-14T20:15:00.000Z",
+      "secondsSinceStart": 76500,
+      "level": 5.804
+    },
+    {
+      "timeUtc": "2026-09-14T20:30:00.000Z",
+      "secondsSinceStart": 77400,
+      "level": 6.219
+    },
+    {
+      "timeUtc": "2026-09-14T20:45:00.000Z",
+      "secondsSinceStart": 78300,
+      "level": 6.518
+    },
+    {
+      "timeUtc": "2026-09-14T21:00:00.000Z",
+      "secondsSinceStart": 79200,
+      "level": 6.702
+    },
+    {
+      "timeUtc": "2026-09-14T21:15:00.000Z",
+      "secondsSinceStart": 80100,
+      "level": 6.758
+    },
+    {
+      "timeUtc": "2026-09-14T21:30:00.000Z",
+      "secondsSinceStart": 81000,
+      "level": 6.656
+    },
+    {
+      "timeUtc": "2026-09-14T21:45:00.000Z",
+      "secondsSinceStart": 81900,
+      "level": 6.37
+    },
+    {
+      "timeUtc": "2026-09-14T22:00:00.000Z",
+      "secondsSinceStart": 82800,
+      "level": 5.911
+    },
+    {
+      "timeUtc": "2026-09-14T22:15:00.000Z",
+      "secondsSinceStart": 83700,
+      "level": 5.385
+    },
+    {
+      "timeUtc": "2026-09-14T22:30:00.000Z",
+      "secondsSinceStart": 84600,
+      "level": 4.825
+    },
+    {
+      "timeUtc": "2026-09-14T22:45:00.000Z",
+      "secondsSinceStart": 85500,
+      "level": 4.214
+    }
+  ],
+  "coverage": {
+    "expectedSamples": 96,
+    "validSamples": 91,
+    "missingTimesUtc": [
+      "2026-09-13T23:00:00.000Z",
+      "2026-09-14T02:00:00.000Z",
+      "2026-09-14T09:15:00.000Z",
+      "2026-09-14T10:00:00.000Z",
+      "2026-09-14T12:00:00.000Z"
+    ],
+    "status": "partial"
+  },
+  "audit": {
+    "inputRows": 181,
+    "invalid": 0,
+    "wrongMeasure": 0,
+    "outsideDay": 90,
+    "duplicates": 0,
+    "conflicts": 0
+  },
+  "sources": [
+    {
+      "schemaVersion": 1,
+      "source": {
+        "id": "ea-tide",
+        "publisher": "Environment Agency",
+        "kind": "observed-point-level",
+        "documentation": "https://environment.data.gov.uk/flood-monitoring/doc/tidegauge",
+        "license": "OGL-3.0",
+        "attribution": "This uses Environment Agency flood and river level data from the real-time data API (Beta)."
+      },
+      "url": "https://environment.data.gov.uk/flood-monitoring/id/stations/E72639.json",
+      "sha256": "23c14fb552164bb3d31a208fd32f7db5fb7c406306d59a5e6110370bf33b4517",
+      "bytes": 3458,
+      "storedBytes": 3458,
+      "encoding": null,
+      "retrievedAt": "2026-09-15T22:27:11.305Z",
+      "acquisition": "http",
+      "validation": "raw-capture; see adapter audit for fitness",
+      "httpStatus": 200,
+      "contentType": "application/json",
+      "lastModified": "Tue, 15 Sep 2026 21:48:12 GMT",
+      "etag": null
+    },
+    {
+      "schemaVersion": 1,
+      "source": {
+        "id": "ea-tide",
+        "publisher": "Environment Agency",
+        "kind": "observed-point-level",
+        "documentation": "https://environment.data.gov.uk/flood-monitoring/doc/tidegauge",
+        "license": "OGL-3.0",
+        "attribution": "This uses Environment Agency flood and river level data from the real-time data API (Beta)."
+      },
+      "url": "https://environment.data.gov.uk/flood-monitoring/id/measures/E72639-level-tidal_level-Mean-15_min-mAOD/readings?date=2026-09-13&_sorted&_limit=2000",
+      "sha256": "f9155757161ffae82d9dc72ae8f39335b54298d3f9ee0e98e1ec2a9769e58d92",
+      "bytes": 31012,
+      "storedBytes": 31012,
+      "encoding": null,
+      "retrievedAt": "2026-09-15T22:27:11.389Z",
+      "acquisition": "http",
+      "validation": "raw-capture; see adapter audit for fitness",
+      "httpStatus": 200,
+      "contentType": "application/json",
+      "lastModified": "Tue, 15 Sep 2026 21:48:12 GMT",
+      "etag": null
+    },
+    {
+      "schemaVersion": 1,
+      "source": {
+        "id": "ea-tide",
+        "publisher": "Environment Agency",
+        "kind": "observed-point-level",
+        "documentation": "https://environment.data.gov.uk/flood-monitoring/doc/tidegauge",
+        "license": "OGL-3.0",
+        "attribution": "This uses Environment Agency flood and river level data from the real-time data API (Beta)."
+      },
+      "url": "https://environment.data.gov.uk/flood-monitoring/id/measures/E72639-level-tidal_level-Mean-15_min-mAOD/readings?date=2026-09-14&_sorted&_limit=2000",
+      "sha256": "1d50b9d8b41a04f6cb72ec5b05e8339b61784f6c3fc5ee6c3ee3bd7cd0c8ff82",
+      "bytes": 32023,
+      "storedBytes": 32023,
+      "encoding": null,
+      "retrievedAt": "2026-09-15T22:27:11.475Z",
+      "acquisition": "http",
+      "validation": "raw-capture; see adapter audit for fitness",
+      "httpStatus": 200,
+      "contentType": "application/json",
+      "lastModified": "Tue, 15 Sep 2026 21:48:12 GMT",
+      "etag": null
+    }
+  ]
+}
