@@ -1,0 +1,43 @@
+{
+  "releaseVersion": "0.1.0-alpha.17",
+  "pullRequest": "https://github.com/emmettl/motionstudies/pull/17",
+  "sourceCommit": "1621b585b4a98bf6d1546eb710a0a784f435101a",
+  "npmRun": 34990058624,
+  "npmConclusion": "success",
+  "distTag": {
+    "next": "0.1.0-alpha.17"
+  },
+  "prepublication": {
+    "shared": {
+      "unitTests": 322,
+      "loaderBrowserPassed": 34,
+      "packedBrowserPassed": 94,
+      "packedBrowserSkipped": 2
+    },
+    "frameEvidence": "evidence/motion-alpha-17-frames.json"
+  },
+  "npmArtifacts": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.17",
+      "integrity": "sha512-Sz2MGWEd96nbpY89TDLYWBjMgDjnYXsR+j4kgKC+lO+wunIpGwb+vt71iRSmt9wK7qwvS16JucIzo2sLpGEOkw=="
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.17",
+      "integrity": "sha512-LIGeus+hEOKz/sP4X47qGGRR1mTcd0C43Yk9N7RO0HED/V7DyoNAyKT0b1vRcx62nHZHuIXeriTBJEaU4v4e5Q=="
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.17",
+      "integrity": "sha512-q0gd2oL+bJ/JZqdbUHVQEU2qZnYVXRNYCD8cOllmmVxNZ4+8bphVoiOie7FLdlcCXoHSOiGdRpVsd2bLWlWSsg=="
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.17",
+      "integrity": "sha512-H4YI24+4l889aoSgtOwV/CP1u2yQSzlT33+DJEolevgh2VOF2Nshz5c/RMhtil+5I2NtIkb1oZMeyb4HXULTEQ=="
+    }
+  ],
+  "downstream": {},
+  "rolloutComplete": false
+}
