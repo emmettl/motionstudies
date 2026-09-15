@@ -60,7 +60,7 @@ export async function buildPackages({ release = false } = {}) {
       }, null, 2))
       run(process.execPath, [resolve('node_modules/typescript/bin/tsc'), '-p', config])
     }
-    await copyAssets(join(source, 'src'), output, name === 'data' ? ['.mjs', '.d.mts'] : ['.css'])
+    await copyAssets(join(source, 'src'), output, name === 'data' ? ['.mjs', '.d.mts'] : ['.css', '.woff2', '-OFL.txt'])
     const distribution = {
       name: manifest.name,
       version: manifest.version,
@@ -74,7 +74,7 @@ export async function buildPackages({ release = false } = {}) {
       ...(release ? { publishConfig: { access: 'public', registry: 'https://registry.npmjs.org/', tag: releaseInfo.tag } } : {}),
       ...(manifest.engines ? { engines: manifest.engines } : {}),
       exports: Object.fromEntries(Object.entries(manifest.exports).map(([key, value]) => [key, compiledExport(value)])),
-      files: ['**/*.js', '**/*.mjs', '**/*.d.ts', '**/*.d.mts', '**/*.css', 'README.md', 'LICENSE'],
+      files: ['**/*.js', '**/*.mjs', '**/*.d.ts', '**/*.d.mts', '**/*.css', '**/*.woff2', '**/*-OFL.txt', 'README.md', 'LICENSE'],
       sideEffects: manifest.sideEffects ?? false,
       ...(manifest.dependencies ? { dependencies: manifest.dependencies } : {}),
       ...(manifest.peerDependencies ? { peerDependencies: manifest.peerDependencies } : {}),
