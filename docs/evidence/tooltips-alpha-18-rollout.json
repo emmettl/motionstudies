@@ -69,9 +69,10 @@
     },
     "underfall": {
       "mainCommit": "6d0600d",
-      "remote": null,
-      "note": "adopted on main through a separate worktree; the checked-out recorder-extraction branch was left on alpha.17 with no local changes",
-      "result": "typecheck, lint, unit tests and build pass locally"
+      "remote": "https://github.com/emmettl/underfall",
+      "pushed": "fast-forward from f89b287",
+      "note": "adopted on main through a separate worktree; the checked-out recorder-extraction branch belongs to other work and was left untouched",
+      "result": "typecheck, lint, unit tests and build pass locally; Check workflow pending"
     }
   },
   "rolloutComplete": false

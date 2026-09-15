@@ -57,7 +57,7 @@ All four packages were published as `0.1.0-alpha.17` on the `next` dist-tag from
 | Manifest | `927250c` | Deployed; uses only `@motionstudies/web` |
 | Zugunruhe | `be0d8f1` | Deployed; uses only `@motionstudies/web`. Its Night chapter check, which had failed identically under alpha.15 and alpha.16, passed |
 | Local / Express | `6ca3186` | Validated; no deployment workflow |
-| Underfall · Bristol | `f89b287` | Local gates pass; no Git remote |
+| Underfall · Bristol | `f89b287` | Local gates pass; now on main of the private `emmettl/underfall` repository, created after this adoption |
 | Gleislicht · Switzerland | `c29cffe` | Not deployed. Opening JavaScript measured 360.6 KiB on Node 24 CI against a limit the edition keeps at 360 KiB; resolved by [alpha.18](TOOLTIPS-ALPHA-18.md) |
 
 Live verification crawled each deployed edition's chunk graph from its public entry script. Every edition using the national scene serves the windowed motion program, and none still carries the alpha.16 program.

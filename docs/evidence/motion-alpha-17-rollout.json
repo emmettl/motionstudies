@@ -133,8 +133,8 @@
       "commits": [
         "f89b287"
       ],
-      "remote": null,
-      "result": "local gates pass; no Git remote"
+      "remote": "https://github.com/emmettl/underfall",
+      "result": "local gates pass; commit is on origin main after the repository was created later on 15 September"
     }
   },
   "rolloutComplete": false,
