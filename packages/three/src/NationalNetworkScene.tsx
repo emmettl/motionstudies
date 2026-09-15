@@ -732,7 +732,8 @@ function CountryBorder({
         return new THREE.Vector3(x, y, z)
       })
       const curve = new THREE.CatmullRomCurve3(points, true, 'centripetal', 0.5)
-      const segments = THREE.MathUtils.clamp(points.length * 2, 24, 920)
+      const segments = THREE.MathUtils.clamp(points.length * 2, 24, 8192)
+      curve.arcLengthDivisions = segments
       return [{
         id: `${index}:${coordinates.length}`,
         glow: new THREE.TubeGeometry(curve, segments, 0.13, 5, true),
