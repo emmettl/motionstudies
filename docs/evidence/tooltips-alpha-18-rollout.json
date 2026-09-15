@@ -164,6 +164,10 @@
           "attempt": 2,
           "check": "tests/night.spec.js: Night joins the chapters and hands the camera back after exploration",
           "error": "clock did not advance past 12 within 60 s after Play"
+        },
+        {
+          "attempt": 3,
+          "result": "passed"
         }
       ],
       "localWebkit": {
@@ -172,9 +176,10 @@
       },
       "history": "the hosted browser job failed on night, hosting, air and sound checks on earlier commits from 13 to 15 September",
       "runs": [
-        "Deploy Pages: https://github.com/emmettl/zugunruhe/actions/runs/34998897626"
+        "Deploy Pages: success on attempt 3 https://github.com/emmettl/zugunruhe/actions/runs/34998897626",
+        "Publish to Cloudflare: success https://github.com/emmettl/zugunruhe/actions/runs/35004348201"
       ],
-      "result": "pending third hosted attempt"
+      "result": "deployed after two hosted WebKit reruns; bundle unchanged by this release"
     }
   },
   "rolloutComplete": false

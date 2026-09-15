@@ -40,7 +40,7 @@ All four packages were published as `0.1.0-alpha.18` on the `next` dist-tag from
 | Local / Express | Shared | `0b99495` | Validated; no deployment workflow |
 | NORIKAE | Own root | `5830492` main, `aeee069` feature branch | Deployed from main; bundle unchanged by this release |
 | Manifest | Own root | `b4707cc` | Deployed; bundle unchanged by this release |
-| Zugunruhe | Own root | `0d0aaab` | Pending |
+| Zugunruhe | Own root | `0d0aaab` | Deployed; bundle unchanged by this release, with the same hashed assets as the alpha.17 deploy. The hosted WebKit job failed a sound check and then a Night chapter check before passing on its third attempt; both checks pass locally, and the job has failed intermittently on other checks since 13 September |
 | Underfall · Bristol | Shared | `6d0600d` | Local gates and the hosted Check pass on main of the private `emmettl/underfall` repository. It was adopted through a separate worktree; the checked-out `recorder-extraction` branch belonged to other work and has since been rebased onto this commit by its owner |
 
 Every deployed edition that renders the national scene still serves the alpha.17 windowed motion program.
