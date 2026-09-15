@@ -1,0 +1,152 @@
+{
+  "releaseVersion": "0.1.0-alpha.17",
+  "pullRequest": "https://github.com/emmettl/motionstudies/pull/17",
+  "sourceCommit": "1621b585b4a98bf6d1546eb710a0a784f435101a",
+  "npmRun": 34990058624,
+  "npmConclusion": "success",
+  "distTag": {
+    "next": "0.1.0-alpha.17"
+  },
+  "prepublication": {
+    "shared": {
+      "unitTests": 322,
+      "loaderBrowserPassed": 34,
+      "packedBrowserPassed": 94,
+      "packedBrowserSkipped": 2
+    },
+    "frameEvidence": "evidence/motion-alpha-17-frames.json"
+  },
+  "npmArtifacts": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.17",
+      "integrity": "sha512-Sz2MGWEd96nbpY89TDLYWBjMgDjnYXsR+j4kgKC+lO+wunIpGwb+vt71iRSmt9wK7qwvS16JucIzo2sLpGEOkw=="
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.17",
+      "integrity": "sha512-LIGeus+hEOKz/sP4X47qGGRR1mTcd0C43Yk9N7RO0HED/V7DyoNAyKT0b1vRcx62nHZHuIXeriTBJEaU4v4e5Q=="
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.17",
+      "integrity": "sha512-q0gd2oL+bJ/JZqdbUHVQEU2qZnYVXRNYCD8cOllmmVxNZ4+8bphVoiOie7FLdlcCXoHSOiGdRpVsd2bLWlWSsg=="
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.17",
+      "integrity": "sha512-H4YI24+4l889aoSgtOwV/CP1u2yQSzlT33+DJEolevgh2VOF2Nshz5c/RMhtil+5I2NtIkb1oZMeyb4HXULTEQ=="
+    }
+  ],
+  "downstream": {
+    "allchange": {
+      "commits": [
+        "36a8525",
+        "171310d"
+      ],
+      "result": "deployed",
+      "note": "first push failed the Node 24 opening JavaScript check at 347.7 KiB; limit raised to 348 KiB in 171310d",
+      "live": "LondonNetworkScene-B9KWMFEs.js",
+      "runs": [
+        "Publish to Cloudflare: skipped https://github.com/emmettl/allchange/actions/runs/34992135373",
+        "Deploy Pages: failure https://github.com/emmettl/allchange/actions/runs/34991970661",
+        "Publish to Cloudflare: success https://github.com/emmettl/allchange/actions/runs/34993264363",
+        "Deploy Pages: success https://github.com/emmettl/allchange/actions/runs/34992394554"
+      ]
+    },
+    "correspondances": {
+      "commits": [
+        "7c14619"
+      ],
+      "result": "deployed",
+      "live": "ParisNetworkScene-DiY8CAdy.js",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/correspondances/actions/runs/34997875419",
+        "Deploy Pages: success https://github.com/emmettl/correspondances/actions/runs/34991973624"
+      ]
+    },
+    "umlauf": {
+      "commits": [
+        "8d976ee"
+      ],
+      "result": "deployed",
+      "live": "index-Cb5J125y.js",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/umlauf/actions/runs/34992503485",
+        "Deploy Pages: success https://github.com/emmettl/umlauf/actions/runs/34991975993"
+      ]
+    },
+    "manifest": {
+      "commits": [
+        "927250c"
+      ],
+      "result": "deployed; web package only",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/manifest/actions/runs/34992168926",
+        "Deploy Pages: success https://github.com/emmettl/manifest/actions/runs/34991979297"
+      ]
+    },
+    "zugunruhe": {
+      "commits": [
+        "be0d8f1"
+      ],
+      "result": "deployed; web package only",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/zugunruhe/actions/runs/34994041190",
+        "Deploy Pages: success https://github.com/emmettl/zugunruhe/actions/runs/34991986618"
+      ]
+    },
+    "norikae": {
+      "commits": [
+        "ab00d20"
+      ],
+      "featureBranchCommit": "ed4d98c",
+      "result": "deployed from main",
+      "live": "NationalNetworkScene-BjMccFlq.js",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/norikae/actions/runs/34992247290",
+        "Validate: success https://github.com/emmettl/norikae/actions/runs/34991991355",
+        "Deploy to GitHub Pages: success https://github.com/emmettl/norikae/actions/runs/34991991276"
+      ]
+    },
+    "local-express": {
+      "commits": [
+        "6ca3186"
+      ],
+      "result": "validated; no deployment workflow",
+      "runs": [
+        "Check Local / Express: success https://github.com/emmettl/local-express/actions/runs/34991985417"
+      ]
+    },
+    "gleislicht": {
+      "commits": [
+        "c29cffe"
+      ],
+      "result": "not deployed: opening JavaScript 360.6 KiB on Node 24 CI against a fixed 360 KiB limit; resolved by alpha.18",
+      "runs": [
+        "Check public freshness: skipped https://github.com/emmettl/gleislicht/actions/runs/34992811711",
+        "Publish to Cloudflare: skipped https://github.com/emmettl/gleislicht/actions/runs/34992805745",
+        "Deploy to GitHub Pages: failure https://github.com/emmettl/gleislicht/actions/runs/34992266841"
+      ]
+    },
+    "underfall": {
+      "commits": [
+        "f89b287"
+      ],
+      "remote": "https://github.com/emmettl/underfall",
+      "result": "local gates pass; commit is on origin main after the repository was created later on 15 September"
+    }
+  },
+  "rolloutComplete": false,
+  "liveVerification": {
+    "method": "crawl of each deployed chunk graph for the motion-lerp-windowed program key and absence of motion-lerp-points",
+    "verifiedAt": "2026-09-15"
+  },
+  "terrainComparison": {
+    "spec": "gleislicht e2e/terrain-smoke.spec.ts, iphone-webkit, one worker, three runs each",
+    "alpha17Failed": 5,
+    "alpha16Failed": 4,
+    "of": 24,
+    "error": "ResizeObserver loop completed with undelivered notifications"
+  }
+}

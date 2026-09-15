@@ -1,0 +1,202 @@
+{
+  "releaseVersion": "0.1.0-alpha.18",
+  "pullRequest": "https://github.com/emmettl/motionstudies/pull/19",
+  "sourceCommit": "602fd6951ca29f92e0d3b0b82f7f12103d56dc5c",
+  "npmRun": 34997874755,
+  "npmConclusion": "success",
+  "npmArtifacts": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.18",
+      "integrity": "sha512-tTAG4FVnn8Mjci+gqqCeN5Xz15zT+FIOHFacnSyL/BHJxh2Vtsz5Ug/nfgW8pHxCWC9DZHHOg8vKWJmsbpurog=="
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.18",
+      "integrity": "sha512-IAxzj8y+QqdZbyFMu04vVn5mDm3JOj4BfCpCwCWHQh3eIYA0+UQzaezopQfIlO2CpzzXeYtQLDe/x2mWvD8pbg=="
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.18",
+      "integrity": "sha512-PCpQ/ocZAtv1UQfRltlB8UxnONcp1xW+sbeKvaufsmddEGZ+g3Wjze7Myd0vDVCy0tYePn6RDQOlcun5UMjn5g=="
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.18",
+      "integrity": "sha512-t0rEWUlEEr9gLs9irRwZ0hzUpYzvV2SfElpzQGpWuYwd577yllHFmpTuaRZLLYPZp09Nr4jHKe2r5uHHV+g6gQ=="
+    }
+  ],
+  "downstream": {
+    "norikae": {
+      "mainCommit": "5830492",
+      "featureBranchCommit": "aeee069",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/norikae/actions/runs/34999275287",
+        "Validate: success https://github.com/emmettl/norikae/actions/runs/34998991571",
+        "Deploy to GitHub Pages: success https://github.com/emmettl/norikae/actions/runs/34998991561"
+      ],
+      "mount": "own createRoot; bundle unchanged by alpha.18",
+      "live": {
+        "entry": "index-Ym8MRXtr.js",
+        "windowedMotion": true,
+        "tooltipChunk": null
+      },
+      "result": "deployed from main"
+    },
+    "umlauf": {
+      "commit": "c58702f",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/umlauf/actions/runs/34999222013",
+        "Deploy Pages: success https://github.com/emmettl/umlauf/actions/runs/34998887192"
+      ],
+      "mount": "mountMotionStudy",
+      "live": {
+        "entry": "index-BMywvl4e.js",
+        "tooltipChunk": "ButtonTooltips-C_hr8jG5.js",
+        "tooltipInEntry": false,
+        "windowedMotion": true
+      },
+      "result": "deployed"
+    },
+    "manifest": {
+      "commit": "b4707cc",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/manifest/actions/runs/34999216607",
+        "Deploy Pages: success https://github.com/emmettl/manifest/actions/runs/34998891484"
+      ],
+      "mount": "own root; bundle unchanged by alpha.18",
+      "result": "deployed"
+    },
+    "underfall": {
+      "mainCommit": "6d0600d",
+      "remote": "https://github.com/emmettl/underfall",
+      "pushed": "fast-forward from f89b287",
+      "note": "adopted on main through a separate worktree; the checked-out recorder-extraction branch belongs to other work and was left untouched",
+      "result": "typecheck, lint, unit tests and build pass locally; hosted Check passes on the pushed commit",
+      "runs": [
+        "Check: success https://github.com/emmettl/underfall/actions/runs/35000311805"
+      ]
+    },
+    "allchange": {
+      "commit": "334307e",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/allchange/actions/runs/34999943103",
+        "Deploy Pages: success https://github.com/emmettl/allchange/actions/runs/34999167195"
+      ],
+      "mount": "mountMotionStudy",
+      "budget": {
+        "openingJavaScriptKiB": 345.9,
+        "limitKiB": 348,
+        "optionalButtonHelpKiB": 1.4,
+        "optionalLimitKiB": 3,
+        "measuredOn": "Node 26 locally"
+      },
+      "changes": [
+        "budget check classifies the tooltip chunk as an optional feature with its own 3 KiB limit"
+      ],
+      "browser": {
+        "passed": 33,
+        "skipped": 1
+      },
+      "live": {
+        "entry": "index-BNYgqrjg.js",
+        "chunks": 38,
+        "tooltipChunk": "ButtonTooltips-xEKzNqe5.js",
+        "tooltipInEntry": false,
+        "windowedMotion": true
+      },
+      "result": "deployed"
+    },
+    "local-express": {
+      "commit": "0b99495",
+      "runs": [
+        "Check Local / Express: success https://github.com/emmettl/local-express/actions/runs/34998897022"
+      ],
+      "mount": "mountMotionStudy",
+      "result": "validated; no deployment workflow"
+    },
+    "gleislicht": {
+      "commit": "6b84f2c",
+      "mount": "mountMotionStudy",
+      "runs": [
+        "Deploy to GitHub Pages: success https://github.com/emmettl/gleislicht/actions/runs/34999174656",
+        "Publish to Cloudflare: success https://github.com/emmettl/gleislicht/actions/runs/35002162628"
+      ],
+      "budget": {
+        "limitKiB": 360,
+        "node24FixturesCheckKiB": 359.5,
+        "node24ProductionBuildKiB": 359.8,
+        "node26LocalKiB": 358.4,
+        "alpha17Node24KiB": 360.6
+      },
+      "browser": {
+        "passed": 7,
+        "specs": [
+          "tooltips",
+          "label-performance",
+          "map-selection"
+        ],
+        "projects": [
+          "desktop-chromium",
+          "iphone-webkit"
+        ]
+      },
+      "live": {
+        "entry": "index-CzdVeiG4.js",
+        "chunks": 110,
+        "tooltipChunk": "ButtonTooltips-9AZJSONg.js",
+        "tooltipInEntry": false,
+        "windowedMotion": true
+      },
+      "result": "deployed; opening JavaScript within the unchanged 360 KiB limit"
+    },
+    "zugunruhe": {
+      "commit": "0d0aaab",
+      "mount": "own root; does not use mountMotionStudy",
+      "bundleIdentity": "local alpha.18 build produces the same six hashed root assets as the live alpha.17 deploy (layers-03lQVCiR.css, layers-DeZ504Lm.js, layers-Ze0nhuO6.js, site-shell-CI16huN-.js, suncalc-BiJHYBy9.css, suncalc-Bywi39-y.js)",
+      "hostedWebkitFailures": [
+        {
+          "attempt": 1,
+          "check": "tests/sound.spec.js: sound is opt-in, cancellable while loading, and independent of the visual clock",
+          "error": "attribute expectation timed out after 60 s"
+        },
+        {
+          "attempt": 2,
+          "check": "tests/night.spec.js: Night joins the chapters and hands the camera back after exploration",
+          "error": "clock did not advance past 12 within 60 s after Play"
+        },
+        {
+          "attempt": 3,
+          "result": "passed"
+        }
+      ],
+      "localWebkit": {
+        "sound.spec.js": "4 passed, twice",
+        "night.spec.js": "2 passed, twice"
+      },
+      "history": "the hosted browser job failed on night, hosting, air and sound checks on earlier commits from 13 to 15 September",
+      "runs": [
+        "Deploy Pages: success on attempt 3 https://github.com/emmettl/zugunruhe/actions/runs/34998897626",
+        "Publish to Cloudflare: success https://github.com/emmettl/zugunruhe/actions/runs/35004348201"
+      ],
+      "result": "deployed after two hosted WebKit reruns; bundle unchanged by this release"
+    },
+    "correspondances": {
+      "commit": "91ca7b4",
+      "mount": "mountMotionStudy",
+      "runs": [
+        "Deploy Pages: success https://github.com/emmettl/correspondances/actions/runs/34998883149",
+        "Publish to Cloudflare: success https://github.com/emmettl/correspondances/actions/runs/35004690990"
+      ],
+      "live": {
+        "entry": "index-Cydti-Ab.js",
+        "chunks": 20,
+        "tooltipChunk": "ButtonTooltips-C5KAqk8Y.js",
+        "tooltipInEntry": false,
+        "windowedMotion": true
+      },
+      "result": "deployed"
+    }
+  },
+  "rolloutComplete": true
+}
