@@ -72,7 +72,10 @@
       "remote": "https://github.com/emmettl/underfall",
       "pushed": "fast-forward from f89b287",
       "note": "adopted on main through a separate worktree; the checked-out recorder-extraction branch belongs to other work and was left untouched",
-      "result": "typecheck, lint, unit tests and build pass locally; Check workflow pending"
+      "result": "typecheck, lint, unit tests and build pass locally; hosted Check passes on the pushed commit",
+      "runs": [
+        "Check: success https://github.com/emmettl/underfall/actions/runs/35000311805"
+      ]
     }
   },
   "rolloutComplete": false
