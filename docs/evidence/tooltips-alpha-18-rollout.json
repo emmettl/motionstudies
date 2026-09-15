@@ -1,0 +1,31 @@
+{
+  "releaseVersion": "0.1.0-alpha.18",
+  "pullRequest": "https://github.com/emmettl/motionstudies/pull/19",
+  "sourceCommit": "602fd6951ca29f92e0d3b0b82f7f12103d56dc5c",
+  "npmRun": 34997874755,
+  "npmConclusion": "success",
+  "npmArtifacts": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.18",
+      "integrity": "sha512-tTAG4FVnn8Mjci+gqqCeN5Xz15zT+FIOHFacnSyL/BHJxh2Vtsz5Ug/nfgW8pHxCWC9DZHHOg8vKWJmsbpurog=="
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.18",
+      "integrity": "sha512-IAxzj8y+QqdZbyFMu04vVn5mDm3JOj4BfCpCwCWHQh3eIYA0+UQzaezopQfIlO2CpzzXeYtQLDe/x2mWvD8pbg=="
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.18",
+      "integrity": "sha512-PCpQ/ocZAtv1UQfRltlB8UxnONcp1xW+sbeKvaufsmddEGZ+g3Wjze7Myd0vDVCy0tYePn6RDQOlcun5UMjn5g=="
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.18",
+      "integrity": "sha512-t0rEWUlEEr9gLs9irRwZ0hzUpYzvV2SfElpzQGpWuYwd577yllHFmpTuaRZLLYPZp09Nr4jHKe2r5uHHV+g6gQ=="
+    }
+  ],
+  "downstream": {},
+  "rolloutComplete": false
+}
