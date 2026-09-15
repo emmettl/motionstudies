@@ -37,6 +37,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
 
+`0.1.0-alpha.19` adds `checkDayManifest` and `reconcileSlice` to `@motionstudies/core/domain/published-day`: the consistency gate a consumer applies before building a composition on a compiled national day. It also removes a literal NUL byte that the first version of `reconcileSlice` carried in its source. No renderer or opening-bundle change; the module is imported only by the lab.
+
 `0.1.0-alpha.18` loads desktop button help lazily from `mountMotionStudy`, removing it from every edition's opening bundle. See [the deferred button help record](TOOLTIPS-ALPHA-18.md).
 
 `0.1.0-alpha.17` gives every vehicle its own interpolation window and refreshes due journeys within an adaptive per-frame budget, caps trail history sampling under load and skips culling when the whole network is in view. See [the budgeted motion release record](MOTION-ALPHA-17.md).
