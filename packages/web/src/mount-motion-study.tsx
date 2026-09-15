@@ -1,7 +1,7 @@
 import { StrictMode, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import type { VisualTheme } from '@motionstudies/core/theme'
-import { ButtonTooltips } from './components/ButtonTooltips.tsx'
+import { LazyButtonTooltips } from './components/LazyButtonTooltips.tsx'
 import { applyVisualTheme } from './visual-theme.ts'
 
 /** Mounting needs presentation identity only; data catalogues belong to the application. */
@@ -20,5 +20,5 @@ export function mountMotionStudy(
   document.documentElement.classList.add('motion-study')
   document.documentElement.dataset.edition = edition.id
   applyVisualTheme(edition.theme)
-  createRoot(root).render(<StrictMode>{application}<ButtonTooltips /></StrictMode>)
+  createRoot(root).render(<StrictMode>{application}<LazyButtonTooltips /></StrictMode>)
 }

@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.17",
+  "version": "0.1.0-alpha.18",
   "private": true,
   "type": "module",
   "exports": {
@@ -40,7 +40,7 @@
     "./study-layout.css": "./src/study-layout.css"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.17"
+    "@motionstudies/core": "0.1.0-alpha.18"
   },
   "peerDependencies": {
     "react": "^19.2.8",
