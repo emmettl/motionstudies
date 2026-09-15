@@ -26,6 +26,53 @@
       "integrity": "sha512-t0rEWUlEEr9gLs9irRwZ0hzUpYzvV2SfElpzQGpWuYwd577yllHFmpTuaRZLLYPZp09Nr4jHKe2r5uHHV+g6gQ=="
     }
   ],
-  "downstream": {},
+  "downstream": {
+    "norikae": {
+      "mainCommit": "5830492",
+      "featureBranchCommit": "aeee069",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/norikae/actions/runs/34999275287",
+        "Validate: success https://github.com/emmettl/norikae/actions/runs/34998991571",
+        "Deploy to GitHub Pages: success https://github.com/emmettl/norikae/actions/runs/34998991561"
+      ],
+      "mount": "own createRoot; bundle unchanged by alpha.18",
+      "live": {
+        "entry": "index-Ym8MRXtr.js",
+        "windowedMotion": true,
+        "tooltipChunk": null
+      },
+      "result": "deployed from main"
+    },
+    "umlauf": {
+      "commit": "c58702f",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/umlauf/actions/runs/34999222013",
+        "Deploy Pages: success https://github.com/emmettl/umlauf/actions/runs/34998887192"
+      ],
+      "mount": "mountMotionStudy",
+      "live": {
+        "entry": "index-BMywvl4e.js",
+        "tooltipChunk": "ButtonTooltips-C_hr8jG5.js",
+        "tooltipInEntry": false,
+        "windowedMotion": true
+      },
+      "result": "deployed"
+    },
+    "manifest": {
+      "commit": "b4707cc",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/manifest/actions/runs/34999216607",
+        "Deploy Pages: success https://github.com/emmettl/manifest/actions/runs/34998891484"
+      ],
+      "mount": "own root; bundle unchanged by alpha.18",
+      "result": "deployed"
+    },
+    "underfall": {
+      "mainCommit": "6d0600d",
+      "remote": null,
+      "note": "adopted on main through a separate worktree; the checked-out recorder-extraction branch was left on alpha.17 with no local changes",
+      "result": "typecheck, lint, unit tests and build pass locally"
+    }
+  },
   "rolloutComplete": false
 }
