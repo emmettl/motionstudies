@@ -14,7 +14,18 @@ Adopting alpha.17 took Gleislicht's opening JavaScript to 360.6 KiB on CI's Node
 
 ## Validation
 
-Recorded with the release.
+Shared gates: 322 unit tests, typecheck, lint and architecture checks, 34 loader browser checks and the packed consumer with 94 browser specimens (2 existing skips). The published build rewrites the lazy import to `./ButtonTooltips.js`.
+
+Against the alpha.18 package build, locally on Node 26:
+
+| Edition | Opening JavaScript before → after | Limit |
+| --- | --- | --- |
+| Gleislicht | 359.6 → 358.4 KiB | 360 KiB |
+| All Change | 346.8 → 347.4 KiB | 348 KiB |
+
+Gleislicht's budget counts the entry and its opening scene, so the deferred chunk leaves its total; CI's Node 24 measured 360.6 KiB before, so about 359.4 KiB is expected there. Gleislicht's tooltip, label and map-selection browser checks pass on desktop Chromium and iPhone WebKit.
+
+All Change's budget counts every dynamic import that is not on its list of optional features, so the new tooltip chunk is counted and splitting adds a little overhead. Its adoption should classify the chunk as optional with its own small budget, as it does for other lazy features. All Change's tooltip and London browser checks pass.
 
 ## Publication and adoption
 
