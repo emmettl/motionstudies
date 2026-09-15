@@ -2,7 +2,7 @@
 
 [National study](NATIONAL-STUDY.md#a-second-axis-power-weather-and-light) · [Feasibility](NATIONAL-DATA-FEASIBILITY.md) · [Readiness register](DATA-READINESS.md) · [Shared fields](SHARED-FIELDS.md) · [Series vision](VISION.md#the-view-from-altitude--13-september-2026)
 
-**13 September 2026 — sources probed, nothing acquired.** This brief records what the electricity sources actually contain, how their evidence maps onto the series' scheduled/observed/estimated distinctions, and how a generating unit can be placed on the map. Counts come from unauthenticated requests made on 13 September and are kept in the [probe record](evidence/power-sources-2026-09-13.json). No dataset was retained beyond aggregate counts; no capture policy has run.
+**Updated 15 September 2026 — one settled day compiled, partial placement, no England rendering yet.** Initial source counts come from the 13 September [probe record](evidence/power-sources-2026-09-13.json), which retained only aggregate findings. The subsequent capture and placement of the 5 September day are recorded below. Acquisition and placement code now live in the private recorder repository; the proposed ownership split distinguishes that current location from where each responsibility should settle.
 
 ## Why power, in one paragraph
 
@@ -58,7 +58,7 @@ For a chosen study day, at least eight days later:
 
 The Insights API needs no key and is open; requests should still be few, dated and cached. The NESO portal reserves throttling.
 
-**Implemented 13 September 2026** as Underfall's `data:power:day` command, on the shared source store beside the bus tools: one bounded request per settlement period for settled generation and for physical notifications, one each for the fuel mix and demand, and the unit register, supply-point lookup, boundaries and current TEC register. Every response is a dated, hashed object served from the store on rerun; an unsettled period fails without being cached; `--offline` replays. The compiled day carries settled quantities with their run types, declared profiles, register fields, national aggregates, both attribution statements with the data year, an audit and the source records. Units are marked `unplaced`; placement is the next step.
+**Implemented 13 September 2026** as Underfall's `data:power:day` command, subsequently extracted into `motionstudies-recorder`: one bounded request per settlement period for settled generation and for physical notifications, one each for the fuel mix and demand, and the unit register, supply-point lookup, boundaries and current TEC register. Every response is a dated, hashed object served from the store on rerun; an unsettled period fails without being cached; `--offline` replays. The compiled day carries settled quantities with their run types, declared profiles, register fields, national aggregates, both attribution statements with the data year, an audit and the source records. This stage marks units `unplaced`; the separate placement command produced the first placement run above.
 
 **First settled day, 5 September 2026, compiled 14 September.** 103 dated sources; 439,296 settlement rows from the initial interim run; 9,152 settled units, of which 2,594 are in the unit register and 481 carry a fuel type. The remaining units are supplier and demand-side balancing units with small or negative quantities: the per-period sum across all units is near zero, so the settlement set is a balanced ledger, not a list of stations, and the generation field must be the fuel-typed subset. The eight largest units by day energy are the four nuclear stations' generators, two Drax biomass units and a CCGT, at 11,000 to 15,800 MWh each, consistent with their capacities. National demand ran from 14.8 to 26.9 GW and wind from 2.4 to 14.4 GW across 289 five-minute instants. 2,466 units carried declared profiles, 105 of them without settlement. The compiled day is 13.5 MB, 743 KB compressed. It lives in Underfall's work store, not in this repository.
 
@@ -66,9 +66,43 @@ The Insights API needs no key and is open; requests should still be few, dated a
 
 It can show which stations were running, at what output, when the country's morning demand rose, and how much of that morning came from wind, gas, nuclear and cables. It can place that beside the bus and rail field on the same clock. It cannot show consumption below a grid supply point except as an estimate, cannot attribute any unit's output to any place's demand, and cannot say why a unit ran. The demand haze must never corroborate a transport reading, because both would then be drawn from settlement density.
 
+## Ownership and handoff
+
+**15 September 2026 — intended architecture, not a completed migration.** Split the power work between [the recorder](https://github.com/emmettl/motionstudies-recorder), [England](https://github.com/emmettl/england) and small public contracts in Motion Studies. The recorder preserves and normalizes evidence; England decides how it becomes a work; core lets producer and consumer agree on its meaning.
+
+| Owner | Responsibility | Boundary |
+| --- | --- | --- |
+| `motionstudies-recorder` | Elexon/NESO/DESNZ requests, source registers, bounded retries, hashed captures, offline replay, settlement revisions, source normalization and dated evidence releases | No scene, geographic composition, station-matching policy or browser-triggered collection |
+| `england` | Unit-to-site matching, curated coordinates and citations, connection-point treatment, generation subset, grouping, England/GB scope, demand-estimation method, compact publication and the power composition | Reads explicit dated releases; no imports from the recorder's source or dependence on its private work-directory layout |
+| `@motionstudies/core` | Browser-safe types, validation and readers for the shared power-day contract; pure interval lookup and aggregation where demonstrated; reuse existing field and daylight primitives | No provider calls, filesystem access, capture scheduling, curated British station lists or artistic choices |
+| `@motionstudies/data`, if justified | Reusable offline parsing or compilation helpers proven useful beyond one local adapter | Provider-specific capture stays in the recorder initially; do not put Node-only tooling in core or extract every helper just because it exists |
+
+The reader/writer contract is already a shared need even with one artwork: the recorder and England must agree on units, clocks, revisions and provenance. A proposed `core/domain/power-day` export should be derived from a real fixture and exercised on both sides before publication. It does not exist yet. It should preserve explicit value units and interval boundaries, missing values, signed quantities, source identity, settlement run/as-of information and evidence references. Keep energy over an interval distinct from power at an instant or an interval average; do not silently interpolate one into another. Preserve 46/48/50-period civil days and distinguish planned from settled values.
+
+Keep the provider ledger and the study's generation population separate. Supplier/demand-side units and unplaced generation remain in the evidence release and its audit; England states which records contribute to each measure. Registered capacity is not output, and a national fuel-mix total must not be presented as the sum of the placed stations unless that reconciliation is actually established.
+
+Core already has `supported-field`, `gridded-series` and `daylight`. Reuse them where their semantics fit. GSP demand needs a justified spatial allocation method; the existence of a station-weighted field kernel does not settle that choice. A reusable renderer belongs in `@motionstudies/three`, and reusable controls in `@motionstudies/web`, only when extraction is justified. Start the power layer and its authored treatments in England.
+
+The artifact path should be:
+
+```text
+Recorder: private captured objects + normalized dated evidence release
+    → England build: placement + declared measures + composition compiler
+    → permitted static power-day artifacts + evidence extracts
+    → England browser: core reader + local power layer on the study clock
+```
+
+Capture dates, register versions, input hashes, schema/method versions, placement citations and source rights must survive each handoff. The browser loads published artifacts; it does not query Elexon or the private archive. Apply the [series cost controls](COST-CONTROL.md) to every retained copy and processing job.
+
+### First migration
+
+Today `scripts/feeds/power.mjs` in the recorder combines acquisition with compilation. `scripts/place-power-units.mjs` both captures REPD and places units using `scripts/feeds/placement.mjs`. The latter coupling is why placement still lives there.
+
+First separate register capture from placement. Keep the existing capture/compiler path working while introducing a versioned evidence-release manifest and a small redistributable test fixture. Move the placement method and curated list into England, consuming captured registers through that manifest. Then prove the core contract against the recorder's output and England's reader, publish the shared package, and adopt its exact version. Check offline parity, revision/missingness semantics, placement totals and source links before retiring the old placement entry point. This sequence requires neither an immediate rewrite of the recorder nor a general-purpose power framework.
+
 ## Open questions
 
 - Elexon's GSP period data: format, lag and access. The Elexon website blocks automated retrieval, so this is a manual check.
-- The join rate from the unit register to the planning database, measured on the actual extract.
+- Improve the measured unit-placement coverage, especially large gas/nuclear stations and interconnectors, using cited curated locations and reviewing ambiguous matches.
 - Third-party components inside the NESO boundaries and registers.
 - Whether the shared field modules' support channel, tuned for radar sites, needs a different kernel for grid supply points, whose catchments are polygons rather than ranges.
