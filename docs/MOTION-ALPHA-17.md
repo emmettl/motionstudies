@@ -28,7 +28,21 @@
 
 ## Validation
 
-Recorded with the release.
+Shared gates: 322 unit tests, type, lint and architecture checks, 34 loader browser checks and the packed consumer with 94 browser specimens (2 existing skips). A lab browser check confirmed per-journey marker windows, trail grid windows advancing during playback, empty trail segments drawing nothing, and no console errors.
+
+### All Change frame measurements
+
+Production build, headless Chromium on an Apple M4 Max with ANGLE Metal, 1280 × 720 at DPR 1, TfL rail and all buses from 07:45 at 1× playback. Alpha.17 was overlaid from the tested package build into the same checkout. Raw reports are in [the frame evidence](evidence/motion-alpha-17-frames.json).
+
+| CPU throttle | Scenario | FPS alpha.16 → 17 | Scripting ms/frame | p95 frame ms |
+| --- | --- | --- | --- | --- |
+| 24× | All buses | 18.9 → 44.1 | 47.0 → 18.1 | 133.4 → 33.4 |
+| 24× | Selected bus route | 23.3 → 48.3 | 35.1 → 16.3 | 133.3 → 33.4 |
+| 24× | Opening | 59.2 → 60.0 | 7.3 → 5.9 | 16.7 → 16.7 |
+| 8× | All buses | 53.8 → 59.8 | 5.7 → 6.8 | 33.3 → 16.8 |
+| 8× | Selected bus route | 55.2 → 60.0 | 5.4 → 6.9 | 33.3 → 16.8 |
+
+At 24× the budget caps sampling work: frame rate more than doubles and the 95th percentile frame falls from about eight frames' length to two. At 8× frames were already close to display rate; scripting rises slightly because the budget grows into spare frame time, and the 95th percentile frame halves. These are single throttled runs on a fast machine, not Windows Edge measurements; the laptop that produced the original profile is the test that matters.
 
 ## Publication and adoption
 
