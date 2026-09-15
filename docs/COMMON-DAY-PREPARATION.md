@@ -58,3 +58,13 @@ It verifies the handoff, retained raw objects, the existing bus release, and eve
 - Underfall's current tasks retain roads and stop-location analysis ownership.
 
 Next integration can use the same-date aggregate power context alongside buses, with a distinct presentation from the 5 September per-station view. Rail and these Bristol tide/air artifacts can then be joined for the narrow common interval after their consumer contracts are checked. Full-day coverage and recurring punctuality still require broader recordings.
+
+## Rail handoff completed in parallel
+
+Underfall now has a separate release at `public/data/bristol-rail-2026-09-14/manifest.json`: **420 scheduled journeys across 23 station identities**, including 188 journeys through Parkway. All 420 pass connected-track geometry checks. The narrow review file, `network-review.json`, contains **16 trains: 12 GWR and four CrossCountry**, with the same 12:15–12:30 UTC window as this preparation. Its SHA-256 is `ec3f0fd687a33b4b55fe6cf8e19ec1929780eaaf5945f96b752cfd9b2efd08a5` (93,430 bytes; 23,140 gzip bytes).
+
+The rail task's narrow cross-table marker reconciliation recovers 168 journeys compared with its 252-journey Monday baseline. It also retains 22 independently matched public Parkway departures separately from working timings; two public departures remain unresolved. For example, review-window journey G15220 has public departure 13:20 BST and working departure 13:20:30 BST.
+
+This remains partial daytime GWR/CrossCountry coverage, with no live running observations, temporary alterations, verified platforms or preceding-Sunday/adjacent-bank coverage. Darwin account entitlement remains unverified. Public-call reconciliation does not turn the entire release into a complete passenger timetable.
+
+The rail task reports 126 passing tests, lint and production build. This coordination task independently verified all four release file hashes and byte lengths, the 16-train review count and exact UTC alignment with the common-date manifest. The independent rail release is referenced here rather than copied into the frozen power/tide/air handoff.
