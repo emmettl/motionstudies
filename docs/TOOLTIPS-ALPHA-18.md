@@ -29,4 +29,20 @@ All Change's budget counts every dynamic import that is not on its list of optio
 
 ## Publication and adoption
 
-Recorded once the trusted release workflow and edition upgrades complete.
+All four packages were published as `0.1.0-alpha.18` on the `next` dist-tag from `602fd69` through [the trusted release workflow](https://github.com/emmettl/motionstudies/actions/runs/34997874755). Registry integrity, run links and live results are retained in [the rollout evidence](evidence/tooltips-alpha-18-rollout.json).
+
+| Downstream | Mount | Commit | Result |
+| --- | --- | --- | --- |
+| Gleislicht · Switzerland | Shared | `6b84f2c` | Deployed. Node 24 CI measures 359.5 KiB in the fixtures check and 359.8 KiB in the production build, within the unchanged 360 KiB limit (360.6 KiB on alpha.17). Button help loads as a separate chunk |
+| All Change · London | Shared | `334307e` | Deployed. The budget check classifies the tooltip chunk as an optional feature with a 3 KiB limit (1.4 KiB); opening JavaScript 345.9 KiB locally against 348 KiB. Button help loads as a separate chunk |
+| Umlauf | Shared | `c58702f` | Deployed. Button help loads as a separate chunk |
+| Correspondances · Paris | Shared | `91ca7b4` | Pending |
+| Local / Express | Shared | `0b99495` | Validated; no deployment workflow |
+| NORIKAE | Own root | `5830492` main, `aeee069` feature branch | Deployed from main; bundle unchanged by this release |
+| Manifest | Own root | `b4707cc` | Deployed; bundle unchanged by this release |
+| Zugunruhe | Own root | `0d0aaab` | Pending |
+| Underfall · Bristol | Shared | `6d0600d` | Local gates and the hosted Check pass on main of the private `emmettl/underfall` repository. It was adopted through a separate worktree; the checked-out `recorder-extraction` branch belonged to other work and has since been rebased onto this commit by its owner |
+
+Every deployed edition that renders the national scene still serves the alpha.17 windowed motion program.
+
+With a margin of 0.2 KiB on Gleislicht's production build, any later shared change on its opening path needs a Node 24 CI measurement before adoption; local Node 26 reads about 1 KiB lower.
