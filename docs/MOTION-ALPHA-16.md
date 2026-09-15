@@ -31,4 +31,24 @@ Shared gates: unit tests, type, lint and architecture checks, the packed-consume
 
 ## Publication and adoption
 
-Recorded once the trusted release workflow and edition upgrades complete.
+All four packages were published as `0.1.0-alpha.16` on the `next` dist-tag from `0f441d3` through [the trusted release workflow](https://github.com/emmettl/motionstudies/actions/runs/34902905247). Registry integrity for each package is retained in [the release evidence](evidence/motion-alpha-16.json).
+
+The hosted packed-consumer check found one race before publication: on iPhone WebKit, the paused lab renderer could draw its first frame before trail history filled. A lone seek now refills history at once; only a run of seeks waits for the clock to settle.
+
+| Downstream | Commit | Result |
+| --- | --- | --- |
+| All Change · London | `3dfcf04` | Deployed. Picking reads displayed vertices; opening JavaScript budget 346 KiB |
+| Correspondances · Paris | `d846e9d` | Deployed. Label harness reads the motion table |
+| Umlauf | `30a3471` | Deployed |
+| Manifest | `48f829e` | Deployed |
+| NORIKAE | `87b6929` main, `37b0844` feature branch | Deployed from main |
+| Local / Express | `df85a66` | Validated; no deployment workflow |
+| Underfall · Bristol | `2453a8f` | Local gates pass; no Git remote |
+| Zugunruhe | `905658e` | Not deployed. An existing Night chapter check times out, as it did under alpha.15 |
+| Gleislicht · Switzerland | `654e764`, with `067a9fb` | Deployed. Trail worker removed; picking reads displayed vertices |
+
+All Change's and Correspondances' installed-renderer label tests executed the shared `TrainLabels` source directly and now provide the motion table it reads. All Change's paused-buffer check polls for a playing upload, since uploads happen once per sampling pass rather than every frame.
+
+Gleislicht's deployment had been failing independently since the 8 September cloud capture: an orbital-clouds unit test compared three decoded days element-wise and exceeded CI's five-second limit. That test now compares buffers, in its own commit.
+
+Gleislicht's local iPhone WebKit run reported an intermittent `ResizeObserver loop completed with undelivered notifications` page error during map-to-terrain handoff: two of 111 checks in a parallel run and one of three single-worker runs of that spec. Alpha.16 contains no resize handling changes; the observer belongs to Gleislicht's masthead layout. On the hosted iPhone WebKit shard for the adoption commit, all eight terrain handoff checks passed on the first attempt, so the local failures are attributed to concurrent WebGL load on the development machine. An alpha.15 local comparison could not be run because a fresh checkout's development server never finished its first page load.
