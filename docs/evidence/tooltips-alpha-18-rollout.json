@@ -114,6 +114,41 @@
       ],
       "mount": "mountMotionStudy",
       "result": "validated; no deployment workflow"
+    },
+    "gleislicht": {
+      "commit": "6b84f2c",
+      "mount": "mountMotionStudy",
+      "runs": [
+        "Deploy to GitHub Pages: success https://github.com/emmettl/gleislicht/actions/runs/34999174656",
+        "Publish to Cloudflare: success https://github.com/emmettl/gleislicht/actions/runs/35002162628"
+      ],
+      "budget": {
+        "limitKiB": 360,
+        "node24FixturesCheckKiB": 359.5,
+        "node24ProductionBuildKiB": 359.8,
+        "node26LocalKiB": 358.4,
+        "alpha17Node24KiB": 360.6
+      },
+      "browser": {
+        "passed": 7,
+        "specs": [
+          "tooltips",
+          "label-performance",
+          "map-selection"
+        ],
+        "projects": [
+          "desktop-chromium",
+          "iphone-webkit"
+        ]
+      },
+      "live": {
+        "entry": "index-CzdVeiG4.js",
+        "chunks": 110,
+        "tooltipChunk": "ButtonTooltips-9AZJSONg.js",
+        "tooltipInEntry": false,
+        "windowedMotion": true
+      },
+      "result": "deployed; opening JavaScript within the unchanged 360 KiB limit"
     }
   },
   "rolloutComplete": false
