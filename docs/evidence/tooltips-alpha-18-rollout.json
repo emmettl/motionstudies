@@ -180,7 +180,23 @@
         "Publish to Cloudflare: success https://github.com/emmettl/zugunruhe/actions/runs/35004348201"
       ],
       "result": "deployed after two hosted WebKit reruns; bundle unchanged by this release"
+    },
+    "correspondances": {
+      "commit": "91ca7b4",
+      "mount": "mountMotionStudy",
+      "runs": [
+        "Deploy Pages: success https://github.com/emmettl/correspondances/actions/runs/34998883149",
+        "Publish to Cloudflare: success https://github.com/emmettl/correspondances/actions/runs/35004690990"
+      ],
+      "live": {
+        "entry": "index-Cydti-Ab.js",
+        "chunks": 20,
+        "tooltipChunk": "ButtonTooltips-C5KAqk8Y.js",
+        "tooltipInEntry": false,
+        "windowedMotion": true
+      },
+      "result": "deployed"
     }
   },
-  "rolloutComplete": false
+  "rolloutComplete": true
 }

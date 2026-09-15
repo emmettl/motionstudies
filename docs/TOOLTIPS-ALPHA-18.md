@@ -36,7 +36,7 @@ All four packages were published as `0.1.0-alpha.18` on the `next` dist-tag from
 | Gleislicht · Switzerland | Shared | `6b84f2c` | Deployed. Node 24 CI measures 359.5 KiB in the fixtures check and 359.8 KiB in the production build, within the unchanged 360 KiB limit (360.6 KiB on alpha.17). Button help loads as a separate chunk |
 | All Change · London | Shared | `334307e` | Deployed. The budget check classifies the tooltip chunk as an optional feature with a 3 KiB limit (1.4 KiB); opening JavaScript 345.9 KiB locally against 348 KiB. Button help loads as a separate chunk |
 | Umlauf | Shared | `c58702f` | Deployed. Button help loads as a separate chunk |
-| Correspondances · Paris | Shared | `91ca7b4` | Pending |
+| Correspondances · Paris | Shared | `91ca7b4` | Deployed. Button help loads as a separate chunk |
 | Local / Express | Shared | `0b99495` | Validated; no deployment workflow |
 | NORIKAE | Own root | `5830492` main, `aeee069` feature branch | Deployed from main; bundle unchanged by this release |
 | Manifest | Own root | `b4707cc` | Deployed; bundle unchanged by this release |
