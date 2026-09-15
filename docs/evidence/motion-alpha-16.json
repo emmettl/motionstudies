@@ -1,0 +1,186 @@
+{
+  "releaseVersion": "0.1.0-alpha.16",
+  "pullRequest": "https://github.com/emmettl/motionstudies/pull/12",
+  "sourceCommit": "0f441d3c411d37a04ff9c37ebf6f14ff11634d64",
+  "npmRun": 34902905247,
+  "npmConclusion": "success",
+  "prepublication": {
+    "shared": {
+      "unitTests": 310,
+      "packedBrowserPassed": 92,
+      "loaderBrowserPassed": 34,
+      "raceFoundByHostedCheck": "lab paused-renderer palette check on iPhone WebKit observed trails deferred on first render; fixed by refilling history immediately after a lone seek"
+    }
+  },
+  "npmArtifacts": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.16",
+      "integrity": "sha512-a0RYgD66w+CkDUD1y6P7QzHEpBaCxk40/GYXvKwDWg2bUTqH0DDkWyv1OTCmFxmpiG4qBMDQhW5Y7TK+uxb5ow=="
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.16",
+      "integrity": "sha512-aQuZ2RettlWYcofZ9xtS1nJvdWf1KzryYJkXGKvKGyJiA6WJLVlaYzO4v2B9Nyudfo3fRs7WK5ehxVXQPXD3UA=="
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.16",
+      "integrity": "sha512-nESZBg9fdC5K7CaoKIJ0Gs4NWNiTGummRxtJh4qwUObMGsJWCFJUTIndlvJnSgWv+BiYmAS4AAtv9Kth0cgKwQ=="
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.16",
+      "integrity": "sha512-zw4EgeaqPNODwFQDOdwmUBv/cX1O5DB9uJlHAxvfyTYsCjcyguKCJ+ap70qSv3Tfmd5NjEKuptR5vC1UWZSrQw=="
+    }
+  ],
+  "downstream": {
+    "allchange": {
+      "commit": "3dfcf04",
+      "changes": [
+        "scenePickVertex in map picking",
+        "installed-label harness feeds the motion table",
+        "paused-buffer check polls for a playing upload",
+        "opening JavaScript budget 345 to 346 KiB"
+      ],
+      "unitTests": 277,
+      "browserPassed": 59,
+      "browserSkipped": 2,
+      "performanceSpecRepeats": "8 passed x3 across Chromium and WebKit after the polling fix",
+      "openingJavaScriptKiB": 345.0,
+      "limitKiB": 346,
+      "runs": [
+        "https://github.com/emmettl/allchange/actions/runs/34905355556",
+        "https://github.com/emmettl/allchange/actions/runs/34905923285"
+      ],
+      "result": "deployed"
+    },
+    "correspondances": {
+      "commit": "d846e9d",
+      "changes": [
+        "installed-label harness feeds the motion table"
+      ],
+      "unitTests": 25,
+      "runs": [
+        "https://github.com/emmettl/correspondances/actions/runs/34904907455",
+        "https://github.com/emmettl/correspondances/actions/runs/34909308308"
+      ],
+      "result": "deployed"
+    },
+    "umlauf": {
+      "commit": "30a3471",
+      "runs": [
+        "https://github.com/emmettl/umlauf/actions/runs/34904910112",
+        "https://github.com/emmettl/umlauf/actions/runs/34905162114"
+      ],
+      "result": "deployed"
+    },
+    "manifest": {
+      "commit": "48f829e",
+      "unitTests": 140,
+      "runs": [
+        "https://github.com/emmettl/manifest/actions/runs/34904912347",
+        "https://github.com/emmettl/manifest/actions/runs/34905065393"
+      ],
+      "result": "deployed"
+    },
+    "norikae": {
+      "mainCommit": "87b6929",
+      "featureBranchCommit": "37b0844",
+      "runs": [
+        "https://github.com/emmettl/norikae/actions/runs/34904963705",
+        "https://github.com/emmettl/norikae/actions/runs/34904963559",
+        "https://github.com/emmettl/norikae/actions/runs/34905145635"
+      ],
+      "result": "deployed from main; feature branch has no push workflow"
+    },
+    "localExpress": {
+      "commit": "df85a66",
+      "unitTests": 2,
+      "runs": [
+        "https://github.com/emmettl/local-express/actions/runs/34904917419"
+      ],
+      "result": "validated; no deployment workflow"
+    },
+    "underfall": {
+      "commit": "2453a8f",
+      "remote": null,
+      "result": "typecheck, lint, unit tests and build pass locally; no Git remote"
+    },
+    "zugunruhe": {
+      "commit": "905658e",
+      "runs": [
+        "https://github.com/emmettl/zugunruhe/actions/runs/34904917048"
+      ],
+      "result": "not deployed",
+      "blocker": "Chromium Night chapter check times out on a click after 300 s on both attempts; the same failure occurred on a0932b8 under alpha.15, and @motionstudies/web changed only its version between releases"
+    },
+    "gleislicht": {
+      "commit": "654e764",
+      "separateCommit": {
+        "commit": "067a9fb",
+        "reason": "orbital-clouds test compared three 620,575-byte days element-wise and exceeded CI's 5 s limit on every check since the 8 September capture"
+      },
+      "changes": [
+        "trail worker, client, data module, tests and spec removed",
+        "scenePickVertex in map picking",
+        "bundle check no longer expects a worker asset"
+      ],
+      "unitTests": 1404,
+      "openingJavaScriptKiB": 357.8,
+      "limitKiB": 360,
+      "browserPassed": 98,
+      "browserSkipped": 11,
+      "browserFailed": 2,
+      "result": "deployed",
+      "openQuestion": "Local iPhone WebKit runs reported an intermittent ResizeObserver loop page error during terrain handoff (2 of 111 in a parallel run; 1 of 3 single-worker spec runs). Alpha.16 has no resize changes; the observer is Gleislicht's masthead layout. The hosted WebKit shard passed all eight terrain checks first time. A local alpha.15 baseline could not be obtained: a fresh checkout's dev server never completed the first page load.",
+      "runs": [
+        "https://github.com/emmettl/gleislicht/actions/runs/34950679889",
+        "https://github.com/emmettl/gleislicht/actions/runs/34953148913"
+      ],
+      "hostedIphoneWebkit": {
+        "passed": 49,
+        "skipped": 5,
+        "terrainHandoffChecks": "8 passed on first attempt"
+      }
+    }
+  },
+  "rolloutComplete": false,
+  "rolloutNote": "Eight of nine downstream projects adopted; Zugunruhe remains undeployed behind a Night chapter check that failed identically under alpha.15.",
+  "liveVerification": {
+    "method": "crawl of the public entry script's chunk graph for the motion-lerp-points program key and createTrailBackend",
+    "verifiedAt": "2026-09-15",
+    "editions": {
+      "gleislicht": {
+        "entry": "index-BwRzJuqL.js",
+        "chunks": 109,
+        "renderer": "GleislichtNetworkScene-tOibUb2m.js",
+        "trailBackendReferences": 0
+      },
+      "allchange": {
+        "entry": "index-B1EcdXki.js",
+        "chunks": 36,
+        "renderer": "LondonNetworkScene-D7z0gOe5.js",
+        "trailBackendReferences": 0
+      },
+      "correspondances": {
+        "entry": "index-BEuqeF9h.js",
+        "chunks": 19,
+        "renderer": "ParisNetworkScene-t0fFUo_N.js",
+        "trailBackendReferences": 0
+      },
+      "umlauf": {
+        "entry": "index-CGqPyQmB.js",
+        "chunks": 2,
+        "renderer": "index-CGqPyQmB.js",
+        "trailBackendReferences": 0
+      },
+      "norikae": {
+        "entry": "index-qylvFv0w.js",
+        "chunks": 2,
+        "renderer": "NationalNetworkScene-BN2q3M7o.js",
+        "trailBackendReferences": 0
+      }
+    }
+  }
+}
