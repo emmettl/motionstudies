@@ -313,5 +313,95 @@
         ]
       }
     }
+  },
+  "gleislichtFontVariants": {
+    "withoutSkeleton": {
+      "release": "6b84f2c53960889d2e3be328a54617ec8b45bab1",
+      "note": "Entry stylesheet served through Playwright in both variants; HTML took the normal throttled path. Local variant inlines Google's @font-face rules; font files still load from fonts.gstatic.com.",
+      "variants": {
+        "control": {
+          "runs": 5,
+          "firstPaintMs": 2092,
+          "firstMapFrameMs": 8701,
+          "firstPaintRunsMs": [
+            2512,
+            2124,
+            2080,
+            2060,
+            2092
+          ],
+          "firstMapFrameRunsMs": [
+            9292,
+            8798,
+            8684,
+            8678,
+            8701
+          ]
+        },
+        "local @font-face": {
+          "runs": 5,
+          "firstPaintMs": 2080,
+          "firstMapFrameMs": 8704,
+          "firstPaintRunsMs": [
+            2080,
+            2080,
+            2084,
+            2108,
+            2080
+          ],
+          "firstMapFrameRunsMs": [
+            8801,
+            8704,
+            8705,
+            8671,
+            8684
+          ]
+        }
+      }
+    },
+    "withSkeleton": {
+      "release": "6b84f2c53960889d2e3be328a54617ec8b45bab1",
+      "note": "HTML and entry stylesheet served through Playwright in both variants, so absolute times start earlier than a normal load; the difference is the Google stylesheet request.",
+      "variants": {
+        "skeleton + Google @import": {
+          "runs": 5,
+          "firstPaintMs": 764,
+          "firstMapFrameMs": 8097,
+          "firstPaintRunsMs": [
+            784,
+            748,
+            764,
+            732,
+            776
+          ],
+          "firstMapFrameRunsMs": [
+            8264,
+            8097,
+            8058,
+            8061,
+            8108
+          ]
+        },
+        "skeleton + local @font-face": {
+          "runs": 5,
+          "firstPaintMs": 132,
+          "firstMapFrameMs": 8094,
+          "firstPaintRunsMs": [
+            104,
+            132,
+            136,
+            188,
+            124
+          ],
+          "firstMapFrameRunsMs": [
+            8063,
+            8094,
+            8090,
+            8138,
+            8116
+          ]
+        }
+      }
+    }
   }
 }

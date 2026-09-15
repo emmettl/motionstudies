@@ -4,7 +4,7 @@ Shared packages for the Motion Studies transport instrument. The source workspac
 
 - `@motionstudies/core`: transport contracts, indexing, interpolation and visual theme contracts; no browser or Node dependencies.
 - `@motionstudies/three`: `NationalNetworkScene`, `HubPulseScene`, `StationFlowScene`, camera framing and label-mode contracts. React, React Three Fiber and Three.js are peers; rendering internals are not public subpaths.
-- `@motionstudies/web`: picker, button tooltips, theme application, mounting, progressive loaders, observed operations and recording. Import `tokens.css` and `mobile-picker.css` for isolated widgets. `shell.css` is an optional full-page study shell scoped to `.motion-study`; `mountMotionStudy` applies that class. Fonts and edition layouts belong to consumers.
+- `@motionstudies/web`: picker, button tooltips, theme application, mounting, progressive loaders, observed operations and recording. Import `tokens.css` and `mobile-picker.css` for isolated widgets. `shell.css` is an optional full-page study shell scoped to `.motion-study`; `mountMotionStudy` applies that class. Import `fonts.css` for the self-hosted Inter and DM Mono faces those stylesheets name, licensed under the SIL Open Font License 1.1; other typefaces and edition layouts belong to consumers.
 - `@motionstudies/data`: Node-only GTFS readers, ADS-B heatmap compilation, air endpoint enrichment, network chunking, merging and station ranking. ZIP reading requires `unzip` on the host. Source selection, provenance overrides and compilation commands belong to each edition.
 
 ```tsx

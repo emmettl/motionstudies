@@ -37,6 +37,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
 
+The next coordinated version also adds `@motionstudies/web/fonts.css`: self-hosted Inter and DM Mono files, byte-identical to those Google Fonts serves for the query editions use today, with their SIL Open Font License texts. Editions adopt it by replacing their Google Fonts `@import`. See [self-hosted typefaces](SELF-HOSTED-FONTS.md).
+
 `0.1.0-alpha.19` adds `checkDayManifest` and `reconcileSlice` to `@motionstudies/core/domain/published-day`: the consistency gate a consumer applies before building a composition on a compiled national day. It also removes a literal NUL byte that the first version of `reconcileSlice` carried in its source. No renderer or opening-bundle change; the module is imported only by the lab.
 
 `0.1.0-alpha.18` loads desktop button help lazily from `mountMotionStudy`, removing it from every edition's opening bundle. See [the deferred button help record](TOOLTIPS-ALPHA-18.md).

@@ -78,14 +78,14 @@ What the experiments show:
 - **Fewer opening bytes help as much as better ordering.** Deferring 151 KB of live data saved 0.78 s with no paint cost. Blocking the font import made the timetable finish 0.44 s sooner while its request started only 80 ms earlier, because the font files no longer shared the link.
 - **A skeleton needs a clear path to paint.** Behind the Google Fonts chain it saved 0.15 s; without the chain, first paint moved to 0.88 s.
 
-Blocking the font import is a stand-in for local, non-blocking fonts; it showed fallback typefaces. A variant combining local fonts with preloads and deferral was not measured.
+Blocking the font import showed fallback typefaces and removed the font files' bytes, so it overstates self-hosting. A later run replacing the import with equivalent local `@font-face` rules, without a skeleton, changed neither first paint (2,092 → 2,080 ms) nor the first map frame (8,701 → 8,704 ms). With the HTML skeleton, the same replacement moved first paint from 764 to 132 ms and left the map unchanged; see [self-hosted typefaces](SELF-HOSTED-FONTS.md). A variant combining local fonts with preloads and deferral was not measured.
 
 ## Practices
 
 Apply these where an edition's own profile shows the same waterfall, and record before-and-after medians with the change.
 
 1. **Measure the first map frame**, not only first paint or bytes.
-2. **Keep render-blocking CSS local.** Do not `@import` remote stylesheets. Self-host `woff2` subsets with `font-display: swap`, and preload only the faces the first view uses. Canvas text drawn with a web font must wait for `document.fonts.load()`: a rasterised texture does not redraw when the font arrives. `AirTrafficLayer` currently draws DM Mono labels without waiting.
+2. **Keep render-blocking CSS local.** Do not `@import` remote stylesheets. Self-host `woff2` subsets with `font-display: swap`, and preload only the faces the first view uses. For Inter and DM Mono, import `@motionstudies/web/fonts.css` once it is released. Canvas text drawn with a web font must wait for `document.fonts.load()`: a rasterised texture does not redraw when the font arrives. `AirTrafficLayer` currently draws DM Mono labels without waiting.
 3. **Defer optional live feeds** until after the first map frame unless the first frame depends on them.
 4. **Paint a skeleton from the HTML.** Inline the theme background, title and a minimal frame inside `#root`; React replaces it on first commit. Pair it with any early-request change, which otherwise delays JavaScript-driven paint.
 5. **Start opening requests from the document, not from an effect.** A static `<link rel="preload" as="fetch" crossorigin>` is correct only when the URL is certain at HTML time. When the opening depends on the clock or query parameters, as Gleislicht's Swiss service date, `?date=`, `?study=` and `?view=` do, use a small inline head script that applies the same selection rule and adds the preload only for the default opening. A wrong preload costs a phone the whole file.
@@ -95,7 +95,7 @@ Apply these where an edition's own profile shows the same waterfall, and record 
 
 ## Shared opportunities
 
-- `@motionstudies/web`'s `tokens.css` and `shell.css` name Inter and DM Mono but leave loading them to each edition. Self-hosted font files in the package would remove the third-party chain for every consumer at once.
+- `@motionstudies/web`'s `tokens.css` and `shell.css` name Inter and DM Mono but leave loading them to each edition. [Self-hosted typefaces](SELF-HOSTED-FONTS.md) are prepared as `@motionstudies/web/fonts.css` for the next coordinated release; each edition still adopts them by replacing its Google Fonts import.
 - `mountMotionStudy` could accept an opening-requests hook so an edition's data and scene requests begin before first render without each shell reinventing the pattern.
 - `scripts/profile-first-view.mjs` could run against each deployed release and record medians beside the byte budget.
 

@@ -24,6 +24,14 @@ for (const name of packageNames) {
       throw new Error(`${name} ships source or tests: ${path}`)
     }
   }
+  if (name === 'web') {
+    // Self-hosted fonts are binary assets and licences, not code: prove the tarball carries every referenced file.
+    const shipped = new Set(packed.files.map(({ path }) => path))
+    const stylesheet = await readFile(join(packageOutput, name, 'fonts.css'), 'utf8')
+    const fonts = [...stylesheet.matchAll(/url\('\.\/(fonts\/[^']+\.woff2)'\)/g)].map((match) => match[1])
+    const missing = ['fonts.css', 'fonts/Inter-OFL.txt', 'fonts/DM-Mono-OFL.txt', ...fonts].filter((path) => !shipped.has(path))
+    if (!fonts.length || missing.length) throw new Error(`@motionstudies/web is missing font files: ${missing.join(', ') || 'no faces declared'}`)
+  }
   dependencies[`@motionstudies/${name}`] = `file:${join(tarballs, packed.filename)}`
   const manifest = JSON.parse(await readFile(join(packageOutput, name, 'package.json'), 'utf8'))
   artifacts.push({ name: manifest.name, version: manifest.version, file: packed.filename, integrity: `sha512-${createHash('sha512').update(await readFile(join(tarballs, packed.filename))).digest('base64')}` })
@@ -131,6 +139,7 @@ try {
   run(process.execPath, ['node_modules/vite/bin/vite.js', 'build'], { cwd: consumer })
   // A packed production build must contain no app/workspace imports or source paths.
   const assets = await readdir(join(consumer, 'dist/assets'))
+  if (!assets.some((file) => file.endsWith('.woff2'))) throw new Error('Packed consumer build emitted no self-hosted fonts')
   for (const asset of assets.filter((file) => file.endsWith('.js'))) {
     const text = await readFile(join(consumer, 'dist/assets', asset), 'utf8')
     if (text.includes(root) || /@motionstudies\/[^'"\s]+\.tsx?/.test(text)) throw new Error(`Workspace source leaked into ${asset}`)
