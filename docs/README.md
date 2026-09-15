@@ -13,6 +13,7 @@
 - [Archive and processing options](ARCHIVE-AND-PROCESSING.md): R2, analytical tables, gridded arrays and optional time-series databases; source-specific retention and redistribution
 - [Cost control](COST-CONTROL.md): $100/month series ceiling, traffic-spike protection, finite retention and proposed enforcement; live compliance still needs verification
 - [Edition architecture and ownership](EDITIONS.md)
+- [First view on a phone](FIRST-VIEW.md): measuring the first map frame, the shared waterfall patterns across public editions and tested practices for every edition
 - [Code and library consolidation proposal](ARCHITECTURE-CONSOLIDATION.md): application state ownership, renderer internals, data contracts and independent package consumption
 - [Package extraction provenance](EXTRACTION.md) and [release process](RELEASING.md)
 - [Underfall's shared ground-transport contribution](SHARED-GROUND-TRANSPORT.md) — capture, UK clocks, WebTRIS interpretation and aggregate-road evidence; publication and adoption tracked separately

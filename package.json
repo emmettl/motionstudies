@@ -23,6 +23,7 @@
     "test": "vitest run",
     "test:lab": "playwright test --config playwright.lab.config.ts",
     "test:loaders": "playwright test --config playwright.loaders.config.ts",
+    "profile:first-view": "node scripts/profile-first-view.mjs",
     "build": "npm run build:lab && node scripts/build-site.mjs",
     "build:release": "node scripts/build-packages.mjs --release",
     "check:release": "node scripts/check-packed-packages.mjs --release",
