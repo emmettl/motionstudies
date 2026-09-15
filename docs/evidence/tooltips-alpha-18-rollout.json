@@ -149,6 +149,32 @@
         "windowedMotion": true
       },
       "result": "deployed; opening JavaScript within the unchanged 360 KiB limit"
+    },
+    "zugunruhe": {
+      "commit": "0d0aaab",
+      "mount": "own root; does not use mountMotionStudy",
+      "bundleIdentity": "local alpha.18 build produces the same six hashed root assets as the live alpha.17 deploy (layers-03lQVCiR.css, layers-DeZ504Lm.js, layers-Ze0nhuO6.js, site-shell-CI16huN-.js, suncalc-BiJHYBy9.css, suncalc-Bywi39-y.js)",
+      "hostedWebkitFailures": [
+        {
+          "attempt": 1,
+          "check": "tests/sound.spec.js: sound is opt-in, cancellable while loading, and independent of the visual clock",
+          "error": "attribute expectation timed out after 60 s"
+        },
+        {
+          "attempt": 2,
+          "check": "tests/night.spec.js: Night joins the chapters and hands the camera back after exploration",
+          "error": "clock did not advance past 12 within 60 s after Play"
+        }
+      ],
+      "localWebkit": {
+        "sound.spec.js": "4 passed, twice",
+        "night.spec.js": "2 passed, twice"
+      },
+      "history": "the hosted browser job failed on night, hosting, air and sound checks on earlier commits from 13 to 15 September",
+      "runs": [
+        "Deploy Pages: https://github.com/emmettl/zugunruhe/actions/runs/34998897626"
+      ],
+      "result": "pending third hosted attempt"
     }
   },
   "rolloutComplete": false
