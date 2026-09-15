@@ -2,7 +2,7 @@
 
 [Study index](README.md) · [Technical feasibility](NATIONAL-DATA-FEASIBILITY.md) · [Series vision](VISION.md)
 
-**13 September 2026 — proposed thesis and composition.** Unnumbered research candidate; England is the recommended first scope, with Great Britain and the United Kingdom considered separately. No title, implementation or publication commitment is implied.
+**13 September 2026 — proposed thesis and composition.** Unnumbered research candidate; England is the recommended first scope, with Great Britain and the United Kingdom considered separately. No title, implementation or publication commitment is implied. **15 September 2026:** a private working repository, [england](https://github.com/emmettl/england), now exists. Its slug is not a title.
 
 ## The proposition
 
