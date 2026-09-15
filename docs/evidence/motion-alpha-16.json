@@ -146,5 +146,41 @@
     }
   },
   "rolloutComplete": false,
-  "rolloutNote": "Eight of nine downstream projects adopted; Zugunruhe remains undeployed behind a Night chapter check that failed identically under alpha.15."
+  "rolloutNote": "Eight of nine downstream projects adopted; Zugunruhe remains undeployed behind a Night chapter check that failed identically under alpha.15.",
+  "liveVerification": {
+    "method": "crawl of the public entry script's chunk graph for the motion-lerp-points program key and createTrailBackend",
+    "verifiedAt": "2026-09-15",
+    "editions": {
+      "gleislicht": {
+        "entry": "index-BwRzJuqL.js",
+        "chunks": 109,
+        "renderer": "GleislichtNetworkScene-tOibUb2m.js",
+        "trailBackendReferences": 0
+      },
+      "allchange": {
+        "entry": "index-B1EcdXki.js",
+        "chunks": 36,
+        "renderer": "LondonNetworkScene-D7z0gOe5.js",
+        "trailBackendReferences": 0
+      },
+      "correspondances": {
+        "entry": "index-BEuqeF9h.js",
+        "chunks": 19,
+        "renderer": "ParisNetworkScene-t0fFUo_N.js",
+        "trailBackendReferences": 0
+      },
+      "umlauf": {
+        "entry": "index-CGqPyQmB.js",
+        "chunks": 2,
+        "renderer": "index-CGqPyQmB.js",
+        "trailBackendReferences": 0
+      },
+      "norikae": {
+        "entry": "index-qylvFv0w.js",
+        "chunks": 2,
+        "renderer": "NationalNetworkScene-BN2q3M7o.js",
+        "trailBackendReferences": 0
+      }
+    }
+  }
 }

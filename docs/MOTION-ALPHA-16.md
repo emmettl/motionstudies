@@ -47,6 +47,8 @@ The hosted packed-consumer check found one race before publication: on iPhone We
 | Zugunruhe | `905658e` | Not deployed. An existing Night chapter check times out, as it did under alpha.15 |
 | Gleislicht · Switzerland | `654e764`, with `067a9fb` | Deployed. Trail worker removed; picking reads displayed vertices |
 
+Live verification on 15 September crawled each deployed edition's chunk graph from its public entry script. Gleislicht, All Change, Correspondances, Umlauf and NORIKAE each serve a scene chunk containing the alpha.16 GPU interpolation program, and none references the removed trail backend. Manifest and Zugunruhe consume only `@motionstudies/web`.
+
 All Change's and Correspondances' installed-renderer label tests executed the shared `TrainLabels` source directly and now provide the motion table it reads. All Change's paused-buffer check polls for a playing upload, since uploads happen once per sampling pass rather than every frame.
 
 Gleislicht's deployment had been failing independently since the 8 September cloud capture: an orbital-clouds unit test compared three decoded days element-wise and exceeded CI's five-second limit. That test now compares buffers, in its own commit.
