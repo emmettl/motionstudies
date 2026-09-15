@@ -76,6 +76,44 @@
       "runs": [
         "Check: success https://github.com/emmettl/underfall/actions/runs/35000311805"
       ]
+    },
+    "allchange": {
+      "commit": "334307e",
+      "runs": [
+        "Publish to Cloudflare: success https://github.com/emmettl/allchange/actions/runs/34999943103",
+        "Deploy Pages: success https://github.com/emmettl/allchange/actions/runs/34999167195"
+      ],
+      "mount": "mountMotionStudy",
+      "budget": {
+        "openingJavaScriptKiB": 345.9,
+        "limitKiB": 348,
+        "optionalButtonHelpKiB": 1.4,
+        "optionalLimitKiB": 3,
+        "measuredOn": "Node 26 locally"
+      },
+      "changes": [
+        "budget check classifies the tooltip chunk as an optional feature with its own 3 KiB limit"
+      ],
+      "browser": {
+        "passed": 33,
+        "skipped": 1
+      },
+      "live": {
+        "entry": "index-BNYgqrjg.js",
+        "chunks": 38,
+        "tooltipChunk": "ButtonTooltips-xEKzNqe5.js",
+        "tooltipInEntry": false,
+        "windowedMotion": true
+      },
+      "result": "deployed"
+    },
+    "local-express": {
+      "commit": "0b99495",
+      "runs": [
+        "Check Local / Express: success https://github.com/emmettl/local-express/actions/runs/34998897022"
+      ],
+      "mount": "mountMotionStudy",
+      "result": "validated; no deployment workflow"
     }
   },
   "rolloutComplete": false
