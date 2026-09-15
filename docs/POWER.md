@@ -2,7 +2,7 @@
 
 [National study](NATIONAL-STUDY.md#a-second-axis-power-weather-and-light) · [Feasibility](NATIONAL-DATA-FEASIBILITY.md) · [Readiness register](DATA-READINESS.md) · [Shared fields](SHARED-FIELDS.md) · [Series vision](VISION.md#the-view-from-altitude--13-september-2026)
 
-**Updated 15 September 2026 — one settled day compiled, partial placement, no England rendering yet.** Initial source counts come from the 13 September [probe record](evidence/power-sources-2026-09-13.json), which retained only aggregate findings. The subsequent capture and placement of the 5 September day are recorded below. Acquisition and placement code now live in the private recorder repository; the proposed ownership split distinguishes that current location from where each responsibility should settle.
+**Updated 15 September 2026 — recorded power view implemented in England; partial placement and shared reader released.** Initial source counts come from the 13 September [probe record](evidence/power-sources-2026-09-13.json), which retained only aggregate findings. The subsequent capture and placement of the 5 September day are recorded below. Acquisition and the private evidence handoff live in the recorder; placement and the first power composition now live in England. Core supplies the shared power-day reader.
 
 ## Why power, in one paragraph
 
@@ -68,7 +68,7 @@ It can show which stations were running, at what output, when the country's morn
 
 ## Ownership and handoff
 
-**15 September 2026 — intended architecture, not a completed migration.** Split the power work between [the recorder](https://github.com/emmettl/motionstudies-recorder), [England](https://github.com/emmettl/england) and small public contracts in Motion Studies. The recorder preserves and normalizes evidence; England decides how it becomes a work; core lets producer and consumer agree on its meaning.
+**15 September 2026 — first migration implemented.** Split the power work between [the recorder](https://github.com/emmettl/motionstudies-recorder), [England](https://github.com/emmettl/england) and small public contracts in Motion Studies. The recorder preserves and normalizes evidence; England decides how it becomes a work; core lets producer and consumer agree on its meaning.
 
 | Owner | Responsibility | Boundary |
 | --- | --- | --- |
@@ -77,7 +77,7 @@ It can show which stations were running, at what output, when the country's morn
 | `@motionstudies/core` | Browser-safe types, validation and readers for the shared power-day contract; pure interval lookup and aggregation where demonstrated; reuse existing field and daylight primitives | No provider calls, filesystem access, capture scheduling, curated British station lists or artistic choices |
 | `@motionstudies/data`, if justified | Reusable offline parsing or compilation helpers proven useful beyond one local adapter | Provider-specific capture stays in the recorder initially; do not put Node-only tooling in core or extract every helper just because it exists |
 
-The reader/writer contract is already a shared need even with one artwork: the recorder and England must agree on units, clocks, revisions and provenance. A proposed `core/domain/power-day` export should be derived from a real fixture and exercised on both sides before publication. It does not exist yet. It should preserve explicit value units and interval boundaries, missing values, signed quantities, source identity, settlement run/as-of information and evidence references. Keep energy over an interval distinct from power at an instant or an interval average; do not silently interpolate one into another. Preserve 46/48/50-period civil days and distinguish planned from settled values.
+The reader/writer contract is already a shared need even with one artwork: the recorder and England must agree on units, clocks, revisions and provenance. `core/domain/power-day` is implemented and published in `0.1.0-alpha.21`, exercised by the recorder writer and England reader against the retained 5 September day. It should preserve explicit value units and interval boundaries, missing values, signed quantities, source identity, settlement run/as-of information and evidence references. Keep energy over an interval distinct from power at an instant or an interval average; do not silently interpolate one into another. Preserve 46/48/50-period civil days and distinguish planned from settled values.
 
 Keep the provider ledger and the study's generation population separate. Supplier/demand-side units and unplaced generation remain in the evidence release and its audit; England states which records contribute to each measure. Registered capacity is not output, and a national fuel-mix total must not be presented as the sum of the placed stations unless that reconciliation is actually established.
 
@@ -96,9 +96,9 @@ Capture dates, register versions, input hashes, schema/method versions, placemen
 
 ### First migration
 
-Today `scripts/feeds/power.mjs` in the recorder combines acquisition with compilation. `scripts/place-power-units.mjs` both captures REPD and places units using `scripts/feeds/placement.mjs`. The latter coupling is why placement still lives there.
+Before migration, `scripts/feeds/power.mjs` combined acquisition with compilation, while `scripts/place-power-units.mjs` both captured REPD and placed units. Acquisition/normalization remain in the recorder; `data:power:release` now captures the register separately and emits a versioned, verified evidence handoff. England owns `scripts/power/placement.mjs`, the curated list and `data:power:compile`. The old recorder placement command reports its replacement and leaves stored evidence unchanged.
 
-First separate register capture from placement. Keep the existing capture/compiler path working while introducing a versioned evidence-release manifest and a small redistributable test fixture. Move the placement method and curated list into England, consuming captured registers through that manifest. Then prove the core contract against the recorder's output and England's reader, publish the shared package, and adopt its exact version. Check offline parity, revision/missingness semantics, placement totals and source links before retiring the old placement entry point. This sequence requires neither an immediate rewrite of the recorder nor a general-purpose power framework.
+The first implementation keeps the acquisition path working, replays retained sources offline and reproduces the 451 generation units / 267 placed result. England renders national demand, fuel mix, explicit fuel groups and one selected unit on a recorded clock, with on-demand original JSON record extracts. Tests reconcile every displayed settlement quantity and all 48 group totals to the retained records. The main day artifact is 1,038,840 bytes (199,445 bytes gzip); all evidence extracts and release metadata total 27,888,058 bytes. The private handoff is 171,107,725 bytes. No new cloud collection or production hosting route was enabled. See [England's implementation record](https://github.com/emmettl/england/blob/main/docs/POWER-DAY.md) and [the recorder handoff](https://github.com/emmettl/motionstudies-recorder/blob/main/docs/POWER-RELEASE.md).
 
 ## Open questions
 
@@ -106,3 +106,9 @@ First separate register capture from placement. Keep the existing capture/compil
 - Improve the measured unit-placement coverage, especially large gas/nuclear stations and interconnectors, using cited curated locations and reviewing ambiguous matches.
 - Third-party components inside the NESO boundaries and registers.
 - Whether the shared field modules' support channel, tuned for radar sites, needs a different kernel for grid supply points, whose catchments are polygons rather than ranges.
+
+## Alpha.21 validation and remaining work
+
+The [trusted publication run](https://github.com/emmettl/motionstudies/actions/runs/35025364632) publishes the four coordinated shared packages. The new power reader is opt-in; England and the recorder adopt exact registry pins. Local shared checks passed 331 tests and 96 packed-consumer browser checks. England's real-day check resolves every displayed settlement value to its source and verifies all aggregate intervals; browser checks cover grouping, station selection, scrubbing and changing source evidence. The parallel geography work supplies boundaries, rivers and lakes.
+
+Curated missing locations, interconnector treatment, per-GSP demand and a matching transport day remain subsequent work. The first screen does not imply complete generation coverage or a settled geographic title. Elexon's [current API definition](https://data.elexon.co.uk/swagger/v1/swagger.json) specifies B1610 as interval MWh and describes the initial II run five days after delivery, revised by later runs. The earlier probe found a longer availability gap; the recorder's seven-day guard remains a conservative acquisition policy, not a guarantee of publication.
