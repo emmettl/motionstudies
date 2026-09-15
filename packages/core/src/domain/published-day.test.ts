@@ -1,5 +1,5 @@
 import {it,expect} from 'vitest'
-import {cellKey,cellOf,fetchTransport,inflateIfGzipped,journeyAt,openPublishedDay,partFor,positionAt,sliceNameAt,sliceStart,type DayTransport,type Pack} from './published-day.ts'
+import {cellKey,cellOf,checkDayManifest,fetchTransport,inflateIfGzipped,journeyAt,openPublishedDay,partFor,positionAt,reconcileSlice,sliceNameAt,sliceStart,type DayTransport,type MembersFile,type Pack,type PublishedDayManifest,type SliceFile} from './published-day.ts'
 
 const gz=async(text:string)=>new Uint8Array(await new Response(new Blob([text]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer())
 const t0=Date.parse('2026-09-15T00:00:00Z')/1000
@@ -48,4 +48,19 @@ it('the fetch transport reads text and bytes under a base and surfaces HTTP fail
  const fetchImpl=async(u:string)=>u.endsWith('/manifest.json')?new Response('{"a":1}'):new Response(null,{status:404})
  const t=fetchTransport('https://x.example/day/',fetchImpl)
  expect(await t.text('manifest.json')).toBe('{"a":1}');await expect(t.bytes('packs/x.gz')).rejects.toThrow('packs/x.gz returned HTTP 404')
+})
+it('finds a compiled manifest consistent, and names each disagreement when it is not',()=>{
+ const hours=Array.from({length:24},(_,i)=>`2026-09-15T${String(i).padStart(2,'0')}`)
+ const manifest:PublishedDayManifest={date:'2026-09-15',compiledAt:'now',hours:{present:hours.slice(0,23),missing:hours.slice(23)},stats:{samples:3,vehicles:2,operators:2,slices:1,excludedRejected:0,excludedOutsideDay:1},slices:1,files:5,bytes:30,list:[{path:'index.json',bytes:5},{path:'members/00-00.json',bytes:7},{path:'packs/A.json.gz',bytes:10},{path:'slices/00-00.json',bytes:8}]}
+ expect(checkDayManifest(manifest)).toEqual([])
+ expect(checkDayManifest({...manifest,hours:{present:hours.slice(0,23),missing:[]}})[0]).toMatch(/23 distinct of 24/)
+ expect(checkDayManifest({...manifest,hours:{present:[...hours.slice(0,23),'2026-09-16T00'],missing:[]}})).toEqual(['An hour lies outside the manifest date'])
+ expect(checkDayManifest({...manifest,files:6,bytes:31})).toHaveLength(2)
+ expect(checkDayManifest({...manifest,slices:2,stats:{...manifest.stats,slices:2}})).toHaveLength(2)
+})
+it('reconciles cell counts with members and reports cells on one side only',()=>{
+ const slice=JSON.parse(files['slices/00-00.json'] as string) as SliceFile,members=JSON.parse(files['members/00-00.json'] as string) as MembersFile
+ expect(reconcileSlice(slice,members)).toEqual([])
+ expect(reconcileSlice(slice,{...members,slice:'2026-09-15T00:05:00Z'})).toHaveLength(1)
+ expect(reconcileSlice(slice,{slice:slice.slice,cells:{'-2.7,51.4':[[0,'1'],[0,'1']],'0.0,52.0':[[0,'9']]}})).toEqual(['Cell -2.7,51.4 repeats a member','Cell -2.7,51.4 counts 2 vehicles but lists 1 members','Cell -2.6,51.4 counts 1 vehicles and has no members','Members name cell 0.0,52.0, absent from the slice'])
 })
