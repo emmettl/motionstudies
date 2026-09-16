@@ -22,8 +22,9 @@ export interface TimelineScrubberProps {
 export function TimelineScrubber({ windowStart, windowEnd, time, onSeek, ariaLabel, ariaValueText, describedBy, step = 1, disabled = false, onScrubStart, onScrubEnd, onInspect, children, className = '' }: TimelineScrubberProps) {
   const id = useId(), scrubbing = useRef(false)
   const window = { start: windowStart, end: windowEnd }
-  const value = Number(timelineTime(timelinePosition(time, window), window, step).toPrecision(12))
-  const position = timelinePosition(value, window)
+  const position = timelinePosition(time, window)
+  const value = Number.isFinite(time) ? Math.max(windowStart, Math.min(windowEnd, time)) : windowStart
+  if (!Number.isFinite(step) || step <= 0) throw new Error('Timeline step must be positive')
   const begin = () => { if (!disabled && !scrubbing.current) { scrubbing.current = true; onScrubStart?.() } }
   const finish = () => { if (scrubbing.current) { scrubbing.current = false; onScrubEnd?.() } }
   return <div className={`ms-timeline-scrubber ${className}`} data-disabled={disabled || undefined} style={{ '--ms-timeline-position': `${position * 100}%` } as CSSProperties}>

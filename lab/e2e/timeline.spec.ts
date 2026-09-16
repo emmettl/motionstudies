@@ -41,6 +41,7 @@ test('visible scrubber aligns its handle and finishes drags outside the control'
   await page.goto('/')
   await page.getByRole('button', { name: /Timeline/ }).click()
   const slider = page.getByRole('slider', { name: 'Recorded epoch time' })
+  await expect(slider).toHaveAttribute('value', '1789386570.03125')
   await slider.press('Home')
   await expect(slider).toHaveValue('1789386120')
   await slider.press('ArrowRight')
