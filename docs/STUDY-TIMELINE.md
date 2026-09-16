@@ -61,3 +61,17 @@ Bar appearance must remain independent of interaction geometry: even a faint or 
 ### Thin track option · unreleased
 
 Seasons also contributes its fine track as a presentation option. Set `--ms-timeline-track-height: 1px` on an edition container for that treatment, or choose an intermediate thickness such as `3px`. Omit the variable to retain England's broad 8px rail. This option applies to both `TimelineScrubber` and `StudyTimeline`; the rail remains centred beneath the same 20px visible handle, and the native 44×44px grab target and chart seek surface are unchanged. The lab's Thin track toggle exercises both treatments. This addition is not yet published in alpha.23.
+
+### Discreet marker option · unreleased
+
+The Seasons passage clock's visible marker is a small 10px dot. Shared timelines can retain that quieter treatment using `--ms-timeline-marker-size: 10px` and `--ms-timeline-halo-width: 0px`. These are independent of track thickness; defaults remain 20px and a 3px halo. For the complete fine-track treatment:
+
+```css
+.edition-timeline {
+  --ms-timeline-track-height: 1px;
+  --ms-timeline-marker-size: 10px;
+  --ms-timeline-halo-width: 0px;
+}
+```
+
+The marker still uses the edition's accent, remains centred on the time position, and preserves the visible keyboard focus outline. Its size only changes appearance: native thumb geometry, the 44×44px touch target, chart seeking and edge insets stay unchanged. The lab provides an independent Discreet marker toggle. This addition is not yet published in alpha.23.
