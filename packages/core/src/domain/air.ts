@@ -1,3 +1,5 @@
+import type { AirContinent, AirContinentSource } from '../air-continents.ts'
+
 export type AirSample = readonly [
   time: number,
   longitude: number,
@@ -14,6 +16,9 @@ export interface AirEndpoint {
   /** Study-local seconds at the observed approach/departure boundary; not a scheduled time. */
   readonly time: number
   readonly evidence: 'observed-endpoint'
+  /** Airport geography, separate from the inferred route evidence. Absent in older releases. */
+  readonly continent?: AirContinent
+  readonly continentSource?: AirContinentSource
 }
 
 export interface AirTrack {
