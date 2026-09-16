@@ -12,3 +12,4 @@ __pycache__/
 .dev.vars.*
 .env
 .env.*
+work/europe-air-proof/

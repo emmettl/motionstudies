@@ -1,0 +1,3943 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-14",
+  "timezone": "UTC",
+  "bounds": [
+    -25,
+    34,
+    45,
+    72
+  ],
+  "status": "local research proof; not a production edition or recorder enrollment",
+  "source": {
+    "publisher": "ADSB.lol",
+    "license": "ODbL-1.0",
+    "attribution": "ADSB.lol and its contributors",
+    "url": "https://www.adsb.lol/docs/open-data/historical/"
+  },
+  "acquisition": {
+    "date": "2026-09-14",
+    "sourceRecords": [
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/00.bin.ttf",
+        "sha256": "469a7e32eca594cea14454137fb2b4103d4465159e3ab751ae478d54f87ea490",
+        "bytes": 19573536,
+        "storedBytes": 17374802,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:02:39.949Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 00:30:02 GMT",
+        "etag": "\"6aa7400a-1091e79\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/01.bin.ttf",
+        "sha256": "915c9ee15c121173af53d0f1c7fe296cc685f6640031e48bab7e3eccfca98c3c",
+        "bytes": 18727296,
+        "storedBytes": 16635163,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:02:43.692Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 01:00:02 GMT",
+        "etag": "\"6aa74712-fdd51a\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/02.bin.ttf",
+        "sha256": "c2ea80a750058d4d23518646d7b6b806137c6a5a67c7103f4d0ba477e5174a59",
+        "bytes": 17950896,
+        "storedBytes": 15941143,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:02:47.312Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 01:30:02 GMT",
+        "etag": "\"6aa74e1a-f33e2f\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/03.bin.ttf",
+        "sha256": "4dd6d2f1854fd2b140a4562a945b5e753556b42c98576ca6fea317e5bfe7e3e4",
+        "bytes": 17135072,
+        "storedBytes": 15207385,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:02:50.850Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 02:00:02 GMT",
+        "etag": "\"6aa75522-e80bb0\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/04.bin.ttf",
+        "sha256": "00e6ec3e3b4842c23afae2db9592a42f81bcf866be9021f0fe768bb0c50f77e2",
+        "bytes": 16320352,
+        "storedBytes": 14491351,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:02:54.000Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 02:30:02 GMT",
+        "etag": "\"6aa75c2a-dd1ebe\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/05.bin.ttf",
+        "sha256": "315d167ec8d357a7475bded51308c80ce253d19b3ee7b22e41d8cb033cf5b710",
+        "bytes": 15560816,
+        "storedBytes": 13805189,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:02:57.029Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 03:00:02 GMT",
+        "etag": "\"6aa76332-d2a662\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/06.bin.ttf",
+        "sha256": "072536ede323e0c317dc3ec3eef4a40af3643d06366e76a61dd2fa3d62c8e2a1",
+        "bytes": 15071024,
+        "storedBytes": 13369428,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:02:59.986Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 03:30:01 GMT",
+        "etag": "\"6aa76a39-cc004f\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/07.bin.ttf",
+        "sha256": "54bda69c2e6e01928e01aeaa24fb92552019290e755421d8e06c7769ac17288b",
+        "bytes": 14064736,
+        "storedBytes": 12473025,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:02.761Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 04:00:01 GMT",
+        "etag": "\"6aa77141-be529e\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/08.bin.ttf",
+        "sha256": "a3ae45b73fd3002a064a1623ad1fa48d4e99e2da754851ea8120c31addaaecbc",
+        "bytes": 14163600,
+        "storedBytes": 12539488,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:05.519Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 04:30:02 GMT",
+        "etag": "\"6aa7784a-bf567d\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/09.bin.ttf",
+        "sha256": "9d9738e12d7a11462dbbf2638cbb53c10d48793cba719a00673778a1965ea8a9",
+        "bytes": 14164608,
+        "storedBytes": 12520786,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:08.372Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 05:00:02 GMT",
+        "etag": "\"6aa77f52-bf0d50\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/10.bin.ttf",
+        "sha256": "30911f19f3158f440fdfa0659da1566708e5d63add42a92c6633875fb70c6891",
+        "bytes": 14557760,
+        "storedBytes": 12836533,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:11.215Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 05:30:02 GMT",
+        "etag": "\"6aa7865a-c3de9e\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/11.bin.ttf",
+        "sha256": "b3b14330714097f956e094b3f99c3ab5306b6bfae0a52851dc6573ca0b93ca0c",
+        "bytes": 14529200,
+        "storedBytes": 12808100,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:14.011Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 06:00:02 GMT",
+        "etag": "\"6aa78d62-c36fb4\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/12.bin.ttf",
+        "sha256": "d45977cac52fba59579267c79b7951dcf0ffad332cfa5bc1cdb37498c23b8081",
+        "bytes": 14321824,
+        "storedBytes": 12622437,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:16.747Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 06:30:02 GMT",
+        "etag": "\"6aa7946a-c09a4d\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/13.bin.ttf",
+        "sha256": "ba611945942cf4a88a2f2fda985a39c435131b9661f5085b9bdbb9a1114c11e9",
+        "bytes": 14293872,
+        "storedBytes": 12588845,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:19.661Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 07:00:02 GMT",
+        "etag": "\"6aa79b72-c01707\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/14.bin.ttf",
+        "sha256": "8bcc310ca76579ddb783d3ea6798a8c7b704340361e22679bfa772433ba217db",
+        "bytes": 14235312,
+        "storedBytes": 12536505,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:22.775Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 07:30:02 GMT",
+        "etag": "\"6aa7a27a-bf4a84\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/15.bin.ttf",
+        "sha256": "3ed86624abe36d04af83a1d11c8b1acc859888642b25a47cd0da36496f3e2ae8",
+        "bytes": 14295344,
+        "storedBytes": 12589876,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:25.665Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 08:00:02 GMT",
+        "etag": "\"6aa7a982-c01b2e\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/16.bin.ttf",
+        "sha256": "aede6c6736da2d289ae639ad8c2f9e47711ca4299c40675cfb3a5fbc8ee4bb10",
+        "bytes": 14681456,
+        "storedBytes": 12932701,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:28.576Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 08:30:02 GMT",
+        "etag": "\"6aa7b08a-c55649\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/17.bin.ttf",
+        "sha256": "46916f4acbb0f992c4482e5708b3b74af1bd9634dc439b9358b42d38db851a37",
+        "bytes": 15109344,
+        "storedBytes": 13308369,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:31.598Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 09:00:02 GMT",
+        "etag": "\"6aa7b792-cb1196\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/18.bin.ttf",
+        "sha256": "1e1fc9295542db6da1ef2693f3dac2ef2294d49709d5f61be8dbb9372fe47ef5",
+        "bytes": 15464192,
+        "storedBytes": 13626543,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:34.649Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 09:30:02 GMT",
+        "etag": "\"6aa7be9a-cfeca4\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/19.bin.ttf",
+        "sha256": "d1b7f68ff976ab6218959c015b57708aa22657fc8503711cdb0d1dd5b94d8744",
+        "bytes": 15636352,
+        "storedBytes": 13789073,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:37.702Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 10:00:02 GMT",
+        "etag": "\"6aa7c5a2-d26795\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/20.bin.ttf",
+        "sha256": "01d555deccd847ada86bb1f3efe4672e5776bea69188a087f58c6b9356d41c66",
+        "bytes": 16619056,
+        "storedBytes": 14670148,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:40.944Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 10:30:02 GMT",
+        "etag": "\"6aa7ccaa-dfd945\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/21.bin.ttf",
+        "sha256": "b7641e16214ebcfd3d6eecbc1d1cfef734bcb21b25c479f34d95df95a07e021e",
+        "bytes": 17607136,
+        "storedBytes": 15566101,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:44.409Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 11:00:02 GMT",
+        "etag": "\"6aa7d3b2-ed8514\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/22.bin.ttf",
+        "sha256": "eda2c7c2c813064257bdb43527d3f9c238284df97f94d36466ddae72c26d3518",
+        "bytes": 19344800,
+        "storedBytes": 17118815,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:48.337Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 11:30:02 GMT",
+        "etag": "\"6aa7daba-105366d\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/23.bin.ttf",
+        "sha256": "ea9663fe7052c8accddd7df6b4b422866af01b70be8c19e67441c439ab5b35dd",
+        "bytes": 21183456,
+        "storedBytes": 18764990,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:52.683Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 12:00:02 GMT",
+        "etag": "\"6aa7e1c2-11e54a2\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/24.bin.ttf",
+        "sha256": "770907a65749eca585db584501aaa07bdd8eee286b5fa82087d31d98a8480f8e",
+        "bytes": 23537728,
+        "storedBytes": 20850351,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:03:57.351Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 12:30:03 GMT",
+        "etag": "\"6aa7e8cb-13e265c\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/25.bin.ttf",
+        "sha256": "fa35b785289293c0f64c12220ddee88891ccc7a998222f95526e3591d593911c",
+        "bytes": 25532992,
+        "storedBytes": 22643068,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:02.317Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 13:00:03 GMT",
+        "etag": "\"6aa7efd3-159814c\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/26.bin.ttf",
+        "sha256": "1f434499d4bbc435e8f217a34093b47575a56a485a1265ac5cb9f932a8ddca23",
+        "bytes": 27437632,
+        "storedBytes": 24331073,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:07.752Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 13:30:03 GMT",
+        "etag": "\"6aa7f6db-173430c\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/27.bin.ttf",
+        "sha256": "d4ad01a309d99eefaa49fba5977fc39361e3b85aff5191c34d33753076842a01",
+        "bytes": 28831200,
+        "storedBytes": 25573870,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:13.590Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 14:00:06 GMT",
+        "etag": "\"6aa7fde6-186398c\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/28.bin.ttf",
+        "sha256": "5767526e5364d8032e6242c6461500305a252da8c0496613418aef08da264a82",
+        "bytes": 30264704,
+        "storedBytes": 26829494,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:19.956Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 14:30:05 GMT",
+        "etag": "\"6aa804ed-199622f\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/29.bin.ttf",
+        "sha256": "6c302ce8a89d710eabfde28dfdd683fb73bf8cde908022840006992d618e99d8",
+        "bytes": 30558784,
+        "storedBytes": 27098452,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:25.469Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 15:00:04 GMT",
+        "etag": "\"6aa80bf4-19d7cef\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/30.bin.ttf",
+        "sha256": "ebb4411e5075b1eb877e069b787d1d621f23691b3fcb7e609b144c12250d59ed",
+        "bytes": 30787088,
+        "storedBytes": 27284352,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:31.650Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 15:30:04 GMT",
+        "etag": "\"6aa812fc-1a052c6\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/31.bin.ttf",
+        "sha256": "80a6f4aa9647dadd47f653b2c17175a7c7237d3d73d5155b6b68c1fb497c9f5d",
+        "bytes": 30822048,
+        "storedBytes": 27312932,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:38.378Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 16:00:03 GMT",
+        "etag": "\"6aa81a03-1a0c2b0\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/32.bin.ttf",
+        "sha256": "f7baf7d07f637012b5dc7c9a59b9a317b55f4b7d7ce2f80f4f413e199cd4271e",
+        "bytes": 30460448,
+        "storedBytes": 26987291,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:44.343Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 16:30:03 GMT",
+        "etag": "\"6aa8210b-19bcad8\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/33.bin.ttf",
+        "sha256": "81630047bb0488afdddb366de1cc43db054029b3397c9b678db196c93e5ceeee",
+        "bytes": 30689712,
+        "storedBytes": 27192149,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:49.682Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 17:00:03 GMT",
+        "etag": "\"6aa82813-19eeac6\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/34.bin.ttf",
+        "sha256": "a72ed09b5e72a649a46cfbdcc0d9c53d40110bd89138e7e236dbb739f9a84716",
+        "bytes": 30246352,
+        "storedBytes": 26801498,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:04:55.618Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 17:30:03 GMT",
+        "etag": "\"6aa82f1b-198f52b\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/35.bin.ttf",
+        "sha256": "ad959804604822bd07d47919afca8a4e650e27f2bea19246ffc9f33df95da26e",
+        "bytes": 29912256,
+        "storedBytes": 26498374,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:01.637Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 18:00:03 GMT",
+        "etag": "\"6aa83623-19454b9\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/36.bin.ttf",
+        "sha256": "02f3b978b2a27508a49c4d486a50c320ee474f04200554e5d94febc488b48997",
+        "bytes": 29424704,
+        "storedBytes": 26065764,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:07.410Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 18:30:03 GMT",
+        "etag": "\"6aa83d2b-18dbacf\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/37.bin.ttf",
+        "sha256": "25d47b9b5e2b1aeb0be61ac1f43ae7484d30748c7c83eaca4abc8ef7832d38f7",
+        "bytes": 28827184,
+        "storedBytes": 25536536,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:12.878Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 19:00:03 GMT",
+        "etag": "\"6aa84433-185a75b\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/38.bin.ttf",
+        "sha256": "0484141f42b4bfd656601fe8cb9d01d7d2391df20a28431042ad9dcd27a22e27",
+        "bytes": 28437104,
+        "storedBytes": 25197083,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:18.825Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 19:30:03 GMT",
+        "etag": "\"6aa84b3b-180797d\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/39.bin.ttf",
+        "sha256": "aa76e25b3849563752f917f4c960472331719d835040f1a3800300df803a8ba7",
+        "bytes": 28136160,
+        "storedBytes": 24931226,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:23.647Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 20:00:03 GMT",
+        "etag": "\"6aa85243-17c6b49\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/40.bin.ttf",
+        "sha256": "6d4606976cca4b370c1f0b81149b56acc26e71e8b55bd79df0826c8dc126d5e6",
+        "bytes": 27693216,
+        "storedBytes": 24551654,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:29.116Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 20:30:03 GMT",
+        "etag": "\"6aa8594b-176a0a8\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/41.bin.ttf",
+        "sha256": "30168326296caa3c769d5a6df58056b93d3bb2e7d59992f4510cd3fa70e6049b",
+        "bytes": 26797488,
+        "storedBytes": 23752614,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:34.353Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 21:00:03 GMT",
+        "etag": "\"6aa86053-16a6fd9\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/42.bin.ttf",
+        "sha256": "60c9b2ff4d6bee428e47bc4a4464c144eb619f94bef34b97f3a27068308e3f76",
+        "bytes": 25757520,
+        "storedBytes": 22833645,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:39.620Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 21:30:03 GMT",
+        "etag": "\"6aa8675b-15c69bc\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/43.bin.ttf",
+        "sha256": "9cb3bcb69f02302f88988e73b18327ec5eda970926753fe1a4424de73631e8b7",
+        "bytes": 24991344,
+        "storedBytes": 22161686,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:43.933Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 22:00:03 GMT",
+        "etag": "\"6aa86e63-15228b8\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/44.bin.ttf",
+        "sha256": "b30b8d59ce13cd4eba9c2655c8766e7faceba3ea925ec7db9199ead7c6e77bc3",
+        "bytes": 24295984,
+        "storedBytes": 21537886,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:48.713Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 22:30:02 GMT",
+        "etag": "\"6aa8756a-148a43f\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/45.bin.ttf",
+        "sha256": "6f8eb1d91c9a2a90f139227311e66ab81159fabe06fc197a7c431a24a36c2dbb",
+        "bytes": 23587584,
+        "storedBytes": 20911286,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:53.344Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 23:00:03 GMT",
+        "etag": "\"6aa87c73-13f145e\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/46.bin.ttf",
+        "sha256": "0fe32b0f6be242a6163176ef6a26d37af5b69fcc4316399c198ddee4683c2704",
+        "bytes": 22654272,
+        "storedBytes": 20085875,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:05:57.549Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Mon, 14 Sep 2026 23:30:02 GMT",
+        "etag": "\"6aa8837a-1327c29\""
+      },
+      {
+        "schemaVersion": 1,
+        "source": {
+          "id": "adsblol",
+          "publisher": "ADSB.lol",
+          "kind": "observed-positions",
+          "documentation": "https://www.adsb.lol/docs/open-data/historical/",
+          "license": "ODbL-1.0",
+          "attribution": "ADSB.lol and its contributors"
+        },
+        "url": "https://globe.adsb.lol/globe_history/2026/09/14/heatmap/47.bin.ttf",
+        "sha256": "d423e3cb139d2ef8465f239f425f679e56e31d48dc013622ced526ddc42e1d3f",
+        "bytes": 21557536,
+        "storedBytes": 19114785,
+        "encoding": "gzip",
+        "retrievedAt": "2026-09-16T13:06:02.468Z",
+        "acquisition": "http",
+        "validation": "raw-capture; see adapter audit for fitness",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "lastModified": "Tue, 15 Sep 2026 00:00:03 GMT",
+        "etag": "\"6aa88a83-123aafe\""
+      }
+    ],
+    "geography": {
+      "schemaVersion": 1,
+      "source": {
+        "id": "natural-earth-land",
+        "publisher": "Natural Earth",
+        "kind": "land-context",
+        "documentation": "https://www.naturalearthdata.com/about/terms-of-use/",
+        "license": "Public domain"
+      },
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_110m_land.geojson",
+      "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+      "bytes": 138160,
+      "storedBytes": 51317,
+      "encoding": "gzip",
+      "retrievedAt": "2026-09-16T13:06:02.774Z",
+      "acquisition": "http",
+      "validation": "raw-capture; see adapter audit for fitness",
+      "httpStatus": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "lastModified": null,
+      "etag": "W/\"e67ae0ac74362c8acae84230ed8fb01df054e10fcad0269943bcb833be8c307f\""
+    },
+    "slices": [
+      {
+        "slice": 0,
+        "first": 0,
+        "last": 1790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 19573536,
+        "storedBytes": 17374802
+      },
+      {
+        "slice": 1,
+        "first": 1800,
+        "last": 3590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 18727296,
+        "storedBytes": 16635163
+      },
+      {
+        "slice": 2,
+        "first": 3600,
+        "last": 5390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 17950896,
+        "storedBytes": 15941143
+      },
+      {
+        "slice": 3,
+        "first": 5400,
+        "last": 7190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 17135072,
+        "storedBytes": 15207385
+      },
+      {
+        "slice": 4,
+        "first": 7200,
+        "last": 8990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 16320352,
+        "storedBytes": 14491351
+      },
+      {
+        "slice": 5,
+        "first": 9000,
+        "last": 10790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 15560816,
+        "storedBytes": 13805189
+      },
+      {
+        "slice": 6,
+        "first": 10800,
+        "last": 12590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 15071024,
+        "storedBytes": 13369428
+      },
+      {
+        "slice": 7,
+        "first": 12600,
+        "last": 14390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14064736,
+        "storedBytes": 12473025
+      },
+      {
+        "slice": 8,
+        "first": 14400,
+        "last": 16190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14163600,
+        "storedBytes": 12539488
+      },
+      {
+        "slice": 9,
+        "first": 16200,
+        "last": 17990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14164608,
+        "storedBytes": 12520786
+      },
+      {
+        "slice": 10,
+        "first": 18000,
+        "last": 19790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14557760,
+        "storedBytes": 12836533
+      },
+      {
+        "slice": 11,
+        "first": 19800,
+        "last": 21590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14529200,
+        "storedBytes": 12808100
+      },
+      {
+        "slice": 12,
+        "first": 21600,
+        "last": 23390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14321824,
+        "storedBytes": 12622437
+      },
+      {
+        "slice": 13,
+        "first": 23400,
+        "last": 25190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14293872,
+        "storedBytes": 12588845
+      },
+      {
+        "slice": 14,
+        "first": 25200,
+        "last": 26990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14235312,
+        "storedBytes": 12536505
+      },
+      {
+        "slice": 15,
+        "first": 27000,
+        "last": 28790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14295344,
+        "storedBytes": 12589876
+      },
+      {
+        "slice": 16,
+        "first": 28800,
+        "last": 30590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 14681456,
+        "storedBytes": 12932701
+      },
+      {
+        "slice": 17,
+        "first": 30600,
+        "last": 32390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 15109344,
+        "storedBytes": 13308369
+      },
+      {
+        "slice": 18,
+        "first": 32400,
+        "last": 34190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 15464192,
+        "storedBytes": 13626543
+      },
+      {
+        "slice": 19,
+        "first": 34200,
+        "last": 35990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 15636352,
+        "storedBytes": 13789073
+      },
+      {
+        "slice": 20,
+        "first": 36000,
+        "last": 37790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 16619056,
+        "storedBytes": 14670148
+      },
+      {
+        "slice": 21,
+        "first": 37800,
+        "last": 39590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 17607136,
+        "storedBytes": 15566101
+      },
+      {
+        "slice": 22,
+        "first": 39600,
+        "last": 41390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 19344800,
+        "storedBytes": 17118815
+      },
+      {
+        "slice": 23,
+        "first": 41400,
+        "last": 43190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 21183456,
+        "storedBytes": 18764990
+      },
+      {
+        "slice": 24,
+        "first": 43200,
+        "last": 44990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 23537728,
+        "storedBytes": 20850351
+      },
+      {
+        "slice": 25,
+        "first": 45000,
+        "last": 46790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 25532992,
+        "storedBytes": 22643068
+      },
+      {
+        "slice": 26,
+        "first": 46800,
+        "last": 48590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 27437632,
+        "storedBytes": 24331073
+      },
+      {
+        "slice": 27,
+        "first": 48600,
+        "last": 50390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 28831200,
+        "storedBytes": 25573870
+      },
+      {
+        "slice": 28,
+        "first": 50400,
+        "last": 52190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 30264704,
+        "storedBytes": 26829494
+      },
+      {
+        "slice": 29,
+        "first": 52200,
+        "last": 53990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 30558784,
+        "storedBytes": 27098452
+      },
+      {
+        "slice": 30,
+        "first": 54000,
+        "last": 55790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 30787088,
+        "storedBytes": 27284352
+      },
+      {
+        "slice": 31,
+        "first": 55800,
+        "last": 57590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 30822048,
+        "storedBytes": 27312932
+      },
+      {
+        "slice": 32,
+        "first": 57600,
+        "last": 59390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 30460448,
+        "storedBytes": 26987291
+      },
+      {
+        "slice": 33,
+        "first": 59400,
+        "last": 61190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 30689712,
+        "storedBytes": 27192149
+      },
+      {
+        "slice": 34,
+        "first": 61200,
+        "last": 62990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 30246352,
+        "storedBytes": 26801498
+      },
+      {
+        "slice": 35,
+        "first": 63000,
+        "last": 64790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 29912256,
+        "storedBytes": 26498374
+      },
+      {
+        "slice": 36,
+        "first": 64800,
+        "last": 66590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 29424704,
+        "storedBytes": 26065764
+      },
+      {
+        "slice": 37,
+        "first": 66600,
+        "last": 68390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 28827184,
+        "storedBytes": 25536536
+      },
+      {
+        "slice": 38,
+        "first": 68400,
+        "last": 70190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 28437104,
+        "storedBytes": 25197083
+      },
+      {
+        "slice": 39,
+        "first": 70200,
+        "last": 71990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 28136160,
+        "storedBytes": 24931226
+      },
+      {
+        "slice": 40,
+        "first": 72000,
+        "last": 73790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 27693216,
+        "storedBytes": 24551654
+      },
+      {
+        "slice": 41,
+        "first": 73800,
+        "last": 75590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 26797488,
+        "storedBytes": 23752614
+      },
+      {
+        "slice": 42,
+        "first": 75600,
+        "last": 77390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 25757520,
+        "storedBytes": 22833645
+      },
+      {
+        "slice": 43,
+        "first": 77400,
+        "last": 79190,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 24991344,
+        "storedBytes": 22161686
+      },
+      {
+        "slice": 44,
+        "first": 79200,
+        "last": 80990,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 24295984,
+        "storedBytes": 21537886
+      },
+      {
+        "slice": 45,
+        "first": 81000,
+        "last": 82790,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 23587584,
+        "storedBytes": 20911286
+      },
+      {
+        "slice": 46,
+        "first": 82800,
+        "last": 84590,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 22654272,
+        "storedBytes": 20085875
+      },
+      {
+        "slice": 47,
+        "first": 84600,
+        "last": 86390,
+        "frames": 180,
+        "largestGap": 10,
+        "bytes": 21557536,
+        "storedBytes": 19114785
+      }
+    ],
+    "sourceBytes": 1045852080,
+    "storedSourceBytes": 926199740,
+    "elapsedSeconds": 206.897685541,
+    "sourceFrames": {
+      "count": 8640,
+      "first": 0,
+      "last": 86390,
+      "duplicateFrames": 0,
+      "largestGapSeconds": 10,
+      "gapsOver10Seconds": []
+    },
+    "note": "Frame continuity describes retained source slices, not completeness of aircraft reception."
+  },
+  "aircraftIdentities": 10095,
+  "samples": 12660904,
+  "delivery": {
+    "gzipBytes": 185155012,
+    "decodedBytes": 508792267,
+    "largestGzipChunk": 11645158,
+    "largestDecodedChunk": 32033453
+  },
+  "compilation": {
+    "seconds": 45.109720918,
+    "peakChildRssKiB": 812784,
+    "method": "Serial hourly child processes; 2 GiB JavaScript heap ceiling per child; RSS measured separately."
+  },
+  "method": {
+    "boundsMeaning": "European viewing rectangle includes adjacent regions; not a Europe-only political mask.",
+    "filtering": "Shared transport thresholds, applied separately to continuous hourly fragments. At least four distinct samples; 120 knots and 1500 feet; without airline-like callsign, 250 knots and 10000 feet.",
+    "continuity": "Conflict timestamps excluded; gaps over 45 seconds, jumps over 1200 knots and known callsign changes split fragments. No interpolation across these barriers.",
+    "clock": "UTC day, half-open [00:00,24:00); 180-second preceding / 45-second following overlap within the retained day.",
+    "metrics": "Day aircraft count is a union of ICAO addresses, not flights. Samples/cells exclude hourly overlap. Snapshot count is distinct aircraft with a continuous fragment spanning each five-minute instant.",
+    "endpoints": "No confirmed origins, destinations or arrival/departure counts. Observation density is not air-traffic completeness."
+  },
+  "limits": {
+    "directoryBytes": 8589934592,
+    "requests": "48 source requests plus one pinned basemap, at most one retry each; cache reruns avoid downloads",
+    "sourceSliceBytes": 67108864,
+    "freeDiskFloorBytes": 12884901888,
+    "host": "author laptop; no mini writes, recorder config changes, uploads or scheduled jobs"
+  },
+  "reproducibility": {
+    "node": "v26.8.2",
+    "platform": "darwin",
+    "arch": "arm64",
+    "scriptSha256": "c022f7687e06d0c6766af782c695eb228842ca3d641de27aab6ee0ca75a6b43f",
+    "decoderSha256": "9a27d730ea82664ffa932c803db430f2a26c47dc6977b2b83465629b925fa268"
+  },
+  "hours": [
+    {
+      "hour": 0,
+      "path": "hour-00.json.gz",
+      "sourceHashes": [
+        "469a7e32eca594cea14454137fb2b4103d4465159e3ab751ae478d54f87ea490",
+        "915c9ee15c121173af53d0f1c7fe296cc685f6640031e48bab7e3eccfca98c3c",
+        "c2ea80a750058d4d23518646d7b6b806137c6a5a67c7103f4d0ba477e5174a59"
+      ],
+      "sha256": "45c83a6c88e91c9f7475bcc074a16aa6c58109813bfbffa49e734b6c8b99b301",
+      "decodedSha256": "10a916bc95374cb2915ba3599feca997ec63656ffa37851b51b21ff38110a99e",
+      "bytes": 1407340,
+      "decodedBytes": 3883523,
+      "fragmentsIncludingOverlap": 1129,
+      "samplesExcludingOverlap": 104362,
+      "acceptedBeforeFiltering": 107222,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 631,
+        "implausibleJumps": 49,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 0,
+          "observedSamples": 10017,
+          "aircraftAtInstant": 331
+        },
+        {
+          "time": 300,
+          "observedSamples": 9804,
+          "aircraftAtInstant": 504
+        },
+        {
+          "time": 600,
+          "observedSamples": 9173,
+          "aircraftAtInstant": 484
+        },
+        {
+          "time": 900,
+          "observedSamples": 8747,
+          "aircraftAtInstant": 460
+        },
+        {
+          "time": 1200,
+          "observedSamples": 8874,
+          "aircraftAtInstant": 451
+        },
+        {
+          "time": 1500,
+          "observedSamples": 8807,
+          "aircraftAtInstant": 451
+        },
+        {
+          "time": 1800,
+          "observedSamples": 8483,
+          "aircraftAtInstant": 429
+        },
+        {
+          "time": 2100,
+          "observedSamples": 8610,
+          "aircraftAtInstant": 427
+        },
+        {
+          "time": 2400,
+          "observedSamples": 8289,
+          "aircraftAtInstant": 425
+        },
+        {
+          "time": 2700,
+          "observedSamples": 7936,
+          "aircraftAtInstant": 403
+        },
+        {
+          "time": 3000,
+          "observedSamples": 7791,
+          "aircraftAtInstant": 400
+        },
+        {
+          "time": 3300,
+          "observedSamples": 7831,
+          "aircraftAtInstant": 379
+        }
+      ],
+      "elapsedSeconds": 0.5568557089999999,
+      "maxRssKiB": 277184
+    },
+    {
+      "hour": 1,
+      "path": "hour-01.json.gz",
+      "sourceHashes": [
+        "915c9ee15c121173af53d0f1c7fe296cc685f6640031e48bab7e3eccfca98c3c",
+        "c2ea80a750058d4d23518646d7b6b806137c6a5a67c7103f4d0ba477e5174a59",
+        "4dd6d2f1854fd2b140a4562a945b5e753556b42c98576ca6fea317e5bfe7e3e4",
+        "00e6ec3e3b4842c23afae2db9592a42f81bcf866be9021f0fe768bb0c50f77e2"
+      ],
+      "sha256": "755d101f57adbcf9ad16eff17a499a25f73ae62e756df2ebb706f29aaa9c2395",
+      "decodedSha256": "4225986439d5271f815229151296b14d9cafc3cc2fd9d86a1238855436f6e61b",
+      "bytes": 1290712,
+      "decodedBytes": 3621520,
+      "fragmentsIncludingOverlap": 1318,
+      "samplesExcludingOverlap": 90750,
+      "acceptedBeforeFiltering": 98112,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 870,
+        "implausibleJumps": 64,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 3600,
+          "observedSamples": 7476,
+          "aircraftAtInstant": 372
+        },
+        {
+          "time": 3900,
+          "observedSamples": 7388,
+          "aircraftAtInstant": 365
+        },
+        {
+          "time": 4200,
+          "observedSamples": 7285,
+          "aircraftAtInstant": 363
+        },
+        {
+          "time": 4500,
+          "observedSamples": 7332,
+          "aircraftAtInstant": 367
+        },
+        {
+          "time": 4800,
+          "observedSamples": 7572,
+          "aircraftAtInstant": 379
+        },
+        {
+          "time": 5100,
+          "observedSamples": 7440,
+          "aircraftAtInstant": 386
+        },
+        {
+          "time": 5400,
+          "observedSamples": 7532,
+          "aircraftAtInstant": 384
+        },
+        {
+          "time": 5700,
+          "observedSamples": 7566,
+          "aircraftAtInstant": 379
+        },
+        {
+          "time": 6000,
+          "observedSamples": 7586,
+          "aircraftAtInstant": 381
+        },
+        {
+          "time": 6300,
+          "observedSamples": 7641,
+          "aircraftAtInstant": 391
+        },
+        {
+          "time": 6600,
+          "observedSamples": 7863,
+          "aircraftAtInstant": 399
+        },
+        {
+          "time": 6900,
+          "observedSamples": 8069,
+          "aircraftAtInstant": 404
+        }
+      ],
+      "elapsedSeconds": 0.548682459,
+      "maxRssKiB": 265616
+    },
+    {
+      "hour": 2,
+      "path": "hour-02.json.gz",
+      "sourceHashes": [
+        "4dd6d2f1854fd2b140a4562a945b5e753556b42c98576ca6fea317e5bfe7e3e4",
+        "00e6ec3e3b4842c23afae2db9592a42f81bcf866be9021f0fe768bb0c50f77e2",
+        "315d167ec8d357a7475bded51308c80ce253d19b3ee7b22e41d8cb033cf5b710",
+        "072536ede323e0c317dc3ec3eef4a40af3643d06366e76a61dd2fa3d62c8e2a1"
+      ],
+      "sha256": "15e07bae414c162820fafe64c1b935fefccededa2dd872b8b74154511ce5c95f",
+      "decodedSha256": "2f9e72c6ba36daf263d0773e55521065ea1d8361c5f409bbdc61b2c9c232ec99",
+      "bytes": 1728586,
+      "decodedBytes": 4877466,
+      "fragmentsIncludingOverlap": 1673,
+      "samplesExcludingOverlap": 122333,
+      "acceptedBeforeFiltering": 131218,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 1102,
+        "implausibleJumps": 137,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 7200,
+          "observedSamples": 8150,
+          "aircraftAtInstant": 409
+        },
+        {
+          "time": 7500,
+          "observedSamples": 8612,
+          "aircraftAtInstant": 419
+        },
+        {
+          "time": 7800,
+          "observedSamples": 9154,
+          "aircraftAtInstant": 441
+        },
+        {
+          "time": 8100,
+          "observedSamples": 9109,
+          "aircraftAtInstant": 462
+        },
+        {
+          "time": 8400,
+          "observedSamples": 9393,
+          "aircraftAtInstant": 461
+        },
+        {
+          "time": 8700,
+          "observedSamples": 9344,
+          "aircraftAtInstant": 483
+        },
+        {
+          "time": 9000,
+          "observedSamples": 9601,
+          "aircraftAtInstant": 474
+        },
+        {
+          "time": 9300,
+          "observedSamples": 10500,
+          "aircraftAtInstant": 506
+        },
+        {
+          "time": 9600,
+          "observedSamples": 11120,
+          "aircraftAtInstant": 553
+        },
+        {
+          "time": 9900,
+          "observedSamples": 11978,
+          "aircraftAtInstant": 572
+        },
+        {
+          "time": 10200,
+          "observedSamples": 12445,
+          "aircraftAtInstant": 607
+        },
+        {
+          "time": 10500,
+          "observedSamples": 12927,
+          "aircraftAtInstant": 642
+        }
+      ],
+      "elapsedSeconds": 0.617114416,
+      "maxRssKiB": 266640
+    },
+    {
+      "hour": 3,
+      "path": "hour-03.json.gz",
+      "sourceHashes": [
+        "315d167ec8d357a7475bded51308c80ce253d19b3ee7b22e41d8cb033cf5b710",
+        "072536ede323e0c317dc3ec3eef4a40af3643d06366e76a61dd2fa3d62c8e2a1",
+        "54bda69c2e6e01928e01aeaa24fb92552019290e755421d8e06c7769ac17288b",
+        "a3ae45b73fd3002a064a1623ad1fa48d4e99e2da754851ea8120c31addaaecbc"
+      ],
+      "sha256": "0fc0f4c779ce4d3d0a8a2bd0319b99311b9f36ca1fc219dfa37dd39914e6bdd3",
+      "decodedSha256": "dd6cb21eb4c878ecb27e8cdb091da58aca2c68a29ef3ca141c376911158280cc",
+      "bytes": 2698020,
+      "decodedBytes": 7636403,
+      "fragmentsIncludingOverlap": 2209,
+      "samplesExcludingOverlap": 188907,
+      "acceptedBeforeFiltering": 202507,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 1213,
+        "implausibleJumps": 159,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 10800,
+          "observedSamples": 13435,
+          "aircraftAtInstant": 651
+        },
+        {
+          "time": 11100,
+          "observedSamples": 14166,
+          "aircraftAtInstant": 679
+        },
+        {
+          "time": 11400,
+          "observedSamples": 14108,
+          "aircraftAtInstant": 701
+        },
+        {
+          "time": 11700,
+          "observedSamples": 14298,
+          "aircraftAtInstant": 702
+        },
+        {
+          "time": 12000,
+          "observedSamples": 14819,
+          "aircraftAtInstant": 703
+        },
+        {
+          "time": 12300,
+          "observedSamples": 15187,
+          "aircraftAtInstant": 751
+        },
+        {
+          "time": 12600,
+          "observedSamples": 15659,
+          "aircraftAtInstant": 749
+        },
+        {
+          "time": 12900,
+          "observedSamples": 15865,
+          "aircraftAtInstant": 783
+        },
+        {
+          "time": 13200,
+          "observedSamples": 16419,
+          "aircraftAtInstant": 791
+        },
+        {
+          "time": 13500,
+          "observedSamples": 17264,
+          "aircraftAtInstant": 811
+        },
+        {
+          "time": 13800,
+          "observedSamples": 18426,
+          "aircraftAtInstant": 873
+        },
+        {
+          "time": 14100,
+          "observedSamples": 19261,
+          "aircraftAtInstant": 901
+        }
+      ],
+      "elapsedSeconds": 0.7232832920000001,
+      "maxRssKiB": 302224
+    },
+    {
+      "hour": 4,
+      "path": "hour-04.json.gz",
+      "sourceHashes": [
+        "54bda69c2e6e01928e01aeaa24fb92552019290e755421d8e06c7769ac17288b",
+        "a3ae45b73fd3002a064a1623ad1fa48d4e99e2da754851ea8120c31addaaecbc",
+        "9d9738e12d7a11462dbbf2638cbb53c10d48793cba719a00673778a1965ea8a9",
+        "30911f19f3158f440fdfa0659da1566708e5d63add42a92c6633875fb70c6891"
+      ],
+      "sha256": "9382c4dc3f9506135487e7cbd856bf5b645c5bd4b64017577818250682f84ac6",
+      "decodedSha256": "c6c2842ddd01e836abb655f82b44222d259d53b2ecf54a561a9806da1102b74c",
+      "bytes": 5451139,
+      "decodedBytes": 14981109,
+      "fragmentsIncludingOverlap": 3678,
+      "samplesExcludingOverlap": 376514,
+      "acceptedBeforeFiltering": 400035,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 1469,
+        "implausibleJumps": 288,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 14400,
+          "observedSamples": 20959,
+          "aircraftAtInstant": 939
+        },
+        {
+          "time": 14700,
+          "observedSamples": 23008,
+          "aircraftAtInstant": 1035
+        },
+        {
+          "time": 15000,
+          "observedSamples": 25431,
+          "aircraftAtInstant": 1129
+        },
+        {
+          "time": 15300,
+          "observedSamples": 27709,
+          "aircraftAtInstant": 1232
+        },
+        {
+          "time": 15600,
+          "observedSamples": 29655,
+          "aircraftAtInstant": 1324
+        },
+        {
+          "time": 15900,
+          "observedSamples": 31697,
+          "aircraftAtInstant": 1433
+        },
+        {
+          "time": 16200,
+          "observedSamples": 33205,
+          "aircraftAtInstant": 1525
+        },
+        {
+          "time": 16500,
+          "observedSamples": 34514,
+          "aircraftAtInstant": 1602
+        },
+        {
+          "time": 16800,
+          "observedSamples": 35475,
+          "aircraftAtInstant": 1661
+        },
+        {
+          "time": 17100,
+          "observedSamples": 37004,
+          "aircraftAtInstant": 1745
+        },
+        {
+          "time": 17400,
+          "observedSamples": 38186,
+          "aircraftAtInstant": 1798
+        },
+        {
+          "time": 17700,
+          "observedSamples": 39671,
+          "aircraftAtInstant": 1867
+        }
+      ],
+      "elapsedSeconds": 1.2222026250000002,
+      "maxRssKiB": 414560
+    },
+    {
+      "hour": 5,
+      "path": "hour-05.json.gz",
+      "sourceHashes": [
+        "9d9738e12d7a11462dbbf2638cbb53c10d48793cba719a00673778a1965ea8a9",
+        "30911f19f3158f440fdfa0659da1566708e5d63add42a92c6633875fb70c6891",
+        "b3b14330714097f956e094b3f99c3ab5306b6bfae0a52851dc6573ca0b93ca0c",
+        "d45977cac52fba59579267c79b7951dcf0ffad332cfa5bc1cdb37498c23b8081"
+      ],
+      "sha256": "1372f84c7e951ad6c319b75bbef115ec655ca59b091b107f85120ad783318242",
+      "decodedSha256": "867622d1da53ff790c8bdb23c1c556a72bf78ba26959c9d072bd871dd0284581",
+      "bytes": 8435858,
+      "decodedBytes": 23056344,
+      "fragmentsIncludingOverlap": 5168,
+      "samplesExcludingOverlap": 577704,
+      "acceptedBeforeFiltering": 623443,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 1986,
+        "implausibleJumps": 254,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 18000,
+          "observedSamples": 41574,
+          "aircraftAtInstant": 1954
+        },
+        {
+          "time": 18300,
+          "observedSamples": 42948,
+          "aircraftAtInstant": 2018
+        },
+        {
+          "time": 18600,
+          "observedSamples": 45207,
+          "aircraftAtInstant": 2088
+        },
+        {
+          "time": 18900,
+          "observedSamples": 46878,
+          "aircraftAtInstant": 2201
+        },
+        {
+          "time": 19200,
+          "observedSamples": 47696,
+          "aircraftAtInstant": 2245
+        },
+        {
+          "time": 19500,
+          "observedSamples": 48826,
+          "aircraftAtInstant": 2305
+        },
+        {
+          "time": 19800,
+          "observedSamples": 49303,
+          "aircraftAtInstant": 2352
+        },
+        {
+          "time": 20100,
+          "observedSamples": 50557,
+          "aircraftAtInstant": 2389
+        },
+        {
+          "time": 20400,
+          "observedSamples": 51181,
+          "aircraftAtInstant": 2452
+        },
+        {
+          "time": 20700,
+          "observedSamples": 51432,
+          "aircraftAtInstant": 2466
+        },
+        {
+          "time": 21000,
+          "observedSamples": 51183,
+          "aircraftAtInstant": 2464
+        },
+        {
+          "time": 21300,
+          "observedSamples": 50919,
+          "aircraftAtInstant": 2488
+        }
+      ],
+      "elapsedSeconds": 1.7594732919999998,
+      "maxRssKiB": 516432
+    },
+    {
+      "hour": 6,
+      "path": "hour-06.json.gz",
+      "sourceHashes": [
+        "b3b14330714097f956e094b3f99c3ab5306b6bfae0a52851dc6573ca0b93ca0c",
+        "d45977cac52fba59579267c79b7951dcf0ffad332cfa5bc1cdb37498c23b8081",
+        "ba611945942cf4a88a2f2fda985a39c435131b9661f5085b9bdbb9a1114c11e9",
+        "8bcc310ca76579ddb783d3ea6798a8c7b704340361e22679bfa772433ba217db"
+      ],
+      "sha256": "7a69d303e12409731c9fab19932ce3f8f02bd07336498c9d68ee35d5d0b8bfba",
+      "decodedSha256": "f0ab28e7ca48efc8fb6ae941ea5f575a6b68e0b0ae359da1dc893fe8c9de39bb",
+      "bytes": 9509726,
+      "decodedBytes": 26047449,
+      "fragmentsIncludingOverlap": 5827,
+      "samplesExcludingOverlap": 649436,
+      "acceptedBeforeFiltering": 720466,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 2597,
+        "implausibleJumps": 129,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 21600,
+          "observedSamples": 51468,
+          "aircraftAtInstant": 2498
+        },
+        {
+          "time": 21900,
+          "observedSamples": 52177,
+          "aircraftAtInstant": 2525
+        },
+        {
+          "time": 22200,
+          "observedSamples": 52550,
+          "aircraftAtInstant": 2554
+        },
+        {
+          "time": 22500,
+          "observedSamples": 53304,
+          "aircraftAtInstant": 2565
+        },
+        {
+          "time": 22800,
+          "observedSamples": 53767,
+          "aircraftAtInstant": 2596
+        },
+        {
+          "time": 23100,
+          "observedSamples": 53657,
+          "aircraftAtInstant": 2597
+        },
+        {
+          "time": 23400,
+          "observedSamples": 54639,
+          "aircraftAtInstant": 2622
+        },
+        {
+          "time": 23700,
+          "observedSamples": 55260,
+          "aircraftAtInstant": 2652
+        },
+        {
+          "time": 24000,
+          "observedSamples": 55329,
+          "aircraftAtInstant": 2680
+        },
+        {
+          "time": 24300,
+          "observedSamples": 55278,
+          "aircraftAtInstant": 2671
+        },
+        {
+          "time": 24600,
+          "observedSamples": 55892,
+          "aircraftAtInstant": 2695
+        },
+        {
+          "time": 24900,
+          "observedSamples": 56115,
+          "aircraftAtInstant": 2715
+        }
+      ],
+      "elapsedSeconds": 2.0237914999999997,
+      "maxRssKiB": 535696
+    },
+    {
+      "hour": 7,
+      "path": "hour-07.json.gz",
+      "sourceHashes": [
+        "ba611945942cf4a88a2f2fda985a39c435131b9661f5085b9bdbb9a1114c11e9",
+        "8bcc310ca76579ddb783d3ea6798a8c7b704340361e22679bfa772433ba217db",
+        "3ed86624abe36d04af83a1d11c8b1acc859888642b25a47cd0da36496f3e2ae8",
+        "aede6c6736da2d289ae639ad8c2f9e47711ca4299c40675cfb3a5fbc8ee4bb10"
+      ],
+      "sha256": "850820b32648f5d065ffcdd65bc1a57935edf498fce89843ae72aa93a55c4092",
+      "decodedSha256": "54d4d6096f4ec9da7f58be0b3bb8bb0ed099f60c6382fb648987a2e9f0c7de57",
+      "bytes": 10122065,
+      "decodedBytes": 27677562,
+      "fragmentsIncludingOverlap": 6450,
+      "samplesExcludingOverlap": 688638,
+      "acceptedBeforeFiltering": 796029,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 3576,
+        "implausibleJumps": 96,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 25200,
+          "observedSamples": 56079,
+          "aircraftAtInstant": 2705
+        },
+        {
+          "time": 25500,
+          "observedSamples": 56315,
+          "aircraftAtInstant": 2723
+        },
+        {
+          "time": 25800,
+          "observedSamples": 57510,
+          "aircraftAtInstant": 2744
+        },
+        {
+          "time": 26100,
+          "observedSamples": 57802,
+          "aircraftAtInstant": 2775
+        },
+        {
+          "time": 26400,
+          "observedSamples": 58337,
+          "aircraftAtInstant": 2785
+        },
+        {
+          "time": 26700,
+          "observedSamples": 58181,
+          "aircraftAtInstant": 2784
+        },
+        {
+          "time": 27000,
+          "observedSamples": 57551,
+          "aircraftAtInstant": 2773
+        },
+        {
+          "time": 27300,
+          "observedSamples": 57325,
+          "aircraftAtInstant": 2754
+        },
+        {
+          "time": 27600,
+          "observedSamples": 57308,
+          "aircraftAtInstant": 2767
+        },
+        {
+          "time": 27900,
+          "observedSamples": 57568,
+          "aircraftAtInstant": 2771
+        },
+        {
+          "time": 28200,
+          "observedSamples": 57639,
+          "aircraftAtInstant": 2784
+        },
+        {
+          "time": 28500,
+          "observedSamples": 57023,
+          "aircraftAtInstant": 2782
+        }
+      ],
+      "elapsedSeconds": 2.1057534999999996,
+      "maxRssKiB": 614896
+    },
+    {
+      "hour": 8,
+      "path": "hour-08.json.gz",
+      "sourceHashes": [
+        "3ed86624abe36d04af83a1d11c8b1acc859888642b25a47cd0da36496f3e2ae8",
+        "aede6c6736da2d289ae639ad8c2f9e47711ca4299c40675cfb3a5fbc8ee4bb10",
+        "46916f4acbb0f992c4482e5708b3b74af1bd9634dc439b9358b42d38db851a37",
+        "1e1fc9295542db6da1ef2693f3dac2ef2294d49709d5f61be8dbb9372fe47ef5"
+      ],
+      "sha256": "3fc0b3ec814c3b0c717f54bf6b23fdadff7c0c1cb1b11802b2b74a54dcf0da36",
+      "decodedSha256": "53deecc160d03ef6cb44d6cc2bcf51ea70391242303300739ff212044ea86382",
+      "bytes": 10916862,
+      "decodedBytes": 29837543,
+      "fragmentsIncludingOverlap": 6953,
+      "samplesExcludingOverlap": 744185,
+      "acceptedBeforeFiltering": 883458,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 4288,
+        "implausibleJumps": 105,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 28800,
+          "observedSamples": 57900,
+          "aircraftAtInstant": 2788
+        },
+        {
+          "time": 29100,
+          "observedSamples": 59128,
+          "aircraftAtInstant": 2826
+        },
+        {
+          "time": 29400,
+          "observedSamples": 60420,
+          "aircraftAtInstant": 2874
+        },
+        {
+          "time": 29700,
+          "observedSamples": 61055,
+          "aircraftAtInstant": 2911
+        },
+        {
+          "time": 30000,
+          "observedSamples": 62011,
+          "aircraftAtInstant": 2944
+        },
+        {
+          "time": 30300,
+          "observedSamples": 62094,
+          "aircraftAtInstant": 2982
+        },
+        {
+          "time": 30600,
+          "observedSamples": 62270,
+          "aircraftAtInstant": 2977
+        },
+        {
+          "time": 30900,
+          "observedSamples": 62643,
+          "aircraftAtInstant": 3007
+        },
+        {
+          "time": 31200,
+          "observedSamples": 63635,
+          "aircraftAtInstant": 3032
+        },
+        {
+          "time": 31500,
+          "observedSamples": 64245,
+          "aircraftAtInstant": 3057
+        },
+        {
+          "time": 31800,
+          "observedSamples": 64607,
+          "aircraftAtInstant": 3092
+        },
+        {
+          "time": 32100,
+          "observedSamples": 64177,
+          "aircraftAtInstant": 3094
+        }
+      ],
+      "elapsedSeconds": 2.224462375,
+      "maxRssKiB": 682624
+    },
+    {
+      "hour": 9,
+      "path": "hour-09.json.gz",
+      "sourceHashes": [
+        "46916f4acbb0f992c4482e5708b3b74af1bd9634dc439b9358b42d38db851a37",
+        "1e1fc9295542db6da1ef2693f3dac2ef2294d49709d5f61be8dbb9372fe47ef5",
+        "d1b7f68ff976ab6218959c015b57708aa22657fc8503711cdb0d1dd5b94d8744",
+        "01d555deccd847ada86bb1f3efe4672e5776bea69188a087f58c6b9356d41c66"
+      ],
+      "sha256": "8038807e6bda308197e692fe865bbe2fecbf45672601ab15085db9a9f1e2e754",
+      "decodedSha256": "bcc44e28286f2edaa99bfddc33bf48197ea81c890620337004a821b1349628b1",
+      "bytes": 11506467,
+      "decodedBytes": 31609896,
+      "fragmentsIncludingOverlap": 7272,
+      "samplesExcludingOverlap": 786466,
+      "acceptedBeforeFiltering": 947435,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 4413,
+        "implausibleJumps": 190,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 32400,
+          "observedSamples": 64576,
+          "aircraftAtInstant": 3091
+        },
+        {
+          "time": 32700,
+          "observedSamples": 65039,
+          "aircraftAtInstant": 3123
+        },
+        {
+          "time": 33000,
+          "observedSamples": 64712,
+          "aircraftAtInstant": 3129
+        },
+        {
+          "time": 33300,
+          "observedSamples": 64953,
+          "aircraftAtInstant": 3134
+        },
+        {
+          "time": 33600,
+          "observedSamples": 65653,
+          "aircraftAtInstant": 3161
+        },
+        {
+          "time": 33900,
+          "observedSamples": 65374,
+          "aircraftAtInstant": 3170
+        },
+        {
+          "time": 34200,
+          "observedSamples": 65329,
+          "aircraftAtInstant": 3170
+        },
+        {
+          "time": 34500,
+          "observedSamples": 65526,
+          "aircraftAtInstant": 3185
+        },
+        {
+          "time": 34800,
+          "observedSamples": 66364,
+          "aircraftAtInstant": 3197
+        },
+        {
+          "time": 35100,
+          "observedSamples": 66653,
+          "aircraftAtInstant": 3214
+        },
+        {
+          "time": 35400,
+          "observedSamples": 66394,
+          "aircraftAtInstant": 3209
+        },
+        {
+          "time": 35700,
+          "observedSamples": 65893,
+          "aircraftAtInstant": 3227
+        }
+      ],
+      "elapsedSeconds": 2.5111873329999996,
+      "maxRssKiB": 683248
+    },
+    {
+      "hour": 10,
+      "path": "hour-10.json.gz",
+      "sourceHashes": [
+        "d1b7f68ff976ab6218959c015b57708aa22657fc8503711cdb0d1dd5b94d8744",
+        "01d555deccd847ada86bb1f3efe4672e5776bea69188a087f58c6b9356d41c66",
+        "b7641e16214ebcfd3d6eecbc1d1cfef734bcb21b25c479f34d95df95a07e021e",
+        "eda2c7c2c813064257bdb43527d3f9c238284df97f94d36466ddae72c26d3518"
+      ],
+      "sha256": "e213866570ebc8eb28b3b3e3ae9df05e352f8f2c2bc023670f83a02b453f6849",
+      "decodedSha256": "fdc9de563c83fd402a4632fe5d5246fe2da6e6de26258857b935fa6cf4ec0edf",
+      "bytes": 11561421,
+      "decodedBytes": 31835814,
+      "fragmentsIncludingOverlap": 7299,
+      "samplesExcludingOverlap": 791268,
+      "acceptedBeforeFiltering": 959306,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 4621,
+        "implausibleJumps": 179,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 36000,
+          "observedSamples": 66176,
+          "aircraftAtInstant": 3207
+        },
+        {
+          "time": 36300,
+          "observedSamples": 66755,
+          "aircraftAtInstant": 3234
+        },
+        {
+          "time": 36600,
+          "observedSamples": 66971,
+          "aircraftAtInstant": 3250
+        },
+        {
+          "time": 36900,
+          "observedSamples": 67085,
+          "aircraftAtInstant": 3257
+        },
+        {
+          "time": 37200,
+          "observedSamples": 66479,
+          "aircraftAtInstant": 3261
+        },
+        {
+          "time": 37500,
+          "observedSamples": 65864,
+          "aircraftAtInstant": 3236
+        },
+        {
+          "time": 37800,
+          "observedSamples": 65754,
+          "aircraftAtInstant": 3209
+        },
+        {
+          "time": 38100,
+          "observedSamples": 66095,
+          "aircraftAtInstant": 3217
+        },
+        {
+          "time": 38400,
+          "observedSamples": 65416,
+          "aircraftAtInstant": 3199
+        },
+        {
+          "time": 38700,
+          "observedSamples": 65043,
+          "aircraftAtInstant": 3206
+        },
+        {
+          "time": 39000,
+          "observedSamples": 64782,
+          "aircraftAtInstant": 3179
+        },
+        {
+          "time": 39300,
+          "observedSamples": 64848,
+          "aircraftAtInstant": 3180
+        }
+      ],
+      "elapsedSeconds": 2.629771875,
+      "maxRssKiB": 735856
+    },
+    {
+      "hour": 11,
+      "path": "hour-11.json.gz",
+      "sourceHashes": [
+        "b7641e16214ebcfd3d6eecbc1d1cfef734bcb21b25c479f34d95df95a07e021e",
+        "eda2c7c2c813064257bdb43527d3f9c238284df97f94d36466ddae72c26d3518",
+        "ea9663fe7052c8accddd7df6b4b422866af01b70be8c19e67441c439ab5b35dd",
+        "770907a65749eca585db584501aaa07bdd8eee286b5fa82087d31d98a8480f8e"
+      ],
+      "sha256": "842e1d31803195a45083d8fb3f36fa97c2ffacc3fa2809ec249b28478fbf2a76",
+      "decodedSha256": "9ff6202fc3798ba3d80a7778a860d8c42dbff970d72092f9c8e7601ed321e11b",
+      "bytes": 11645158,
+      "decodedBytes": 32033453,
+      "fragmentsIncludingOverlap": 7227,
+      "samplesExcludingOverlap": 796997,
+      "acceptedBeforeFiltering": 971023,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 4613,
+        "implausibleJumps": 117,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 39600,
+          "observedSamples": 65266,
+          "aircraftAtInstant": 3183
+        },
+        {
+          "time": 39900,
+          "observedSamples": 65713,
+          "aircraftAtInstant": 3199
+        },
+        {
+          "time": 40200,
+          "observedSamples": 65761,
+          "aircraftAtInstant": 3203
+        },
+        {
+          "time": 40500,
+          "observedSamples": 66693,
+          "aircraftAtInstant": 3230
+        },
+        {
+          "time": 40800,
+          "observedSamples": 66763,
+          "aircraftAtInstant": 3256
+        },
+        {
+          "time": 41100,
+          "observedSamples": 67359,
+          "aircraftAtInstant": 3268
+        },
+        {
+          "time": 41400,
+          "observedSamples": 67148,
+          "aircraftAtInstant": 3278
+        },
+        {
+          "time": 41700,
+          "observedSamples": 67213,
+          "aircraftAtInstant": 3270
+        },
+        {
+          "time": 42000,
+          "observedSamples": 66525,
+          "aircraftAtInstant": 3251
+        },
+        {
+          "time": 42300,
+          "observedSamples": 66168,
+          "aircraftAtInstant": 3231
+        },
+        {
+          "time": 42600,
+          "observedSamples": 66200,
+          "aircraftAtInstant": 3233
+        },
+        {
+          "time": 42900,
+          "observedSamples": 66188,
+          "aircraftAtInstant": 3232
+        }
+      ],
+      "elapsedSeconds": 2.8485995,
+      "maxRssKiB": 733248
+    },
+    {
+      "hour": 12,
+      "path": "hour-12.json.gz",
+      "sourceHashes": [
+        "ea9663fe7052c8accddd7df6b4b422866af01b70be8c19e67441c439ab5b35dd",
+        "770907a65749eca585db584501aaa07bdd8eee286b5fa82087d31d98a8480f8e",
+        "fa35b785289293c0f64c12220ddee88891ccc7a998222f95526e3591d593911c",
+        "1f434499d4bbc435e8f217a34093b47575a56a485a1265ac5cb9f932a8ddca23"
+      ],
+      "sha256": "d062cbfcab614e6fdb1dbacffaa14d26df8ea4634ecedc656ac31cbb69161e68",
+      "decodedSha256": "1b287392b0af3a3f137106cba8c93785913673d170b4e4b4ba84e6024cd295a7",
+      "bytes": 11081826,
+      "decodedBytes": 30522483,
+      "fragmentsIncludingOverlap": 7025,
+      "samplesExcludingOverlap": 757569,
+      "acceptedBeforeFiltering": 950056,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 4831,
+        "implausibleJumps": 137,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 43200,
+          "observedSamples": 65359,
+          "aircraftAtInstant": 3181
+        },
+        {
+          "time": 43500,
+          "observedSamples": 65802,
+          "aircraftAtInstant": 3182
+        },
+        {
+          "time": 43800,
+          "observedSamples": 65426,
+          "aircraftAtInstant": 3169
+        },
+        {
+          "time": 44100,
+          "observedSamples": 65053,
+          "aircraftAtInstant": 3169
+        },
+        {
+          "time": 44400,
+          "observedSamples": 64501,
+          "aircraftAtInstant": 3160
+        },
+        {
+          "time": 44700,
+          "observedSamples": 63050,
+          "aircraftAtInstant": 3111
+        },
+        {
+          "time": 45000,
+          "observedSamples": 62548,
+          "aircraftAtInstant": 3051
+        },
+        {
+          "time": 45300,
+          "observedSamples": 62068,
+          "aircraftAtInstant": 3024
+        },
+        {
+          "time": 45600,
+          "observedSamples": 61388,
+          "aircraftAtInstant": 3013
+        },
+        {
+          "time": 45900,
+          "observedSamples": 61385,
+          "aircraftAtInstant": 2991
+        },
+        {
+          "time": 46200,
+          "observedSamples": 60571,
+          "aircraftAtInstant": 2977
+        },
+        {
+          "time": 46500,
+          "observedSamples": 60418,
+          "aircraftAtInstant": 2984
+        }
+      ],
+      "elapsedSeconds": 2.607024333,
+      "maxRssKiB": 752464
+    },
+    {
+      "hour": 13,
+      "path": "hour-13.json.gz",
+      "sourceHashes": [
+        "fa35b785289293c0f64c12220ddee88891ccc7a998222f95526e3591d593911c",
+        "1f434499d4bbc435e8f217a34093b47575a56a485a1265ac5cb9f932a8ddca23",
+        "d4ad01a309d99eefaa49fba5977fc39361e3b85aff5191c34d33753076842a01",
+        "5767526e5364d8032e6242c6461500305a252da8c0496613418aef08da264a82"
+      ],
+      "sha256": "4cfd26154ea55c2257eddd7f80a8c37ff95de5e4fc80cd2dc839082ae1315017",
+      "decodedSha256": "6d6c6998c5b4fcc051a242d599388a8e02ef62cfee017212be750731cc1c95e2",
+      "bytes": 10931191,
+      "decodedBytes": 30043849,
+      "fragmentsIncludingOverlap": 6950,
+      "samplesExcludingOverlap": 747881,
+      "acceptedBeforeFiltering": 941886,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 4751,
+        "implausibleJumps": 205,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 46800,
+          "observedSamples": 59985,
+          "aircraftAtInstant": 2920
+        },
+        {
+          "time": 47100,
+          "observedSamples": 60705,
+          "aircraftAtInstant": 2953
+        },
+        {
+          "time": 47400,
+          "observedSamples": 61485,
+          "aircraftAtInstant": 2979
+        },
+        {
+          "time": 47700,
+          "observedSamples": 62423,
+          "aircraftAtInstant": 3010
+        },
+        {
+          "time": 48000,
+          "observedSamples": 63016,
+          "aircraftAtInstant": 3065
+        },
+        {
+          "time": 48300,
+          "observedSamples": 62934,
+          "aircraftAtInstant": 3047
+        },
+        {
+          "time": 48600,
+          "observedSamples": 63049,
+          "aircraftAtInstant": 3064
+        },
+        {
+          "time": 48900,
+          "observedSamples": 63164,
+          "aircraftAtInstant": 3064
+        },
+        {
+          "time": 49200,
+          "observedSamples": 62469,
+          "aircraftAtInstant": 3073
+        },
+        {
+          "time": 49500,
+          "observedSamples": 63137,
+          "aircraftAtInstant": 3075
+        },
+        {
+          "time": 49800,
+          "observedSamples": 62964,
+          "aircraftAtInstant": 3078
+        },
+        {
+          "time": 50100,
+          "observedSamples": 62550,
+          "aircraftAtInstant": 3052
+        }
+      ],
+      "elapsedSeconds": 2.667585583,
+      "maxRssKiB": 812784
+    },
+    {
+      "hour": 14,
+      "path": "hour-14.json.gz",
+      "sourceHashes": [
+        "d4ad01a309d99eefaa49fba5977fc39361e3b85aff5191c34d33753076842a01",
+        "5767526e5364d8032e6242c6461500305a252da8c0496613418aef08da264a82",
+        "6c302ce8a89d710eabfde28dfdd683fb73bf8cde908022840006992d618e99d8",
+        "ebb4411e5075b1eb877e069b787d1d621f23691b3fcb7e609b144c12250d59ed"
+      ],
+      "sha256": "d53abf28f6f16e64ff48a5a64d1f7867302e4d1ce020ea884dfc1260f1627e37",
+      "decodedSha256": "217d86d81a16e159090aea2b30045036b5b1fee8d84b096d97305cd0c82a4e79",
+      "bytes": 10748233,
+      "decodedBytes": 29535112,
+      "fragmentsIncludingOverlap": 6842,
+      "samplesExcludingOverlap": 733581,
+      "acceptedBeforeFiltering": 930908,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 4723,
+        "implausibleJumps": 219,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 50400,
+          "observedSamples": 62500,
+          "aircraftAtInstant": 3053
+        },
+        {
+          "time": 50700,
+          "observedSamples": 62548,
+          "aircraftAtInstant": 3030
+        },
+        {
+          "time": 51000,
+          "observedSamples": 63053,
+          "aircraftAtInstant": 3025
+        },
+        {
+          "time": 51300,
+          "observedSamples": 63038,
+          "aircraftAtInstant": 3050
+        },
+        {
+          "time": 51600,
+          "observedSamples": 62351,
+          "aircraftAtInstant": 3009
+        },
+        {
+          "time": 51900,
+          "observedSamples": 60796,
+          "aircraftAtInstant": 2983
+        },
+        {
+          "time": 52200,
+          "observedSamples": 60369,
+          "aircraftAtInstant": 2952
+        },
+        {
+          "time": 52500,
+          "observedSamples": 60255,
+          "aircraftAtInstant": 2936
+        },
+        {
+          "time": 52800,
+          "observedSamples": 60403,
+          "aircraftAtInstant": 2956
+        },
+        {
+          "time": 53100,
+          "observedSamples": 59893,
+          "aircraftAtInstant": 2946
+        },
+        {
+          "time": 53400,
+          "observedSamples": 59558,
+          "aircraftAtInstant": 2935
+        },
+        {
+          "time": 53700,
+          "observedSamples": 58817,
+          "aircraftAtInstant": 2907
+        }
+      ],
+      "elapsedSeconds": 2.7458595420000003,
+      "maxRssKiB": 739568
+    },
+    {
+      "hour": 15,
+      "path": "hour-15.json.gz",
+      "sourceHashes": [
+        "6c302ce8a89d710eabfde28dfdd683fb73bf8cde908022840006992d618e99d8",
+        "ebb4411e5075b1eb877e069b787d1d621f23691b3fcb7e609b144c12250d59ed",
+        "80a6f4aa9647dadd47f653b2c17175a7c7237d3d73d5155b6b68c1fb497c9f5d",
+        "f7baf7d07f637012b5dc7c9a59b9a317b55f4b7d7ce2f80f4f413e199cd4271e"
+      ],
+      "sha256": "797a21431f43ed94bc159a82f3b87ac187e08773d1f6c0bb54b7217a181822b1",
+      "decodedSha256": "116b4a35c190d63609109f1a90661671f5c482e704a86d035dd5f46c908d66b4",
+      "bytes": 10377954,
+      "decodedBytes": 28482603,
+      "fragmentsIncludingOverlap": 6482,
+      "samplesExcludingOverlap": 708694,
+      "acceptedBeforeFiltering": 889275,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 4124,
+        "implausibleJumps": 148,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 54000,
+          "observedSamples": 58884,
+          "aircraftAtInstant": 2882
+        },
+        {
+          "time": 54300,
+          "observedSamples": 59156,
+          "aircraftAtInstant": 2873
+        },
+        {
+          "time": 54600,
+          "observedSamples": 59316,
+          "aircraftAtInstant": 2877
+        },
+        {
+          "time": 54900,
+          "observedSamples": 59509,
+          "aircraftAtInstant": 2891
+        },
+        {
+          "time": 55200,
+          "observedSamples": 59758,
+          "aircraftAtInstant": 2871
+        },
+        {
+          "time": 55500,
+          "observedSamples": 59716,
+          "aircraftAtInstant": 2885
+        },
+        {
+          "time": 55800,
+          "observedSamples": 59866,
+          "aircraftAtInstant": 2906
+        },
+        {
+          "time": 56100,
+          "observedSamples": 59376,
+          "aircraftAtInstant": 2897
+        },
+        {
+          "time": 56400,
+          "observedSamples": 58672,
+          "aircraftAtInstant": 2872
+        },
+        {
+          "time": 56700,
+          "observedSamples": 58880,
+          "aircraftAtInstant": 2867
+        },
+        {
+          "time": 57000,
+          "observedSamples": 57858,
+          "aircraftAtInstant": 2844
+        },
+        {
+          "time": 57300,
+          "observedSamples": 57703,
+          "aircraftAtInstant": 2818
+        }
+      ],
+      "elapsedSeconds": 2.63198225,
+      "maxRssKiB": 732448
+    },
+    {
+      "hour": 16,
+      "path": "hour-16.json.gz",
+      "sourceHashes": [
+        "80a6f4aa9647dadd47f653b2c17175a7c7237d3d73d5155b6b68c1fb497c9f5d",
+        "f7baf7d07f637012b5dc7c9a59b9a317b55f4b7d7ce2f80f4f413e199cd4271e",
+        "81630047bb0488afdddb366de1cc43db054029b3397c9b678db196c93e5ceeee",
+        "a72ed09b5e72a649a46cfbdcc0d9c53d40110bd89138e7e236dbb739f9a84716"
+      ],
+      "sha256": "664cd7ff702334b64c2552b8c35be607179555009f9164582f3346b9f00ddd92",
+      "decodedSha256": "0431222c8d1d21d4b448df0a07b656eeaf2c59216d3236ddabfce820e0db12f4",
+      "bytes": 10069470,
+      "decodedBytes": 27562207,
+      "fragmentsIncludingOverlap": 6285,
+      "samplesExcludingOverlap": 684585,
+      "acceptedBeforeFiltering": 843613,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 3839,
+        "implausibleJumps": 183,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 57600,
+          "observedSamples": 57752,
+          "aircraftAtInstant": 2806
+        },
+        {
+          "time": 57900,
+          "observedSamples": 58470,
+          "aircraftAtInstant": 2828
+        },
+        {
+          "time": 58200,
+          "observedSamples": 57930,
+          "aircraftAtInstant": 2846
+        },
+        {
+          "time": 58500,
+          "observedSamples": 57301,
+          "aircraftAtInstant": 2786
+        },
+        {
+          "time": 58800,
+          "observedSamples": 57286,
+          "aircraftAtInstant": 2801
+        },
+        {
+          "time": 59100,
+          "observedSamples": 57096,
+          "aircraftAtInstant": 2797
+        },
+        {
+          "time": 59400,
+          "observedSamples": 57082,
+          "aircraftAtInstant": 2793
+        },
+        {
+          "time": 59700,
+          "observedSamples": 56530,
+          "aircraftAtInstant": 2792
+        },
+        {
+          "time": 60000,
+          "observedSamples": 56396,
+          "aircraftAtInstant": 2756
+        },
+        {
+          "time": 60300,
+          "observedSamples": 56491,
+          "aircraftAtInstant": 2759
+        },
+        {
+          "time": 60600,
+          "observedSamples": 56237,
+          "aircraftAtInstant": 2736
+        },
+        {
+          "time": 60900,
+          "observedSamples": 56014,
+          "aircraftAtInstant": 2742
+        }
+      ],
+      "elapsedSeconds": 2.5340195,
+      "maxRssKiB": 657120
+    },
+    {
+      "hour": 17,
+      "path": "hour-17.json.gz",
+      "sourceHashes": [
+        "81630047bb0488afdddb366de1cc43db054029b3397c9b678db196c93e5ceeee",
+        "a72ed09b5e72a649a46cfbdcc0d9c53d40110bd89138e7e236dbb739f9a84716",
+        "ad959804604822bd07d47919afca8a4e650e27f2bea19246ffc9f33df95da26e",
+        "02f3b978b2a27508a49c4d486a50c320ee474f04200554e5d94febc488b48997"
+      ],
+      "sha256": "308f263fb2a9e642e44711690b44c6508d1d62c9bda395a4228dba01861dfee1",
+      "decodedSha256": "f7b5925a8c96e07190b7a3f330c16a5dd29ce84a2fb995bffef15042a70a96cc",
+      "bytes": 9467720,
+      "decodedBytes": 25861862,
+      "fragmentsIncludingOverlap": 5882,
+      "samplesExcludingOverlap": 641835,
+      "acceptedBeforeFiltering": 743092,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 2877,
+        "implausibleJumps": 117,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 61200,
+          "observedSamples": 55860,
+          "aircraftAtInstant": 2708
+        },
+        {
+          "time": 61500,
+          "observedSamples": 55252,
+          "aircraftAtInstant": 2719
+        },
+        {
+          "time": 61800,
+          "observedSamples": 54602,
+          "aircraftAtInstant": 2680
+        },
+        {
+          "time": 62100,
+          "observedSamples": 54267,
+          "aircraftAtInstant": 2643
+        },
+        {
+          "time": 62400,
+          "observedSamples": 54109,
+          "aircraftAtInstant": 2643
+        },
+        {
+          "time": 62700,
+          "observedSamples": 52841,
+          "aircraftAtInstant": 2605
+        },
+        {
+          "time": 63000,
+          "observedSamples": 52478,
+          "aircraftAtInstant": 2577
+        },
+        {
+          "time": 63300,
+          "observedSamples": 52473,
+          "aircraftAtInstant": 2562
+        },
+        {
+          "time": 63600,
+          "observedSamples": 52978,
+          "aircraftAtInstant": 2549
+        },
+        {
+          "time": 63900,
+          "observedSamples": 52684,
+          "aircraftAtInstant": 2544
+        },
+        {
+          "time": 64200,
+          "observedSamples": 52393,
+          "aircraftAtInstant": 2548
+        },
+        {
+          "time": 64500,
+          "observedSamples": 51898,
+          "aircraftAtInstant": 2529
+        }
+      ],
+      "elapsedSeconds": 2.533794542,
+      "maxRssKiB": 660592
+    },
+    {
+      "hour": 18,
+      "path": "hour-18.json.gz",
+      "sourceHashes": [
+        "ad959804604822bd07d47919afca8a4e650e27f2bea19246ffc9f33df95da26e",
+        "02f3b978b2a27508a49c4d486a50c320ee474f04200554e5d94febc488b48997",
+        "25d47b9b5e2b1aeb0be61ac1f43ae7484d30748c7c83eaca4abc8ef7832d38f7",
+        "0484141f42b4bfd656601fe8cb9d01d7d2391df20a28431042ad9dcd27a22e27"
+      ],
+      "sha256": "540d5465cc7abe5145f1cf0f5539d2d1112c042d14b0edd2273237586a018a70",
+      "decodedSha256": "e26288669652c1bd416cdfbe42032e0be95904403401eba358f93a9828f1acdc",
+      "bytes": 8885898,
+      "decodedBytes": 24339266,
+      "fragmentsIncludingOverlap": 5621,
+      "samplesExcludingOverlap": 604066,
+      "acceptedBeforeFiltering": 667807,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 2530,
+        "implausibleJumps": 113,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 64800,
+          "observedSamples": 51638,
+          "aircraftAtInstant": 2527
+        },
+        {
+          "time": 65100,
+          "observedSamples": 51331,
+          "aircraftAtInstant": 2500
+        },
+        {
+          "time": 65400,
+          "observedSamples": 50550,
+          "aircraftAtInstant": 2491
+        },
+        {
+          "time": 65700,
+          "observedSamples": 50275,
+          "aircraftAtInstant": 2462
+        },
+        {
+          "time": 66000,
+          "observedSamples": 50677,
+          "aircraftAtInstant": 2467
+        },
+        {
+          "time": 66300,
+          "observedSamples": 50136,
+          "aircraftAtInstant": 2455
+        },
+        {
+          "time": 66600,
+          "observedSamples": 50985,
+          "aircraftAtInstant": 2463
+        },
+        {
+          "time": 66900,
+          "observedSamples": 50879,
+          "aircraftAtInstant": 2477
+        },
+        {
+          "time": 67200,
+          "observedSamples": 50760,
+          "aircraftAtInstant": 2484
+        },
+        {
+          "time": 67500,
+          "observedSamples": 49685,
+          "aircraftAtInstant": 2470
+        },
+        {
+          "time": 67800,
+          "observedSamples": 48453,
+          "aircraftAtInstant": 2413
+        },
+        {
+          "time": 68100,
+          "observedSamples": 48697,
+          "aircraftAtInstant": 2401
+        }
+      ],
+      "elapsedSeconds": 2.2932533750000004,
+      "maxRssKiB": 608432
+    },
+    {
+      "hour": 19,
+      "path": "hour-19.json.gz",
+      "sourceHashes": [
+        "25d47b9b5e2b1aeb0be61ac1f43ae7484d30748c7c83eaca4abc8ef7832d38f7",
+        "0484141f42b4bfd656601fe8cb9d01d7d2391df20a28431042ad9dcd27a22e27",
+        "aa76e25b3849563752f917f4c960472331719d835040f1a3800300df803a8ba7",
+        "6d4606976cca4b370c1f0b81149b56acc26e71e8b55bd79df0826c8dc126d5e6"
+      ],
+      "sha256": "8a918f025c77de303abb9e796309e2e88a2ceed7fbc8e89b144cbb41c242d673",
+      "decodedSha256": "40ffc6ae4cdefb35b0ca8d3bf4be3523ae776bdc7af5de52e2cc18cf7fb2335f",
+      "bytes": 8617659,
+      "decodedBytes": 23584232,
+      "fragmentsIncludingOverlap": 5300,
+      "samplesExcludingOverlap": 586567,
+      "acceptedBeforeFiltering": 640483,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 2298,
+        "implausibleJumps": 170,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 68400,
+          "observedSamples": 48882,
+          "aircraftAtInstant": 2411
+        },
+        {
+          "time": 68700,
+          "observedSamples": 49676,
+          "aircraftAtInstant": 2430
+        },
+        {
+          "time": 69000,
+          "observedSamples": 49746,
+          "aircraftAtInstant": 2452
+        },
+        {
+          "time": 69300,
+          "observedSamples": 49375,
+          "aircraftAtInstant": 2431
+        },
+        {
+          "time": 69600,
+          "observedSamples": 49260,
+          "aircraftAtInstant": 2427
+        },
+        {
+          "time": 69900,
+          "observedSamples": 49467,
+          "aircraftAtInstant": 2416
+        },
+        {
+          "time": 70200,
+          "observedSamples": 49587,
+          "aircraftAtInstant": 2413
+        },
+        {
+          "time": 70500,
+          "observedSamples": 49442,
+          "aircraftAtInstant": 2415
+        },
+        {
+          "time": 70800,
+          "observedSamples": 48699,
+          "aircraftAtInstant": 2402
+        },
+        {
+          "time": 71100,
+          "observedSamples": 47875,
+          "aircraftAtInstant": 2358
+        },
+        {
+          "time": 71400,
+          "observedSamples": 47673,
+          "aircraftAtInstant": 2343
+        },
+        {
+          "time": 71700,
+          "observedSamples": 46885,
+          "aircraftAtInstant": 2312
+        }
+      ],
+      "elapsedSeconds": 2.1112513339999994,
+      "maxRssKiB": 585072
+    },
+    {
+      "hour": 20,
+      "path": "hour-20.json.gz",
+      "sourceHashes": [
+        "aa76e25b3849563752f917f4c960472331719d835040f1a3800300df803a8ba7",
+        "6d4606976cca4b370c1f0b81149b56acc26e71e8b55bd79df0826c8dc126d5e6",
+        "30168326296caa3c769d5a6df58056b93d3bb2e7d59992f4510cd3fa70e6049b",
+        "60c9b2ff4d6bee428e47bc4a4464c144eb619f94bef34b97f3a27068308e3f76"
+      ],
+      "sha256": "fd59db3b37beb18316df9110d148073c81ee9dc550ce7364ba963ad534284fb6",
+      "decodedSha256": "47872a297c3fad1deeabe3b4adabf6684c72e7a597ff21b4903cfc8f1525a617",
+      "bytes": 7545436,
+      "decodedBytes": 20704026,
+      "fragmentsIncludingOverlap": 4717,
+      "samplesExcludingOverlap": 513821,
+      "acceptedBeforeFiltering": 558155,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 1942,
+        "implausibleJumps": 226,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 72000,
+          "observedSamples": 47186,
+          "aircraftAtInstant": 2291
+        },
+        {
+          "time": 72300,
+          "observedSamples": 46659,
+          "aircraftAtInstant": 2287
+        },
+        {
+          "time": 72600,
+          "observedSamples": 45601,
+          "aircraftAtInstant": 2241
+        },
+        {
+          "time": 72900,
+          "observedSamples": 45141,
+          "aircraftAtInstant": 2219
+        },
+        {
+          "time": 73200,
+          "observedSamples": 44905,
+          "aircraftAtInstant": 2176
+        },
+        {
+          "time": 73500,
+          "observedSamples": 44350,
+          "aircraftAtInstant": 2170
+        },
+        {
+          "time": 73800,
+          "observedSamples": 43315,
+          "aircraftAtInstant": 2114
+        },
+        {
+          "time": 74100,
+          "observedSamples": 42234,
+          "aircraftAtInstant": 2074
+        },
+        {
+          "time": 74400,
+          "observedSamples": 40515,
+          "aircraftAtInstant": 2023
+        },
+        {
+          "time": 74700,
+          "observedSamples": 39016,
+          "aircraftAtInstant": 1929
+        },
+        {
+          "time": 75000,
+          "observedSamples": 38131,
+          "aircraftAtInstant": 1893
+        },
+        {
+          "time": 75300,
+          "observedSamples": 36768,
+          "aircraftAtInstant": 1835
+        }
+      ],
+      "elapsedSeconds": 1.880483291,
+      "maxRssKiB": 529104
+    },
+    {
+      "hour": 21,
+      "path": "hour-21.json.gz",
+      "sourceHashes": [
+        "30168326296caa3c769d5a6df58056b93d3bb2e7d59992f4510cd3fa70e6049b",
+        "60c9b2ff4d6bee428e47bc4a4464c144eb619f94bef34b97f3a27068308e3f76",
+        "9cb3bcb69f02302f88988e73b18327ec5eda970926753fe1a4424de73631e8b7",
+        "b30b8d59ce13cd4eba9c2655c8766e7faceba3ea925ec7db9199ead7c6e77bc3"
+      ],
+      "sha256": "d69d89d57dcf6a99452b485c2ecfb0b4351a9165269e74f92bbda48433280638",
+      "decodedSha256": "23a38c5268d714f0dd6aa4a3bf74a8578ef67de6c14275aeb3019d7fb8ab7a90",
+      "bytes": 5458231,
+      "decodedBytes": 15129962,
+      "fragmentsIncludingOverlap": 3556,
+      "samplesExcludingOverlap": 373265,
+      "acceptedBeforeFiltering": 404945,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 1580,
+        "implausibleJumps": 204,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 75600,
+          "observedSamples": 35612,
+          "aircraftAtInstant": 1773
+        },
+        {
+          "time": 75900,
+          "observedSamples": 34640,
+          "aircraftAtInstant": 1727
+        },
+        {
+          "time": 76200,
+          "observedSamples": 34151,
+          "aircraftAtInstant": 1699
+        },
+        {
+          "time": 76500,
+          "observedSamples": 33465,
+          "aircraftAtInstant": 1673
+        },
+        {
+          "time": 76800,
+          "observedSamples": 32764,
+          "aircraftAtInstant": 1632
+        },
+        {
+          "time": 77100,
+          "observedSamples": 31341,
+          "aircraftAtInstant": 1591
+        },
+        {
+          "time": 77400,
+          "observedSamples": 30530,
+          "aircraftAtInstant": 1531
+        },
+        {
+          "time": 77700,
+          "observedSamples": 30120,
+          "aircraftAtInstant": 1511
+        },
+        {
+          "time": 78000,
+          "observedSamples": 29280,
+          "aircraftAtInstant": 1469
+        },
+        {
+          "time": 78300,
+          "observedSamples": 27704,
+          "aircraftAtInstant": 1411
+        },
+        {
+          "time": 78600,
+          "observedSamples": 27175,
+          "aircraftAtInstant": 1372
+        },
+        {
+          "time": 78900,
+          "observedSamples": 26483,
+          "aircraftAtInstant": 1336
+        }
+      ],
+      "elapsedSeconds": 1.469980209,
+      "maxRssKiB": 484032
+    },
+    {
+      "hour": 22,
+      "path": "hour-22.json.gz",
+      "sourceHashes": [
+        "9cb3bcb69f02302f88988e73b18327ec5eda970926753fe1a4424de73631e8b7",
+        "b30b8d59ce13cd4eba9c2655c8766e7faceba3ea925ec7db9199ead7c6e77bc3",
+        "6f8eb1d91c9a2a90f139227311e66ab81159fabe06fc197a7c431a24a36c2dbb",
+        "0fe32b0f6be242a6163176ef6a26d37af5b69fcc4316399c198ddee4683c2704"
+      ],
+      "sha256": "f2e40c1661cdbc67a74858ac8098fc91ad398b0b9139e5d07438744e49e2d8c9",
+      "decodedSha256": "25cbd6bef7b6146dea6cb78334ed6d83bde7c8b8c6b2da1eeec841b148a861e7",
+      "bytes": 3602210,
+      "decodedBytes": 10030335,
+      "fragmentsIncludingOverlap": 2531,
+      "samplesExcludingOverlap": 245853,
+      "acceptedBeforeFiltering": 267706,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 1301,
+        "implausibleJumps": 78,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 79200,
+          "observedSamples": 25516,
+          "aircraftAtInstant": 1311
+        },
+        {
+          "time": 79500,
+          "observedSamples": 24620,
+          "aircraftAtInstant": 1254
+        },
+        {
+          "time": 79800,
+          "observedSamples": 23442,
+          "aircraftAtInstant": 1190
+        },
+        {
+          "time": 80100,
+          "observedSamples": 23127,
+          "aircraftAtInstant": 1158
+        },
+        {
+          "time": 80400,
+          "observedSamples": 22193,
+          "aircraftAtInstant": 1140
+        },
+        {
+          "time": 80700,
+          "observedSamples": 21337,
+          "aircraftAtInstant": 1076
+        },
+        {
+          "time": 81000,
+          "observedSamples": 20262,
+          "aircraftAtInstant": 1033
+        },
+        {
+          "time": 81300,
+          "observedSamples": 18969,
+          "aircraftAtInstant": 985
+        },
+        {
+          "time": 81600,
+          "observedSamples": 17926,
+          "aircraftAtInstant": 935
+        },
+        {
+          "time": 81900,
+          "observedSamples": 16997,
+          "aircraftAtInstant": 885
+        },
+        {
+          "time": 82200,
+          "observedSamples": 16226,
+          "aircraftAtInstant": 849
+        },
+        {
+          "time": 82500,
+          "observedSamples": 15238,
+          "aircraftAtInstant": 806
+        }
+      ],
+      "elapsedSeconds": 1.131727958,
+      "maxRssKiB": 394800
+    },
+    {
+      "hour": 23,
+      "path": "hour-23.json.gz",
+      "sourceHashes": [
+        "6f8eb1d91c9a2a90f139227311e66ab81159fabe06fc197a7c431a24a36c2dbb",
+        "0fe32b0f6be242a6163176ef6a26d37af5b69fcc4316399c198ddee4683c2704",
+        "d423e3cb139d2ef8465f239f425f679e56e31d48dc013622ced526ddc42e1d3f"
+      ],
+      "sha256": "87f867cdec0b71cb7580b661c7bb2454dea28ff06f3b7c9f6bc17e126527a3a4",
+      "decodedSha256": "9bd78250ee52a283cdd3b05ab001714fe86a4ecda831a17e3afec86a2c70148b",
+      "bytes": 2095830,
+      "decodedBytes": 5898248,
+      "fragmentsIncludingOverlap": 1624,
+      "samplesExcludingOverlap": 145627,
+      "acceptedBeforeFiltering": 157259,
+      "continuity": {
+        "duplicateSamples": 0,
+        "conflictingTimestamps": 0,
+        "gapsOver45Seconds": 951,
+        "implausibleJumps": 51,
+        "invalidSamples": 0
+      },
+      "largestRetainedGap": 40,
+      "bins": [
+        {
+          "time": 82800,
+          "observedSamples": 14595,
+          "aircraftAtInstant": 764
+        },
+        {
+          "time": 83100,
+          "observedSamples": 14039,
+          "aircraftAtInstant": 734
+        },
+        {
+          "time": 83400,
+          "observedSamples": 13488,
+          "aircraftAtInstant": 712
+        },
+        {
+          "time": 83700,
+          "observedSamples": 13226,
+          "aircraftAtInstant": 672
+        },
+        {
+          "time": 84000,
+          "observedSamples": 12814,
+          "aircraftAtInstant": 663
+        },
+        {
+          "time": 84300,
+          "observedSamples": 12275,
+          "aircraftAtInstant": 636
+        },
+        {
+          "time": 84600,
+          "observedSamples": 12035,
+          "aircraftAtInstant": 612
+        },
+        {
+          "time": 84900,
+          "observedSamples": 11431,
+          "aircraftAtInstant": 591
+        },
+        {
+          "time": 85200,
+          "observedSamples": 11098,
+          "aircraftAtInstant": 583
+        },
+        {
+          "time": 85500,
+          "observedSamples": 10614,
+          "aircraftAtInstant": 547
+        },
+        {
+          "time": 85800,
+          "observedSamples": 10161,
+          "aircraftAtInstant": 524
+        },
+        {
+          "time": 86100,
+          "observedSamples": 9851,
+          "aircraftAtInstant": 503
+        }
+      ],
+      "elapsedSeconds": 0.7315811249999999,
+      "maxRssKiB": 303440
+    }
+  ],
+  "browser": {
+    "measuredAt": "2026-09-16T13:08:44.335Z",
+    "conditions": "Headless browsers on author laptop; phone viewport is layout emulation, not physical-phone performance. Localhost transfer; no network throttling.",
+    "results": [
+      {
+        "name": "chromium-desktop",
+        "engine": "153.0.8010.12",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "metrics": {
+          "renderSamples": 127,
+          "renderP50Ms": 4,
+          "renderP95Ms": 4.699999995529652,
+          "rafP95Ms": 16.799999999999727,
+          "loads": [
+            {
+              "hour": 7,
+              "compressedBytes": 10122065,
+              "decodedBytes": 27677562,
+              "milliseconds": 139
+            },
+            {
+              "hour": 11,
+              "compressedBytes": 11645158,
+              "decodedBytes": 32033453,
+              "milliseconds": 159
+            }
+          ],
+          "usedJsHeapBytes": 188000000,
+          "state": {
+            "time": 39600,
+            "hour": 11,
+            "aircraft": 3183,
+            "visible": 3183,
+            "mode": "motion",
+            "regional": false,
+            "cacheHours": [
+              7,
+              11
+            ]
+          },
+          "horizontalOverflow": false
+        },
+        "checks": [
+          "source-consistent instant counts",
+          "play/pause",
+          "Britain view",
+          "hour accumulation",
+          "midnight boundaries",
+          "hour rollover",
+          "two-hour cache",
+          "no horizontal overflow",
+          "no JavaScript errors",
+          "missing chunk stays unavailable"
+        ]
+      },
+      {
+        "name": "webkit-phone-layout",
+        "engine": "26.6",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "metrics": {
+          "renderSamples": 124,
+          "renderP50Ms": 8,
+          "renderP95Ms": 10,
+          "rafP95Ms": 17,
+          "loads": [
+            {
+              "hour": 7,
+              "compressedBytes": 10122065,
+              "decodedBytes": 27677562,
+              "milliseconds": 126
+            },
+            {
+              "hour": 11,
+              "compressedBytes": 11645158,
+              "decodedBytes": 32033453,
+              "milliseconds": 120
+            }
+          ],
+          "usedJsHeapBytes": null,
+          "state": {
+            "time": 39600,
+            "hour": 11,
+            "aircraft": 3183,
+            "visible": 3183,
+            "mode": "motion",
+            "regional": false,
+            "cacheHours": [
+              7,
+              11
+            ]
+          },
+          "horizontalOverflow": false
+        },
+        "checks": [
+          "source-consistent instant counts",
+          "play/pause",
+          "Britain view",
+          "hour accumulation",
+          "midnight boundaries",
+          "hour rollover",
+          "two-hour cache",
+          "no horizontal overflow",
+          "no JavaScript errors"
+        ]
+      }
+    ]
+  },
+  "offlineReplay": {
+    "hour": 11,
+    "result": "byte-identical to first compilation",
+    "sha256": "842e1d31803195a45083d8fb3f36fa97c2ffacc3fa2809ec249b28478fbf2a76"
+  },
+  "cutoverIsolation": {
+    "checkpoint": "docs/RECORDER-CUTOVER-2026-09-16.md",
+    "runLocation": "local author laptop, isolated work/europe-air-proof/2026-09-14",
+    "miniAccess": "none",
+    "recorderConfigurationChanges": "none",
+    "scheduledJobs": "none",
+    "uploads": "none"
+  },
+  "reviewSourceSha256": "2f34234f680455da70da9ec67fdb8c40708643c2dd5ae02b2634c03aaf434f26",
+  "reviewFollowup": {
+    "change": "Direct file opening now shows a link to the localhost replay instead of attempting unsupported data fetches. The preview server was restarted as a detached local process.",
+    "sourceSha256": "12969530bf9854dd2bf7d5bdfe97df64b121fabfd337670e8b56b22ee2703b75",
+    "verification": "Chromium: served replay loaded 2705 aircraft at 07:00 UTC; file URL displayed the correct replay link."
+  },
+  "streamingFollowup": {
+    "measuredAt": "2026-09-16T13:45:31.640Z",
+    "reviewSourceSha256": "65ab5c04254185ad1017be322930354b7e04d32febdb7567e5ae8083c16ec755",
+    "conditions": "Headless browsers on author laptop, localhost; delayed/failed next-hour responses injected for recovery checks.",
+    "results": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.12",
+        "speed": "15 simulated minutes per second",
+        "streaming": {
+          "notices": [],
+          "emptyFrames": 0,
+          "oversizeCaches": 0
+        },
+        "checks": [
+          "successive warm hour transitions without loading overlay or empty frames",
+          "one request per needed hour",
+          "maximum two cached hours",
+          "slow next hour holds valid frame and clock",
+          "pending prefetch reused by playback",
+          "failed next hour pauses at valid frame with visible unavailable status",
+          "no JavaScript errors"
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "speed": "15 simulated minutes per second",
+        "streaming": {
+          "notices": [],
+          "emptyFrames": 0,
+          "oversizeCaches": 0
+        },
+        "checks": [
+          "successive warm hour transitions without loading overlay or empty frames",
+          "one request per needed hour",
+          "maximum two cached hours",
+          "slow next hour holds valid frame and clock",
+          "pending prefetch reused by playback",
+          "failed next hour pauses at valid frame with visible unavailable status",
+          "no JavaScript errors"
+        ]
+      }
+    ]
+  }
+}

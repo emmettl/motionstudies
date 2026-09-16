@@ -2,6 +2,12 @@
 
 **13 September 2026 · Potential future study · Thesis unresolved**
 
+**16 September update:** a [first recorded European day](EUROPE-AIR-PROOF-2026-09-16.md) now supplies measured acquisition, compilation and browser evidence, plus a local interactive review. It was run separately from the ongoing recorder cutover. The original hypotheses below remain open; the earlier unmeasured technical position is superseded by that dated proof where measured.
+
+**First author review:** the Europe-wide view and the visibility of familiar hotspots, including London and Paris, are particularly compelling. Carry the emergence of places within the continental field into the next composition tests; retain regional views for closer inspection.
+
+**LUFT prototype:** the next iteration now has its own [repository](https://github.com/emmettl/luft) and [GitHub Pages build](https://emmettl.github.io/luft/). LUFT retains the continent-wide opening view and adds airport search, the shared airport card, and inbound/outbound track highlighting. It consumes a dated, hash-pinned export from the shared recorder, using the already-retained 14 September captures; it does not attach to the live recorder or alter the cutover. The manual aircraft exporter is isolated in [recorder PR #5](https://github.com/emmettl/motionstudies-recorder/pull/5). Endpoint evidence now comes from full retained global traces before clipping, so identities and airport associations survive ten-minute delivery chunk boundaries. The public build is for real-device evaluation; desktop/phone-viewport checks are not a physical-phone performance result. The artistic thesis remains unresolved and no catalogue number has been assigned.
+
 [Study index](README.md) · [Series goals](VISION.md) · [Catalogue admission criteria](CATALOGUE.md) · [Recorded air pipeline](AIR-DATA.md) · [Live airport service](LIVE-AIRPORTS.md)
 
 A recorded study of aircraft moving across Europe appears technically plausible with the existing Motion Studies air pipeline. Continental acquisition, compilation and browser performance have not been measured. The more consequential open question is what the work would reveal: which relationship becomes perceptible through motion, what makes that relationship particular to Europe, and what the viewer understands after watching it.

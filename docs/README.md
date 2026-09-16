@@ -67,7 +67,7 @@ These briefs retain their dated source audits, proposed compositions and publica
 
 - [A national motion study — England, Great Britain or the UK](NATIONAL-STUDY.md) — refined artistic thesis and composition, with a [technical feasibility report](NATIONAL-DATA-FEASIBILITY.md) covering sources, volumes, timeliness, accuracy and the evidence chain between aggregate and individual records.
 - [Power — the national study's second axis](POWER.md) — Elexon and NESO sources probed on 13 September 2026: per-unit plans and settled generation, live fuel mix, national and grid-supply-point demand, geometry, licences and how a unit is placed.
-- [Flights over Europe](EUROPE-AIR-RESEARCH.md) — technical evidence, candidate visual theses and bounded experiments; the thesis and decision to build remain open.
+- [Flights over Europe](EUROPE-AIR-RESEARCH.md) — technical evidence, candidate visual theses and bounded experiments; the thesis remains open. [First recorded day and local replay, 16 September](EUROPE-AIR-PROOF-2026-09-16.md), now developed into the independent [LUFT prototype](https://github.com/emmettl/luft) for device evaluation.
 
 ## Document ownership and history
 
