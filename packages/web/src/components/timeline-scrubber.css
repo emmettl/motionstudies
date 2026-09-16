@@ -12,3 +12,5 @@
 
 .ms-timeline-scrubber input[type=range]::-webkit-slider-runnable-track{height:44px;border:0;background:transparent}
 .ms-timeline-scrubber input[type=range]::-moz-range-track{height:44px;border:0;background:transparent}
+
+.ms-timeline-scrubber input[type=range]:disabled{opacity:0;cursor:default}

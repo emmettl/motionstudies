@@ -32,6 +32,7 @@ test('shared timeline supports keyboard, pointer, missing values and overnight w
   await expect(slider).toHaveValue('100800')
   await expect(page.getByTestId('timeline-state')).toContainText('28:00')
   await page.getByLabel('Disabled', { exact: true }).check(); await expect(slider).toBeDisabled()
+  await expect(slider).toHaveCSS('opacity', '0')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
 
