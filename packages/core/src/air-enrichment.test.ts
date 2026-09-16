@@ -18,6 +18,8 @@ it('resolves metadata separately, gives observed endpoints precedence and preser
   expect(resolver(tracks[0], 'destination')).toMatchObject({ status: 'observed', airport: { continent: 'NA' } })
   expect(resolver(tracks[1], 'destination')).toMatchObject({ status: 'corroborated', airport: { icao: 'B' } })
   expect(tracks).toEqual(before); expect(tracks[1].destination).toBeUndefined()
+  const override = { ...tracks[0], destination: { ...tracks[0].destination!, continent: 'AS' as const } }
+  expect(resolver(override, 'destination').airport?.continent).toBe('AS')
 })
 it('counts mutually exclusive evidence and opts into candidates without accepting conflicts', () => {
   const resolver = createEndpointResolver(read(fixture()))

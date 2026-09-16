@@ -59,8 +59,8 @@ export function createEndpointResolver(enrichment: AirEnrichment) {
   const referenceIds = enrichment.sources.filter(s => s.kind === 'airport-reference').map(s => s.id)
   return (track: AirSearchTrack, side: EndpointSide): EndpointLabel => {
     const observed = track[side]
-    if (observed) return { status: 'observed', airport: airports.get(observed.icao) ?? { icao: observed.icao, iata: observed.iata, name: observed.name,
-      continent: isAirContinent(observed.continent) ? observed.continent : null }, sourceIds: referenceIds, reasons: [] }
+    if (observed) return { status: 'observed', airport: { icao: observed.icao, iata: observed.iata, name: observed.name,
+      continent: isAirContinent(observed.continent) ? observed.continent : airports.get(observed.icao)?.continent ?? null }, sourceIds: referenceIds, reasons: [] }
     const p = proposals.get(`${track.id}:${side}`)
     if (!p) return { status: 'unknown', sourceIds: [], reasons: [] }
     return { status: p.status, airport: airports.get(p.airport), sourceIds: p.sourceIds, reasons: p.reasons }
