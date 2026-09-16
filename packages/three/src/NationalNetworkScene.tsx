@@ -1,3 +1,4 @@
+import {mapLabelBoxesOverlap} from '@motionstudies/core/map-labels'
 import { stationLabelTexture, createTrainLabelTexture, type StationLabelTexture, type TrainLabelTexture } from './label-textures.ts'
 import { setSceneMotionClock, setScenePickMetadata, setScenePickTrain } from './scene-picking.ts'
 import { TrailFrameBudget } from './trail-frame-budget.ts'
@@ -2264,10 +2265,7 @@ function StationLabels({
       }
       const overlaps = occupied.some(
         (other) =>
-          box.left < other.right + 5 &&
-          box.right > other.left - 5 &&
-          box.top < other.bottom + 4 &&
-          box.bottom > other.top - 4,
+          mapLabelBoxesOverlap(box, other),
       )
       if (overlaps) continue
 
@@ -2614,10 +2612,7 @@ function TrainLabels({
       const box = trainLabelCollisionBox(candidate.x, candidate.y, width, screenHeight, anchorY)
       const overlaps = occupied.some(
         (other) =>
-          box.left < other.right + 5 &&
-          box.right > other.left - 5 &&
-          box.top < other.bottom + 4 &&
-          box.bottom > other.top - 4,
+          mapLabelBoxesOverlap(box, other),
       )
       if (overlaps && !candidate.selected) continue
 

@@ -1,3 +1,4 @@
+import {compareMapLabelCandidates, mapLabelBudget, mapLabelRankLimit} from '@motionstudies/core/map-labels'
 import type {
   NetworkRouteIndexEntry,
   NetworkSnapshot,
@@ -93,13 +94,7 @@ export function compareStationLabelCandidates(
   first: StationLabelCandidatePriority,
   second: StationLabelCandidatePriority,
 ): number {
-  return (
-    first.priority - second.priority ||
-    Number(second.retained) - Number(first.retained) ||
-    first.rank - second.rank ||
-    first.distance - second.distance ||
-    first.name.localeCompare(second.name, 'de-CH')
-  )
+  return compareMapLabelCandidates(first, second)
 }
 
 export function stationTapRadius(pointerType: string): number {
@@ -213,18 +208,11 @@ export function stationLabelText(
 }
 
 export function stationLabelBudget(cameraHeight: number): number {
-  if (cameraHeight >= 30) return 8
-  if (cameraHeight >= 22) return 20
-  if (cameraHeight >= 15) return 48
-  return MAX_STATION_LABELS
+  return mapLabelBudget(cameraHeight)
 }
 
 export function stationLabelRankLimit(cameraHeight: number): number {
-  if (cameraHeight >= 30) return 8
-  if (cameraHeight >= 22) return 20
-  if (cameraHeight >= 15) return 48
-  if (cameraHeight >= 14) return MAX_STATION_LABELS
-  return Number.POSITIVE_INFINITY
+  return mapLabelRankLimit(cameraHeight)
 }
 
 export function rankStationsForLabels(
