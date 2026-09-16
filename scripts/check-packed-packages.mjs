@@ -55,6 +55,8 @@ try {
   }
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
     import { network } from './fixtures.ts'
+    import { readAirEnrichment, createEndpointResolver, endpointCoverage } from '@motionstudies/core/air-enrichment'
+    export const enrichmentContract = [readAirEnrichment, createEndpointResolver, endpointCoverage]
     import { selectMapLabels, mapLabelBudget } from '@motionstudies/core/map-labels'
     export const mapLabelsContract = selectMapLabels([], mapLabelBudget(32), {left:0,top:0,right:400,bottom:300})
     import { readPowerDay, unitPower, sumPower, fuelMixAt, type PowerDay } from '@motionstudies/core/domain/power-day'
