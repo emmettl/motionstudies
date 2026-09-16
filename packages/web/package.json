@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.25",
+  "version": "0.1.0-alpha.26",
   "private": true,
   "type": "module",
   "exports": {
@@ -45,7 +45,7 @@
     "./timeline-scrubber.css": "./src/components/timeline-scrubber.css"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.25"
+    "@motionstudies/core": "0.1.0-alpha.26"
   },
   "peerDependencies": {
     "react": "^19.2.8",

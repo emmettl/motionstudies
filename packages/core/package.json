@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.1.0-alpha.25",
+  "version": "0.1.0-alpha.26",
   "private": true,
   "type": "module",
   "exports": {
@@ -45,7 +45,8 @@
     "./domain/power-day": "./src/domain/power-day.ts",
     "./timeline": "./src/timeline.ts",
     "./render-frame": "./src/render-frame.ts",
-    "./map-labels": "./src/map-labels.ts"
+    "./map-labels": "./src/map-labels.ts",
+    "./air-enrichment": "./src/air-enrichment.ts"
   },
   "description": "Transport contracts and motion primitives for Motion Studies.",
   "sideEffects": false,

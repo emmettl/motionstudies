@@ -1,0 +1,9 @@
+# Aircraft endpoint enrichment sidecars
+
+`@motionstudies/core/air-enrichment` reads version 1 `air-endpoint-enrichment` files. Recorder exports these separately from canonical track samples. Consumers bind them to the exact day and source manifest SHA-256 and validate every proposed label against the canonical track ID, callsign, aircraft address and observed opposite endpoint.
+
+The file includes an airport/continent dictionary, source references with hashes and licences, and missing-endpoint proposals. Evidence states are `observed`, `corroborated`, `candidate`, `conflicting` and `unknown`. Observed endpoints always take precedence. The reader rejects proposals that overwrite them, duplicate a track/side, use foreign identities, lack source references, or claim unsupported evidence. Corroborated proposals require an association-audit source and no rejection reasons. An integrity-checked file remains the trust root; the browser does not independently re-run the source audit.
+
+Use `readAirEnrichment` before `createEndpointResolver`. The resolver returns metadata, never modified track objects, event times or trajectories. `usableEndpoint` accepts observed and corroborated labels by default; callers can explicitly include candidates, but conflicts stay unusable. `endpointCoverage` counts canonical segments once, separately for each endpoint side. These are segment counts, not a unique-flight census or independent accuracy estimate.
+
+Relative audit links are limited to sibling `reports/*.json`; external references must use HTTPS. Publish the linked audit files and source attribution alongside the sidecar. Hash-pin the sidecar in the consuming application and check its source manifest binding before offering filters. Unknown endpoints and missing continents stay unknown; a route-reference candidate must never silently become an observed flight.
