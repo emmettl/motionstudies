@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./air-continents": "./src/air-continents.ts",
     "./air-search": "./src/air-search.ts",
     "./road-search": "./src/road-search.ts",
     "./search-navigation": "./src/search-navigation.ts",

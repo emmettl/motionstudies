@@ -2,16 +2,33 @@ import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { gunzipSync } from 'node:zlib'
 import { createHash } from 'node:crypto'
+import { isAirContinent } from '@motionstudies/core/air-continents'
 import { parseCsvLine } from './gtfs.mjs'
 import { decodeAdsbHeatmap } from './adsb-heatmap.mjs'
 
-export function parseAirports(csv) {
+export function parseAirports(csv, { continentOverrides = [] } = {}) {
   const [header, ...lines] = csv.trim().split(/\r?\n/)
   const keys = parseCsvLine(header)
-  return lines.map(line => Object.fromEntries(parseCsvLine(line).map((value, index) => [keys[index], value])))
+  const rows = lines.map(line => Object.fromEntries(parseCsvLine(line).map((value, index) => [keys[index], value])))
+  if (!Array.isArray(continentOverrides)) throw new Error('Continent overrides must be an array')
+  const identifiers = new Set(rows.map(row => row.ident)), overrides = new Map()
+  for (const entry of continentOverrides) {
+    if (!entry || !identifiers.has(entry.airportIdent) || !isAirContinent(entry.continent)
+      || typeof entry.reason !== 'string' || !entry.reason.trim() || overrides.has(entry.airportIdent)) {
+      throw new Error('Each continent override needs a unique reference airportIdent, valid continent and reason')
+    }
+    overrides.set(entry.airportIdent, entry.continent)
+  }
+  const geography = row => {
+    const continent = overrides.get(row.ident) ?? row.continent?.trim().toUpperCase()
+    if (!continent) return {}
+    if (!isAirContinent(continent)) throw new Error(`Invalid continent for airport ${row.ident}: ${continent}`)
+    return { continent, continentSource: overrides.has(row.ident) ? 'override' : 'ourairports' }
+  }
+  return rows
     .filter(row => ['large_airport', 'medium_airport'].includes(row.type) && row.ident && row.elevation_ft)
     .map(row => ({ icao: row.ident, iata: row.iata_code, name: row.name, city: row.municipality,
-      longitude: Number(row.longitude_deg), latitude: Number(row.latitude_deg), elevation: Number(row.elevation_ft) }))
+      longitude: Number(row.longitude_deg), latitude: Number(row.latitude_deg), elevation: Number(row.elevation_ft), ...geography(row) }))
     .filter(row => [row.longitude, row.latitude, row.elevation].every(Number.isFinite))
 }
 
@@ -38,7 +55,8 @@ export function inferAirEndpoints(samples, airports) {
       if (!atAirport(sample, airport)) break
       boundary = sample
     }
-    return { icao: airport.icao, iata: airport.iata, name: airport.name, city: airport.city, time: boundary[0], evidence: 'observed-endpoint' }
+    return { icao: airport.icao, iata: airport.iata, name: airport.name, city: airport.city, time: boundary[0], evidence: 'observed-endpoint',
+      ...(isAirContinent(airport.continent) ? { continent: airport.continent, continentSource: airport.continentSource ?? 'ourairports' } : {}) }
   }
   const origin = endpoint(false), destination = endpoint(true)
   if (origin && destination && (origin.icao === destination.icao || origin.time >= destination.time)) return {}

@@ -13,6 +13,26 @@ const airports = [
 const samples = [[0, 0, 0, 100, 120], [10, .01, 0, 600, 150], [20, .5, 0, 6000, 300], [30, 1.5, 0, 5000, 300], [40, 1.99, 0, 500, 150], [50, 2, 0, 100, 120]]
 
 describe('observed air endpoints', () => {
+  it('retains airport-reference continents through inference, without changing route evidence', () => {
+    const result = inferAirEndpoints(samples, [
+      { ...airports[0], continent: 'NA', continentSource: 'ourairports' },
+      { ...airports[1], continent: 'EU', continentSource: 'override' },
+    ])
+    expect(result.origin).toMatchObject({ continent: 'NA', continentSource: 'ourairports', evidence: 'observed-endpoint' })
+    expect(result.destination).toMatchObject({ continent: 'EU', continentSource: 'override' })
+    expect(inferAirEndpoints(samples, airports).origin).not.toHaveProperty('continent')
+  })
+  it('labels by reference ident, including identifiers which differ from the current ICAO code', () => {
+    const csv = 'ident,type,name,latitude_deg,longitude_deg,elevation_ft,iata_code,icao_code,municipality,continent\nOLD1,large_airport,West,0,0,50,AAA,NEW1,West,NA\n'
+    expect(parseAirports(csv)[0]).toMatchObject({ icao: 'OLD1', continent: 'NA', continentSource: 'ourairports' })
+    const override = { airportIdent: 'OLD1', continent: 'AS', reason: 'Test convention' }
+    expect(parseAirports(csv, { continentOverrides: [override] })[0]).toMatchObject({ continent: 'AS', continentSource: 'override' })
+    for (const continentOverrides of [[{ ...override, airportIdent: 'ABSENT' }], [{ ...override, reason: '' }], [override, override], [{ ...override, continent: 'ZZ' }], {}]) {
+      expect(() => parseAirports(csv, { continentOverrides })).toThrow(/override/)
+    }
+    expect(() => parseAirports(csv.replace(',NA\n', ',ZZ\n'))).toThrow(/Invalid continent/)
+    expect(parseAirports(csv.replace(',NA\n', ',\n'))[0]).not.toHaveProperty('continent')
+  })
   it('uses low approach boundaries for times and labels both endpoints as inferred evidence', () => {
     const result = inferAirEndpoints(samples, airports)
     expect(result.origin).toMatchObject({ icao: 'AAAA', time: 10, evidence: 'observed-endpoint' })
