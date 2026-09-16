@@ -1,0 +1,14 @@
+.ms-timeline-scrubber{position:relative;min-width:44px;min-height:44px;direction:ltr;isolation:isolate}
+.ms-timeline-scrubber__rail{position:absolute;left:22px;right:22px;bottom:18px;height:8px;border-radius:4px;background:var(--ms-timeline-track,#334650);box-shadow:inset 0 0 0 1px var(--ms-timeline-track-border,#627780);pointer-events:none}
+.ms-timeline-scrubber__fill{position:absolute;inset:0 auto 0 0;width:var(--ms-timeline-position);border-radius:inherit;background:var(--ms-timeline-accent,#acc9b9)}
+.ms-timeline-scrubber__thumb{position:absolute;left:var(--ms-timeline-position);top:50%;width:20px;height:20px;box-sizing:border-box;border:2px solid var(--ms-timeline-accent,#acc9b9);border-radius:50%;background:var(--ms-timeline-accent,#acc9b9);transform:translate(-50%,-50%);box-shadow:0 0 0 3px var(--ms-timeline-halo,#0c172080)}
+.ms-timeline-scrubber input[type=range]{position:absolute;inset:0;display:block;box-sizing:border-box;width:100%;height:100%;min-height:44px;margin:0;padding:0;border:0;opacity:0;cursor:grab;touch-action:pan-y;appearance:none;-webkit-appearance:none;direction:ltr}
+.ms-timeline-scrubber input[type=range]:active{cursor:grabbing}
+.ms-timeline-scrubber input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;box-sizing:border-box;width:44px;height:44px;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.ms-timeline-scrubber input[type=range]::-moz-range-thumb{width:44px;height:44px;box-sizing:border-box;border:0;border-radius:0}
+.ms-timeline-scrubber:focus-within{outline:2px solid var(--ms-timeline-accent,#acc9b9);outline-offset:2px;border-radius:4px}
+.ms-timeline-scrubber[data-disabled]{opacity:.55}.ms-timeline-scrubber[data-disabled] input{cursor:default}
+@media(forced-colors:active){.ms-timeline-scrubber{--ms-timeline-accent:Highlight;--ms-timeline-track:Canvas;--ms-timeline-track-border:CanvasText;--ms-timeline-halo:Canvas}.ms-timeline-scrubber__rail{border:1px solid CanvasText;box-sizing:border-box}.ms-timeline-scrubber__fill,.ms-timeline-scrubber__thumb{forced-color-adjust:none}}
+
+.ms-timeline-scrubber input[type=range]::-webkit-slider-runnable-track{height:44px;border:0;background:transparent}
+.ms-timeline-scrubber input[type=range]::-moz-range-track{height:44px;border:0;background:transparent}

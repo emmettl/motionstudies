@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.22",
+  "version": "0.1.0-alpha.23",
   "private": true,
   "type": "module",
   "exports": {
@@ -40,10 +40,12 @@
     "./study-layout.css": "./src/study-layout.css",
     "./fonts.css": "./src/fonts.css",
     "./components/StudyTimeline": "./src/components/StudyTimeline.tsx",
-    "./study-timeline.css": "./src/components/study-timeline.css"
+    "./study-timeline.css": "./src/components/study-timeline.css",
+    "./components/TimelineScrubber": "./src/components/TimelineScrubber.tsx",
+    "./timeline-scrubber.css": "./src/components/timeline-scrubber.css"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.22"
+    "@motionstudies/core": "0.1.0-alpha.23"
   },
   "peerDependencies": {
     "react": "^19.2.8",

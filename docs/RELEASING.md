@@ -37,6 +37,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
 
+`0.1.0-alpha.23` gives the shared timeline England’s broad visible rail and round handle, with a standalone `TimelineScrubber` export for plain playback bars. Both chart and plain controls share keyboard/touch behavior and completion of pointer drags outside the control. England adopts it for bus and power clocks.
+
 `0.1.0-alpha.22` adds the opt-in shared activity timeline: framework-free geometry and missing-data semantics in `@motionstudies/core/timeline`, and `StudyTimeline` plus its stylesheet in `@motionstudies/web`. Bars and line views share the seek axis, keyboard/touch controls, explicit scales and overnight service times. LUFT is the first edition adopting it; GLEISLICHT provides the layout reference and remains on its existing pinned release. See [the timeline contract](STUDY-TIMELINE.md). It also exposes the renderer-independent `PausedVehicleFrame` through `@motionstudies/core/render-frame`, preserving the existing Three.js re-export for compatibility.
 
 `0.1.0-alpha.21` adds the opt-in `@motionstudies/core/domain/power-day` contract, validated reader, interval lookup, declared-plan lookup and explicit-membership sums. It preserves energy versus power units, missingness, signed quantities, settlement runs and source linkage. The recorder writer and England reader are its first consumers; other editions need no adoption for this feature.

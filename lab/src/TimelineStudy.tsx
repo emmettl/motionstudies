@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
+import { TimelineScrubber } from '@motionstudies/web/components/TimelineScrubber'
 import { StudyTimeline } from '@motionstudies/web/components/StudyTimeline'
 import { formatTimelineTime } from '@motionstudies/core/timeline'
 import '@motionstudies/web/study-timeline.css'
+import '@motionstudies/web/shell.css'
 
 export function TimelineStudy() {
   const [time, setTime] = useState(3600.25), [variant, setVariant] = useState<'bars' | 'line'>('bars')
@@ -17,6 +19,7 @@ export function TimelineStudy() {
     </div>
     <div style={{maxWidth: 820, padding: 20, background: '#0b1721'}}><StudyTimeline bins={bins} windowStart={start} windowEnd={end} time={time} onSeek={setTime} label="Synthetic network activity" ariaLabel="Study time" description="Invented five-minute counts; the gap is missing evidence, not zero." variant={variant} disabled={disabled} formatValue={n => `${n} vehicles`} onScrubStart={() => setScrubbing(true)} onScrubEnd={() => setScrubbing(false)}/></div>
     <output data-testid="timeline-state">{formatTimelineTime(time)} · {scrubbing ? 'Scrubbing' : 'Ready'}</output>
+    <div className="motion-study" style={{ maxWidth: 820, padding: 20, background: '#0b1721' }}><TimelineScrubber windowStart={1789386120} windowEnd={1789389720} time={1789386120 + time / 8} step={1} onSeek={value => setTime((value - 1789386120) * 8)} ariaLabel="Recorded epoch time" onScrubStart={() => setScrubbing(true)} onScrubEnd={() => setScrubbing(false)}/></div>
     <p className="note">The whole chart is a seek target. Use Tab, arrow keys, Home and End, or drag with a mouse or touch. The playhead and chart share a time axis. Measured zero is preserved; unknown intervals break the line. Service time can exceed 24:00.</p>
   </>
 }

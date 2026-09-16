@@ -33,3 +33,17 @@ The entire chart is a seek target. A native range input supplies keyboard and to
 Override `--ms-timeline-ink`, `--ms-timeline-muted`, `--ms-timeline-accent`, `--ms-timeline-chart` and `--ms-timeline-height` on a containing element. Importing the component does not install its stylesheet globally; the stylesheet only targets namespaced classes.
 
 The lab exercises bars, line, zero, missing intervals, empty data, disabled controls and a 20:00–28:00 service window. Core tests check clipping, fixed scales and gap semantics; browser checks cover keyboard endpoints, mouse drag, touch seeking and responsive width. The packed-consumer check compiles the lab against published-shape exports.
+
+## Visible scrubber · alpha.23
+
+England contributes the broad rail and round grab handle used by both its recorded bus and power clocks. `StudyTimeline` now uses the same `TimelineScrubber` underneath its activity chart. Plain clocks can import `@motionstudies/web/components/TimelineScrubber` and `@motionstudies/web/timeline-scrubber.css` without inventing an activity series:
+
+```tsx
+<TimelineScrubber windowStart={start} windowEnd={end} time={time}
+  step={1} onSeek={seek} ariaLabel="Explore the recording"
+  ariaValueText={formattedTime} />
+```
+
+The rail is 8px high, the visible handle 20px across and the native grab target 44×44px, including on mobile. The entire chart or plain rail also accepts touch seeking. The chart and thumb share 22px end insets. A pointer drag completes even when released outside the control; keyboard and touch retain native range behavior. Both epoch seconds and relative/service seconds work, provided all inputs use the same units. Each control has a unique generated input ID.
+
+Colors inherit the timeline accent; plain clocks may also override `--ms-timeline-track`, `--ms-timeline-track-border` and `--ms-timeline-halo`. The default plain scrubber uses England's pale green accent. Playback buttons, clock readout, date/timezone formatting, capture coverage and play/pause policy stay with the edition. This shares the instrument across full-screen maps without imposing one study's temporal interpretation on another.
