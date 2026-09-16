@@ -48,11 +48,14 @@ test('visible scrubber aligns its handle and finishes drags outside the control'
   await expect(slider).toHaveValue('1789386121')
   await slider.press('End')
   await expect(slider).toHaveValue('1789389720')
+  await page.getByLabel('Thin track', { exact: true }).check()
   const control = slider.locator('..')
+  await expect(control.locator('.ms-timeline-scrubber__rail')).toHaveCSS('height', '1px')
   const rail = (await control.locator('.ms-timeline-scrubber__rail').boundingBox())!
   const thumb = (await control.locator('.ms-timeline-scrubber__thumb').boundingBox())!
   expect(Math.abs(thumb.x + thumb.width / 2 - rail.x - rail.width)).toBeLessThan(1)
   expect(thumb.width).toBe(20)
+  expect(Math.abs(thumb.y + thumb.height / 2 - rail.y - rail.height / 2)).toBeLessThan(1)
   if (!isMobile) {
     const nativeThumb = await slider.evaluate(element => { const style = getComputedStyle(element, '::-webkit-slider-thumb'); return { width: style.width, height: style.height } })
     // WebKit/Chromium may expose the input's style rather than pseudo geometry;
