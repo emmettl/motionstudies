@@ -4,6 +4,16 @@
 
 **World trade in motion**
 
+## Active direction — 18 September 2026
+
+The author selected **PortWatch** as the route forward. The first local implementation follows published AIS-derived daily activity at eight selected ports and eight passages from **1 November 2023 to 31 March 2024**, with Suez, Bab el-Mandeb and the Cape of Good Hope forming the opening comparison. It preserves daily counts, separates estimated tonnes, and provides vessel-category filters, a seven-day trailing mean and a November baseline.
+
+The first bounded acquisition contains all **2,432 expected location-days** and compiles to **80,280 bytes gzip**. Raw responses, query URLs, retrieval times and hashes are retained locally; offline regeneration is supported. No individual trajectories, port-to-port connections, unique global ship counts or cargo manifests are inferred. The work remains a local review; the public synthetic prototype has not been replaced.
+
+Implementation and evidence are documented in the edition's `docs/PORTWATCH.md`. Sources: [PortWatch](https://portwatch.imf.org/), [daily port data](https://portwatch.imf.org/datasets/83b1bbc7b3354c5fb1f40673bb8f852e/about), [daily passage data](https://portwatch.imf.org/datasets/3da2b9ca97684916b75c4013f95d18ab/about), and [IMF data terms](https://www.imf.org/en/about/copyright-and-terms). The dataset metadata points to IMF terms and requests attribution to UN Global Platform and IMF PortWatch; publication should retain the transformation notices and account for the intended usage context.
+
+**The original global-track thesis and procurement gates below are retained as history and an optional later direction. They no longer block development of the PortWatch study.** The next decision is the composition and publication of the aggregate study, not acquisition of global vessel tracks.
+
 **Catalogue status:** unnumbered; public synthetic prototype and local observed regional review implemented. Observed-data publication remains gated.
 
 ## Current state — 13 September 2026
