@@ -79,6 +79,14 @@
     "./recorder-observability": {
       "types": "./src/recorder-observability.d.mts",
       "import": "./src/recorder-observability.mjs"
+    },
+    "./recorder-evidence": {
+      "types": "./src/recorder-evidence.d.mts",
+      "import": "./src/recorder-evidence.mjs"
+    },
+    "./feed-incidents": {
+      "types": "./src/feed-incidents.d.mts",
+      "import": "./src/feed-incidents.mjs"
     }
   },
   "dependencies": {

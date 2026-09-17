@@ -196,7 +196,9 @@ The required `note` explains provenance. Optional `status`, `statusTone`, `clock
 
 ## Feed observability
 
-`@motionstudies/data/feed-observability` validates versioned feed registries, operational events and health reports. `@motionstudies/data/recorder-observability` projects a recorder status snapshot into that shared contract, rechecking freshness against the observer's clock and omitting private paths, PIDs and raw errors. Both are pure functions with no acquisition, storage or notification side effects. The source repository's `docs/FEED-OBSERVABILITY.md` describes the read-only CLI, example registry, states and evidence limits. Registry daily schedules are declarative in this first slice; a deadline evaluator and durable incident store follow separately.
+`@motionstudies/data/feed-observability` validates versioned feed registries, operational events and health reports. `@motionstudies/data/recorder-observability` projects a recorder status snapshot into that shared contract, rechecking freshness against the observer's clock and omitting private paths, PIDs and raw errors. Both are pure functions with no acquisition, storage or notification side effects. The source repository's `docs/FEED-OBSERVABILITY.md` describes the read-only CLI, example registry, states and evidence limits. Registry daily schedules remain declarative; explicit dated evidence plans and incident history are available through the Node adapters below.
+
+`@motionstudies/data/recorder-evidence` reads explicit dated local journal/close-out and release targets, verifies their hashes and identities, and assesses missing expected outputs against deadlines. `@motionstudies/data/feed-incidents` persists debounced incident transitions with replay protection, atomic checksummed state, bounded retention and fail-closed capacity limits. These two modules require Node. See `docs/FEED-INCIDENTS.md` for CLI opt-in flags and operational limits; neither module installs a scheduler or sends notifications.
 
 ## Optional live airport feed
 

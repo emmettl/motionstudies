@@ -56,6 +56,11 @@ try {
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
     import { readFeedRegistry, readFeedEvent, readFeedHealth, type FeedRegistry, type FeedEvent, type FeedHealth } from '@motionstudies/data/feed-observability'
     import { recorderFeedHealth } from '@motionstudies/data/recorder-observability'
+    import { recorderEvidenceHealth, type RecorderEvidencePlan } from '@motionstudies/data/recorder-evidence'
+    import { readIncidentStore, updateIncidentStore, type IncidentState } from '@motionstudies/data/feed-incidents'
+    export const recordedEvidence = (registry: FeedRegistry, report: FeedHealth, plan: RecorderEvidencePlan): Promise<FeedHealth> => recorderEvidenceHealth(registry, report, plan)
+    export const incidentState = (root: string): Promise<IncidentState> => readIncidentStore(root)
+    export const persistIncidents = (root: string, registry: FeedRegistry, report: FeedHealth) => updateIncidentStore(root, registry, report)
     export const operationalRegistry = (value: unknown): FeedRegistry => readFeedRegistry(value)
     export const operationalEvent = (value: unknown, registry: FeedRegistry): FeedEvent => readFeedEvent(value, registry)
     export const operationalHealth = (value: unknown, registry: FeedRegistry): FeedHealth => readFeedHealth(value, registry)

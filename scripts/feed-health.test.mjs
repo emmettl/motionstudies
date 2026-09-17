@@ -14,7 +14,7 @@ async function fixture() {
   registry.feeds[0].stages = [registry.feeds[0].stages[0]]
   const registryPath = join(root, 'registry.json'), statusPath = join(root, 'status.json')
   await writeFile(registryPath, JSON.stringify(registry))
-  return { root, registryPath, statusPath, run: () => spawnSync(process.execPath, [cli, '--registry', registryPath, '--producer', 'recorder-minimax', '--status', statusPath], { encoding: 'utf8' }) }
+  return { root, registryPath, statusPath, run: (args = []) => spawnSync(process.execPath, [cli, '--registry', registryPath, '--producer', 'recorder-minimax', '--status', statusPath, ...args], { encoding: 'utf8' }) }
 }
 function healthy() {
   const stamp = new Date().toISOString()
@@ -59,4 +59,19 @@ it('CLI exposes unknown archive coverage instead of reporting a clean end-to-end
   const result = f.run()
   expect(result.status).toBe(2)
   expect(JSON.parse(result.stdout).feeds[0].stages[1].reasons).toEqual(['upload-evidence-unavailable'])
+})
+it('CLI persists incident state only when requested, keeps JSON stdout, and rejects corrupt history', async () => {
+  const f = await fixture(), history = join(f.root, 'incidents')
+  await writeFile(f.statusPath, JSON.stringify(healthy()))
+  const result = f.run(['--incidents', history])
+  expect(result.status).toBe(0)
+  expect(JSON.parse(result.stdout).kind).toBe('feed-health')
+  const wrapper = JSON.parse(await readFile(join(history, 'state.json')))
+  expect(wrapper.state.report.kind).toBe('feed-health')
+  await writeFile(join(history, 'state.json'), '{"private":"secret"}')
+  const broken = f.run(['--incidents', history])
+  expect(broken.status).toBe(1)
+  expect(broken.stdout).toBe('')
+  expect(broken.stderr).not.toContain(history)
+  expect(broken.stderr).not.toContain('secret')
 })
