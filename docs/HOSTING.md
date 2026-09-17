@@ -167,7 +167,7 @@ airport references and endpoint enrichment remain byte-identical to that artifac
 All playback data is bundled; this route introduces no live-data service or R2 reads.
 
 The LUFT `cloudflare` environment permits only main. Its workflow follows successful
-main-branch Pages releases, pins these hosting tools, rejects superseded runs, and
+main-branch `Check and deploy LUFT` and `Refresh daily aircraft feed` releases, pins these hosting tools, rejects superseded runs, and
 verifies live provenance and cache policies. The `CLOUDFLARE_ENABLED` repository
 variable pauses publication when set to `false`; manual dispatch accepts a successful
 Pages run ID for retries. The credential is stored only as an encrypted environment

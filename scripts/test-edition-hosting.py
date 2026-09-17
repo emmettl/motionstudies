@@ -62,10 +62,23 @@ class EditionHostingTests(unittest.TestCase):
                              ("repository", {"full_name": "emmettl/correspondances"})]:
             with self.subTest(field=field), self.assertRaises(ValueError):
                 publisher.validate_run({**run, field: value})
-        self.assertTrue(publisher.is_superseded(run, {**run, "run_number": 11}))
+        self.assertTrue(publisher.is_superseded(run, {**run, "id": 124, "run_number": 11}))
         self.assertFalse(publisher.is_superseded(run, run))
         with self.assertRaises(KeyError):
             hosting.Publisher("local-express")
+
+    def test_luft_daily_pages_runs_share_release_order(self):
+        publisher = hosting.Publisher("luft")
+        run = self.run_metadata("luft")
+        daily = {**run, "id": 124, "run_number": 1, "path": ".github/workflows/daily-feed.yml", "event": "schedule"}
+        publisher.validate_run(daily)
+        self.assertTrue(publisher.is_superseded(run, daily))
+        self.assertFalse(publisher.is_superseded(daily, run))
+        unrelated = {**daily, "id": 125, "path": ".github/workflows/cloudflare.yml"}
+        with patch.object(hosting, "github_json", return_value={"workflow_runs": [unrelated, daily, run]}):
+            self.assertEqual(publisher.latest_successful_run(), daily)
+        with self.assertRaises(ValueError):
+            hosting.Publisher("allchange").validate_run({**daily, "repository": {"full_name": "emmettl/allchange"}})
 
     def test_archive_rejects_unsafe_foreign_reserved_and_unhashed_files(self):
         publisher = hosting.Publisher("allchange")

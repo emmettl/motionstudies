@@ -37,22 +37,34 @@ class Publisher:
     def validate_run(self, run):
         if (run.get("status") != "completed" or run.get("conclusion") != "success"
                 or run.get("head_branch") != "main"
-                or run.get("path") != ".github/workflows/pages.yml"
+                or run.get("path") not in {".github/workflows/" + name for name in self.spec.get("workflows", ["pages.yml"])}
                 or run.get("repository", {}).get("full_name") != self.repository
                 or run.get("event") not in {"push", "schedule", "workflow_dispatch"}):
             raise ValueError("Publishing requires this edition's successful main-branch Pages run")
 
     def latest_successful_run(self):
-        runs = github_json(f"repos/{self.repository}/actions/workflows/pages.yml/runs?branch=main&status=success&per_page=1")["workflow_runs"]
-        if not runs:
-            raise ValueError("No successful main-branch Pages release is available")
-        self.validate_run(runs[0])
-        return runs[0]
+        # Repository-wide run IDs order independent Pages-producing workflows;
+        # workflow-local run_number values cannot be compared across them.
+        page = 1
+        while True:
+            runs = github_json(f"repos/{self.repository}/actions/runs?branch=main&status=success&per_page=100&page={page}")["workflow_runs"]
+            if not runs:
+                raise ValueError("No successful main-branch Pages release is available")
+            eligible = []
+            for run in runs:
+                try:
+                    self.validate_run(run)
+                except ValueError:
+                    continue
+                eligible.append(run)
+            if eligible:
+                return max(eligible, key=lambda run: run["id"])
+            page += 1
 
     def is_superseded(self, run, latest):
         self.validate_run(run)
         self.validate_run(latest)
-        return run["run_number"] < latest["run_number"]
+        return run["id"] < latest["id"]
 
     def stage_artifact(self, archive, destination, run):
         self.validate_run(run)

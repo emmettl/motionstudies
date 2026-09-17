@@ -58,6 +58,10 @@
       "data/land.geojson",
       "enrichment/endpoints.json.gz.bin"
     ],
-    "data_pattern": "data/(?:manifest\\.json|index\\.json\\.gz\\.bin|airports\\.csv\\.gz|land\\.geojson|chunk-[0-9]{3}\\.json\\.gz\\.bin)"
+    "data_pattern": "data/(?:manifest\\.json|index\\.json\\.gz\\.bin|airports\\.csv\\.gz|land\\.geojson|chunk-[0-9]{3}\\.json\\.gz\\.bin)",
+    "workflows": [
+      "pages.yml",
+      "daily-feed.yml"
+    ]
   }
 }
