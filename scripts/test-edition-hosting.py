@@ -41,7 +41,7 @@ class EditionHostingTests(unittest.TestCase):
                 tar.addfile(extra, io.BytesIO(b"x" * extra.size) if extra.isfile() else None)
         return path
 
-    def test_all_five_editions_preserve_payload_and_provenance(self):
+    def test_all_editions_preserve_payload_and_provenance(self):
         for edition in hosting.EDITIONS:
             with self.subTest(edition=edition):
                 publisher = hosting.Publisher(edition)
@@ -79,6 +79,15 @@ class EditionHostingTests(unittest.TestCase):
         member.linkname = "../escape"
         with self.assertRaises(ValueError):
             publisher.stage_artifact(self.archive("allchange", member), self.root / "output", self.run_metadata("allchange"))
+
+    def test_luft_accepts_compiled_chunks_and_rejects_other_data(self):
+        publisher = hosting.Publisher("luft")
+        member = tarfile.TarInfo("data/chunk-143.json.gz.bin")
+        member.size = 1
+        publisher.stage_artifact(self.archive("luft", member), self.root / "valid", self.run_metadata("luft"))
+        for name in ["data/raw-traces.json", "data/chunk-144.json", "data/foreign/manifest.json"]:
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unapproved edition data"):
+                publisher.stage_artifact(self.archive("luft", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("luft"))
 
     def test_manifest_stays_synthetic_only(self):
         with self.assertRaisesRegex(ValueError, "synthetic fixture"):

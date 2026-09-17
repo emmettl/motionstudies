@@ -49,5 +49,15 @@
       "studies/02-archipelago/index.html"
     ],
     "data_pattern": "(?!)"
+  },
+  "luft": {
+    "required": [
+      "data/manifest.json",
+      "data/index.json.gz.bin",
+      "data/airports.csv.gz",
+      "data/land.geojson",
+      "enrichment/endpoints.json.gz.bin"
+    ],
+    "data_pattern": "data/(?:manifest\\.json|index\\.json\\.gz\\.bin|airports\\.csv\\.gz|land\\.geojson|chunk-[0-9]{3}\\.json\\.gz\\.bin)"
   }
 }
