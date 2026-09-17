@@ -71,6 +71,14 @@
     "./rail-geometry": {
       "types": "./src/rail-geometry.d.mts",
       "import": "./src/rail-geometry.mjs"
+    },
+    "./feed-observability": {
+      "types": "./src/feed-observability.d.mts",
+      "import": "./src/feed-observability.mjs"
+    },
+    "./recorder-observability": {
+      "types": "./src/recorder-observability.d.mts",
+      "import": "./src/recorder-observability.mjs"
     }
   },
   "dependencies": {

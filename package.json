@@ -30,7 +30,8 @@
     "check:release": "node scripts/check-packed-packages.mjs --release",
     "release:dry-run": "node scripts/publish-packages.mjs",
     "check:airports": "tsc -p services/airports",
-    "dev:airports": "wrangler dev --config wrangler.airports.jsonc --port 8787"
+    "dev:airports": "wrangler dev --config wrangler.airports.jsonc --port 8787",
+    "feeds:health": "node scripts/feed-health.mjs"
   },
   "dependencies": {
     "@motionstudies/core": "0.1.0-alpha.26",

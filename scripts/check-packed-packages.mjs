@@ -54,6 +54,12 @@ try {
     if ((await lstat(installed)).isSymbolicLink() || !(await realpath(installed)).startsWith(await realpath(consumer))) throw new Error(`${name} is not an isolated package install`)
   }
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
+    import { readFeedRegistry, readFeedEvent, readFeedHealth, type FeedRegistry, type FeedEvent, type FeedHealth } from '@motionstudies/data/feed-observability'
+    import { recorderFeedHealth } from '@motionstudies/data/recorder-observability'
+    export const operationalRegistry = (value: unknown): FeedRegistry => readFeedRegistry(value)
+    export const operationalEvent = (value: unknown, registry: FeedRegistry): FeedEvent => readFeedEvent(value, registry)
+    export const operationalHealth = (value: unknown, registry: FeedRegistry): FeedHealth => readFeedHealth(value, registry)
+    export const recorderHealth = (registry: FeedRegistry, status: unknown): FeedHealth => recorderFeedHealth(registry, status, { producerId: 'recorder-minimax', now: 0 })
     import { network } from './fixtures.ts'
     import { readAirEnrichment, createEndpointResolver, endpointCoverage } from '@motionstudies/core/air-enrichment'
     export const enrichmentContract = [readAirEnrichment, createEndpointResolver, endpointCoverage]
