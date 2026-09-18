@@ -44,7 +44,9 @@ export function setSceneMotionMix(geometry: object, mix: number): void {
 
 /** Record the study time and stale tolerance drawn this frame for geometry with `motionTime` windows. */
 export function setSceneMotionClock(geometry: object, clock: number, stale: number): void {
-  motionClocks.set(geometry, { clock, stale })
+  // Match the float32 uniforms used by the shader, especially when a paused
+  // marker has a zero-duration float32 motionTime window.
+  motionClocks.set(geometry, { clock: Math.fround(clock), stale: Math.fround(stale) })
 }
 
 /**

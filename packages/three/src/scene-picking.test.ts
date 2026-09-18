@@ -46,3 +46,18 @@ it('reads displayed vertices from per-vertex windows and hides stale or empty sl
   setSceneMotionClock(geometry, 130, 30)
   expect(scenePickVertex(geometry, 0, out).toArray()).toEqual([10, 0, -10])
 })
+
+it.each([28187.0874, 28187.0882])('picks a paused marker at fractional clock %s as the GPU does', async clock => {
+  const { BufferAttribute, BufferGeometry, Vector3 } = await import('three')
+  const { scenePickVertex, setSceneMotionClock } = await import('./scene-picking.ts')
+  const geometry = new BufferGeometry()
+  geometry.setAttribute('position', new BufferAttribute(new Float32Array([2, 3, 4]), 3))
+  geometry.setAttribute('positionTo', new BufferAttribute(new Float32Array([2, 3, 4]), 3))
+  // Attributes and the shader's clock uniform both use float32. JavaScript's
+  // unrounded clock can fall just outside this zero-duration paused window.
+  geometry.setAttribute('motionTime', new BufferAttribute(new Float32Array([clock, clock]), 2))
+  setSceneMotionClock(geometry, clock, 0)
+  expect(scenePickVertex(geometry, 0, new Vector3()).toArray()).toEqual([2, 3, 4])
+  setSceneMotionClock(geometry, clock + 1, 0)
+  expect(scenePickVertex(geometry, 0, new Vector3()).toArray().every(Number.isNaN)).toBe(true)
+})
