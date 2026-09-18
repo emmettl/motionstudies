@@ -18,6 +18,7 @@
 - [Code and library consolidation proposal](ARCHITECTURE-CONSOLIDATION.md): application state ownership, renderer internals, data contracts and independent package consumption
 - [Package extraction provenance](EXTRACTION.md) and [release process](RELEASING.md)
 - [Underfall's shared ground-transport contribution](SHARED-GROUND-TRANSPORT.md) — capture, UK clocks, WebTRIS interpretation and aggregate-road evidence; publication and adoption tracked separately
+- [Route fields and off-route events](ROUTE-FIELD-AND-EVENTS.md) — core contracts and rendering rules for a baseline-and-events bus layer, prepared from Underfall's two-day running-time work; no renderer code yet
 
 - [Shared panel layout and controls](PANEL-LAYOUT.md) — compact airport presentation, responsive clearances and [alpha.14 release record](PANEL-LAYOUT-ALPHA-14.md)
 - [All Change foundations](ALLCHANGE-FOUNDATIONS.md) — railway readers, timetable patterns, station calls, renderer interfaces and observation windows

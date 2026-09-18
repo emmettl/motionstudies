@@ -48,11 +48,22 @@ test('visible scrubber aligns its handle and finishes drags outside the control'
   await expect(slider).toHaveValue('1789386121')
   await slider.press('End')
   await expect(slider).toHaveValue('1789389720')
+  await page.getByLabel('Thin track', { exact: true }).check()
   const control = slider.locator('..')
+  await expect(control.locator('.ms-timeline-scrubber__rail')).toHaveCSS('height', '1px')
   const rail = (await control.locator('.ms-timeline-scrubber__rail').boundingBox())!
   const thumb = (await control.locator('.ms-timeline-scrubber__thumb').boundingBox())!
   expect(Math.abs(thumb.x + thumb.width / 2 - rail.x - rail.width)).toBeLessThan(1)
   expect(thumb.width).toBe(20)
+  expect(Math.abs(thumb.y + thumb.height / 2 - rail.y - rail.height / 2)).toBeLessThan(1)
+  await page.getByLabel('Discreet marker', { exact: true }).check()
+  const smallThumb = (await control.locator('.ms-timeline-scrubber__thumb').boundingBox())!
+  expect(smallThumb.width).toBe(10)
+  expect(smallThumb.height).toBe(10)
+  expect(Math.abs(smallThumb.x + smallThumb.width / 2 - rail.x - rail.width)).toBeLessThan(1)
+  expect(Math.abs(smallThumb.y + smallThumb.height / 2 - rail.y - rail.height / 2)).toBeLessThan(1)
+  await slider.focus()
+  await expect(control).toHaveCSS('outline-style', 'solid')
   if (!isMobile) {
     const nativeThumb = await slider.evaluate(element => { const style = getComputedStyle(element, '::-webkit-slider-thumb'); return { width: style.width, height: style.height } })
     // WebKit/Chromium may expose the input's style rather than pseudo geometry;

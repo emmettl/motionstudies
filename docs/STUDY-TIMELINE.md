@@ -49,3 +49,29 @@ The rail is 8px high, the visible handle 20px across and the native grab target 
 Colors inherit the timeline accent; plain clocks may also override `--ms-timeline-track`, `--ms-timeline-track-border` and `--ms-timeline-halo`. The default plain scrubber uses England's pale green accent. Playback buttons, clock readout, date/timezone formatting, capture coverage and play/pause policy stay with the edition. This shares the instrument across full-screen maps without imposing one study's temporal interpretation on another.
 
 The plain scrubber preserves the caller’s clock precision; `step` governs native seeking, not playback updates. This matters for clocks such as GLEISLICHT Now, which advance every second even when manual seeking uses ten-second steps.
+
+## Density-sensitive bars · design reference
+
+Zugunruhe Seasons contributes another presentation reference: its passage score varies each night's bar height and opacity together. `drawScore` in `zugunruhe/src/season.js` uses `sqrt(min(meanDensity / densityCap, 1))` for normalized height and opacity `0.18 + 0.6 × normalizedDensity`, beneath a canvas-wide opacity of 0.8. Small gaps keep individual nights legible; unavailable nights receive a separate grey baseline mark. Its altitude calendar uses the same square-root scale for light within each night/altitude cell, with coverage marks distinguishing measured zero from missing observations.
+
+For the shared activity chart, consider an optional value-dependent bar-opacity treatment alongside the existing uniform bars and line. This is a proposed extension, not part of alpha.23. Keep linear bar height as the default quantitative scale; adopting Seasons' square-root height mapping would be a separate, explicitly labelled scale choice. Use a fixed maximum when comparing dates or places so equal values retain equal visual weight. Brightness should encode the stated activity measure, not imply confidence or completeness; missing observations need their own treatment and exact values remain available in the readout.
+
+Bar appearance must remain independent of interaction geometry: even a faint or narrow bar sits within the continuous chart seek surface and the shared 44×44px grab target. Editions retain their palette. The effect belongs in `StudyTimeline` presentation; `TimelineScrubber` continues to work without activity data, and the original observation values remain unchanged.
+
+### Thin track option · unreleased
+
+Seasons also contributes its fine track as a presentation option. Set `--ms-timeline-track-height: 1px` on an edition container for that treatment, or choose an intermediate thickness such as `3px`. Omit the variable to retain England's broad 8px rail. This option applies to both `TimelineScrubber` and `StudyTimeline`; the rail remains centred beneath the same 20px visible handle, and the native 44×44px grab target and chart seek surface are unchanged. The lab's Thin track toggle exercises both treatments. This addition is not yet published in alpha.23.
+
+### Discreet marker option · unreleased
+
+The Seasons passage clock's visible marker is a small 10px dot. Shared timelines can retain that quieter treatment using `--ms-timeline-marker-size: 10px` and `--ms-timeline-halo-width: 0px`. These are independent of track thickness; defaults remain 20px and a 3px halo. For the complete fine-track treatment:
+
+```css
+.edition-timeline {
+  --ms-timeline-track-height: 1px;
+  --ms-timeline-marker-size: 10px;
+  --ms-timeline-halo-width: 0px;
+}
+```
+
+The marker still uses the edition's accent, remains centred on the time position, and preserves the visible keyboard focus outline. Its size only changes appearance: native thumb geometry, the 44×44px touch target, chart seeking and edge insets stay unchanged. The lab provides an independent Discreet marker toggle. This addition is not yet published in alpha.23.

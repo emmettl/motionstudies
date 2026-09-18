@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.1.0-alpha.27",
+  "version": "0.1.0-alpha.28",
   "private": true,
   "type": "module",
   "exports": {
@@ -41,6 +41,8 @@
     "./domain/gridded-series": "./src/domain/gridded-series.ts",
     "./domain/published-day": "./src/domain/published-day.ts",
     "./domain/field-paths": "./src/domain/field-paths.ts",
+    "./domain/route-field": "./src/domain/route-field.ts",
+    "./domain/route-events": "./src/domain/route-events.ts",
     "./domain/daylight": "./src/domain/daylight.ts",
     "./domain/power-day": "./src/domain/power-day.ts",
     "./timeline": "./src/timeline.ts",

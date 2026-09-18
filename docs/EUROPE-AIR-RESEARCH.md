@@ -86,6 +86,31 @@ This is a promising first composition test because the existing clock and airpor
 
 **What would weaken it:** The picture suggests a simple east-to-west awakening that the observations do not support. Curfews, demand, scheduling decisions and causal effects of daylight need separate evidence.
 
+### 5. Europe’s intercontinental rhythm
+
+**Emerging author direction, 16 September 2026:** if destination mapping is sufficiently reliable, show the waves of flights to and from Asia and the Americas. The subject is the rhythm of those connections as they become visible over Europe. This develops “Europe as a passage” into a more specific temporal question and preserves Europe as the place of attachment.
+
+**Working thesis:** Europe’s day is shaped by overlapping waves of connection with other parts of the world. This is a hypothesis to test, not a pattern established by the current replay.
+
+**What could be beautiful:** Keep the continental view. Select a counterpart continent and watch its incoming or outgoing movements emerge from the surrounding traffic. A small pair of aligned time profiles could reveal whether arrival and departure waves lead, overlap or recede in turn. The map should carry the experience; the profiles should make its timing legible. Let the viewer follow individual observed tracks within a wave, then return to the wider field.
+
+**What it could demonstrate:** The temporal composition of observed European airport movements by the other endpoint of each flight leg. Incoming movements are classified by origin, outgoing movements by destination. Internal European legs, overflights and unknown counterparts remain distinct. These categories describe immediate flight legs, not passengers’ ultimate origins/destinations, passenger volumes or the causes of airline scheduling.
+
+**Mapping rule:** Classify from supported airport endpoints or a uniquely matched, dated route record. Heading, entry edge and an aircraft’s registration country do not establish its destination. Keep unmatched and conflicting cases neutral and visible. Agree the continent taxonomy, including transcontinental/border cases, before labelling a final composition. Asia may eventually need useful subregions if a single category conceals different rhythms.
+
+**Current evidence:** an [offline audit of the first LUFT release](evidence/luft-continent-endpoints-2026-09-14.json), using its pinned OurAirports continent reference, found:
+
+| Observed European airport associations | European counterpart | Asian counterpart | African counterpart | Unknown counterpart | Total |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Inbound | 12,864 | 271 | 35 | 7,705 | 20,875 |
+| Outbound | 12,865 | 376 | 27 | 8,236 | 21,504 |
+
+The population is deduplicated endpoint associations at airports marked EU by the reference and lying within the LUFT viewing rectangle. These are not unique-flight or complete-traffic totals. Unknown counterparts account for about 36.9% inbound and 38.3% outbound. No North American, South American or Oceanian counterpart was identified; this is a limitation of the endpoint evidence, not evidence of absent flights. The current Asian category is dominated by Antalya, Tel Aviv and Larnaca, so it does not yet support a claim about long-haul Asian waves. The same-date source window, receiver gaps and identity-segmentation rules can all lose remote endpoints; the audit does not attribute the failures to one cause.
+
+**Next bounded test:** choose a well-covered European hub, audit missing counterpart evidence by time of day, and test a small set of long-haul legs against adjacent-day observations and a dated route-context source. Preserve observed motion gaps while enriching labels; route knowledge must not manufacture a continuous trajectory. Establish matching precision and coverage separately for each region/direction before rendering comparative profiles. Compare several suitable days before describing a recurring rhythm. Retain the unknown share per time bin so changing mapping coverage cannot masquerade as a wave.
+
+Reproduce the audit with `node scripts/research/audit-luft-continents.mjs RELEASE_DIRECTORY OUTPUT_JSON`. This proposal changes neither the deployed study nor recorder enrollment. GitHub Pages remains the prototype host; Cloudflare dual hosting is deferred until the study is more developed.
+
 ## Questions that should decide the work
 
 - What should a viewer be able to say after a minute that they could not say from the opening still?
