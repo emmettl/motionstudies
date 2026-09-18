@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "recorder-evidence-plan",
+  "producerId": "recorder-minimax",
+  "validUntil": "2026-09-19T06:00:00Z",
+  "feeds": [
+    {
+      "feedId": "uk-bus-archive",
+      "archive": {
+        "journalPath": "/path/to/recordings/bus-day/collections/closed-journal.json",
+        "closeoutPath": "/path/to/recordings/bus-day/closeout/closed-journal.json",
+        "expectedEnd": "2026-09-17T23:00:00Z",
+        "deadlineAt": "2026-09-18T06:00:00Z"
+      },
+      "publication": {
+        "pointerPath": "/path/to/analytics/2026-09/quality-release-pointers/selection.json",
+        "operator": "FBRI",
+        "expectedThrough": "2026-09-17",
+        "deadlineAt": "2026-09-18T06:00:00Z"
+      }
+    }
+  ]
+}

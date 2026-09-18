@@ -194,6 +194,12 @@ Consumers supply remaining `stops` in journey order and update them with playbac
 
 The required `note` explains provenance. Optional `status`, `statusTone`, `clockLabel`, localized `labels`, `loading`, `error` and `onRetry` follow the consumer's data; the component never manufactures an on-time status. Loading and errors hide the calling points. Stop selection is controlled through stable call IDs and does not alter playback or clear when a call leaves the list. All supplied calls are shown, with wrapping names and container-based compact layouts. The lab exercises advance/rewind, unknown destinations/times, localization, disruption, recovery and narrow widths. Edition adoption requires its own package upgrade and data adapter.
 
+## Feed observability
+
+`@motionstudies/data/feed-observability` validates versioned feed registries, operational events and health reports. `@motionstudies/data/recorder-observability` projects a recorder status snapshot into that shared contract, rechecking freshness against the observer's clock and omitting private paths, PIDs and raw errors. Both are pure functions with no acquisition, storage or notification side effects. The source repository's `docs/FEED-OBSERVABILITY.md` describes the read-only CLI, example registry, states and evidence limits. Registry daily schedules remain declarative; explicit dated evidence plans and incident history are available through the Node adapters below.
+
+`@motionstudies/data/recorder-evidence` reads explicit dated local journal/close-out and release targets, verifies their hashes and identities, and assesses missing expected outputs against deadlines. `@motionstudies/data/feed-incidents` persists debounced incident transitions with replay protection, atomic checksummed state, bounded retention and fail-closed capacity limits. These two modules require Node. See `docs/FEED-INCIDENTS.md` for CLI opt-in flags and operational limits; neither module installs a scheduler or sends notifications.
+
 ## Optional live airport feed
 
 `AirportBoard` from `@motionstudies/web/components/AirportBoard` adds Study/Now controls around an existing `AirportHeroCard` configuration. Pass `studyCard` with the usual card props and `live={{ baseUrl, edition, airport }}` for the shared service. Import `airport-hero-card.css`. `labels` localizes the wrapper's control and availability messages. The lower-level `useAirportFeed` hook and core `domain/live-airport` contract are also public exports.

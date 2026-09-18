@@ -71,6 +71,30 @@
     "./rail-geometry": {
       "types": "./src/rail-geometry.d.mts",
       "import": "./src/rail-geometry.mjs"
+    },
+    "./feed-observability": {
+      "types": "./src/feed-observability.d.mts",
+      "import": "./src/feed-observability.mjs"
+    },
+    "./recorder-observability": {
+      "types": "./src/recorder-observability.d.mts",
+      "import": "./src/recorder-observability.mjs"
+    },
+    "./recorder-evidence": {
+      "types": "./src/recorder-evidence.d.mts",
+      "import": "./src/recorder-evidence.mjs"
+    },
+    "./feed-incidents": {
+      "types": "./src/feed-incidents.d.mts",
+      "import": "./src/feed-incidents.mjs"
+    },
+    "./feed-observer": {
+      "types": "./src/feed-observer.d.mts",
+      "import": "./src/feed-observer.mjs"
+    },
+    "./feed-expectations": {
+      "types": "./src/feed-expectations.d.mts",
+      "import": "./src/feed-expectations.mjs"
     }
   },
   "dependencies": {

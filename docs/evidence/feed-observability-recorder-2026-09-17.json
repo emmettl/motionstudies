@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "kind": "feed-health",
+  "registryId": "motionstudies-recorder",
+  "producerId": "recorder-minimax",
+  "observedAt": "2026-09-17T21:49:31.921Z",
+  "producerGeneratedAt": "2026-09-17T21:48:52.933Z",
+  "telemetry": {
+    "state": "current",
+    "ageSeconds": 38.988
+  },
+  "feeds": [
+    {
+      "feedId": "uk-bus-archive",
+      "configuredState": "active",
+      "state": "unknown",
+      "stages": [
+        {
+          "stageId": "capture",
+          "state": "healthy",
+          "reasons": [],
+          "timestamps": {
+            "receivedAt": "2026-09-17T21:48:44.871Z"
+          },
+          "metrics": {
+            "capture-age-seconds": 47.05
+          }
+        },
+        {
+          "stageId": "normalize",
+          "state": "healthy",
+          "reasons": [],
+          "timestamps": {
+            "latestPeriodEnd": "2026-09-17T21:00:00.000Z"
+          },
+          "metrics": {
+            "normalization-lag-seconds": 2971.921
+          }
+        },
+        {
+          "stageId": "archive",
+          "state": "unknown",
+          "reasons": [
+            "upload-evidence-unavailable"
+          ],
+          "timestamps": {},
+          "metrics": {
+            "incomplete-closeouts": 0
+          }
+        },
+        {
+          "stageId": "analytics",
+          "state": "waiting",
+          "reasons": [
+            "analytics-awaiting-inputs-or-work"
+          ],
+          "timestamps": {
+            "lastAttemptAt": "2026-09-17T21:47:52.951Z",
+            "lastSuccessAt": "2026-09-17T21:11:53.548Z"
+          },
+          "metrics": {
+            "pending-months": 0,
+            "waiting-inputs": 1
+          }
+        }
+      ]
+    },
+    {
+      "feedId": "london-arrivals",
+      "configuredState": "active",
+      "state": "unknown",
+      "stages": [
+        {
+          "stageId": "capture",
+          "state": "healthy",
+          "reasons": [],
+          "timestamps": {
+            "receivedAt": "2026-09-17T21:48:03.479Z"
+          },
+          "metrics": {
+            "capture-age-seconds": 88.442
+          }
+        },
+        {
+          "stageId": "normalize",
+          "state": "healthy",
+          "reasons": [],
+          "timestamps": {
+            "latestPeriodEnd": "2026-09-17T21:00:00.000Z"
+          },
+          "metrics": {
+            "normalization-lag-seconds": 2971.921
+          }
+        },
+        {
+          "stageId": "archive",
+          "state": "unknown",
+          "reasons": [
+            "upload-evidence-unavailable"
+          ],
+          "timestamps": {},
+          "metrics": {
+            "incomplete-closeouts": 0
+          }
+        }
+      ]
+    },
+    {
+      "feedId": "london-docks",
+      "configuredState": "active",
+      "state": "unknown",
+      "stages": [
+        {
+          "stageId": "capture",
+          "state": "healthy",
+          "reasons": [],
+          "timestamps": {
+            "receivedAt": "2026-09-17T21:48:02.749Z"
+          },
+          "metrics": {
+            "capture-age-seconds": 89.172
+          }
+        },
+        {
+          "stageId": "normalize",
+          "state": "healthy",
+          "reasons": [],
+          "timestamps": {
+            "latestPeriodEnd": "2026-09-17T21:00:00.000Z"
+          },
+          "metrics": {
+            "normalization-lag-seconds": 2971.921
+          }
+        },
+        {
+          "stageId": "archive",
+          "state": "unknown",
+          "reasons": [
+            "upload-evidence-unavailable"
+          ],
+          "timestamps": {},
+          "metrics": {
+            "incomplete-closeouts": 0
+          }
+        }
+      ]
+    },
+    {
+      "feedId": "swiss-realtime",
+      "configuredState": "active",
+      "state": "unknown",
+      "stages": [
+        {
+          "stageId": "capture",
+          "state": "healthy",
+          "reasons": [],
+          "timestamps": {
+            "receivedAt": "2026-09-17T21:48:02.822Z",
+            "sourceGeneratedAt": "2026-09-17T21:47:10.933Z"
+          },
+          "metrics": {
+            "capture-age-seconds": 89.099,
+            "source-age-seconds": 140.988
+          }
+        },
+        {
+          "stageId": "normalize",
+          "state": "healthy",
+          "reasons": [],
+          "timestamps": {
+            "latestPeriodEnd": "2026-09-17T21:00:00.000Z"
+          },
+          "metrics": {
+            "normalization-lag-seconds": 2971.921
+          }
+        },
+        {
+          "stageId": "archive",
+          "state": "unknown",
+          "reasons": [
+            "upload-evidence-unavailable"
+          ],
+          "timestamps": {},
+          "metrics": {
+            "incomplete-closeouts": 0
+          }
+        }
+      ]
+    }
+  ],
+  "capacity": {
+    "state": "healthy",
+    "reasons": [],
+    "metrics": {
+      "disk-free-bytes": 1975987773440,
+      "disk-total-bytes": 2000189177856,
+      "committed-bytes": 23227366678,
+      "reserved-bytes": 0,
+      "remaining-capture-bytes": 1180364022203,
+      "estimated-capture-days": 164.57870530109076
+    }
+  }
+}

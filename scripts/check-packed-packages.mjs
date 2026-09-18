@@ -54,6 +54,22 @@ try {
     if ((await lstat(installed)).isSymbolicLink() || !(await realpath(installed)).startsWith(await realpath(consumer))) throw new Error(`${name} is not an isolated package install`)
   }
   await writeFile(join(consumer, 'src/package-contracts.ts'), `
+    import { readFeedRegistry, readFeedEvent, readFeedHealth, type FeedRegistry, type FeedEvent, type FeedHealth } from '@motionstudies/data/feed-observability'
+    import { recorderFeedHealth } from '@motionstudies/data/recorder-observability'
+    import { recorderEvidenceHealth, type RecorderEvidencePlan } from '@motionstudies/data/recorder-evidence'
+    import { readIncidentStore, updateIncidentStore, type IncidentState } from '@motionstudies/data/feed-incidents'
+    import { observeFeeds, assessObserverCheck, type ObserverConfig, type ObserverCheck } from '@motionstudies/data/feed-observer'
+    import { dailyFeedExpectation, type DailyExpectation } from '@motionstudies/data/feed-expectations'
+    export const checkFeeds = (registry: FeedRegistry, config: ObserverConfig): Promise<ObserverCheck> => observeFeeds(registry, config)
+    export const assessCheck = (registry: FeedRegistry, check: ObserverCheck) => assessObserverCheck(registry, check)
+    export const expectedDay: DailyExpectation = dailyFeedExpectation({ timeZone: 'Europe/London', deadline: '06:00' }, 0)
+    export const recordedEvidence = (registry: FeedRegistry, report: FeedHealth, plan: RecorderEvidencePlan): Promise<FeedHealth> => recorderEvidenceHealth(registry, report, plan)
+    export const incidentState = (root: string): Promise<IncidentState> => readIncidentStore(root)
+    export const persistIncidents = (root: string, registry: FeedRegistry, report: FeedHealth) => updateIncidentStore(root, registry, report)
+    export const operationalRegistry = (value: unknown): FeedRegistry => readFeedRegistry(value)
+    export const operationalEvent = (value: unknown, registry: FeedRegistry): FeedEvent => readFeedEvent(value, registry)
+    export const operationalHealth = (value: unknown, registry: FeedRegistry): FeedHealth => readFeedHealth(value, registry)
+    export const recorderHealth = (registry: FeedRegistry, status: unknown): FeedHealth => recorderFeedHealth(registry, status, { producerId: 'recorder-minimax', now: 0 })
     import { network } from './fixtures.ts'
     import { readAirEnrichment, createEndpointResolver, endpointCoverage } from '@motionstudies/core/air-enrichment'
     export const enrichmentContract = [readAirEnrichment, createEndpointResolver, endpointCoverage]

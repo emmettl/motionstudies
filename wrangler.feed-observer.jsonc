@@ -1,0 +1,15 @@
+{
+  "name": "motionstudies-feed-observer",
+  "main": "services/feed-observer/worker.ts",
+  "account_id": "8cac82a07417990e553f88793670f361",
+  "compatibility_date": "2026-09-18",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "motionstudies.app/api/feeds/*", "zone_name": "motionstudies.app" }],
+  "triggers": { "crons": ["* * * * *"] },
+  "limits": { "cpu_ms": 1000 },
+  "vars": { "OBSERVER_CONFIG": { "enabled": false, "consumers": [] } },
+  "durable_objects": { "bindings": [{ "name": "OBSERVER", "class_name": "FeedObserver" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["FeedObserver"] }],
+  "ratelimits": [{ "name": "REQUEST_LIMITER", "namespace_id": "1002", "simple": { "limit": 30, "period": 60 } }]
+}
