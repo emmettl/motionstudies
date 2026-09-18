@@ -45,6 +45,10 @@ Use the resulting day to test one authored comparison: the morning/evening trans
 
 The current artifact is substantial enough to refine the thesis through observation. It is not yet evidence of a complete Bristol day, a planning-grade network or an approved public edition.
 
+## The useful face — 19 September 2026
+
+The recorder host has captured the national bus feed continuously since 15 September, and Underfall's two-day pass over 16–17 September (`docs/RUNNING-TIME.md` on its `codex/running-time-research` branch) changed what the useful face should be. The intended reader works on the operational side and already has a live tracking site, so the study's contribution is aggregation over time: where each pattern loses time against its own off-peak running, and bounded events in which several lines leave their routes in the same place at the same time. On the 16th that method found the A4 at Saltford taking seven lines off route for six hours; the operator's own disruption feed explains the nightly closures it also found and is silent on Saltford. The shared contracts for that layer are in [Route fields and off-route events](ROUTE-FIELD-AND-EVENTS.md). The scene layer is not built, and none of this is a punctuality measure.
+
 ## Implementation evidence
 
 The independent checkout owns the compilers, fixtures and tests. The inspected records are `docs/DUALITY.md`, `docs/OBSERVED-AND-TIDAL.md`, `docs/RAIL-AND-AIR.md`, `docs/RECORDING-WINDOWS.md`, `docs/ROAD-PULSE.md` and `docs/RESEARCH.md` in `underfall`. The whole-day M32 milestone records 76 passing tests; this is not a fresh test run of the later geographic-section increment. Source-specific provenance and exclusions stay with those artifacts.
