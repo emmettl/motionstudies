@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "kind": "feed-observer-config",
+  "producerId": "recorder-minimax",
+  "healthUrl": "https://health.example.invalid/producer.json",
+  "consumers": [{
+    "feedId": "uk-bus-archive",
+    "manifestUrl": "https://analytics.example.invalid/feeds/FBRI/manifest.json",
+    "operator": "FBRI",
+    "timeZone": "Europe/London",
+    "deadline": "06:00"
+  }]
+}

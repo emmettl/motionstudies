@@ -1,4 +1,4 @@
-const TIMEZONE = 'Europe/London'
+export const SERVICE_TIMEZONE = 'Europe/London'
 
 export function checkedDate(value) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value ?? '') || !Number.isFinite(Date.parse(`${value}T00:00:00Z`)) ||
@@ -11,7 +11,7 @@ export function checkedDate(value) {
 // UK midnight is unambiguous on both DST transition days. Never infer a full day as 86400 seconds.
 function londonMidnight(date) {
   const nominal = Date.parse(`${date}T00:00:00Z`)
-  const formatter = new Intl.DateTimeFormat('en-GB', { timeZone: TIMEZONE, timeZoneName: 'longOffset' })
+  const formatter = new Intl.DateTimeFormat('en-GB', { timeZone: SERVICE_TIMEZONE, timeZoneName: 'longOffset' })
   let instant = nominal
   for (let attempt = 0; attempt < 3; attempt++) {
     const offset = formatter.formatToParts(instant).find(part => part.type === 'timeZoneName').value
@@ -28,7 +28,7 @@ export function studyDay(serviceDate) {
   const next = new Date(Date.parse(`${serviceDate}T00:00:00Z`) + 86400000).toISOString().slice(0, 10)
   const start = londonMidnight(serviceDate)
   const end = londonMidnight(next)
-  return { serviceDate, timezone: TIMEZONE, startUtc: new Date(start).toISOString(), endUtc: new Date(end).toISOString(), durationSeconds: (end - start) / 1000 }
+  return { serviceDate, timezone: SERVICE_TIMEZONE, startUtc: new Date(start).toISOString(), endUtc: new Date(end).toISOString(), durationSeconds: (end - start) / 1000 }
 }
 
 export function utcDatesForDay(day) {

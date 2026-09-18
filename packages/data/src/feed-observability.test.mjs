@@ -182,8 +182,8 @@ describe('recorder status adapter', () => {
     expect(bus(report(s)).state).toBe('healthy')
   })
   it('does not claim serving or completeness from a processing success', () => {
-    const r = registry(); r.feeds[0].stages.push({ id: 'serve', dependsOn: ['analytics'], maxAgeSeconds: 60 })
-    expect(bus(report(status(), r), 'serve').reasons).toEqual(['stage-evidence-unavailable'])
+    const r = registry(); r.feeds[0].stages.push({ id: 'deploy', dependsOn: ['analytics'], maxAgeSeconds: 60 })
+    expect(bus(report(status(), r), 'deploy').reasons).toEqual(['stage-evidence-unavailable'])
   })
   it('reports capacity pauses without exporting private reasons and omits invalid forecasts', () => {
     const s = status(); s.capacity.status = 'paused'; s.capacity.pauseReason = 'private ledger path'; s.capacity.estimatedCaptureDays = Infinity

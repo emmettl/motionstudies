@@ -20,7 +20,8 @@
         { "id": "normalize", "dependsOn": ["capture"], "maxAgeSeconds": 4500 },
         { "id": "archive", "dependsOn": ["normalize"], "maxAgeSeconds": null },
         { "id": "analytics", "dependsOn": ["normalize"], "maxAgeSeconds": 1800 },
-        { "id": "publication", "dependsOn": ["analytics"], "maxAgeSeconds": null }
+        { "id": "publication", "dependsOn": ["analytics"], "maxAgeSeconds": null },
+        { "id": "serve", "dependsOn": ["publication"], "maxAgeSeconds": null }
       ]
     },
     {

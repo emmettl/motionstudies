@@ -65,7 +65,7 @@ Only whole recovered incidents older than the retention period are pruned, inclu
 
 Corrupt/missing state in an existing store fails closed and must be restored from a verified copy. A lock left by an interrupted process is also refused: inspect its host/PID, establish that the writer is gone, and preserve the committed state before removing that specific lock. No automatic stale-lock takeover is implemented. If interruption happened before the first state was ever committed, preserve that incomplete directory for inspection and initialize a new store at a new path. Uncommitted `.state-*` files are ignored on reads and can be inspected separately; the writer does not scan/delete arbitrary leftovers.
 
-This history is currently local. It can survive normal process restarts and detected interruptions, but cannot diagnose loss of the entire disk on its own. Off-host export, the independent heartbeat checker, consumer probes, daily expectation generation, notifications and a shared dashboard remain subsequent work.
+This history is currently local. It can survive normal process restarts and detected interruptions, but cannot diagnose loss of the entire disk on its own. The [external observer](FEED-OBSERVER.md) now implements heartbeat aging, HTTP consumer probes, automatic consumer deadlines and Cloudflare scheduling. Live wiring, off-host incident-history export, dated local evidence-plan generation, notifications and a shared dashboard remain subsequent work.
 
 ## Validation scope
 

@@ -18,7 +18,7 @@
     "check:packed": "node scripts/check-packed-packages.mjs",
     "check:packages": "tsc -p packages/core && tsc -p packages/three && tsc -p packages/web",
     "check:architecture": "node scripts/check-edition-boundaries.mjs",
-    "typecheck": "npm run check:packages && tsc -p lab && tsc -p tsconfig.tests.json && npm run check:airports",
+    "typecheck": "npm run check:packages && tsc -p lab && tsc -p tsconfig.tests.json && npm run check:airports && npm run check:feed-observer",
     "lint": "oxlint",
     "test": "vitest run",
     "test:lab": "playwright test --config playwright.lab.config.ts",
@@ -31,7 +31,10 @@
     "release:dry-run": "node scripts/publish-packages.mjs",
     "check:airports": "tsc -p services/airports",
     "dev:airports": "wrangler dev --config wrangler.airports.jsonc --port 8787",
-    "feeds:health": "node scripts/feed-health.mjs"
+    "feeds:health": "node scripts/feed-health.mjs",
+    "feeds:observe": "node scripts/observe-feeds.mjs",
+    "check:feed-observer": "tsc -p services/feed-observer",
+    "feeds:push": "node scripts/push-feed-health.mjs"
   },
   "dependencies": {
     "@motionstudies/core": "0.1.0-alpha.26",

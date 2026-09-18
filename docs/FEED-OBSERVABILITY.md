@@ -4,6 +4,8 @@
 
 The implementation provides common registry, event and health-report contracts in `@motionstudies/data`, a recorder adapter, a command-line report and an example registry for the four MiniMax feeds. Optional explicit evidence plans verify recorded uploads and local analytics releases; optional incident history persists failures and recovery. It runs independently of collection and makes no provider calls. It can inspect the existing recorder deployment without changing or restarting it.
 
+An [external observer and Cloudflare service](FEED-OBSERVER.md) now add automatic consumer deadlines, HTTP release verification and independent heartbeat aging. They require live deployment and exporter wiring.
+
 The broader goal is to follow each feed through capture, processing, publication and consumption, with an observer outside the recording host. This change does not install a monitoring service or emit notifications. See [evidence and durable incidents](FEED-INCIDENTS.md) for the new options, retention, limits and recovery procedure.
 
 ## Run
@@ -25,7 +27,7 @@ Exit codes:
 - **2:** valid report with degraded/unknown active feed health, unavailable telemetry or capacity needing attention.
 - **1:** input/contract/argument error; no health report was produced. An observer must treat this as a failed check, not retain a green result indefinitely.
 
-The complete example reports `unknown` for archive upload and publication without additional evidence. Expect code 2 even when capture and normalization are healthy. This is evidence coverage, not a claim that uploads have failed. Optional evidence plans provide explicit period/deadline checks; incident history applies debounce and recovery rules. Do not wire exit codes directly to paging: consume incident transitions and monitor failed checks. Daily expectation generation and an independent scheduler are still needed for unattended operation.
+The complete example reports `unknown` for archive upload and publication without additional evidence. Expect code 2 even when capture and normalization are healthy. This is evidence coverage, not a claim that uploads have failed. Optional evidence plans provide explicit period/deadline checks; incident history applies debounce and recovery rules. Do not wire exit codes directly to paging: consume incident transitions and monitor failed checks. The external observer advances consumer deadlines and provides a Cloudflare cron. Host exporter wiring and local evidence-plan generation are still needed for unattended operation.
 
 ## Registry
 
@@ -75,7 +77,7 @@ Read-only live validation on 17 September 2026 at 21:49 UTC found all four captu
 ## Next slices
 
 1. Generate fresh dated evidence expectations automatically, add producer run-event ingestion and provide off-host copies of operational history. Explicit artifact checks and persistent incident transitions are implemented.
-2. Run an independent checker outside the Mac; detect missing host heartbeats, missed expected schedules and the checker itself failing. Check the actual consumer manifest/release period.
+2. Deploy the implemented Cloudflare observer and wire the Mac exporter/consumer endpoint. Validate missing host heartbeats, consumer deadlines and checker freshness in operation.
 3. Add Swiss edge and LUFT adapters using the same contracts; evaluate daily deadlines in the declared timezone.
 4. Serve the read-only overview/history and a small public data-freshness summary, then configure notification delivery and tune incident policies.
 

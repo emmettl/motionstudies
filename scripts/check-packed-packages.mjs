@@ -58,6 +58,11 @@ try {
     import { recorderFeedHealth } from '@motionstudies/data/recorder-observability'
     import { recorderEvidenceHealth, type RecorderEvidencePlan } from '@motionstudies/data/recorder-evidence'
     import { readIncidentStore, updateIncidentStore, type IncidentState } from '@motionstudies/data/feed-incidents'
+    import { observeFeeds, assessObserverCheck, type ObserverConfig, type ObserverCheck } from '@motionstudies/data/feed-observer'
+    import { dailyFeedExpectation, type DailyExpectation } from '@motionstudies/data/feed-expectations'
+    export const checkFeeds = (registry: FeedRegistry, config: ObserverConfig): Promise<ObserverCheck> => observeFeeds(registry, config)
+    export const assessCheck = (registry: FeedRegistry, check: ObserverCheck) => assessObserverCheck(registry, check)
+    export const expectedDay: DailyExpectation = dailyFeedExpectation({ timeZone: 'Europe/London', deadline: '06:00' }, 0)
     export const recordedEvidence = (registry: FeedRegistry, report: FeedHealth, plan: RecorderEvidencePlan): Promise<FeedHealth> => recorderEvidenceHealth(registry, report, plan)
     export const incidentState = (root: string): Promise<IncidentState> => readIncidentStore(root)
     export const persistIncidents = (root: string, registry: FeedRegistry, report: FeedHealth) => updateIncidentStore(root, registry, report)
