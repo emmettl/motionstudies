@@ -18,7 +18,7 @@ Recorded evidence reaches the works as dated, versioned releases that the [recor
 `@motionstudies/data/release-files` is Node only:
 
 - `openRelease(root, { kind, schemaVersions, manifestSha256 })` reads `manifest.json` with a size bound, checks it against a pinned digest when one is given (LUFT's `data-release.json` pins one), checks identity and returns a `read(path)` that refuses any file the manifest does not describe.
-- `readReleaseFile` refuses a path that resolves outside the release, including through a symbolic link, reads no more than the described size, and checks size and digest.
+- `readReleaseFile` refuses a path that resolves outside the release or passes through any symbolic link below the release root (even one pointing inside it), reads no more than the described size, and checks size and digest.
 - `verifyRelease` checks every described file against a total byte budget.
 
 Verified against real data on 19 September: LUFT's 17 September air release, 147 files and 261,260,128 bytes, with the manifest matching the digest LUFT pins.
