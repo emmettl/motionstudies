@@ -11,7 +11,11 @@ try {
   const report = readFeedHealth(JSON.parse(await readOperationalFile(v.report, 64 * 1024)), registry)
   const body = JSON.stringify(report)
   if (Buffer.byteLength(body) > 64 * 1024) throw new Error('Report limit')
-  const response = await fetch(url, { method: 'PUT', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body, redirect: 'error', signal: AbortSignal.timeout(10000) })
+  const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
+  const accessId = process.env.CF_ACCESS_CLIENT_ID, accessSecret = process.env.CF_ACCESS_CLIENT_SECRET
+  if (accessId && accessSecret) { headers['CF-Access-Client-Id'] = accessId; headers['CF-Access-Client-Secret'] = accessSecret }
+  else if (accessId || accessSecret) throw new Error('Incomplete Access credential')
+  const response = await fetch(url, { method: 'PUT', headers, body, redirect: 'error', signal: AbortSignal.timeout(10000) })
   await response.body?.cancel()
   if (!response.ok) throw new Error('Push rejected')
   process.stdout.write('Feed health accepted by observer.\n')

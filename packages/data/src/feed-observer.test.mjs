@@ -146,3 +146,10 @@ it('a read-time assessment expires the checker, producer and expected day indepe
   r.completedAt = new Date(now + 60000).toISOString()
   expect(assessObserverCheck(f.registry, r, { now }).reasons).toEqual(['checker-clock-invalid'])
 })
+it('sends Access credentials only to the selected consumer and its pinned release', async () => {
+  const f = fixture(), r = await f.run({ tokens: { consumers: { 'uk-bus-archive': { accessClientId: 'access-id', accessClientSecret: 'access-secret' } } } })
+  expect(r.consumers[0].state).toBe('healthy')
+  expect(f.calls[0].options.headers['CF-Access-Client-Secret']).toBeUndefined()
+  expect(f.calls.slice(1).every(c => c.options.headers['CF-Access-Client-Secret'] === 'access-secret')).toBe(true)
+  expect(JSON.stringify(r)).not.toContain('access-secret')
+})

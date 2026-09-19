@@ -1,4 +1,4 @@
-import registryValue from '../../config/feeds/recorder.example.json'
+import registryValue from '../../config/feeds/recorder.production.json'
 import { readFeedHealth, readFeedRegistry, type FeedHealth } from '../../packages/data/src/feed-observability.mjs'
 import { observeFeeds, assessObserverCheck, OBSERVER_LIMITS, type ObserverCheck, type ObserverConfig } from '../../packages/data/src/feed-observer.mjs'
 

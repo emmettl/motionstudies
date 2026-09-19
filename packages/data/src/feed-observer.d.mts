@@ -1,6 +1,7 @@
 import type { SERVICE_TIMEZONE } from './uk-service-day.mjs'
 import type { FeedHealth, StageHealth } from './feed-observability.mjs'
 import type { DailyExpectation } from './feed-expectations.mjs'
+export type ObserverCredential = string | { bearer?: string; accessClientId?: string; accessClientSecret?: string }
 export interface ObserverConfig {
   schemaVersion: 1
   kind: 'feed-observer-config'
@@ -23,7 +24,7 @@ export declare const OBSERVER_LIMITS: Readonly<{ requests: number; totalBytes: n
 export function observeFeeds(registry: unknown, config: unknown, options?: {
   fetchImpl?: typeof fetch
   clock?: () => number
-  tokens?: { health?: string; consumers?: Record<string, string> }
+  tokens?: { health?: ObserverCredential; consumers?: Record<string, ObserverCredential> }
   limits?: typeof OBSERVER_LIMITS
 }): Promise<ObserverCheck>
 export function assessObserverCheck(registry: unknown, checked: ObserverCheck | null | undefined, options?: { now?: number; maxAgeSeconds?: number }): { state: 'healthy' | 'degraded' | 'unknown'; reasons: string[] }
