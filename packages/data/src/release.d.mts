@@ -1,6 +1,6 @@
 /** A file a release describes: its release-relative path and the size and SHA-256 of its stored bytes. */
 export interface ReleaseDescriptor { path: string; sha256: string; bytes: number; [field: string]: unknown }
-export const RELEASE_DIGEST: RegExp
+export declare const RELEASE_DIGEST: RegExp
 export function isReleasePath(path: unknown): path is string
 export function readDescriptor(value: unknown, label?: string): ReleaseDescriptor
 /** Every descriptor in a manifest's `files` (array or map), `objects`, `chunks`, `list` and named top-level descriptors, sorted by path. */
