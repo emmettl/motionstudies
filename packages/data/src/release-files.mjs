@@ -6,12 +6,17 @@ import { checkReleaseManifest, digestHex, isReleasePath, readDescriptor, release
 export { readOperationalFile }
 const inside = (root, path) => { const r = relative(root, path); return r !== '' && !r.startsWith(`..${sep}`) && r !== '..' && !isAbsolute(r) }
 
-/** Read one described file from a release directory: safe path, no escape through links, bounded, size and digest checked. */
+/**
+ * Read one described file from a release directory: safe path, bounded, size and digest checked. No component below
+ * the release root may be a symbolic link, even one pointing elsewhere inside it, so a described path always names
+ * exactly the file that was written there.
+ */
 export async function readReleaseFile(root, descriptor, { maxBytes = 512 * 1024 ** 2 } = {}) {
   const d = readDescriptor(descriptor)
   if (d.bytes > maxBytes) throw new Error(`${d.path} exceeds the read limit`)
-  const base = await realpath(resolve(root)), actual = await realpath(join(base, ...d.path.split('/')))
+  const base = await realpath(resolve(root)), target = join(base, ...d.path.split('/')), actual = await realpath(target)
   if (!inside(base, actual)) throw new Error(`${d.path} resolves outside the release`)
+  if (actual !== target) throw new Error(`${d.path} passes through a symbolic link`)
   return verifyDescriptorBytes(await readOperationalFile(actual, d.bytes), d)
 }
 

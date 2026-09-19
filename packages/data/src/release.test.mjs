@@ -76,6 +76,11 @@ describe('release directories', () => {
     const outside = await mkdtemp(join(tmpdir(), 'outside-')); dirs.push(outside)
     await writeFile(join(outside, 'secret'), 'good'); await rm(join(root, 'day.json')); await symlink(join(outside, 'secret'), join(root, 'day.json'))
     await expect(readReleaseFile(root, manifest.files[0])).rejects.toThrow(/outside/)
+    // A link to another file inside the release is refused too: a path names exactly the file written there.
+    await writeFile(join(root, 'other.json'), 'good'); await rm(join(root, 'day.json')); await symlink(join(root, 'other.json'), join(root, 'day.json'))
+    await expect(readReleaseFile(root, manifest.files[0])).rejects.toThrow(/symbolic link/)
+    await rm(join(root, 'day.json')); await mkdir(join(root, 'real')); await writeFile(join(root, 'real', 'day.json'), 'good'); await symlink(join(root, 'real'), join(root, 'dir'))
+    await expect(readReleaseFile(root, { ...manifest.files[0], path: 'dir/day.json' })).rejects.toThrow(/symbolic link/)
     await expect(verifyRelease(root, { maxTotalBytes: 1 })).rejects.toThrow(/budget/)
   })
 })
