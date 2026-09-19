@@ -20,7 +20,7 @@ class EditionHostingTests(unittest.TestCase):
 
     def run_metadata(self, edition):
         return {"id": 123, "run_number": 10, "status": "completed", "conclusion": "success",
-                "head_branch": "main", "path": ".github/workflows/pages.yml",
+                "head_branch": "main", "path": ".github/workflows/" + hosting.EDITIONS[edition].get("workflows", ["pages.yml"])[0],
                 "repository": {"full_name": "emmettl/" + edition}, "event": "push",
                 "head_sha": "a" * 40, "html_url": "https://github.com/emmettl/" + edition + "/actions/runs/123"}
 
@@ -101,6 +101,19 @@ class EditionHostingTests(unittest.TestCase):
         for name in ["data/raw-traces.json", "data/chunk-144.json", "data/foreign/manifest.json"]:
             with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unapproved edition data"):
                 publisher.stage_artifact(self.archive("luft", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("luft"))
+
+    def test_underfall_accepts_dated_study_directories_and_rejects_other_data(self):
+        publisher = hosting.Publisher("underfall")
+        for name in ["data/bristol-water/manifest.json", "data/avon-2026-09-11/levels.json",
+                     "data/west-of-england-bus-day/2026-09-17/packs/FBRI/part-0.json.gz", "data/library/coverage/2026-09-14.json"]:
+            member = tarfile.TarInfo(name)
+            member.size = 1
+            publisher.stage_artifact(self.archive("underfall", member), self.root / name.replace("/", "_"), self.run_metadata("underfall"))
+        for name in ["data/work/raw.parquet", "data/../escape.json", "data/bristol-feed-health.parquet", "data/keys/bods.txt"]:
+            with self.subTest(name=name), self.assertRaises(ValueError):
+                publisher.stage_artifact(self.archive("underfall", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("underfall"))
+        with self.assertRaises(ValueError):
+            publisher.validate_run(self.run_metadata("underfall") | {"path": ".github/workflows/pages.yml"})
 
     def test_manifest_stays_synthetic_only(self):
         with self.assertRaisesRegex(ValueError, "synthetic fixture"):
