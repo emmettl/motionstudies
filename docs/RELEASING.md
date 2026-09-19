@@ -35,6 +35,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Prepare subsequent versions
 
+`0.1.0-alpha.30` tightens `@motionstudies/data/release-files`: `readReleaseFile` now refuses any symbolic link below the release root, including one pointing to another file inside the release, so a described path always names the file written there. No other change.
+
 `0.1.0-alpha.29` adds `@motionstudies/data/release` and `@motionstudies/data/release-files`, the shared verifier for recorder release handoffs, and an optional `sha256` on published-day list entries (see [the release contract](RELEASE-CONTRACT.md)). `@motionstudies/data/recorder-evidence` now verifies journals up to 256 MiB, so a national bus day's archive can pass, and reads files into buffers sized from the file rather than the limit. It also includes the feed observer change from #35. No renderer or opening-bundle change.
 
 The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
