@@ -35,3 +35,14 @@ Format-specific meaning stays with its reader: `@motionstudies/core/domain/publi
 ## Adoption
 
 The bus day gained per-file digests in its `list` on 19 September (recorder PR #19), so it can be verified like the others; `checkDayManifest` is unchanged and older days stay readable. The verifier was published in `0.1.0-alpha.29` on 19 September 2026 through the trusted release workflow ([run 35460111146](https://github.com/emmettl/motionstudies/actions/runs/35460111146)); the installed package verified LUFT's 17 September release. Consumers adopt it by upgrading and replacing their local loops one at a time; each keeps its own format checks.
+
+`0.1.0-alpha.30` (19 September) refuses any symbolic link inside a release, after Underfall's adoption found that a link to another file in the same release passed containment. By the end of that day every consumer was on alpha.30:
+
+| Repository | Adopted | Kept locally |
+| --- | --- | --- |
+| England | power compiler, power context and bus-day adoption through `openRelease`/`readReleaseFile`; browser checks through `verifyDescriptorBytes` | its file whitelists, `readPowerDay`, `checkDayManifest`, reconciliation and decoded `.gz` digests; days without list digests keep the old path |
+| LUFT | daily release checks, data fetch, build scripts and enrichment through a pinned `openRelease`; browser chunk checks through `digestHex` and `isReleasePath` | frame, source and chunk counts, the chunk-to-files cross-check, enrichment binding and its single-segment path rule |
+| Underfall | the road release reader and feed history; nine browser loaders through `digestHex` | its road cross-file checks and read budget; eleven other build scripts still hash for themselves |
+| Recorder | the three offline air audit tools through one helper | `readArtifact`, on the live analytics path, and `scheduled-coverage` |
+
+Every adoption preserved or tightened behaviour. Among the tightenings: England's power compiler now refuses a source object listed under the wrong digest, which it previously would have parsed as the wrong register.
