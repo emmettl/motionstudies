@@ -6,7 +6,8 @@ export async function readOperationalFile(path, limit) {
   try {
     const stat = await handle.stat()
     if (!stat.isFile() || stat.size > limit) throw new Error('Input must be a bounded regular file')
-    const bytes = Buffer.alloc(limit + 1)
+    // Size the buffer from the file, not the limit, so a generous limit costs nothing for small inputs; one spare byte detects growth.
+    const bytes = Buffer.alloc(Math.min(limit, stat.size) + 1)
     let size = 0
     while (size <= limit) {
       const { bytesRead } = await handle.read(bytes, size, bytes.length - size, null)

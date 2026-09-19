@@ -19,7 +19,14 @@ Use `config/feeds/recorder-evidence.example.json` as a **dated template**, repla
 
 ## Evidence expectations
 
-The plan binds each target to a registered producer/feed and declares a deadline. `validUntil` expires the whole plan; expired expectations yield unknown health. Deadlines cannot precede the expected period end or exceed plan validity. A future independent scheduler must generate the next expectations; this CLI does not advance dates automatically.
+The plan binds each target to a registered producer/feed and declares a deadline. `validUntil` expires the whole plan; expired expectations yield unknown health. Deadlines cannot precede the expected period end or exceed plan validity. This CLI does not advance dates by itself. `npm run feeds:evidence-plan` writes the next plan from what the recorder host has written:
+
+```sh
+npm run feeds:evidence-plan -- --registry config/feeds/recorder.example.json --producer recorder-minimax \
+  --host-config /path/to/recorder/host.json --out /path/to/observability/evidence-plan.json [--date YYYY-MM-DD] [--grace-hours 6]
+```
+
+For each active registered feed it takes the previous civil day in that feed's own zone, unless `--date` is given. The archive target is the journal whose planned end is nearest that day's boundary, within five minutes; only the journal's header is read, so a national bus journal of about 140 MiB costs little. The publication target is the newest release pointer for the configured operator. Deadlines are the day's end plus the grace period, and the plan stays valid for 30 hours after the day ends, so one run each morning covers the day. A feed with no matching journal or pointer is listed under `missing` and the command exits 2; nothing is guessed. The generator reads only the host configuration's `dataRoot`, feed names and zones and analytics root and operators. Verified on 19 September 2026 against a copy of the host's files for 18 September: all four archives and the bus publication were healthy. SIRI-SX had no full day yet. No schedule is installed; running it daily before `feeds:health --evidence` is left to the host operator.
 
 ### Archive
 
@@ -37,7 +44,7 @@ A missing expected day, older release or pending/stale selected day becomes degr
 
 Healthy proves the **local selected artifact**. It does not prove the HTTP endpoint, proxy or edition deployment serves it. Consumer checks remain a separate stage.
 
-All evidence paths come from the operator-supplied plan, never from the host status JSON or free-form provider data. Limits: 16 feed selections, 16 MiB per journal, 1 MiB per close-out, 2 MiB per release, small pointer/manifest limits and 64 MiB total reads per invocation. Final symlinks and nonregular files are refused. Reports contain only bounded reason codes and safe timestamps/counts; private paths and raw errors stay out of stdout.
+All evidence paths come from the operator-supplied plan, never from the host status JSON or free-form provider data. Limits: 16 feed selections, 256 MiB per journal, 1 MiB per close-out, 2 MiB per release, small pointer/manifest limits and 512 MiB total reads per invocation. The journal limit was 16 MiB until 19 September 2026, below a national bus day's journal (about 140 MiB), so the bus archive could not be verified; buffers are now sized from each file, not the limit. Final symlinks and nonregular files are refused. Reports contain only bounded reason codes and safe timestamps/counts; private paths and raw errors stay out of stdout.
 
 ## Incident lifecycle
 

@@ -47,7 +47,8 @@ const pending = (id, deadline, now, reason) => result(id, now > Date.parse(deadl
 export async function recorderEvidenceHealth(registryValue, reportValue, planValue) {
   const registry = readFeedRegistry(registryValue), report = readFeedHealth(reportValue, registry)
   const plan = readPlan(planValue, registry, report.producerId), now = Date.parse(report.observedAt)
-  let remaining = 64 * 1024 * 1024
+  // A national bus day's journal is about 140 MiB; smaller feeds are a few MiB.
+  let remaining = 512 * 1024 * 1024
   const read = async (path, limit) => {
     if (remaining <= 0) throw new Error('Evidence byte budget exceeded')
     const bytes = await readOperationalFile(path, Math.min(limit, remaining))
@@ -74,7 +75,7 @@ export async function recorderEvidenceHealth(registryValue, reportValue, planVal
 }
 
 async function archive(plan, entry, read, now, skew) {
-  const { bytes, json: journal } = await read(plan.journalPath, 16 * 1024 * 1024)
+  const { bytes, json: journal } = await read(plan.journalPath, 256 * 1024 * 1024)
   if (!journal.id || journal.config?.source !== entry.sourceId || !['complete', 'stopped'].includes(journal.status) || !Array.isArray(journal.attempts)) throw new Error('Invalid closed journal')
   const end = readOperationalTime(journal.plannedEnd), start = readOperationalTime(journal.startedAt)
   if (end !== plan.expectedEnd || Date.parse(end) < Date.parse(start) || Date.parse(end) > now || Date.parse(plan.deadlineAt) < Date.parse(end)) throw new Error('Invalid archive period/deadline')
