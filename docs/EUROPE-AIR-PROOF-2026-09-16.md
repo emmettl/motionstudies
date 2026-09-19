@@ -74,7 +74,7 @@ The busiest hour was rebuilt offline from the retained source objects and produc
 
 ## Cutover isolation
 
-Before starting, the current [MiniMax cutover checkpoint](RECORDER-CUTOVER-2026-09-16.md) and its task were read. The new deployment was staged while legacy recording remained active, with an overnight migration planned.
+Before starting, the current MiniMax cutover checkpoint (now summarised in the recorder's [extraction record](https://github.com/emmettl/motionstudies-recorder/blob/main/docs/EXTRACTION.md#recording-host-cutover)) and its task were read. The new deployment was staged while legacy recording remained active, with an overnight migration planned.
 
 This experiment therefore ran entirely on the author laptop, in its own ignored directory. It made no SSH connection to the mini and changed no recorder checkout, feed store, ledger, schedule, LaunchAgent, migration file or R2 object. Its manual acquisition has a separate 8 GiB directory ceiling and a 12 GiB physical free-space floor. Each source response is capped at 64 MiB, with at most one retry; the commands are intended for one owner at a time. A preliminary request for an unpadded filename returned 404 before the verified, zero-padded 48-slice acquisition began.
 
