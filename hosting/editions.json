@@ -63,5 +63,16 @@
       "pages.yml",
       "daily-feed.yml"
     ]
+  },
+  "underfall": {
+    "required": [
+      "data/library/recordings.json",
+      "data/west-of-england-route-events-2026-09-16/manifest.json",
+      "data/west-of-england-bus-day/2026-09-16/release.json"
+    ],
+    "data_pattern": "data/(?:README\\.md|(?:avon|bristol|west-of-england)-[a-z0-9-]+(?:/.*)?|library(?:/.*)?)",
+    "workflows": [
+      "check.yml"
+    ]
   }
 }

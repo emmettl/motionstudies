@@ -17,8 +17,9 @@ All seven public editions are hosted directly by individual Cloudflare Workers S
 | `/zugunruhe/` | Bird migration studies | `zugunruhe-hosting` |
 | `/luft/` | Flights over Europe (research) | `luft-hosting` |
 | `/grid84/` | Grid/84 Terminal Atlas (adjunct) | `grid84-hosting` |
+| `/underfall/` | Bristol (research, unlisted) | `underfall-hosting` |
 
-Each edition owns its `motionstudies.app/<edition>*` route. Prefix routes include slashless URLs with query strings; unmatched files return 404. The retired `motionstudies-editions` proxy has no routes. New York remains excluded while its publication hold is unresolved. MANIFEST's existing public route is retained without adding catalogue links; its published vessel data remains synthetic.
+Each edition owns its `motionstudies.app/<edition>*` route. Underfall is unlisted research from a private repository: reachable at its URL, marked `noindex` in its own HTML and absent from the catalogue. Prefix routes include slashless URLs with query strings; unmatched files return 404. The retired `motionstudies-editions` proxy has no routes. New York remains excluded while its publication hold is unresolved. MANIFEST's existing public route is retained without adding catalogue links; its published vessel data remains synthetic.
 
 The root and `/lab/` continue to the catalogue's GitHub Pages origin. The DNS-only `www` record redirects through GitHub Pages to the apex domain and preserves the path.
 
@@ -172,3 +173,30 @@ verifies live provenance and cache policies. The `CLOUDFLARE_ENABLED` repository
 variable pauses publication when set to `false`; manual dispatch accepts a successful
 Pages run ID for retries. The credential is stored only as an encrypted environment
 secret. The existing default dry run and rollback commands apply with `--edition luft`.
+
+## Underfall hosting
+
+[Underfall](https://motionstudies.app/underfall/) is the Bristol research edition, hosted by
+`underfall-hosting` on `motionstudies.app/underfall*` through the generic publisher. The
+[underfall](https://github.com/emmettl/underfall) repository is private and has no GitHub
+Pages site, so there is no parallel public copy: its `Check` workflow builds the site and, on
+`main` pushes, uploads the `github-pages` artifact that `cloudflare.yml` then publishes, exactly
+as the Pages editions do. `hosting/editions.json` names `check.yml` as the release-producing
+workflow, requires the recording library index, the West of England route-events index and the
+first published bus-day release, and approves only the dated study directories under `data/`
+(`avon-*`, `bristol-*`, `west-of-england-*` and `library`). Working files, keys and Parquet
+never enter the artifact.
+
+The edition is unlisted: its HTML carries `<meta name="robots" content="noindex">`, which the
+publisher's `X-Robots-Tag` check does not cover, and the catalogue does not link it. Remove the
+meta tag when the study is ready to be found. Cloudflare's automatic Web Analytics beacon covers
+the route like every other edition. The Live now rail cards need the same-origin `api/rail`
+handler that only the Vite dev and preview servers mount, so on Cloudflare they report that live
+departures could not be refreshed; the recorded studies are complete without it.
+
+Publication needs the Underfall repository's `cloudflare` environment (restricted to `main`) to
+hold `CLOUDFLARE_API_TOKEN` with the same account permissions as the other editions, and the
+repository variable `CLOUDFLARE_ENABLED=true`. Local publishing and rollback use the generic
+commands with `--edition underfall`. The first release, on 2026-09-19, was published locally from
+a research-branch build ahead of the first CI run; its `_release.json` says so and carries no run
+ID.
