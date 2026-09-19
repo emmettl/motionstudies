@@ -35,6 +35,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Prepare subsequent versions
 
+The next coordinated version adds `@motionstudies/data/release` and `@motionstudies/data/release-files`, the shared verifier for recorder release handoffs, and an optional `sha256` on published-day list entries. See [the release contract](RELEASE-CONTRACT.md).
+
 The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
 
 `0.1.0-alpha.23` gives the shared timeline England’s broad visible rail and round handle, with a standalone `TimelineScrubber` export for plain playback bars. Both chart and plain controls share keyboard/touch behavior and completion of pointer drags outside the control. England adopts it for bus and power clocks.

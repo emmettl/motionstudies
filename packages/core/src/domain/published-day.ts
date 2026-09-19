@@ -5,7 +5,7 @@
  * and, where the platform lacks DecompressionStream, the inflater; nothing here touches the network itself.
  */
 export const SLICE_SECONDS=300,CELL_DEGREES=0.1
-export interface PublishedDayManifest {readonly date:string;readonly compiledAt:string;readonly hours:{readonly present:readonly string[];readonly missing:readonly string[]};readonly stats:{readonly samples:number;readonly vehicles:number;readonly operators:number;readonly slices:number;readonly excludedRejected:number;readonly excludedOutsideDay:number};readonly slices:number;readonly files:number;readonly bytes:number;readonly list:readonly {readonly path:string;readonly bytes:number}[]}
+export interface PublishedDayManifest {readonly date:string;readonly compiledAt:string;readonly hours:{readonly present:readonly string[];readonly missing:readonly string[]};readonly stats:{readonly samples:number;readonly vehicles:number;readonly operators:number;readonly slices:number;readonly excludedRejected:number;readonly excludedOutsideDay:number};readonly slices:number;readonly files:number;readonly bytes:number;readonly list:readonly {readonly path:string;readonly bytes:number;readonly sha256?:string}[]}
 /** One cell of a slice: centre-less floor coordinates, samples (which sum across cells) and distinct vehicles (which do not). */
 export type SliceCell=readonly [lon:number,lat:number,samples:number,vehicles:number]
 export interface SliceFile {readonly slice:string;readonly cells:readonly SliceCell[]}

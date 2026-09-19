@@ -44,6 +44,14 @@
       "types": "./src/source-store.d.mts",
       "import": "./src/source-store.mjs"
     },
+    "./release": {
+      "types": "./src/release.d.mts",
+      "import": "./src/release.mjs"
+    },
+    "./release-files": {
+      "types": "./src/release-files.d.mts",
+      "import": "./src/release-files.mjs"
+    },
     "./uk-service-day": {
       "types": "./src/uk-service-day.d.mts",
       "import": "./src/uk-service-day.mjs"

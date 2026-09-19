@@ -70,6 +70,12 @@ try {
     export const operationalEvent = (value: unknown, registry: FeedRegistry): FeedEvent => readFeedEvent(value, registry)
     export const operationalHealth = (value: unknown, registry: FeedRegistry): FeedHealth => readFeedHealth(value, registry)
     export const recorderHealth = (registry: FeedRegistry, status: unknown): FeedHealth => recorderFeedHealth(registry, status, { producerId: 'recorder-minimax', now: 0 })
+    import { releaseDescriptors, verifyDescriptorBytes, type ReleaseDescriptor } from '@motionstudies/data/release'
+    import { openRelease, verifyRelease, type OpenedRelease } from '@motionstudies/data/release-files'
+    export const releaseFiles = (manifest: unknown): ReleaseDescriptor[] => releaseDescriptors(manifest)
+    export const verifiedBytes = (bytes: Uint8Array, d: ReleaseDescriptor): Promise<Uint8Array> => verifyDescriptorBytes(bytes, d)
+    export const openedRelease = (root: string): Promise<OpenedRelease> => openRelease(root, { kind: 'air-day-release', schemaVersions: [1] })
+    export const releaseCheck = (root: string) => verifyRelease(root, { kind: 'power-evidence-release', schemaVersions: [1] })
     import { network } from './fixtures.ts'
     import { readAirEnrichment, createEndpointResolver, endpointCoverage } from '@motionstudies/core/air-enrichment'
     export const enrichmentContract = [readAirEnrichment, createEndpointResolver, endpointCoverage]

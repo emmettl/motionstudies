@@ -200,6 +200,8 @@ The required `note` explains provenance. Optional `status`, `statusTone`, `clock
 
 `@motionstudies/data/recorder-evidence` reads explicit dated local journal/close-out and release targets, verifies their hashes and identities, and assesses missing expected outputs against deadlines. `@motionstudies/data/feed-incidents` persists debounced incident transitions with replay protection, atomic checksummed state, bounded retention and fail-closed capacity limits. These two modules require Node. See `docs/FEED-INCIDENTS.md` for CLI opt-in flags and operational limits; neither module installs a scheduler or sends notifications.
 
+`@motionstudies/data/release` checks versioned release handoffs in Node or a browser: safe file descriptors (`{ path, sha256, bytes }`), every descriptor in a manifest whatever its layout, kind and schema, and fetched bytes through Web Crypto. `@motionstudies/data/release-files` opens a release directory in Node, optionally pinned to its manifest digest, reads only described files without escaping the directory, and verifies a whole release within a byte budget. Format meaning stays with each format's reader. See the source repository's `docs/RELEASE-CONTRACT.md`.
+
 ## Optional live airport feed
 
 `AirportBoard` from `@motionstudies/web/components/AirportBoard` adds Study/Now controls around an existing `AirportHeroCard` configuration. Pass `studyCard` with the usual card props and `live={{ baseUrl, edition, airport }}` for the shared service. Import `airport-hero-card.css`. `labels` localizes the wrapper's control and availability messages. The lower-level `useAirportFeed` hook and core `domain/live-airport` contract are also public exports.
