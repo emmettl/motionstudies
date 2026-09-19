@@ -11,7 +11,7 @@ The observer runs independently of the recording Mac. The Mac submits a small, v
 - `scripts/observe-feeds.mjs`: standalone Node checker; optionally persists the existing local incident history.
 - `services/feed-observer/worker.ts`: Cloudflare Worker, minute cron and one SQLite-backed Durable Object. Uses the bundled `recorder.production.json` registry, including the five currently running feeds.
 - `scripts/push-feed-health.mjs`: bounded HTTPS submission of a validated report. Credentials come from the environment, never command-line arguments.
-- `scripts/export-recorder-health.mjs`: one scheduled Mac invocation; makes a fresh report, advances the local publication expectation, records incidents and submits valid unhealthy reports. Projection failure never replays a prior report. It atomically replaces a small status file and cleans up per-invocation temporary files.
+- `scripts/export-recorder-health.mjs`: one scheduled Mac invocation; makes a fresh report, advances the local publication expectation, records incidents and submits valid unhealthy reports. Projection failure never replays a prior report. It atomically replaces a small status file and cleans up per-invocation temporary files. With `archive: { hostConfig }` in its configuration (the recorder's `host.json`, read-only) it also adds each feed's archive target for its previous civil day, selected by `feeds:evidence-plan`'s generator, so upload close-outs are verified every run instead of reporting unknown.
 
 The Cloudflare object stores only the latest producer report, latest check/failure and latest attempt reservation. This is **not off-host incident history**: older checks are replaced. The existing incident store remains local. No raw recordings or analytics releases are stored by the observer, and no retention policy for recordings is changed.
 
@@ -38,7 +38,7 @@ Status becomes unknown if no check exists, a check fails, or its completion is o
 
 ## Rollout
 
-1. Review `config/feeds/recorder.example.json` against the actual host bindings and thresholds. The Worker bundles this registry; the Mac must use the same version. Use the existing evidence plan for local upload/publication stages. Those plans still need automatic dated generation and artifact selection; the new daily helper advances **consumer** expectations only.
+1. Review `config/feeds/recorder.example.json` against the actual host bindings and thresholds. The Worker bundles this registry; the Mac must use the same version. The exporter generates the dated evidence plan itself: publication from its configured deadline, and archive targets when `archive.hostConfig` is set.
 2. Configure a reachable bus analytics manifest in `wrangler.feed-observer.jsonc` under `OBSERVER_CONFIG.consumers`, using the consumer entry in `config/feeds/observer.example.json`. It must be the endpoint consumers will use. If the server remains private, first provide an authenticated proxy/tunnel. Do not substitute the recorder's loopback address.
 3. Provision distinct Worker secrets with `wrangler secret put FEED_PUSH_TOKEN --config wrangler.feed-observer.jsonc` and the equivalent `FEED_READ_TOKEN`. Where needed, `FEED_CONSUMER_TOKENS_JSON` is a secret JSON map from feed ID to its consumer bearer token. No Cloudflare account-wide credential is given to the Mac.
 4. After provisioning and verifying Cloudflare Access protection, add the `motionstudies.app/api/feeds/*` route, set `OBSERVER_CONFIG.enabled` to true, and deploy with `wrangler deploy --config wrangler.feed-observer.jsonc`. The configuration creates a dedicated object namespace and does not reuse airport storage or its request limiter. No CI deployment workflow is installed in this slice.
@@ -77,7 +77,7 @@ Cloudflare reserves at most one check/minute, or 1,440/day. It currently rereads
 ## Remaining increments
 
 - Deploy/configure the Worker, wire the Mac exporter and expose the real consumer endpoint.
-- Generate archive/local-publication evidence plans automatically, including journal selection and missing periods.
+- Report a missing expected journal as degraded rather than unknown; the generator currently leaves such a day out.
 - Export durable incident history off-host, add recovery-aware notifications and the read-only operational dashboard.
 - Add release caching/cost telemetry if measured size warrants it, then other feed adapters.
 - Probe the checker from outside Cloudflare and exercise operational failure/recovery drills.
