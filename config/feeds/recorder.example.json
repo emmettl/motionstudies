@@ -71,6 +71,22 @@
         { "id": "normalize", "dependsOn": ["capture"], "maxAgeSeconds": 4500 },
         { "id": "archive", "dependsOn": ["normalize"], "maxAgeSeconds": null }
       ]
+    },
+    {
+      "id": "uk-bus-disruptions",
+      "label": "UK bus disruption situations",
+      "producerId": "recorder-minimax",
+      "producerFeed": "day-bods-siri-sx",
+      "sourceId": "bods-siri-sx",
+      "owner": "Motion Studies",
+      "runbook": "https://github.com/emmettl/motionstudies-recorder/blob/main/docs/DISRUPTIONS.md",
+      "state": "active",
+      "schedule": { "kind": "interval", "seconds": 300 },
+      "stages": [
+        { "id": "capture", "dependsOn": [], "maxAgeSeconds": 900 },
+        { "id": "normalize", "dependsOn": ["capture"], "maxAgeSeconds": 4500 },
+        { "id": "archive", "dependsOn": ["normalize"], "maxAgeSeconds": null }
+      ]
     }
   ]
 }

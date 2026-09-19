@@ -2,7 +2,7 @@
 
 ## Implemented scope
 
-The implementation provides common registry, event and health-report contracts in `@motionstudies/data`, a recorder adapter, a command-line report and an example registry for the four MiniMax feeds. Optional explicit evidence plans verify recorded uploads and local analytics releases; optional incident history persists failures and recovery. It runs independently of collection and makes no provider calls. It can inspect the existing recorder deployment without changing or restarting it.
+The implementation provides common registry, event and health-report contracts in `@motionstudies/data`, a recorder adapter, a command-line report and an example registry for the five MiniMax feeds (BODS SIRI-SX disruptions joined on 19 September 2026). Optional explicit evidence plans verify recorded uploads and local analytics releases; optional incident history persists failures and recovery. It runs independently of collection and makes no provider calls. It can inspect the existing recorder deployment without changing or restarting it.
 
 An [external observer and Cloudflare service](FEED-OBSERVER.md) now add automatic consumer deadlines, HTTP release verification and independent heartbeat aging. They require live deployment and exporter wiring.
 

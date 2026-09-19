@@ -23,9 +23,9 @@ const find = (r, name, stage) => r.feeds.find(f => f.feedId === name).stages.fin
 const bus = (r, stage = 'capture') => find(r, 'uk-bus-archive', stage)
 
 describe('shared contracts', () => {
-  it('validates the four-feed example and the independent local analytics branch', () => {
+  it('validates the five-feed example and the independent local analytics branch', () => {
     const r = readFeedRegistry(registry())
-    expect(r.feeds).toHaveLength(4)
+    expect(r.feeds).toHaveLength(5)
     expect(r.feeds[0].stages.find(s => s.id === 'analytics').dependsOn).toEqual(['normalize'])
     expect(r).not.toBe(template)
   })
