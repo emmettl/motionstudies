@@ -10,5 +10,5 @@ export interface RecorderEvidencePlan {
     publication?: { pointerPath: string; operator: string; expectedThrough: string; deadlineAt: string }
   }[]
 }
-/** Reads explicitly selected local files, with integrity checks and a 64 MiB total read budget. */
+/** Reads explicitly selected local files, with integrity checks, 256 MiB per journal and a 512 MiB total read budget. */
 export function recorderEvidenceHealth(registry: unknown, report: unknown, plan: unknown): Promise<FeedHealth>
