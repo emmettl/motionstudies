@@ -34,4 +34,4 @@ Format-specific meaning stays with its reader: `@motionstudies/core/domain/publi
 
 ## Adoption
 
-The bus day gained per-file digests in its `list` on 19 September (recorder PR #19), so it can be verified like the others; `checkDayManifest` is unchanged and older days stay readable. Consumers adopt the verifier after the next package release, replacing their local loops one at a time; each keeps its own format checks.
+The bus day gained per-file digests in its `list` on 19 September (recorder PR #19), so it can be verified like the others; `checkDayManifest` is unchanged and older days stay readable. The verifier was published in `0.1.0-alpha.29` on 19 September 2026 through the trusted release workflow ([run 35460111146](https://github.com/emmettl/motionstudies/actions/runs/35460111146)); the installed package verified LUFT's 17 September release. Consumers adopt it by upgrading and replacing their local loops one at a time; each keeps its own format checks.
