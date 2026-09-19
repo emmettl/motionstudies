@@ -35,7 +35,12 @@ function client(fetchImpl, tokens, limits) {
     const timeout = new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new CheckError('request-timeout')) }, Math.min(limits.timeoutMs, limits.totalMs - (performance.now() - began))) })
     try {
       return await Promise.race([timeout, (async () => {
-        const headers = { Accept: 'application/json', 'Cache-Control': 'no-cache', ...(token ? { Authorization: `Bearer ${token}` } : {}) }
+        const credential = typeof token === 'string' ? { bearer: token } : token ?? {}
+        const headers = { Accept: 'application/json', 'Cache-Control': 'no-cache', ...(credential.bearer ? { Authorization: `Bearer ${credential.bearer}` } : {}) }
+        if (credential.accessClientId && credential.accessClientSecret) {
+          headers['CF-Access-Client-Id'] = credential.accessClientId
+          headers['CF-Access-Client-Secret'] = credential.accessClientSecret
+        } else if (credential.accessClientId || credential.accessClientSecret) throw new CheckError('credentials-invalid')
         const response = await fetchImpl(url, { headers, signal: controller.signal, redirect: 'error', cache: 'no-store' })
         body = response.body
         if (!response.ok || response.redirected) throw new CheckError('http-unavailable')

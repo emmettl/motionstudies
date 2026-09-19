@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "kind": "feed-registry",
+  "id": "motionstudies-recorder",
+  "heartbeatMaxAgeSeconds": 180,
+  "clockSkewSeconds": 30,
+  "feeds": [
+    {
+      "id": "uk-bus-archive",
+      "label": "UK bus archive",
+      "producerId": "recorder-minimax",
+      "producerFeed": "bus-day",
+      "sourceId": "bulk-archive",
+      "owner": "Motion Studies",
+      "runbook": "https://github.com/emmettl/motionstudies-recorder/blob/main/docs/HOST-OPERATIONS.md",
+      "state": "active",
+      "schedule": {
+        "kind": "interval",
+        "seconds": 30
+      },
+      "stages": [
+        {
+          "id": "capture",
+          "dependsOn": [],
+          "maxAgeSeconds": 90
+        },
+        {
+          "id": "normalize",
+          "dependsOn": [
+            "capture"
+          ],
+          "maxAgeSeconds": 4500
+        },
+        {
+          "id": "archive",
+          "dependsOn": [
+            "normalize"
+          ],
+          "maxAgeSeconds": null
+        },
+        {
+          "id": "analytics",
+          "dependsOn": [
+            "normalize"
+          ],
+          "maxAgeSeconds": 1800
+        },
+        {
+          "id": "publication",
+          "dependsOn": [
+            "analytics"
+          ],
+          "maxAgeSeconds": null
+        },
+        {
+          "id": "serve",
+          "dependsOn": [
+            "publication"
+          ],
+          "maxAgeSeconds": null
+        }
+      ]
+    },
+    {
+      "id": "london-arrivals",
+      "label": "London arrival predictions",
+      "producerId": "recorder-minimax",
+      "producerFeed": "day-tfl-arrivals",
+      "sourceId": "tfl-arrivals",
+      "owner": "Motion Studies",
+      "runbook": "https://github.com/emmettl/motionstudies-recorder/blob/main/docs/HOST-OPERATIONS.md",
+      "state": "active",
+      "schedule": {
+        "kind": "interval",
+        "seconds": 60
+      },
+      "stages": [
+        {
+          "id": "capture",
+          "dependsOn": [],
+          "maxAgeSeconds": 180
+        },
+        {
+          "id": "normalize",
+          "dependsOn": [
+            "capture"
+          ],
+          "maxAgeSeconds": 4500
+        },
+        {
+          "id": "archive",
+          "dependsOn": [
+            "normalize"
+          ],
+          "maxAgeSeconds": null
+        }
+      ]
+    },
+    {
+      "id": "london-docks",
+      "label": "London cycle docks",
+      "producerId": "recorder-minimax",
+      "producerFeed": "day-tfl-bikepoint",
+      "sourceId": "tfl-bikepoint",
+      "owner": "Motion Studies",
+      "runbook": "https://github.com/emmettl/motionstudies-recorder/blob/main/docs/HOST-OPERATIONS.md",
+      "state": "active",
+      "schedule": {
+        "kind": "interval",
+        "seconds": 60
+      },
+      "stages": [
+        {
+          "id": "capture",
+          "dependsOn": [],
+          "maxAgeSeconds": 180
+        },
+        {
+          "id": "normalize",
+          "dependsOn": [
+            "capture"
+          ],
+          "maxAgeSeconds": 4500
+        },
+        {
+          "id": "archive",
+          "dependsOn": [
+            "normalize"
+          ],
+          "maxAgeSeconds": null
+        }
+      ]
+    },
+    {
+      "id": "swiss-realtime",
+      "label": "Swiss realtime edge capture",
+      "producerId": "recorder-minimax",
+      "producerFeed": "day-swiss-edge",
+      "sourceId": "swiss-edge",
+      "owner": "Motion Studies",
+      "runbook": "https://github.com/emmettl/motionstudies-recorder/blob/main/docs/HOST-OPERATIONS.md",
+      "state": "active",
+      "schedule": {
+        "kind": "interval",
+        "seconds": 60
+      },
+      "stages": [
+        {
+          "id": "capture",
+          "dependsOn": [],
+          "maxAgeSeconds": 180,
+          "sourceMaxAgeSeconds": 180
+        },
+        {
+          "id": "normalize",
+          "dependsOn": [
+            "capture"
+          ],
+          "maxAgeSeconds": 4500
+        },
+        {
+          "id": "archive",
+          "dependsOn": [
+            "normalize"
+          ],
+          "maxAgeSeconds": null
+        }
+      ]
+    },
+    {
+      "id": "uk-bus-disruptions",
+      "label": "UK bus service disruptions",
+      "producerId": "recorder-minimax",
+      "producerFeed": "day-bods-siri-sx",
+      "sourceId": "bods-siri-sx",
+      "owner": "Motion Studies",
+      "runbook": "https://github.com/emmettl/motionstudies-recorder/blob/main/docs/HOST-OPERATIONS.md",
+      "state": "active",
+      "schedule": {
+        "kind": "interval",
+        "seconds": 300
+      },
+      "stages": [
+        {
+          "id": "capture",
+          "dependsOn": [],
+          "maxAgeSeconds": 900
+        },
+        {
+          "id": "normalize",
+          "dependsOn": [
+            "capture"
+          ],
+          "maxAgeSeconds": 4500
+        },
+        {
+          "id": "archive",
+          "dependsOn": [
+            "normalize"
+          ],
+          "maxAgeSeconds": null
+        }
+      ]
+    }
+  ]
+}

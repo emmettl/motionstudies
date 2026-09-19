@@ -1,6 +1,6 @@
 import { it, expect } from 'vitest'
 import worker, { FeedObserver, type Env, type Storage } from './worker.ts'
-import registry from '../../config/feeds/recorder.example.json'
+import registry from '../../config/feeds/recorder.production.json'
 import { recorderFeedHealth } from '../../packages/data/src/recorder-observability.mjs'
 
 const start = Date.parse('2026-09-18T12:00:00Z')
