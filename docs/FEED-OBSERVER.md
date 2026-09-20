@@ -2,7 +2,7 @@
 
 The observer runs independently of the recording Mac. The Mac submits a small, validated `feed-health` report; Cloudflare stores it without changing its producer timestamp. A minute cron reevaluates that timestamp and optionally verifies the actual analytics consumer endpoint. Authenticated status reads also age the check itself, so a stopped cron cannot leave a saved green status current.
 
-**Rollout started on 19 September 2026.** The Worker is deployed privately. The checked-in Cloudflare configuration remains disabled, with no public route or consumer URL, pending Access provisioning. See [rollout state](FEED-OBSERVER-ROLLOUT.md). The existing recorder analytics server is loopback-only. Its externally reachable, authenticated consumer URL must be supplied before HTTP publication checks can run. No notifications are sent.
+**Monitoring activated on 20 September 2026.** Cloudflare checks the recorder heartbeat and the Access-protected FBRI consumer endpoint every minute. The Mac submits fresh status through its own launch agent. See [deployment evidence and outstanding host issues](FEED-OBSERVER-ROLLOUT.md). The local artifact projection awaits macOS removable-volume permission; the independent HTTP release check is running. No notifications are sent.
 
 ## Components and boundaries
 
@@ -38,11 +38,11 @@ Status becomes unknown if no check exists, a check fails, or its completion is o
 
 ## Rollout
 
-1. Review `config/feeds/recorder.example.json` against the actual host bindings and thresholds. The Worker bundles this registry; the Mac must use the same version. The exporter generates the dated evidence plan itself: publication from its configured deadline, and archive targets when `archive.hostConfig` is set.
+1. Review `config/feeds/recorder.production.json` against the actual host bindings and thresholds. The Worker bundles this production registry; the Mac must use the same version. The exporter generates the dated evidence plan itself: publication from its configured deadline, and archive targets when `archive.hostConfig` is set.
 2. Configure a reachable bus analytics manifest in `wrangler.feed-observer.jsonc` under `OBSERVER_CONFIG.consumers`, using the consumer entry in `config/feeds/observer.example.json`. It must be the endpoint consumers will use. If the server remains private, first provide an authenticated proxy/tunnel. Do not substitute the recorder's loopback address.
 3. Provision distinct Worker secrets with `wrangler secret put FEED_PUSH_TOKEN --config wrangler.feed-observer.jsonc` and the equivalent `FEED_READ_TOKEN`. Where needed, `FEED_CONSUMER_TOKENS_JSON` is a secret JSON map from feed ID to its consumer bearer token. No Cloudflare account-wide credential is given to the Mac.
 4. After provisioning and verifying Cloudflare Access protection, add the `motionstudies.app/api/feeds/*` route, set `OBSERVER_CONFIG.enabled` to true, and deploy with `wrangler deploy --config wrangler.feed-observer.jsonc`. The configuration creates a dedicated object namespace and does not reuse airport storage or its request limiter. No CI deployment workflow is installed in this slice.
-5. On the Mac, run the existing health projection every 60 seconds, then submit its report using the command below. An exit code of 2 from `feed-health.mjs` still produces a valid unhealthy report and **must be submitted**; exit code 1 must not submit an older output file. Create a new temporary output for each invocation. Keep the push secret in restricted service environment configuration. Installing this host schedule remains rollout work.
+5. On the Mac, run the existing health projection every 60 seconds, then submit its report using the command below. An exit code of 2 from `feed-health.mjs` still produces a valid unhealthy report and **must be submitted**; exit code 1 must not submit an older output file. Create a new temporary output for each invocation. Keep the push secret in restricted service environment configuration. The production launch agent is installed; its paths and operating procedure are recorded in the rollout document.
 6. Verify healthy capture, stale producer detection after stopping only the exporter, consumer failure and recovery, stopped-cron freshness, read/push credential separation and secret rotation. Leave collection running throughout. Only then wire a dashboard or notification delivery.
 
 ```sh
@@ -76,7 +76,7 @@ Cloudflare reserves at most one check/minute, or 1,440/day. It currently rereads
 
 ## Remaining increments
 
-- Deploy/configure the Worker, wire the Mac exporter and expose the real consumer endpoint.
+- Restore local artifact checks after the CI Mac grants its current Node executable removable-volume access.
 - Report a missing expected journal as degraded rather than unknown; the generator currently leaves such a day out.
 - Export durable incident history off-host, add recovery-aware notifications and the read-only operational dashboard.
 - Add release caching/cost telemetry if measured size warrants it, then other feed adapters.

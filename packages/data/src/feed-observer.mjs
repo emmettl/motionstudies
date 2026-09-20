@@ -41,7 +41,8 @@ function client(fetchImpl, tokens, limits) {
           headers['CF-Access-Client-Id'] = credential.accessClientId
           headers['CF-Access-Client-Secret'] = credential.accessClientSecret
         } else if (credential.accessClientId || credential.accessClientSecret) throw new CheckError('credentials-invalid')
-        const response = await fetchImpl(url, { headers, signal: controller.signal, redirect: 'error', cache: 'no-store' })
+        // Workers supports manual redirects; reject 3xx below without forwarding credentials.
+        const response = await fetchImpl(url, { headers, signal: controller.signal, redirect: 'manual', cache: 'no-store' })
         body = response.body
         if (!response.ok || response.redirected) throw new CheckError('http-unavailable')
         const advertised = response.headers.get('content-length')

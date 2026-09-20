@@ -54,7 +54,7 @@ it('checks a pinned consumer release in three bounded requests with separated cr
   expect(r.requests).toBe(3)
   expect(r.report.feeds[0].state).toBe('healthy')
   expect(r.consumers[0].reasons).toEqual(['consumer-release-verified'])
-  expect(f.calls.every(c => c.options.redirect === 'error')).toBe(true)
+  expect(f.calls.every(c => c.options.redirect === 'manual')).toBe(true)
   expect(f.calls[0].options.headers.Authorization).toBe('Bearer health-secret')
   expect(f.calls[1].options.headers.Authorization).toBe('Bearer consumer-secret')
   expect(JSON.stringify(r)).not.toMatch(/secret|https:/)
@@ -152,4 +152,20 @@ it('sends Access credentials only to the selected consumer and its pinned releas
   expect(f.calls[0].options.headers['CF-Access-Client-Secret']).toBeUndefined()
   expect(f.calls.slice(1).every(c => c.options.headers['CF-Access-Client-Secret'] === 'access-secret')).toBe(true)
   expect(JSON.stringify(r)).not.toContain('access-secret')
+})
+it('rejects consumer redirects without following them or forwarding service credentials', async () => {
+  const f = fixture(), requested = []
+  const r = await f.run({
+    tokens: { consumers: { 'uk-bus-archive': { accessClientId: 'access-id', accessClientSecret: 'access-secret' } } },
+    fetchImpl: async (url, options) => {
+      requested.push(url)
+      if (url === f.config.healthUrl) return f.fetchImpl(url, options)
+      // Model Workers, which rejects redirect: 'error' even for a successful response.
+      if (options.redirect !== 'manual') throw new TypeError('Unsupported redirect mode')
+      return new Response(null, { status: 302, headers: { Location: 'https://other.test/private' } })
+    },
+  })
+  expect(r.consumers[0].reasons).toEqual(['consumer-http-unavailable'])
+  expect(requested).toEqual([f.config.healthUrl, f.config.consumers[0].manifestUrl])
+  expect(JSON.stringify(r)).not.toMatch(/access-secret|other.test/)
 })
