@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto'
 import { parseArgs } from 'node:util'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
@@ -6,7 +5,7 @@ import { mkdir, mkdtemp, writeFile, rename, rm } from 'node:fs/promises'
 import { join, isAbsolute } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { readOperationalFile } from '../packages/data/src/operational-files.mjs'
-import { dailyFeedExpectation } from '../packages/data/src/feed-expectations.mjs'
+import { exporterEvidencePlan } from './exporter-evidence.mjs'
 const exec = promisify(execFile)
 const script = name => fileURLToPath(new URL(name, import.meta.url))
 let config, temporary
@@ -23,13 +22,8 @@ try {
   temporary = await mkdtemp(join(config.stateRoot, '.export-'))
   const credentials = JSON.parse(await readOperationalFile(config.credentials, 4096))
   const args = [script('feed-health.mjs'), '--registry', config.registry, '--status', config.status, '--producer', config.producer, '--incidents', join(config.stateRoot, 'incidents')]
-  if (config.publication) {
-    const p = config.publication, expected = dailyFeedExpectation(p)
-    const from = p.from > `${expected.serviceDate.slice(0, 7)}-01` ? p.from : `${expected.serviceDate.slice(0, 7)}-01`
-    const key = createHash('sha256').update(JSON.stringify({ operator: p.operator, from, to: expected.serviceDate })).digest('hex')
-    const pointerPath = join(p.root, expected.serviceDate.slice(0, 7), 'quality-release-pointers', `${key}.json`)
-    const plan = { schemaVersion: 1, kind: 'recorder-evidence-plan', producerId: config.producer, validUntil: expected.nextDeadlineAt,
-      feeds: [{ feedId: p.feedId, publication: { pointerPath, operator: p.operator, expectedThrough: expected.serviceDate, deadlineAt: expected.deadlineAt } }] }
+  const plan = await exporterEvidencePlan(config)
+  if (plan) {
     const path = join(temporary, 'evidence.json')
     await writeFile(path, JSON.stringify(plan), { mode: 0o600 }); args.push('--evidence', path)
   }
