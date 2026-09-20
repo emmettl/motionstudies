@@ -18,10 +18,10 @@ Automatic exporter submissions advanced at 08:36:38 and 08:38:39 UTC, with disti
 
 An exporter-only outage drill began at **08:38:50 UTC**. The authenticated status read at **08:41:33 UTC** returned HTTP 503, `unknown` / `telemetry-stale`, while the saved consumer check remained healthy. The collector and analytics processes were not stopped. After resuming the exporter, the check at **08:43:02 UTC** saw current telemetry again (producer time 08:42:26 UTC) and verified the consumer release. Overall status correctly returned to `degraded` / `feed-attention-required` for the existing feed failures. Local incident history retained five active incidents across the exporter restart.
 
-The live status is **degraded**, not green. Monitoring found existing recorder problems:
+At initial activation (08:38 UTC), status was **degraded**, not green. Monitoring found these pre-existing recorder problems; the recovery below supersedes this snapshot:
 
 - UK bus capture last advanced at 07:55:02 UTC; the other four capture stages remained healthy.
-- Normalization was last current through the 04:00 UTC hour. Processing and analytics subprocesses report `spawn /opt/homebrew/Cellar/node/26.8.2/bin/node ENOENT`: Homebrew removed the executable still referenced by the running recorder. Repair the recorder runtime and verify catch-up in a separate host rollout; collection was not restarted here.
+- Normalization was last current through the 04:00 UTC hour. Processing and analytics subprocesses report `spawn /opt/homebrew/Cellar/node/26.8.2/bin/node ENOENT`: Homebrew removed the executable still referenced by the running recorder. The recorder was subsequently repaired in the 09:18 UTC host rollout documented below.
 - Capacity is healthy, with roughly 1.95 TB free. Analytics output for September 19 is served correctly, but the ongoing analytics job status is stale.
 
 The consumer fetch initially failed because the installed Workers runtime rejects `redirect: 'error'`. A local workerd probe reproduced the exact error. The checker now uses `manual`, rejects non-2xx responses, and never forwards credentials to a redirect. The redirect regression test and the production consumer check both pass.
@@ -30,14 +30,14 @@ The consumer fetch initially failed because the installed Workers runtime reject
 
 Paths are relative to the recorder account's home directory:
 
-- Runtime: `Developer/Deployments/motionstudies-feed-observer/rollout-20260919/`, staged from `fc61482`.
+- Runtime: `Developer/Deployments/motionstudies-feed-observer/44bd3ab/`, including the merged archive-evidence generator. The earlier runtime is preserved for rollback.
 - Control: `Library/Application Support/MotionStudies/feed-observer/`, mode 0700; credential/config files are private.
-- `exporter.json`: status-only active configuration. `exporter-with-publication.json` preserves the configured local publication check pending disk permission.
+- `exporter.json`: active status, local publication and archive evidence configuration; `archive.hostConfig` points to the recorder’s private `host.json`, with six-hour grace. `exporter-before-44bd3ab.json` and the matching plist preserve the earlier status-only configuration.
 - `credentials.json`: only the push bearer and push Access credentials. `tunnel-token`: only this tunnel's run credential. No account-level deployment credential is on the Mac.
 - Launch agents: `app.motionstudies.feed-observer-exporter` (60-second interval) and `app.motionstudies.analytics-tunnel` (keep alive). The tunnel exposes readiness only on `127.0.0.1:20245/ready`.
 - `state/export-status.json`: bounded latest submission outcome. `state/last-report.json`: last successfully submitted redacted report, never reused as upload input. `state/incidents/`: private, bounded local incident history.
 
-The exporter uses `/opt/homebrew/opt/node/bin/node` (26.9.0 at activation), a normal scheduling priority and an explicit runtime working directory. Cloudflared 2026.9.1 runs separately. Neither service writes an unbounded log. Inspect the bounded status file, tunnel readiness and launchd exit state.
+The exporter uses the dedicated `Developer/Runtimes/node-v26.9.0-darwin-arm64/bin/node` under the recorder user’s home, a normal scheduling priority and an explicit runtime working directory. Cloudflared 2026.9.1 runs separately. Neither service writes an unbounded log. Inspect the bounded status file, tunnel readiness and launchd exit state.
 
 ```sh
 # Run on the recorder Mac as its recording user.
@@ -49,13 +49,23 @@ curl --fail http://127.0.0.1:20245/ready
 
 Do not run another incident writer while the exporter is loaded. To pause/reload it, use `launchctl bootout`/`bootstrap` with `gui/$(id -u)` and `~/Library/LaunchAgents/app.motionstudies.feed-observer-exporter.plist`. Bootout only while no invocation is active where possible. An interrupted incident writer's lock requires the verified recovery procedure in [FEED-INCIDENTS.md](FEED-INCIDENTS.md); do not delete locks blindly.
 
+## Recorder and local-evidence recovery
+
+At **09:18:35 UTC on 20 September**, after macOS volume approval and a successful launchd storage preflight, the recorder switched from `6a79fb1` to staged merged release `e0ef4c9`. It now runs on a checksum-verified official Node 26.9.0 distribution outside Homebrew; its child executable cannot disappear during Homebrew cleanup. All 185 recorder tests and lint passed before cutover. The existing config and budgets were preserved.
+
+All five feeds resumed their original journals, with verified collector/lock ownership. Bus capture resumed at 09:18:38.948 UTC after an **83 minute 36.599 second receipt gap**. That interval remains missing data. All five processing jobs completed successfully: bus through receipt hour 07 and the other four feeds through hour 08. Recovered output hashes and sizes passed verification for each feed. Analytics completed at 09:29:38 UTC and report-only retention at 09:30:37 UTC, with zero eligible bytes and no deletions.
+
+The exporter was upgraded to `44bd3ab` and the same dedicated Node runtime. Automatic submissions at 09:19:48 and 09:21:50 succeeded with advancing producer timestamps. Local FBRI publication and **all five archive stages** passed `publication-artifact-verified` / `archive-closeout-verified`; this verifies recorded close-out upload evidence, not current R2 object existence. The independent Cloudflare consumer check continues to verify the served September 19 release.
+
+The independent status check at **09:33:02 UTC** confirmed current telemetry, healthy capacity, all five captures, the other four normalization stages, all archive stages and both local publication and consumer release checks. Analytics has current successful job status and is waiting for inputs or work. The only degraded stage is bus normalization: there were no captures in receipt hour 08. Its freshness warning can clear after a later captured hour closes and is processed; it does not imply that the earlier gap has been recovered.
+
+Detailed host evidence: `Library/Application Support/MotionStudies/recorder/runtime-repair-20260920.json`. Backups include the previous runtime/config/plist and a rollback plist using the surviving dedicated executable. The preflight launch agent was unloaded after validation.
+
 ## Outstanding work
 
-1. **Mac volume permission:** scheduled Node 26.9.0 file opens on MiniMax wait for macOS approval, while the SSH-launched projection succeeds. The exporter currently omits local publication reads so heartbeat/status submission remains reliable. After granting Node removable-volume access, pause the exporter, restore `exporter-with-publication.json` as `exporter.json`, resume, and verify at least two scheduled submissions with healthy local publication. The independent Cloudflare HTTP check already validates the served release.
-2. **Recorder runtime repair:** replace the removed Node executable reference using the recorder's supported deployment procedure and confirm processing/analytics catch-up. Treat the stalled bus capture as a separate symptom until its cause is verified.
-3. **Archive evidence rollout:** main now includes the merged archive-plan generator (#44). Deploy its complete runtime dependencies and configure `archive.hostConfig` only after volume access is confirmed. Current processing failures are visible, but historical successful uploads are not yet proven by the live exporter.
-4. Add off-host incident history, recovery-aware notifications and a read-only dashboard. Cloudflare currently stores only its latest report/check; no notification delivery is configured.
-5. Add an authenticated probe outside Cloudflare to detect loss of the checker itself. Keep runtime credentials out of browser code and rotate them before expiry.
+1. Retain capture gaps explicitly when interpreting analytics; restored processing does not recover missing observations.
+2. Add off-host incident history, recovery-aware notifications and a read-only dashboard. Cloudflare currently stores only its latest report/check; no notification delivery is configured.
+3. Add an authenticated probe outside Cloudflare to detect loss of the checker itself. Keep runtime credentials out of browser code and rotate them before expiry.
 
 No raw-data retention policy or collection schedule changed in this deployment.
 
