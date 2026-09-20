@@ -2,7 +2,7 @@
 
 The observer runs independently of the recording Mac. The Mac submits a small, validated `feed-health` report; Cloudflare stores it without changing its producer timestamp. A minute cron reevaluates that timestamp and optionally verifies the actual analytics consumer endpoint. Authenticated status reads also age the check itself, so a stopped cron cannot leave a saved green status current.
 
-**Monitoring activated on 20 September 2026.** Cloudflare checks the recorder heartbeat and the Access-protected FBRI consumer endpoint every minute. The Mac submits fresh status through its own launch agent. See [deployment evidence and outstanding host issues](FEED-OBSERVER-ROLLOUT.md). The local artifact projection awaits macOS removable-volume permission; the independent HTTP release check is running. No notifications are sent.
+**Monitoring activated on 20 September 2026.** Cloudflare checks the recorder heartbeat and the Access-protected FBRI consumer endpoint every minute. The Mac submits fresh status through its own launch agent. See [deployment evidence and outstanding host issues](FEED-OBSERVER-ROLLOUT.md). Local publication and all five archive close-out checks are running after the recorder runtime repair. No notifications are sent.
 
 ## Components and boundaries
 
@@ -76,7 +76,7 @@ Cloudflare reserves at most one check/minute, or 1,440/day. It currently rereads
 
 ## Remaining increments
 
-- Restore local artifact checks after the CI Mac grants its current Node executable removable-volume access.
+- Preserve capture-gap context in analytics and operational views; processing has caught up after the runtime repair, but missing bus observations remain missing data.
 - Report a missing expected journal as degraded rather than unknown; the generator currently leaves such a day out.
 - Export durable incident history off-host, add recovery-aware notifications and the read-only operational dashboard.
 - Add release caching/cost telemetry if measured size warrants it, then other feed adapters.
