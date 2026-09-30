@@ -102,6 +102,18 @@ class EditionHostingTests(unittest.TestCase):
             with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unapproved edition data"):
                 publisher.stage_artifact(self.archive("luft", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("luft"))
 
+    def test_pfad_accepts_versioned_chunks_and_rejects_sources_and_unversioned_data(self):
+        publisher = hosting.Publisher("pfad")
+        for name in ["manifest.json", "nodes-000-abcdef123456.bin.gz.bin", "edges-001-abcdef123456.bin.gz.bin",
+                     "geometry-005-abcdef123456.bin.gz.bin", "evidence-abcdef123456.json.gz.bin"]:
+            member = tarfile.TarInfo("data/pfad/ch-20260929-abcdef123456/" + name)
+            member.size = 1
+            publisher.stage_artifact(self.archive("pfad", member), self.root / name, self.run_metadata("pfad"))
+        for name in ["data/pfad/source.osm.pbf", "data/pfad/ch-latest/manifest.json",
+                     "data/pfad/ch-20260929-abcdef123456/raw.json", "data/pfad/geometry.bin.gz"]:
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unapproved edition data"):
+                publisher.stage_artifact(self.archive("pfad", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("pfad"))
+
     def test_underfall_accepts_dated_study_directories_and_rejects_other_data(self):
         publisher = hosting.Publisher("underfall")
         for name in ["data/bristol-water/manifest.json", "data/avon-2026-09-11/levels.json",

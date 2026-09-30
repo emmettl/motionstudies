@@ -1,7 +1,7 @@
 {
   "pfad": {
     "required": ["data/pfad-manifest.json"],
-    "data_pattern": "data/pfad-manifest\\.json"
+    "data_pattern": "data/(?:pfad-manifest\\.json|pfad/ch-[0-9]{8}-[a-f0-9]{12}/(?:manifest\\.json|(?:nodes|edges|geometry)-[0-9]{3}-[a-f0-9]{12}\\.bin\\.gz\\.bin|evidence-[a-f0-9]{12}\\.json\\.gz\\.bin))"
   },
   "allchange": {
     "required": [
