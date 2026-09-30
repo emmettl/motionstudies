@@ -18,7 +18,7 @@ All seven public editions are hosted directly by individual Cloudflare Workers S
 | `/luft/` | Flights over Europe (research) | `luft-hosting` |
 | `/grid84/` | Grid/84 Terminal Atlas (adjunct) | `grid84-hosting` |
 | `/underfall/` | Bristol (research, unlisted) | `underfall-hosting` |
-| `/pfad/` | Swiss pathfinding (public scaffold) | `pfad-hosting` |
+| `/pfad/` | Swiss pathfinding (first connectivity study) | `pfad-hosting` |
 
 Each edition owns its `motionstudies.app/<edition>*` route. Underfall is unlisted research from a private repository: reachable at its URL, marked `noindex` in its own HTML and absent from the catalogue. Prefix routes include slashless URLs with query strings; unmatched files return 404. The retired `motionstudies-editions` proxy has no routes. New York remains excluded while its publication hold is unresolved. MANIFEST's existing public route is retained without adding catalogue links; its published vessel data remains synthetic.
 
@@ -117,18 +117,19 @@ The default performs a dry run. Successful publication cleans up its temporary p
 ## PFAD hosting
 
 PFAD is an unnumbered public edition in development in
-[`emmettl/pfad`](https://github.com/emmettl/pfad). Its introduction uses the same
+[`emmettl/pfad`](https://github.com/emmettl/pfad). Its first national study uses the same
 dual hosting model: a verified `pages.yml` artifact is independently copied to
 `pfad-hosting` at `motionstudies.app/pfad*`; GitHub Pages remains available at
 `https://emmettl.github.io/pfad/`. No catalogue admission or finished instrument
-is implied by this scaffold.
+is implied by this first study.
 
-The initial data allowlist admits only `data/pfad-manifest.json`, which identifies
-the source snapshot and labels the sizing proof as unvalidated for production
-routing. Large OSM extracts and generated graph files remain outside the
-published artifact. Data refreshes are manual, versioned releases, independent
-of application builds and hosting publication. Expand the hosting allowlist
-deliberately when validated graph and geometry chunks are ready.
+The data allowlist admits `data/pfad-manifest.json` and dated, content-identified
+datasets containing a manifest, hashed node/edge/geometry chunks and optional
+source evidence. The selected Swiss graph and drawing geometry total 15.9 MB;
+raw OSM extracts and compiler intermediates stay outside the artifact. This
+profile enforces distance and one-way connectivity, with turn and conditional
+rules still unimplemented. Data refreshes are manual, versioned releases,
+independent of application builds and hosting publication.
 
 ## Grid/84 hosting
 
