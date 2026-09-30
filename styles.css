@@ -248,6 +248,29 @@ h2 {
   color: var(--cyan);
 }
 
+.work-research .status {
+  color: var(--amber);
+}
+
+.catalogue-note {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.55fr) 1.45fr;
+  gap: 32px;
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.catalogue-note p {
+  margin: 0;
+}
+
+.catalogue-note strong {
+  color: var(--ink);
+  font-weight: 400;
+}
+
 .work-live .status i {
   display: inline-block;
   width: 6px;
@@ -435,7 +458,14 @@ footer a {
   }
 
   .work-body .status {
+    display: block;
     margin-bottom: 13px;
+  }
+
+  .catalogue-note {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 28px;
   }
 
   .work strong {

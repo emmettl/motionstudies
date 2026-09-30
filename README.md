@@ -2,7 +2,7 @@
 
 **[Open Motion Studies catalogue](https://motionstudies.app/)** · [Widget lab](https://motionstudies.app/lab/)
 
-The catalogue for authored studies of cities and movement, and the home of the shared transport packages and widget lab.
+The catalogue for authored works and research about transport, geography and movement, and the home of the shared transport packages and widget lab.
 
 ## Studies and plans
 
@@ -11,7 +11,8 @@ The catalogue for authored studies of cities and movement, and the home of the s
 | Gleislicht · Switzerland | [Open study](https://motionstudies.app/gleislicht/) | [gleislicht](https://github.com/emmettl/gleislicht) |
 | All Change · London | [Open study](https://motionstudies.app/allchange/) | [allchange](https://github.com/emmettl/allchange) |
 | Correspondances · Paris | [Open study](https://motionstudies.app/correspondances/) | [correspondances](https://github.com/emmettl/correspondances) |
-| Local / Express · New York | Parked; private proof, publication held | [local-express (private)](https://github.com/emmettl/local-express) |
+| LUFT · Europe | [Open research study](https://motionstudies.app/luft/) · Unnumbered | [luft](https://github.com/emmettl/luft) |
+| Local / Express · New York | Paused indefinitely; private proof retained | [local-express (private)](https://github.com/emmettl/local-express) |
 | NORIKAE · Tokyo | Parked; [synthetic preview](https://motionstudies.app/norikae/) · [Brief](docs/TOKYO.md) | [norikae](https://github.com/emmettl/norikae) |
 | MANIFEST · World trade | [Open study](https://motionstudies.app/manifest/) · [Brief](docs/MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
 | Umlauf · Berlin | [Open study](https://motionstudies.app/umlauf/) · [Brief](docs/BERLIN.md) | [umlauf](https://github.com/emmettl/umlauf) |

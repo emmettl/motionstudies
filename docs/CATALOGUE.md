@@ -6,13 +6,15 @@
 
 Motion Studies is an authored series, not a list of cities supported by a transport renderer. Every numbered work must make a visual argument about how its place moves, how that movement becomes data and what the local map teaches people to believe about distance.
 
+**Homepage selection — 30 September 2026:** Gleislicht, All Change and Correspondances remain the featured numbered works. [LUFT](https://motionstudies.app/luft/) joins them as an unnumbered research study: a recorded day of aircraft movement reveals Europe through routes, airport rhythms and accumulating traces. This recognises its place in the public catalogue without assigning a number or closing its artistic thesis. Local / Express is paused indefinitely; its number and private proof are retained, with a short pause note replacing its featured homepage entry. Other programme decisions below retain their recorded dates.
+
 ## Numbered works
 
 | No. | Work | Place | Status | Defining argument | Repository |
 | --- | --- | --- | --- | --- | --- |
 | 005 | **Gleislicht** | Switzerland | Released | A deliberately built national clockwork made visible through rail, terrain and Takt. | [Repository](https://github.com/emmettl/gleislicht) |
 | 006 | **All Change** | London | Public multimodal study; full bus-catalogue artifact with audited gaps, National Rail, demand and cycle studies | Physical London transforms into Beck-space while journeys continue uninterrupted. | [Repository](https://github.com/emmettl/allchange) |
-| 007 | **Local / Express** | New York | Parked; private proof retained, publication question open | Local and express services compress, overtake and rejoin across geographic and diagrammatic New York. | [Repository (private)](https://github.com/emmettl/local-express) |
+| 007 | **Local / Express** | New York | Paused indefinitely; private proof retained, publication question open | Local and express services compress, overtake and rejoin across geographic and diagrammatic New York. | [Repository (private)](https://github.com/emmettl/local-express) |
 | 008 | **Correspondances** | Paris | 32-line implementation with eight-line default; public served revision tracked separately | Dense Métro circulation and outward RER/Transilien movement reveal the interchange between centre and banlieue. | [Repository](https://github.com/emmettl/correspondances) |
 
 Numbers describe works, not software releases. A later work may reach production before an earlier experiment is complete, but a number is assigned only when its title and thesis are strong enough to survive implementation.
