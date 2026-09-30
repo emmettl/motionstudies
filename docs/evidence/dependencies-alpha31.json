@@ -1,0 +1,462 @@
+{
+  "version": "0.1.0-alpha.31",
+  "sourceCommit": "7d686afd11d4f39d862c1fb42acaabb720415bc8",
+  "releaseRun": "https://github.com/emmettl/motionstudies/actions/runs/36779204421",
+  "registryArtifactsVerified": true,
+  "toolchain": {
+    "node": "24.21.0",
+    "npm": "11.21.0"
+  },
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.31",
+      "file": "motionstudies-core-0.1.0-alpha.31.tgz",
+      "integrity": "sha512-vSbW91E8IUUSv44VrUZAhYm1iRyj8S4neNU4UdCex90bi0u5i726QTqCLG8q7y6oKNl3NXNKYkXO6GvQrucrpw=="
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.31",
+      "file": "motionstudies-data-0.1.0-alpha.31.tgz",
+      "integrity": "sha512-ZaoeVLK8KMUvaHubvYkSjVRwr3DpTC4ExwypDJXNPBv6+by3BH3WcB4ojplMSO+tcPyAsh9vQJKtENPXmdqDEw=="
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.31",
+      "file": "motionstudies-three-0.1.0-alpha.31.tgz",
+      "integrity": "sha512-6rgV7m/M0+pyeuYwU3LnexT6/eJyn5zb4F3MctvnjZT73ieIMuFCpadzuBVja3N7cabD3Vtbe9Tcoo8yYwIk+Q=="
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.31",
+      "file": "motionstudies-web-0.1.0-alpha.31.tgz",
+      "integrity": "sha512-M0TIGfx/ebIvUvKWDDA8n0IUpTEIcgUq2jIXaQNYLkvQa29keTBws+Ryts1EcorPivaG0sdtLXUzKiQ2tNuUtQ=="
+    }
+  ],
+  "editions": [
+    {
+      "repository": "emmettl/allchange",
+      "commit": "96fe33bf5c602f98a83836502508c490d2bcc267",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": "budget gate rerun passed with documented baseline adjustment"
+    },
+    {
+      "repository": "emmettl/correspondances",
+      "commit": "cbf0d749fc8229b3c762698529162e909206157a",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": "budget gate rerun passed with documented baseline adjustment"
+    },
+    {
+      "repository": "emmettl/england",
+      "commit": "7f09546f6e64658b33b439f08c7c9b051e5ba41b",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    },
+    {
+      "repository": "emmettl/gleislicht",
+      "commit": "5910d68b2eb4c78376007b42639d1c4a17986b7b",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": "budget gate rerun passed with documented baseline adjustment"
+    },
+    {
+      "repository": "emmettl/local-express",
+      "commit": "2414264501efe36473009358afd43ef57ae9a195",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": "budget gate rerun passed with documented baseline adjustment"
+    },
+    {
+      "repository": "emmettl/luft",
+      "commit": "211b12fff5615d1e3dc8d13668458569e2b0497e",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    },
+    {
+      "repository": "emmettl/manifest",
+      "commit": "1f1698b54d3dd3f9046db69ad6cf363175d22d5d",
+      "sharedPins": {
+        "@motionstudies/web": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    },
+    {
+      "repository": "emmettl/motionstudies-recorder",
+      "commit": "85d7ed783db9f44d2b85343efd11c0f6eade8214",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    },
+    {
+      "repository": "emmettl/norikae",
+      "commit": "c94a9b92b0b5b17388391b12162834459cc173d0",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    },
+    {
+      "repository": "emmettl/pfad",
+      "commit": "8797ab605b84a3d767d1b72f4d31bdc5a22cb042",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    },
+    {
+      "repository": "emmettl/umlauf",
+      "commit": "326802ddd557460fbe51ff02c2e535502df4e857",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    },
+    {
+      "repository": "emmettl/underfall",
+      "commit": "f4773eb88a745ad7d9a99a5d7d89c4ba7d4d4854",
+      "sharedPins": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    },
+    {
+      "repository": "emmettl/zugunruhe",
+      "commit": "491339a57fce7998ec5b6dcafdb2b214f4f932f3",
+      "sharedPins": {
+        "@motionstudies/web": "0.1.0-alpha.31"
+      },
+      "localChecks": "passed",
+      "localCheckNote": null
+    }
+  ],
+  "hostedCheckpointAt": "2026-09-30T22:04:04.377061+00:00",
+  "hostedCheckpoint": [
+    {
+      "name": "allchange",
+      "sha": "96fe33bf5c602f98a83836502508c490d2bcc267",
+      "runs": [
+        {
+          "conclusion": "",
+          "databaseId": 36782544152,
+          "headSha": "96fe33bf5c602f98a83836502508c490d2bcc267",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/allchange/actions/runs/36782544152",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    },
+    {
+      "name": "correspondances",
+      "sha": "cbf0d749fc8229b3c762698529162e909206157a",
+      "runs": [
+        {
+          "conclusion": "",
+          "databaseId": 36782678643,
+          "headSha": "cbf0d749fc8229b3c762698529162e909206157a",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/correspondances/actions/runs/36782678643",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    },
+    {
+      "name": "england",
+      "sha": "7f09546f6e64658b33b439f08c7c9b051e5ba41b",
+      "runs": [
+        {
+          "conclusion": "failure",
+          "databaseId": 36782294956,
+          "headSha": "7f09546f6e64658b33b439f08c7c9b051e5ba41b",
+          "status": "completed",
+          "url": "https://github.com/emmettl/england/actions/runs/36782294956",
+          "workflowName": "Check"
+        }
+      ]
+    },
+    {
+      "name": "gleislicht",
+      "sha": "5910d68b2eb4c78376007b42639d1c4a17986b7b",
+      "runs": [
+        {
+          "conclusion": "success",
+          "databaseId": 36782685585,
+          "headSha": "5910d68b2eb4c78376007b42639d1c4a17986b7b",
+          "status": "completed",
+          "url": "https://github.com/emmettl/gleislicht/actions/runs/36782685585",
+          "workflowName": "Dependabot Updates"
+        },
+        {
+          "conclusion": "",
+          "databaseId": 36782550725,
+          "headSha": "5910d68b2eb4c78376007b42639d1c4a17986b7b",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/gleislicht/actions/runs/36782550725",
+          "workflowName": "Deploy to GitHub Pages"
+        }
+      ]
+    },
+    {
+      "name": "local-express",
+      "sha": "2414264501efe36473009358afd43ef57ae9a195",
+      "runs": [
+        {
+          "conclusion": "failure",
+          "databaseId": 36782553196,
+          "headSha": "2414264501efe36473009358afd43ef57ae9a195",
+          "status": "completed",
+          "url": "https://github.com/emmettl/local-express/actions/runs/36782553196",
+          "workflowName": "Check Local / Express"
+        }
+      ]
+    },
+    {
+      "name": "luft",
+      "sha": "211b12fff5615d1e3dc8d13668458569e2b0497e",
+      "runs": [
+        {
+          "conclusion": "",
+          "databaseId": 36782643347,
+          "headSha": "211b12fff5615d1e3dc8d13668458569e2b0497e",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/luft/actions/runs/36782643347",
+          "workflowName": "Check and deploy LUFT"
+        }
+      ]
+    },
+    {
+      "name": "manifest",
+      "sha": "1f1698b54d3dd3f9046db69ad6cf363175d22d5d",
+      "runs": [
+        {
+          "conclusion": "success",
+          "databaseId": 36782609382,
+          "headSha": "1f1698b54d3dd3f9046db69ad6cf363175d22d5d",
+          "status": "completed",
+          "url": "https://github.com/emmettl/manifest/actions/runs/36782609382",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 36782369943,
+          "headSha": "1f1698b54d3dd3f9046db69ad6cf363175d22d5d",
+          "status": "completed",
+          "url": "https://github.com/emmettl/manifest/actions/runs/36782369943",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    },
+    {
+      "name": "motionstudies-recorder",
+      "sha": "85d7ed783db9f44d2b85343efd11c0f6eade8214",
+      "runs": [
+        {
+          "conclusion": "failure",
+          "databaseId": 36782304999,
+          "headSha": "85d7ed783db9f44d2b85343efd11c0f6eade8214",
+          "status": "completed",
+          "url": "https://github.com/emmettl/motionstudies-recorder/actions/runs/36782304999",
+          "workflowName": "Check"
+        }
+      ]
+    },
+    {
+      "name": "norikae",
+      "sha": "c94a9b92b0b5b17388391b12162834459cc173d0",
+      "runs": [
+        {
+          "conclusion": "success",
+          "databaseId": 36782503458,
+          "headSha": "c94a9b92b0b5b17388391b12162834459cc173d0",
+          "status": "completed",
+          "url": "https://github.com/emmettl/norikae/actions/runs/36782503458",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 36782301234,
+          "headSha": "c94a9b92b0b5b17388391b12162834459cc173d0",
+          "status": "completed",
+          "url": "https://github.com/emmettl/norikae/actions/runs/36782301234",
+          "workflowName": "Deploy to GitHub Pages"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 36782301223,
+          "headSha": "c94a9b92b0b5b17388391b12162834459cc173d0",
+          "status": "completed",
+          "url": "https://github.com/emmettl/norikae/actions/runs/36782301223",
+          "workflowName": "Validate"
+        }
+      ]
+    },
+    {
+      "name": "pfad",
+      "sha": "8797ab605b84a3d767d1b72f4d31bdc5a22cb042",
+      "runs": [
+        {
+          "conclusion": "",
+          "databaseId": 36783180932,
+          "headSha": "8797ab605b84a3d767d1b72f4d31bdc5a22cb042",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/pfad/actions/runs/36783180932",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 36782641817,
+          "headSha": "8797ab605b84a3d767d1b72f4d31bdc5a22cb042",
+          "status": "completed",
+          "url": "https://github.com/emmettl/pfad/actions/runs/36782641817",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    },
+    {
+      "name": "umlauf",
+      "sha": "326802ddd557460fbe51ff02c2e535502df4e857",
+      "runs": [
+        {
+          "conclusion": "success",
+          "databaseId": 36782881502,
+          "headSha": "326802ddd557460fbe51ff02c2e535502df4e857",
+          "status": "completed",
+          "url": "https://github.com/emmettl/umlauf/actions/runs/36782881502",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 36782357024,
+          "headSha": "326802ddd557460fbe51ff02c2e535502df4e857",
+          "status": "completed",
+          "url": "https://github.com/emmettl/umlauf/actions/runs/36782357024",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    },
+    {
+      "name": "underfall",
+      "sha": "f4773eb88a745ad7d9a99a5d7d89c4ba7d4d4854",
+      "runs": [
+        {
+          "conclusion": "skipped",
+          "databaseId": 36782373659,
+          "headSha": "f4773eb88a745ad7d9a99a5d7d89c4ba7d4d4854",
+          "status": "completed",
+          "url": "https://github.com/emmettl/underfall/actions/runs/36782373659",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 36782362165,
+          "headSha": "f4773eb88a745ad7d9a99a5d7d89c4ba7d4d4854",
+          "status": "completed",
+          "url": "https://github.com/emmettl/underfall/actions/runs/36782362165",
+          "workflowName": "Check"
+        }
+      ]
+    },
+    {
+      "name": "zugunruhe",
+      "sha": "491339a57fce7998ec5b6dcafdb2b214f4f932f3",
+      "runs": [
+        {
+          "conclusion": "",
+          "databaseId": 36782366915,
+          "headSha": "491339a57fce7998ec5b6dcafdb2b214f4f932f3",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/zugunruhe/actions/runs/36782366915",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    }
+  ],
+  "hostedRunnerBlock": {
+    "repositories": [
+      "emmettl/england",
+      "emmettl/local-express",
+      "emmettl/underfall",
+      "emmettl/motionstudies-recorder"
+    ],
+    "reason": "GitHub refused to start jobs: recent account payments have failed or spending limit needs to be increased. No steps ran."
+  },
+  "localBrowserChecks": {
+    "luft": {
+      "passed": 153,
+      "skipped": 5
+    },
+    "manifest": {
+      "passed": 35,
+      "skipped": 0
+    },
+    "pfad": {
+      "passed": 14,
+      "skipped": 0
+    },
+    "local-express": {
+      "passed": 21,
+      "skipped": 1
+    },
+    "underfall": {
+      "passed": 43,
+      "skipped": 1
+    },
+    "correspondances-focused-renderer": {
+      "passed": 7,
+      "skipped": 1
+    }
+  }
+}
