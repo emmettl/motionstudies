@@ -48,10 +48,10 @@ Identical-source before/after builds with the same fixtures measured roughly 15.
 | --- | --- | --- | --- |
 | All Change | 346.9 → 362.6 | 366 KiB | 650 KiB, unchanged |
 | Correspondances | 338.6 → 354.3 | 358 KiB | Base 440 KiB / opening 630 KiB (was 425 / 625) |
-| Gleislicht | 359.6 → 375.2 | 380 KiB | 792 KiB, unchanged |
+| Gleislicht | 359.6 → 375.2 (fixtures), 375.3 (production) | 380 KiB | 808 KiB (was 792), including pinned production data |
 | Local / Express | 330.1 → 345.8 | 350 KiB | 390 KiB, unchanged |
 
-CSS, data and optional-feature limits remain unchanged. Existing edition tests, type/lint/boundary checks, builds and budget gates pass locally. Browser coverage includes LUFT (153 passed, five existing skips), MANIFEST (35), PFAD (14, after incorporating concurrent route/replay work), Local / Express (21, one device-specific skip), Underfall (43, one existing skip), and the adapted Paris renderer (seven, one device-specific skip).
+Gleislicht’s pinned production data measures 419.8 KiB; its complete opening measures 802.7 KiB. Its total ceiling therefore also receives the measured 16 KiB renderer allowance. Both the fixture and pinned-production checks pass. CSS, data and optional-feature limits remain unchanged. Existing edition tests, type/lint/boundary checks, builds and budget gates pass locally. Browser coverage includes LUFT (153 passed, five existing skips), MANIFEST (35), PFAD (14, after incorporating concurrent route/replay work), Local / Express (21, one device-specific skip), Underfall (43, one existing skip), and the adapted Paris renderer (seven, one device-specific skip).
 
 ## Pushed revisions
 
@@ -60,7 +60,7 @@ CSS, data and optional-feature limits remain unchanged. Existing edition tests, 
 | allchange | [`96fe33b`](https://github.com/emmettl/allchange/commit/96fe33bf5c602f98a83836502508c490d2bcc267) |
 | correspondances | [`cbf0d74`](https://github.com/emmettl/correspondances/commit/cbf0d749fc8229b3c762698529162e909206157a) |
 | england | [`7f09546`](https://github.com/emmettl/england/commit/7f09546f6e64658b33b439f08c7c9b051e5ba41b) |
-| gleislicht | [`5910d68`](https://github.com/emmettl/gleislicht/commit/5910d68b2eb4c78376007b42639d1c4a17986b7b) |
+| gleislicht | [`fa8c994`](https://github.com/emmettl/gleislicht/commit/fa8c994fbc56abc7ee19b86b8793448eb0fa65d6) |
 | local-express | [`2414264`](https://github.com/emmettl/local-express/commit/2414264501efe36473009358afd43ef57ae9a195) |
 | luft | [`211b12f`](https://github.com/emmettl/luft/commit/211b12fff5615d1e3dc8d13668458569e2b0497e) |
 | manifest | [`1f1698b`](https://github.com/emmettl/manifest/commit/1f1698b54d3dd3f9046db69ad6cf363175d22d5d) |
@@ -75,6 +75,8 @@ Exact package integrity values and downstream pins are saved in [the release evi
 
 ## Hosted validation status
 
-All dependency commits above are pushed to their remote `main` branches. At the 1 October 2026 rollout checkpoint, MANIFEST, NORIKAE and Umlauf had passed validation and both publication stages; PFAD had passed validation and Pages, with Cloudflare publishing. London’s check/build and both Chromium shards had passed, with mobile WebKit still running. Paris, LUFT, Zugunruhe and Gleislicht’s remaining browser/data/deployment jobs were still running. Gleislicht’s check job had passed all unit, build and fixture-budget gates. Follow the workflow links in the evidence snapshot for subsequent results.
+All dependency commits above are pushed to their remote `main` branches. At the 1 October 2026 rollout checkpoint, All Change, MANIFEST, NORIKAE, PFAD and Umlauf had passed both publication stages. Their live `_release.json` metadata matches the exact dependency commits. Paris and LUFT’s browser gates and Zugunruhe’s Chromium gate were still running; Zugunruhe’s WebKit gate passed. Gleislicht’s earlier check job passed all unit, build and fixture-budget gates; its final workflow is queued/running after the production-budget correction and transitive patch. The two superseded Swiss runs were cancelled so the final commit could proceed. Follow the workflow links in the evidence snapshot for subsequent results.
 
 GitHub refused to start hosted jobs for [England](https://github.com/emmettl/england/actions/runs/36782294956), [Local / Express](https://github.com/emmettl/local-express/actions/runs/36782553196), [Underfall](https://github.com/emmettl/underfall/actions/runs/36782362165) and [the recorder](https://github.com/emmettl/motionstudies-recorder/actions/runs/36782304999). Each annotation cites failed account payments or an Actions spending limit; no test steps ran. Their local checks passed, including the available New York and Underfall browser suites. Those hosted runs require the GitHub account issue to be resolved; publication gates were not bypassed.
+
+Final dependency audits report zero known npm vulnerabilities in the shared workspace and all thirteen downstream projects. Gleislicht additionally receives `brace-expansion` 2.1.4 → 2.1.7 in its development-only protobuf CLI chain; its nine focused realtime tests pass after that lockfile-only patch.

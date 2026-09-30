@@ -72,7 +72,7 @@
     },
     {
       "repository": "emmettl/gleislicht",
-      "commit": "5910d68b2eb4c78376007b42639d1c4a17986b7b",
+      "commit": "fa8c994fbc56abc7ee19b86b8793448eb0fa65d6",
       "sharedPins": {
         "@motionstudies/core": "0.1.0-alpha.31",
         "@motionstudies/three": "0.1.0-alpha.31",
@@ -80,7 +80,7 @@
         "@motionstudies/data": "0.1.0-alpha.31"
       },
       "localChecks": "passed",
-      "localCheckNote": "budget gate rerun passed with documented baseline adjustment"
+      "localCheckNote": "Fixture and pinned-production budgets pass; production total 802.7 KiB against 808 KiB ceiling. All 1425 unit tests passed; nine focused realtime tests also passed after the compatible development-only brace-expansion patch."
     },
     {
       "repository": "emmettl/local-express",
@@ -183,17 +183,25 @@
       "localCheckNote": null
     }
   ],
-  "hostedCheckpointAt": "2026-09-30T22:04:04.377061+00:00",
+  "hostedCheckpointAt": "2026-09-30T22:12:15.406770+00:00",
   "hostedCheckpoint": [
     {
       "name": "allchange",
       "sha": "96fe33bf5c602f98a83836502508c490d2bcc267",
       "runs": [
         {
-          "conclusion": "",
+          "conclusion": "success",
+          "databaseId": 36783395111,
+          "headSha": "96fe33bf5c602f98a83836502508c490d2bcc267",
+          "status": "completed",
+          "url": "https://github.com/emmettl/allchange/actions/runs/36783395111",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
           "databaseId": 36782544152,
           "headSha": "96fe33bf5c602f98a83836502508c490d2bcc267",
-          "status": "in_progress",
+          "status": "completed",
           "url": "https://github.com/emmettl/allchange/actions/runs/36782544152",
           "workflowName": "Deploy Pages"
         }
@@ -229,22 +237,14 @@
     },
     {
       "name": "gleislicht",
-      "sha": "5910d68b2eb4c78376007b42639d1c4a17986b7b",
+      "sha": "fa8c994fbc56abc7ee19b86b8793448eb0fa65d6",
       "runs": [
         {
-          "conclusion": "success",
-          "databaseId": 36782685585,
-          "headSha": "5910d68b2eb4c78376007b42639d1c4a17986b7b",
-          "status": "completed",
-          "url": "https://github.com/emmettl/gleislicht/actions/runs/36782685585",
-          "workflowName": "Dependabot Updates"
-        },
-        {
           "conclusion": "",
-          "databaseId": 36782550725,
-          "headSha": "5910d68b2eb4c78376007b42639d1c4a17986b7b",
-          "status": "in_progress",
-          "url": "https://github.com/emmettl/gleislicht/actions/runs/36782550725",
+          "databaseId": 36784036113,
+          "headSha": "fa8c994fbc56abc7ee19b86b8793448eb0fa65d6",
+          "status": "pending",
+          "url": "https://github.com/emmettl/gleislicht/actions/runs/36784036113",
           "workflowName": "Deploy to GitHub Pages"
         }
       ]
@@ -348,10 +348,10 @@
       "sha": "8797ab605b84a3d767d1b72f4d31bdc5a22cb042",
       "runs": [
         {
-          "conclusion": "",
+          "conclusion": "success",
           "databaseId": 36783180932,
           "headSha": "8797ab605b84a3d767d1b72f4d31bdc5a22cb042",
-          "status": "in_progress",
+          "status": "completed",
           "url": "https://github.com/emmettl/pfad/actions/runs/36783180932",
           "workflowName": "Publish to Cloudflare"
         },
@@ -457,6 +457,182 @@
     "correspondances-focused-renderer": {
       "passed": 7,
       "skipped": 1
+    }
+  },
+  "liveVerified": [
+    {
+      "edition": "allchange",
+      "metadata": {
+        "repository": "emmettl/allchange",
+        "run_id": 36782544152,
+        "commit": "96fe33bf5c602f98a83836502508c490d2bcc267",
+        "workflow_url": "https://github.com/emmettl/allchange/actions/runs/36782544152",
+        "source_files": 1790,
+        "source_bytes": 70911340,
+        "content_sha256": "6bd68e4a3d6db094db6e8d3c24e140175f2847b1ad692be5d79d622c1e40995e"
+      }
+    },
+    {
+      "edition": "manifest",
+      "metadata": {
+        "repository": "emmettl/manifest",
+        "run_id": 36782369943,
+        "commit": "1f1698b54d3dd3f9046db69ad6cf363175d22d5d",
+        "workflow_url": "https://github.com/emmettl/manifest/actions/runs/36782369943",
+        "source_files": 41,
+        "source_bytes": 135943693,
+        "content_sha256": "0d3f1341ecd7ad263731657744874d294bc9093608ff03f0e39e95183dea3efe"
+      }
+    },
+    {
+      "edition": "norikae",
+      "metadata": {
+        "repository": "emmettl/norikae",
+        "run_id": 36782301234,
+        "commit": "c94a9b92b0b5b17388391b12162834459cc173d0",
+        "workflow_url": "https://github.com/emmettl/norikae/actions/runs/36782301234",
+        "source_files": 6,
+        "source_bytes": 1358268,
+        "content_sha256": "5af59594c3ee69ffbe0b8b57c6dbbfc9cf59ae2dd238c0a0890bcf24fe4dc00d"
+      }
+    },
+    {
+      "edition": "pfad",
+      "metadata": {
+        "repository": "emmettl/pfad",
+        "run_id": 36782641817,
+        "commit": "8797ab605b84a3d767d1b72f4d31bdc5a22cb042",
+        "workflow_url": "https://github.com/emmettl/pfad/actions/runs/36782641817",
+        "source_files": 53,
+        "source_bytes": 28516293,
+        "content_sha256": "2739371f8c7dc12e037400977470832e3b1fef28649fc3d4aca62bf5e03ffff2"
+      }
+    },
+    {
+      "edition": "umlauf",
+      "metadata": {
+        "repository": "emmettl/umlauf",
+        "run_id": 36782357024,
+        "commit": "326802ddd557460fbe51ff02c2e535502df4e857",
+        "workflow_url": "https://github.com/emmettl/umlauf/actions/runs/36782357024",
+        "source_files": 12,
+        "source_bytes": 3226116,
+        "content_sha256": "45fbb4758047fff2e2a6fe630b9b65765baed77c61ba3419e2b2431c50ebb1cf"
+      }
+    }
+  ],
+  "npmAudit": {
+    "motionstudies": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "allchange": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "correspondances": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "england": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "gleislicht": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "local-express": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "luft": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "manifest": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "motionstudies-recorder": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "norikae": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "pfad": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "umlauf": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "underfall": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "zugunruhe": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
     }
   }
 }
