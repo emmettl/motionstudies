@@ -1,4 +1,8 @@
 {
+  "pfad": {
+    "required": ["data/pfad-manifest.json"],
+    "data_pattern": "data/pfad-manifest\\.json"
+  },
   "allchange": {
     "required": [
       "data/all-change-rail-led-morning.json",
