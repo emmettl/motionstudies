@@ -8,20 +8,20 @@
     "build": "tsc -p tsconfig.json && vite build"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.30",
-    "@motionstudies/three": "0.1.0-alpha.30",
-    "@motionstudies/web": "0.1.0-alpha.30",
-    "@react-three/fiber": "9.7.0",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "three": "0.185.1"
+    "@motionstudies/core": "0.1.0-alpha.31",
+    "@motionstudies/three": "0.1.0-alpha.31",
+    "@motionstudies/web": "0.1.0-alpha.31",
+    "@react-three/fiber": "9.8.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "three": "0.186.1"
   },
   "devDependencies": {
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.7",
-    "@types/three": "0.185.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
     "@vitejs/plugin-react": "6.1.1",
     "typescript": "7.0.2",
-    "vite": "8.3.0"
+    "vite": "8.3.1"
   }
 }

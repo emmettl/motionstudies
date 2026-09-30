@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.30",
+  "version": "0.1.0-alpha.31",
   "private": true,
   "type": "module",
   "exports": {
@@ -45,11 +45,11 @@
     "./timeline-scrubber.css": "./src/components/timeline-scrubber.css"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.30"
+    "@motionstudies/core": "0.1.0-alpha.31"
   },
   "peerDependencies": {
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "description": "Browser controls and loaders for Motion Studies.",
   "sideEffects": [

@@ -29,11 +29,13 @@ After all four package names exist, configure a GitHub Actions trusted publisher
 | Environment | `npm` |
 | Allowed action | Direct `npm publish` |
 
-The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstudies/three` and `@motionstudies/web`. The workflow uses GitHub-hosted Ubuntu, Node 24, npm 11.5.1 and `id-token: write` in the publish job. Trusted mode passes no npm token, so success proves OIDC rather than a token fallback. Run trusted mode for the next new version; a rerun that skips already-published packages does not test authentication.
+The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstudies/three` and `@motionstudies/web`. The workflow uses GitHub-hosted Ubuntu, Node 24, npm 11.21.0 and `id-token: write` in the publish job. Trusted mode passes no npm token, so success proves OIDC rather than a token fallback. Run trusted mode for the next new version; a rerun that skips already-published packages does not test authentication.
 
 After a successful OIDC publication, revoke the bootstrap token in npm and delete the GitHub `NPM_TOKEN` secret. npm's “Require two-factor authentication and disallow tokens” setting is compatible with trusted publishers.
 
 ## Prepare subsequent versions
+
+`0.1.0-alpha.31` updates the rendering and development dependencies to the stable versions recorded in [the dependency refresh](DEPENDENCIES-ALPHA-31.md), with a coordinated edition rollout. It also publishes the already-merged feed-observer fix that uses manual redirect handling on Cloudflare Workers and rejects redirects without forwarding credentials.
 
 `0.1.0-alpha.30` tightens `@motionstudies/data/release-files`: `readReleaseFile` now refuses any symbolic link below the release root, including one pointing to another file inside the release, so a described path always names the file written there. No other change.
 

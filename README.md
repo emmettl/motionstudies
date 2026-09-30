@@ -23,7 +23,7 @@ The catalogue for authored works and research about transport, geography and mov
 
 ## Development
 
-Use Node 24 LTS (`nvm use`) and npm 11.19.0. Run `npm ci`, then `npm run lab` for the widget lab. The root catalogue remains a static page; `npx vite` previews it.
+Use Node 24 LTS (`nvm use`) and npm 11.21.0. Run `npm ci`, then `npm run lab` for the widget lab. The root catalogue remains a static page; `npx vite` previews it.
 
 - `npm run typecheck`, `npm run lint`, `npm test`, `npm run check:architecture` verify the workspace.
 - `npm run check:packed` builds four compiled candidates, installs them in a clean temporary consumer and tests its lab in Chromium and WebKit. Install test engines first with `npx playwright install chromium webkit`.
