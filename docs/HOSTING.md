@@ -123,6 +123,15 @@ dual hosting model: a verified `pages.yml` artifact is independently copied to
 `https://emmettl.github.io/pfad/`. The homepage catalogue lists it as an
 unnumbered research study.
 
+PFAD also serves at `https://pfad.motionstudies.app/` through a Custom Domain on
+the same Worker. `hosting/pfad-subdomain.mjs` maps unmatched subdomain requests
+to the existing `/pfad/` assets and keeps asset redirects at the subdomain root.
+The path route continues to serve matched assets directly. Both addresses use
+the same Pages artifact and are verified for release identity and cache headers
+after each publication. Subdomain requests that invoke the handler follow Worker
+request billing. Run `node --test hosting/pfad-subdomain.test.mjs` with the
+publisher gates before deploying.
+
 The data allowlist admits `data/pfad-manifest.json` and dated, content-identified
 datasets containing a manifest, hashed node/edge/geometry chunks and optional
 source evidence. The selected Swiss graph and drawing geometry total 15.9 MB;

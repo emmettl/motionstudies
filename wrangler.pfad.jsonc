@@ -8,11 +8,17 @@
     {
       "pattern": "motionstudies.app/pfad*",
       "zone_name": "motionstudies.app"
+    },
+    {
+      "pattern": "pfad.motionstudies.app",
+      "custom_domain": true
     }
   ],
   "assets": {
     "directory": ".hosting-assets",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "none"
-  }
+    "not_found_handling": "none",
+    "binding": "ASSETS"
+  },
+  "main": "hosting/pfad-subdomain.mjs"
 }

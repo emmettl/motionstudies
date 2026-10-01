@@ -138,6 +138,15 @@ class EditionHostingTests(unittest.TestCase):
             with patch.object(hosting, key, limit), self.assertRaises(ValueError):
                 hosting.Publisher("allchange").stage_artifact(archive, self.root / "output", self.run_metadata("allchange"))
 
+    def test_pfad_verifies_both_addresses_for_each_release(self):
+        publisher = hosting.Publisher("pfad")
+        release = {"run_id": 123}
+        output = self.root / "output"
+        with patch.object(publisher, "verify_url") as verify:
+            publisher.verify_deployment(release, output)
+        self.assertEqual([call.args[2] for call in verify.call_args_list],
+                         ["https://motionstudies.app/pfad/", "https://pfad.motionstudies.app/"])
+
     def test_live_verification_rejects_stale_release_bad_cache_and_noindex(self):
         publisher = hosting.Publisher("allchange")
         output = self.root / "output"

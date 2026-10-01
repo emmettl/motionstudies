@@ -130,6 +130,10 @@ class Publisher:
             return release
 
     def verify_deployment(self, release, output):
+        for url in [self.url, *self.spec.get("additional_urls", [])]:
+            self.verify_url(release, output, url)
+
+    def verify_url(self, release, output, url):
         hashed_asset = next(path for path in sorted((output / "assets").iterdir()) if path.is_file())
         policies = {
             "": "public, max-age=0, must-revalidate",
@@ -140,11 +144,11 @@ class Publisher:
         headers = {"User-Agent": "Motion-Studies-Hosting-CI/1.0", "Cache-Control": "no-cache"}
         for attempt in range(6):
             try:
-                with urllib.request.urlopen(urllib.request.Request(self.url + "_release.json", headers=headers), timeout=30) as response:
+                with urllib.request.urlopen(urllib.request.Request(url + "_release.json", headers=headers), timeout=30) as response:
                     if json.load(response) != release:
                         raise ValueError("Published release metadata does not match this artifact")
                 for path, expected in policies.items():
-                    request = urllib.request.Request(self.url + path, method="HEAD", headers=headers)
+                    request = urllib.request.Request(url + path, method="HEAD", headers=headers)
                     with urllib.request.urlopen(request, timeout=30) as response:
                         if response.headers.get("Cache-Control") != expected:
                             raise ValueError("Unexpected cache policy: " + path)
@@ -152,7 +156,7 @@ class Publisher:
                             raise ValueError("Production hosting must be indexable: " + path)
                         if response.headers.get("X-Motion-Studies-Hosting") != "cloudflare-static":
                             raise ValueError("Response did not come from Cloudflare hosting: " + path)
-                print("Verified live release identity and cache policies:", self.edition, flush=True)
+                print("Verified live release identity and cache policies:", url, flush=True)
                 return
             except (OSError, ValueError):
                 if attempt == 5:
