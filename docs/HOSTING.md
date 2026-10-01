@@ -120,8 +120,8 @@ PFAD is an unnumbered public edition in development in
 [`emmettl/pfad`](https://github.com/emmettl/pfad). Its first national study uses the same
 dual hosting model: a verified `pages.yml` artifact is independently copied to
 `pfad-hosting` at `motionstudies.app/pfad*`; GitHub Pages remains available at
-`https://emmettl.github.io/pfad/`. No catalogue admission or finished instrument
-is implied by this first study.
+`https://emmettl.github.io/pfad/`. The homepage catalogue lists it as an
+unnumbered research study.
 
 The data allowlist admits `data/pfad-manifest.json` and dated, content-identified
 datasets containing a manifest, hashed node/edge/geometry chunks and optional
