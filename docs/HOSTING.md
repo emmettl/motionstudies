@@ -163,10 +163,11 @@ request headers and missing-file responses. Both custom-domain addresses must
 pass live release and cache verification. Builds do not request provider data.
 
 The stellar data allowlist admits `data/zenit-manifest.json`, `data/stellar/NOTICE.txt`
-and immutable `data/stellar/hyg-v44-bright-<12 hex>.json` releases. The compiled
+and immutable `data/stellar/hyg-v44-bright-<12 hex>.json` releases, plus
+`data/orbital/NOTICE.txt` and immutable `data/orbital/iss-<12 hex>.json` snapshots. The compiled
 release and raw source hashes are verified, with HYG attribution and CC BY-SA 4.0
 notices retained in the artifact. Raw CSV and gzip captures remain excluded.
-Orbital releases need a separate allowlist and source attribution review.
+Additional orbital cohort formats need a separate allowlist and source attribution review.
 The edition remains unnumbered while the orbital composition is developed.
 
 The edition follows successful `Deploy Pages` runs with an independent
