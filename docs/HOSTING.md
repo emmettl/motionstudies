@@ -170,8 +170,20 @@ it does not represent a verified orbital or stellar composition.
 The edition follows successful `Deploy Pages` runs with an independent
 Cloudflare workflow using pinned hosting tools. Its `cloudflare` environment
 permits `main` only. Automatic deployment requires its encrypted
-`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ENABLED=true`; activation and the first
-verified publication are recorded separately from this configuration.
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ENABLED=true`.
+
+**Activated and verified — 7 October 2026.** [Pages run 37689557637](https://github.com/emmettl/zenit/actions/runs/37689557637)
+passed three camera tests and six Chromium/WebKit browser checks on macOS 15,
+then published edition commit `ac6946ae778724ab1d9fca615d45ff040dc09846`.
+[Cloudflare run 37689783913](https://github.com/emmettl/zenit/actions/runs/37689783913)
+published that same artifact and verified both addresses. The
+[delivery evidence](evidence/zenit-scaffold-2026-10-07.json) additionally confirms
+matching application bytes across the subdomain, path and GitHub Pages,
+canonical links, zero data records, font notices and missing-file 404s.
+The complete CI artifact measures 475,894 gzip bytes; this is an artifact
+measurement, not physical-phone performance. Ubuntu's browser dependency
+downloads were unreliable during setup, so the edition's complete browser
+gate uses native macOS runtimes; Pages and Cloudflare deployment remain on Linux.
 
 ## Visitor analytics
 

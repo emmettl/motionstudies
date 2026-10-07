@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-07",
+  "repository": "https://github.com/emmettl/zenit",
+  "canonical": "https://zenit.motionstudies.app/",
+  "parallelPath": "https://motionstudies.app/zenit/",
+  "githubPages": "https://emmettl.github.io/zenit/",
+  "localChecks": {
+    "cameraTests": 3,
+    "browserTests": 6,
+    "browserProjects": [
+      "Chromium desktop",
+      "WebKit iPhone 13 viewport"
+    ],
+    "compressedArtifactBytes": 475294,
+    "physicalPhoneMeasured": false
+  },
+  "hostingChecks": {
+    "publisherTests": 12,
+    "zenitRouteTests": 6
+  },
+  "evidence": "Camera scaffold only; orbital and stellar records pending.",
+  "verifiedAtUtc": "2026-10-07T21:30:44.791151+00:00",
+  "editionCommit": "ac6946ae778724ab1d9fca615d45ff040dc09846",
+  "addresses": [
+    {
+      "role": "canonical",
+      "url": "https://zenit.motionstudies.app/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "scaffold",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "pending",
+            "records": 0
+          },
+          "stellar": {
+            "status": "pending",
+            "records": 0
+          }
+        },
+        "scene": "Spherical Earth and geographic graticule for camera rehearsal only. No propagated positions or catalogue stars are displayed.",
+        "observerPreset": {
+          "name": "Zurich",
+          "latitude": 47.3769,
+          "longitude": 8.5417,
+          "use": "Camera composition only; no solar or visibility model."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md"
+      },
+      "applicationAsset": "assets/index-ZTqkfPyr.js",
+      "applicationAssetSha256": "39bb5ae1548b028d776eea1b5bb47da024cac675d9ac49676d2fdaf7bea4d17a",
+      "fontNoticePresent": true,
+      "missingFileStatus": 404,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37689557637,
+        "commit": "ac6946ae778724ab1d9fca615d45ff040dc09846",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37689557637",
+        "source_files": 25,
+        "source_bytes": 1048291,
+        "content_sha256": "e830f906ae624b79e0096d11b964c4292d6e4e1573e2962dc0143ad1785c090a"
+      }
+    },
+    {
+      "role": "parallel-path",
+      "url": "https://motionstudies.app/zenit/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "scaffold",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "pending",
+            "records": 0
+          },
+          "stellar": {
+            "status": "pending",
+            "records": 0
+          }
+        },
+        "scene": "Spherical Earth and geographic graticule for camera rehearsal only. No propagated positions or catalogue stars are displayed.",
+        "observerPreset": {
+          "name": "Zurich",
+          "latitude": 47.3769,
+          "longitude": 8.5417,
+          "use": "Camera composition only; no solar or visibility model."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md"
+      },
+      "applicationAsset": "assets/index-ZTqkfPyr.js",
+      "applicationAssetSha256": "39bb5ae1548b028d776eea1b5bb47da024cac675d9ac49676d2fdaf7bea4d17a",
+      "fontNoticePresent": true,
+      "missingFileStatus": 404,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37689557637,
+        "commit": "ac6946ae778724ab1d9fca615d45ff040dc09846",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37689557637",
+        "source_files": 25,
+        "source_bytes": 1048291,
+        "content_sha256": "e830f906ae624b79e0096d11b964c4292d6e4e1573e2962dc0143ad1785c090a"
+      }
+    },
+    {
+      "role": "github-pages",
+      "url": "https://emmettl.github.io/zenit/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "scaffold",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "pending",
+            "records": 0
+          },
+          "stellar": {
+            "status": "pending",
+            "records": 0
+          }
+        },
+        "scene": "Spherical Earth and geographic graticule for camera rehearsal only. No propagated positions or catalogue stars are displayed.",
+        "observerPreset": {
+          "name": "Zurich",
+          "latitude": 47.3769,
+          "longitude": 8.5417,
+          "use": "Camera composition only; no solar or visibility model."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md"
+      },
+      "applicationAsset": "assets/index-ZTqkfPyr.js",
+      "applicationAssetSha256": "39bb5ae1548b028d776eea1b5bb47da024cac675d9ac49676d2fdaf7bea4d17a",
+      "fontNoticePresent": true,
+      "missingFileStatus": 404
+    }
+  ],
+  "ciChecks": {
+    "runner": "macos-15",
+    "nodeMajor": 24,
+    "npm": "11.21.0",
+    "cameraTests": 3,
+    "browserTests": 6,
+    "compressedArtifactBytes": 475894,
+    "pagesRunId": 37689557637,
+    "pagesConclusion": "success",
+    "cloudflareRunId": 37689783913,
+    "cloudflareConclusion": "success"
+  }
+}
