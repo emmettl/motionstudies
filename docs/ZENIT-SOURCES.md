@@ -2,7 +2,7 @@
 
 [Study brief](ZENIT.md) · [Probe record](evidence/zenit-sources-2026-10-07.json) · [Data readiness](DATA-READINESS.md)
 
-**7 October 2026, extended for the requested stellar catalogue.** Current public orbital elements are a credible foundation for a bounded local proof. Four small CelesTrak requests returned valid JSON, and the stations metadata joined completely. The initial stellar release now uses an acquired and hashed HYG 4.4 subset of 5,070 records. A historical work needs a separate coverage audit. Publication must preserve the distinction between government orbital data, provider enrichment, stellar catalogue measurements and modelled positions.
+**7 October 2026, updated 8 October for the first stellar release.** Current public orbital elements are a credible foundation for a bounded local proof. Four small CelesTrak requests returned valid JSON, and the stations metadata joined completely. The initial stellar release now uses an acquired and hashed HYG 4.4 subset of 5,070 records. A historical work needs a separate coverage audit. Publication must preserve the distinction between government orbital data, provider enrichment, stellar catalogue measurements and modelled positions.
 
 ## Scope and verdicts
 

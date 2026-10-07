@@ -266,3 +266,15 @@ repository variable `CLOUDFLARE_ENABLED=true`. Local publishing and rollback use
 commands with `--edition underfall`. The first release, on 2026-09-19, was published locally from
 a research-branch build ahead of the first CI run; its `_release.json` says so and carries no run
 ID.
+
+
+**Stellar release verified — 8 October 2026.** [Pages run 37693667600](https://github.com/emmettl/zenit/actions/runs/37693667600)
+passed eight numerical/data tests and twelve Chromium/WebKit browser checks,
+then published edition commit `31fb38106a2cac3b1f36931b55a35c475b13a123`.
+[Cloudflare run 37693845837](https://github.com/emmettl/zenit/actions/runs/37693845837)
+published the same checked artifact. The [stellar delivery audit](evidence/zenit-stellar-2026-10-08.json)
+confirms identical application and catalogue hashes at all three addresses,
+5,070 HYG records, source attribution, data licence and missing-file 404s.
+CI measured 326,531 gzip bytes for the stellar subset and 811,638 for the complete
+artifact; local compressor measurements differ and are retained separately.
+No orbital records or satellite passes are published yet.

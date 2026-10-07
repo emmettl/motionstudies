@@ -1,0 +1,198 @@
+{
+  "date": "2026-10-08",
+  "verifiedAtUtc": "2026-10-07T22:06:19.767046+00:00",
+  "repository": "https://github.com/emmettl/zenit",
+  "editionCommit": "31fb38106a2cac3b1f36931b55a35c475b13a123",
+  "stellarSource": "HYG 4.4 / CC BY-SA 4.0",
+  "localChecks": {
+    "numericalAndDataTests": 8,
+    "browserTests": 12,
+    "browserProjects": [
+      "Chromium desktop",
+      "WebKit iPhone 13 viewport"
+    ],
+    "stellarGzipBytes": 333742,
+    "compressedArtifactBytes": 818166,
+    "physicalPhoneMeasured": false,
+    "offlineReproduction": "catalogue, manifest and notice byte for byte"
+  },
+  "hostingChecks": {
+    "publisherTests": 12,
+    "zenitRouteTests": 6
+  },
+  "addresses": [
+    {
+      "url": "https://zenit.motionstudies.app/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "stellar-reference",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "pending",
+            "records": 0
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000.0,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          }
+        },
+        "scene": "HYG bright-star reference around a spherical Earth and camera rehearsal. Orbital positions remain pending.",
+        "observerPreset": {
+          "name": "Zurich",
+          "latitude": 47.3769,
+          "longitude": 8.5417,
+          "use": "Geometric stellar horizon and camera preset; idealised dark sky, no local weather or satellite visibility model."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T21:00:00Z",
+          "model": "Catalogue directions with precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268
+        }
+      },
+      "catalogueSha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+      "catalogueBytes": 854727,
+      "catalogueCacheControl": "public, max-age=0, must-revalidate",
+      "applicationAsset": "assets/index-DrhiM5XR.js",
+      "applicationAssetSha256": "d74f45740334a56cd7b678a6f133198a9feb37779672a042178cd11582cbfc9a",
+      "attributionAndLicencePresent": true,
+      "missingFileStatus": 404,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37693667600,
+        "commit": "31fb38106a2cac3b1f36931b55a35c475b13a123",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37693667600",
+        "source_files": 29,
+        "source_bytes": 1926263,
+        "content_sha256": "3bbf45bf0819e9933f64ae003abcd7857c19a57f3aa3cc812e57cf5566d8b459"
+      }
+    },
+    {
+      "url": "https://motionstudies.app/zenit/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "stellar-reference",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "pending",
+            "records": 0
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000.0,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          }
+        },
+        "scene": "HYG bright-star reference around a spherical Earth and camera rehearsal. Orbital positions remain pending.",
+        "observerPreset": {
+          "name": "Zurich",
+          "latitude": 47.3769,
+          "longitude": 8.5417,
+          "use": "Geometric stellar horizon and camera preset; idealised dark sky, no local weather or satellite visibility model."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T21:00:00Z",
+          "model": "Catalogue directions with precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268
+        }
+      },
+      "catalogueSha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+      "catalogueBytes": 854727,
+      "catalogueCacheControl": "public, max-age=0, must-revalidate",
+      "applicationAsset": "assets/index-DrhiM5XR.js",
+      "applicationAssetSha256": "d74f45740334a56cd7b678a6f133198a9feb37779672a042178cd11582cbfc9a",
+      "attributionAndLicencePresent": true,
+      "missingFileStatus": 404,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37693667600,
+        "commit": "31fb38106a2cac3b1f36931b55a35c475b13a123",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37693667600",
+        "source_files": 29,
+        "source_bytes": 1926263,
+        "content_sha256": "3bbf45bf0819e9933f64ae003abcd7857c19a57f3aa3cc812e57cf5566d8b459"
+      }
+    },
+    {
+      "url": "https://emmettl.github.io/zenit/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "stellar-reference",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "pending",
+            "records": 0
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000.0,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          }
+        },
+        "scene": "HYG bright-star reference around a spherical Earth and camera rehearsal. Orbital positions remain pending.",
+        "observerPreset": {
+          "name": "Zurich",
+          "latitude": 47.3769,
+          "longitude": 8.5417,
+          "use": "Geometric stellar horizon and camera preset; idealised dark sky, no local weather or satellite visibility model."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T21:00:00Z",
+          "model": "Catalogue directions with precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268
+        }
+      },
+      "catalogueSha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+      "catalogueBytes": 854727,
+      "catalogueCacheControl": "max-age=600",
+      "applicationAsset": "assets/index-DrhiM5XR.js",
+      "applicationAssetSha256": "d74f45740334a56cd7b678a6f133198a9feb37779672a042178cd11582cbfc9a",
+      "attributionAndLicencePresent": true,
+      "missingFileStatus": 404
+    }
+  ],
+  "ciChecks": {
+    "runner": "macos-15",
+    "numericalAndDataTests": 8,
+    "browserTests": 12,
+    "stellarGzipBytes": 326531,
+    "compressedArtifactBytes": 811638,
+    "pagesRunId": 37693667600,
+    "pagesConclusion": "success",
+    "cloudflareRunId": 37693845837,
+    "cloudflareConclusion": "success"
+  }
+}
