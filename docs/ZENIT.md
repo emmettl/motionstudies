@@ -1,10 +1,10 @@
 # ZENIT
 
-[Study repository](https://github.com/emmettl/zenit) · [Public camera scaffold](https://zenit.motionstudies.app/) · [Study index](README.md) · [Source audit](ZENIT-SOURCES.md) · [Series vision](VISION.md) · [Kickoff conversation](https://chatgpt.com/share/6ac6a662-d598-83ed-9c18-f9f1c6087cdc)
+[Study repository](https://github.com/emmettl/zenit) · [Public stellar reference](https://zenit.motionstudies.app/) · [Study index](README.md) · [Source audit](ZENIT-SOURCES.md) · [Series vision](VISION.md) · [Kickoff conversation](https://chatgpt.com/share/6ac6a662-d598-83ed-9c18-f9f1c6087cdc)
 
 **Working brief — 7 October 2026.** ZENIT studies humanity's occupation of Earth orbit through the relationship between individual objects, orbital structures and the sky above an observer. The author's preferred stellar field is the visible, naked-eye sky. The signature sequence descends dramatically to Earth's surface and turns upward to satellites streaking across the stars. The title is the author's current preference. This is an unnumbered research proposal; the composition and limits below are proposed choices for a first proof.
 
-**Implementation boundary — 7 October.** The independent public edition now has a spherical Earth and geographic graticule for a camera rehearsal, including descent, seeking, pause, return and reduced motion. The public manifest explicitly carries zero orbital and stellar records. This scaffold establishes the application and publishing path; propagation, catalogue stars and a verified night-side pass remain the next composition work. The subdomain is canonical, with the same artifact at `/zenit/` and an independent GitHub Pages copy; see [hosting](HOSTING.md#zenit-hosting).
+**Implementation boundary — 8 October.** The independent public edition now has a real HYG 4.4 bright-star field of 5,070 records, selection, source details, a layer toggle and a geometric surface horizon. A spherical Earth and geographic graticule support descent, seeking, pause, return and reduced motion. The stellar orientation is fixed at 7 October 2026, 21:00 UTC; orbital data and satellite passes remain pending. The subdomain is canonical, with the same artifact at `/zenit/` and an independent GitHub Pages copy; see [hosting](HOSTING.md#zenit-hosting).
 
 ## Thesis
 
@@ -43,7 +43,7 @@ The surface composition is a modelled satellite overlay on an idealised naked-ey
 
 Include a catalogue of bright stars as an idealised naked-eye field in the first proof. Its slow celestial reference makes the nearby orbital motion easier to read; in the observer view, Earth's rotation carries that field across the horizon. Render only the directions above the local horizon and inside the camera's field of view. Selection should also reach a star's own record: its designation or available name, catalogue identity, apparent visual magnitude, colour index, source position and reference epoch. Preserve distance and spectral information where available for inspection.
 
-The proposed first source is **HYG 4.2**, a compilation of Hipparcos, Yale Bright Star and Gliese records; the [source audit](ZENIT-SOURCES.md#stellar-catalogue-sources) records its fields, licence and acquisition limit. Use a proposed default apparent visual magnitude limit of **V ≤ 6.0**, excluding the catalogue's Sun entry. Retain a separate **10,000-record** ceiling, with any overflow selected deterministically by magnitude and catalogue ID and disclosed. The cutoff represents an authored dark-sky reference, with actual visibility dependent on observing conditions. The actual count and transfer size await acquisition. A deeper stellar field is outside the current composition.
+The first acquired source is **HYG 4.4**, a compilation of Hipparcos, Yale Bright Star and Gliese records. The [source audit](ZENIT-SOURCES.md#stellar-catalogue-sources) records its pinned input, fields, licence and compiled release. The apparent visual magnitude limit is **V ≤ 6.0**, excluding the Sun, with a deterministic **10,000-record** ceiling. The current release has **5,070 records**, 428 named, and a roughly 334 KB gzip payload. The cutoff represents an authored dark-sky reference, with actual visibility dependent on observing conditions. A deeper stellar field is outside the current composition.
 
 Draw stars as directions on a celestial sphere. Its display radius supplies a rendering surface, not stellar distance; moving the orbital camera around Earth must not create artificial stellar parallax. Genuine catalogue distance belongs to the record, with unavailable or dubious values left unavailable.
 
@@ -85,7 +85,7 @@ If pursued, give this composition an explicit change of spatial scale and clock.
 
 ## Ownership and operating limits
 
-Motion Studies owns this brief and the source decisions. A future independent ZENIT edition should own identity, cohort rules, orbital adapters, propagation worker, camera composition and publication. Reuse shared clocks, controls and resource patterns where they fit; existing ground-transport positions do not supply a three-dimensional orbital coordinate contract. Extract shared orbital capabilities only when a working edition demonstrates the need.
+Motion Studies owns this brief and the source decisions. The independent ZENIT edition should own identity, cohort rules, orbital adapters, propagation worker, camera composition and publication. Reuse shared clocks, controls and resource patterns where they fit; existing ground-transport positions do not supply a three-dimensional orbital coordinate contract. Extract shared orbital capabilities only when a working edition demonstrates the need.
 
 Acquisition should happen offline or on a controlled recorder, with immutable hashes and a finite archive. The browser should load a compiled snapshot from the edition's hosting rather than query providers per visitor. A paused collector should leave a dated work usable. Apply the [series cost policy](COST-CONTROL.md); the proof needs no recurring capture or paid service.
 

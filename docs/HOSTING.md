@@ -19,7 +19,7 @@ All seven public editions are hosted directly by individual Cloudflare Workers S
 | `/grid84/` | Grid/84 Terminal Atlas (adjunct) | `grid84-hosting` |
 | `/underfall/` | Bristol (research, unlisted) | `underfall-hosting` |
 | `/pfad/` | Swiss pathfinding (first connectivity study) | `pfad-hosting` |
-| `/zenit/` and `zenit.motionstudies.app` | Earth orbit (research scaffold) | `zenit-hosting` |
+| `/zenit/` and `zenit.motionstudies.app` | Earth orbit (stellar reference) | `zenit-hosting` |
 
 Each edition owns its `motionstudies.app/<edition>*` route. Underfall is unlisted research from a private repository: reachable at its URL, marked `noindex` in its own HTML and absent from the catalogue. Prefix routes include slashless URLs with query strings; unmatched files return 404. The retired `motionstudies-editions` proxy has no routes. New York remains excluded while its publication hold is unresolved. MANIFEST's existing public route is retained without adding catalogue links; its published vessel data remains synthetic.
 
@@ -162,10 +162,12 @@ subdomain requests into that asset namespace while preserving query strings,
 request headers and missing-file responses. Both custom-domain addresses must
 pass live release and cache verification. Builds do not request provider data.
 
-The initial data allowlist admits only `data/zenit-manifest.json`: a scaffold
-manifest with orbital and stellar evidence pending. Later data releases need a
-reviewed allowlist and source attribution update. The scaffold is unnumbered;
-it does not represent a verified orbital or stellar composition.
+The stellar data allowlist admits `data/zenit-manifest.json`, `data/stellar/NOTICE.txt`
+and immutable `data/stellar/hyg-v44-bright-<12 hex>.json` releases. The compiled
+release and raw source hashes are verified, with HYG attribution and CC BY-SA 4.0
+notices retained in the artifact. Raw CSV and gzip captures remain excluded.
+Orbital releases need a separate allowlist and source attribution review.
+The edition remains unnumbered while the orbital composition is developed.
 
 The edition follows successful `Deploy Pages` runs with an independent
 Cloudflare workflow using pinned hosting tools. Its `cloudflare` environment

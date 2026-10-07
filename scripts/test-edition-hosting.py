@@ -147,11 +147,14 @@ class EditionHostingTests(unittest.TestCase):
         self.assertEqual([call.args[2] for call in verify.call_args_list],
                          ["https://motionstudies.app/pfad/", "https://pfad.motionstudies.app/"])
 
-    def test_zenit_is_bounded_to_its_scaffold_manifest_and_verifies_both_addresses(self):
+    def test_zenit_is_bounded_to_its_bright_star_release_and_verifies_both_addresses(self):
         publisher = hosting.Publisher("zenit")
         destination = self.root / "zenit"
         publisher.stage_artifact(self.archive("zenit"), destination, self.run_metadata("zenit"))
-        for name in ["data/raw-gp.json", "data/hyg.csv", "data/keys.json", "data/foreign/manifest.json"]:
+        member = tarfile.TarInfo("data/stellar/hyg-v44-bright-d874dfa7da5f.json")
+        member.size = 1
+        publisher.stage_artifact(self.archive("zenit", member), self.root / "stellar", self.run_metadata("zenit"))
+        for name in ["data/raw-gp.json", "data/hyg.csv", "data/keys.json", "data/foreign/manifest.json", "data/stellar/hyg_v44.csv.gz", "data/stellar/hyg-v44-bright-latest.json", "data/stellar/hyg-v42-bright-abcdef123456.json"]:
             with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unapproved edition data"):
                 publisher.stage_artifact(self.archive("zenit", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("zenit"))
         with patch.object(publisher, "verify_url") as verify:
