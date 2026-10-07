@@ -164,7 +164,7 @@ pass live release and cache verification. Builds do not request provider data.
 
 The stellar data allowlist admits `data/zenit-manifest.json`, `data/stellar/NOTICE.txt`
 and immutable `data/stellar/hyg-v44-bright-<12 hex>.json` releases, plus
-`data/orbital/NOTICE.txt` and immutable `data/orbital/iss-<12 hex>.json` snapshots. The compiled
+`data/orbital/NOTICE.txt` and immutable `data/orbital/iss-<12 hex>.json` and `data/orbital/cohorts-<12 hex>.json` snapshots. The compiled
 release and raw source hashes are verified, with HYG attribution and CC BY-SA 4.0
 notices retained in the artifact. Raw CSV and gzip captures remain excluded.
 Additional orbital cohort formats need a separate allowlist and source attribution review.

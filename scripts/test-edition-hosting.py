@@ -147,7 +147,7 @@ class EditionHostingTests(unittest.TestCase):
         self.assertEqual([call.args[2] for call in verify.call_args_list],
                          ["https://motionstudies.app/pfad/", "https://pfad.motionstudies.app/"])
 
-    def test_zenit_is_bounded_to_its_star_and_iss_releases_and_verifies_both_addresses(self):
+    def test_zenit_is_bounded_to_its_star_and_cohort_releases_and_verifies_both_addresses(self):
         publisher = hosting.Publisher("zenit")
         destination = self.root / "zenit"
         publisher.stage_artifact(self.archive("zenit"), destination, self.run_metadata("zenit"))
@@ -157,7 +157,10 @@ class EditionHostingTests(unittest.TestCase):
         member = tarfile.TarInfo("data/orbital/iss-b1c62cd01d58.json")
         member.size = 1
         publisher.stage_artifact(self.archive("zenit", member), self.root / "iss", self.run_metadata("zenit"))
-        for name in ["data/raw-gp.json", "data/hyg.csv", "data/keys.json", "data/foreign/manifest.json", "data/stellar/hyg_v44.csv.gz", "data/stellar/hyg-v44-bright-latest.json", "data/stellar/hyg-v42-bright-abcdef123456.json", "data/orbital/gp.json", "data/orbital/iss-latest.json", "data/orbital/stations-abcdef123456.json"]:
+        member = tarfile.TarInfo("data/orbital/cohorts-8ceb46133139.json")
+        member.size = 1
+        publisher.stage_artifact(self.archive("zenit", member), self.root / "cohorts", self.run_metadata("zenit"))
+        for name in ["data/raw-gp.json", "data/hyg.csv", "data/keys.json", "data/foreign/manifest.json", "data/stellar/hyg_v44.csv.gz", "data/stellar/hyg-v44-bright-latest.json", "data/stellar/hyg-v42-bright-abcdef123456.json", "data/orbital/gp.json", "data/orbital/iss-latest.json", "data/orbital/stations-abcdef123456.json", "data/orbital/cohorts-latest.json", "data/orbital/raw-stations-gp.json"]:
             with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unapproved edition data"):
                 publisher.stage_artifact(self.archive("zenit", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("zenit"))
         with patch.object(publisher, "verify_url") as verify:

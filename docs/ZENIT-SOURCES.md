@@ -2,7 +2,7 @@
 
 [Study brief](ZENIT.md) · [Probe record](evidence/zenit-sources-2026-10-07.json) · [Data readiness](DATA-READINESS.md)
 
-**7 October 2026, updated 8 October for the stellar and ISS releases.** Current public orbital elements are a credible foundation for a bounded local proof. Four small CelesTrak requests returned valid JSON, and the stations metadata joined completely. The stellar release uses an acquired and hashed HYG 4.4 subset of 5,070 records. One retained CelesTrak ISS snapshot now supplies the first verified propagation and surface pass. A historical work needs a separate coverage audit. Publication must preserve the distinction between government orbital data, provider enrichment, stellar catalogue measurements and modelled positions.
+**7 October 2026, updated 8 October for the stellar and ISS releases.** Current public orbital elements are a credible foundation for a bounded local proof. Four small CelesTrak requests returned valid JSON, and the stations metadata joined completely. The stellar release uses an acquired and hashed HYG 4.4 subset of 5,070 records. The ISS snapshot supplies the verified surface pass; the original group-probe bodies now also supply a bounded, deduplicated three-family release. A historical work needs a separate coverage audit. Publication must preserve the distinction between government orbital data, provider enrichment, stellar catalogue measurements and modelled positions.
 
 ## Scope and verdicts
 
@@ -84,6 +84,26 @@ Satellite.js **7.1.0**, **WGS72** and **AFSPC `a`** produce TEME kilometre posit
 The [numerical audit](https://github.com/emmettl/zenit/blob/main/docs/evidence/iss-numerical-2026-10-08.json) records independent Python sgp4 **2.27 / Vallado C++** near/deep-space and decay cases at positive and negative offsets. TEME comparisons pass a **2 cm position / 0.1 mm/s velocity** tolerance. Independent Astropy **8.0.1 / PyERFA 2.0.1.5** observer and horizon checks pass **50 m Earth-fixed / 0.01° look-angle** tolerances, allowing for reference IERS polar motion omitted in the browser. Independent pressure-zero Sun geometry also agrees within 0.02° at the selected pass and study bounds. These tolerances concern implementation agreement, not element prediction accuracy.
 
 Every position and each two-second sample of the previous 60 study seconds is evaluated directly from a cloned initial SGP4 record. Seeking and reversing reproduce the same point and trail. The sampled trail's maximum measured midpoint chord error is roughly **4 m** on five-minute-spaced checks across the study, below a 6 m test ceiling. The trail and satellite screen encoding express motion; reflectance, illumination, atmosphere and terrain are not reconstructed. Surface stars use an authored solar-altitude fade, fully bright below −18° and suppressed by −6°, so the shared clock does not retain the naked-eye field in daylight. This is a compositional twilight treatment rather than atmospheric photometry. Complete animation and interruption are tested in Chromium and WebKit phone emulation; sustained physical-phone performance is not yet measured.
+
+## Three-family release
+
+The [cohort release audit](https://github.com/emmettl/zenit/blob/main/docs/evidence/cohorts-release-2026-10-08.json) retains the original stations, GNSS, GEO and stations-SATCAT bodies, each matching the earlier probe's recorded hash. They were copied from temporary probe storage into the edition's ignored source store on 8 October. No data request was repeated. HTTP response dates survive; exact original local acquisition timestamps were not recorded and are explicitly unavailable. Retention time is separate from both response date and element epoch.
+
+The 762 GP rows reconcile to 716 distinct IDs. Twelve docked objects become selectable attachments under their parent, with no additional moving glyph. Sixty-nine independent IDs fall entirely outside the frozen study's 24-hour element-offset window. The remaining **635** enter the retained population, **616** eligible at its initial instant; no cap, invalid-element or propagation-screening exclusions occur. Every independent mover was screened at minute-spaced eligible instants, with failures still checked per runtime sample. All group memberships survive choosing the newest epoch per ID, with source-order tie breaking. The ISS group elements exactly match the existing pass input.
+
+| Group | Input rows | Retained movers | Initially eligible | Attachments | Excluded independent IDs |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Stations | 23 | 11 | 11 | 12 | 0 |
+| GNSS | 172 | 130 | 124 | 0 | 42 |
+| Active geosynchronous | 567 | 533 | 518 | 0 | 34 |
+
+These group totals overlap: the retained population has 39 identities in both GNSS and GEO. At the opening instant their union is 605 eligible movers; stations add 11. Membership is a frozen provider snapshot, not a complete partition into orbital regimes or an inventory at every study instant. Eight ISS and four Tianhe attachments remain inspectable. Their supplied relationship is frozen across the study; no docking/undocking history is reconstructed.
+
+Selected SATCAT fields retain identity, type, catalogue launch date, orbit type and parent. Unknown metadata remains unknown. Group membership and docking relationships are attributed provider-supplied facts; optional operating-status enrichment is omitted. Applicable basic-SSA redistribution citation and provider policy links remain in the data notice and interface. The HYG adaptation keeps its independent CC BY-SA terms.
+
+The compiled cohort payload is **459,048 bytes / about 54 KB gzip**, SHA-256 `8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf`. A dedicated module worker calculates direct WGS72/AFSPC states at a nominal 33 ms cadence, with at most one outstanding request and coalesced target times. Transferable Float64 packets carry an explicit instant; clock, sky, selected record and moving glyphs all use it. Manual seeks invalidate old revisions before display. No state interpolation is used.
+
+The [cohort numerical audit](https://github.com/emmettl/zenit/blob/main/docs/evidence/cohorts-numerical-2026-10-08.json) compares 16 independent C++ SGP4 vectors for four actual retained near-Earth, navigation and deep-space records at positive and negative offsets. Position tolerance is 10 cm, velocity 0.1 mm/s. Five-minute-spaced checks measure a maximum approximately 4.23 m two-second trail chord error and a maximum radius around 45,315 km. A local arm64 Node benchmark of 616 eligible movers measures roughly 0.46 ms median / 0.66 ms p95 for propagation and Earth-fixed conversion only. Transfer, complete UI/rendering and physical-phone frame rate remain outside that measurement. Source prediction accuracy is not inferred from these comparisons.
 
 ## Stellar catalogue sources
 
