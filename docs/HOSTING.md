@@ -293,3 +293,19 @@ canonical identity and missing-file 404s. The CI artifact measures 848,621 gzip
 bytes, including the 326,531-byte stellar subset and one bounded orbital snapshot.
 The frozen Sydney pass and shared clock are modelled from dated inputs; satellite
 optical visibility and sustained physical-phone frame rate remain unmeasured.
+
+**Orbital families verified — 8 October 2026.** [Pages run 37704156821](https://github.com/emmettl/zenit/actions/runs/37704156821)
+passed 22 numerical/data tests and 32 Chromium/WebKit browser checks. Edition
+commit `ad40634cb5930cb8fc459fab61b1a1d19422f085` is published by
+[Cloudflare run 37704385574](https://github.com/emmettl/zenit/actions/runs/37704385574),
+using hosting revision `fb3f45c5dfa821b5038805c32986ef20f6e14015`.
+The [family delivery audit](evidence/zenit-cohorts-2026-10-08.json) confirms
+identical application, background worker and three dataset hashes at all three
+addresses, 12 source/licence notices, canonical identity and missing-file 404s.
+The frozen population retains 635 independent movers (616 eligible initially)
+and 12 parent-station attachments. Family filters, direct timestamped propagation
+and whole-orbit framing preserve the Sydney ISS descent and stellar reference.
+CI measured 941,363 gzip bytes for the complete artifact and 326,531 for the
+stellar subset; local compression measurements are recorded separately.
+The scene uses a dated snapshot with bounded element ages. Neither optical
+satellite visibility nor sustained physical-phone frame rate is established.
