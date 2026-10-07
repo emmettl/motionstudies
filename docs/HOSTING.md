@@ -279,3 +279,17 @@ confirms identical application and catalogue hashes at all three addresses,
 CI measured 326,531 gzip bytes for the stellar subset and 811,638 for the complete
 artifact; local compressor measurements differ and are retained separately.
 No orbital records or satellite passes are published yet.
+
+
+**ISS sequence verified — 8 October 2026.** [Pages run 37698877139](https://github.com/emmettl/zenit/actions/runs/37698877139)
+passed 17 numerical/data tests and 26 Chromium/WebKit browser checks, including
+the complete animated cue, reduced motion, reverse/seek determinism, source
+integrity, twilight fading and the app-panel layout. Edition commit
+`ec639cab4e2f044f2cab19bd935ea20db7e633aa` is published by
+[Cloudflare run 37699117166](https://github.com/emmettl/zenit/actions/runs/37699117166).
+The [ISS delivery audit](evidence/zenit-iss-2026-10-08.json) confirms identical
+application and dataset hashes at all three addresses, source/licence notices,
+canonical identity and missing-file 404s. The CI artifact measures 848,621 gzip
+bytes, including the 326,531-byte stellar subset and one bounded orbital snapshot.
+The frozen Sydney pass and shared clock are modelled from dated inputs; satellite
+optical visibility and sustained physical-phone frame rate remain unmeasured.

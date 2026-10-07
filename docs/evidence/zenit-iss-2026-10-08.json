@@ -1,0 +1,313 @@
+{
+  "date": "2026-10-08",
+  "verifiedAtUtc": "2026-10-07T22:56:50.843726+00:00",
+  "repository": "https://github.com/emmettl/zenit",
+  "editionCommit": "ec639cab4e2f044f2cab19bd935ea20db7e633aa",
+  "evidence": "One frozen CelesTrak ISS element set, HYG reference, geometric night-side Sydney pass and coupled reversible clock. Optical satellite visibility and physical-phone frame rate are not established.",
+  "localChecks": {
+    "numericalAndDataTests": 17,
+    "browserTests": 26,
+    "browserProjects": [
+      "Chromium desktop",
+      "WebKit iPhone 13 viewport"
+    ],
+    "stellarGzipBytes": 333742,
+    "compressedArtifactBytes": 855322,
+    "physicalPhoneMeasured": false,
+    "stellarReproduction": "Catalogue and notice byte-identical; combined manifest semantically identical (2000 vs 2000.0 serialization).",
+    "orbitalReproduction": "Offline compiler reproduced the release hash b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734."
+  },
+  "hostingChecks": {
+    "publisherTests": 12,
+    "zenitRouteTests": 6
+  },
+  "addresses": [
+    {
+      "url": "https://zenit.motionstudies.app/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "iss-pass",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "propagated",
+            "records": 1,
+            "file": "orbital/iss-b1c62cd01d58.json",
+            "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+            "source": "CelesTrak standard GP / USSPACECOM",
+            "notice": "orbital/NOTICE.txt",
+            "elementEpoch": "2026-10-07T13:30:47.478528Z"
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          }
+        },
+        "scene": "One frozen ISS element set propagated over a reversible twelve-hour study, a HYG stellar sky and a night-side Sydney pass.",
+        "observerPreset": {
+          "name": "Sydney",
+          "latitude": -33.8688,
+          "longitude": 151.2093,
+          "heightKm": 0.058,
+          "use": "WGS84 geodetic surface viewpoint; geometric horizon and an idealised dark stellar sky."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T17:57:19.000Z",
+          "model": "J2000 catalogue directions with time-dependent precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268,
+          "surfaceVisibility": "Authored twilight fade: full at solar altitude <= -18 degrees, zero at >= -6 degrees. No local atmosphere, weather, terrain or satellite brightness model."
+        },
+        "study": {
+          "startUtc": "2026-10-07T11:58:49.000Z",
+          "endUtc": "2026-10-07T23:58:49.000Z",
+          "initialUtc": "2026-10-07T17:57:19.000Z"
+        },
+        "pass": {
+          "riseUtc": "2026-10-07T17:53:22.867Z",
+          "peakUtc": "2026-10-07T17:58:49.000Z",
+          "setUtc": "2026-10-07T18:04:12.677Z",
+          "maximumElevationDegrees": 44.881783015395555,
+          "peakAzimuthDegrees": 312.19564958234974,
+          "peakRangeKm": 590.1395344674711,
+          "solarAltitudeDegrees": -17.884055771093873,
+          "rule": "Highest culmination >= 20 degrees with Sun below -6 degrees over Sydney in the 18 hours after the element epoch. One-second peak sampling; horizon crossings bisected to milliseconds. Geometric pass, not an optical visibility prediction."
+        }
+      },
+      "datasets": [
+        {
+          "kind": "orbital",
+          "file": "orbital/iss-b1c62cd01d58.json",
+          "bytes": 2594,
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "kind": "stellar",
+          "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+          "bytes": 854727,
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        }
+      ],
+      "applicationAsset": "assets/index-Bq45Em07.js",
+      "applicationAssetSha256": "f83130ece0af791d57b8009d5f012dde3193d0b806ddd8525f3360b6c671800a",
+      "sourceAndLicenceNoticesPresent": true,
+      "missingFileStatus": 404,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37698877139,
+        "commit": "ec639cab4e2f044f2cab19bd935ea20db7e633aa",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37698877139",
+        "source_files": 33,
+        "source_bytes": 2013969,
+        "content_sha256": "3108d51c10b3b0e2a592c222924eb46deeb1953f387f63f914986d75825439ce"
+      }
+    },
+    {
+      "url": "https://motionstudies.app/zenit/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "iss-pass",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "propagated",
+            "records": 1,
+            "file": "orbital/iss-b1c62cd01d58.json",
+            "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+            "source": "CelesTrak standard GP / USSPACECOM",
+            "notice": "orbital/NOTICE.txt",
+            "elementEpoch": "2026-10-07T13:30:47.478528Z"
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          }
+        },
+        "scene": "One frozen ISS element set propagated over a reversible twelve-hour study, a HYG stellar sky and a night-side Sydney pass.",
+        "observerPreset": {
+          "name": "Sydney",
+          "latitude": -33.8688,
+          "longitude": 151.2093,
+          "heightKm": 0.058,
+          "use": "WGS84 geodetic surface viewpoint; geometric horizon and an idealised dark stellar sky."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T17:57:19.000Z",
+          "model": "J2000 catalogue directions with time-dependent precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268,
+          "surfaceVisibility": "Authored twilight fade: full at solar altitude <= -18 degrees, zero at >= -6 degrees. No local atmosphere, weather, terrain or satellite brightness model."
+        },
+        "study": {
+          "startUtc": "2026-10-07T11:58:49.000Z",
+          "endUtc": "2026-10-07T23:58:49.000Z",
+          "initialUtc": "2026-10-07T17:57:19.000Z"
+        },
+        "pass": {
+          "riseUtc": "2026-10-07T17:53:22.867Z",
+          "peakUtc": "2026-10-07T17:58:49.000Z",
+          "setUtc": "2026-10-07T18:04:12.677Z",
+          "maximumElevationDegrees": 44.881783015395555,
+          "peakAzimuthDegrees": 312.19564958234974,
+          "peakRangeKm": 590.1395344674711,
+          "solarAltitudeDegrees": -17.884055771093873,
+          "rule": "Highest culmination >= 20 degrees with Sun below -6 degrees over Sydney in the 18 hours after the element epoch. One-second peak sampling; horizon crossings bisected to milliseconds. Geometric pass, not an optical visibility prediction."
+        }
+      },
+      "datasets": [
+        {
+          "kind": "orbital",
+          "file": "orbital/iss-b1c62cd01d58.json",
+          "bytes": 2594,
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "kind": "stellar",
+          "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+          "bytes": 854727,
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        }
+      ],
+      "applicationAsset": "assets/index-Bq45Em07.js",
+      "applicationAssetSha256": "f83130ece0af791d57b8009d5f012dde3193d0b806ddd8525f3360b6c671800a",
+      "sourceAndLicenceNoticesPresent": true,
+      "missingFileStatus": 404,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37698877139,
+        "commit": "ec639cab4e2f044f2cab19bd935ea20db7e633aa",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37698877139",
+        "source_files": 33,
+        "source_bytes": 2013969,
+        "content_sha256": "3108d51c10b3b0e2a592c222924eb46deeb1953f387f63f914986d75825439ce"
+      }
+    },
+    {
+      "url": "https://emmettl.github.io/zenit/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "iss-pass",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "propagated",
+            "records": 1,
+            "file": "orbital/iss-b1c62cd01d58.json",
+            "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+            "source": "CelesTrak standard GP / USSPACECOM",
+            "notice": "orbital/NOTICE.txt",
+            "elementEpoch": "2026-10-07T13:30:47.478528Z"
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          }
+        },
+        "scene": "One frozen ISS element set propagated over a reversible twelve-hour study, a HYG stellar sky and a night-side Sydney pass.",
+        "observerPreset": {
+          "name": "Sydney",
+          "latitude": -33.8688,
+          "longitude": 151.2093,
+          "heightKm": 0.058,
+          "use": "WGS84 geodetic surface viewpoint; geometric horizon and an idealised dark stellar sky."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T17:57:19.000Z",
+          "model": "J2000 catalogue directions with time-dependent precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268,
+          "surfaceVisibility": "Authored twilight fade: full at solar altitude <= -18 degrees, zero at >= -6 degrees. No local atmosphere, weather, terrain or satellite brightness model."
+        },
+        "study": {
+          "startUtc": "2026-10-07T11:58:49.000Z",
+          "endUtc": "2026-10-07T23:58:49.000Z",
+          "initialUtc": "2026-10-07T17:57:19.000Z"
+        },
+        "pass": {
+          "riseUtc": "2026-10-07T17:53:22.867Z",
+          "peakUtc": "2026-10-07T17:58:49.000Z",
+          "setUtc": "2026-10-07T18:04:12.677Z",
+          "maximumElevationDegrees": 44.881783015395555,
+          "peakAzimuthDegrees": 312.19564958234974,
+          "peakRangeKm": 590.1395344674711,
+          "solarAltitudeDegrees": -17.884055771093873,
+          "rule": "Highest culmination >= 20 degrees with Sun below -6 degrees over Sydney in the 18 hours after the element epoch. One-second peak sampling; horizon crossings bisected to milliseconds. Geometric pass, not an optical visibility prediction."
+        }
+      },
+      "datasets": [
+        {
+          "kind": "orbital",
+          "file": "orbital/iss-b1c62cd01d58.json",
+          "bytes": 2594,
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "cacheControl": "max-age=600"
+        },
+        {
+          "kind": "stellar",
+          "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+          "bytes": 854727,
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "cacheControl": "max-age=600"
+        }
+      ],
+      "applicationAsset": "assets/index-Bq45Em07.js",
+      "applicationAssetSha256": "f83130ece0af791d57b8009d5f012dde3193d0b806ddd8525f3360b6c671800a",
+      "sourceAndLicenceNoticesPresent": true,
+      "missingFileStatus": 404
+    }
+  ],
+  "ciChecks": {
+    "runner": "macos-15",
+    "numericalAndDataTests": 17,
+    "browserTests": 26,
+    "stellarGzipBytes": 326531,
+    "compressedArtifactBytes": 848621,
+    "pagesRunId": 37698877139,
+    "pagesConclusion": "success",
+    "cloudflareRunId": 37699117166,
+    "cloudflareConclusion": "success"
+  },
+  "visualVerification": {
+    "liveCanonical": "Full ISS descent cue verified; culmination at 44.9 degrees with a model trail and catalogue stars. App-panel controls no longer cover the ISS.",
+    "viewports": [
+      "1280\u00d7720 desktop preview",
+      "390\u00d7844 phone preview",
+      "664\u00d7780 browser regression and live app panel"
+    ],
+    "screenshot": "Local preview retained at /tmp/zenit-iss-live.jpg; not part of the public artifact."
+  }
+}
