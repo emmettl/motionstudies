@@ -18,6 +18,7 @@ The catalogue for authored works and research about transport, geography and mov
 | Umlauf · Berlin | [Open study](https://motionstudies.app/umlauf/) · [Brief](docs/BERLIN.md) | [umlauf](https://github.com/emmettl/umlauf) |
 | Zugunruhe · European bird migration | [Open study](https://motionstudies.app/zugunruhe/) · [Brief](docs/ZUGUNRUHE.md) | [zugunruhe](https://github.com/emmettl/zugunruhe) |
 | Underfall · Bristol | Local research edition; not deployed · [Brief](docs/BRISTOL.md) | Local checkout |
+| ZENIT · Earth orbit | [Public camera scaffold](https://zenit.motionstudies.app/) · [Brief](docs/ZENIT.md) · Orbital and stellar data pending | [zenit](https://github.com/emmettl/zenit) |
 
 [Project goals](docs/VISION.md) · [Overall roadmap](ROADMAP.md) · [City briefs and source audits](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 

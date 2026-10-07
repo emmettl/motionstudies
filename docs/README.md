@@ -66,7 +66,7 @@ These briefs retain their dated source audits, proposed compositions and publica
 
 ## Research for potential studies
 
-- [ZENIT — Earth orbit](ZENIT.md) — working brief for an orbital population and a dramatic descent to the surface beneath a naked-eye stellar field; [7 October source audit](ZENIT-SOURCES.md) with live GP samples, metadata joins, stellar sources, visibility assumptions and historical/publication boundaries.
+- [ZENIT — Earth orbit](ZENIT.md) — working brief and [public camera scaffold](https://zenit.motionstudies.app/) in an [independent repository](https://github.com/emmettl/zenit), for a descent beneath a naked-eye stellar field; [7 October source audit](ZENIT-SOURCES.md) with live GP samples, metadata joins, stellar sources, visibility assumptions and historical/publication boundaries. Orbital and stellar datasets remain pending.
 - [A national motion study — England, Great Britain or the UK](NATIONAL-STUDY.md) — refined artistic thesis and composition, with a [technical feasibility report](NATIONAL-DATA-FEASIBILITY.md) covering sources, volumes, timeliness, accuracy and the evidence chain between aggregate and individual records.
 - [Power — the national study's second axis](POWER.md) — Elexon and NESO sources probed on 13 September 2026: per-unit plans and settled generation, live fuel mix, national and grid-supply-point demand, geometry, licences and how a unit is placed.
 - [Flights over Europe](EUROPE-AIR-RESEARCH.md) — technical evidence, candidate visual theses and bounded experiments; the thesis remains open. [First recorded day and local replay, 16 September](EUROPE-AIR-PROOF-2026-09-16.md), now developed into the independent [LUFT prototype](https://github.com/emmettl/luft) for device evaluation.

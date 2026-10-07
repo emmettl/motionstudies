@@ -1,8 +1,10 @@
 # ZENIT
 
-[Study index](README.md) · [Source audit](ZENIT-SOURCES.md) · [Series vision](VISION.md) · [Kickoff conversation](https://chatgpt.com/share/6ac6a662-d598-83ed-9c18-f9f1c6087cdc)
+[Study repository](https://github.com/emmettl/zenit) · [Public camera scaffold](https://zenit.motionstudies.app/) · [Study index](README.md) · [Source audit](ZENIT-SOURCES.md) · [Series vision](VISION.md) · [Kickoff conversation](https://chatgpt.com/share/6ac6a662-d598-83ed-9c18-f9f1c6087cdc)
 
 **Working brief — 7 October 2026.** ZENIT studies humanity's occupation of Earth orbit through the relationship between individual objects, orbital structures and the sky above an observer. The author's preferred stellar field is the visible, naked-eye sky. The signature sequence descends dramatically to Earth's surface and turns upward to satellites streaking across the stars. The title is the author's current preference. This is an unnumbered research proposal; the composition and limits below are proposed choices for a first proof.
+
+**Implementation boundary — 7 October.** The independent public edition now has a spherical Earth and geographic graticule for a camera rehearsal, including descent, seeking, pause, return and reduced motion. The public manifest explicitly carries zero orbital and stellar records. This scaffold establishes the application and publishing path; propagation, catalogue stars and a verified night-side pass remain the next composition work. The subdomain is canonical, with the same artifact at `/zenit/` and an independent GitHub Pages copy; see [hosting](HOSTING.md#zenit-hosting).
 
 ## Thesis
 
