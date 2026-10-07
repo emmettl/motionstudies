@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "kind": "zenit-source-audit",
+  "auditedOn": "2026-10-07",
+  "method": "Primary documentation review and one unauthenticated GET per listed CelesTrak sample. JSON parsing and aggregate checks only; no orbital propagation. A sandbox DNS failure was followed by the same host-access GET. No HTTP request was repeated after a provider response.",
+  "rawBodiesRetainedInRepository": false,
+  "rawBodyDisposition": "Inspected in temporary local files; hashes and aggregate findings retained here. This record is not a reproducible orbital evidence release.",
+  "ageComparisonInstantUtc": "2026-10-07T20:10:22Z",
+  "ageComparisonBasis": "Stations GP HTTP response Date, used for every sample; acquisition dates and element epochs remain distinct.",
+  "samples": [
+    {
+      "sample": "stations-gp",
+      "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=stations&FORMAT=json",
+      "httpStatus": 200,
+      "responseDateUtc": "2026-10-07T20:10:22Z",
+      "contentType": "application/json; charset=UTF-8",
+      "bodyBytes": 9729,
+      "bodySha256": "9a8dd20063818e9782e17cc0fbb363bb9687fd38bc4df0416c7ec7deec0cbe0c",
+      "records": 23,
+      "distinctIds": 23,
+      "catalogueIdDigits": {
+        "5": 20,
+        "6": 3
+      },
+      "fields": [
+        "ARG_OF_PERICENTER",
+        "BSTAR",
+        "CLASSIFICATION_TYPE",
+        "ECCENTRICITY",
+        "ELEMENT_SET_NO",
+        "EPHEMERIS_TYPE",
+        "EPOCH",
+        "INCLINATION",
+        "MEAN_ANOMALY",
+        "MEAN_MOTION",
+        "MEAN_MOTION_DDOT",
+        "MEAN_MOTION_DOT",
+        "NORAD_CAT_ID",
+        "OBJECT_ID",
+        "OBJECT_NAME",
+        "RA_OF_ASC_NODE",
+        "REV_AT_EPOCH"
+      ],
+      "gzipBodyBytes": 1492,
+      "epochMinimumUtc": "2026-10-07T03:45:50.205312Z",
+      "epochMaximumUtc": "2026-10-07T13:33:07.980480Z",
+      "olderThan24Hours": 0,
+      "olderThan72Hours": 0,
+      "futureEpochs": 0,
+      "oldestEpochAgeHours": 16.408832,
+      "meanMotionRevolutionsPerDay": {
+        "minimum": 12.45041216,
+        "maximum": 16.11605681
+      },
+      "inclinationDegrees": {
+        "minimum": 41.4704,
+        "maximum": 51.6487
+      },
+      "checks": {
+        "requiredFieldsPresent": true,
+        "numericFieldsFinite": true,
+        "basicElementRanges": true,
+        "epochsParseAsUtc": true,
+        "identitiesUniqueWithinSample": true
+      }
+    },
+    {
+      "sample": "gnss-gp",
+      "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=gnss&FORMAT=json",
+      "httpStatus": 200,
+      "responseDateUtc": "2026-10-07T20:10:43Z",
+      "contentType": "application/json; charset=UTF-8",
+      "bodyBytes": 71036,
+      "bodySha256": "a36af6fab6f198e9fd9e605bd968b1b4b39b937631dc343c76146e98dc67255a",
+      "records": 172,
+      "distinctIds": 172,
+      "catalogueIdDigits": {
+        "5": 170,
+        "6": 2
+      },
+      "fields": [
+        "ARG_OF_PERICENTER",
+        "BSTAR",
+        "CLASSIFICATION_TYPE",
+        "ECCENTRICITY",
+        "ELEMENT_SET_NO",
+        "EPHEMERIS_TYPE",
+        "EPOCH",
+        "INCLINATION",
+        "MEAN_ANOMALY",
+        "MEAN_MOTION",
+        "MEAN_MOTION_DDOT",
+        "MEAN_MOTION_DOT",
+        "NORAD_CAT_ID",
+        "OBJECT_ID",
+        "OBJECT_NAME",
+        "RA_OF_ASC_NODE",
+        "REV_AT_EPOCH"
+      ],
+      "gzipBodyBytes": 11375,
+      "epochMinimumUtc": "2026-09-13T16:04:22.733184Z",
+      "epochMaximumUtc": "2026-10-07T15:51:02.350368Z",
+      "olderThan24Hours": 57,
+      "olderThan72Hours": 29,
+      "futureEpochs": 0,
+      "oldestEpochAgeHours": 580.099796,
+      "meanMotionRevolutionsPerDay": {
+        "minimum": 1.00245457,
+        "maximum": 2.13103934
+      },
+      "inclinationDegrees": {
+        "minimum": 0.0131,
+        "maximum": 65.6463
+      },
+      "checks": {
+        "requiredFieldsPresent": true,
+        "numericFieldsFinite": true,
+        "basicElementRanges": true,
+        "epochsParseAsUtc": true,
+        "identitiesUniqueWithinSample": true
+      }
+    },
+    {
+      "sample": "geo-gp",
+      "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=geo&FORMAT=json",
+      "httpStatus": 200,
+      "responseDateUtc": "2026-10-07T20:10:43Z",
+      "contentType": "application/json; charset=UTF-8",
+      "bodyBytes": 229294,
+      "bodySha256": "e9b64b76fa4b2133c6f3cce1a30d5fd89894fc0ba53a7689ae09525ef61e1ad1",
+      "records": 567,
+      "distinctIds": 567,
+      "catalogueIdDigits": {
+        "5": 567
+      },
+      "fields": [
+        "ARG_OF_PERICENTER",
+        "BSTAR",
+        "CLASSIFICATION_TYPE",
+        "ECCENTRICITY",
+        "ELEMENT_SET_NO",
+        "EPHEMERIS_TYPE",
+        "EPOCH",
+        "INCLINATION",
+        "MEAN_ANOMALY",
+        "MEAN_MOTION",
+        "MEAN_MOTION_DDOT",
+        "MEAN_MOTION_DOT",
+        "NORAD_CAT_ID",
+        "OBJECT_ID",
+        "OBJECT_NAME",
+        "RA_OF_ASC_NODE",
+        "REV_AT_EPOCH"
+      ],
+      "gzipBodyBytes": 34533,
+      "epochMinimumUtc": "2026-09-11T12:27:56.057184Z",
+      "epochMaximumUtc": "2026-10-07T16:16:13.474272Z",
+      "olderThan24Hours": 70,
+      "olderThan72Hours": 10,
+      "futureEpochs": 0,
+      "oldestEpochAgeHours": 631.707206,
+      "meanMotionRevolutionsPerDay": {
+        "minimum": 0.98890104,
+        "maximum": 1.01415905
+      },
+      "inclinationDegrees": {
+        "minimum": 0.0017,
+        "maximum": 62.5721
+      },
+      "checks": {
+        "requiredFieldsPresent": true,
+        "numericFieldsFinite": true,
+        "basicElementRanges": true,
+        "epochsParseAsUtc": true,
+        "identitiesUniqueWithinSample": true
+      }
+    },
+    {
+      "sample": "stations-satcat",
+      "url": "https://celestrak.org/satcat/records.php?GROUP=stations&FORMAT=json",
+      "httpStatus": 200,
+      "responseDateUtc": "2026-10-07T20:10:41Z",
+      "contentType": "application/json; charset=UTF-8",
+      "bodyBytes": 7642,
+      "bodySha256": "60140c6a1d8b9902bfb9019be85bd43ef4cbc6d67d6dd41da4bded6b3d64d8b2",
+      "records": 23,
+      "distinctIds": 23,
+      "catalogueIdDigits": {
+        "5": 20,
+        "6": 3
+      },
+      "fields": [
+        "APOGEE",
+        "DATA_STATUS_CODE",
+        "DECAY_DATE",
+        "INCLINATION",
+        "LAUNCH_DATE",
+        "LAUNCH_SITE",
+        "NORAD_CAT_ID",
+        "OBJECT_ID",
+        "OBJECT_NAME",
+        "OBJECT_TYPE",
+        "OPS_STATUS_CODE",
+        "ORBIT_CENTER",
+        "ORBIT_TYPE",
+        "OWNER",
+        "PERIGEE",
+        "PERIOD",
+        "RCS"
+      ],
+      "orbitTypes": {
+        "ORB": 11,
+        "DOC": 12
+      },
+      "orbitCentres": {
+        "EA": 11,
+        "25544": 8,
+        "48274": 4
+      },
+      "objectTypes": {
+        "PAY": 21,
+        "DEB": 2
+      }
+    }
+  ],
+  "joins": {
+    "stationsGpToSatcat": {
+      "matched": 23,
+      "unmatched": 0
+    },
+    "gnssGeoOverlap": 46,
+    "gpRowTotal": 762,
+    "gpDistinctIdTotal": 716
+  },
+  "documentation": [
+    {
+      "title": "CelesTrak GP formats",
+      "url": "https://celestrak.org/NORAD/documentation/gp-data-formats.php"
+    },
+    {
+      "title": "CelesTrak usage policy",
+      "url": "https://celestrak.org/usage-policy.php"
+    },
+    {
+      "title": "CelesTrak SATCAT formats",
+      "url": "https://celestrak.org/satcat/satcat-format.php"
+    },
+    {
+      "title": "CelesTrak group directory",
+      "url": "https://celestrak.org/NORAD/elements/index.php?FORMAT=json"
+    },
+    {
+      "title": "CelesTrak historical request",
+      "url": "https://celestrak.org/NORAD/archives/request.php?FORMAT=json"
+    },
+    {
+      "title": "Space-Track documentation",
+      "url": "https://www.space-track.org/documentation"
+    },
+    {
+      "title": "ESA DISCOS",
+      "url": "https://discosweb.esoc.esa.int/",
+      "accessFinding": "Public homepage read; API documentation redirected to sign-in. No account interaction."
+    },
+    {
+      "title": "Orbital Data API",
+      "url": "https://orbital-data-api.davidhsu.cc/",
+      "accessFinding": "Provider documentation only; no keyed endpoint tested."
+    },
+    {
+      "title": "Satellite.js",
+      "url": "https://github.com/shashwatak/satellite-js"
+    },
+    {
+      "title": "Vallado reference materials",
+      "url": "https://celestrak.org/publications/AIAA/2006-6753/"
+    },
+    {
+      "title": "Vallado technical FAQ",
+      "url": "https://celestrak.org/publications/AIAA/2006-6753/faq.php"
+    }
+  ],
+  "notVerified": [
+    "Numerical propagation and coordinate transforms",
+    "Full catalogue coverage and joins beyond stations",
+    "Authenticated Space-Track or ESA access",
+    "Historical epoch and membership coverage",
+    "Rights for optional provider enrichment",
+    "Physical-phone performance",
+    "Optical visibility"
+  ],
+  "projectDecisions": "See ../ZENIT.md and ../ZENIT-SOURCES.md for proposed time, population and publication rules."
+}
