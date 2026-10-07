@@ -1,4 +1,9 @@
 {
+  "zenit": {
+    "required": ["data/zenit-manifest.json"],
+    "data_pattern": "data/zenit-manifest\\.json",
+    "additional_urls": ["https://zenit.motionstudies.app/"]
+  },
   "pfad": {
     "required": [
       "data/pfad-manifest.json"

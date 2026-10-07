@@ -19,6 +19,7 @@ All seven public editions are hosted directly by individual Cloudflare Workers S
 | `/grid84/` | Grid/84 Terminal Atlas (adjunct) | `grid84-hosting` |
 | `/underfall/` | Bristol (research, unlisted) | `underfall-hosting` |
 | `/pfad/` | Swiss pathfinding (first connectivity study) | `pfad-hosting` |
+| `/zenit/` and `zenit.motionstudies.app` | Earth orbit (research scaffold) | `zenit-hosting` |
 
 Each edition owns its `motionstudies.app/<edition>*` route. Underfall is unlisted research from a private repository: reachable at its URL, marked `noindex` in its own HTML and absent from the catalogue. Prefix routes include slashless URLs with query strings; unmatched files return 404. The retired `motionstudies-editions` proxy has no routes. New York remains excluded while its publication hold is unresolved. MANIFEST's existing public route is retained without adding catalogue links; its published vessel data remains synthetic.
 
@@ -147,6 +148,30 @@ independent of application builds and hosting publication.
 Its Pages artifact carries the application, the grids index and the HYDE 3.3 study grids under `data/hyde/` (about 66 MiB, every file under 5 MiB). HYDE is CC BY-NC-SA 4.0; the site is non-commercial and every readout that uses a grid names it and its licence. The GHSL tiles are not in the artifact: the site reads them across origins from the `grid84-grids` R2 bucket named in its grids index, whose CORS rule allows GET from any origin. The map's vector tiles come from OpenFreeMap and terrain from the AWS terrain tiles, as in development. The application uses hash routes under a relative base, so it runs unchanged under `/grid84/` and at its GitHub Pages URL.
 
 Publishing follows the generic path: `python3 scripts/publish-edition.py --edition grid84 --run RUN_ID [--deploy]`, and the repository's `cloudflare.yml` follows its successful main-branch `Deploy Pages` runs once its `cloudflare` environment holds `CLOUDFLARE_API_TOKEN` and the repository variable `CLOUDFLARE_ENABLED` is `true`.
+
+## ZENIT hosting
+
+ZENIT's independent public repository is [`emmettl/zenit`](https://github.com/emmettl/zenit).
+The canonical address is `https://zenit.motionstudies.app/`; the same verified artifact
+also serves at `https://motionstudies.app/zenit/`, with the independent GitHub Pages
+copy at `https://emmettl.github.io/zenit/`. The HTML canonical link names the subdomain.
+
+The publisher stages the checked main Pages artifact under `/zenit/`.
+`wrangler.zenit.jsonc` owns both routes, and `hosting/zenit-subdomain.mjs` maps
+subdomain requests into that asset namespace while preserving query strings,
+request headers and missing-file responses. Both custom-domain addresses must
+pass live release and cache verification. Builds do not request provider data.
+
+The initial data allowlist admits only `data/zenit-manifest.json`: a scaffold
+manifest with orbital and stellar evidence pending. Later data releases need a
+reviewed allowlist and source attribution update. The scaffold is unnumbered;
+it does not represent a verified orbital or stellar composition.
+
+The edition follows successful `Deploy Pages` runs with an independent
+Cloudflare workflow using pinned hosting tools. Its `cloudflare` environment
+permits `main` only. Automatic deployment requires its encrypted
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ENABLED=true`; activation and the first
+verified publication are recorded separately from this configuration.
 
 ## Visitor analytics
 

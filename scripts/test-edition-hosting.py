@@ -147,6 +147,18 @@ class EditionHostingTests(unittest.TestCase):
         self.assertEqual([call.args[2] for call in verify.call_args_list],
                          ["https://motionstudies.app/pfad/", "https://pfad.motionstudies.app/"])
 
+    def test_zenit_is_bounded_to_its_scaffold_manifest_and_verifies_both_addresses(self):
+        publisher = hosting.Publisher("zenit")
+        destination = self.root / "zenit"
+        publisher.stage_artifact(self.archive("zenit"), destination, self.run_metadata("zenit"))
+        for name in ["data/raw-gp.json", "data/hyg.csv", "data/keys.json", "data/foreign/manifest.json"]:
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unapproved edition data"):
+                publisher.stage_artifact(self.archive("zenit", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("zenit"))
+        with patch.object(publisher, "verify_url") as verify:
+            publisher.verify_deployment({"run_id": 123}, destination / "zenit")
+        self.assertEqual([call.args[2] for call in verify.call_args_list],
+                         ["https://motionstudies.app/zenit/", "https://zenit.motionstudies.app/"])
+
     def test_live_verification_rejects_stale_release_bad_cache_and_noindex(self):
         publisher = hosting.Publisher("allchange")
         output = self.root / "output"
