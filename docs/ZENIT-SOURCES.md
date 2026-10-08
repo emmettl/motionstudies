@@ -127,6 +127,14 @@ For the [distant optional stellar composition](ZENIT.md#optional-stellar-depth-a
 
 [Bailer-Jones' distance-inference study](https://arxiv.org/abs/1507.02105) explains why uncertain parallaxes require statistical inference rather than unconditional inversion. A future audit should retain errors and correlations, state any prior and calibration, and distinguish estimated distances from raw measurements. Its motion model would need a justified time range and assumptions for missing components. No Gaia acquisition or stellar-time model is required for the current orbital composition.
 
+## Geographic globe reference
+
+The geographic reference uses **Natural Earth 1:110m land**, whose [terms](https://www.naturalearthdata.com/about/terms-of-use/) place its vector and raster data in the public domain. The edition retains the original GeoJSON and response metadata under ignored `work/sources/geography-2026-10-08/`; its [release audit](https://github.com/emmettl/zenit/blob/main/docs/evidence/geography-release-2026-10-08.json) records acquisition on 8 October at 07:12:17 UTC, pinned revision `ca96624a56bd078437bca8184e78163e5039ad19`, and raw SHA-256 `9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9`. The source explicitly declares CRS84 longitude/latitude order.
+
+All 127 land polygons, 128 rings and 5,143 vertices are retained. Feature properties are removed and coordinates rounded to four decimal places, preserving antimeridian cuts, holes and the Antarctic closing edge. The 97,280-byte compiled geometry has SHA-256 `b0791155ee9100bfce659dacd30ea4a4f93adc7ffb9ed777331faa522567f805` and is bundled in the hashed application asset. A 2048×1024 canvas creates the authored land/ocean contrast and coastline strokes; geodetic texture coordinates map to WGS84 surface vertices. Build-time integrity, known continent/ocean control points and Greenwich/east/west orientation checks accompany the source notice.
+
+This is a generalised global map, not a local Sydney coast or terrain model. Near arrival it fades into a ray/ellipsoid WGS84 horizon at the declared observer height. The narrow blue horizon tint is authored. No skyline, atmosphere, weather or optical brightness is reconstructed, and the orbital and stellar snapshots remain unchanged. The geography compiler is offline; builds and visitors make no map-provider request.
+
 ## Next evidence release
 
 Before a local composition is described as verified, retain the actual bounded input bodies with hashes, exact queries, capture times, response metadata, normalized record versions, group memberships, joins and an exclusion ledger. Add the stellar release, source notice, magnitude-selection rule, retained fields, epoch policy and measured subset size. The release should declare its study interval, age rule, attachment policy, frames, units and propagation version. This probe's aggregate record covers the orbital samples only and is not that release.

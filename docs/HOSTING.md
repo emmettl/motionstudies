@@ -322,3 +322,22 @@ addresses. The orbital and stellar releases remain unchanged. The CI artifact
 measures 943,217 gzip bytes; the local compressor measured 950,523. The canonical
 site's camera controls were exercised directly and left in a paused whole-orbit
 overview. Physical-phone frame rate remains unmeasured.
+
+**Geographic globe and Sydney arrival verified — 8 October 2026.**
+[Pages run 37744187266](https://github.com/emmettl/zenit/actions/runs/37744187266)
+passed 28 numerical/data tests and 46 Chromium/WebKit browser checks. Edition
+commit `6a26f87e2fe01529be50d59007dbbbab430b90db` is published by
+[Cloudflare run 37744548206](https://github.com/emmettl/zenit/actions/runs/37744548206).
+The [arrival delivery audit](evidence/zenit-arrival-2026-10-08.json) confirms
+matching application, stylesheet, worker, manifest and unchanged orbital/stellar
+hashes at all three addresses, together with the Natural Earth geography metadata
+and all 13 source/licence notices. The geography is bundled into the application;
+the hosting data allowlist is unchanged. CI measured 987,098 gzip bytes for the
+complete artifact, compared with 994,393 locally.
+
+The twelve-second cue now reaches the 58 m Sydney observer at 7.68 seconds,
+holds a two-degree horizon gaze until 9.36 seconds, then reveals the sky. Full
+panels recede into a compact identity, clock and pause/return view. The source
+map is generalised global geography; the ground/horizon tint is authored and
+does not reconstruct terrain, atmosphere or optical satellite visibility.
+Physical-phone frame rate remains unmeasured.

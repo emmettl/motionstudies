@@ -1,0 +1,488 @@
+{
+  "date": "2026-10-08",
+  "verifiedAtUtc": "2026-10-08T07:38:57.134960+00:00",
+  "repository": "https://github.com/emmettl/zenit",
+  "editionCommit": "6a26f87e2fe01529be50d59007dbbbab430b90db",
+  "camera": "Drag to orbit; scroll, buttons or keys to zoom; click satellites to focus and follow in a local radial frame. Follow uses displayed packet time, including seeks and reverse; hidden or expired selections end follow. Reversible descent captures the current pose and preserves the Sydney observer and pass cue.",
+  "evidence": "Three frozen CelesTrak GP families with deduplicated independent movers and parent-station attachments, retained ISS pass and HYG reference sky. Direct timestamped worker propagation, coherent scene clock, family filters and physical-distance framing. Optical satellite visibility and physical-phone frame rate are not established.",
+  "localChecks": {
+    "numericalAndDataTests": 28,
+    "browserTests": 46,
+    "browserProjects": [
+      "Chromium desktop",
+      "WebKit iPhone 13 viewport"
+    ],
+    "stellarGzipBytes": 333742,
+    "compressedArtifactBytes": 994393,
+    "cohortsGzipBytes": 54145,
+    "physicalPhoneMeasured": false,
+    "geographyReproduction": "Offline compiler reproduced b0791155ee9100bfce659dacd30ea4a4f93adc7ffb9ed777331faa522567f805 from the pinned raw source and retained capture metadata without another provider request."
+  },
+  "ciChecks": {
+    "pagesRun": 37744187266,
+    "cloudflareRun": 37744548206,
+    "numericalAndDataTests": 28,
+    "browserTests": 46,
+    "stellarGzipBytes": 326531,
+    "compressedArtifactBytes": 987098,
+    "pagesConclusion": "success",
+    "cloudflareConclusion": "success"
+  },
+  "geography": {
+    "name": "Natural Earth 1:110m land",
+    "sourceSha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+    "compiledSha256": "b0791155ee9100bfce659dacd30ea4a4f93adc7ffb9ed777331faa522567f805",
+    "polygons": 127,
+    "rings": 128,
+    "vertices": 5143,
+    "rights": "Public domain",
+    "rightsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "delivery": "Bundled into the hashed application asset; offline reproduction, no provider fetch in CI or browsers.",
+    "limits": "Generalised global geography, not local coast accuracy, terrain, a Sydney skyline or observing conditions."
+  },
+  "arrival": {
+    "durationSeconds": 12,
+    "surfaceArrivalSeconds": 7.68,
+    "horizonHoldEndSeconds": 9.36,
+    "horizonAimAltitudeDegrees": 2,
+    "observerHeightMetres": 58,
+    "renderer": "Generalised geographic globe fading into analytic WGS84 ground/horizon; authored tint, no terrain or atmospheric photometry.",
+    "panels": "Compact identity, UTC, speed and pause/return controls; explicit Show panels restores inspection."
+  },
+  "population": {
+    "inputRows": 762,
+    "distinctIdentities": 716,
+    "duplicateMembershipRows": 46,
+    "independentMovers": 635,
+    "initialEligibleMovers": 616,
+    "attachments": 12,
+    "excludedIndependentIdentities": 69,
+    "ceiling": 1000,
+    "capExclusions": 0,
+    "missingStationMetadata": 0
+  },
+  "hostingChecks": {
+    "publisherTests": 12,
+    "zenitRouteTests": 6
+  },
+  "addresses": [
+    {
+      "url": "https://zenit.motionstudies.app/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "orbital-families",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "cohorts",
+            "records": 635,
+            "initialEligibleRecords": 616,
+            "attachments": 12,
+            "file": "orbital/cohorts-8ceb46133139.json",
+            "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+            "source": "CelesTrak stations / GNSS / active geosynchronous",
+            "notice": "orbital/NOTICE.txt"
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          },
+          "iss": {
+            "status": "propagated",
+            "records": 1,
+            "file": "orbital/iss-b1c62cd01d58.json",
+            "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+            "source": "CelesTrak standard GP / USSPACECOM",
+            "notice": "orbital/NOTICE.txt",
+            "elementEpoch": "2026-10-07T13:30:47.478528Z"
+          }
+        },
+        "scene": "A bounded, deduplicated three-family orbital population, the HYG reference sky and retained Sydney ISS pass.",
+        "observerPreset": {
+          "name": "Sydney",
+          "latitude": -33.8688,
+          "longitude": 151.2093,
+          "heightKm": 0.058,
+          "use": "WGS84 geodetic surface viewpoint; geometric horizon and an idealised dark stellar sky."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T17:57:19.000Z",
+          "model": "J2000 catalogue directions with time-dependent precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268,
+          "surfaceVisibility": "Authored twilight fade: full at solar altitude <= -18 degrees, zero at >= -6 degrees. No local atmosphere, weather, terrain or satellite brightness model."
+        },
+        "study": {
+          "startUtc": "2026-10-07T11:58:49.000Z",
+          "endUtc": "2026-10-07T23:58:49.000Z",
+          "initialUtc": "2026-10-07T17:57:19.000Z"
+        },
+        "pass": {
+          "riseUtc": "2026-10-07T17:53:22.867Z",
+          "peakUtc": "2026-10-07T17:58:49.000Z",
+          "setUtc": "2026-10-07T18:04:12.677Z",
+          "maximumElevationDegrees": 44.881783015395555,
+          "peakAzimuthDegrees": 312.19564958234974,
+          "peakRangeKm": 590.1395344674711,
+          "solarAltitudeDegrees": -17.884055771093873,
+          "rule": "Highest culmination >= 20 degrees with Sun below -6 degrees over Sydney in the 18 hours after the element epoch. One-second peak sampling; horizon crossings bisected to milliseconds. Geometric pass, not an optical visibility prediction."
+        },
+        "population": {
+          "inputRows": 762,
+          "distinctIdentities": 716,
+          "duplicateMembershipRows": 46,
+          "independentMovers": 635,
+          "initialEligibleMovers": 616,
+          "attachments": 12,
+          "excludedIndependentIdentities": 69,
+          "ceiling": 1000,
+          "capExclusions": 0,
+          "missingStationMetadata": 0
+        },
+        "geography": {
+          "name": "Natural Earth 1:110m land",
+          "sourceSha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+          "compiledSha256": "b0791155ee9100bfce659dacd30ea4a4f93adc7ffb9ed777331faa522567f805",
+          "polygons": 127,
+          "rings": 128,
+          "vertices": 5143,
+          "rights": "Public domain",
+          "rightsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+          "delivery": "Bundled into the hashed application asset; offline reproduction, no provider fetch in CI or browsers.",
+          "limits": "Generalised global geography, not local coast accuracy, terrain, a Sydney skyline or observing conditions."
+        }
+      },
+      "datasets": [
+        {
+          "kind": "orbital",
+          "file": "orbital/cohorts-8ceb46133139.json",
+          "bytes": 459048,
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "kind": "iss",
+          "file": "orbital/iss-b1c62cd01d58.json",
+          "bytes": 2594,
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "kind": "stellar",
+          "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+          "bytes": 854727,
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        }
+      ],
+      "applicationAsset": "assets/index-ptTnVty-.js",
+      "applicationAssetSha256": "bda46bc59c18473dbd493882c9f33b69a890778fa731d48880550231dc18db17",
+      "stylesheetAsset": "assets/index-IIQssD7G.css",
+      "stylesheetSha256": "0259731d30b5058d5fb67c14968c16978ec0ba44e763b88204d7f833cce549af",
+      "populationWorkerAsset": "assets/population.worker-CbjbGu9J.js",
+      "populationWorkerSha256": "6b487c971c4f456144705d8033b764fd76decd94950cd0a70647b6f13bab9944",
+      "sourceAndLicenceNoticesPresent": true,
+      "noticeCount": 13,
+      "missingFileStatus": 404,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37744187266,
+        "commit": "6a26f87e2fe01529be50d59007dbbbab430b90db",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37744187266",
+        "source_files": 36,
+        "source_bytes": 2705811,
+        "content_sha256": "31b65ee352e8d595216c1d5745218482945e992885eeb0b74410e2e832b98bf5"
+      }
+    },
+    {
+      "url": "https://motionstudies.app/zenit/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "orbital-families",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "cohorts",
+            "records": 635,
+            "initialEligibleRecords": 616,
+            "attachments": 12,
+            "file": "orbital/cohorts-8ceb46133139.json",
+            "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+            "source": "CelesTrak stations / GNSS / active geosynchronous",
+            "notice": "orbital/NOTICE.txt"
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          },
+          "iss": {
+            "status": "propagated",
+            "records": 1,
+            "file": "orbital/iss-b1c62cd01d58.json",
+            "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+            "source": "CelesTrak standard GP / USSPACECOM",
+            "notice": "orbital/NOTICE.txt",
+            "elementEpoch": "2026-10-07T13:30:47.478528Z"
+          }
+        },
+        "scene": "A bounded, deduplicated three-family orbital population, the HYG reference sky and retained Sydney ISS pass.",
+        "observerPreset": {
+          "name": "Sydney",
+          "latitude": -33.8688,
+          "longitude": 151.2093,
+          "heightKm": 0.058,
+          "use": "WGS84 geodetic surface viewpoint; geometric horizon and an idealised dark stellar sky."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T17:57:19.000Z",
+          "model": "J2000 catalogue directions with time-dependent precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268,
+          "surfaceVisibility": "Authored twilight fade: full at solar altitude <= -18 degrees, zero at >= -6 degrees. No local atmosphere, weather, terrain or satellite brightness model."
+        },
+        "study": {
+          "startUtc": "2026-10-07T11:58:49.000Z",
+          "endUtc": "2026-10-07T23:58:49.000Z",
+          "initialUtc": "2026-10-07T17:57:19.000Z"
+        },
+        "pass": {
+          "riseUtc": "2026-10-07T17:53:22.867Z",
+          "peakUtc": "2026-10-07T17:58:49.000Z",
+          "setUtc": "2026-10-07T18:04:12.677Z",
+          "maximumElevationDegrees": 44.881783015395555,
+          "peakAzimuthDegrees": 312.19564958234974,
+          "peakRangeKm": 590.1395344674711,
+          "solarAltitudeDegrees": -17.884055771093873,
+          "rule": "Highest culmination >= 20 degrees with Sun below -6 degrees over Sydney in the 18 hours after the element epoch. One-second peak sampling; horizon crossings bisected to milliseconds. Geometric pass, not an optical visibility prediction."
+        },
+        "population": {
+          "inputRows": 762,
+          "distinctIdentities": 716,
+          "duplicateMembershipRows": 46,
+          "independentMovers": 635,
+          "initialEligibleMovers": 616,
+          "attachments": 12,
+          "excludedIndependentIdentities": 69,
+          "ceiling": 1000,
+          "capExclusions": 0,
+          "missingStationMetadata": 0
+        },
+        "geography": {
+          "name": "Natural Earth 1:110m land",
+          "sourceSha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+          "compiledSha256": "b0791155ee9100bfce659dacd30ea4a4f93adc7ffb9ed777331faa522567f805",
+          "polygons": 127,
+          "rings": 128,
+          "vertices": 5143,
+          "rights": "Public domain",
+          "rightsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+          "delivery": "Bundled into the hashed application asset; offline reproduction, no provider fetch in CI or browsers.",
+          "limits": "Generalised global geography, not local coast accuracy, terrain, a Sydney skyline or observing conditions."
+        }
+      },
+      "datasets": [
+        {
+          "kind": "orbital",
+          "file": "orbital/cohorts-8ceb46133139.json",
+          "bytes": 459048,
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "kind": "iss",
+          "file": "orbital/iss-b1c62cd01d58.json",
+          "bytes": 2594,
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "kind": "stellar",
+          "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+          "bytes": 854727,
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "cacheControl": "public, max-age=0, must-revalidate"
+        }
+      ],
+      "applicationAsset": "assets/index-ptTnVty-.js",
+      "applicationAssetSha256": "bda46bc59c18473dbd493882c9f33b69a890778fa731d48880550231dc18db17",
+      "stylesheetAsset": "assets/index-IIQssD7G.css",
+      "stylesheetSha256": "0259731d30b5058d5fb67c14968c16978ec0ba44e763b88204d7f833cce549af",
+      "populationWorkerAsset": "assets/population.worker-CbjbGu9J.js",
+      "populationWorkerSha256": "6b487c971c4f456144705d8033b764fd76decd94950cd0a70647b6f13bab9944",
+      "sourceAndLicenceNoticesPresent": true,
+      "noticeCount": 13,
+      "missingFileStatus": 404,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37744187266,
+        "commit": "6a26f87e2fe01529be50d59007dbbbab430b90db",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37744187266",
+        "source_files": 36,
+        "source_bytes": 2705811,
+        "content_sha256": "31b65ee352e8d595216c1d5745218482945e992885eeb0b74410e2e832b98bf5"
+      }
+    },
+    {
+      "url": "https://emmettl.github.io/zenit/",
+      "status": 200,
+      "canonicalLink": "https://zenit.motionstudies.app/",
+      "manifest": {
+        "schemaVersion": 1,
+        "edition": "zenit",
+        "status": "orbital-families",
+        "canonicalUrl": "https://zenit.motionstudies.app/",
+        "evidence": {
+          "orbital": {
+            "status": "cohorts",
+            "records": 635,
+            "initialEligibleRecords": 616,
+            "attachments": 12,
+            "file": "orbital/cohorts-8ceb46133139.json",
+            "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+            "source": "CelesTrak stations / GNSS / active geosynchronous",
+            "notice": "orbital/NOTICE.txt"
+          },
+          "stellar": {
+            "status": "catalogue",
+            "records": 5070,
+            "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+            "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+            "source": "HYG 4.4",
+            "epoch": 2000,
+            "frame": "J2000 mean equatorial",
+            "licence": "CC-BY-SA-4.0",
+            "notice": "stellar/NOTICE.txt"
+          },
+          "iss": {
+            "status": "propagated",
+            "records": 1,
+            "file": "orbital/iss-b1c62cd01d58.json",
+            "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+            "source": "CelesTrak standard GP / USSPACECOM",
+            "notice": "orbital/NOTICE.txt",
+            "elementEpoch": "2026-10-07T13:30:47.478528Z"
+          }
+        },
+        "scene": "A bounded, deduplicated three-family orbital population, the HYG reference sky and retained Sydney ISS pass.",
+        "observerPreset": {
+          "name": "Sydney",
+          "latitude": -33.8688,
+          "longitude": 151.2093,
+          "heightKm": 0.058,
+          "use": "WGS84 geodetic surface viewpoint; geometric horizon and an idealised dark stellar sky."
+        },
+        "brief": "https://github.com/emmettl/motionstudies/blob/main/docs/ZENIT.md",
+        "sky": {
+          "orientationTimeUtc": "2026-10-07T17:57:19.000Z",
+          "model": "J2000 catalogue directions with time-dependent precession, nutation and Earth rotation. Proper motion, annual aberration, parallax, refraction and observing conditions omitted.",
+          "catalogueMotionScaleDegrees": 0.039268,
+          "surfaceVisibility": "Authored twilight fade: full at solar altitude <= -18 degrees, zero at >= -6 degrees. No local atmosphere, weather, terrain or satellite brightness model."
+        },
+        "study": {
+          "startUtc": "2026-10-07T11:58:49.000Z",
+          "endUtc": "2026-10-07T23:58:49.000Z",
+          "initialUtc": "2026-10-07T17:57:19.000Z"
+        },
+        "pass": {
+          "riseUtc": "2026-10-07T17:53:22.867Z",
+          "peakUtc": "2026-10-07T17:58:49.000Z",
+          "setUtc": "2026-10-07T18:04:12.677Z",
+          "maximumElevationDegrees": 44.881783015395555,
+          "peakAzimuthDegrees": 312.19564958234974,
+          "peakRangeKm": 590.1395344674711,
+          "solarAltitudeDegrees": -17.884055771093873,
+          "rule": "Highest culmination >= 20 degrees with Sun below -6 degrees over Sydney in the 18 hours after the element epoch. One-second peak sampling; horizon crossings bisected to milliseconds. Geometric pass, not an optical visibility prediction."
+        },
+        "population": {
+          "inputRows": 762,
+          "distinctIdentities": 716,
+          "duplicateMembershipRows": 46,
+          "independentMovers": 635,
+          "initialEligibleMovers": 616,
+          "attachments": 12,
+          "excludedIndependentIdentities": 69,
+          "ceiling": 1000,
+          "capExclusions": 0,
+          "missingStationMetadata": 0
+        },
+        "geography": {
+          "name": "Natural Earth 1:110m land",
+          "sourceSha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+          "compiledSha256": "b0791155ee9100bfce659dacd30ea4a4f93adc7ffb9ed777331faa522567f805",
+          "polygons": 127,
+          "rings": 128,
+          "vertices": 5143,
+          "rights": "Public domain",
+          "rightsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+          "delivery": "Bundled into the hashed application asset; offline reproduction, no provider fetch in CI or browsers.",
+          "limits": "Generalised global geography, not local coast accuracy, terrain, a Sydney skyline or observing conditions."
+        }
+      },
+      "datasets": [
+        {
+          "kind": "orbital",
+          "file": "orbital/cohorts-8ceb46133139.json",
+          "bytes": 459048,
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "cacheControl": "max-age=600"
+        },
+        {
+          "kind": "iss",
+          "file": "orbital/iss-b1c62cd01d58.json",
+          "bytes": 2594,
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "cacheControl": "max-age=600"
+        },
+        {
+          "kind": "stellar",
+          "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+          "bytes": 854727,
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "cacheControl": "max-age=600"
+        }
+      ],
+      "applicationAsset": "assets/index-ptTnVty-.js",
+      "applicationAssetSha256": "bda46bc59c18473dbd493882c9f33b69a890778fa731d48880550231dc18db17",
+      "stylesheetAsset": "assets/index-IIQssD7G.css",
+      "stylesheetSha256": "0259731d30b5058d5fb67c14968c16978ec0ba44e763b88204d7f833cce549af",
+      "populationWorkerAsset": "assets/population.worker-CbjbGu9J.js",
+      "populationWorkerSha256": "6b487c971c4f456144705d8033b764fd76decd94950cd0a70647b6f13bab9944",
+      "sourceAndLicenceNoticesPresent": true,
+      "noticeCount": 13,
+      "missingFileStatus": 404
+    }
+  ],
+  "liveBrowserChecks": {
+    "canonical": "https://zenit.motionstudies.app/",
+    "previewViewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "geographicGlobe": "Near-Earth view shows recognisable Australia and Asia, with correct geographic axes.",
+    "animatedCue": "Live cue completed the upward reveal and began 10x playback on arrival at the final view.",
+    "inspection": "Show panels opened the records and scrubbing controls; seek to retained culmination and Hide panels preserved the sky viewpoint.",
+    "savedSkyView": "Paused at 2026-10-07 17:58:49 UTC; selected ISS 25544 visible above the authored horizon reference.",
+    "consoleErrors": [],
+    "handoff": "Existing user tab refreshed and left in the paused whole-orbit overview."
+  }
+}
