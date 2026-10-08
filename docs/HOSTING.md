@@ -440,3 +440,28 @@ a dark caption backing protects readability where distant lights pass behind
 text. The canonical site was directly checked for family readings and pause/replay,
 with no console errors. The user will review the published edition on a real
 phone; physical-device playback and frame rate remain unmeasured here.
+
+## ZENIT scrubbing correction · 2026-10-08
+
+Edition commit `0382c29ad64acba42f3cb7f46710e198a84f4b23` fixes the
+satellite disappearance reported during scrubbing on the user's iPhone.
+[Pages run 37778320106](https://github.com/emmettl/zenit/actions/runs/37778320106)
+passed 34 numerical/data checks and all 66 desktop/mobile WebKit browser checks
+on its first attempt. The checked artifact is published by
+[Cloudflare run 37778720217](https://github.com/emmettl/zenit/actions/runs/37778720217).
+The [scrubbing delivery audit](evidence/zenit-scrubbing-2026-10-08.json)
+verifies the same application bytes across all three public addresses, with
+unchanged source evidence, datasets, metadata and share artwork. CI measured
+1,064,250 gzip bytes; local compression measured 1,071,449.
+
+The time slider tracks each requested seek immediately. While propagation is
+pending, the last complete population packet remains visible, and sky geometry,
+ISS position and selected-object readings retain that packet's timestamp.
+Superseded responses are discarded and the latest requested instant replaces
+the scene as a unit. The regression test delays real worker results through
+rapid seeks, checks that no empty population appears, and preserves an active
+navigation-satellite follow. Failure, retry and source replacement still clear
+the retained packet. Two existing WebKit startup checks failed locally and
+passed on an unchanged-code targeted rerun; the new tests passed immediately
+and the independent CI suite passed in full. The user reports smooth physical
+iPhone playback; no quantitative frame rate or device/browser identity is recorded.
