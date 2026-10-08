@@ -411,3 +411,32 @@ builds do not regenerate it or fetch providers. SVG, 32 px PNG and 180 px touch
 icons use a separately authored Z/orbit mark. Static fallback copy now describes
 the implemented dated scene. The audit checks anonymous crawler-style responses;
 it does not claim to invalidate third-party preview caches.
+
+**Orbital family introduction verified — 8 October 2026.**
+[Pages run 37771912007](https://github.com/emmettl/zenit/actions/runs/37771912007)
+passed 34 numerical/data tests and 64 Chromium/WebKit browser checks on its
+second attempt. The first runner lost a WebKit graphics context in an existing
+reduced-motion case; the new introduction checks passed in both attempts.
+Edition commit `a9be7de87a5f23551fb23bff9fad5ef69bce69b5` is published by
+[Cloudflare run 37773033670](https://github.com/emmettl/zenit/actions/runs/37773033670).
+The [introduction delivery audit](evidence/zenit-introduction-2026-10-08.json)
+verifies matching new application bytes and declared timings at all three
+addresses, with unchanged source evidence, datasets, OG image and static
+sharing metadata. CI measured 1,064,198 gzip bytes for the complete artifact;
+local compression measured 1,071,395.
+
+The one-minute loop opens with four seconds each for stations, navigation,
+geosynchronous members and the ISS. The first three beats run at 600×; the ISS
+beat holds the retained initial pass time before the twelve-second descent.
+The sky hold is twenty seconds and still reaches culmination nine seconds in;
+the twelve-second ascent holds 18:00:39 UTC. Visual emphasis uses smooth opacity
+and size treatment while retaining the full eligible population and one glyph
+per identity. Captions use median WGS84 model height from the displayed worker
+packet and median mean period from the retained mean motion. Attachments are
+excluded. Manual exploration clears emphasis at the same displayed pose and date.
+
+Desktop and WebKit phone-viewport captures verify caption/control separation;
+a dark caption backing protects readability where distant lights pass behind
+text. The canonical site was directly checked for family readings and pause/replay,
+with no console errors. The user will review the published edition on a real
+phone; physical-device playback and frame rate remain unmeasured here.
