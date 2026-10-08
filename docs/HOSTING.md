@@ -520,3 +520,42 @@ rose from zero to four CSS pixels. These are browser-image differences, not
 physical-phone luminance or frame-rate measurements. The two isolated V=2–3
 references and 19 V=4–5 stars retain higher median contrast. Both browser
 projects passed these raster checks again against the published canonical site.
+
+## ZENIT surface sky exploration · 2026-10-08
+
+Edition commit `9b72cbfcb0fe96e3b2599966cc7de5dd0fcdd65b` adds drag/swipe
+look-around controls at the Sydney observer and Re-centre on ISS.
+[Pages run 37794239528](https://github.com/emmettl/zenit/actions/runs/37794239528)
+passed 36 numerical/camera/data checks and all 78 browser checks on its first
+attempt. [Cloudflare run 37795036462](https://github.com/emmettl/zenit/actions/runs/37795036462)
+published the same checked artifact. The
+[sky exploration audit](evidence/zenit-sky-exploration-2026-10-08.json)
+verifies matching application bytes across all three addresses, with unchanged
+source evidence, datasets, metadata and share artwork. CI measured 1,066,730
+gzip bytes for the complete artifact; local compression measured 1,074,057.
+
+After physical arrival, the camera turns around the fixed Sydney observer
+without translating the eye, changing the lens or seeking the clock. The first
+surface drag pauses the authored journey/camera cue at the displayed pose and
+UTC and keeps the panel state. Pointer capture, primary-pointer handling,
+movement thresholds and cancellation distinguish looking around from selection.
+Arrow keys turn by 3°, azimuth wraps through north, and free elevation stays
+between −10° and 85°. Compass and star names use the resulting camera.
+
+Re-centre on ISS, or Home on the focused canvas, selects and points to the
+station at the displayed instant. It is disabled if the station is unavailable,
+below the horizon or filtered out. Returning blends custom rotation into the
+authored ascent and restores the saved orbital view. Replay and Watch Sydney
+pass clear the custom direction. No device-orientation or location permission
+is requested. Unit tests check local directions, fixed eye/lens and a continuous
+return. Browser tests cover native Chromium touch drag/cancel, native WebKit
+pointer drag and touch tap, limits, geometric anchor/compass alignment, recenter,
+filter guards, selection safety, preserved UTC and journey handover/replay.
+The mobile raster check now samples an explored direction, keeping its two
+brighter reference stars clear of the compass instruction strip while retaining
+all existing contrast, coverage and brightness-order thresholds.
+
+All six surface exploration cases passed again against the published canonical
+site in Chromium and WebKit. Published-site captures retain the changing compass,
+star names and recenter control. These are browser checks and phone-viewport
+captures; physical-device performance remains unmeasured here.
