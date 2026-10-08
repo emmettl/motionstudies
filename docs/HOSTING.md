@@ -657,3 +657,49 @@ passed locally again before the successful publication above.
 All eight new cases passed again on the published canonical site in Chromium
 and WebKit. Desktop and phone-viewport captures show the unobstructed sky and
 small Pause affordance. These checks do not measure physical-phone frame rate.
+
+
+## ZENIT opening camera and Space playback · 2026-10-08
+
+Edition commit `b91eb221eacb3f0fe6a4349b307759b726b5b8ae` frames stations
+close to Earth, pulls back for navigation, widens for the geosynchronous
+ring, then rotates onto the displayed ISS direction before descent. The
+lens stays at 43°; camera radius eases logarithmically and fits portrait
+viewports. Satellite positions, linear physical scale and the dated clock
+retain their existing contracts. The final ISS camera pose is captured for
+descent. Manual handover preserves the current view and distance, including
+the very first arrow-key or wheel movement; replay resets authored framing.
+
+Unmodified Space on the page or canvas toggles the existing transport
+without scrolling. Key repeat does not toggle again. Modified/composing
+keys, native buttons, sliders, selectors and text entry keep their own
+behavior. Space during quiet playback pauses and restores controls with
+focus on Play; native Space on that button resumes once.
+
+[Pages run 37837185648](https://github.com/emmettl/zenit/actions/runs/37837185648)
+passed 42 numerical/data checks and all 104 browser cases, followed by
+[Cloudflare run 37838131879](https://github.com/emmettl/zenit/actions/runs/37838131879).
+The [opening and shortcut audit](evidence/zenit-opening-camera-spacebar-2026-10-08.json)
+confirms matching application bytes at the canonical subdomain, `/zenit/`
+and GitHub Pages, with the frozen datasets, metadata and OG artwork retained.
+CI measured 1,069,681 gzip bytes; local compression measured 1,076,964.
+
+The first full local run passed 103/104; an existing WebKit stellar-retry
+readiness assertion expired after five seconds. It passed in isolation in
+both browsers without code changes, then the full suite passed 104/104.
+The first CI run, 37834343190, passed 103/104, including all ten new cases.
+Its existing arrival test waited for a panel control hidden by autoplay.
+The test now enters exploration before waiting for Watch Sydney pass; all
+original camera, arrival and UTC assertions remain. All four arrival cases
+passed locally after this correction. The second CI run, 37835623690, passed
+102/104 including all ten new cases: arrival exhausted its 30-second total
+budget near the end, and orientation recorded an accepted packet before the
+final paused packet arrived. Arrival now has 60 seconds overall. Orientation
+waits for exact equality with the paused journey sample, including subsecond
+precision, before recording its stability baseline; all eight affected cases
+passed locally. A further full local repeat passed 103/104; the existing
+WebKit daylight startup click stayed in orbit. Its retained trace contains
+the complete source scene; both isolated daylight cases passed without code
+changes. The ten new camera/shortcut cases passed again on the published canonical
+site in Chromium and iPhone-sized WebKit. Captures show each opening stage.
+These browser checks do not measure physical-phone frame rate.
