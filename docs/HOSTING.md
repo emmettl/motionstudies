@@ -491,3 +491,32 @@ without the stellar catalogue. The final bundle passed the orientation cases
 again after reducing text-node replacement and repeated layout work. Desktop
 and WebKit phone-viewport captures document appearance; physical-phone frame
 rate remains unmeasured here.
+
+## ZENIT mobile stellar visibility · 2026-10-08
+
+Edition commit `ce525463fbf84ad9ca01fb7b82d8b51ab7b57ae7` strengthens the
+stellar field on compact viewports. [Pages run 37785180705](https://github.com/emmettl/zenit/actions/runs/37785180705)
+passed 34 numerical/data checks and all 72 browser checks on attempt one.
+GitHub Pages returned a generic deployment failure after validation; rerunning
+the failed deployment job published the same checked artifact on attempt two.
+[Cloudflare run 37786093313](https://github.com/emmettl/zenit/actions/runs/37786093313)
+published that release to both custom-domain addresses. The
+[stellar visibility audit](evidence/zenit-star-visibility-2026-10-08.json)
+checks matching application bytes across all three addresses, with unchanged
+source evidence, datasets, metadata and OG artwork. The complete artifact is
+1,065,945 gzip bytes in CI and 1,073,246 locally.
+
+The shortest viewport side selects the compact treatment at ≤ 650 CSS px,
+including phone landscape. Circular stellar points span 2.15–5.8 CSS px with
+higher opacity and broader bright cores. Magnitude ordering and B−V colours
+are retained, as are horizon clipping, daylight fading, selection and the
+renderer resolution cap. The standard display profile is unchanged.
+
+The raster regression compares isolated real stars with the same scene after
+Show stars is switched off, using a 390×664 CSS-scale screenshot. For the 46
+isolated V=5.5–6 stars in WebKit, median peak excess rose from about 23 to 104
+sRGB luminance units; median coverage above the declared 24-unit threshold
+rose from zero to four CSS pixels. These are browser-image differences, not
+physical-phone luminance or frame-rate measurements. The two isolated V=2–3
+references and 19 V=4–5 stars retain higher median contrast. Both browser
+projects passed these raster checks again against the published canonical site.
