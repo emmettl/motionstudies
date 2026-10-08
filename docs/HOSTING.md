@@ -360,3 +360,29 @@ tab pauses an already-started session without restarting on return. The Sydney
 cue still freezes the clock during descent and starts 10× after the upward reveal.
 A separate live test tab confirmed autoplay and forward boundary wrap. The
 existing user tab was preserved because refreshing could reset its current view.
+
+**Automatic cinematic journey verified — 8 October 2026.**
+[Pages run 37756432607](https://github.com/emmettl/zenit/actions/runs/37756432607)
+passed 32 numerical/data tests and 58 Chromium/WebKit browser checks. Edition
+commit `3089687dff9def4ddfda4209757d9d98e0f25285` is published by
+[Cloudflare run 37756910739](https://github.com/emmettl/zenit/actions/runs/37756910739).
+The [journey delivery audit](evidence/zenit-journey-2026-10-08.json) verifies
+matching application, stylesheet, worker, manifest and unchanged orbital/stellar
+hashes at all three addresses, canonical identity, 13 notices and missing-file
+404s. CI measured 988,390 gzip bytes for the artifact, compared with 995,653 locally.
+
+The sixty-second composition opens on the orbital shells for eight seconds at
+600×, descends to Sydney over twelve seconds with the clock held, watches the
+retained ISS pass for twenty-eight seconds at 10×, then ascends over twelve
+seconds with the clock held. A one-second fade on each side of the orbital seam
+conceals the dated pass reset. Pause holds both camera and clock; Explore freely
+keeps the displayed pose and time with manual controls restored. Replay journey
+restores the retained composition. Manual controls and orbital gestures hand over
+to exploration; Show panels permits inspection during the journey. Reduced motion
+opens paused and enabling it mid-journey leaves the current view paused.
+
+The full loop, coherent dates, pause/resume, surface handover, replay and orbital
+gestures are checked in both browsers. A controlled browser clock makes phase
+checks independent of runner speed; boundary checks use 10× free playback.
+The orbital, stellar and geographic sources remain unchanged. Physical-phone
+frame rate remains unmeasured.
