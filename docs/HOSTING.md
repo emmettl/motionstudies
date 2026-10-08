@@ -386,3 +386,28 @@ gestures are checked in both browsers. A controlled browser clock makes phase
 checks independent of runner speed; boundary checks use 10× free playback.
 The orbital, stellar and geographic sources remain unchanged. Physical-phone
 frame rate remains unmeasured.
+
+**Social artwork and static page metadata verified — 8 October 2026.**
+[Pages run 37767996061](https://github.com/emmettl/zenit/actions/runs/37767996061)
+passed 32 numerical/data tests and 60 Chromium/WebKit browser checks, including
+metadata and asset retrieval with JavaScript disabled. Edition commit
+`3cd7032e69ccb0870471e2c0d79f8589766efc00` is published by
+[Cloudflare run 37768435764](https://github.com/emmettl/zenit/actions/runs/37768435764),
+which succeeded on its second attempt after an upload connectivity failure.
+The [sharing delivery audit](evidence/zenit-sharing-2026-10-08.json) verifies
+static canonical/OG/Twitter identity, CreativeWork JSON-LD, image alt text,
+source/licence notice, image MIME/dimensions/hash and icons at all three addresses.
+The application bundle, manifest and orbital/stellar releases remain unchanged
+from the cinematic journey release. CI measured 1,062,347 gzip bytes for the
+complete artifact; local compression measured 1,069,506.
+
+The 1200×630 card is the production-rendered Sydney ISS culmination at
+17:58:49 UTC, framed with ZENIT typography. It measures 69,970 bytes and uses
+`share/zenit-aa44f7a96603.png`, a content-addressed URL under the canonical
+subdomain. The adapted stellar field and share artwork retain CC BY-SA 4.0,
+with HYG and orbital attribution in the image, its public notice and JSON-LD.
+The artwork record and manual reproduction script live in the edition repo;
+builds do not regenerate it or fetch providers. SVG, 32 px PNG and 180 px touch
+icons use a separately authored Z/orbit mark. Static fallback copy now describes
+the implemented dated scene. The audit checks anonymous crawler-style responses;
+it does not claim to invalidate third-party preview caches.
