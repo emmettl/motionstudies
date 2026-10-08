@@ -465,3 +465,29 @@ the retained packet. Two existing WebKit startup checks failed locally and
 passed on an unchanged-code targeted rerun; the new tests passed immediately
 and the independent CI suite passed in full. The user reports smooth physical
 iPhone playback; no quantitative frame rate or device/browser identity is recorded.
+
+## ZENIT surface orientation · 2026-10-08
+
+Edition commit `907e0e406553535276445a99bbcaacf77c58bfb8` adds a restrained
+Sydney horizon compass and bright-star names to the surface view.
+[Pages run 37782461880](https://github.com/emmettl/zenit/actions/runs/37782461880)
+passed 34 numerical/data checks and all 70 desktop/mobile WebKit checks on its
+first attempt. The same artifact is published by
+[Cloudflare run 37783147429](https://github.com/emmettl/zenit/actions/runs/37783147429).
+The [orientation delivery audit](evidence/zenit-orientation-2026-10-08.json)
+checks matching application bytes at all three public addresses, retaining the
+same datasets, source evidence, canonical metadata and OG artwork. CI measured
+1,065,817 gzip bytes for the complete artifact; local compression measured
+1,073,115.
+
+The compass reports the camera's azimuth from true north at the retained Sydney
+observer, without device-orientation input. It fades in over camera progress
+0.64–0.72 and away on ascent. Named HYG records with V ≤ 2.0 and altitude above
+5° are projected with the same camera and dated stellar transform as the field.
+Labels cap at four on desktop and three on phones, leave room for the selected
+satellite, panels and each other, and share the Show stars and twilight rules.
+Paused panel changes and scrolling update placement. The compass remains usable
+without the stellar catalogue. The final bundle passed the orientation cases
+again after reducing text-node replacement and repeated layout work. Desktop
+and WebKit phone-viewport captures document appearance; physical-phone frame
+rate remains unmeasured here.
