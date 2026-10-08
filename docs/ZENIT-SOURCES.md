@@ -83,7 +83,7 @@ Satellite.js **7.1.0**, **WGS72** and **AFSPC `a`** produce TEME kilometre posit
 
 The [numerical audit](https://github.com/emmettl/zenit/blob/main/docs/evidence/iss-numerical-2026-10-08.json) records independent Python sgp4 **2.27 / Vallado C++** near/deep-space and decay cases at positive and negative offsets. TEME comparisons pass a **2 cm position / 0.1 mm/s velocity** tolerance. Independent Astropy **8.0.1 / PyERFA 2.0.1.5** observer and horizon checks pass **50 m Earth-fixed / 0.01° look-angle** tolerances, allowing for reference IERS polar motion omitted in the browser. Independent pressure-zero Sun geometry also agrees within 0.02° at the selected pass and study bounds. These tolerances concern implementation agreement, not element prediction accuracy.
 
-Every position and each two-second sample of the previous 60 study seconds is evaluated directly from a cloned initial SGP4 record. Seeking and reversing reproduce the same point and trail. The sampled trail's maximum measured midpoint chord error is roughly **4 m** on five-minute-spaced checks across the study, below a 6 m test ceiling. The trail and satellite screen encoding express motion; reflectance, illumination, atmosphere and terrain are not reconstructed. Surface stars use an authored solar-altitude fade, fully bright below −18° and suppressed by −6°, so the shared clock does not retain the naked-eye field in daylight. This is a compositional twilight treatment rather than atmospheric photometry. Complete animation and interruption are tested in Chromium and WebKit phone emulation; sustained physical-phone performance is not yet measured.
+Every position and each two-second sample of the previous 60 study seconds is evaluated directly from a cloned initial SGP4 record. Seeking and reversing reproduce the same point and trail. The sampled trail's maximum measured midpoint chord error is roughly **4 m** on five-minute-spaced checks across the study, below a 6 m test ceiling. The trail and satellite screen encoding express motion; reflectance, attitude, atmosphere and terrain are not reconstructed. The later bounded Earth-shadow treatment classifies geometric illumination separately, as recorded below. Surface stars use an authored solar-altitude fade, fully bright below −18° and suppressed by −6°, so the shared clock does not retain the naked-eye field in daylight. This is a compositional twilight treatment rather than atmospheric photometry. Complete animation and interruption are tested in Chromium and WebKit phone emulation; sustained physical-phone performance is not yet measured.
 
 ## Three-family release
 
@@ -140,3 +140,44 @@ This is a generalised global map, not a local Sydney coast or terrain model. Nea
 Before a local composition is described as verified, retain the actual bounded input bodies with hashes, exact queries, capture times, response metadata, normalized record versions, group memberships, joins and an exclusion ledger. Add the stellar release, source notice, magnitude-selection rule, retained fields, epoch policy and measured subset size. The release should declare its study interval, age rule, attachment policy, frames, units and propagation version. This probe's aggregate record covers the orbital samples only and is not that release.
 
 Before publication, preserve the applicable redistribution statements and field attribution, resolve optional enrichment, pass numerical and phone-budget checks, and show that every moving light can lead back to its dated input. Historical membership and optical visibility remain separate later investigations.
+
+
+## Earth-shadow treatment and desktop stellar visibility · 2026-10-08
+
+The Earth-shadow classifier follows the finite-disc angular-contact geometry
+described in [Kelso’s Visually Observing Earth Satellites](https://celestrak.org/columns/v03n01/):
+compare the satellite-centred Earth and solar angular radii with their centre
+separation to distinguish sunlight, penumbra and umbra. The implementation is
+independent; no external application code or new dataset is imported. It uses
+a spherical Earth of radius 6,378.137 km, the [IAU nominal solar radius](https://arxiv.org/abs/1510.07674)
+of 695,700 km and the conventional AU of 149,597,870.7 km. Earth oblateness,
+atmospheric scattering/refraction, lunar shadow and satellite reflectance or
+attitude are outside this treatment. It is a geometric illumination model,
+not an optical visibility or irradiance prediction.
+
+Astronomy Engine 2.1.19 supplies the geocentric EQJ solar vector without
+aberration; the existing stellar EQJ-to-Earth-fixed transform puts it into
+the same world basis as the accepted satellite packet. Numerical checks
+compare that transform with an independently assembled EQJ→EQD rotation and
+GAST-to-Earth-fixed basis. Direct SGP4 positions and historical trail sample
+UTCs are retained. Solar samples have a bounded 128-entry cache; no provider
+requests or new orbital interpolation are introduced. The shadow fade is
+an authored smoothstep across penumbral contacts, mapping to 0.5–1.0 display
+strength rather than claiming a measured solar fraction. Eclipsed identities
+remain present, selectable and subject to the same horizon and family filters.
+
+For the frozen Sydney sequence, this spherical model places ISS in umbra
+at the initial 17:57:19 UTC and 17:58:49 UTC culmination. The independently
+assembled solar basis gives penumbra entry at 17:59:10.713 UTC and full
+sunlight at 17:59:29.466 UTC; both lie inside the authored sky hold. These
+millisecond values describe numerical contacts in the stated model and
+carry no claim of millisecond physical accuracy.
+
+Standard desktop stellar points increase from 1.15–4.5 to 2.0–5.0 CSS px,
+with an opacity floor of 0.52 instead of 0.4. The compact phone treatment
+stays 2.15–5.8 CSS px with opacity 0.68–1.0. Magnitude ordering, B−V palette,
+HYG cutoff, positions, twilight fade and the renderer’s 2× resolution cap
+remain. A new desktop WebKit project checks catalogue-derived isolated stars
+against an otherwise identical stars-off rendering, measuring actual contrast
+and pixel footprint. It adds Safari-engine evidence; it does not claim a
+physical Safari-device frame-rate measurement.

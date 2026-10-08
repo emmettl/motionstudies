@@ -728,3 +728,63 @@ confirms matching application and stylesheet bytes at all three addresses,
 retained frozen datasets, metadata and OG artwork. CI measured 1,069,707 gzip
 bytes; local compression measured 1,076,991. Both scrubber cases passed again
 on the published canonical site in Chromium and iPhone-sized WebKit.
+
+
+## ZENIT Earth shadow and desktop stars · 2026-10-08
+
+Edition commit `88a81f4ec5f32fbb24216edb37c64a3245b49378` adds geometric
+sunlit, penumbra and umbra states to the accepted orbital scene. A smooth
+angular-contact weight dims glyphs and each historical trail sample to
+0.5–1.0 display strength. Eclipsed movers remain present and inspectable;
+age, family and horizon eligibility retain their existing rules. Attachments
+inherit the parent’s geometry. The inspector labels Modelled illumination
+and explains the finite-Sun, spherical-Earth scope. The [source audit](ZENIT-SOURCES.md#earth-shadow-treatment-and-desktop-stellar-visibility--2026-10-08)
+records constants, frame validation and omitted optical effects.
+
+The retained ISS is in umbra at the 17:57:19 UTC initial frame and 17:58:49
+culmination. The independent solar-basis calculation places partial shadow
+at 17:59:10.713 and full sunlight at 17:59:29.466 UTC, within the unchanged
+sky hold. These are contacts in the declared spherical model, not measured
+optical events. Direct frozen SGP4 samples and historical UTCs are retained;
+the solar cache has a 128-entry bound.
+
+Standard desktop stars increase from 1.15–4.5 to 2.0–5.0 CSS px and use an
+opacity floor of 0.52 instead of 0.4. The compact 2.15–5.8 CSS px profile
+remains. Catalogue positions, magnitudes, B−V colours, twilight fade and the
+2× rendering cap remain. Native desktop WebKit now has a targeted raster
+project alongside the full Chromium and iPhone-sized WebKit suites.
+
+The new raster test intentionally fails against the prior live version:
+faint-star median contrast is about 24 luminance levels in both engines,
+with WebKit coverage of one pixel above a 24-level contrast threshold and
+Chromium’s median of zero. The changed rendering raises local median contrast
+to about 63 in WebKit and 79 in Chromium, with two pixels above threshold in
+both. Measurements use 223 isolated catalogue stars in V=5.5–6.0 and a
+stars-on minus otherwise identical stars-off CSS-scale capture. Magnitude
+ordering remains verified. This is screen-rendering evidence, not a physical
+Safari-device frame-rate measurement.
+
+Local and [Pages run 37846106210](https://github.com/emmettl/zenit/actions/runs/37846106210)
+checks passed 45 numerical/data tests and 108 browser cases, followed by
+[Cloudflare run 37847028585](https://github.com/emmettl/zenit/actions/runs/37847028585).
+CI measured 1,071,132 gzip bytes for the artifact; local compression measured
+1,078,201. The [illumination and desktop-star audit](evidence/zenit-illumination-desktop-stars-2026-10-08.json)
+confirms matching application/style bytes at all three addresses and retained
+frozen payloads, metadata, credits and OG artwork. All six illumination,
+raster and coherent-scrubbing cases passed again against the published site.
+
+The first CI attempt passed 107/108, including all four new cases. Its one
+existing WebKit sky-navigation failure occurred during renderer creation:
+the trace records WebGL context loss and unavailable shader-precision state
+before scene/illumination evaluation. The existing object/clock graphics
+fallback remained accessible. All six sky-navigation cases passed locally
+again; the complete failed check job was rerun on a fresh runner with
+unchanged application code, waits and assertions.
+
+The unchanged CI rerun also passed 107/108, including the previous WebKit
+startup case and all four new cases. Chromium’s existing arrival test reached
+the horizon but missed the short Pause camera window while wall time kept
+advancing. That test now uses a controlled Playwright clock, advances to the
+horizon, pauses and confirms the pose remains fixed for another second before
+resuming to the surface. All four arrival cases passed locally after this
+test-only correction; application behavior and physical assertions remain.
