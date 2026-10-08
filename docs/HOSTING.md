@@ -559,3 +559,54 @@ All six surface exploration cases passed again against the published canonical
 site in Chromium and WebKit. Published-site captures retain the changing compass,
 star names and recenter control. These are browser checks and phone-viewport
 captures; physical-device performance remains unmeasured here.
+
+## ZENIT surface motion tails · 2026-10-08
+
+Edition commit `64d61556726ffbfb8bcdde0100b07656f4458d39` publishes the
+surface trails introduced in `ec9a1367abcb5c9925b65a4664aa4322cfa1fe6e`.
+[Pages run 37813145958](https://github.com/emmettl/zenit/actions/runs/37813145958)
+passed 40 numerical/data checks and all 86 browser checks.
+[Cloudflare run 37813860307](https://github.com/emmettl/zenit/actions/runs/37813860307)
+published the same checked artifact. The
+[surface trails audit](evidence/zenit-surface-trails-2026-10-08.json)
+verifies matching application bytes at the canonical subdomain, `/zenit/` and
+GitHub Pages, with retained data hashes, source terms, metadata and OG image.
+CI measured 1,068,118 gzip bytes; local compression measured 1,075,438.
+
+The surface adds up to three tails on desktop or two in compact viewports.
+A packet carries at most 24 eligible, above-horizon independent histories,
+ranked by actual apparent motion and sampled directly with frozen SGP4 over
+45 seconds at three-second intervals. Nearly stationary lights and paths
+shorter than one projected CSS pixel are omitted. Family-coloured alpha rises
+from zero to 0.34; the selected 60-second trail remains stronger. ISS, the
+selected mover and attachment parents receive no duplicated auxiliary track.
+Filters and Show model trails apply; camera clipping and head exclusions leave
+space around the controls, compass, selected light and visible star names.
+Invalid or below-horizon samples are never bridged. Panning reprojects samples;
+returning to orbit hides auxiliary paths. Direct reverse/loop samples and
+packet-time scrubbing preserve the same physical scene without accumulated
+screen history.
+
+The first [Pages run 37807946909](https://github.com/emmettl/zenit/actions/runs/37807946909)
+stopped before deployment with three timing-check failures; all eight new trail
+cases passed. Two existing startup waits expired after five seconds. A frozen
+fake-clock test incorrectly required the requested time, despite the accepted
+packet being one 33 ms sampling period behind. The corrected tests give those
+startup waits 15 seconds and preserve exact gesture pose/time assertions against
+the accepted scene. The full 86-case local suite passed again, followed by the
+successful run above. No production logic changed in this check correction.
+The intermediate ARM run 37809579762 was cancelled while queued after GitHub
+reported ARM capacity constraints. An Intel fallback in run 37810757446 passed
+all 43 Chromium cases, but 38 WebKit cases failed after the runner lost WebGL
+contexts during renderer initialisation. Trace logs show `getShaderPrecisionFormat`
+returning null before application shaders run. That fallback was reverted;
+the restored macOS 15 ARM run 37812123384 remained queued and was cancelled.
+Publication uses the current stable native `macos-26` ARM image, supported by
+the pinned Playwright browser builds; both browser projects and every check
+remain intact. See [GitHub runner images](https://github.com/actions/runner-images).
+The redundant push run 37812126555 was cancelled.
+
+All eight trail cases passed again on the published canonical site in Chromium
+and WebKit. Captures show the retained star field and dominant ISS path;
+these are phone-viewport browser checks, without a new physical-device
+performance measurement.
