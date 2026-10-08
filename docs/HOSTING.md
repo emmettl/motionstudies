@@ -341,3 +341,22 @@ panels recede into a compact identity, clock and pause/return view. The source
 map is generalised global geography; the ground/horizon tint is authored and
 does not reconstruct terrain, atmosphere or optical satellite visibility.
 Physical-phone frame rate remains unmeasured.
+
+**Automatic playback and looping verified — 8 October 2026.**
+[Pages run 37751550201](https://github.com/emmettl/zenit/actions/runs/37751550201)
+passed 28 numerical/data tests and 52 Chromium/WebKit browser checks. Edition
+commit `3dbf5fe96eae4f432529488d575c425aabf7082b` is published by
+[Cloudflare run 37751909973](https://github.com/emmettl/zenit/actions/runs/37751909973).
+The [playback delivery audit](evidence/zenit-playback-2026-10-08.json) verifies
+matching application, stylesheet, worker, manifest and three dataset hashes at
+all three addresses, canonical identity, 13 notices and missing-file 404s.
+CI measured 987,375 gzip bytes for the artifact, compared with 994,667 locally.
+
+Visible sessions start at 600× after sources settle and the first population
+packet is ready. The dated twelve-hour clock loops forward and backward while
+preserving elapsed-time overshoot, camera, selection and filters. Reduced motion
+opens paused; manual pause or seek cancels a pending initial start. Hiding the
+tab pauses an already-started session without restarting on return. The Sydney
+cue still freezes the clock during descent and starts 10× after the upward reveal.
+A separate live test tab confirmed autoplay and forward boundary wrap. The
+existing user tab was preserved because refreshing could reset its current view.
