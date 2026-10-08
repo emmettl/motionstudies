@@ -309,3 +309,16 @@ CI measured 941,363 gzip bytes for the complete artifact and 326,531 for the
 stellar subset; local compression measurements are recorded separately.
 The scene uses a dated snapshot with bounded element ages. Neither optical
 satellite visibility nor sustained physical-phone frame rate is established.
+
+**Camera interaction verified — 8 October 2026.** [Pages run 37738881117](https://github.com/emmettl/zenit/actions/runs/37738881117)
+passed 25 numerical/data tests and 42 Chromium/WebKit browser checks, including
+orbit/zoom navigation, timestamp-coherent follow, attachment focus, expiry,
+worker failure/retry and reversible descent from a custom viewpoint. Edition
+commit `cd980d3099a5b24c7cde17dc4b5268d399f6f194` is published by
+[Cloudflare run 37739183285](https://github.com/emmettl/zenit/actions/runs/37739183285).
+The [camera delivery audit](evidence/zenit-camera-2026-10-08.json) confirms the same
+application, stylesheet, worker, manifest and three dataset hashes at all three
+addresses. The orbital and stellar releases remain unchanged. The CI artifact
+measures 943,217 gzip bytes; the local compressor measured 950,523. The canonical
+site's camera controls were exercised directly and left in a paused whole-orbit
+overview. Physical-phone frame rate remains unmeasured.

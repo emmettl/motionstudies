@@ -1,10 +1,12 @@
 # ZENIT
 
-[Study repository](https://github.com/emmettl/zenit) · [Public stellar reference](https://zenit.motionstudies.app/) · [Study index](README.md) · [Source audit](ZENIT-SOURCES.md) · [Series vision](VISION.md) · [Kickoff conversation](https://chatgpt.com/share/6ac6a662-d598-83ed-9c18-f9f1c6087cdc)
+[Study repository](https://github.com/emmettl/zenit) · [Public edition](https://zenit.motionstudies.app/) · [Study index](README.md) · [Source audit](ZENIT-SOURCES.md) · [Series vision](VISION.md) · [Kickoff conversation](https://chatgpt.com/share/6ac6a662-d598-83ed-9c18-f9f1c6087cdc)
 
 **Working brief — 7 October 2026.** ZENIT studies humanity's occupation of Earth orbit through the relationship between individual objects, orbital structures and the sky above an observer. The author's preferred stellar field is the visible, naked-eye sky. The signature sequence descends dramatically to Earth's surface and turns upward to satellites streaking across the stars. The title is the author's current preference. This is an unnumbered research proposal; the composition and limits below are proposed choices for a first proof.
 
 **Implementation boundary — 8 October.** The edition now opens bounded station, GNSS and active geosynchronous families: 635 retained independent movers, 616 eligible at the opening instant, plus 12 inspectable attachments. Family filters preserve overlapping memberships without duplicate lights; source age eligibility changes with the shared dated clock. Wide / near-Earth framing keeps distance linear, and a 600× overview makes orbital rhythms legible. The original Sydney ISS element set, 5,070-record HYG field and twelve-second descent remain intact; the pass cue uses 10× playback. The study is 7 October, 11:58:49–23:58:49 UTC, with ISS culmination at 17:58:49 and 44.9° elevation. Direct background propagation supplies a timestamp shared by every light and the sky. The subdomain remains canonical, with the same artifact at `/zenit/` and GitHub Pages; see [hosting](HOSTING.md#zenit-hosting).
+
+The orbital camera supports drag-to-orbit, scroll-to-zoom, keyboard navigation and touch-accessible zoom buttons. Clicking a satellite selects and follows it; attachments follow their parent station. Follow uses the shared displayed timestamp and ends when the selection is hidden or outside its eligible window. Camera movement preserves the clock and physical distances. A reversible descent captures the current orbital viewpoint and lands at Sydney; the retained pass cue restores its authored composition. Earth geography and a more legible horizon are the next visual refinements.
 
 ## Thesis
 
