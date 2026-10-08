@@ -1,0 +1,411 @@
+{
+  "date": "2026-10-08",
+  "verifiedAtUtc": "2026-10-08T20:31:55.077248+00:00",
+  "repository": "https://github.com/emmettl/zenit",
+  "editionCommit": "61d6435f626d8c853c4a80558a2774501a1f876e",
+  "localChecks": {
+    "numericalAndDataTests": 42,
+    "browserTests": 104,
+    "compressedArtifactBytes": 1076991
+  },
+  "ciChecks": {
+    "pagesRun": 37838899055,
+    "cloudflareRun": 37839977239,
+    "numericalAndDataTests": 42,
+    "browserTests": 104,
+    "compressedArtifactBytes": 1069707
+  },
+  "stableScrubber": {
+    "problem": "Mounting and removing the loading paragraph changed the controls height and moved the scrubber during seeks.",
+    "change": "Keep a persistent polite, atomic live region, empty when settled. Reserve a 12 CSS px line with fixed 4 px / 6 px margins in both states.",
+    "checks": "Extend the existing real-worker delay and superseded-seek test in desktop Chromium and iPhone-sized WebKit. Compare exact scrubber document-top and controls height before seek, while pending, and after final accepted packet; keep all original packet, UTC, follow, identity and no-blank-frame assertions.",
+    "beforeFix": {
+      "editionCommit": "b91eb221eacb3f0fe6a4349b307759b726b5b8ae",
+      "result": "The new layout assertions failed against the old canonical publication in both browsers as expected. Loading grew the controls height by exactly 30 CSS px.",
+      "Chromium": {
+        "settledPanelHeight": 408.59375,
+        "pendingPanelHeight": 438.59375
+      },
+      "WebKitIPhoneViewport": {
+        "settledPanelHeight": 657.1875,
+        "pendingPanelHeight": 687.1875
+      }
+    },
+    "liveBrowserCases": 2
+  },
+  "verification": "Anonymous crawler-style GET requests confirm matching application and stylesheet bytes at all three addresses, canonical metadata, OG artwork, icons, credits and frozen source hashes. No source, propagation, accepted-packet or camera changes.",
+  "addresses": [
+    {
+      "url": "https://zenit.motionstudies.app/",
+      "status": 200,
+      "canonical": "https://zenit.motionstudies.app/",
+      "metadata": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "theme-color": "#05090e",
+        "color-scheme": "dark",
+        "application-name": "ZENIT",
+        "author": "Motion Studies",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "robots": "index, follow, max-image-preview:large",
+        "og:type": "website",
+        "og:site_name": "Motion Studies",
+        "og:locale": "en_GB",
+        "og:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "og:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "og:url": "https://zenit.motionstudies.app/",
+        "og:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:secure_url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:type": "image/png",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "twitter:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "twitter:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "twitter:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon."
+      },
+      "structuredWork": {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "@id": "https://zenit.motionstudies.app/#work",
+        "name": "ZENIT",
+        "url": "https://zenit.motionstudies.app/",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "image": {
+          "@type": "ImageObject",
+          "contentUrl": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "width": 1200,
+          "height": 630,
+          "caption": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+          "creditText": "Stellar field \u00a9 David Nash / Astronomy Nexus, HYG 4.4, CC BY-SA 4.0. Orbital data: CelesTrak / USSPACECOM. Dated model; authored typography and framing.",
+          "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "acquireLicensePage": "https://zenit.motionstudies.app/share/NOTICE.txt"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        },
+        "isPartOf": {
+          "@type": "CreativeWorkSeries",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        }
+      },
+      "image": {
+        "path": "share/zenit-aa44f7a96603.png",
+        "width": 1200,
+        "height": 630,
+        "bytes": 69970,
+        "sha256": "aa44f7a966032734648df589fdec2d4ba2d2668af3b902f0277190f748a1d177",
+        "licence": "CC-BY-SA-4.0",
+        "contentType": "image/png",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      "icons": [
+        {
+          "file": "favicon.svg",
+          "bytes": 384,
+          "sha256": "099f3089f1ca554115dfa07bfbf10d6f21943adf4815a6efcdafe1f26903cfbd",
+          "contentType": "image/svg+xml"
+        },
+        {
+          "file": "favicon-32.png",
+          "bytes": 501,
+          "sha256": "c7d1adeac1acdea748dea7bdf06bf7ea2e4da7ba70c9160e4839f19ee6a8871f",
+          "contentType": "image/png"
+        },
+        {
+          "file": "apple-touch-icon.png",
+          "bytes": 2600,
+          "sha256": "09d22c74337076cb1876d568103d7a96f96c7378760a38d98072db414be525a6",
+          "contentType": "image/png"
+        }
+      ],
+      "imageNoticePresent": true,
+      "evidenceUnchangedFromJourney": true,
+      "datasets": [
+        {
+          "kind": "stellar",
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "bytes": 854727
+        },
+        {
+          "kind": "iss",
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "bytes": 2594
+        },
+        {
+          "kind": "orbital",
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "bytes": 459048
+        }
+      ],
+      "applicationAsset": "assets/index-4P7DBZgv.js",
+      "applicationAssetSha256": "786649b7fe4f2d84ee2c2baa6d66d48046e25e3e0773543de2138d01d072e4e1",
+      "styleAsset": "assets/index-D7nfqJ2S.css",
+      "styleAssetSha256": "00732a433a274a77a5b8eabe104dd5df5ddcf954d905c6624d6879db9506a8a8",
+      "stableStatusStyle": true,
+      "applicationHasIntroduction": true,
+      "applicationHasOpeningCameraAndSpaceShortcut": true,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37838899055,
+        "commit": "61d6435f626d8c853c4a80558a2774501a1f876e",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37838899055",
+        "source_files": 41,
+        "source_bytes": 2810286,
+        "content_sha256": "727819732ff125ea227cae6fafa01419a8c3ecdaa02db8b932041d30bb9c914a"
+      }
+    },
+    {
+      "url": "https://motionstudies.app/zenit/",
+      "status": 200,
+      "canonical": "https://zenit.motionstudies.app/",
+      "metadata": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "theme-color": "#05090e",
+        "color-scheme": "dark",
+        "application-name": "ZENIT",
+        "author": "Motion Studies",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "robots": "index, follow, max-image-preview:large",
+        "og:type": "website",
+        "og:site_name": "Motion Studies",
+        "og:locale": "en_GB",
+        "og:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "og:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "og:url": "https://zenit.motionstudies.app/",
+        "og:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:secure_url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:type": "image/png",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "twitter:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "twitter:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "twitter:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon."
+      },
+      "structuredWork": {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "@id": "https://zenit.motionstudies.app/#work",
+        "name": "ZENIT",
+        "url": "https://zenit.motionstudies.app/",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "image": {
+          "@type": "ImageObject",
+          "contentUrl": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "width": 1200,
+          "height": 630,
+          "caption": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+          "creditText": "Stellar field \u00a9 David Nash / Astronomy Nexus, HYG 4.4, CC BY-SA 4.0. Orbital data: CelesTrak / USSPACECOM. Dated model; authored typography and framing.",
+          "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "acquireLicensePage": "https://zenit.motionstudies.app/share/NOTICE.txt"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        },
+        "isPartOf": {
+          "@type": "CreativeWorkSeries",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        }
+      },
+      "image": {
+        "path": "share/zenit-aa44f7a96603.png",
+        "width": 1200,
+        "height": 630,
+        "bytes": 69970,
+        "sha256": "aa44f7a966032734648df589fdec2d4ba2d2668af3b902f0277190f748a1d177",
+        "licence": "CC-BY-SA-4.0",
+        "contentType": "image/png",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      "icons": [
+        {
+          "file": "favicon.svg",
+          "bytes": 384,
+          "sha256": "099f3089f1ca554115dfa07bfbf10d6f21943adf4815a6efcdafe1f26903cfbd",
+          "contentType": "image/svg+xml"
+        },
+        {
+          "file": "favicon-32.png",
+          "bytes": 501,
+          "sha256": "c7d1adeac1acdea748dea7bdf06bf7ea2e4da7ba70c9160e4839f19ee6a8871f",
+          "contentType": "image/png"
+        },
+        {
+          "file": "apple-touch-icon.png",
+          "bytes": 2600,
+          "sha256": "09d22c74337076cb1876d568103d7a96f96c7378760a38d98072db414be525a6",
+          "contentType": "image/png"
+        }
+      ],
+      "imageNoticePresent": true,
+      "evidenceUnchangedFromJourney": true,
+      "datasets": [
+        {
+          "kind": "stellar",
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "bytes": 854727
+        },
+        {
+          "kind": "iss",
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "bytes": 2594
+        },
+        {
+          "kind": "orbital",
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "bytes": 459048
+        }
+      ],
+      "applicationAsset": "assets/index-4P7DBZgv.js",
+      "applicationAssetSha256": "786649b7fe4f2d84ee2c2baa6d66d48046e25e3e0773543de2138d01d072e4e1",
+      "styleAsset": "assets/index-D7nfqJ2S.css",
+      "styleAssetSha256": "00732a433a274a77a5b8eabe104dd5df5ddcf954d905c6624d6879db9506a8a8",
+      "stableStatusStyle": true,
+      "applicationHasIntroduction": true,
+      "applicationHasOpeningCameraAndSpaceShortcut": true,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37838899055,
+        "commit": "61d6435f626d8c853c4a80558a2774501a1f876e",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37838899055",
+        "source_files": 41,
+        "source_bytes": 2810286,
+        "content_sha256": "727819732ff125ea227cae6fafa01419a8c3ecdaa02db8b932041d30bb9c914a"
+      }
+    },
+    {
+      "url": "https://emmettl.github.io/zenit/",
+      "status": 200,
+      "canonical": "https://zenit.motionstudies.app/",
+      "metadata": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "theme-color": "#05090e",
+        "color-scheme": "dark",
+        "application-name": "ZENIT",
+        "author": "Motion Studies",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "robots": "index, follow, max-image-preview:large",
+        "og:type": "website",
+        "og:site_name": "Motion Studies",
+        "og:locale": "en_GB",
+        "og:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "og:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "og:url": "https://zenit.motionstudies.app/",
+        "og:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:secure_url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:type": "image/png",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "twitter:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "twitter:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "twitter:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon."
+      },
+      "structuredWork": {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "@id": "https://zenit.motionstudies.app/#work",
+        "name": "ZENIT",
+        "url": "https://zenit.motionstudies.app/",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "image": {
+          "@type": "ImageObject",
+          "contentUrl": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "width": 1200,
+          "height": 630,
+          "caption": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+          "creditText": "Stellar field \u00a9 David Nash / Astronomy Nexus, HYG 4.4, CC BY-SA 4.0. Orbital data: CelesTrak / USSPACECOM. Dated model; authored typography and framing.",
+          "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "acquireLicensePage": "https://zenit.motionstudies.app/share/NOTICE.txt"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        },
+        "isPartOf": {
+          "@type": "CreativeWorkSeries",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        }
+      },
+      "image": {
+        "path": "share/zenit-aa44f7a96603.png",
+        "width": 1200,
+        "height": 630,
+        "bytes": 69970,
+        "sha256": "aa44f7a966032734648df589fdec2d4ba2d2668af3b902f0277190f748a1d177",
+        "licence": "CC-BY-SA-4.0",
+        "contentType": "image/png",
+        "cacheControl": "max-age=600"
+      },
+      "icons": [
+        {
+          "file": "favicon.svg",
+          "bytes": 384,
+          "sha256": "099f3089f1ca554115dfa07bfbf10d6f21943adf4815a6efcdafe1f26903cfbd",
+          "contentType": "image/svg+xml"
+        },
+        {
+          "file": "favicon-32.png",
+          "bytes": 501,
+          "sha256": "c7d1adeac1acdea748dea7bdf06bf7ea2e4da7ba70c9160e4839f19ee6a8871f",
+          "contentType": "image/png"
+        },
+        {
+          "file": "apple-touch-icon.png",
+          "bytes": 2600,
+          "sha256": "09d22c74337076cb1876d568103d7a96f96c7378760a38d98072db414be525a6",
+          "contentType": "image/png"
+        }
+      ],
+      "imageNoticePresent": true,
+      "evidenceUnchangedFromJourney": true,
+      "datasets": [
+        {
+          "kind": "stellar",
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "bytes": 854727
+        },
+        {
+          "kind": "iss",
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "bytes": 2594
+        },
+        {
+          "kind": "orbital",
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "bytes": 459048
+        }
+      ],
+      "applicationAsset": "assets/index-4P7DBZgv.js",
+      "applicationAssetSha256": "786649b7fe4f2d84ee2c2baa6d66d48046e25e3e0773543de2138d01d072e4e1",
+      "styleAsset": "assets/index-D7nfqJ2S.css",
+      "styleAssetSha256": "00732a433a274a77a5b8eabe104dd5df5ddcf954d905c6624d6879db9506a8a8",
+      "stableStatusStyle": true,
+      "applicationHasIntroduction": true,
+      "applicationHasOpeningCameraAndSpaceShortcut": true
+    }
+  ]
+}

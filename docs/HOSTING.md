@@ -703,3 +703,28 @@ the complete source scene; both isolated daylight cases passed without code
 changes. The ten new camera/shortcut cases passed again on the published canonical
 site in Chromium and iPhone-sized WebKit. Captures show each opening stage.
 These browser checks do not measure physical-phone frame rate.
+
+
+## ZENIT stable scrubber layout · 2026-10-08
+
+Edition commit `61d6435f626d8c853c4a80558a2774501a1f876e` keeps the orbital
+loading-status line mounted and reserves a 12 CSS px line with fixed margins.
+The text becomes empty when settled. Loading no longer changes the controls
+height or moves the scrubber during seeks. The persistent live region is
+polite and atomic; clock, worker packet, camera and source behavior are retained.
+
+The existing delayed-worker scrubbing test compares exact scrubber document
+top and panel height before seeking, while loading and after accepting the
+latest packet. Before publication, the new check failed against the previous
+live edition as expected in both engines: pending status grew the panel by
+exactly 30 CSS px. Its original coherent-frame, superseded-response, follow and
+no-blank-frame assertions remain. Local checks passed 42 numerical/data tests
+and all 104 browser cases. [Pages run 37838899055](https://github.com/emmettl/zenit/actions/runs/37838899055)
+passed the same complete suite, followed by
+[Cloudflare run 37839977239](https://github.com/emmettl/zenit/actions/runs/37839977239).
+
+The [stable scrubber audit](evidence/zenit-stable-scrubber-2026-10-08.json)
+confirms matching application and stylesheet bytes at all three addresses,
+retained frozen datasets, metadata and OG artwork. CI measured 1,069,707 gzip
+bytes; local compression measured 1,076,991. Both scrubber cases passed again
+on the published canonical site in Chromium and iPhone-sized WebKit.
