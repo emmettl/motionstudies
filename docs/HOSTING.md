@@ -610,3 +610,50 @@ All eight trail cases passed again on the published canonical site in Chromium
 and WebKit. Captures show the retained star field and dominant ISS path;
 these are phone-viewport browser checks, without a new physical-device
 performance measurement.
+
+## ZENIT quiet surface playback · 2026-10-08
+
+Edition commit `e1f7db66be10fe7126d3ccc415016017d7540c71` lets the automatic surface hold fill the screen with
+the moving sky. [Pages run 37828967949](https://github.com/emmettl/zenit/actions/runs/37828967949)
+passed 40 numerical/data checks and all 94 browser cases, followed by
+[Cloudflare run 37829863737](https://github.com/emmettl/zenit/actions/runs/37829863737).
+The [quiet sky audit](evidence/zenit-quiet-sky-2026-10-08.json) confirms matching
+application bytes at all three addresses, with retained source payloads,
+metadata and share artwork. CI measured 1,069,065 gzip bytes; local compression
+measured 1,076,367. CI keeps the supported native macOS 26 ARM environment.
+
+Two seconds into the automatic sky hold, title, captions, large controls,
+compass, star names and the selected-object label recede over 0.6 seconds.
+One Pause button remains, with a minimum 44 CSS px target. A primary tap
+reveals controls for four seconds; keyboard reveal focuses Pause and keeps
+the controls available while inspection has focus. Inactive interface and
+scene affordances are inert. Pause restores the compact interface. Ascent,
+the orbital loop, manual exploration, open panels, reduced motion, source or
+worker/graphics failure and hidden-tab pause leave the interface available.
+
+Native WebKit touch activation is handled on pointer release. The reveal
+element remains connected through compatibility clicks, preventing first-tap
+selection behind it. Cancelled and dragged gestures do not select. Existing
+orientation and gesture tests now reveal controls before inspecting the
+surface UI. Camera composition, dated clock, catalogue point treatment,
+source eligibility and sampled orbital histories remain intact; quiet trail
+selection reserves space for the small Pause button instead of receded UI.
+
+The first Pages run 37825181308 stopped before deployment with 90/94 cases
+passing. Two existing readiness waits expired after five seconds, and two
+new Chromium simulated-playback scenarios reached their 30-second overall
+limit during final checks. All four new WebKit cases passed. Trace inspection
+found no browser runtime errors. Quiet scenarios now have a 60-second total
+budget; the two startup waits have 15 seconds, and CI uses a consistent
+10-second assertion window while local assertions retain five seconds.
+Behaviour and numerical expectations are unchanged. The subsequent run
+37827069980 passed 93/94, including all eight quiet-mode cases. Its remaining
+existing panel-layout check clicked before the catalogues/fonts had settled,
+and the trace remained in orbit. That check now waits for the complete scene
+and fonts before clicking; its existing clearance assertions passed again in
+both engines. All eight affected timing cases
+passed locally again before the successful publication above.
+
+All eight new cases passed again on the published canonical site in Chromium
+and WebKit. Desktop and phone-viewport captures show the unobstructed sky and
+small Pause affordance. These checks do not measure physical-phone frame rate.
