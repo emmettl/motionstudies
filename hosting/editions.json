@@ -1,7 +1,7 @@
 {
   "zenit": {
     "required": ["data/zenit-manifest.json", "data/stellar/NOTICE.txt", "data/orbital/NOTICE.txt"],
-    "data_pattern": "data/(?:zenit-manifest\\.json|stellar/(?:NOTICE\\.txt|hyg-v44-bright-[a-f0-9]{12}\\.json)|orbital/(?:NOTICE\\.txt|(?:iss|cohorts)-[a-f0-9]{12}\\.json))",
+    "data_pattern": "data/(?:zenit-manifest\\.json|stellar/(?:NOTICE\\.txt|hyg-v44-bright-[a-f0-9]{12}\\.json)|orbital/(?:NOTICE\\.txt|(?:iss|cohorts|window)-[a-f0-9]{12}\\.json))",
     "additional_urls": ["https://zenit.motionstudies.app/"]
   },
   "pfad": {
