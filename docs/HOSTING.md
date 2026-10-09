@@ -788,3 +788,75 @@ advancing. That test now uses a controlled Playwright clock, advances to the
 horizon, pauses and confirms the pose remains fixed for another second before
 resuming to the surface. All four arrival cases passed locally after this
 test-only correction; application behavior and physical assertions remain.
+
+
+## ZENIT observer places and dated windows · 2026-10-09
+
+Edition commit `411ac15b1b72241ffb0b0fba7f0f488c952c3de2` adds Sydney,
+Zurich, Toronto, Singapore and Cape Town; local station sequences;
+custom coordinates and full-screen globe picking; and three immutable
+UTC windows. The original 7 October payloads, Sydney default, HYG field,
+share card and canonical subdomain remain intact. The additional windows
+use exactly four successful CelesTrak captures from 8 October 22:46 UTC,
+with retained hashes, field attribution and per-object 24-hour bounds.
+
+The release is published by [Pages run 37861587674](https://github.com/emmettl/zenit/actions/runs/37861587674)
+and [Cloudflare run 37862677001](https://github.com/emmettl/zenit/actions/runs/37862677001). Cloudflare serves the exact successful Pages
+artifact at the canonical subdomain and `/zenit/`, using the established
+pinned hosting revision `304d1244ff3a00a6e4fed4ff6ec4e565d9adc4a7`.
+The [delivery audit](evidence/zenit-observers-windows-2026-10-09.json)
+records all three addresses, release identity and every dated payload hash.
+
+Observer changes pause at the displayed UTC and update the local WGS84
+camera, horizon, compass, solar fade, star labels and readings. Historical
+trail packets carry the geographic observer key; an old-place trail cannot
+be rendered at a new place. World positions preserve the accepted instant.
+Each night sequence follows the actual eligible ISS or Tianhe identity;
+daylight and missing-pass outcomes are explicit. Zurich and Toronto use
+Tianhe on 9 October. Dated loading validates its manifest and coherent
+ISS/cohort pair before replacement; aborted and corrupt loads leave the
+previous window usable. Globe picking uses a ray/ellipsoid intersection;
+dragging turns Earth, and Cancel/Escape exits without selecting a point.
+
+Local and CI checks passed 51 numerical/data tests and 120 browser cases.
+The numerical fixtures include 75 independent Python sgp4/Astropy/PyERFA
+observer and horizon cases covering all places, windows and both stations.
+Browser cases cover preset UTC/orbit preservation, Tiangong journey and
+loop, custom bounds and worker search, globe gestures, delayed/corrupt
+date loads and initial-load recovery, alongside all prior playback,
+scrubbing, illumination and Safari stellar-raster checks.
+
+The final artifact measures 1,217,413 gzip bytes in CI and 1,226,160
+locally, within the 2 MB ceiling. Twenty targeted cases then passed against
+the public canonical site using Chromium, WebKit iPhone viewport and
+desktop WebKit. Anonymous requests verified matching application/style
+bytes, all three manifest and source-payload sets, metadata, icons, source
+notices and unchanged OG artwork at all three mounts. Desktop and phone
+screenshots were reviewed in separate browser contexts. The user's
+existing browser view was preserved. These checks do not establish
+physical-phone frame rate. No provider acquisition occurs in builds or
+visitors, and no recurring collector was introduced.
+
+The first hosted attempt, [37860505720](https://github.com/emmettl/zenit/actions/runs/37860505720),
+passed 119/120. The new Zurich pause test captured the retained worker
+packet at 02:45:54.670 UTC before the final requested 02:45:54.990 frame
+arrived. Trace snapshots show the journey elapsed state held at 37,199 ms
+throughout. The corrected test advances the paused scheduler to deliver
+the final frame, checks the exact expected 10× journey timestamp, then
+asserts unchanged clock, elapsed state and camera pose over another second.
+Both targeted browser cases passed locally. Application, geometry and
+source payloads were unchanged by this test-only correction.
+
+The initial [Cloudflare run 37862400895](https://github.com/emmettl/zenit/actions/runs/37862400895)
+rejected the new `data/orbital/window-<12 hex>.json` filenames before deployment.
+Hosting revision `304d1244ff3a00a6e4fed4ff6ec4e565d9adc4a7` adds only that
+content-addressed filename family to ZENIT's allowlist. Twelve publisher tests
+and six subdomain routing tests pass, including acceptance of a hashed window
+and rejection of raw, unversioned and malformed data paths. Local staging of
+the exact successful Pages tar preserved all three manifest hashes and 48
+source files (3,764,388 bytes). ZENIT publishing configuration commit
+`841e897d86f1ab0f1ff8fc4a1bf2361f888ae66d` pins this hosting revision; its
+application and public data are unchanged from the checked `411ac15` release.
+The successful manual Cloudflare dispatch publishes that checked Pages
+artifact at both custom-domain addresses. The same pinned workflow supplies
+subsequent automatic publication after a successful Pages run.

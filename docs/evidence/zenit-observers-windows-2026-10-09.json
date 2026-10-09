@@ -1,0 +1,1036 @@
+{
+  "date": "2026-10-09",
+  "verifiedAtUtc": "2026-10-09T00:04:16.503247+00:00",
+  "repository": "https://github.com/emmettl/zenit",
+  "editionCommit": "411ac15b1b72241ffb0b0fba7f0f488c952c3de2",
+  "localChecks": {
+    "numericalAndDataTests": 51,
+    "browserTests": 120,
+    "compressedArtifactBytes": 1226160
+  },
+  "ciChecks": {
+    "pagesRun": 37861587674,
+    "cloudflareRun": 37862677001,
+    "numericalAndDataTests": 51,
+    "browserTests": 120,
+    "compressedArtifactBytes": 1217413
+  },
+  "observers": [
+    {
+      "id": "sydney",
+      "name": "Sydney",
+      "latitude": -33.8688,
+      "longitude": 151.2093,
+      "heightKm": 0.058
+    },
+    {
+      "id": "zurich",
+      "name": "Zurich",
+      "latitude": 47.3769,
+      "longitude": 8.5417,
+      "heightKm": 0.408
+    },
+    {
+      "id": "toronto",
+      "name": "Toronto",
+      "latitude": 43.6532,
+      "longitude": -79.3832,
+      "heightKm": 0.076
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "latitude": 1.3521,
+      "longitude": 103.8198,
+      "heightKm": 0.015
+    },
+    {
+      "id": "cape-town",
+      "name": "Cape Town",
+      "latitude": -33.9249,
+      "longitude": 18.4241,
+      "heightKm": 0.058
+    }
+  ],
+  "windows": [
+    {
+      "id": "original-2026-10-07",
+      "study": {
+        "startUtc": "2026-10-07T11:58:49.000Z",
+        "endUtc": "2026-10-07T23:58:49.000Z",
+        "initialUtc": "2026-10-07T17:57:19.000Z"
+      },
+      "sequences": {
+        "sydney": {
+          "riseUtc": "2026-10-07T17:53:22.867Z",
+          "peakUtc": "2026-10-07T17:58:49.000Z",
+          "setUtc": "2026-10-07T18:04:12.677Z",
+          "maximumElevationDegrees": 44.881783015395555,
+          "peakAzimuthDegrees": 312.19564958234974,
+          "peakRangeKm": 590.1395344674711,
+          "solarAltitudeDegrees": -17.884055771093873,
+          "rule": "Highest culmination >= 20 degrees with Sun below -6 degrees over Sydney in the 18 hours after the element epoch. One-second peak sampling; horizon crossings bisected to milliseconds. Geometric pass, not an optical visibility prediction.",
+          "objectId": "25544",
+          "name": "ISS / ZARYA",
+          "night": true
+        },
+        "zurich": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-07T13:55:25.413Z",
+          "peakUtc": "2026-10-07T14:00:52.000Z",
+          "setUtc": "2026-10-07T14:06:14.756Z",
+          "maximumElevationDegrees": 48.38285763095489,
+          "peakAzimuthDegrees": 212.09842088203752,
+          "peakRangeKm": 557.087498043871,
+          "solarAltitudeDegrees": 25.461568488782518,
+          "night": false
+        },
+        "toronto": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-07T20:08:38.965Z",
+          "peakUtc": "2026-10-07T20:14:06.000Z",
+          "setUtc": "2026-10-07T20:19:29.776Z",
+          "maximumElevationDegrees": 52.62767366973421,
+          "peakAzimuthDegrees": 217.4998914877637,
+          "peakRangeKm": 526.3338188933882,
+          "solarAltitudeDegrees": 24.83071524685839,
+          "night": false
+        },
+        "singapore": {
+          "objectId": "48274",
+          "name": "CSS (TIANHE)",
+          "riseUtc": "2026-10-07T16:34:52.068Z",
+          "peakUtc": "2026-10-07T16:39:48.000Z",
+          "setUtc": "2026-10-07T16:44:43.774Z",
+          "maximumElevationDegrees": 24.021274944461233,
+          "peakAzimuthDegrees": 316.43156741004753,
+          "peakRangeKm": 837.7804312080636,
+          "solarAltitudeDegrees": -84.62640104246105,
+          "night": true
+        },
+        "cape-town": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-07T19:03:25.241Z",
+          "peakUtc": "2026-10-07T19:08:48.000Z",
+          "setUtc": "2026-10-07T19:14:14.687Z",
+          "maximumElevationDegrees": 41.9726217143249,
+          "peakAzimuthDegrees": 219.25236973346583,
+          "peakRangeKm": 615.9685662473462,
+          "solarAltitudeDegrees": -27.40757243546004,
+          "night": true
+        }
+      },
+      "manifestSha256": "8ce5407b37f82fdbca9f5f923c2b3a848a0672774f29294dd9a6cb30400fd53d"
+    },
+    {
+      "id": "evening-2026-10-08",
+      "study": {
+        "startUtc": "2026-10-08T12:00:00.000Z",
+        "endUtc": "2026-10-09T00:00:00.000Z",
+        "initialUtc": "2026-10-08T17:10:09.000Z"
+      },
+      "sequences": {
+        "sydney": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-08T17:06:06.518Z",
+          "peakUtc": "2026-10-08T17:11:39.000Z",
+          "setUtc": "2026-10-08T17:17:07.500Z",
+          "maximumElevationDegrees": 89.01069561221225,
+          "peakAzimuthDegrees": 334.72804421233803,
+          "peakRangeKm": 429.7029536980813,
+          "solarAltitudeDegrees": -26.517594547321757,
+          "night": true
+        },
+        "zurich": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-08T13:08:10.370Z",
+          "peakUtc": "2026-10-08T13:13:41.000Z",
+          "setUtc": "2026-10-08T13:19:07.923Z",
+          "maximumElevationDegrees": 72.53578329453764,
+          "peakAzimuthDegrees": 206.74168230693536,
+          "peakRangeKm": 446.61273502806426,
+          "solarAltitudeDegrees": 30.372828274200344,
+          "night": false
+        },
+        "toronto": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-08T19:21:23.440Z",
+          "peakUtc": "2026-10-08T19:26:54.000Z",
+          "setUtc": "2026-10-08T19:32:21.744Z",
+          "maximumElevationDegrees": 85.9274887801521,
+          "peakAzimuthDegrees": 216.267771348641,
+          "peakRangeKm": 427.68048621337624,
+          "solarAltitudeDegrees": 30.818853132572126,
+          "night": false
+        },
+        "singapore": {
+          "objectId": "48274",
+          "name": "CSS (TIANHE)",
+          "riseUtc": "2026-10-08T15:35:31.771Z",
+          "peakUtc": "2026-10-08T15:40:45.000Z",
+          "setUtc": "2026-10-08T15:45:56.989Z",
+          "maximumElevationDegrees": 69.08441532765383,
+          "peakAzimuthDegrees": 316.0499665611154,
+          "peakRangeKm": 410.352902881944,
+          "solarAltitudeDegrees": -71.56054147856076,
+          "night": true
+        },
+        "cape-town": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-08T18:16:05.775Z",
+          "peakUtc": "2026-10-08T18:21:33.000Z",
+          "setUtc": "2026-10-08T18:27:03.941Z",
+          "maximumElevationDegrees": 79.5005783993542,
+          "peakAzimuthDegrees": 221.41893965309694,
+          "peakRangeKm": 433.23974043254543,
+          "solarAltitudeDegrees": -18.331030783807325,
+          "night": true
+        }
+      },
+      "manifestSha256": "56773faa0a8b0eb955728ee5d01caafb5d037824cb11b33b2015d1e4a9e42eca"
+    },
+    {
+      "id": "morning-2026-10-09",
+      "study": {
+        "startUtc": "2026-10-09T00:00:00.000Z",
+        "endUtc": "2026-10-09T12:00:00.000Z",
+        "initialUtc": "2026-10-09T09:50:43.000Z"
+      },
+      "sequences": {
+        "sydney": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-09T09:46:55.198Z",
+          "peakUtc": "2026-10-09T09:52:13.000Z",
+          "setUtc": "2026-10-09T09:57:33.963Z",
+          "maximumElevationDegrees": 31.34628298449436,
+          "peakAzimuthDegrees": 217.0946622640198,
+          "peakRangeKm": 762.4392242016986,
+          "solarAltitudeDegrees": -22.397610889718994,
+          "night": true
+        },
+        "zurich": {
+          "objectId": "48274",
+          "name": "CSS (TIANHE)",
+          "riseUtc": "2026-10-09T02:40:56.584Z",
+          "peakUtc": "2026-10-09T02:45:53.000Z",
+          "setUtc": "2026-10-09T02:50:50.495Z",
+          "maximumElevationDegrees": 24.923481463814745,
+          "peakAzimuthDegrees": 171.53074659225814,
+          "peakRangeKm": 823.2843751811997,
+          "solarAltitudeDegrees": -28.91141809186422,
+          "night": true
+        },
+        "toronto": {
+          "objectId": "48274",
+          "name": "CSS (TIANHE)",
+          "riseUtc": "2026-10-09T08:50:20.177Z",
+          "peakUtc": "2026-10-09T08:55:33.000Z",
+          "setUtc": "2026-10-09T09:00:45.499Z",
+          "maximumElevationDegrees": 56.25918397644497,
+          "peakAzimuthDegrees": 175.14006775933711,
+          "peakRangeKm": 461.62028814279023,
+          "solarAltitudeDegrees": -27.4286508871052,
+          "night": true
+        },
+        "singapore": {
+          "objectId": "48274",
+          "name": "CSS (TIANHE)",
+          "riseUtc": "2026-10-09T03:05:26.951Z",
+          "peakUtc": "2026-10-09T03:10:40.000Z",
+          "setUtc": "2026-10-09T03:15:54.635Z",
+          "maximumElevationDegrees": 80.95894748505101,
+          "peakAzimuthDegrees": 224.82798429847125,
+          "peakRangeKm": 391.1115723408199,
+          "solarAltitudeDegrees": 63.568873429539494,
+          "night": false
+        },
+        "cape-town": {
+          "objectId": "25544",
+          "name": "ISS (ZARYA)",
+          "riseUtc": "2026-10-09T02:25:10.045Z",
+          "peakUtc": "2026-10-09T02:30:29.000Z",
+          "setUtc": "2026-10-09T02:35:44.999Z",
+          "maximumElevationDegrees": 31.584570021881003,
+          "peakAzimuthDegrees": 310.82179379396126,
+          "peakRangeKm": 759.2981432545376,
+          "solarAltitudeDegrees": -21.21428359929906,
+          "night": true
+        }
+      },
+      "manifestSha256": "839c1bc75069ffc7b548bdec6c5d145f1e0cd7d9461968f0abafd8f061a66a99"
+    }
+  ],
+  "additionalSourceCaptures": [
+    {
+      "id": "stations",
+      "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=stations&FORMAT=json",
+      "capturedAt": "2026-10-08T22:46:12.739026+00:00",
+      "responseDateUtc": "2026-10-08T22:46:16.000Z",
+      "sha256": "614c43e7895677d36d5b0995e784d84339ed188d302d0a39ac00d408f66bff76",
+      "bytes": 9299
+    },
+    {
+      "id": "gnss",
+      "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=gnss&FORMAT=json",
+      "capturedAt": "2026-10-08T22:46:13.809400+00:00",
+      "responseDateUtc": "2026-10-08T22:46:17.000Z",
+      "sha256": "0ce6abd6ab3f36100080c6971446e78bdbb72709af0d402a79df335f4aac97cf",
+      "bytes": 71054
+    },
+    {
+      "id": "geo",
+      "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=geo&FORMAT=json",
+      "capturedAt": "2026-10-08T22:46:15.129887+00:00",
+      "responseDateUtc": "2026-10-08T22:46:18.000Z",
+      "sha256": "4b592f2d37dce686b74cec94cfb234aaaa1ffe987250d23a4dab62cdc3232b32",
+      "bytes": 229250
+    },
+    {
+      "id": "stations-satcat",
+      "url": "https://celestrak.org/satcat/records.php?GROUP=stations&FORMAT=json",
+      "capturedAt": "2026-10-08T22:46:15.938814+00:00",
+      "responseDateUtc": "2026-10-08T22:46:19.000Z",
+      "sha256": "1536ddf2931cafb05a122a0e038e5f2466d30ada21377fba56d336e46608d014",
+      "bytes": 7305
+    }
+  ],
+  "newWindowStatistics": [
+    {
+      "id": "evening-2026-10-08",
+      "statistics": {
+        "inputRows": 761,
+        "distinctIdentities": 715,
+        "duplicateMembershipRows": 46,
+        "independentMovers": 621,
+        "initialEligibleMovers": 588,
+        "attachments": 11,
+        "excludedIndependentIdentities": 83,
+        "ceiling": 1000,
+        "capExclusions": 0,
+        "missingStationMetadata": 0
+      }
+    },
+    {
+      "id": "morning-2026-10-09",
+      "statistics": {
+        "inputRows": 761,
+        "distinctIdentities": 715,
+        "duplicateMembershipRows": 46,
+        "independentMovers": 531,
+        "initialEligibleMovers": 334,
+        "attachments": 11,
+        "excludedIndependentIdentities": 173,
+        "ceiling": 1000,
+        "capExclusions": 0,
+        "missingStationMetadata": 0
+      }
+    }
+  ],
+  "independentReference": {
+    "sgp4Version": "2.27",
+    "astropyVersion": "8.0.1",
+    "pyerfaVersion": "2.0.1.5",
+    "method": "Independent Python sgp4 Vallado C++ extension, WGS72 AFSPC a, milliseconds source epoch; Astropy TEME\u2192ITRS, UT1=UTC, bundled IERS polar motion; EarthLocation WGS84. Offline.",
+    "tolerances": {
+      "temeKm": 2e-05,
+      "fixedKm": 0.05,
+      "horizonDegrees": 0.01,
+      "rangeKm": 0.05
+    },
+    "cases": 75,
+    "azimuthAllowance": "max(0.01 degrees, 50 m / horizontal topocentric range in radians): ITRS polar motion omitted by PEF matters more near zenith. TEME 2 cm, fixed frame/range 50 m, altitude 0.01 degrees. Implementation agreement is not element prediction accuracy."
+  },
+  "initialCiAttempt": {
+    "pagesRun": 37860505720,
+    "passed": 119,
+    "failed": "New Chromium Zurich pause test captured retained UTC 1791513954670 before requested 1791513954990 arrived; trace journey elapsed held at 37199 ms. Test now waits for exact requested 10\u00d7 timestamp, then verifies held UTC, elapsed and pose; both targeted local cases passed. No application or dataset changes."
+  },
+  "contracts": {
+    "observerChanges": "Pause at accepted displayed UTC; WGS84 local camera/horizon, bearings, solar fade and labels update; global SGP4/stars unchanged. Trail packets carry geographic observer key; renderer rejects paths from another place.",
+    "windowChanges": "Manifest and ISS/cohort payloads SHA-pinned; coherent pair loaded before replacement. Aborted requests cannot replace a newer request. Corruption/network failure retains prior window.",
+    "customPlaces": "Lat -90..90, lon -180..180, declared ellipsoid height 1..10000 m. Real ray/ellipsoid globe pick; drags/cancels do not select. Separate bounded ISS/Tianhe pass-search worker; no provider or geolocation requests.",
+    "stationSelection": "Complete passes >=20 degrees; Sun <=-6 night/twilight, <=-18 dark prioritized; then elevation. Curated Sydney original remains unchanged. Actual ISS or Tianhe identities and dated elements supply each journey. Daytime and no-complete-pass outcomes explicit.",
+    "sourceRules": "Same WGS72/AFSPC a/TEME\u2192PEF, UTC\u2248UT1, source milliseconds and per-object 24h epoch offset; deduplicate newest epoch and preserve memberships; attachments use parents; original three payloads preserved.",
+    "limitations": "Geometric/modelled replay; no optical brightness, terrain, weather, manoeuvre history or docking history. No measured physical-phone FPS claim."
+  },
+  "liveBrowserChecks": {
+    "cases": 20,
+    "projects": [
+      "Chromium desktop",
+      "WebKit iPhone 13 viewport",
+      "WebKit desktop targeted stellar raster"
+    ],
+    "result": "20 passed (37.7s)"
+  },
+  "addresses": [
+    {
+      "url": "https://zenit.motionstudies.app/",
+      "status": 200,
+      "canonical": "https://zenit.motionstudies.app/",
+      "metadata": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "theme-color": "#05090e",
+        "color-scheme": "dark",
+        "application-name": "ZENIT",
+        "author": "Motion Studies",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "robots": "index, follow, max-image-preview:large",
+        "og:type": "website",
+        "og:site_name": "Motion Studies",
+        "og:locale": "en_GB",
+        "og:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "og:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "og:url": "https://zenit.motionstudies.app/",
+        "og:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:secure_url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:type": "image/png",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "twitter:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "twitter:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "twitter:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon."
+      },
+      "structuredWork": {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "@id": "https://zenit.motionstudies.app/#work",
+        "name": "ZENIT",
+        "url": "https://zenit.motionstudies.app/",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "image": {
+          "@type": "ImageObject",
+          "contentUrl": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "width": 1200,
+          "height": 630,
+          "caption": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+          "creditText": "Stellar field \u00a9 David Nash / Astronomy Nexus, HYG 4.4, CC BY-SA 4.0. Orbital data: CelesTrak / USSPACECOM. Dated model; authored typography and framing.",
+          "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "acquireLicensePage": "https://zenit.motionstudies.app/share/NOTICE.txt"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        },
+        "isPartOf": {
+          "@type": "CreativeWorkSeries",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        }
+      },
+      "image": {
+        "path": "share/zenit-aa44f7a96603.png",
+        "width": 1200,
+        "height": 630,
+        "bytes": 69970,
+        "sha256": "aa44f7a966032734648df589fdec2d4ba2d2668af3b902f0277190f748a1d177",
+        "licence": "CC-BY-SA-4.0",
+        "contentType": "image/png",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      "icons": [
+        {
+          "file": "favicon.svg",
+          "bytes": 384,
+          "sha256": "099f3089f1ca554115dfa07bfbf10d6f21943adf4815a6efcdafe1f26903cfbd",
+          "contentType": "image/svg+xml"
+        },
+        {
+          "file": "favicon-32.png",
+          "bytes": 501,
+          "sha256": "c7d1adeac1acdea748dea7bdf06bf7ea2e4da7ba70c9160e4839f19ee6a8871f",
+          "contentType": "image/png"
+        },
+        {
+          "file": "apple-touch-icon.png",
+          "bytes": 2600,
+          "sha256": "09d22c74337076cb1876d568103d7a96f96c7378760a38d98072db414be525a6",
+          "contentType": "image/png"
+        }
+      ],
+      "imageNoticePresent": true,
+      "evidenceUnchangedFromJourney": true,
+      "datasets": [
+        {
+          "kind": "stellar",
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "bytes": 854727
+        },
+        {
+          "kind": "iss",
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "bytes": 2594
+        },
+        {
+          "kind": "orbital",
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "bytes": 459048
+        }
+      ],
+      "applicationAsset": "assets/index-BOSkmmah.js",
+      "applicationAssetSha256": "1dbf9e24fe1b9ea53bfe989e58a7696503620277cf8a4ab501cca765fca24c36",
+      "styleAsset": "assets/index-Dzdjm978.css",
+      "styleAssetSha256": "6018a84395dbd5aa898fc0046e28d4ed4dd8242eaa14b712e7ad797fc1de1e31",
+      "stableStatusStyle": true,
+      "applicationHasIntroduction": true,
+      "applicationHasOpeningCameraAndSpaceShortcut": true,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37861587674,
+        "commit": "411ac15b1b72241ffb0b0fba7f0f488c952c3de2",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37861587674",
+        "source_files": 48,
+        "source_bytes": 3764388,
+        "content_sha256": "2dbefae14975026b8676f908954d8c794e9151e8cbbd2c8850a660f65e9fc84a"
+      },
+      "datedWindows": [
+        {
+          "id": "original-2026-10-07",
+          "manifestSha256": "8ce5407b37f82fdbca9f5f923c2b3a848a0672774f29294dd9a6cb30400fd53d",
+          "study": {
+            "startUtc": "2026-10-07T11:58:49.000Z",
+            "endUtc": "2026-10-07T23:58:49.000Z",
+            "initialUtc": "2026-10-07T17:57:19.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-b1c62cd01d58.json",
+              "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+              "bytes": 2594
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-8ceb46133139.json",
+              "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+              "bytes": 459048
+            }
+          ]
+        },
+        {
+          "id": "evening-2026-10-08",
+          "manifestSha256": "56773faa0a8b0eb955728ee5d01caafb5d037824cb11b33b2015d1e4a9e42eca",
+          "study": {
+            "startUtc": "2026-10-08T12:00:00.000Z",
+            "endUtc": "2026-10-09T00:00:00.000Z",
+            "initialUtc": "2026-10-08T17:10:09.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-31705d35743d.json",
+              "sha256": "31705d35743ddad141b6df478c70ec4e9d50431cfbe1b38058216abd0d33afe0",
+              "bytes": 2623
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-4eb6ed7c6c5a.json",
+              "sha256": "4eb6ed7c6c5a3f12274771bcf3c84739746221190f8b32dec1538ee5469307c6",
+              "bytes": 449818
+            }
+          ]
+        },
+        {
+          "id": "morning-2026-10-09",
+          "manifestSha256": "839c1bc75069ffc7b548bdec6c5d145f1e0cd7d9461968f0abafd8f061a66a99",
+          "study": {
+            "startUtc": "2026-10-09T00:00:00.000Z",
+            "endUtc": "2026-10-09T12:00:00.000Z",
+            "initialUtc": "2026-10-09T09:50:43.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-56409af1adab.json",
+              "sha256": "56409af1adab439d4bb77d8a96067dc134f2c54cb90d764ea7f423825e4b4f25",
+              "bytes": 2622
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-4e93d39d57cb.json",
+              "sha256": "4e93d39d57cb0396460ea2cd9ee541697252794f1a82d1517477b25cf4ae36ed",
+              "bytes": 395124
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://motionstudies.app/zenit/",
+      "status": 200,
+      "canonical": "https://zenit.motionstudies.app/",
+      "metadata": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "theme-color": "#05090e",
+        "color-scheme": "dark",
+        "application-name": "ZENIT",
+        "author": "Motion Studies",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "robots": "index, follow, max-image-preview:large",
+        "og:type": "website",
+        "og:site_name": "Motion Studies",
+        "og:locale": "en_GB",
+        "og:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "og:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "og:url": "https://zenit.motionstudies.app/",
+        "og:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:secure_url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:type": "image/png",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "twitter:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "twitter:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "twitter:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon."
+      },
+      "structuredWork": {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "@id": "https://zenit.motionstudies.app/#work",
+        "name": "ZENIT",
+        "url": "https://zenit.motionstudies.app/",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "image": {
+          "@type": "ImageObject",
+          "contentUrl": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "width": 1200,
+          "height": 630,
+          "caption": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+          "creditText": "Stellar field \u00a9 David Nash / Astronomy Nexus, HYG 4.4, CC BY-SA 4.0. Orbital data: CelesTrak / USSPACECOM. Dated model; authored typography and framing.",
+          "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "acquireLicensePage": "https://zenit.motionstudies.app/share/NOTICE.txt"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        },
+        "isPartOf": {
+          "@type": "CreativeWorkSeries",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        }
+      },
+      "image": {
+        "path": "share/zenit-aa44f7a96603.png",
+        "width": 1200,
+        "height": 630,
+        "bytes": 69970,
+        "sha256": "aa44f7a966032734648df589fdec2d4ba2d2668af3b902f0277190f748a1d177",
+        "licence": "CC-BY-SA-4.0",
+        "contentType": "image/png",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      "icons": [
+        {
+          "file": "favicon.svg",
+          "bytes": 384,
+          "sha256": "099f3089f1ca554115dfa07bfbf10d6f21943adf4815a6efcdafe1f26903cfbd",
+          "contentType": "image/svg+xml"
+        },
+        {
+          "file": "favicon-32.png",
+          "bytes": 501,
+          "sha256": "c7d1adeac1acdea748dea7bdf06bf7ea2e4da7ba70c9160e4839f19ee6a8871f",
+          "contentType": "image/png"
+        },
+        {
+          "file": "apple-touch-icon.png",
+          "bytes": 2600,
+          "sha256": "09d22c74337076cb1876d568103d7a96f96c7378760a38d98072db414be525a6",
+          "contentType": "image/png"
+        }
+      ],
+      "imageNoticePresent": true,
+      "evidenceUnchangedFromJourney": true,
+      "datasets": [
+        {
+          "kind": "stellar",
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "bytes": 854727
+        },
+        {
+          "kind": "iss",
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "bytes": 2594
+        },
+        {
+          "kind": "orbital",
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "bytes": 459048
+        }
+      ],
+      "applicationAsset": "assets/index-BOSkmmah.js",
+      "applicationAssetSha256": "1dbf9e24fe1b9ea53bfe989e58a7696503620277cf8a4ab501cca765fca24c36",
+      "styleAsset": "assets/index-Dzdjm978.css",
+      "styleAssetSha256": "6018a84395dbd5aa898fc0046e28d4ed4dd8242eaa14b712e7ad797fc1de1e31",
+      "stableStatusStyle": true,
+      "applicationHasIntroduction": true,
+      "applicationHasOpeningCameraAndSpaceShortcut": true,
+      "release": {
+        "repository": "emmettl/zenit",
+        "run_id": 37861587674,
+        "commit": "411ac15b1b72241ffb0b0fba7f0f488c952c3de2",
+        "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37861587674",
+        "source_files": 48,
+        "source_bytes": 3764388,
+        "content_sha256": "2dbefae14975026b8676f908954d8c794e9151e8cbbd2c8850a660f65e9fc84a"
+      },
+      "datedWindows": [
+        {
+          "id": "original-2026-10-07",
+          "manifestSha256": "8ce5407b37f82fdbca9f5f923c2b3a848a0672774f29294dd9a6cb30400fd53d",
+          "study": {
+            "startUtc": "2026-10-07T11:58:49.000Z",
+            "endUtc": "2026-10-07T23:58:49.000Z",
+            "initialUtc": "2026-10-07T17:57:19.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-b1c62cd01d58.json",
+              "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+              "bytes": 2594
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-8ceb46133139.json",
+              "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+              "bytes": 459048
+            }
+          ]
+        },
+        {
+          "id": "evening-2026-10-08",
+          "manifestSha256": "56773faa0a8b0eb955728ee5d01caafb5d037824cb11b33b2015d1e4a9e42eca",
+          "study": {
+            "startUtc": "2026-10-08T12:00:00.000Z",
+            "endUtc": "2026-10-09T00:00:00.000Z",
+            "initialUtc": "2026-10-08T17:10:09.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-31705d35743d.json",
+              "sha256": "31705d35743ddad141b6df478c70ec4e9d50431cfbe1b38058216abd0d33afe0",
+              "bytes": 2623
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-4eb6ed7c6c5a.json",
+              "sha256": "4eb6ed7c6c5a3f12274771bcf3c84739746221190f8b32dec1538ee5469307c6",
+              "bytes": 449818
+            }
+          ]
+        },
+        {
+          "id": "morning-2026-10-09",
+          "manifestSha256": "839c1bc75069ffc7b548bdec6c5d145f1e0cd7d9461968f0abafd8f061a66a99",
+          "study": {
+            "startUtc": "2026-10-09T00:00:00.000Z",
+            "endUtc": "2026-10-09T12:00:00.000Z",
+            "initialUtc": "2026-10-09T09:50:43.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-56409af1adab.json",
+              "sha256": "56409af1adab439d4bb77d8a96067dc134f2c54cb90d764ea7f423825e4b4f25",
+              "bytes": 2622
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-4e93d39d57cb.json",
+              "sha256": "4e93d39d57cb0396460ea2cd9ee541697252794f1a82d1517477b25cf4ae36ed",
+              "bytes": 395124
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://emmettl.github.io/zenit/",
+      "status": 200,
+      "canonical": "https://zenit.motionstudies.app/",
+      "metadata": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "theme-color": "#05090e",
+        "color-scheme": "dark",
+        "application-name": "ZENIT",
+        "author": "Motion Studies",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "robots": "index, follow, max-image-preview:large",
+        "og:type": "website",
+        "og:site_name": "Motion Studies",
+        "og:locale": "en_GB",
+        "og:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "og:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "og:url": "https://zenit.motionstudies.app/",
+        "og:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:secure_url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "og:image:type": "image/png",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "ZENIT \u2014 Earth orbit / the sky above us",
+        "twitter:description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "twitter:image": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+        "twitter:image:alt": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon."
+      },
+      "structuredWork": {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "@id": "https://zenit.motionstudies.app/#work",
+        "name": "ZENIT",
+        "url": "https://zenit.motionstudies.app/",
+        "description": "A cinematic journey through Earth\u2019s orbital shells and the sky above Sydney, with dated satellite models and a naked-eye stellar catalogue.",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "image": {
+          "@type": "ImageObject",
+          "contentUrl": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "url": "https://zenit.motionstudies.app/share/zenit-aa44f7a96603.png",
+          "width": 1200,
+          "height": 630,
+          "caption": "ZENIT title beside a modelled ISS pass, orbital lights and the HYG stellar field above an idealised Sydney horizon.",
+          "creditText": "Stellar field \u00a9 David Nash / Astronomy Nexus, HYG 4.4, CC BY-SA 4.0. Orbital data: CelesTrak / USSPACECOM. Dated model; authored typography and framing.",
+          "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "acquireLicensePage": "https://zenit.motionstudies.app/share/NOTICE.txt"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        },
+        "isPartOf": {
+          "@type": "CreativeWorkSeries",
+          "name": "Motion Studies",
+          "url": "https://motionstudies.app/"
+        }
+      },
+      "image": {
+        "path": "share/zenit-aa44f7a96603.png",
+        "width": 1200,
+        "height": 630,
+        "bytes": 69970,
+        "sha256": "aa44f7a966032734648df589fdec2d4ba2d2668af3b902f0277190f748a1d177",
+        "licence": "CC-BY-SA-4.0",
+        "contentType": "image/png",
+        "cacheControl": "max-age=600"
+      },
+      "icons": [
+        {
+          "file": "favicon.svg",
+          "bytes": 384,
+          "sha256": "099f3089f1ca554115dfa07bfbf10d6f21943adf4815a6efcdafe1f26903cfbd",
+          "contentType": "image/svg+xml"
+        },
+        {
+          "file": "favicon-32.png",
+          "bytes": 501,
+          "sha256": "c7d1adeac1acdea748dea7bdf06bf7ea2e4da7ba70c9160e4839f19ee6a8871f",
+          "contentType": "image/png"
+        },
+        {
+          "file": "apple-touch-icon.png",
+          "bytes": 2600,
+          "sha256": "09d22c74337076cb1876d568103d7a96f96c7378760a38d98072db414be525a6",
+          "contentType": "image/png"
+        }
+      ],
+      "imageNoticePresent": true,
+      "evidenceUnchangedFromJourney": true,
+      "datasets": [
+        {
+          "kind": "stellar",
+          "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+          "bytes": 854727
+        },
+        {
+          "kind": "iss",
+          "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+          "bytes": 2594
+        },
+        {
+          "kind": "orbital",
+          "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+          "bytes": 459048
+        }
+      ],
+      "applicationAsset": "assets/index-BOSkmmah.js",
+      "applicationAssetSha256": "1dbf9e24fe1b9ea53bfe989e58a7696503620277cf8a4ab501cca765fca24c36",
+      "styleAsset": "assets/index-Dzdjm978.css",
+      "styleAssetSha256": "6018a84395dbd5aa898fc0046e28d4ed4dd8242eaa14b712e7ad797fc1de1e31",
+      "stableStatusStyle": true,
+      "applicationHasIntroduction": true,
+      "applicationHasOpeningCameraAndSpaceShortcut": true,
+      "datedWindows": [
+        {
+          "id": "original-2026-10-07",
+          "manifestSha256": "8ce5407b37f82fdbca9f5f923c2b3a848a0672774f29294dd9a6cb30400fd53d",
+          "study": {
+            "startUtc": "2026-10-07T11:58:49.000Z",
+            "endUtc": "2026-10-07T23:58:49.000Z",
+            "initialUtc": "2026-10-07T17:57:19.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-b1c62cd01d58.json",
+              "sha256": "b1c62cd01d58245c95f627911a9b7f366c0efcaf826c1a58fd3540ead1e36734",
+              "bytes": 2594
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-8ceb46133139.json",
+              "sha256": "8ceb461331394c874932790d9cbf1f9771b39ded787078f52e6dcd822103e6bf",
+              "bytes": 459048
+            }
+          ]
+        },
+        {
+          "id": "evening-2026-10-08",
+          "manifestSha256": "56773faa0a8b0eb955728ee5d01caafb5d037824cb11b33b2015d1e4a9e42eca",
+          "study": {
+            "startUtc": "2026-10-08T12:00:00.000Z",
+            "endUtc": "2026-10-09T00:00:00.000Z",
+            "initialUtc": "2026-10-08T17:10:09.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-31705d35743d.json",
+              "sha256": "31705d35743ddad141b6df478c70ec4e9d50431cfbe1b38058216abd0d33afe0",
+              "bytes": 2623
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-4eb6ed7c6c5a.json",
+              "sha256": "4eb6ed7c6c5a3f12274771bcf3c84739746221190f8b32dec1538ee5469307c6",
+              "bytes": 449818
+            }
+          ]
+        },
+        {
+          "id": "morning-2026-10-09",
+          "manifestSha256": "839c1bc75069ffc7b548bdec6c5d145f1e0cd7d9461968f0abafd8f061a66a99",
+          "study": {
+            "startUtc": "2026-10-09T00:00:00.000Z",
+            "endUtc": "2026-10-09T12:00:00.000Z",
+            "initialUtc": "2026-10-09T09:50:43.000Z"
+          },
+          "payloads": [
+            {
+              "kind": "stellar",
+              "file": "stellar/hyg-v44-bright-d874dfa7da5f.json",
+              "sha256": "d874dfa7da5f030ff1d121dd7711c8ee71eb236f7ef313b2c8ac51b87cd42a0f",
+              "bytes": 854727
+            },
+            {
+              "kind": "iss",
+              "file": "orbital/iss-56409af1adab.json",
+              "sha256": "56409af1adab439d4bb77d8a96067dc134f2c54cb90d764ea7f423825e4b4f25",
+              "bytes": 2622
+            },
+            {
+              "kind": "orbital",
+              "file": "orbital/cohorts-4e93d39d57cb.json",
+              "sha256": "4e93d39d57cb0396460ea2cd9ee541697252794f1a82d1517477b25cf4ae36ed",
+              "bytes": 395124
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "hosting": {
+    "revision": "304d1244ff3a00a6e4fed4ff6ec4e565d9adc4a7",
+    "editionPublishingConfigurationCommit": "841e897d86f1ab0f1ff8fc4a1bf2361f888ae66d",
+    "checkedArtifactSourceCommit": "411ac15b1b72241ffb0b0fba7f0f488c952c3de2",
+    "initialCloudflareAttempt": {
+      "run": 37862400895,
+      "result": "Rejected data/orbital/window-56773faa0a8b.json by existing data filename allowlist before deployment."
+    },
+    "correction": "Allow only window-<12 lowercase hexadecimal>.json beside existing ISS/cohort files. Raw, unversioned, malformed and foreign paths remain rejected. Application and public source data unchanged by publisher pin.",
+    "publisherTests": 12,
+    "subdomainTests": 6,
+    "stagedExactPagesArtifact": {
+      "repository": "emmettl/zenit",
+      "run_id": 37861587674,
+      "commit": "411ac15b1b72241ffb0b0fba7f0f488c952c3de2",
+      "workflow_url": "https://github.com/emmettl/zenit/actions/runs/37861587674",
+      "source_files": 48,
+      "source_bytes": 3764388,
+      "content_sha256": "2dbefae14975026b8676f908954d8c794e9151e8cbbd2c8850a660f65e9fc84a"
+    },
+    "correctedCloudflareRun": 37862677001
+  }
+}
