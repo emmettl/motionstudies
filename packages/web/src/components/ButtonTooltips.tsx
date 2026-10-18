@@ -108,6 +108,12 @@ export function ButtonTooltips() {
     window.addEventListener('resize', hide)
     window.addEventListener('blur', hide)
     capability.addEventListener('change', hide)
+    // Lazy loading may finish after the first hover or keyboard focus event.
+    // Recover the current target instead of requiring the user to leave and return.
+    const focused = buttonAt(document.activeElement)
+    const hovered = document.querySelector<HTMLButtonElement>('button:hover')
+    if (focused?.matches(':focus-visible')) show(focused, 0)
+    else if (hovered && !window.matchMedia('(any-pointer: coarse)').matches) show(hovered, 400)
     return () => {
       hide()
       observer.disconnect()
