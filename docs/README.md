@@ -4,8 +4,10 @@
 
 ## Programme and shared work
 
+- [October maintenance and alpha.32 release](DEPENDENCIES-2026-10-18.md): current toolchain, package publication and edition reliability checks
+
 - [Project vision and goals](VISION.md): the creative premise, the world in miniature, and what these ask of the engineering
-- [Current study status — 13 September 2026](STUDY-STATUS.md): inspected implementations, served revisions, evidence boundaries and remaining work
+- [Historical study status — 13 September 2026](STUDY-STATUS.md): inspected implementations, served revisions, evidence boundaries and remaining work
 - [Overall roadmap and delivery history](../ROADMAP.md)
 - [Catalogue programme and admission criteria](CATALOGUE.md)
 - [Candidate names and the theses they imply](NAMING.md)
@@ -14,7 +16,7 @@
 - [Cost control](COST-CONTROL.md): $100/month series ceiling, traffic-spike protection, finite retention and proposed enforcement; live compliance still needs verification
 - [Edition architecture and ownership](EDITIONS.md)
 - [First view on a phone](FIRST-VIEW.md): measuring the first map frame, the shared waterfall patterns across public editions and tested practices for every edition
-- [Self-hosted typefaces](SELF-HOSTED-FONTS.md): `@motionstudies/web/fonts.css`, vendored Inter and DM Mono with licences and provenance; prepared for the next release, adoption per edition
+- [Self-hosted typefaces](SELF-HOSTED-FONTS.md): `@motionstudies/web/fonts.css`, vendored Inter and DM Mono with licences and provenance; published since alpha.20, adoption per edition
 - [Code and library consolidation proposal](ARCHITECTURE-CONSOLIDATION.md): application state ownership, renderer internals, data contracts and independent package consumption
 - [Package extraction provenance](EXTRACTION.md) and [release process](RELEASING.md)
 - [Underfall's shared ground-transport contribution](SHARED-GROUND-TRANSPORT.md) — capture, UK clocks, WebTRIS interpretation and aggregate-road evidence; publication and adoption tracked separately
@@ -22,7 +24,7 @@
 
 - [Shared panel layout and controls](PANEL-LAYOUT.md) — compact airport presentation, responsive clearances and [alpha.14 release record](PANEL-LAYOUT-ALPHA-14.md)
 - [All Change foundations](ALLCHANGE-FOUNDATIONS.md) — railway readers, timetable patterns, station calls, renderer interfaces and observation windows
-- [Zugunruhe's shared field contribution](SHARED-FIELDS.md) — estimated fields with support, gridded series, illustrative field paths and daylight; prepared for the next coordinated release, adoption tracked separately
+- [Zugunruhe's shared field contribution](SHARED-FIELDS.md) — estimated fields with support, gridded series, illustrative field paths and daylight; published shared field contracts, adoption tracked separately
 
 ## Numbered studies
 

@@ -2,11 +2,17 @@
 
 The four shared packages are MIT-licensed. The first coordinated release is `0.1.0-alpha.0`, published under the npm `next` tag. Stable versions use `latest`. All four packages share a version; internal dependencies pin that exact version. Source workspaces stay private. Only an explicit release build produces publishable compiled distributions.
 
+## Current release procedure
+
+The latest verified coordinated release is `0.1.0-alpha.32` under `next`, published from `d0ae8d0` through [trusted run 39163561718](https://github.com/emmettl/motionstudies/actions/runs/39163561718). All four registry integrities match the checked tarballs; see [October maintenance](DEPENDENCIES-2026-10-18.md).
+
+For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
+
 ## Completed bootstrap
 
 `0.1.0-alpha.0` bootstrapped the package names. `0.1.0-alpha.1` verified OIDC for all four packages without a token fallback. The GitHub bootstrap secret has been removed. The historical bootstrap procedure follows.
 
-## Before the first release
+## Historical first-release bootstrap
 
 1. Merge the prepared workspace and release workflow into `main` after CI passes.
 2. Confirm that the npm account owning `NPM_TOKEN` can create packages in the `@motionstudies` scope. This requires access to that npm scope; the similarly named GitHub repository does not grant it.
@@ -17,7 +23,7 @@ Validation has no npm write credentials. It builds and packs each package, typec
 
 If a release stops after one package, rerun the same committed version. The publisher checks all registry versions first and skips only byte-identical existing artifacts. A conflicting existing version is an error: fix the source and bump all four packages rather than overwriting a release. The four registry writes are sequential, not atomic.
 
-## Switch to trusted publishing
+## Trusted publisher configuration
 
 After all four package names exist, configure a GitHub Actions trusted publisher in each package's npm settings:
 
@@ -29,11 +35,13 @@ After all four package names exist, configure a GitHub Actions trusted publisher
 | Environment | `npm` |
 | Allowed action | Direct `npm publish` |
 
-The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstudies/three` and `@motionstudies/web`. The workflow uses GitHub-hosted Ubuntu, Node 24, npm 11.21.0 and `id-token: write` in the publish job. Trusted mode passes no npm token, so success proves OIDC rather than a token fallback. Run trusted mode for the next new version; a rerun that skips already-published packages does not test authentication.
+The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstudies/three` and `@motionstudies/web`. The workflow uses GitHub-hosted Ubuntu, Node 24, npm 11.21.1 and `id-token: write` in the publish job. Trusted mode passes no npm token, so success proves OIDC rather than a token fallback. Run trusted mode for the next new version; a rerun that skips already-published packages does not test authentication.
 
 After a successful OIDC publication, revoke the bootstrap token in npm and delete the GitHub `NPM_TOKEN` secret. npm's “Require two-factor authentication and disallow tokens” setting is compatible with trusted publishers.
 
-## Prepare subsequent versions
+## Release history
+
+`0.1.0-alpha.32` recovers initial hover or keyboard focus when deferred button help mounts after the first interaction. Local / Express adopts it with delayed-module regressions.
 
 `0.1.0-alpha.31` updates the rendering and development dependencies to the stable versions recorded in [the dependency refresh](DEPENDENCIES-ALPHA-31.md), with a coordinated edition rollout. It also publishes the already-merged feed-observer fix that uses manual redirect handling on Cloudflare Workers and rejects redirects without forwarding credentials.
 
@@ -41,7 +49,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 `0.1.0-alpha.29` adds `@motionstudies/data/release` and `@motionstudies/data/release-files`, the shared verifier for recorder release handoffs, and an optional `sha256` on published-day list entries (see [the release contract](RELEASE-CONTRACT.md)). `@motionstudies/data/recorder-evidence` now verifies journals up to 256 MiB, so a national bus day's archive can pass, and reads files into buffers sized from the file rather than the limit. It also includes the feed observer change from #35. No renderer or opening-bundle change.
 
-The next coordinated version adds compression at rest to the source store (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records) alongside the already-merged field modules. They are prepared in the workspace without a version bump; assign the version when the release is cut.
+The source store includes compression at rest (`compression: 'gzip'`, `readObject`, `compactObjects`, `storedBytes` and `encoding` on records). These APIs are included in the current published release; the earlier note describing them as awaiting publication is obsolete.
 
 `0.1.0-alpha.23` gives the shared timeline England’s broad visible rail and round handle, with a standalone `TimelineScrubber` export for plain playback bars. Both chart and plain controls share keyboard/touch behavior and completion of pointer drags outside the control. England adopts it for bus and power clocks.
 

@@ -17,10 +17,12 @@ The catalogue for authored works and research about transport, geography and mov
 | MANIFEST · World trade | [Open study](https://motionstudies.app/manifest/) · [Brief](docs/MANIFEST.md) | [manifest](https://github.com/emmettl/manifest) |
 | Umlauf · Berlin | [Open study](https://motionstudies.app/umlauf/) · [Brief](docs/BERLIN.md) | [umlauf](https://github.com/emmettl/umlauf) |
 | Zugunruhe · European bird migration | [Open study](https://motionstudies.app/zugunruhe/) · [Brief](docs/ZUGUNRUHE.md) | [zugunruhe](https://github.com/emmettl/zugunruhe) |
-| Underfall · Bristol | Local research edition; not deployed · [Brief](docs/BRISTOL.md) | Local checkout |
+| Underfall · Bristol | Unlisted research edition · [Brief](docs/BRISTOL.md) | [Repository (private)](https://github.com/emmettl/underfall) |
 | ZENIT · Earth orbit | [Public orbital-family study](https://zenit.motionstudies.app/) · [Brief](docs/ZENIT.md) · 635 retained movers · 12 attachments · ISS descent | [zenit](https://github.com/emmettl/zenit) |
 
 [Project goals](docs/VISION.md) · [Overall roadmap](ROADMAP.md) · [City briefs and source audits](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
+
+PFAD is an independent, unnumbered [pathfinding study](https://pfad.motionstudies.app/) ([repository](https://github.com/emmettl/pfad)). [England](https://github.com/emmettl/england) remains private national research; [motionstudies-recorder](https://github.com/emmettl/motionstudies-recorder) provides recording infrastructure. [Grid/84](https://github.com/emmettl/grid84) is a separate project rather than a Motion Studies edition.
 
 ## Development
 
@@ -35,16 +37,16 @@ See [package contracts](packages/README.md) and [extraction provenance](docs/EXT
 
 ## Repository ownership
 
-`packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. Twelve editions/research projects and the recorder consume exact published versions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances), [Gleislicht](https://github.com/emmettl/gleislicht), Umlauf, MANIFEST, Zugunruhe and NORIKAE live in independent public repositories. [Local / Express](https://github.com/emmettl/local-express) has a private repository while its publication hold remains unresolved, and Underfall also has a private repository. See the [alpha.31 rollout](docs/DEPENDENCIES-ALPHA-31.md#edition-adoption).
+`packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. Thirteen editions/research projects and the recorder consume exact published versions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances), [Gleislicht](https://github.com/emmettl/gleislicht), Umlauf, MANIFEST, Zugunruhe and NORIKAE live in independent public repositories. [Local / Express](https://github.com/emmettl/local-express) has a private repository while its publication hold remains unresolved, and Underfall also has a private repository. See the [alpha.31 rollout](docs/DEPENDENCIES-ALPHA-31.md#edition-adoption).
 
-The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The latest verified coordinated prerelease is `0.1.0-alpha.31` under `next`, published through [trusted release run 36779204421](https://github.com/emmettl/motionstudies/actions/runs/36779204421) with all four registry artifacts checked against the tested tarballs. See the [dependency refresh and edition adoption record](docs/DEPENDENCIES-ALPHA-31.md). Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
+The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The latest verified coordinated prerelease is `0.1.0-alpha.32` under `next`, published through [trusted release run 39163561718](https://github.com/emmettl/motionstudies/actions/runs/39163561718) with all four registry artifacts checked against the tested tarballs. See the [October maintenance and alpha.32 release record](docs/DEPENDENCIES-2026-10-18.md). Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
 
 ## Hosting
 
-Checks run for pushes and pull requests. Only `main` deploys the catalogue plus lab to GitHub Pages at `https://motionstudies.app/`. Cloudflare manages the domain DNS; the custom domain is configured in the repository’s Pages settings. The Actions deployment does not require a `CNAME` file. Seven public editions are hosted directly by individual Cloudflare Workers Static Assets deployments under `motionstudies.app`, with GitHub Pages copies retained; see [domain routing](docs/HOSTING.md). Local / Express remains unpublished.
+Checks run for pushes and pull requests. Only `main` deploys the catalogue plus lab to GitHub Pages at `https://motionstudies.app/`. Cloudflare manages the domain DNS; the custom domain is configured in the repository’s Pages settings. The Actions deployment does not require a `CNAME` file. Edition-specific Cloudflare Workers Static Assets deployments serve the public studies under `motionstudies.app`, with GitHub Pages mirrors where configured; see [domain routing](docs/HOSTING.md). Local / Express remains unpublished.
 
 ## Local validation
 
-At the alpha.31 release: 439 shared unit tests, 100 packed-consumer browser checks with two existing skips and 34 loader browser checks, alongside type, lint and architecture checks. These are local Chromium/WebKit results; the trusted release and catalogue deployment also passed GitHub-hosted validation.
+At the alpha.32 release: 439 shared unit tests, 100 packed-consumer browser checks with two existing skips and 34 loader browser checks, alongside type, lint and architecture checks. These are local Chromium/WebKit results; the trusted release and catalogue deployment also passed GitHub-hosted validation.
 
-See the [18 October maintenance record](docs/DEPENDENCIES-2026-10-18.md) for subsequent dependency updates, checkout reconciliation and edition validation.
+See the [18 October maintenance record](docs/DEPENDENCIES-2026-10-18.md) for dependency updates, checkout reconciliation, reliability fixes and edition validation.

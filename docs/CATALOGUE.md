@@ -2,11 +2,13 @@
 
 [Open catalogue](https://emmettl.github.io/motionstudies/) · [Project goals](VISION.md) · [Roadmap](../ROADMAP.md) · [Study index](README.md)
 
-**Reconciled 13 September 2026.** Gleislicht, All Change and Correspondances have public editions; Local / Express remains private. Berlin is public, Tokyo and MANIFEST have public synthetic previews, Zugunruhe has a public radar-derived study, and Bristol has a local research implementation. The [status register](STUDY-STATUS.md) records inspected and served revisions separately. Public implementation does not itself admit a numbered work.
+**Historical reconciliation — 13 September 2026.** Gleislicht, All Change and Correspondances have public editions; Local / Express remains private. Berlin is public, Tokyo and MANIFEST have public synthetic previews, Zugunruhe has a public radar-derived study, and Bristol has a local research implementation. The [status register](STUDY-STATUS.md) records inspected and served revisions separately. Public implementation does not itself admit a numbered work.
 
 Motion Studies is an authored series, not a list of cities supported by a transport renderer. Every numbered work must make a visual argument about how its place moves, how that movement becomes data and what the local map teaches people to believe about distance.
 
 **Homepage selection — 30 September 2026:** Gleislicht, All Change and Correspondances remain the featured numbered works. [LUFT](https://motionstudies.app/luft/) joins them as an unnumbered research study: a recorded day of aircraft movement reveals Europe through routes, airport rhythms and accumulating traces. This recognises its place in the public catalogue without assigning a number or closing its artistic thesis. Local / Express is paused indefinitely; its number and private proof are retained, with a short pause note replacing its featured homepage entry. Other programme decisions below retain their recorded dates.
+
+The implementation and revision summaries below retain their inspection dates. Underfall now has a private repository and an unlisted hosting workflow; consult each repository for current operational state and the [October maintenance record](DEPENDENCIES-2026-10-18.md) for the latest package refresh. Catalogue admission remains a separate editorial decision.
 
 ## Numbered works
 
