@@ -1,10 +1,9 @@
 # Dependency maintenance — 18 October 2026
 
 This pass updates the shared workspace, fourteen edition/research checkouts and
-`motionstudies-recorder`. The four published Motion Studies packages remain at
-exact `0.1.0-alpha.31`: consumer dependency patches fit their existing peer ranges,
-so this maintenance does not require a new shared-package release. All four
-rebuilt tarballs match their published npm integrity values byte-for-byte.
+`motionstudies-recorder`. The initial dependency pass retained exact `0.1.0-alpha.31`; its four rebuilt
+tarballs matched the published npm integrity values byte-for-byte. The subsequent
+tooltip fix required the coordinated alpha.32 release described below.
 
 ## Stable versions
 
@@ -54,8 +53,8 @@ merging, then restored; those saved stashes remain available. Existing PFAD work
 Swiss local settings, Underfall's local tooling and Zugunruhe audio work are
 preserved. The platform workspace's existing untracked operational evidence is
 also retained. Maintenance changes are committed separately from that local work and pushed to
-the edition and recorder remotes. No package publication or recording-service
-restart is required. Normal repository CI and deployment workflows run on push.
+the edition and recorder remotes. The initial dependency pass required no package publication or recording-service
+restart. Normal repository CI and deployment workflows run on push.
 
 LUFT's refreshed source points to the already published 16 October aircraft day.
 Its ignored local data still held an older day and correctly failed integrity
@@ -185,3 +184,46 @@ configured by PFAD. NORIKAE main is separately checked and passes its 12 browser
 the active development branch's 14 cases remain represented in the table above.
 These additional clean-copy runs are recorded separately rather than inflating the
 active-checkout scenario totals.
+
+
+## Follow-up reliability fixes and alpha.32
+
+Paris pauses playback when a station is selected so its departure targets remain
+stable while inspected; explicit playback resumes normally. The performance
+probe waits for the first positive GPU upload instead of sampling before the
+initial render. The local full run passed 237 cases with two skips; its one
+startup-probe failure was corrected and all four affected browser cases passed.
+
+Swiss batches layout observations through animation frames and recomputes
+playback clearance when wrapped footer text moves the controls. Opening the Rigi
+guide suspends the map renderer and its clock; dismissal restores rendering.
+The full local browser run passed 109 cases with 11 skips; its short-screen
+clearance failure was corrected and eight affected cases then passed. A hosted
+Linux WebKit Rigi stability timeout remained, so the phone job now uses native
+macOS WebKit, matching local validation, with a 25-minute job limit. Chromium's
+two hosted shards passed. This runner change awaits hosted confirmation.
+
+ZENIT explicitly loses retired WebGL contexts after disposing their resources,
+with a progressive-data lifecycle regression. Hosted browser workers run singly.
+All 122 local browser cases and 51 unit cases pass; hosted deployment passed.
+London's phone jobs likewise use native macOS WebKit, with bounded browser jobs
+and latest-main cancellation for its publication queue. All 31 local phone cases
+and its hosted deployment passed.
+
+The shared tooltip component reconciles hover and keyboard focus already present
+when its lazy module mounts. All four packages were published together as
+`0.1.0-alpha.32` under the `next` tag from `d0ae8d0`. The trusted release workflow
+passed and all four public registry integrities match the locally tested tarballs.
+Validation included 439 shared unit tests, 11 hosting tests, 100 packed-consumer
+browser cases (two skips), 34 loader cases and four package publication dry runs.
+Local / Express now pins these registry packages, with deterministic delayed-load
+hover and focus regressions. Its full local browser run passed 23 cases with
+three skips; a clean registry installation also passed types, lint, unit, build,
+boundary and publication-budget checks before push.
+
+Old rebuildable CI outputs were removed under the approved retention rules,
+freeing approximately 29.98 GiB in total. Previously unbounded edition build artifacts
+now retain seven days. Underfall's upload action is current and retains one day;
+its checks pass, but the latest retry still received GitHub's artifact storage
+quota error. Its deployment remains blocked until the account's quota meter
+permits the required validated build artifact.
