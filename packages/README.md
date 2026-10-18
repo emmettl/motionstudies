@@ -25,6 +25,28 @@ Build release candidates with `npm run build:packages`. Distribution manifests a
 
 Source workspace manifests always stay private. `npm run check:release` builds public candidates, tests their packed consumer and records the tested tarball hashes; `npm run release:dry-run` inspects the publication without writing to npm. The manual main-branch `release.yml` workflow publishes those same tarballs with public access and provenance. See [release instructions](https://github.com/emmettl/motionstudies/blob/main/docs/RELEASING.md) for bootstrap-token and trusted-publisher setup. All four shared packages are MIT-licensed; each distribution includes `LICENSE`.
 
+## Edition maintenance and layout observation
+
+These exports are introduced in coordinated release `0.1.0-alpha.33`; earlier releases do not expose them.
+
+`checkEditionBoundary` from `@motionstudies/data/edition-boundary` verifies the four
+shared registry pins, lockfile metadata, installed package identity, public exports
+and declared source imports. Pass `directories` for the edition's required source
+and worker roots, and `additionalPackages` for other packages needing the same
+exact-pin/public-export checks. `root` defaults to the working directory. The
+checker performs no installation, mutation or network access. It rejects missing
+configured directories, workspaces, shared source copies and installed links.
+`moduleReferences` from `@motionstudies/data/module-references` supplies the same
+AST-based import analysis to local policy tests; it reports nonliteral imports as
+unverifiable. Dataset, worker and publication policy remain edition-owned.
+
+`observeLayout` from `@motionstudies/web/observe-layout` measures once immediately,
+then batches resize notifications into one animation frame. Call its returned
+cleanup before removing the observed elements; it disconnects the observer and
+cancels pending work. Without ResizeObserver it still performs the initial
+measurement. The caller owns the elements, geometry, CSS variables and their
+cleanup; the helper does not choose clearance values or depend on React.
+
 ## Timetable patterns, station calls and observation windows
 
 `@motionstudies/core/domain/network-patterns` provides a transport-neutral repeated-schedule codec. `@motionstudies/web/use-pattern-network-day` lazily decodes current/adjacent chunks after verifying byte length and SHA-256; it exposes retry and drops old-source state when the manifest URL changes. Supply stable options and a stable asset resolver. Format/category options support existing edition wire contracts.

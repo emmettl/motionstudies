@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.33` adds the shared Node edition-boundary checker/import parser and the browser layout observer. Seven edition adoptions preserve their scan roots and additional-package rules; London and Switzerland use the observer while keeping local geometry policy. Publication uses the standard trusted workflow.
+
 `0.1.0-alpha.32` recovers initial hover or keyboard focus when deferred button help mounts after the first interaction. Local / Express adopts it with delayed-module regressions.
 
 `0.1.0-alpha.31` updates the rendering and development dependencies to the stable versions recorded in [the dependency refresh](DEPENDENCIES-ALPHA-31.md), with a coordinated edition rollout. It also publishes the already-merged feed-observer fix that uses manual redirect handling on Cloudflare Workers and rejects redirects without forwarding credentials.

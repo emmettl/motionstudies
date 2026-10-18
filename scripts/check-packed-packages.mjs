@@ -83,6 +83,11 @@ try {
     export const mapLabelsContract = selectMapLabels([], mapLabelBudget(32), {left:0,top:0,right:400,bottom:300})
     import { readPowerDay, unitPower, sumPower, fuelMixAt, type PowerDay } from '@motionstudies/core/domain/power-day'
     export const powerContract = (input: unknown) => { const day: PowerDay = readPowerDay(input); return [sumPower(day, day.units, 0), fuelMixAt(day, 0), day.units[0] ? unitPower(day, day.units[0], 0) : null] }
+    import { observeLayout } from '@motionstudies/web/observe-layout'
+    export const layoutObserver: (elements: readonly Element[], measure: () => void) => () => void = observeLayout
+    import { checkEditionBoundary, type EditionBoundaryOptions } from '@motionstudies/data/edition-boundary'
+    export const boundaryOptions: EditionBoundaryOptions = { directories: ['src'], additionalPackages: [] }
+    export const checkBoundary = checkEditionBoundary
     import { mountMotionStudy, type MotionStudyMountOptions } from '@motionstudies/web/mount-motion-study'
     export const mountPresentation = (theme: MotionStudyMountOptions['theme']) => mountMotionStudy({ id: 'independent-consumer', theme }, null)
     import { encodeNetworkPatterns, decodeNetworkPatterns } from '@motionstudies/core/domain/network-patterns'

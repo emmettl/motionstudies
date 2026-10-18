@@ -1,0 +1,98 @@
+import { it, expect, onTestFinished } from 'vitest'
+import { mkdtemp, mkdir, writeFile, rm, symlink } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { checkEditionBoundary } from './edition-boundary.mjs'
+import { moduleReferences } from './module-references.mjs'
+
+async function fixture(extra = false) {
+  const root = await mkdtemp(join(tmpdir(), 'edition-boundary-'))
+  onTestFinished(() => rm(root, { recursive: true, force: true }))
+  const dependencies = {}, packages = {}
+  async function write(path, value) {
+    await mkdir(join(root, path, '..'), { recursive: true })
+    await writeFile(join(root, path), typeof value === 'string' ? value : JSON.stringify(value))
+  }
+  const names = ['core', 'data', 'three', 'web'].map(name => `@motionstudies/${name}`)
+  if (extra) names.push('@example/audio')
+  for (const name of names) {
+    dependencies[name] = '0.1.0-alpha.1'
+    packages[`node_modules/${name}`] = { version: dependencies[name], resolved: `https://registry.npmjs.org/${name}/artifact.tgz`, integrity: 'sha512-fixture' }
+    await write(`node_modules/${name}/package.json`, { version: dependencies[name], ...(name.startsWith('@motionstudies/') ? { private: false } : {}), exports: { './public': './public.js' } })
+  }
+  await write('package.json', { dependencies })
+  await write('package-lock.json', { packages })
+  await write('src/app.ts', "export { value } from '@motionstudies/core/public'")
+  await write('scripts/build.mjs', "import { readFile } from 'node:fs/promises'")
+  return { root, write, dependencies, packages }
+}
+
+it('parses imports, type queries, re-exports and require while ignoring comments', () => {
+  expect(moduleReferences(`// import 'comment-only'
+    import type { T } from 'types'; export * from 'exports'; import 'effects';
+    const p = import('lazy'); type X = import('type-query').X; const r = require('commonjs')`, 'app.ts'))
+    .toEqual(['types', 'exports', 'effects', 'lazy', 'type-query', 'commonjs'])
+  expect(moduleReferences('const value = import(variable)', 'app.ts')).toEqual([undefined])
+  expect(moduleReferences('@import "./local.css"; @import url("https://example.test/font.css");', 'app.css')).toEqual(['./local.css', 'https://example.test/font.css'])
+})
+
+it('checks an explicit root and extra registry packages independently of cwd', async () => {
+  const f = await fixture(true)
+  await f.write('src/app.ts', "import '@example/audio/public'")
+  await expect(checkEditionBoundary({ root: f.root, additionalPackages: ['@example/audio'] })).resolves.toBeUndefined()
+  await f.write('src/app.ts', "import '@example/audio/private'")
+  await expect(checkEditionBoundary({ root: f.root, additionalPackages: ['@example/audio'] })).rejects.toThrow('Private package import')
+})
+
+it.each([
+  ["import 'undeclared-package'", 'Undeclared dependency'],
+  ["export * from '@motionstudies/core/private'", 'Private package import'],
+  ["import '../../sibling/source.ts'", 'imports outside'],
+  ['const loaded = import(sourceName)', 'Unverifiable module reference'],
+])('rejects forbidden source references: %s', async (source, error) => {
+  const f = await fixture()
+  await f.write('src/app.ts', source)
+  await expect(checkEditionBoundary({ root: f.root })).rejects.toThrow(error)
+})
+
+it.each(['range', 'missing', 'registry', 'integrity', 'linked', 'installed'])('rejects %s package drift', async kind => {
+  const f = await fixture(), name = '@motionstudies/core'
+  if (kind === 'range') f.dependencies[name] = '^0.1.0'
+  if (kind === 'missing') delete f.dependencies[name]
+  if (kind === 'registry') f.packages[`node_modules/${name}`].resolved = 'file:../candidate'
+  if (kind === 'integrity') delete f.packages[`node_modules/${name}`].integrity
+  if (kind === 'linked') f.packages[`node_modules/${name}`].link = true
+  if (kind === 'installed') await f.write(`node_modules/${name}/package.json`, { version: '0.0.0', private: false })
+  await f.write('package.json', { dependencies: f.dependencies })
+  await f.write('package-lock.json', { packages: f.packages })
+  await expect(checkEditionBoundary({ root: f.root })).rejects.toThrow(/Expected an exact|Registry lock mismatch|Installed release mismatch/)
+})
+
+it('rejects installed source links despite valid manifest and lock entries', async () => {
+  const f = await fixture()
+  await rm(join(f.root, 'node_modules/@motionstudies/core'), { recursive: true })
+  await mkdir(join(f.root, 'candidate'))
+  await symlink(join(f.root, 'candidate'), join(f.root, 'node_modules/@motionstudies/core'))
+  await expect(checkEditionBoundary({ root: f.root })).rejects.toThrow('Shared source link')
+})
+
+it('requires configured worker directories and checks their imports', async () => {
+  const f = await fixture(), directories = ['src', 'scripts', 'edge-worker']
+  await expect(checkEditionBoundary({ root: f.root, directories })).rejects.toThrow()
+  await f.write('edge-worker/entry.ts', "import 'unlisted-worker-dependency'")
+  await expect(checkEditionBoundary({ root: f.root, directories })).rejects.toThrow('Undeclared dependency')
+})
+
+it('rejects workspaces and vendored shared directories', async () => {
+  const f = await fixture()
+  await f.write('package.json', { dependencies: f.dependencies, workspaces: ['packages/*'] })
+  await expect(checkEditionBoundary({ root: f.root })).rejects.toThrow('not workspaces')
+  await f.write('package.json', { dependencies: f.dependencies })
+  await f.write('packages/copied.ts', '')
+  await expect(checkEditionBoundary({ root: f.root })).rejects.toThrow('Shared package source belongs')
+})
+
+it.each(['types.d.ts', 'types.d.mts', 'types.d.cts'])('parses ambient declarations in %s', file => {
+  expect(moduleReferences("export const value: import('@motionstudies/core/public').Value", file))
+    .toEqual(['@motionstudies/core/public'])
+})

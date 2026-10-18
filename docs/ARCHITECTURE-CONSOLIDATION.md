@@ -1,6 +1,20 @@
 # Code and library consolidation proposal
 
-13 September 2026 · Revised proposal for discussion; implementation has not started.
+13 September 2026 proposal · Implementation status updated 18 October 2026.
+
+## Current implementation status
+
+Bristol’s local loading/playback controller and the narrower `mountMotionStudy`
+interface are implemented; they are no longer proposed first deliveries. The
+remaining application-state, verified-loading and renderer work below remains a
+bounded follow-up programme.
+
+The current maintenance pass extracts the seven equivalent edition boundary
+checkers and their import parser into Node tooling, preserving configured worker
+roots and additional-package policy. It also extracts animation-frame layout
+observation for London and Switzerland; each edition retains its own geometry
+and CSS clearances. The shared exports and consumer patches await a coordinated
+registry release before adoption can be pushed. See [package contracts](../packages/README.md#edition-maintenance-and-layout-observation).
 
 ## Objective and scope
 
