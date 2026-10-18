@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.32` under `next`, published from `d0ae8d0` through [trusted run 39163561718](https://github.com/emmettl/motionstudies/actions/runs/39163561718). All four registry integrities match the checked tarballs; see [October maintenance](DEPENDENCIES-2026-10-18.md).
+The latest verified coordinated release is `0.1.0-alpha.33` under `next`, published from `dbe52f5` through [trusted run 39170794005](https://github.com/emmettl/motionstudies/actions/runs/39170794005). All four registry integrities match the checked tarballs; see [October maintenance](DEPENDENCIES-2026-10-18.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 

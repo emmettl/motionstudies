@@ -227,3 +227,40 @@ now retain seven days. Underfall's upload action is current and retains one day;
 its checks pass, but the latest retry still received GitHub's artifact storage
 quota error. Its deployment remains blocked until the account's quota meter
 permits the required validated build artifact.
+
+
+## Maintenance tooling and layout observation — 19 October 2026
+
+All four packages are published as `0.1.0-alpha.33` under `next` from `dbe52f5`
+through [trusted run 39170794005](https://github.com/emmettl/motionstudies/actions/runs/39170794005).
+All registry integrities match that workflow's tested tarballs. The published
+runtime and declaration bytes match the local candidates; their README wording
+was completed before publication.
+
+Seven editions now call the shared Node boundary checker and import parser,
+retaining their worker roots and PFAD's additional Driftbox package policy.
+The parser preserves ambient `.d.ts`, `.d.mts` and `.d.cts` support. London and
+Switzerland use the shared animation-frame layout observer, keeping their own
+geometry and CSS calculations. Cleanup disconnects observers and cancels queued
+measurements. No dataset or acquisition policy changes.
+
+The shared gates pass 460 unit tests, 11 hosting tests, 100 packed-consumer browser
+cases (two skips), 34 loader cases and all four publication dry runs. Switzerland
+passes 1,426 unit tests. London's full unit run passed 276 cases and hit one
+five-second timeout while both large suites ran; the isolated four-case file
+then passed without assertion or timeout changes. Other affected edition unit
+counts are Paris 25, Local / Express 2, NORIKAE 28 on the development branch
+and 28 on main, clean PFAD 142 and Berlin 20.
+Final alpha.33 layout journeys pass seven London cases (one device skip) and
+11 Swiss cases (three device skips).
+
+All seven adoptions pass clean registry installs, edition boundaries, type/lint,
+build and applicable payload gates. PFAD is checked in an isolated committed
+checkout; its existing research work is retained. The active Swiss settings and
+all other pre-existing local work remain outside the commits. NORIKAE's main and
+existing development branch both receive the adoption. Hosted edition publication
+continues through each repository's normal workflow; a pushed commit is not a
+claim of a completed deployment.
+
+Exact source commits, registry integrities and validation are recorded in
+[the alpha.33 evidence](evidence/consolidation-alpha33.json).

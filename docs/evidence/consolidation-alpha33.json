@@ -1,0 +1,105 @@
+{
+  "version": "0.1.0-alpha.33",
+  "releaseSourceCommit": "dbe52f56192f365c05b62aa0a9939c8610c28961",
+  "releaseRun": "https://github.com/emmettl/motionstudies/actions/runs/39170794005",
+  "registryArtifacts": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.33",
+      "file": "motionstudies-core-0.1.0-alpha.33.tgz",
+      "integrity": "sha512-rOK/nzDijhNwZGBMTkea7ALqvzNsT+OR/2Z7F5OPBzHdsYcI1lKAXYm18xI1hurLhzxG0o68F6C5gCEEUJJ74w=="
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.33",
+      "file": "motionstudies-data-0.1.0-alpha.33.tgz",
+      "integrity": "sha512-HKzqqeYyX3do6Bm991/BQXpnISi9vQDJTcZwEwqmcnymo/h3/EAvXhXGhpnd5SjAQKdkGG3xuBgf9lg9mWQ16Q=="
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.33",
+      "file": "motionstudies-three-0.1.0-alpha.33.tgz",
+      "integrity": "sha512-Qoszv+PoO/ciLLbW6tfCmjzmxE4vtCmznEJflrvqpAYV7zBtIrDWCNwrxpKxRxW/nMOxwgRS27ZcahKm81ZhaQ=="
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.33",
+      "file": "motionstudies-web-0.1.0-alpha.33.tgz",
+      "integrity": "sha512-vgRSeyNckzjr+L6kbkKRSO1ayLBN6aLseOE/6P7C6b0ksBz/Z7LIINy08j1vO8s4i4m1kqKHNGB4emLS9fh74A=="
+    }
+  ],
+  "editionCommits": {
+    "allchange": {
+      "main": "7bf0bc9565dbbcfadda25acf6c5146b91622786e"
+    },
+    "correspondances": {
+      "main": "128f5c8728687e85ed5656110355311bed99d621"
+    },
+    "gleislicht": {
+      "main": "7f1360390465a77eb1c144511f3434b9fddcf3e8"
+    },
+    "local-express": {
+      "main": "13734ac6bfbb6384b44c16f56075dbe1b6064383"
+    },
+    "norikae": {
+      "main": "d8efa75aa5b2c49cf75e601c24544d55c6b29d61",
+      "development": "3e8c1e846ca2f1b4edb635d8e0b6ddb224eda89c"
+    },
+    "pfad": {
+      "main": "492236d5e788ddb5291ebfa08e283209037d6056"
+    },
+    "umlauf": {
+      "main": "56807a00d7c317387f7b4ef881eaeffa6003b0ab"
+    }
+  },
+  "registryChecks": {
+    "correspondances": {
+      "ok": true
+    },
+    "allchange": {
+      "ok": true
+    },
+    "gleislicht": {
+      "ok": true
+    },
+    "local-express": {
+      "ok": true
+    },
+    "norikae": {
+      "ok": true
+    },
+    "umlauf": {
+      "ok": true
+    },
+    "pfad": {
+      "ok": true
+    }
+  },
+  "validation": {
+    "sharedUnit": 460,
+    "hosting": 11,
+    "packedBrowser": {
+      "passed": 100,
+      "skipped": 2
+    },
+    "loaderBrowser": 34,
+    "layoutBrowser": {
+      "passed": 18,
+      "skipped": 4
+    },
+    "swissUnit": 1426,
+    "londonUnit": {
+      "fullPass": 276,
+      "fullTimeout": 1,
+      "isolatedFilePass": 4
+    },
+    "parisUnit": 25,
+    "localExpressUnit": 2,
+    "norikaeUnit": 28,
+    "pfadCleanUnit": 142,
+    "berlinUnit": 20,
+    "norikaeMainUnit": 28
+  },
+  "existingWorkPreserved": true,
+  "norikaeMainRegistryChecksPassed": true
+}

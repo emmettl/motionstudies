@@ -1,6 +1,6 @@
 # Code and library consolidation proposal
 
-13 September 2026 proposal · Implementation status updated 18 October 2026.
+13 September 2026 proposal · Implementation status updated 19 October 2026.
 
 ## Current implementation status
 
@@ -13,8 +13,8 @@ The current maintenance pass extracts the seven equivalent edition boundary
 checkers and their import parser into Node tooling, preserving configured worker
 roots and additional-package policy. It also extracts animation-frame layout
 observation for London and Switzerland; each edition retains its own geometry
-and CSS clearances. The shared exports and consumer patches await a coordinated
-registry release before adoption can be pushed. See [package contracts](../packages/README.md#edition-maintenance-and-layout-observation).
+and CSS clearances. The shared exports are published as alpha.33 and all seven consumer adoptions
+are pushed after clean registry installation checks. See [package contracts](../packages/README.md#edition-maintenance-and-layout-observation).
 
 ## Objective and scope
 

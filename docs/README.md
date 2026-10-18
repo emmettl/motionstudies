@@ -4,7 +4,7 @@
 
 ## Programme and shared work
 
-- [October maintenance and alpha.32 release](DEPENDENCIES-2026-10-18.md): current toolchain, package publication and edition reliability checks
+- [October maintenance and alpha.32/33 releases](DEPENDENCIES-2026-10-18.md): current toolchain, package publication and edition reliability checks
 
 - [Project vision and goals](VISION.md): the creative premise, the world in miniature, and what these ask of the engineering
 - [Historical study status — 13 September 2026](STUDY-STATUS.md): inspected implementations, served revisions, evidence boundaries and remaining work
