@@ -1,5 +1,7 @@
 # Study status — 13 September 2026
 
+> Historical snapshot from 13 September 2026. For the current package baseline and checkout maintenance, see [the roadmap](../ROADMAP.md#current-maintenance-position--18-october-2026) and [October maintenance record](DEPENDENCIES-2026-10-18.md). Served revisions below have not been reverified by that maintenance pass.
+
 [Study briefs](README.md) · [Catalogue programme](CATALOGUE.md) · [Roadmap](../ROADMAP.md)
 
 This reconciliation records what the edition checkouts actually contain, what their public release metadata serves, and what remains a proposal. It supersedes the 7 September implementation summaries. The older source and rights audits retain their own dates: this is not a fresh provider-terms review.

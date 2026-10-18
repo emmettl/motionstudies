@@ -2,7 +2,48 @@
 
 [Project goals](docs/VISION.md) · [Study index](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 
-## Current delivery position — 13 September 2026
+## Current maintenance position — 18 October 2026
+
+The shared platform and edition consumers use exact `0.1.0-alpha.31` packages.
+The [September dependency rollout](docs/DEPENDENCIES-ALPHA-31.md) records that
+published baseline; the [October maintenance record](docs/DEPENDENCIES-2026-10-18.md)
+tracks the subsequent dependency refresh, checkout reconciliation, Berlin clock
+fix, London layout and Zugunruhe accessibility fixes, validation and maintenance
+commits pushed across the repositories. All sixteen local platform, edition and recorder
+checkouts have fetched and incorporated their remote `main`, preserving local
+commits and uncommitted work. Local changes and test results do not establish a
+new published package or deployed edition.
+
+- **Shared platform:** field/daylight contracts, progressive loaders, timeline,
+  vehicle counting, label allocation and rendering performance helpers are
+  available through the published packages. The alpha.9 inventory below is history.
+- **Gleislicht, All Change and Correspondances:** independent public editions
+  consume alpha.31. The original Swiss scope remains accepted; additional data
+  and interface work follows each edition's own release gates.
+- **LUFT, MANIFEST, Umlauf and Zugunruhe:** independent public studies retain
+  their source, publication and physical-device evidence boundaries. MANIFEST's
+  public vessel workload remains synthetic. Berlin's metric elevations and
+  catalogue admission remain open.
+- **PFAD and ZENIT:** independent public studies have their own repositories and
+  implementation records; see [PFAD](https://github.com/emmettl/pfad) and the
+  [ZENIT brief](docs/ZENIT.md). ZENIT retains 635 orbital movers
+  and 12 attachments; PFAD owns its routing and source-data contracts.
+- **England, Underfall and the recorder:** national composition, Bristol research
+  and acquisition are separate repositories. Recorder recovery and watchdog
+  changes are included in the updated checkout; updating source does not restart
+  the recording service or establish feed health.
+- **Local / Express and NORIKAE:** remain parked. Dependency maintenance does not
+  resume acquisition or change their publication eligibility.
+- **GRID84:** participates in the dependency refresh with its independent map
+  stack; it does not consume the transport packages.
+
+Remaining engineering priorities are measured idle-rendering and decode costs,
+physical-device performance evidence where still required, and gradual separation
+of large application/scene modules. No new acquisition or numbered catalogue
+admission follows from this maintenance pass. Normal repository CI and deployment
+workflows run from the pushed maintenance commits.
+
+## Historical delivery position — 13 September 2026
 
 The [study-status register](docs/STUDY-STATUS.md) reconciles nine edition checkouts with public release metadata. All inspected editions consume exact alpha.9 packages; deployment is tracked separately from local source. The older dated milestones below remain history, not a current release inventory.
 

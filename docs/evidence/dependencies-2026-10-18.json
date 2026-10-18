@@ -1,0 +1,1694 @@
+{
+  "date": "2026-10-18",
+  "scope": "Dependency, clock, layout, accessibility and roadmap maintenance; commits pushed to all sixteen repository remotes; no npm publication or recorder restart",
+  "validationSummary": {
+    "date": "2026-10-18",
+    "completed": true,
+    "unitTestsPassed": 3547,
+    "browserScenarios": {
+      "passed": 1124,
+      "failed": 0,
+      "skipped": 26
+    },
+    "remainingBrowserFailures": {},
+    "baselineControls": "All seven original failures reproduced before the application dependency refresh; now fixed and covered by passing full London/Zugunruhe reruns."
+  },
+  "savedWorkIntegrity": [
+    {
+      "repository": "gleislicht",
+      "unchangedSavedFiles": 2,
+      "changedSinceSave": []
+    },
+    {
+      "repository": "pfad",
+      "unchangedSavedFiles": 223,
+      "changedSinceSave": []
+    },
+    {
+      "repository": "underfall",
+      "unchangedSavedFiles": 0,
+      "changedSinceSave": []
+    },
+    {
+      "repository": "zugunruhe",
+      "unchangedSavedFiles": 7,
+      "changedSinceSave": []
+    }
+  ],
+  "baselineControls": {
+    "londonOriginal": 1,
+    "londonAdditional": {
+      "code": 1,
+      "seconds": 182.0
+    },
+    "zugunruhe": {
+      "code": 1,
+      "seconds": 22.0
+    },
+    "swiss": {
+      "code": 0,
+      "seconds": 16.9
+    }
+  },
+  "toolchain": {
+    "node": "24.22.0",
+    "npm": "11.21.1"
+  },
+  "sharedPackages": "0.1.0-alpha.31",
+  "browserValidationComplete": true,
+  "repositories": [
+    {
+      "repository": "motionstudies",
+      "branch": "main",
+      "fetchedMain": "5fb04b8c10bf317de67396e673a08b82254abbfd",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:architecture",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 439,
+          "additionalNodeTestsPassed": 11
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "4547ea2bc88d2bad565ef3fbeeda1470369fbcd8af0e0485c9ec1ba91da93060",
+      "lockfileSha256": "11da12ec867fa772426b6fbc5b92417d790cab6596488c1d245bcd8beabc8717",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [
+        {
+          "repo": "motionstudies",
+          "check": "packed",
+          "code": 0,
+          "seconds": 234.6,
+          "passed": 100,
+          "failed": 0,
+          "skipped": 2
+        },
+        {
+          "repo": "motionstudies",
+          "check": "loaders",
+          "code": 0,
+          "seconds": 35.1,
+          "passed": 34,
+          "failed": 0,
+          "skipped": 0
+        }
+      ],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "motionstudies",
+            "check": "packed",
+            "code": 0,
+            "seconds": 234.6,
+            "passed": 100,
+            "failed": 0,
+            "skipped": 2,
+            "flaky": 0
+          },
+          {
+            "repo": "motionstudies",
+            "check": "loaders",
+            "code": 0,
+            "seconds": 35.1,
+            "passed": 34,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          }
+        ]
+      },
+      "validationBaseHead": "5fb04b8c10bf317de67396e673a08b82254abbfd",
+      "maintenanceCommit": "Commit containing this validation record"
+    },
+    {
+      "repository": "allchange",
+      "branch": "main",
+      "fetchedMain": "9210f355411ed454d7da8e3af8649855b19305e6",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:boundary",
+          "exitCode": 0
+        },
+        {
+          "command": "npm test -- --maxWorkers=2",
+          "exitCode": 0,
+          "passed": 277
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:bundle",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "9084537c2add4bdaa8ab76f29c051d11d855878ccc389f15f0dcddc17d5a7f98",
+      "lockfileSha256": "d228bbbe05365f2621215d094a9fa58ccaa8c39d2a9345b18bb3027ce41af97d",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [
+        {
+          "repo": "allchange",
+          "check": "browser",
+          "code": 1,
+          "seconds": 961.0,
+          "passed": 56,
+          "failed": 3,
+          "skipped": 1
+        }
+      ],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "allchange",
+            "check": "browser",
+            "code": 1,
+            "seconds": 961.0,
+            "passed": 56,
+            "failed": 3,
+            "skipped": 1,
+            "flaky": 0
+          },
+          {
+            "repo": "allchange",
+            "check": "cadence",
+            "code": 0,
+            "seconds": 8.5,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          },
+          {
+            "repo": "allchange",
+            "check": "ui-full",
+            "code": 0,
+            "log": "/private/tmp/motion-refresh-logs/allchange-ui-full.log",
+            "passed": 60,
+            "failed": 0,
+            "skipped": 2
+          }
+        ],
+        "final": {
+          "passed": 60,
+          "failed": 0,
+          "skipped": 2
+        }
+      },
+      "postFixChecks": {
+        "build": "passed",
+        "unit": "passed",
+        "browser": "passed",
+        "lint": "passed",
+        "budget": "passed"
+      },
+      "validationBaseHead": "5bd2dd839c29d906bac2328041a8b3ac4057f8c0",
+      "maintenanceCommit": "9210f355411ed454d7da8e3af8649855b19305e6"
+    },
+    {
+      "repository": "correspondances",
+      "branch": "main",
+      "fetchedMain": "b2c5552e1bb89b9d30f030aff92bfae0157ceafb",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:boundary",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 25
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:bundle",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "549fc3e3359a2f8a9b3c53e09860659275bac8430f26a32520c130019912546c",
+      "lockfileSha256": "5f1a35018cc0fbbafaf2651681ee0c7b850c6fd09530b1f69c07613d038325c4",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "correspondances",
+            "check": "hardware-browser",
+            "code": 0,
+            "seconds": 1021.5,
+            "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+            "webkit": "unchanged",
+            "config": "/private/tmp/motion-refresh-hardware-configs/correspondances.config.ts",
+            "passed": 238,
+            "failed": 0,
+            "skipped": 2,
+            "flaky": 0
+          }
+        ],
+        "final": {
+          "repo": "correspondances",
+          "check": "hardware-browser",
+          "code": 0,
+          "seconds": 1021.5,
+          "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+          "webkit": "unchanged",
+          "config": "/private/tmp/motion-refresh-hardware-configs/correspondances.config.ts",
+          "passed": 238,
+          "failed": 0,
+          "skipped": 2,
+          "flaky": 0
+        },
+        "note": "Full local Chromium suite uses ANGLE Metal; WebKit settings unchanged."
+      },
+      "validationBaseHead": "8a28380dedfef8ca22eb963e24ea4c5e93266de3",
+      "maintenanceCommit": "b2c5552e1bb89b9d30f030aff92bfae0157ceafb"
+    },
+    {
+      "repository": "gleislicht",
+      "branch": "main",
+      "fetchedMain": "43588904b11b646a96ac0dd3900d868d0811b8df",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:architecture",
+          "exitCode": 0
+        },
+        {
+          "command": "npm test -- --maxWorkers=2",
+          "exitCode": 0,
+          "passed": 1425
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:bundle",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "11101a40ce663eb1f94787973158c32a4605f91d4ee6b9d5855424276d4bf418",
+      "lockfileSha256": "55a7a4bfa5e31ec85e742250fd8eb6a7fb2cccf8bbf40be4a3322b85f67eb519",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "gleislicht",
+            "check": "hardware-browser",
+            "code": 1,
+            "seconds": 757.2,
+            "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+            "webkit": "unchanged",
+            "config": "/private/tmp/motion-refresh-hardware-configs/gleislicht.config.ts",
+            "passed": 109,
+            "failed": 1,
+            "skipped": 11,
+            "flaky": 0
+          },
+          {
+            "repo": "gleislicht",
+            "check": "hardware-rerun",
+            "code": 0,
+            "seconds": 32.6,
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 1
+          }
+        ],
+        "final": {
+          "repo": "gleislicht",
+          "check": "hardware-browser",
+          "code": 0,
+          "seconds": 757.2,
+          "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+          "webkit": "unchanged",
+          "config": "/private/tmp/motion-refresh-hardware-configs/gleislicht.config.ts",
+          "passed": 110,
+          "failed": 0,
+          "skipped": 11,
+          "flaky": 0,
+          "recoveredOnRerun": 1
+        },
+        "note": "Full local Chromium suite uses ANGLE Metal; WebKit settings unchanged."
+      },
+      "validationBaseHead": "95c6aad67a1a536e94cf206b083af158c0c99b15",
+      "maintenanceCommit": "43588904b11b646a96ac0dd3900d868d0811b8df",
+      "committedManifestSha256": "509d13a1280d8a85add10d35733df7ff2fcdb59fbb333caa868622938baf2176",
+      "workingManifestIncludesPreExistingChanges": true
+    },
+    {
+      "repository": "england",
+      "branch": "main",
+      "fetchedMain": "1bc4f394112b5015d0c32b0dc0c67bf6d0f006bd",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 32
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "4ac1598ab30b94ae8d9e17b8a936ba3deb6060d671629d4eda2d5570a0930da1",
+      "lockfileSha256": "3d3e72c3bb0134847aaa28d3e661c427ffbac5292311871a254f7bca870d6701",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": null,
+      "validationBaseHead": "7f09546f6e64658b33b439f08c7c9b051e5ba41b",
+      "maintenanceCommit": "1bc4f394112b5015d0c32b0dc0c67bf6d0f006bd"
+    },
+    {
+      "repository": "local-express",
+      "branch": "main",
+      "fetchedMain": "a5bda415da70c197300957e821ebb1d37e1429c2",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:boundary",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 2
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:bundle",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "41b516fb17ec48e07bc31743196422bf80ce425d7b4167e3cd39c90325d2373a",
+      "lockfileSha256": "0d22eb42e34160d45d2ec1a18ba96a08155187257a074911f8aacaeb9b5b94f5",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "local-express",
+            "check": "hardware-browser",
+            "code": 0,
+            "seconds": 58.0,
+            "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+            "webkit": "unchanged",
+            "config": "/private/tmp/motion-refresh-hardware-configs/local-express.config.ts",
+            "passed": 20,
+            "failed": 0,
+            "skipped": 1,
+            "flaky": 1
+          }
+        ],
+        "final": {
+          "repo": "local-express",
+          "check": "hardware-browser",
+          "code": 0,
+          "seconds": 58.0,
+          "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+          "webkit": "unchanged",
+          "config": "/private/tmp/motion-refresh-hardware-configs/local-express.config.ts",
+          "passed": 21,
+          "failed": 0,
+          "skipped": 1,
+          "flaky": 1
+        },
+        "note": "Full local Chromium suite uses ANGLE Metal; WebKit settings unchanged."
+      },
+      "validationBaseHead": "2414264501efe36473009358afd43ef57ae9a195",
+      "maintenanceCommit": "a5bda415da70c197300957e821ebb1d37e1429c2"
+    },
+    {
+      "repository": "luft",
+      "branch": "main",
+      "fetchedMain": "f1c2e622e2c58e0ba10bbb0ca6752bb1d8e90ca9",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 90
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "ca2804a45d578dce350452e0b7ef44468cb53ec3e33176435cf63f1b4473f676",
+      "lockfileSha256": "3a0ff3d823d07f9dd1c2db88d2ecf7677a93e65a61ab270b44b9571020a428de",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [
+        {
+          "repo": "luft",
+          "check": "browser",
+          "code": 0,
+          "seconds": 729.1,
+          "passed": 153,
+          "failed": 0,
+          "skipped": 5,
+          "rerun": {
+            "repo": "luft",
+            "check": "browser-rerun",
+            "code": 0,
+            "seconds": 73.9
+          },
+          "initialCode": 1,
+          "initialFailed": 2
+        }
+      ],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "luft",
+            "check": "browser",
+            "code": 1,
+            "seconds": 729.1,
+            "passed": 151,
+            "failed": 2,
+            "skipped": 5,
+            "flaky": 0
+          },
+          {
+            "repo": "luft",
+            "check": "browser-rerun",
+            "code": 0,
+            "seconds": 73.9,
+            "passed": 2,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          }
+        ],
+        "effectivePassedScenarios": 153,
+        "skipped": 5,
+        "unresolvedFailures": 0
+      },
+      "validationBaseHead": "ccce8a41c9cfad86bf1dd25c4a4d8fdcfbf44a8c",
+      "maintenanceCommit": "f1c2e622e2c58e0ba10bbb0ca6752bb1d8e90ca9"
+    },
+    {
+      "repository": "manifest",
+      "branch": "main",
+      "fetchedMain": "1ad3c3280a56ff76b1bf2eee8778b3708a6db3ad",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:boundary",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 145
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:bundle",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "6a66aa1a0680a45c31eeb73452b30f29673b81b1f798689373afadef1a49b0a3",
+      "lockfileSha256": "dddb89e6efc0334309c71fbb77dfd0c5ef52f6a2c06b1c6cc479dc82e06bf2ae",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [
+        {
+          "repo": "manifest",
+          "check": "browser",
+          "code": 0,
+          "seconds": 54.4,
+          "passed": 35,
+          "failed": 0,
+          "skipped": 0
+        }
+      ],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "manifest",
+            "check": "browser",
+            "code": 0,
+            "seconds": 54.4,
+            "passed": 35,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          }
+        ]
+      },
+      "validationBaseHead": "1f1698b54d3dd3f9046db69ad6cf363175d22d5d",
+      "maintenanceCommit": "1ad3c3280a56ff76b1bf2eee8778b3708a6db3ad"
+    },
+    {
+      "repository": "norikae",
+      "branch": "codex/synthetic-player",
+      "fetchedMain": "ea19cfca71c645b1c1cb5abc97299a44f3bd6f03",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:boundary",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 28
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "46818b790e0106ea4e74bf0f3ece0990f57192f9fcd11164d348027dc7b57d99",
+      "lockfileSha256": "42a496575a1ed552ac2e370c1e2da744ad2625a70aa2b4898dc0e057786efb73",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "norikae",
+            "check": "hardware-browser",
+            "code": 0,
+            "seconds": 15.9,
+            "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+            "webkit": "unchanged",
+            "config": "/private/tmp/motion-refresh-hardware-configs/norikae.config.ts",
+            "passed": 14,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          }
+        ],
+        "final": {
+          "repo": "norikae",
+          "check": "hardware-browser",
+          "code": 0,
+          "seconds": 15.9,
+          "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+          "webkit": "unchanged",
+          "config": "/private/tmp/motion-refresh-hardware-configs/norikae.config.ts",
+          "passed": 14,
+          "failed": 0,
+          "skipped": 0,
+          "flaky": 0
+        },
+        "note": "Full local Chromium suite uses ANGLE Metal; WebKit settings unchanged."
+      },
+      "validationBaseHead": "9f2cd6c6267f52075c2e89046dcddfbef8c30b19",
+      "maintenanceCommit": "f62e8a8b7e49c9a475b7a8c17de18636321456c1",
+      "mainMaintenanceCommit": "ea19cfca71c645b1c1cb5abc97299a44f3bd6f03"
+    },
+    {
+      "repository": "pfad",
+      "branch": "main",
+      "fetchedMain": "4457b7eef9c2f6bef236b3038ec97b37140eb53a",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:boundary",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 206
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:budget",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "46fb0f30a173633465c08a189e56f1829bbdccfedb9aef266eb748e518921060",
+      "lockfileSha256": "33f7d84ea59a670500a8d3b3ed55ca89ea6ecd0ea228380160e65349387f4217",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [
+        {
+          "repo": "pfad",
+          "check": "browser",
+          "code": -15,
+          "seconds": 250.5,
+          "passed": 0,
+          "failed": 0,
+          "skipped": 0
+        }
+      ],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "pfad",
+            "check": "browser",
+            "code": -15,
+            "seconds": 250.5,
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          },
+          {
+            "repo": "pfad",
+            "check": "browser-rerun",
+            "code": 1,
+            "seconds": 1037.2,
+            "excluded": "sequence pause suspends one continuous score; hidden return needs explicit actions",
+            "passed": 81,
+            "failed": 3,
+            "skipped": 0,
+            "flaky": 0
+          },
+          {
+            "repo": "pfad",
+            "check": "audio-isolated",
+            "code": 1,
+            "seconds": 42.8,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "flaky": 0
+          },
+          {
+            "repo": "pfad",
+            "check": "hardware-followup",
+            "code": 0,
+            "seconds": 42.0,
+            "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          }
+        ],
+        "effectivePassedScenarios": 86,
+        "expectedScenarios": 86,
+        "unresolvedFailedScenarios": [],
+        "coverageComplete": true,
+        "effectiveCode": 0,
+        "note": "One interrupted software run; 84-case continuation, two isolated audio cases, then four Chromium failures repeated on Metal. Assertions unchanged."
+      },
+      "validationBaseHead": "5ab3505051d459fb92bf9387f7609b9b1b999cb8",
+      "maintenanceCommit": "4457b7eef9c2f6bef236b3038ec97b37140eb53a"
+    },
+    {
+      "repository": "umlauf",
+      "branch": "main",
+      "fetchedMain": "5748e7a6ab3417b525bdd42115cc8cbab2acfa37",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:boundary",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 20
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run check:budget",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "79b391b2ddaf9b5f6e372fce9a4cd0d36848720dca17048a4eee1a294531821f",
+      "lockfileSha256": "451bb395281fc9bcf4288b3963b9c2d053e88c31c2cf0060fea7d6ed7c2d46ea",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [
+        {
+          "repo": "umlauf",
+          "check": "browser",
+          "code": 0,
+          "seconds": 159.3,
+          "passed": 34,
+          "failed": 0,
+          "skipped": 0
+        }
+      ],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "umlauf",
+            "check": "browser",
+            "code": 0,
+            "seconds": 159.3,
+            "passed": 34,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          }
+        ]
+      },
+      "validationBaseHead": "326802ddd557460fbe51ff02c2e535502df4e857",
+      "maintenanceCommit": "5748e7a6ab3417b525bdd42115cc8cbab2acfa37"
+    },
+    {
+      "repository": "underfall",
+      "branch": "main",
+      "fetchedMain": "23fb73317592ba7b769a96962cf2b30cd80edcf7",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 131
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "773f0f86340c6cfb493bebb2518e4ce7bac7375e97e731c292eaca90488ef58e",
+      "lockfileSha256": "7982c4b2ea0dfdcbb8082756b3082089b0e3f3bc79a8eb253f007acacdbd4947",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [
+        {
+          "repo": "underfall",
+          "check": "browser",
+          "code": 1,
+          "seconds": 563.5,
+          "passed": 35,
+          "failed": 8,
+          "skipped": 1
+        }
+      ],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "underfall",
+            "check": "browser",
+            "code": 1,
+            "seconds": 563.5,
+            "passed": 35,
+            "failed": 8,
+            "skipped": 1,
+            "flaky": 0
+          },
+          {
+            "repo": "underfall",
+            "check": "hardware-browser",
+            "code": 0,
+            "seconds": 222.2,
+            "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+            "webkit": "unchanged",
+            "config": "/private/tmp/motion-refresh-hardware-configs/underfall.config.ts",
+            "passed": 43,
+            "failed": 0,
+            "skipped": 1,
+            "flaky": 0
+          }
+        ],
+        "final": {
+          "repo": "underfall",
+          "check": "hardware-browser",
+          "code": 0,
+          "seconds": 222.2,
+          "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+          "webkit": "unchanged",
+          "config": "/private/tmp/motion-refresh-hardware-configs/underfall.config.ts",
+          "passed": 43,
+          "failed": 0,
+          "skipped": 1,
+          "flaky": 0
+        },
+        "note": "Full local Chromium suite uses ANGLE Metal; WebKit settings unchanged."
+      },
+      "validationBaseHead": "f4773eb88a745ad7d9a99a5d7d89c4ba7d4d4854",
+      "maintenanceCommit": "23fb73317592ba7b769a96962cf2b30cd80edcf7"
+    },
+    {
+      "repository": "zugunruhe",
+      "branch": "main",
+      "fetchedMain": "045e48d6a88672ffcdfe03478a1213f9e3dd52a7",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 127
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "92f33bdcdbf2cb1271b7d21e8fb818add02e6dcd95ca24e7bec5c80f8e79652d",
+      "lockfileSha256": "066f34e51cd651d5ffe6769dc25f85025677ccf69c792bc04a6ef99c67cdc93e",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "zugunruhe",
+            "check": "hardware-browser",
+            "code": 1,
+            "seconds": 289.4,
+            "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+            "webkit": "unchanged",
+            "config": "/private/tmp/motion-refresh-hardware-configs/zugunruhe.config.ts",
+            "passed": 66,
+            "failed": 4,
+            "skipped": 2,
+            "flaky": 0
+          },
+          {
+            "repo": "zugunruhe",
+            "check": "hardware-rerun",
+            "code": 1,
+            "seconds": 18.0,
+            "passed": 0,
+            "failed": 4,
+            "skipped": 0,
+            "flaky": 0
+          },
+          {
+            "repo": "zugunruhe",
+            "check": "ui-full",
+            "code": 0,
+            "log": "/private/tmp/motion-refresh-logs/zugunruhe-ui-full.log",
+            "passed": 70,
+            "failed": 0,
+            "skipped": 2
+          }
+        ],
+        "final": {
+          "passed": 70,
+          "failed": 0,
+          "skipped": 2
+        },
+        "note": "Full local Chromium suite uses ANGLE Metal; WebKit settings unchanged."
+      },
+      "postFixChecks": {
+        "build": "passed",
+        "unit": "passed",
+        "browser": "passed"
+      },
+      "validationBaseHead": "491339a57fce7998ec5b6dcafdb2b214f4f932f3",
+      "maintenanceCommit": "045e48d6a88672ffcdfe03478a1213f9e3dd52a7"
+    },
+    {
+      "repository": "zenit",
+      "branch": "main",
+      "fetchedMain": "fd7f2566de1adabde161176323ce3b5922df2a77",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 51
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "f735ad40540156ef7fbc863d945df9e731c7aaaf1af645c26ab41abeeb472f96",
+      "lockfileSha256": "66c0ce0471acd0c52b2f09b25428dc705d2b79f86ca794e4237b286087fbdc9d",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": {
+        "attempts": [
+          {
+            "repo": "zenit",
+            "check": "hardware-browser",
+            "code": 0,
+            "seconds": 406.5,
+            "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+            "webkit": "unchanged",
+            "config": "/private/tmp/motion-refresh-hardware-configs/zenit.config.ts",
+            "passed": 120,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0
+          }
+        ],
+        "final": {
+          "repo": "zenit",
+          "check": "hardware-browser",
+          "code": 0,
+          "seconds": 406.5,
+          "chromiumBackend": "ANGLE Metal / Apple M4 Max",
+          "webkit": "unchanged",
+          "config": "/private/tmp/motion-refresh-hardware-configs/zenit.config.ts",
+          "passed": 120,
+          "failed": 0,
+          "skipped": 0,
+          "flaky": 0
+        },
+        "note": "Full local Chromium suite uses ANGLE Metal; WebKit settings unchanged."
+      },
+      "validationBaseHead": "098e81bf39572b9e280b66e21b6f869d37305b07",
+      "maintenanceCommit": "fd7f2566de1adabde161176323ce3b5922df2a77"
+    },
+    {
+      "repository": "grid84",
+      "branch": "main",
+      "fetchedMain": "64ec0882b75be519236e8f46231c53a18336b62a",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 351
+        },
+        {
+          "command": "npm run build",
+          "exitCode": 0
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "4358b2d48deea2747ff679323896b7bd704be0b7fc7fa18ec9595d40ba6b5e87",
+      "lockfileSha256": "bd17d7767a87cb3ead352d02ee133cb581a15e77d21bb5cd5a2048393bf8b337",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": null,
+      "validationBaseHead": "4a281b321f14f876fe53d5de9d5e5e025ac26089",
+      "maintenanceCommit": "64ec0882b75be519236e8f46231c53a18336b62a"
+    },
+    {
+      "repository": "motionstudies-recorder",
+      "branch": "main",
+      "fetchedMain": "bbb83540ce83f27e39a3ca32b1fc298c51ea00e8",
+      "commitsMissingFromCheckout": 0,
+      "checks": [
+        {
+          "command": "npm run lint",
+          "exitCode": 0
+        },
+        {
+          "command": "npm run test",
+          "exitCode": 0,
+          "passed": 187
+        }
+      ],
+      "workingTreeMaintenance": "Committed separately from pre-existing unrelated work",
+      "manifestSha256": "4f8701899f874b3d10809818e6c7ebd44c358b260ce13df902194e219fb963be",
+      "lockfileSha256": "a0ef2adb6d0e2825b80662980e9eec36a6d744249146470e7c9210f9e77c5121",
+      "auditVulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "browserChecks": [],
+      "browserValidation": null,
+      "validationBaseHead": "85d7ed783db9f44d2b85343efd11c0f6eade8214",
+      "maintenanceCommit": "bbb83540ce83f27e39a3ca32b1fc298c51ea00e8"
+    }
+  ],
+  "browserBackends": [
+    {
+      "args": [],
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "args": [
+        "--use-angle=metal"
+      ],
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Unspecified Version)"
+    }
+  ],
+  "publishedPackageIntegrity": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.31",
+      "matchesPublishedIntegrity": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.31",
+      "matchesPublishedIntegrity": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.31",
+      "matchesPublishedIntegrity": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.31",
+      "matchesPublishedIntegrity": true
+    }
+  ],
+  "smokeChecks": [
+    {
+      "repository": "england",
+      "browser": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "passed": true
+    },
+    {
+      "repository": "england",
+      "browser": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true
+    },
+    {
+      "repository": "grid84",
+      "browser": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "passed": true
+    },
+    {
+      "repository": "grid84",
+      "browser": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true
+    },
+    {
+      "repository": "grid84",
+      "browser": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "passed": true
+    },
+    {
+      "repository": "grid84",
+      "browser": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true
+    }
+  ],
+  "checkoutIntegrity": [
+    {
+      "repository": "motionstudies",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "allchange",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "correspondances",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "gleislicht",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "england",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "local-express",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "luft",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "manifest",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "norikae",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "pfad",
+      "errors": [],
+      "preExistingWarnings": [
+        "Pre-existing whitespace in unchanged saved-work evidence log: docs/evidence/australia-sizing-2026-10-03/check.log"
+      ]
+    },
+    {
+      "repository": "umlauf",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "underfall",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "zugunruhe",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "zenit",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "grid84",
+      "errors": [],
+      "preExistingWarnings": []
+    },
+    {
+      "repository": "motionstudies-recorder",
+      "errors": [],
+      "preExistingWarnings": []
+    }
+  ],
+  "workerChecks": [
+    {
+      "repo": "allchange",
+      "task": "worker:check",
+      "code": 0
+    },
+    {
+      "repo": "allchange",
+      "task": "worker:build",
+      "code": 0
+    },
+    {
+      "repo": "gleislicht",
+      "task": "worker:check",
+      "code": 0
+    },
+    {
+      "repo": "gleislicht",
+      "task": "worker:build",
+      "code": 0
+    }
+  ],
+  "additionalChecks": [
+    {
+      "repo": "motionstudies",
+      "check": "test-final",
+      "code": 0
+    },
+    {
+      "repo": "motionstudies",
+      "check": "lint-final",
+      "code": 0
+    },
+    {
+      "repo": "motionstudies",
+      "check": "hosting-final",
+      "code": 0
+    },
+    {
+      "repo": "motionstudies",
+      "check": "swiss-hosting-final",
+      "code": 0
+    },
+    {
+      "repo": "correspondances",
+      "check": "budget-final",
+      "code": 0
+    },
+    {
+      "repo": "luft",
+      "check": "build-final",
+      "code": 0
+    },
+    {
+      "repo": "luft",
+      "check": "test-final",
+      "code": 0
+    },
+    {
+      "repo": "gleislicht",
+      "check": "audit-final",
+      "code": 0
+    },
+    {
+      "repo": "motionstudies",
+      "check": "release:dry-run",
+      "code": 0
+    }
+  ],
+  "parisTransfer": {
+    "beforeJavaScriptGzipBytes": 363590,
+    "afterJavaScriptGzipBytes": 364291,
+    "beforeTenLineGzipBytes": 696056,
+    "afterTenLineGzipBytes": 696757,
+    "tenLineLimitKiB": 681,
+    "otherLimitsUnchanged": true
+  },
+  "preservation": {
+    "backupBranch": "codex/pre-refresh-2026-10-18",
+    "savedStashesRetained": true,
+    "luftPriorIgnoredData": "/private/tmp/luft-pre-refresh-data-20261018"
+  },
+  "logsDirectory": "/private/tmp/motion-refresh-logs",
+  "cleanMaintenanceChecks": {
+    "norikaeMain": {
+      "checks": "npm run check passed",
+      "browser": {
+        "log": "/private/tmp/motion-refresh-logs/norikae-main-ui-full.log",
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "pfadCommittedSource": {
+      "checks": "npm run check passed; 142 unit tests",
+      "browser": {
+        "log": "/private/tmp/motion-refresh-logs/pfad-clean-ui-full.log",
+        "passed": 81,
+        "failed": 1,
+        "skipped": 0
+      },
+      "defaultRendererRecovery": {
+        "log": "/private/tmp/motion-refresh-logs/pfad-clean-drawing-software.log",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "pushesAtRecordCreation": [
+    {
+      "repo": "allchange",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/allchange.git\n   96fe33b..9210f35  main -> main\n",
+      "heads": {
+        "main": "9210f355411ed454d7da8e3af8649855b19305e6"
+      }
+    },
+    {
+      "repo": "correspondances",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/correspondances.git\n   cbf0d74..b2c5552  main -> main\n",
+      "heads": {
+        "main": "b2c5552e1bb89b9d30f030aff92bfae0157ceafb"
+      }
+    },
+    {
+      "repo": "gleislicht",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/gleislicht.git\n   fa8c994f..43588904  main -> main\n",
+      "heads": {
+        "main": "43588904b11b646a96ac0dd3900d868d0811b8df"
+      }
+    },
+    {
+      "repo": "england",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/england.git\n   7f09546..1bc4f39  main -> main\n",
+      "heads": {
+        "main": "1bc4f394112b5015d0c32b0dc0c67bf6d0f006bd"
+      }
+    },
+    {
+      "repo": "local-express",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/local-express.git\n   2414264..a5bda41  main -> main\n",
+      "heads": {
+        "main": "a5bda415da70c197300957e821ebb1d37e1429c2"
+      }
+    },
+    {
+      "repo": "luft",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/luft.git\n   ccce8a4..f1c2e62  main -> main\n",
+      "heads": {
+        "main": "f1c2e622e2c58e0ba10bbb0ca6752bb1d8e90ca9"
+      }
+    },
+    {
+      "repo": "manifest",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/manifest.git\n   1f1698b..1ad3c32  main -> main\n",
+      "heads": {
+        "main": "1ad3c3280a56ff76b1bf2eee8778b3708a6db3ad"
+      }
+    },
+    {
+      "repo": "norikae",
+      "branches": [
+        "main",
+        "codex/synthetic-player"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/norikae.git\n   aeee069..f62e8a8  codex/synthetic-player -> codex/synthetic-player\n   c94a9b9..ea19cfc  main -> main\n",
+      "heads": {
+        "main": "ea19cfca71c645b1c1cb5abc97299a44f3bd6f03",
+        "codex/synthetic-player": "f62e8a8b7e49c9a475b7a8c17de18636321456c1"
+      }
+    },
+    {
+      "repo": "umlauf",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/umlauf.git\n   326802d..5748e7a  main -> main\n",
+      "heads": {
+        "main": "5748e7a6ab3417b525bdd42115cc8cbab2acfa37"
+      }
+    },
+    {
+      "repo": "underfall",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/underfall.git\n   f4773eb..23fb733  main -> main\n",
+      "heads": {
+        "main": "23fb73317592ba7b769a96962cf2b30cd80edcf7"
+      }
+    },
+    {
+      "repo": "zugunruhe",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/zugunruhe.git\n   491339a..045e48d  main -> main\n",
+      "heads": {
+        "main": "045e48d6a88672ffcdfe03478a1213f9e3dd52a7"
+      }
+    },
+    {
+      "repo": "zenit",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/zenit.git\n   098e81b..fd7f256  main -> main\n",
+      "heads": {
+        "main": "fd7f2566de1adabde161176323ce3b5922df2a77"
+      }
+    },
+    {
+      "repo": "grid84",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "remote: \nremote: GitHub found 6 vulnerabilities on emmettl/grid84's default branch (1 high, 2 moderate, 3 low). To find out more, visit:        \nremote:      https://github.com/emmettl/grid84/security/dependabot        \nremote: \nTo https://github.com/emmettl/grid84.git\n   72fb535..64ec088  main -> main\n",
+      "heads": {
+        "main": "64ec0882b75be519236e8f46231c53a18336b62a"
+      }
+    },
+    {
+      "repo": "motionstudies-recorder",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/motionstudies-recorder.git\n   85d7ed7..bbb8354  main -> main\n",
+      "heads": {
+        "main": "bbb83540ce83f27e39a3ca32b1fc298c51ea00e8"
+      }
+    },
+    {
+      "repo": "pfad",
+      "branches": [
+        "main"
+      ],
+      "exitCode": 0,
+      "output": "To https://github.com/emmettl/pfad.git\n   5ab3505..4457b7e  main -> main\n",
+      "heads": {
+        "main": "4457b7eef9c2f6bef236b3038ec97b37140eb53a"
+      }
+    }
+  ],
+  "publicationNote": "Repository push results and hosted CI snapshots are recorded in the local logs directory; local checks do not establish completed hosted deployment."
+}
