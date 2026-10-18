@@ -16,6 +16,13 @@ observation for London and Switzerland; each edition retains its own geometry
 and CSS clearances. The shared exports are published as alpha.33 and all seven consumer adoptions
 are pushed after clean registry installation checks. See [package contracts](../packages/README.md#edition-maintenance-and-layout-observation).
 
+The next verified-loading step is a local Swiss pilot: Aargau survey shards and
+Geneva/Luzern summary products share byte/hash verification and JSON decoding,
+with their existing schema and source policies retained. Cancellation, corruption,
+retry and stale-region regressions protect the boundary. See the
+[Swiss pilot record](https://github.com/emmettl/gleislicht/blob/main/docs/AARGAU-ROAD-STATISTICS.md#verified-json-loading--19-october-2026).
+No new package release or orbital/cloud-loader migration is part of this pilot.
+
 ## Objective and scope
 
 The [creative premise in the project vision](VISION.md#creative-premise) gives this work its purpose: keep the cost of following curiosity low as the series grows, with implementation and maintenance supported by engineering agents.
