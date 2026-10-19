@@ -63,6 +63,9 @@ export interface StationLabelStyle {
 /** Per-frame material policies. Camera height is world-space, not semantic label height.
  * Keep callbacks stable; they update existing materials without rebuilding geometry. */
 export interface NetworkMaterialStyle {
+  /** Grid and water opacity multipliers for the current spatial-layout mix. */
+  readonly groundGridOpacityScale?: (spatialLayoutMix: number) => number
+  readonly waterOpacityScale?: (spatialLayoutMix: number) => number
   /** Multiplier for the border's existing subdued and spatial-layout opacity. */
   readonly borderOpacityScale?: (cameraHeight: number) => number
   /** Replaces the traffic layer's overview emphasis for its weighted strokes. Pulses retain their existing emphasis. */

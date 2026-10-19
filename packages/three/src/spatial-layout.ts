@@ -81,6 +81,7 @@ export function blendProjectedSpatialLayout(
   geographicPaths: readonly ProjectedNetworkPath[],
   alternate: ProjectedSpatialLayout | undefined,
   mix: number,
+  preserveVertices = false,
 ): ProjectedSpatialLayout {
   if (!alternate || mix <= 0) {
     return { stops: geographicStops, paths: geographicPaths }
@@ -98,13 +99,13 @@ export function blendProjectedSpatialLayout(
   })
   const paths = geographicPaths.map((from, index) => {
     const to = alternate.paths[index] ?? from
-    const sampleCount = Math.max(
+    const sampleCount = preserveVertices ? from.points.length : Math.max(
       2,
       Math.min(32, Math.max(from.points.length, to.points.length)),
     )
     const points = Array.from({ length: sampleCount }, (_, pointIndex) => {
-      const first = pointAt(from, pointIndex, sampleCount)
-      const second = pointAt(to, pointIndex, sampleCount)
+      const first = preserveVertices ? from.points[pointIndex] : pointAt(from, pointIndex, sampleCount)
+      const second = preserveVertices ? to.points[pointIndex] ?? first : pointAt(to, pointIndex, sampleCount)
       return [
         first[0] + (second[0] - first[0]) * progress,
         first[1] + (second[1] - first[1]) * progress,

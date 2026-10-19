@@ -1,3 +1,5 @@
+import { projectSpatialMorph } from './spatial-morph.ts'
+import { useSpatialGeometryMorph } from './use-spatial-geometry-morph.ts'
 import { StationTapTarget } from './StationTapTarget.tsx'
 import { stationCentre, type ProjectedStop } from './station-picking.ts'
 import {mapLabelBoxesOverlap} from '@motionstudies/core/map-labels'
@@ -454,6 +456,8 @@ function useProjectedTrainPosition() {
 }
 
 function NationalGround({ quiet = false }: { readonly quiet?: boolean }) {
+  const { props } = useNetworkScene()
+  const gridScale = useMapStyle().materials?.groundGridOpacityScale?.(props.spatialLayoutMix ?? 0) ?? 1
   return (
     <group position={[0, -0.11, 0]}>
       <mesh rotation={[-Math.PI / 2, 0, 0]}>
@@ -462,7 +466,7 @@ function NationalGround({ quiet = false }: { readonly quiet?: boolean }) {
       </mesh>
       {!quiet && <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.015, 0]}>
         <planeGeometry args={[66, 56, 64, 48]} />
-        <meshBasicMaterial color="#424b98" transparent opacity={0.1} wireframe />
+        <meshBasicMaterial color="#424b98" transparent opacity={0.1 * gridScale} wireframe />
       </mesh>}
     </group>
   )
@@ -527,6 +531,7 @@ function LakeLayer({
     )
     return { fill, shoreline }
   }, [lakes.lakes, projection])
+  useSpatialGeometryMorph(geometry)
 
   useEffect(
     () => () => {
@@ -682,6 +687,7 @@ function ReferencePathLayer({
     }),
     [projection, references.references],
   )
+  useSpatialGeometryMorph(paths)
 
   useEffect(
     () => () => paths.forEach(({ geometry }) => geometry.dispose()),
@@ -754,6 +760,7 @@ function CountryBorder({
       }]
     })
   }, [boundary.rings, projection])
+  useSpatialGeometryMorph(tubes)
 
   useEffect(
     () => () => {
@@ -798,6 +805,7 @@ function CountryBorder({
 }
 
 function RailGraph({
+  morph = false,
   snapshot,
   infrastructureSnapshot = snapshot,
   projectedStops,
@@ -812,6 +820,7 @@ function RailGraph({
   lineMapStyle = false,
 }: {
   readonly infrastructureSnapshot?: NetworkSnapshot
+  readonly morph?: boolean
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -936,6 +945,10 @@ function RailGraph({
     return { stops, interchanges }
   }, [projectedStops, snapshot.stops, infrastructureSnapshot.trains])
 
+  const morphGeometry = useMemo(() => ({ railGeometry, stationGeometry, diagramStationGeometries }), [railGeometry, stationGeometry, diagramStationGeometries])
+  useSpatialGeometryMorph(morphGeometry, morph)
+  useEffect(() => () => stationGeometry.dispose(), [stationGeometry])
+
   useEffect(
     () => () => {
       stationTexture.dispose()
@@ -1001,6 +1014,7 @@ function RailGraph({
       </lineSegments>
       {showTraffic && (
         <TrafficFlowLayer
+          morph={morph}
           snapshot={snapshot}
           projectedStops={projectedStops}
           projectedPaths={projectedPaths}
@@ -1014,6 +1028,7 @@ function RailGraph({
       {routeColors && routeColorMix > 0.001 && (
         <>
           <RouteIdentityLayer
+            morph={morph}
             snapshot={infrastructureSnapshot}
             projectedStops={projectedStops}
             projectedPaths={projectedPaths}
@@ -1156,6 +1171,7 @@ function diagramRibbonGeometry(
 }
 
 function RouteIdentityLayer({
+  morph = false,
   snapshot,
   projectedStops,
   projectedPaths,
@@ -1165,6 +1181,7 @@ function RouteIdentityLayer({
   subdued,
   lineMapStyle = false,
 }: {
+  readonly morph?: boolean
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -1255,6 +1272,8 @@ function RouteIdentityLayer({
     snapshot,
   ])
 
+  useSpatialGeometryMorph(routes, morph)
+
   useEffect(
     () => () => routes.forEach(({ geometry, casing, core }) => {
       geometry.dispose()
@@ -1326,6 +1345,7 @@ function RouteIdentityLayer({
 }
 
 function TrafficFlowLayer({
+  morph = false,
   snapshot,
   projectedStops,
   projectedPaths,
@@ -1335,6 +1355,7 @@ function TrafficFlowLayer({
   overviewEmphasis = 0,
   suppressAtIdentity = false,
 }: {
+  readonly morph?: boolean
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -1411,6 +1432,8 @@ function TrafficFlowLayer({
     if (flat) { compactMapLines(weighted); compactMapLines(pulse) }
     return { weighted, pulse }
   }, [flat, lakeAvoidingPaths, projectedPaths, projectedStops, snapshot])
+
+  useSpatialGeometryMorph(geometries, morph)
 
   useEffect(
     () => () => {
@@ -4072,9 +4095,10 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
     () => projectPaths(props.snapshot, projection),
     [projection, props.snapshot],
   )
+  const morph = props.extensions?.spatialMorph
   const alternateLayout = useMemo(
     () =>
-      props.spatialLayout
+      morph ? projectSpatialMorph(geographicStops, geographicPaths, projection, morph) : props.spatialLayout
         ? projectSpatialLayout(
             props.snapshot,
             props.spatialLayout,
@@ -4082,7 +4106,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             geographicPaths,
           )
         : undefined,
-    [geographicPaths, geographicStops, props.snapshot, props.spatialLayout],
+    [geographicPaths, geographicStops, props.snapshot, props.spatialLayout, projection, morph],
   )
   const projectedLayout = useMemo(
     () =>
@@ -4091,12 +4115,14 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         geographicPaths,
         alternateLayout,
         props.spatialLayoutMix ?? 0,
+        Boolean(morph),
       ),
     [
       alternateLayout,
       geographicPaths,
       geographicStops,
       props.spatialLayoutMix,
+      morph,
     ],
   )
   const projectedStops = projectedLayout.stops
@@ -4131,21 +4157,17 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       ) ?? [],
     [projection, props.lakes],
   )
+  const needsGeographicDetours = Boolean(morph) || (props.spatialLayoutMix ?? 0) <= 0
+  const geographicDetours = useMemo(() => needsGeographicDetours ? createLakeAvoidingPathMap(
+    props.snapshot.edges, props.snapshot.edgePaths, geographicStops, projectedLakeRings,
+  ) : EMPTY_LAKE_AVOIDING_PATHS, [props.snapshot.edges, props.snapshot.edgePaths, geographicStops, projectedLakeRings, needsGeographicDetours])
   const lakeAvoidingPaths = useMemo(
     () => {
       if ((props.spatialLayoutMix ?? 0) > 0) return EMPTY_LAKE_AVOIDING_PATHS
-      return createLakeAvoidingPathMap(
-        props.snapshot.edges,
-        props.snapshot.edgePaths,
-        projectedStops,
-        projectedLakeRings,
-      )
+      return geographicDetours
     },
     [
-      projectedLakeRings,
-      projectedStops,
-      props.snapshot.edgePaths,
-      props.snapshot.edges,
+      geographicDetours,
       props.spatialLayoutMix,
     ],
   )
@@ -4221,7 +4243,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         <LakeLayer
           lakes={props.lakes}
           projection={projection}
-          opacityScale={1 - (props.spatialLayoutMix ?? 0)}
+          opacityScale={props.mapStyle?.materials?.waterOpacityScale?.(props.spatialLayoutMix ?? 0) ?? 1 - (props.spatialLayoutMix ?? 0)}
           subdued={Boolean(
             props.selectedTrain ||
               hasComparison ||
@@ -4283,12 +4305,13 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         />
       )}
       <RailGraph
+        morph={Boolean(morph)}
         snapshot={props.snapshot}
         infrastructureSnapshot={props.infrastructureSnapshot}
-        projectedStops={projectedStops}
-        projectedPaths={projectedPaths}
+        projectedStops={morph ? geographicStops : projectedStops}
+        projectedPaths={morph ? geographicPaths : projectedPaths}
         cameraFraming={props.cameraFraming}
-        lakeAvoidingPaths={lakeAvoidingPaths}
+        lakeAvoidingPaths={morph ? geographicDetours : lakeAvoidingPaths}
         subdued={Boolean(
           props.selectedTrain ||
             hasComparison ||

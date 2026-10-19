@@ -103,11 +103,15 @@ try {
     export const artifactHash: string = jsonArtifact(archive.manifest).sha256
     import { useNetworkScene, type NetworkSceneExtensions, type NetworkSceneContext } from '@motionstudies/three/scene-extensions'
     import { FLAT_NETWORK_MAP_STYLE, type NetworkMapStyle } from '@motionstudies/three/scene-style'
-    export const mapStyle: NetworkMapStyle = { ...FLAT_NETWORK_MAP_STYLE, materials: { borderOpacityScale: height => height / 40, trafficFlowOverviewEmphasis: height => height / 20 }, categoryColors: { bus: '#ffcc00' }, trainLabels: { budget: (height, width, mode) => mode === 'off' ? 0 : Math.min(height, width), screenHeight: (width, selected, height) => selected ? 40 : Math.min(width, height) }, stationLabels: { orderStations: stations => stations, semanticHeight: (height, mix) => height * (1 - mix), eligible: station => station.stopIndexes.length > 0, screenHeight: (width, focused, rank, height) => focused ? 40 : Math.min(width, height + (rank ?? 0)), viewportPadding: 8 } }
+    export const mapStyle: NetworkMapStyle = { ...FLAT_NETWORK_MAP_STYLE, materials: { groundGridOpacityScale: mix => 1 - mix, waterOpacityScale: () => 1, borderOpacityScale: height => height / 40, trafficFlowOverviewEmphasis: height => height / 20 }, categoryColors: { bus: '#ffcc00' }, trainLabels: { budget: (height, width, mode) => mode === 'off' ? 0 : Math.min(height, width), screenHeight: (width, selected, height) => selected ? 40 : Math.min(width, height) }, stationLabels: { orderStations: stations => stations, semanticHeight: (height, mix) => height * (1 - mix), eligible: station => station.stopIndexes.length > 0, screenHeight: (width, focused, rank, height) => focused ? 40 : Math.min(width, height + (rank ?? 0)), viewportPadding: 8 } }
+    import { projectSpatialMorph, blendSpatialMorph, prepareGeometryMorph, type SpatialMorphProjection } from '@motionstudies/three/spatial-morph'
+    export const spatialProjection: SpatialMorphProjection = (x, z) => [x * 2, z * 2]
+    export const spatialMorphTools = { projectSpatialMorph, blendSpatialMorph, prepareGeometryMorph }
     import type { NationalNetworkSceneProps } from '@motionstudies/three/NationalNetworkScene'
     import type { HubFlowPolicy } from '@motionstudies/three/HubPulseScene'
     export const sceneHook: () => NetworkSceneContext = useNetworkScene
     export const extensions: NetworkSceneExtensions = {
+      spatialMorph: spatialProjection,
       cameraViewport: ({ width, height, spatialLayoutMix }) => ({ zoom: 1 - spatialLayoutMix * 0.1, offsetY: Math.min(width, height) * -0.1 }), acceptsStationPick: event => event.dragDistance <= 5,
       trainPosition: (_train, _time, stops) => stops[0],
       createCameraDriver: ({ camera, target }) => ({ onCommand: command => { void command.action }, onGesture() {}, prepareFrame: (mapTarget, stops, mix, _delta, following) => { if (stops.length && mix > 0) mapTarget.copy(target); return following ? undefined : 1 }, update: () => { camera.lookAt(target); return false }, dispose() {} }),

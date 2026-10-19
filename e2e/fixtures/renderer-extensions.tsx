@@ -4,6 +4,7 @@ import { useThree } from '@react-three/fiber'
 import type { Camera, Scene } from 'three'
 import { NationalNetworkScene } from '@motionstudies/three/NationalNetworkScene'
 import { useNetworkScene, type NetworkSceneExtensions } from '@motionstudies/three/scene-extensions'
+import type { SpatialMorphProjection } from '@motionstudies/three/spatial-morph'
 import { buildStationIndex } from '@motionstudies/core/domain/network'
 import { network, layout } from '../../lab/src/fixtures.ts'
 
@@ -17,6 +18,9 @@ const createCameraDriver: NonNullable<NetworkSceneExtensions['createCameraDriver
   probe.starts++
   return { update() { camera.position.set(7, 25, 18); return true }, dispose() { probe.disposals++ } }
 }
+
+const morphA: SpatialMorphProjection = (x, z) => [x + 20, z - 5]
+const morphB: SpatialMorphProjection = (x, z) => [x - 10, z + 8]
 
 function Layer() {
   const { projectedStops } = useNetworkScene()
@@ -33,17 +37,23 @@ export function ExtensionFixture() {
   const [driver, setDriver] = useState(false)
   const [mounted, setMounted] = useState(true)
   const [mix, setMix] = useState(0)
+  const [morph, setMorph] = useState('off')
   const extensions = useMemo<NetworkSceneExtensions>(() => ({
+    spatialMorph: morph === 'a' ? morphA : morph === 'b' ? morphB : undefined,
     trainPosition: (_train, _time, _stops) => {
       probe.positions++
       return position === 'custom' ? [7, 0.2, 4] : position === 'hidden' ? null : undefined
     },
     createCameraDriver: driver ? createCameraDriver : undefined,
-  }), [position, driver])
+  }), [position, driver, morph])
   return <>
     <select aria-label="Position" value={position} onChange={event => setPosition(event.target.value as typeof position)}>
       <option value="default">Default</option><option value="custom">Custom</option><option value="hidden">Hidden</option>
     </select>
+    <select aria-label="Morph" value={morph} onChange={event => setMorph(event.target.value)}>
+      <option value="off">Off</option><option value="a">A</option><option value="b">B</option>
+    </select>
+    <input aria-label="Layout mix" type="range" min="0" max="1" step="0.1" value={mix} onChange={event => setMix(Number(event.target.value))} />
     <button onClick={() => setDriver(value => !value)}>Toggle driver</button>
     <button onClick={() => setMix(value => 1 - value)}>Toggle layout</button>
     <button onClick={() => setMounted(value => !value)}>Toggle scene</button>

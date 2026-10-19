@@ -53,3 +53,36 @@ test('camera drivers release ownership on replacement and unmount, and trails fo
   await expect.poll(async () => (await state(page)).disposals).toBe(before.disposals + 1)
   expect((await state(page)).childDisposals).toBe(1)
 })
+
+
+test('spatial morphs retain rail buffers and restore source positions before replacement and removal', async ({ page }) => {
+  const rail = async (retain = false) => page.evaluate(retain => {
+    const probe = (globalThis as unknown as { rendererExtensionProbe: { scene: import('three').Scene; retained?: import('three').BufferGeometry } }).rendererExtensionProbe
+    let geometry: import('three').BufferGeometry | undefined
+    probe.scene.traverse(object => {
+      const line = object as import('three').LineSegments
+      if (!geometry && line.isLineSegments && line.renderOrder === 0 && line.geometry.getAttribute('position')?.count) geometry = line.geometry
+    })
+    if (retain) probe.retained = geometry
+    return { uuid: geometry?.uuid, values: geometry ? Array.from(geometry.getAttribute('position').array).slice(0, 6) : [],
+      retained: probe.retained ? Array.from(probe.retained.getAttribute('position').array).slice(0, 6) : [] }
+  }, retain)
+  await page.getByLabel('Morph', { exact: true }).selectOption('a')
+  const original = await rail(true), stop = (await state(page)).stop
+  await page.getByLabel('Layout mix', { exact: true }).fill('0.5')
+  await expect.poll(async () => (await state(page)).stop[0]).toBeCloseTo(stop[0] + 10)
+  const halfway = await rail()
+  expect(halfway.uuid).toBe(original.uuid)
+  expect(halfway.values[0]).toBeCloseTo(original.values[0] + 10)
+  expect(halfway.values[2]).toBeCloseTo(original.values[2] - 2.5)
+  await page.getByLabel('Morph', { exact: true }).selectOption('b')
+  await expect.poll(async () => (await state(page)).stop[0]).toBeCloseTo(stop[0] - 5)
+  const replaced = await rail()
+  expect(replaced.uuid).toBe(original.uuid)
+  expect(replaced.values[0]).toBeCloseTo(original.values[0] - 5)
+  expect(replaced.values[2]).toBeCloseTo(original.values[2] + 4)
+  await page.getByLabel('Morph', { exact: true }).selectOption('off')
+  await expect.poll(async () => (await rail()).retained).toEqual(original.values)
+  await page.getByLabel('Layout mix', { exact: true }).fill('0')
+  await expect.poll(async () => (await state(page)).stop).toEqual(stop)
+})

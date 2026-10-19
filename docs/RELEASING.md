@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.41` prepares topology-preserving spatial morphs so Paris can remove its final renderer source transforms. See the [geometry policy record](PARIS-GEOMETRY-POLICY-ALPHA-41.md); publication remains pending.
+
 `0.1.0-alpha.40` publishes supported border-opacity and weighted traffic-emphasis policies for Paris. See the [material policy record](PARIS-MATERIAL-POLICY-ALPHA-40.md); all four registry artifacts and the Paris adoption passed verification.
 
 `0.1.0-alpha.39` publishes optional camera command, gesture and standard-frame hooks for Paris. See the [journey policy contract](CAMERA-JOURNEY-POLICY.md); all four registry artifacts and the Paris adoption passed verification.

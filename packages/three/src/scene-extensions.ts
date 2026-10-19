@@ -1,3 +1,4 @@
+import type { SpatialMorphProjection } from './spatial-morph.ts'
 import type { CameraViewportPolicy } from './map-camera.ts'
 export type { CameraViewportPolicy, CameraViewportState, CameraViewportFrame } from './map-camera.ts'
 import { useContext, type ComponentType } from 'react'
@@ -71,6 +72,9 @@ export interface AircraftPickingPolicy {
 }
 
 export interface NetworkSceneExtensions {
+  /** Topology-preserving world-space morph for network and geographic context geometry.
+   * Replaces spatialLayout when configured; source geometry stays mounted and owned by the renderer. */
+  readonly spatialMorph?: SpatialMorphProjection
   /** Standard-camera projection framing. Stable callback; driver-owned frames remain untouched. */
   readonly cameraViewport?: CameraViewportPolicy
   /** Use a child component for selection instead of the built-in station targets. */

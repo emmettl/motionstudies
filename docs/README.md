@@ -15,6 +15,7 @@
 - [Archive and processing options](ARCHIVE-AND-PROCESSING.md): R2, analytical tables, gridded arrays and optional time-series databases; source-specific retention and redistribution
 - [Cost control](COST-CONTROL.md): $100/month series ceiling, traffic-spike protection, finite retention and proposed enforcement; live compliance still needs verification
 - [Edition architecture and ownership](EDITIONS.md)
+- [Topology-preserving spatial morphs](SPATIAL-MORPH-POLICY.md): persistent geometry, source-vertex blending and the Paris renderer adoption
 - [First view on a phone](FIRST-VIEW.md): measuring the first map frame, the shared waterfall patterns across public editions and tested practices for every edition
 - [Self-hosted typefaces](SELF-HOSTED-FONTS.md): `@motionstudies/web/fonts.css`, vendored Inter and DM Mono with licences and provenance; published since alpha.20, adoption per edition
 - [Code and library consolidation proposal](ARCHITECTURE-CONSOLIDATION.md): application state ownership, renderer internals, data contracts and independent package consumption
