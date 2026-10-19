@@ -1,3 +1,4 @@
+import type { TrainLabelStyle } from './scene-style.ts'
 const trainLabelCollator = new Intl.Collator('de-CH', { numeric: true })
 const trainIdentityCollator = new Intl.Collator(undefined, { sensitivity: 'accent' })
 import type { ServiceCategory } from '@motionstudies/core/domain/network'
@@ -124,4 +125,14 @@ export function categoryIsVisibleInAutoMode(
   if (cameraHeight >= 30) return priority <= CATEGORY_PRIORITY.intercity
   if (cameraHeight >= 22) return priority <= CATEGORY_PRIORITY['regional-express']
   return true
+}
+
+/** Resolve ambient density while preserving the renderer-owned off switch and pool. */
+export function styledTrainLabelBudget(style: TrainLabelStyle | undefined, height: number, width: number, mode: TrainLabelMode): number {
+  if (mode === 'off') return 0
+  return Math.min(MAX_TRAIN_LABELS, Math.max(0, Math.floor(style?.budget?.(height, width, mode) ?? trainLabelBudget(height, mode))))
+}
+
+export function styledTrainLabelScreenHeight(style: TrainLabelStyle | undefined, width: number, selected: boolean, height: number): number {
+  return style?.screenHeight?.(width, selected, height) ?? trainLabelScreenHeight(width, selected, height)
 }

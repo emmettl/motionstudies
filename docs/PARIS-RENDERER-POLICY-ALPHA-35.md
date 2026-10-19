@@ -51,3 +51,7 @@ install, type, lint, boundary, unit, production build and unchanged payload gate
 The registry lockfile and documentation follow in `07515a0`, the pushed Paris main.
 The identical published package files retain the 18 checked browser journeys.
 See [machine-readable evidence](evidence/paris-policy-alpha35.json).
+
+## Hosted install correction
+
+The first Paris hosted run failed during `npm ci`: the lockfile still named local candidate archive hashes even though candidate and published files were identical. Cached local installs had hidden the archive-integrity difference. Commit `a7d763a` corrects all four lock entries from published registry metadata and passes an installation with an empty npm cache. Future adoption verification must check lock integrities against the hosted release manifest explicitly, as well as installed file identity.

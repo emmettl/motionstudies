@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.36` prepares supported train-label density and sizing options for Paris. See the [policy contract](TRAIN-LABEL-POLICY.md) and [delivery record](PARIS-TRAIN-POLICY-ALPHA-36.md).
+
 `0.1.0-alpha.35` publishes supported station-label and tap policies so Paris can remove its corresponding private-renderer transforms. See the [policy contract](STATION-LABEL-POLICY.md).
 
 `0.1.0-alpha.34` publishes the private station-picking extraction, with unchanged public renderer API. See the [release and adoption record](RENDERER-ALPHA-34.md).

@@ -1,10 +1,15 @@
 import { Color, MathUtils } from 'three'
+import type { TrainLabelMode } from './train-labels.ts'
 import { SERVICE_COLORS } from '@motionstudies/core/theme'
 import type { ServiceCategory, StationIndexEntry } from '@motionstudies/core/domain/network'
 
 export type CategoryPalette = Readonly<Partial<Record<ServiceCategory, string>>>
 
 export interface TrainLabelStyle {
+  /** Ambient label count. Off, selection/comparison priority and the pool cap remain renderer-owned. Keep callbacks stable. */
+  readonly budget?: (semanticCameraHeight: number, viewportWidth: number, mode: TrainLabelMode) => number
+  /** Label height in CSS pixels, including focused labels. */
+  readonly screenHeight?: (viewportWidth: number, selected: boolean, semanticCameraHeight: number) => number
   /** Hide labels at or above the given semantic camera height, including focused labels. */
   readonly maxCameraHeight?: Readonly<Partial<Record<ServiceCategory, number>>>
   readonly viewportPadding?: number

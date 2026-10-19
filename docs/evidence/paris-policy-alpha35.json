@@ -52,5 +52,7 @@
     "build",
     "bundle",
     "installed package byte identity"
-  ]
+  ],
+  "parisIntegrityRepairCommit": "a7d763afc8e9febd1db307b9c4c62cfd4ba47fb7",
+  "emptyCacheInstallVerified": true
 }

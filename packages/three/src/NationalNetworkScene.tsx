@@ -70,9 +70,9 @@ import {
   MAX_TRAIN_LABELS,
   nonRailCategorySuppressesTrainLabels,
   trainLabelArrivalOpacity,
-  trainLabelBudget,
+  styledTrainLabelBudget,
   trainLabelIdentity,
-  trainLabelScreenHeight,
+  styledTrainLabelScreenHeight,
   trainLabelScreenWidth,
   type TrainLabelMode,
 } from './train-labels.ts'
@@ -2357,7 +2357,7 @@ function TrainLabels({
       ? trainLabelMode === 'off'
         ? 0
         : 1
-      : trainLabelBudget(semanticCameraHeight, trainLabelMode)
+      : styledTrainLabelBudget(labelStyle, semanticCameraHeight, size.width, trainLabelMode)
     if (!labelBudget) {
       retainedTrainIds.current.clear()
       return
@@ -2481,7 +2481,8 @@ function TrainLabels({
         candidate.selected,
         candidate.comparisonIndex >= 0,
       )
-      const screenHeight = trainLabelScreenHeight(
+      const screenHeight = styledTrainLabelScreenHeight(
+        labelStyle,
         size.width,
         candidate.selected,
         semanticCameraHeight,
