@@ -97,6 +97,11 @@ Start with local functions, hooks or reducers using the current stack. The exist
 
 ## 2. Renderer internals behind a stable public interface
 
+The next bounded delivery adds supported station-label and pick-acceptance
+policies, replacing Paris's matching build transforms. See the
+[alpha.35 delivery](PARIS-RENDERER-POLICY-ALPHA-35.md) for validation and the
+camera/material/morph transforms that remain.
+
 The first private extraction isolates station tap selection into
 `StationTapTarget.tsx` and `station-picking.ts`. Inputs are the camera, canvas,
 ranked station identities, projected platform positions, framing and selection

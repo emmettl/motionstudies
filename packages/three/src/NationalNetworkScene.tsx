@@ -1921,6 +1921,7 @@ function StationLabels({
   settleSeconds,
   hidden = false,
   lineMapMix = 0,
+  spatialLayoutMix = 0,
 }: {
   readonly stations: readonly StationIndexEntry[]
   readonly snapshot: NetworkSnapshot
@@ -1935,6 +1936,7 @@ function StationLabels({
   readonly settleSeconds?: number
   readonly hidden?: boolean
   readonly lineMapMix?: number
+  readonly spatialLayoutMix?: number
 }) {
   const { camera, size } = useThree()
   const stationStyle = useMapStyle().stationLabels
@@ -1952,7 +1954,7 @@ function StationLabels({
     [snapshot, referenceSnapshot, selectedRoute, selectedTrain],
   )
   const labels = useMemo(() => {
-    const ranked = rankStationsForLabels(stations)
+    const ranked = stationStyle?.orderStations?.(rankStationsForLabels(stations)) ?? rankStationsForLabels(stations)
     const stationByName = new Map(ranked.map((station) => [station.name, station]))
     const ordered: StationIndexEntry[] = []
     const usedNames = new Set<string>()
@@ -1977,10 +1979,10 @@ function StationLabels({
           station.name === selectedStation?.name || routeStationNames.has(station.name),
       } satisfies StationLabelDatum
     })
-  }, [cameraFraming, projectedStops, routeStationNames, selectedStation, stations])
+  }, [cameraFraming, projectedStops, routeStationNames, selectedStation, stations, stationStyle])
   // These dependencies invalidate cached frame work when render inputs change.
   /* oxlint-disable react-hooks/exhaustive-deps */
-  const stationLabelFrame = useMemo(() => new StationLabelFrame(), [stationStyle, labels, selectedTrain, selectedRoute, selectedStation, terminalNames, cameraFraming, tierLimit, settleSeconds, hidden, lineMapMix, layoutTransitioning])
+  const stationLabelFrame = useMemo(() => new StationLabelFrame(), [stationStyle, labels, selectedTrain, selectedRoute, selectedStation, terminalNames, cameraFraming, tierLimit, settleSeconds, hidden, lineMapMix, layoutTransitioning, spatialLayoutMix])
   /* oxlint-enable react-hooks/exhaustive-deps */
 
   useEffect(
@@ -2003,10 +2005,11 @@ function StationLabels({
   ])
 
   useFrame((_, delta) => {
-    const semanticHeight = stationLabelCameraHeight(
+    const baseHeight = stationLabelCameraHeight(
       camera.position.y,
       cameraFraming,
     )
+    const semanticHeight = stationStyle?.semanticHeight?.(baseHeight, spatialLayoutMix) ?? baseHeight
     const cameraMoved = cameraWasSampled.current && (
       previousCameraPosition.current.distanceToSquared(camera.position) > 0.000025 ||
       1 - Math.abs(previousCameraQuaternion.current.dot(camera.quaternion)) > 0.000001
@@ -2057,7 +2060,7 @@ function StationLabels({
       if ((selectedTrain || selectedRoute) && !label.emphasised) return
       if (
         !label.emphasised &&
-        !stationLabelWithinTier(label.station.labelRank, tierLimit)
+        !(stationStyle?.eligible?.(label.station, semanticHeight, tierLimit) ?? stationLabelWithinTier(label.station.labelRank, tierLimit))
       ) return
       if (layoutTransitioning && !label.emphasised && !retained) return
       if (!label.emphasised && !retained && !canRepopulate) return
@@ -2122,7 +2125,7 @@ function StationLabels({
       if (visible >= budget || visible >= MAX_STATION_LABELS) break
       const label = labels[candidate.index]
       const selected = label.station.name === selectedStation?.name
-      const screenHeight = stationLabelScreenHeight(
+      const screenHeight = stationStyle?.screenHeight?.(size.width, selected || label.emphasised, label.station.labelRank, semanticHeight) ?? stationLabelScreenHeight(
         selected,
         label.emphasised,
         label.station.labelRank,
@@ -2137,6 +2140,8 @@ function StationLabels({
         top: candidate.y - screenHeight * 0.5,
         bottom: candidate.y + screenHeight * 0.5,
       }
+      const padding = stationStyle?.viewportPadding
+      if (padding !== undefined && (box.left < padding || box.right > size.width - padding || box.top < padding || box.bottom > size.height - padding)) continue
       const overlaps = occupied.some(
         (other) =>
           mapLabelBoxesOverlap(box, other),
@@ -2484,6 +2489,8 @@ function TrainLabels({
       const width = trainLabelScreenWidth(text, screenHeight) * (labelStyle?.collisionWidthScale ?? 1)
       const anchorY = candidate.comparisonIndex < 0 ? labelStyle?.anchorY ?? 0.5 : 0.5
       const box = trainLabelCollisionBox(candidate.x, candidate.y, width, screenHeight, anchorY)
+      const padding = labelStyle?.viewportPadding
+      if (padding !== undefined && (box.left < padding || box.right > size.width - padding || box.top < padding || box.bottom > size.height - padding)) continue
       const overlaps = occupied.some(
         (other) =>
           mapLabelBoxesOverlap(box, other),
@@ -4414,6 +4421,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         motion={motion}
       />
       <StationLabels
+        spatialLayoutMix={props.spatialLayoutMix}
         stations={props.stations}
         snapshot={props.snapshot}
         referenceSnapshot={props.referenceSnapshot}
@@ -4434,6 +4442,9 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       />
       {props.extensions?.stationPicking !== 'custom' && (
       <StationTapTarget
+        style={props.mapStyle?.stationLabels}
+        spatialLayoutMix={props.spatialLayoutMix}
+        accepts={props.extensions?.acceptsStationPick}
         stations={props.stations}
         projectedStops={projectedStops}
         cameraFraming={props.cameraFraming}

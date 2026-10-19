@@ -5,15 +5,15 @@ import { ATLAS_MAP_FRAMING } from './map-camera.ts'
 import { installStationTapTarget, stationCentre } from './station-picking.ts'
 
 const station: StationIndexEntry = { name: 'Central', stopIndexes: [0], trainIds: [], routes: [] }
-function setup(onSelectStation = vi.fn()) {
+function setup(onSelectStation = vi.fn(), options: Partial<Parameters<typeof installStationTapTarget>[0]> = {}) {
   const target = new EventTarget()
   const element = Object.assign(target, {
     getBoundingClientRect: () => ({ left: 0, top: 0, width: 100, height: 100 }),
     setPointerCapture: vi.fn(),
-  }) as unknown as HTMLElement
+  }) as unknown as HTMLCanvasElement
   const camera = new THREE.OrthographicCamera(-10, 10, 10, -10, 0.1, 100)
   camera.position.set(0, 10, 0); camera.up.set(0, 0, -1); camera.lookAt(0, 0, 0); camera.updateMatrixWorld()
-  const dispose = installStationTapTarget({ camera, element, rankedStations: [station], projectedStops: [[0, 0, 0]], cameraFraming: ATLAS_MAP_FRAMING, onSelectStation })!
+  const dispose = installStationTapTarget({ scene: new THREE.Scene(), camera, element, rankedStations: [station], projectedStops: [[0, 0, 0]], cameraFraming: ATLAS_MAP_FRAMING, onSelectStation, ...options })!
   const pointer = (type: string, values = {}) => target.dispatchEvent(Object.assign(new Event(type), {
     pointerId: 1, pointerType: 'mouse', button: 0, clientX: 50, clientY: 50, ...values,
   }))
@@ -51,4 +51,28 @@ it('removes listeners on teardown even during a pending gesture', () => {
   pointer('pointerdown'); dispose(); pointer('pointerup')
   pointer('pointerdown'); pointer('pointerup')
   expect(onSelectStation).not.toHaveBeenCalled()
+})
+
+it('uses the shared eligibility and sizing policy without changing station identity', () => {
+  const blocked = { ...station, name: 'Blocked' }, chosen = { ...station, name: 'Chosen' }
+  const height = vi.fn(() => 20), eligible = vi.fn(value => value === chosen), screenHeight = vi.fn(() => 32)
+  const { pointer, onSelectStation, dispose } = setup(vi.fn(), {
+    rankedStations: [blocked, chosen],
+    style: { semanticHeight: height, eligible, screenHeight, rankLimit: () => Infinity }, spatialLayoutMix: 0.5,
+  })
+  pointer('pointerdown'); pointer('pointerup')
+  expect(onSelectStation).toHaveBeenCalledExactlyOnceWith(chosen)
+  expect(height).toHaveBeenCalledWith(expect.any(Number), 0.5)
+  expect(screenHeight).toHaveBeenCalledWith(100, false, undefined, 20)
+  dispose()
+})
+it('lets another visible target refuse a station tap after gesture validation', () => {
+  const accepts = vi.fn(() => false)
+  const { pointer, onSelectStation, dispose } = setup(vi.fn(), { accepts })
+  pointer('pointerdown', { pointerType: 'touch' }); pointer('pointerup', { pointerType: 'touch' })
+  expect(accepts).toHaveBeenCalledWith(expect.objectContaining({ clientX: 50, clientY: 50, touch: true, dragDistance: 0 }))
+  expect(onSelectStation).not.toHaveBeenCalled()
+  dispose()
+  pointer('pointerdown'); pointer('pointerup')
+  expect(accepts).toHaveBeenCalledTimes(1)
 })

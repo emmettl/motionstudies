@@ -1,3 +1,5 @@
+import type { StationLabelStyle } from './scene-style.ts'
+import type { NetworkSceneExtensions } from './scene-extensions.ts'
 import { useEffect, useMemo } from 'react'
 import { useThree } from '@react-three/fiber'
 import type { StationIndexEntry } from '@motionstudies/core/domain/network'
@@ -10,18 +12,22 @@ export function StationTapTarget({
   projectedStops,
   cameraFraming,
   onSelectStation,
+  style, spatialLayoutMix = 0, accepts,
 }: {
+  readonly style?: StationLabelStyle
+  readonly spatialLayoutMix?: number
+  readonly accepts?: NetworkSceneExtensions['acceptsStationPick']
   readonly stations: readonly StationIndexEntry[]
   readonly projectedStops: readonly ProjectedStop[]
   readonly cameraFraming: MapCameraFraming
   readonly onSelectStation?: (station: StationIndexEntry) => void
 }) {
-  const { camera, gl } = useThree()
-  const rankedStations = useMemo(() => rankStationsForLabels(stations), [stations])
+  const { camera, gl, scene } = useThree()
+  const rankedStations = useMemo(() => style?.orderStations?.(rankStationsForLabels(stations)) ?? rankStationsForLabels(stations), [stations, style])
 
   useEffect(() => {
-    return installStationTapTarget({ camera, element: gl.domElement, rankedStations, projectedStops, cameraFraming, onSelectStation })
-  }, [camera, cameraFraming, gl, onSelectStation, projectedStops, rankedStations])
+    return installStationTapTarget({ style, spatialLayoutMix, accepts, scene, camera, element: gl.domElement, rankedStations, projectedStops, cameraFraming, onSelectStation })
+  }, [camera, cameraFraming, gl, onSelectStation, projectedStops, rankedStations, style, spatialLayoutMix, accepts, scene])
 
   return null
 }

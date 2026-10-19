@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.35` prepares supported station-label and tap policies so Paris can remove its corresponding private-renderer transforms. See the [policy contract](STATION-LABEL-POLICY.md).
+
 `0.1.0-alpha.34` publishes the private station-picking extraction, with unchanged public renderer API. See the [release and adoption record](RENDERER-ALPHA-34.md).
 
 `0.1.0-alpha.33` adds the shared Node edition-boundary checker/import parser and the browser layout observer. Seven edition adoptions preserve their scan roots and additional-package rules; London and Switzerland use the observer while keeping local geometry policy. Publication uses the standard trusted workflow.

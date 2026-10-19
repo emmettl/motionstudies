@@ -103,11 +103,12 @@ try {
     export const artifactHash: string = jsonArtifact(archive.manifest).sha256
     import { useNetworkScene, type NetworkSceneExtensions, type NetworkSceneContext } from '@motionstudies/three/scene-extensions'
     import { FLAT_NETWORK_MAP_STYLE, type NetworkMapStyle } from '@motionstudies/three/scene-style'
-    export const mapStyle: NetworkMapStyle = { ...FLAT_NETWORK_MAP_STYLE, categoryColors: { bus: '#ffcc00' } }
+    export const mapStyle: NetworkMapStyle = { ...FLAT_NETWORK_MAP_STYLE, categoryColors: { bus: '#ffcc00' }, stationLabels: { orderStations: stations => stations, semanticHeight: (height, mix) => height * (1 - mix), eligible: station => station.stopIndexes.length > 0, screenHeight: (width, focused, rank, height) => focused ? 40 : Math.min(width, height + (rank ?? 0)), viewportPadding: 8 } }
     import type { NationalNetworkSceneProps } from '@motionstudies/three/NationalNetworkScene'
     import type { HubFlowPolicy } from '@motionstudies/three/HubPulseScene'
     export const sceneHook: () => NetworkSceneContext = useNetworkScene
     export const extensions: NetworkSceneExtensions = {
+      acceptsStationPick: event => event.dragDistance <= 5,
       trainPosition: (_train, _time, stops) => stops[0],
       createCameraDriver: ({ camera, target }) => ({ update: () => { camera.lookAt(target); return false }, dispose() {} }),
     }

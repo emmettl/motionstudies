@@ -1,12 +1,13 @@
 import { Color, MathUtils } from 'three'
 import { SERVICE_COLORS } from '@motionstudies/core/theme'
-import type { ServiceCategory } from '@motionstudies/core/domain/network'
+import type { ServiceCategory, StationIndexEntry } from '@motionstudies/core/domain/network'
 
 export type CategoryPalette = Readonly<Partial<Record<ServiceCategory, string>>>
 
 export interface TrainLabelStyle {
   /** Hide labels at or above the given semantic camera height, including focused labels. */
   readonly maxCameraHeight?: Readonly<Partial<Record<ServiceCategory, number>>>
+  readonly viewportPadding?: number
   readonly elevation?: number
   /** Sprite anchor: 0.5 centres the label; negative values place it above the anchor. */
   readonly anchorY?: number
@@ -39,15 +40,26 @@ export interface AirportInfrastructureStyle {
   readonly fog?: boolean
 }
 
+/** Optional policies shared by station labels and their built-in tap targets.
+ * Keep this object and its callbacks stable. Ordering receives ranked stations;
+ * selection priority and the renderer's collision/frame budgets remain owned here.
+ */
+export interface StationLabelStyle {
+  readonly rankLimit?: (semanticCameraHeight: number) => number
+  readonly refreshInterval?: number
+  readonly orderStations?: (ranked: readonly StationIndexEntry[]) => readonly StationIndexEntry[]
+  readonly semanticHeight?: (height: number, spatialLayoutMix: number) => number
+  readonly eligible?: (station: StationIndexEntry, semanticHeight: number, tierLimit?: number) => boolean
+  readonly screenHeight?: (width: number, focused: boolean, rank: number | undefined, semanticHeight: number) => number
+  /** Omission retains labels extending outside the viewport. */
+  readonly viewportPadding?: number
+}
+
 export interface NetworkMapStyle {
   readonly vehicleElevation?: number
   readonly trailElevationOffset?: number
   readonly diagram?: { readonly laneSpacing?: number; readonly casingWidth?: number; readonly coreWidth?: number }
-  readonly stationLabels?: {
-    readonly rankLimit?: (semanticCameraHeight: number) => number
-    /** Maximum seconds between repopulations while the camera moves. */
-    readonly refreshInterval?: number
-  }
+  readonly stationLabels?: StationLabelStyle
   readonly roads?: RoadInfrastructureStyle
   readonly airports?: AirportInfrastructureStyle
   /** Flat compositing fixes the painter order for rail, flow and trails. */

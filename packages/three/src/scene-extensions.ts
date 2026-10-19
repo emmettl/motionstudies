@@ -64,6 +64,8 @@ export interface AircraftPickingPolicy {
 export interface NetworkSceneExtensions {
   /** Use a child component for selection instead of the built-in station targets. */
   readonly stationPicking?: 'default' | 'custom'
+  /** Called after tap/drag validation and before built-in station picking. */
+  readonly acceptsStationPick?: (event: AircraftPickEvent) => boolean
   readonly aircraftPicking?: AircraftPickingPolicy
   readonly DiagramStations?: ComponentType<DiagramStationsProps>
   readonly RoadOverlay?: ComponentType<RoadOverlayProps>

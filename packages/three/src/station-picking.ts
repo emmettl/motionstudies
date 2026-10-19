@@ -1,3 +1,5 @@
+import type { StationLabelStyle } from './scene-style.ts'
+import type { NetworkSceneExtensions } from './scene-extensions.ts'
 import * as THREE from 'three'
 import type { StationIndexEntry } from '@motionstudies/core/domain/network'
 import type { MapCameraFraming } from './map-camera.ts'
@@ -28,9 +30,13 @@ export function stationCentre(
  * no Three.js resources or scene context are retained beyond this installation.
  * The returned disposer removes all listeners when the scene or inputs retire.
  */
-export function installStationTapTarget({ camera, element, rankedStations, projectedStops, cameraFraming, onSelectStation }: {
+export function installStationTapTarget({ style, spatialLayoutMix = 0, accepts, scene, camera, element, rankedStations, projectedStops, cameraFraming, onSelectStation }: {
+  readonly style?: StationLabelStyle
+  readonly spatialLayoutMix?: number
+  readonly accepts?: NetworkSceneExtensions['acceptsStationPick']
+  readonly scene: THREE.Scene
   readonly camera: THREE.Camera
-  readonly element: HTMLElement
+  readonly element: HTMLCanvasElement
   readonly rankedStations: readonly StationIndexEntry[]
   readonly projectedStops: readonly ProjectedStop[]
   readonly cameraFraming: MapCameraFraming
@@ -64,19 +70,22 @@ export function installStationTapTarget({ camera, element, rankedStations, proje
       return
     }
 
-    const semanticHeight = stationLabelCameraHeight(
+    if (accepts && !accepts({ scene, camera, canvas: element, clientX: event.clientX, clientY: event.clientY, touch: start.pointerType === 'touch', dragDistance: Math.hypot(event.clientX - start.x, event.clientY - start.y) })) return
+    const baseHeight = stationLabelCameraHeight(
       camera.position.y,
       cameraFraming,
     )
+    const semanticHeight = style?.semanticHeight?.(baseHeight, spatialLayoutMix) ?? baseHeight
     const rankLimit = Math.min(
       rankedStations.length,
-      stationLabelRankLimit(semanticHeight),
+      (style?.rankLimit ?? stationLabelRankLimit)(semanticHeight),
     )
     const rect = element.getBoundingClientRect()
     const projected = new THREE.Vector3()
     const screenPoints = rankedStations
       .slice(0, rankLimit)
       .flatMap((station, index) => {
+        if (style?.eligible && !style.eligible(station, semanticHeight)) return []
         projected.copy(stationCentre(station, projectedStops)).project(camera)
         if (
           projected.z < -1 ||
@@ -90,7 +99,7 @@ export function installStationTapTarget({ camera, element, rankedStations, proje
         }
         const x = (projected.x * 0.5 + 0.5) * rect.width
         const y = (-projected.y * 0.5 + 0.5) * rect.height
-        const screenHeight = stationLabelScreenHeight(false, false)
+        const screenHeight = style?.screenHeight?.(rect.width, false, station.labelRank, semanticHeight) ?? stationLabelScreenHeight(false, false)
         const labelWidth = stationLabelScreenWidth(
           stationLabelText(station.name, cameraFraming),
           screenHeight,
