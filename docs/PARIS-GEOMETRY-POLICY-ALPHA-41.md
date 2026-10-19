@@ -12,6 +12,6 @@ The opening remains 629.2 KiB against 630 KiB; the ten-line view is 681.3 KiB ag
 
 All four packages were published under public `next` from `281b5868f7a9caae9ebfd4d03aed3d189d73bf21` through [trusted run 39289071255](https://github.com/emmettl/motionstudies/actions/runs/39289071255). Registry metadata, SHA-512 integrities, downloaded archives and next tags match. Every package file matches the checked candidates.
 
-Paris passed an empty-cache registry install, lock integrity and installed-file comparisons and all final leaf checks. Its browser journeys exercised byte-identical package contents before publication. Adoption commit: `4e887ef853c1c4b4d9ec4ac970592ecf85dd0c64`.
+Paris passed an empty-cache registry install, lock integrity and installed-file comparisons and all final leaf checks. The browser suites exercised package contents byte-identical to the verified registry release. Adoption commit: `4e887ef853c1c4b4d9ec4ac970592ecf85dd0c64`.
 
 No private renderer source transforms remain in Paris. See [release evidence](evidence/paris-geometry-policy-alpha41.json).
