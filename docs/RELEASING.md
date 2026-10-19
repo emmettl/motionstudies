@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.35` under `next`, published from `51aaf9a` through [trusted run 39221831065](https://github.com/emmettl/motionstudies/actions/runs/39221831065). All four registry integrities match the checked tarballs; see the [Paris policy release record](PARIS-RENDERER-POLICY-ALPHA-35.md).
+The latest verified coordinated release is `0.1.0-alpha.36` under `next`, published from `2bcb9e1` through [trusted run 39237779482](https://github.com/emmettl/motionstudies/actions/runs/39237779482). All four registry integrities match the tested tarballs; see the [Paris train-label policy record](PARIS-TRAIN-POLICY-ALPHA-36.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -41,7 +41,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
-`0.1.0-alpha.36` prepares supported train-label density and sizing options for Paris. See the [policy contract](TRAIN-LABEL-POLICY.md) and [delivery record](PARIS-TRAIN-POLICY-ALPHA-36.md).
+`0.1.0-alpha.36` publishes supported train-label density and sizing options for Paris. See the [policy contract](TRAIN-LABEL-POLICY.md) and [delivery record](PARIS-TRAIN-POLICY-ALPHA-36.md).
 
 `0.1.0-alpha.35` publishes supported station-label and tap policies so Paris can remove its corresponding private-renderer transforms. See the [policy contract](STATION-LABEL-POLICY.md).
 

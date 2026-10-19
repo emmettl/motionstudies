@@ -1,0 +1,42 @@
+{
+  "version": "0.1.0-alpha.36",
+  "sourceCommit": "2bcb9e1ce867931bb44bdb8487aeffceb68bebac",
+  "parisCommit": "75debe00bf737b0d018da4305ef25de56f97f164",
+  "releaseRun": "https://github.com/emmettl/motionstudies/actions/runs/39237779482",
+  "sharedUnit": 472,
+  "hosting": 11,
+  "packedBrowserPassed": 100,
+  "packedBrowserSkipped": 2,
+  "loaderBrowser": 34,
+  "parisUnit": 27,
+  "parisBrowser": 18,
+  "emptyCacheInstallVerified": true,
+  "lockIntegritiesVerified": true,
+  "installedFilesVerified": true,
+  "registry": [
+    {
+      "name": "@motionstudies/core",
+      "integrity": "sha512-0nbGLY2b3GwPPEdTzWcsMA69TE/JNpk+lEGWzr1vzs+tieoLuaR95+DtTXsbHZdI55fui/Lj74/7ofGC60S0yQ==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "integrity": "sha512-igRs3OfxRofNRRITsVe+uH5mezoSKsD4LGM395o/xdXYjyaFFDQIn8o4ECuxqKceImw7RCFQERY5pkpDbIxWeA==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "integrity": "sha512-HAgCPlhNSqvcCXCLLUcF0cUBDRwFxLbfLaGSgqGxkciE271Ob/uK+pG3r5NqqHLEq1JV87BiMOQcUIkCRpzanw==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "integrity": "sha512-0nS4yYf9GvF67fghbPby5aCSGxESX7z5KgsZsGM8bJlqi1UtWaYpmweZ40XNrHPdJTTVNnh4fcY3WcBdSEbAoQ==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    }
+  ]
+}
