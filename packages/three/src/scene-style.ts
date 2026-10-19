@@ -60,7 +60,17 @@ export interface StationLabelStyle {
   readonly viewportPadding?: number
 }
 
+/** Per-frame material policies. Camera height is world-space, not semantic label height.
+ * Keep callbacks stable; they update existing materials without rebuilding geometry. */
+export interface NetworkMaterialStyle {
+  /** Multiplier for the border's existing subdued and spatial-layout opacity. */
+  readonly borderOpacityScale?: (cameraHeight: number) => number
+  /** Replaces the traffic layer's overview emphasis for its weighted strokes. Pulses retain their existing emphasis. */
+  readonly trafficFlowOverviewEmphasis?: (cameraHeight: number) => number
+}
+
 export interface NetworkMapStyle {
+  readonly materials?: NetworkMaterialStyle
   readonly vehicleElevation?: number
   readonly trailElevationOffset?: number
   readonly diagram?: { readonly laneSpacing?: number; readonly casingWidth?: number; readonly coreWidth?: number }
