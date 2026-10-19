@@ -108,7 +108,7 @@ try {
     import type { HubFlowPolicy } from '@motionstudies/three/HubPulseScene'
     export const sceneHook: () => NetworkSceneContext = useNetworkScene
     export const extensions: NetworkSceneExtensions = {
-      acceptsStationPick: event => event.dragDistance <= 5,
+      cameraViewport: ({ width, height, spatialLayoutMix }) => ({ zoom: 1 - spatialLayoutMix * 0.1, offsetY: Math.min(width, height) * -0.1 }), acceptsStationPick: event => event.dragDistance <= 5,
       trainPosition: (_train, _time, stops) => stops[0],
       createCameraDriver: ({ camera, target }) => ({ update: () => { camera.lookAt(target); return false }, dispose() {} }),
     }

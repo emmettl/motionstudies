@@ -125,6 +125,7 @@ import {
   STATION_SELECTION_PULSE_COUNT,
   stationSelectionPulseFrame,
   type MapCameraFraming,
+  createCameraViewportFraming,
 } from './map-camera.ts'
 import {
   pointAlongProjectedPath,
@@ -3792,21 +3793,21 @@ function NetworkCamera({
   const { camera, gl, size } = useThree()
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const resolveTrainPosition = useProjectedTrainPosition()
-  const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
-  const desiredTarget = useMemo(() => new THREE.Vector3(), [])
-  const currentTarget = useMemo(() => new THREE.Vector3(), [])
-  const createCameraDriver = useNetworkScene().props.extensions?.createCameraDriver
+  const [desiredPosition, desiredTarget, currentTarget, mapTarget] = useMemo(() =>
+    [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), { current: new THREE.Vector3() }] as const, [])
+  const { cameraViewport, createCameraDriver } = useNetworkScene().props.extensions ?? {}
+  const viewportFraming = useMemo(() => createCameraViewportFraming(camera as THREE.PerspectiveCamera), [camera])
   const cameraDriver = useRef<NetworkCameraDriver | undefined>(undefined)
   useEffect(() => {
-    if (!createCameraDriver || !(camera instanceof THREE.PerspectiveCamera)) return
-    const driver = createCameraDriver({ camera, target: currentTarget, projection: airProjection })
+    const driver = createCameraDriver && camera instanceof THREE.PerspectiveCamera
+      ? createCameraDriver({ camera, target: currentTarget, projection: airProjection }) : undefined
     cameraDriver.current = driver
     return () => {
       cameraDriver.current = undefined
-      driver.dispose()
+      driver?.dispose()
+      viewportFraming()
     }
-  }, [createCameraDriver, camera, currentTarget, airProjection])
-  const mapTarget = useRef(new THREE.Vector3())
+  }, [createCameraDriver, camera, currentTarget, airProjection, viewportFraming, cameraViewport])
   const distanceScale = useRef(1)
   const localTime = useRef(time)
   const directTouch = useRef(false)
@@ -4037,6 +4038,7 @@ function NetworkCamera({
       )
     camera.position.lerp(desiredPosition, damping)
     currentTarget.lerp(desiredTarget, damping)
+    viewportFraming(cameraViewport?.({ ...size, spatialLayoutMix: diagramMix }), size)
     camera.lookAt(currentTarget)
     camera.updateMatrixWorld()
   }, -1)

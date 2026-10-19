@@ -1,3 +1,37 @@
+import type { PerspectiveCamera } from 'three'
+
+export interface CameraViewportState {
+  readonly width: number
+  readonly height: number
+  readonly spatialLayoutMix: number
+}
+export interface CameraViewportFrame {
+  readonly zoom: number
+  /** CSS-pixel offset, using Three.js setViewOffset's vertical sign convention. */
+  readonly offsetY: number
+}
+export type CameraViewportPolicy = (state: CameraViewportState) => CameraViewportFrame | undefined
+
+/** Override the standard camera projection and release it back to its default framing. */
+export function createCameraViewportFraming(camera: PerspectiveCamera) {
+  let active: boolean | undefined
+  return (frame?: CameraViewportFrame, size?: Pick<CameraViewportState, 'width' | 'height'>): void => {
+    if (frame) {
+      const { width, height } = size!
+      const view = camera.view
+      if (active && camera.zoom === frame.zoom && view?.offsetY === frame.offsetY &&
+        view.width === width && view.height === height) return
+      active = true
+      camera.zoom = frame.zoom
+      camera.setViewOffset(width, height, 0, frame.offsetY, width, height)
+    } else if (active) {
+      camera.zoom = 1
+      camera.clearViewOffset()
+      active = false
+    }
+  }
+}
+
 export const MIN_MAP_DISTANCE_SCALE = 0.02
 export const MAX_MAP_DISTANCE_SCALE = 1.18
 export interface MapCameraFraming {

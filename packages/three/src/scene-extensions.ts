@@ -1,3 +1,5 @@
+import type { CameraViewportPolicy } from './map-camera.ts'
+export type { CameraViewportPolicy, CameraViewportState, CameraViewportFrame } from './map-camera.ts'
 import { useContext, type ComponentType } from 'react'
 import { NetworkSceneProviderContext } from './scene-context.ts'
 import type { Camera, PerspectiveCamera, Scene, Vector3 } from 'three'
@@ -62,6 +64,8 @@ export interface AircraftPickingPolicy {
 }
 
 export interface NetworkSceneExtensions {
+  /** Standard-camera projection framing. Stable callback; driver-owned frames remain untouched. */
+  readonly cameraViewport?: CameraViewportPolicy
   /** Use a child component for selection instead of the built-in station targets. */
   readonly stationPicking?: 'default' | 'custom'
   /** Called after tap/drag validation and before built-in station picking. */
