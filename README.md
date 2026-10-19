@@ -39,7 +39,7 @@ See [package contracts](packages/README.md) and [extraction provenance](docs/EXT
 
 `packages/` owns `@motionstudies/core`, `three`, `web` and Node-only `data`. `lab/` is a synthetic consumer. Each edition owns its application, data, ingestion policy, styles, workers and publication decisions. Thirteen editions/research projects and the recorder consume exact published versions. [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances), [Gleislicht](https://github.com/emmettl/gleislicht), Umlauf, MANIFEST, Zugunruhe and NORIKAE live in independent public repositories. [Local / Express](https://github.com/emmettl/local-express) has a private repository while its publication hold remains unresolved, and Underfall also has a private repository. See the [alpha.31 rollout](docs/DEPENDENCIES-ALPHA-31.md#edition-adoption).
 
-The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The latest verified coordinated prerelease is `0.1.0-alpha.38` under `next`, published through [trusted release run 39248335535](https://github.com/emmettl/motionstudies/actions/runs/39248335535) with all four registry artifacts checked against the tested tarballs. See the [Paris camera viewport policy release record](docs/PARIS-CAMERA-POLICY-ALPHA-38.md). Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
+The package and lab directories retain their Git history from Gleislicht. Source workspaces remain private. The latest verified coordinated prerelease is `0.1.0-alpha.39` under `next`, published through [trusted release run 39282313371](https://github.com/emmettl/motionstudies/actions/runs/39282313371) with all four registry artifacts checked against the tested tarballs. See the [Paris camera journey policy release record](docs/PARIS-CAMERA-JOURNEY-ALPHA-39.md). Only explicit release builds produce publishable compiled tarballs; the manual `release.yml` workflow uses OIDC. See [release instructions](docs/RELEASING.md). Pushing or merging alone never publishes npm packages.
 
 ## Hosting
 
@@ -47,6 +47,6 @@ Checks run for pushes and pull requests. Only `main` deploys the catalogue plus 
 
 ## Local validation
 
-At the alpha.38 release: 475 shared unit tests, 100 packed-consumer browser checks with two existing skips and 34 loader browser checks, alongside type, lint and architecture checks. These are local Chromium/WebKit results; the trusted release also passed GitHub-hosted validation. Catalogue deployment follows its separate workflow.
+At the alpha.39 release: 476 shared unit tests, 100 packed-consumer browser checks with two existing skips and 34 loader browser checks, alongside type, lint and architecture checks. These are local Chromium/WebKit results; the trusted release also passed GitHub-hosted validation. Catalogue deployment follows its separate workflow.
 
 See the [18 October maintenance record](docs/DEPENDENCIES-2026-10-18.md) for dependency updates, checkout reconciliation, reliability fixes and edition validation.

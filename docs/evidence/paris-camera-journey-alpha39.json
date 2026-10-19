@@ -1,6 +1,6 @@
 {
   "version": "0.1.0-alpha.39",
-  "status": "candidate checked; ten-line payload decision pending; not published",
+  "status": "published and Paris adoption verified",
   "sharedUnit": 476,
   "hosting": 11,
   "packedBrowserPassed": 100,
@@ -14,10 +14,8 @@
   "firstViewGzip": 644065,
   "firstViewLimit": 645120,
   "tenLineGzip": 697450,
-  "tenLineLimit": 697344,
-  "tenLineExcessBytes": 106,
-  "proposedTenLineLimit": 698368,
-  "budgetChangeApplied": false,
+  "tenLineLimit": 698368,
+  "budgetChangeApplied": true,
   "otherParisDataChecks": [
     "air",
     "metro-layers",
@@ -27,5 +25,39 @@
   "remainingTransforms": [
     "material opacity",
     "geometry morphing"
-  ]
+  ],
+  "sourceCommit": "f0975802aea483e7e37c6459ad320b74ccbd7791",
+  "parisCommit": "413e162266ad46cf0ff534e2582a6a2f6932ba3f",
+  "releaseRun": "https://github.com/emmettl/motionstudies/actions/runs/39282313371",
+  "previousTenLineLimit": 697344,
+  "emptyCacheRegistryInstall": true,
+  "registryLockIntegritiesVerified": true,
+  "installedPackageBytesVerified": true,
+  "registryVerification": [
+    {
+      "name": "@motionstudies/core",
+      "integrity": "sha512-AkfZVD/xvdoHgE2leYqhBW7MJe/l2VbpCRV2pIhXzvwqvGRCEUh3up3p2Pug7qEgPPRxnn4m4sNiV2vhO7E8HQ==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "integrity": "sha512-40NKoqBryiDfW+dQmgkAbogMKZjZ7hEcMR55eOCSKPpILXgNk6t8OudPcRpztqogvut94xLsYu9X5lRIQer1yg==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "integrity": "sha512-WPikm/lJcowgtWd6ouq+0jRFi3lIlgJJD1fgDHciGxBFe4NHgR8M0lmvFxSCTXBb5T9XOOXJjU8MLMZ7UKfvcQ==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "integrity": "sha512-BcXW6o2JPVG7dR9SywhiWdY3Bd1e9EX9QWqlXqXt++5DYJNQSE54w3H4t9xzPK0T8l+4CDG5mmIzW7Pr1TsFgA==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    }
+  ],
+  "previousTenLineExcessBytes": 106
 }

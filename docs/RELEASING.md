@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.38` under `next`, published from `abcb282` through [trusted run 39248335535](https://github.com/emmettl/motionstudies/actions/runs/39248335535). All four registry integrities match the tested tarballs; see the [Paris camera viewport policy record](PARIS-CAMERA-POLICY-ALPHA-38.md).
+The latest verified coordinated release is `0.1.0-alpha.39` under `next`, published from `f097580` through [trusted run 39282313371](https://github.com/emmettl/motionstudies/actions/runs/39282313371). All four registry integrities match the tested tarballs; see the [Paris camera journey policy record](PARIS-CAMERA-JOURNEY-ALPHA-39.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -41,7 +41,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
-`0.1.0-alpha.39` prepares optional camera command, gesture and standard-frame hooks for Paris. See the [journey policy contract](CAMERA-JOURNEY-POLICY.md); publication remains pending candidate gates.
+`0.1.0-alpha.39` publishes optional camera command, gesture and standard-frame hooks for Paris. See the [journey policy contract](CAMERA-JOURNEY-POLICY.md); all four registry artifacts and the Paris adoption passed verification.
 
 `0.1.0-alpha.38` publishes the viewport adoption with the mutable camera target retained as a ref.
 
