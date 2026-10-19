@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.34` under `next`, published from `4b07d16` through [trusted run 39204369780](https://github.com/emmettl/motionstudies/actions/runs/39204369780). All four registry integrities match the checked tarballs; see the [renderer release record](RENDERER-ALPHA-34.md).
+The latest verified coordinated release is `0.1.0-alpha.35` under `next`, published from `51aaf9a` through [trusted run 39221831065](https://github.com/emmettl/motionstudies/actions/runs/39221831065). All four registry integrities match the checked tarballs; see the [Paris policy release record](PARIS-RENDERER-POLICY-ALPHA-35.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -41,7 +41,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
-`0.1.0-alpha.35` prepares supported station-label and tap policies so Paris can remove its corresponding private-renderer transforms. See the [policy contract](STATION-LABEL-POLICY.md).
+`0.1.0-alpha.35` publishes supported station-label and tap policies so Paris can remove its corresponding private-renderer transforms. See the [policy contract](STATION-LABEL-POLICY.md).
 
 `0.1.0-alpha.34` publishes the private station-picking extraction, with unchanged public renderer API. See the [release and adoption record](RENDERER-ALPHA-34.md).
 

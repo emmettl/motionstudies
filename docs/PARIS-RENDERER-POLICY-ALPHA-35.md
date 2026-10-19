@@ -43,5 +43,11 @@ successfully. Local / Express and Underfall passed code validation but their
 artifact uploads remain blocked by GitHub's Actions storage quota. This work does
 not bypass those deployment gates.
 
-Publication and exact Paris adoption evidence are recorded after the trusted
-alpha.35 workflow and clean registry checks finish.
+All four packages were published under `next` from `51aaf9ab6821045f5ef17cc0e02c44d9fb296ae2`
+through [trusted run 39221831065](https://github.com/emmettl/motionstudies/actions/runs/39221831065).
+Registry integrity, downloaded tarballs, tags and every candidate package file match.
+Paris adoption `6eaee20b40cba0c6c4d970847b0e61be2a6ec9aa` passed a clean registry
+install, type, lint, boundary, unit, production build and unchanged payload gates.
+The registry lockfile and documentation follow in `07515a0`, the pushed Paris main.
+The identical published package files retain the 18 checked browser journeys.
+See [machine-readable evidence](evidence/paris-policy-alpha35.json).

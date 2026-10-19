@@ -1,0 +1,56 @@
+{
+  "sourceCommit": "51aaf9ab6821045f5ef17cc0e02c44d9fb296ae2",
+  "parisCommit": "6eaee20b40cba0c6c4d970847b0e61be2a6ec9aa",
+  "version": "0.1.0-alpha.35",
+  "sharedUnit": 469,
+  "hosting": 11,
+  "packedBrowserPassed": 100,
+  "packedBrowserSkipped": 2,
+  "loaderBrowser": 34,
+  "parisUnit": 26,
+  "parisBrowser": 18,
+  "parisOpeningKiB": 628.7,
+  "parisOpeningLimitKiB": 630,
+  "parisTenLineKiB": 680.8,
+  "parisTenLineLimitKiB": 681,
+  "node": "24.22.0",
+  "npm": "11.21.1",
+  "status": "published and adopted after clean registry validation",
+  "releaseRun": "https://github.com/emmettl/motionstudies/actions/runs/39221831065",
+  "registry": [
+    {
+      "name": "@motionstudies/core",
+      "integrity": "sha512-lSqa2SpeuL0s9z8TmXzvXqGZY6UoYBG6isxc2ticE+rDoScexd0lJy5b0OkX1/97zO93cBq2BZEQOCJmG14+bA==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "integrity": "sha512-suV7LatpsbOuCa/vvDIOZFd/aClhr+RP9H3FtMYvHmwRxHN0ccIJ3nDT6KCNWrIhYOCSEa5qEHzt/Y6GypXnGw==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "integrity": "sha512-mxabgLs0wYHSC2JvYScgEN+z27g7GfInuRtAJjnCy7bbYvN/6TopNfIoC3waxQAbTO9cuE3CKQU2IIOGiAZ6eA==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "integrity": "sha512-M1REza4VoiwB5eO0HpqJ1/mZHJiVOB/XBu71rQ6WCFDcJ6lxbG81uwzQYltcSdFCJ6x+LxIMaNikG6dz0CLpJw==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    }
+  ],
+  "parisFinalCommit": "07515a0",
+  "cleanRegistryChecks": [
+    "typecheck",
+    "lint",
+    "boundary",
+    "unit",
+    "build",
+    "bundle",
+    "installed package byte identity"
+  ]
+}
