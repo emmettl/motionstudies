@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.33` under `next`, published from `dbe52f5` through [trusted run 39170794005](https://github.com/emmettl/motionstudies/actions/runs/39170794005). All four registry integrities match the checked tarballs; see [October maintenance](DEPENDENCIES-2026-10-18.md).
+The latest verified coordinated release is `0.1.0-alpha.34` under `next`, published from `4b07d16` through [trusted run 39204369780](https://github.com/emmettl/motionstudies/actions/runs/39204369780). All four registry integrities match the checked tarballs; see the [renderer release record](RENDERER-ALPHA-34.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -41,7 +41,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
-`0.1.0-alpha.34` prepares the private station-picking extraction, with unchanged public renderer API. See the [release and adoption record](RENDERER-ALPHA-34.md).
+`0.1.0-alpha.34` publishes the private station-picking extraction, with unchanged public renderer API. See the [release and adoption record](RENDERER-ALPHA-34.md).
 
 `0.1.0-alpha.33` adds the shared Node edition-boundary checker/import parser and the browser layout observer. Seven edition adoptions preserve their scan roots and additional-package rules; London and Switzerland use the observer while keeping local geometry policy. Publication uses the standard trusted workflow.
 

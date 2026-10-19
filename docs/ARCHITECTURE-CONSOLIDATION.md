@@ -105,8 +105,8 @@ it allocates no persistent GPU resources and subscribes to no whole-scene state.
 The scene and label/selection layers share the same station-centre calculation.
 Gesture behaviour, public exports and consumer API are unchanged. Seven new
 gesture/teardown checks plus the existing label tests protect the extraction.
-This source refactor is prepared for the next shared-package release; existing
-edition pins remain alpha.33. The shared validation passes 467 unit tests,
+This refactor is published in alpha.34, adopted by the seven network-scene
+editions; see the [release record](RENDERER-ALPHA-34.md). The shared validation passes 467 unit tests,
 11 hosting checks, type/lint/architecture gates and four Chromium/WebKit renderer
 journeys. Isolated packed-consumer validation also passes public imports,
 declarations, Node tooling, a production build and 100 browser checks with two

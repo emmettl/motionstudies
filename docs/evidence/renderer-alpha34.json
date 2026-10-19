@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-19",
+  "version": "0.1.0-alpha.34",
+  "tag": "next",
+  "sourceCommit": "4b07d1695c0e254edeed470db3e675413db824fa",
+  "trustedWorkflow": "https://github.com/emmettl/motionstudies/actions/runs/39204369780",
+  "publication": "success",
+  "registryArtifacts": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.34",
+      "file": "motionstudies-core-0.1.0-alpha.34.tgz",
+      "integrity": "sha512-6LYf1Hg8oaANQhgrQCHzpooqykS7DaactpE7vcgK9q6EIX33Lmte9vu3Gigukit8aqWt2u5ApcPtj9OvCq1DCQ==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.34.tgz",
+      "nextTag": "0.1.0-alpha.34"
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.34",
+      "file": "motionstudies-data-0.1.0-alpha.34.tgz",
+      "integrity": "sha512-JLaTwkbgic7uuXeOX4qey4g7G5w4IUYOSo3x3gszfmYMUC6EkPEFWnAdZULHKKZrsbcWkXMvtboJFRQLDvJDhg==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.34.tgz",
+      "nextTag": "0.1.0-alpha.34"
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.34",
+      "file": "motionstudies-three-0.1.0-alpha.34.tgz",
+      "integrity": "sha512-A/hB7966Gj4dCQGAEGb3XaMmd4ZB5GqXYefT4De2sCu+ZGn92IeJymT2lqdv4dWSVyHIobMaV1nOzfoqM3C7iQ==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.34.tgz",
+      "nextTag": "0.1.0-alpha.34"
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.34",
+      "file": "motionstudies-web-0.1.0-alpha.34.tgz",
+      "integrity": "sha512-h5RYXyFKH3SK5Xr7qVeQEADR/LwUQ8/TBigEXEr8vYQBxUstdtnblnBE4nHh5oYbIA6BtAkBs15N/EzgmmLIMQ==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.34.tgz",
+      "nextTag": "0.1.0-alpha.34"
+    }
+  ],
+  "sharedChecks": {
+    "unit": 467,
+    "hosting": 11,
+    "packedBrowserPassed": 100,
+    "packedBrowserSkipped": 2,
+    "loaderBrowser": 34,
+    "publicationDryRuns": 4,
+    "typeLintArchitecture": "pass"
+  },
+  "adoptions": {
+    "allchange": {
+      "main": "ae538e50c84da65c5018dae890539b11696993d1",
+      "unitChecks": 277,
+      "browserJourneys": 2,
+      "cleanRegistryChecks": "pass"
+    },
+    "correspondances": {
+      "main": "6a77c1a5feb6fc3b3386297ed80583f4495d9ea2",
+      "unitChecks": 27,
+      "browserJourneys": 18,
+      "cleanRegistryChecks": "pass"
+    },
+    "gleislicht": {
+      "main": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+      "unitChecks": 1465,
+      "browserJourneys": 18,
+      "cleanRegistryChecks": "pass"
+    },
+    "local-express": {
+      "main": "2c23de1522d80b4bb1df9790cbf8e340854bc4e1",
+      "unitChecks": 2,
+      "browserJourneys": 6,
+      "cleanRegistryChecks": "pass"
+    },
+    "norikae": {
+      "main": "bb0ea45af8a254d3e3ed1af204519a332a29ef53",
+      "development": "2110d3144126bbcdb048e321a583509565fa4d2a",
+      "unitChecks": 28,
+      "browserJourneys": 6,
+      "cleanRegistryChecks": "pass"
+    },
+    "umlauf": {
+      "main": "463a5a933a41a0652d295e99d89bd7fa52a39eab",
+      "unitChecks": 20,
+      "browserJourneys": 8,
+      "cleanRegistryChecks": "pass"
+    },
+    "underfall": {
+      "main": "630f8517aa74e4fdf194ff29a8d7a421f06b511e",
+      "unitChecks": 131,
+      "browserJourneys": 10,
+      "cleanRegistryChecks": "pass"
+    }
+  },
+  "norikaeMainChecks": {
+    "unit": 28,
+    "browser": 6,
+    "cleanRegistryChecks": "pass"
+  },
+  "editionBrowserTotal": 74,
+  "installedPackageParity": {
+    "allchange": {
+      "exactRegistryFiles": 326,
+      "version": "0.1.0-alpha.34",
+      "unmodifiedInstalledPackages": true
+    },
+    "correspondances": {
+      "exactRegistryFiles": 326,
+      "version": "0.1.0-alpha.34",
+      "unmodifiedInstalledPackages": true
+    },
+    "gleislicht": {
+      "exactRegistryFiles": 326,
+      "version": "0.1.0-alpha.34",
+      "unmodifiedInstalledPackages": true
+    },
+    "local-express": {
+      "exactRegistryFiles": 326,
+      "version": "0.1.0-alpha.34",
+      "unmodifiedInstalledPackages": true
+    },
+    "norikae": {
+      "exactRegistryFiles": 326,
+      "version": "0.1.0-alpha.34",
+      "unmodifiedInstalledPackages": true
+    },
+    "umlauf": {
+      "exactRegistryFiles": 326,
+      "version": "0.1.0-alpha.34",
+      "unmodifiedInstalledPackages": true
+    },
+    "underfall": {
+      "exactRegistryFiles": 326,
+      "version": "0.1.0-alpha.34",
+      "unmodifiedInstalledPackages": true
+    },
+    "norikae-main": {
+      "exactRegistryFiles": 326,
+      "version": "0.1.0-alpha.34",
+      "unmodifiedInstalledPackages": true
+    }
+  },
+  "candidateFileParity": {
+    "core": {
+      "identicalFiles": 93,
+      "candidateEqualsPublished": true
+    },
+    "data": {
+      "identicalFiles": 57,
+      "candidateEqualsPublished": true
+    },
+    "three": {
+      "identicalFiles": 79,
+      "candidateEqualsPublished": true
+    },
+    "web": {
+      "identicalFiles": 97,
+      "candidateEqualsPublished": true
+    }
+  },
+  "notes": [
+    "Paris guarded renderer adapter follows the new private component and picking modules, preserving station admission, morph scale and airport priority.",
+    "Browser checks used identical candidate files; clean registry checks and file-by-file installed-package verification passed in all eight checkouts.",
+    "Existing Swiss and Underfall local work was excluded from adoption commits.",
+    "Existing shared unused-import and three Swiss Date-purity lint warnings remain."
+  ]
+}

@@ -12,19 +12,44 @@ boundaries are unchanged.
 
 All four packages move together under npm's `next` tag. Source workspaces remain
 private; publication uses the normal trusted workflow and its retained, tested
-tarballs. The renderer change is prepared for adoption by London, Paris, Switzerland,
+tarballs. The renderer change is adopted by London, Paris, Switzerland,
 Local / Express, NORIKAE, Berlin and Underfall through exact registry pins.
 
-Paris's guarded build adapter must follow the extracted component and picking
+Paris's guarded build adapter now follows the extracted component and picking
 modules. Its station admission, morph scale and airport-over-station priority are
 preserved; drift in either new hook remains an explicit error. No installed
 package files are rewritten.
 
 Preparation checks cover 467 shared unit tests, 11 hosting checks, type, lint,
 architecture, isolated packed-consumer contracts, browser specimens, loader
-lifecycle and publication dry runs (100 packed-browser passes with two existing skips,
+lifecycle and publication dry runs (100 packed-browser passes with two existing
+skips,
 34 loader passes and four dry runs). Paris also passes 18 station/airport/morph
-browser journeys; Swiss and London unit totals are 1,465 and 277 respectively. The edition checks include clean registry
+browser journeys; Swiss and London unit totals are 1,465 and 277 respectively.
+The edition checks include clean registry
 installs, boundary/type/lint/build gates, applicable payload budgets and relevant
-station-selection/playback browser journeys. Publication and adoption evidence
-will be recorded after the trusted workflow succeeds.
+station-selection/playback browser journeys. Publication succeeded from `4b07d16`
+through [trusted run 39204369780](https://github.com/emmettl/motionstudies/actions/runs/39204369780).
+All four registry integrities and `next` tags are verified. Exact adoption commits,
+checks and installed-package parity are in the [evidence record](evidence/renderer-alpha34.json).
+
+## Edition validation
+
+| Edition | Unit checks | Relevant browser journeys |
+| --- | ---: | ---: |
+| London | 277 | 2 |
+| Paris | 27 | 18 |
+| Switzerland | 1,465 | 18 |
+| Local / Express | 2 | 6 |
+| NORIKAE player branch | 28 | 6 |
+| Berlin | 20 | 8 |
+| Underfall | 131 | 10 |
+
+The browser runs use Chromium and WebKit except Berlin, whose existing phone
+project uses Chromium. The independently maintained NORIKAE main branch also
+passes 28 unit checks and
+six browser journeys, giving 74 edition browser passes across eight checkouts.
+All eight clean registry installations pass their applicable boundary, type, lint,
+build and payload gates. Every installed package file matches the published
+tarball; those files also match the candidates used for the browser checks.
+The seven main-branch adoptions and NORIKAE player branch are pushed.

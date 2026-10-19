@@ -2,11 +2,12 @@
 
 [Project goals](docs/VISION.md) · [Study index](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 
-## Current maintenance position — 18 October 2026
+## Current maintenance position — 19 October 2026
 
-**Updated 19 October 2026:** the shared platform publishes exact `0.1.0-alpha.33`
-packages. London, Paris, Switzerland, Local / Express, NORIKAE, PFAD and Berlin
-adopt alpha.33; the other existing consumers retain their deliberate alpha.31 pins.
+**Updated 19 October 2026:** the shared platform publishes exact `0.1.0-alpha.34`
+packages. London, Paris, Switzerland, Local / Express, NORIKAE, Berlin and Underfall
+adopt alpha.34; PFAD retains alpha.33, and the other existing consumers retain
+their deliberate alpha.31 pins. See the [renderer rollout](docs/RENDERER-ALPHA-34.md).
 The [September dependency rollout](docs/DEPENDENCIES-ALPHA-31.md) records that
 published baseline; the [October maintenance record](docs/DEPENDENCIES-2026-10-18.md)
 tracks the subsequent dependency refresh, checkout reconciliation, Berlin clock
@@ -20,7 +21,7 @@ new published package or deployed edition.
   vehicle counting, label allocation and rendering performance helpers are
   available through the published packages. The alpha.9 inventory below is history.
 - **Gleislicht, All Change and Correspondances:** independent public editions
-  consume alpha.33. The original Swiss scope remains accepted; additional data
+  consume alpha.34. The original Swiss scope remains accepted; additional data
   and interface work follows each edition's own release gates.
 - **LUFT, MANIFEST, Umlauf and Zugunruhe:** independent public studies retain
   their source, publication and physical-device evidence boundaries. MANIFEST's
