@@ -3793,8 +3793,9 @@ function NetworkCamera({
   const { camera, gl, size } = useThree()
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const resolveTrainPosition = useProjectedTrainPosition()
-  const [desiredPosition, desiredTarget, currentTarget, mapTarget] = useMemo(() =>
-    [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), { current: new THREE.Vector3() }] as const, [])
+  const [desiredPosition, desiredTarget, currentTarget] = useMemo(() =>
+    [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()], [])
+  const mapTarget = useRef(new THREE.Vector3())
   const { cameraViewport, createCameraDriver } = useNetworkScene().props.extensions ?? {}
   const viewportFraming = useMemo(() => createCameraViewportFraming(camera as THREE.PerspectiveCamera), [camera])
   const cameraDriver = useRef<NetworkCameraDriver | undefined>(undefined)
