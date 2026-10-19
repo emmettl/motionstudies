@@ -1,0 +1,27 @@
+{
+  "version": "0.1.0-alpha.40",
+  "status": "checked source pushed; trusted publication and final registry adoption pending",
+  "sourceCommit": "eb3629e4e2c10f2d966ad57db5a82875d563ed50",
+  "parisCandidateCommit": "354ffecc3ed43a1578f18a8d711df38412df3443",
+  "parisCandidateBranch": "codex/paris-material-policy",
+  "releaseRun": "https://github.com/emmettl/motionstudies/actions/runs/39285058900",
+  "sharedUnit": 476,
+  "hosting": 11,
+  "packedBrowserPassed": 100,
+  "packedBrowserSkipped": 2,
+  "loaderFullRunPassed": 33,
+  "loaderWebKitIsolatedRetryPassed": 1,
+  "parisUnit": 32,
+  "parisBrowser": 18,
+  "typeLintArchitecturePassed": true,
+  "parisTypeLintBoundaryPassed": true,
+  "allPayloadDataGatesPassed": true,
+  "publicationDryRuns": 4,
+  "firstViewLimit": 645120,
+  "tenLineLimit": 698368,
+  "registryVerified": false,
+  "emptyCacheRegistryInstall": false,
+  "remainingTransforms": [
+    "geometry morphing"
+  ]
+}
