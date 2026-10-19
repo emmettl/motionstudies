@@ -6,7 +6,7 @@ The main network's stops and paths use the same projection as persistent rail, s
 
 Geometry preparation runs when resources or the projection change. Mix changes update position values in a layout effect, without rebuilding topology or adding an animation loop. Cleanup restores original positions and bounds before replacement or removal. The renderer owns disposal; the separate station-position buffer is disposed with its source positions.
 
-`@motionstudies/three/spatial-morph` exports the callback type and pure projection/blending/preparation helpers. `prepareGeometryMorph(resources, projection, callback)` accepts a geometry or nested resource records, deduplicates geometry, and returns `update(mix)` and `restore()`. It supports ordinary three-component position attributes. Call `restore()` before preparing another projection; do not dispose renderer-owned geometry from a policy.
+`@motionstudies/three/spatial-morph` exports the callback type and pure projection/blending/preparation helpers. `prepareGeometryMorph(resources, projection, callback)` accepts a geometry or nested resource records, deduplicates geometry, and returns `update(mix)` and `restore()`. It supports ordinary non-normalized three-component position attributes. Call `restore()` before preparing another projection; do not dispose renderer-owned geometry from a policy.
 
 `NetworkMapStyle.materials.groundGridOpacityScale(mix)` and `waterOpacityScale(mix)` independently control grid and water opacity. Their defaults retain the existing grid and water fade. Paris fades its geographic grid and retains its morphed Seine throughout the transition.
 

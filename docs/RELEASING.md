@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.40` under `next`, published from `eb3629e` through [trusted run 39285058900](https://github.com/emmettl/motionstudies/actions/runs/39285058900). All four registry integrities match the tested tarballs; see the [Paris material policy record](PARIS-MATERIAL-POLICY-ALPHA-40.md).
+The latest verified coordinated release is `0.1.0-alpha.41` under `next`, published from `281b586` through [trusted run 39289071255](https://github.com/emmettl/motionstudies/actions/runs/39289071255). All four registry integrities match the tested tarballs; see the [Paris geometry policy record](PARIS-GEOMETRY-POLICY-ALPHA-41.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -41,7 +41,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
-`0.1.0-alpha.41` prepares topology-preserving spatial morphs so Paris can remove its final renderer source transforms. See the [geometry policy record](PARIS-GEOMETRY-POLICY-ALPHA-41.md); publication remains pending.
+`0.1.0-alpha.41` publishes topology-preserving spatial morphs so Paris can remove its final renderer source transforms. See the [geometry policy record](PARIS-GEOMETRY-POLICY-ALPHA-41.md); all four registry artifacts and the Paris adoption passed verification.
 
 `0.1.0-alpha.40` publishes supported border-opacity and weighted traffic-emphasis policies for Paris. See the [material policy record](PARIS-MATERIAL-POLICY-ALPHA-40.md); all four registry artifacts and the Paris adoption passed verification.
 
