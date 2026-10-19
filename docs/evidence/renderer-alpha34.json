@@ -164,5 +164,137 @@
     "Browser checks used identical candidate files; clean registry checks and file-by-file installed-package verification passed in all eight checkouts.",
     "Existing Swiss and Underfall local work was excluded from adoption commits.",
     "Existing shared unused-import and three Swiss Date-purity lint warnings remain."
-  ]
+  ],
+  "hostedInitialSnapshot": {
+    "allchange": {
+      "remoteMain": "ae538e50c84da65c5018dae890539b11696993d1",
+      "runs": [
+        {
+          "conclusion": "",
+          "headSha": "ae538e50c84da65c5018dae890539b11696993d1",
+          "name": "Deploy Pages",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/allchange/actions/runs/39205252301"
+        }
+      ]
+    },
+    "correspondances": {
+      "remoteMain": "6a77c1a5feb6fc3b3386297ed80583f4495d9ea2",
+      "runs": [
+        {
+          "conclusion": "",
+          "headSha": "6a77c1a5feb6fc3b3386297ed80583f4495d9ea2",
+          "name": "Deploy Pages",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/correspondances/actions/runs/39205254663"
+        }
+      ]
+    },
+    "gleislicht": {
+      "remoteMain": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+      "runs": [
+        {
+          "conclusion": "skipped",
+          "headSha": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+          "name": "Check public freshness",
+          "status": "completed",
+          "url": "https://github.com/emmettl/gleislicht/actions/runs/39205275965"
+        },
+        {
+          "conclusion": "skipped",
+          "headSha": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+          "name": "Publish to Cloudflare",
+          "status": "completed",
+          "url": "https://github.com/emmettl/gleislicht/actions/runs/39205261673"
+        },
+        {
+          "conclusion": "",
+          "headSha": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+          "name": "Deploy to GitHub Pages",
+          "status": "pending",
+          "url": "https://github.com/emmettl/gleislicht/actions/runs/39205257633"
+        }
+      ]
+    },
+    "local-express": {
+      "remoteMain": "2c23de1522d80b4bb1df9790cbf8e340854bc4e1",
+      "runs": [
+        {
+          "conclusion": "",
+          "headSha": "2c23de1522d80b4bb1df9790cbf8e340854bc4e1",
+          "name": "Check Local / Express",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/local-express/actions/runs/39205260327"
+        }
+      ]
+    },
+    "norikae": {
+      "remoteMain": "bb0ea45af8a254d3e3ed1af204519a332a29ef53",
+      "runs": [
+        {
+          "conclusion": "",
+          "headSha": "bb0ea45af8a254d3e3ed1af204519a332a29ef53",
+          "name": "Deploy to GitHub Pages",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/norikae/actions/runs/39205262733"
+        },
+        {
+          "conclusion": "",
+          "headSha": "bb0ea45af8a254d3e3ed1af204519a332a29ef53",
+          "name": "Validate",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/norikae/actions/runs/39205262716"
+        }
+      ]
+    },
+    "umlauf": {
+      "remoteMain": "463a5a933a41a0652d295e99d89bd7fa52a39eab",
+      "runs": [
+        {
+          "conclusion": "",
+          "headSha": "463a5a933a41a0652d295e99d89bd7fa52a39eab",
+          "name": "Deploy Pages",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/umlauf/actions/runs/39205268807"
+        }
+      ]
+    },
+    "underfall": {
+      "remoteMain": "630f8517aa74e4fdf194ff29a8d7a421f06b511e",
+      "runs": [
+        {
+          "conclusion": "skipped",
+          "headSha": "630f8517aa74e4fdf194ff29a8d7a421f06b511e",
+          "name": "Publish to Cloudflare",
+          "status": "completed",
+          "url": "https://github.com/emmettl/underfall/actions/runs/39205314271"
+        },
+        {
+          "conclusion": "failure",
+          "headSha": "630f8517aa74e4fdf194ff29a8d7a421f06b511e",
+          "name": "Check",
+          "status": "completed",
+          "url": "https://github.com/emmettl/underfall/actions/runs/39205271278"
+        }
+      ]
+    },
+    "motionstudies": {
+      "remoteMain": "2c5c0545a2b9521e55b23f5a79eabcbaa2d38fbb",
+      "runs": [
+        {
+          "conclusion": "",
+          "headSha": "2c5c0545a2b9521e55b23f5a79eabcbaa2d38fbb",
+          "name": "Check packages and deploy catalogue",
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/motionstudies/actions/runs/39205361488"
+        }
+      ]
+    }
+  },
+  "underfallHostedDeployment": {
+    "run": "https://github.com/emmettl/underfall/actions/runs/39205271278",
+    "codeChecks": "passed",
+    "artifactUpload": "failed: GitHub artifact storage quota",
+    "cloudflare": "skipped by the existing successful-artifact gate"
+  }
 }

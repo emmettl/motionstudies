@@ -53,3 +53,15 @@ All eight clean registry installations pass their applicable boundary, type, lin
 build and payload gates. Every installed package file matches the published
 tarball; those files also match the candidates used for the browser checks.
 The seven main-branch adoptions and NORIKAE player branch are pushed.
+
+
+## Hosted rollout status
+
+The npm release workflow succeeded, and every remote main head plus NORIKAE's
+player branch matches the recorded adoption commits. The edition deployment
+workflows started independently. Underfall's [check run](https://github.com/emmettl/underfall/actions/runs/39205271278)
+passed code validation but failed when GitHub refused the deployment artifact
+because the existing Actions storage quota is still exceeded. Its Cloudflare
+workflow was therefore skipped by the successful-artifact gate. Other deployment
+runs were still running or queued at this snapshot; local validation and a pushed
+adoption do not establish a completed hosted deployment.
