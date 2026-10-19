@@ -23,6 +23,23 @@ retry and stale-region regressions protect the boundary. See the
 [Swiss pilot record](https://github.com/emmettl/gleislicht/blob/main/docs/AARGAU-ROAD-STATISTICS.md#verified-json-loading--19-october-2026).
 No new package release or orbital/cloud-loader migration is part of this pilot.
 
+The pilot passed hosted Pages, Cloudflare and freshness checks. A second-consumer
+assessment found that LUFT verifies compressed bytes through a persistent cache
+and ZENIT uses hash checks with maximum-size bounds rather than exact payload
+sizes. Neither fits the Swiss API without additional policy options; the helper
+therefore remains local and no package release is needed.
+
+Swiss application-state separation has begun with a local startup-assets hook.
+It owns the three eager requests, cancellation and load failures; playback intent,
+time and on-demand studies retain their existing owners. Late cancelled responses
+cannot replace current assets. See the [state ownership record](https://github.com/emmettl/gleislicht/blob/main/docs/APPLICATION-STATE.md).
+This is the first bounded extraction; regional/day playback coordination and
+renderer internals remain follow-up work.
+Validation for this extraction: 24 focused unit/DOM cases and 12 Chromium/WebKit
+journeys passed, along with type, lint, architecture, fixture build and payload
+checks. Opening JavaScript is 376.7 KiB gzip against a 380 KiB limit; the three
+existing Date-purity lint warnings remain. Swiss implementation: `1a8ef1d`.
+
 ## Objective and scope
 
 The [creative premise in the project vision](VISION.md#creative-premise) gives this work its purpose: keep the cost of following curiosity low as the series grows, with implementation and maintenance supported by engineering agents.
