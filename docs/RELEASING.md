@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.36` under `next`, published from `2bcb9e1` through [trusted run 39237779482](https://github.com/emmettl/motionstudies/actions/runs/39237779482). All four registry integrities match the tested tarballs; see the [Paris train-label policy record](PARIS-TRAIN-POLICY-ALPHA-36.md).
+The latest verified coordinated release is `0.1.0-alpha.38` under `next`, published from `abcb282` through [trusted run 39248335535](https://github.com/emmettl/motionstudies/actions/runs/39248335535). All four registry integrities match the tested tarballs; see the [Paris camera viewport policy record](PARIS-CAMERA-POLICY-ALPHA-38.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -41,7 +41,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
-`0.1.0-alpha.38` prepares the viewport adoption with the mutable camera target retained as a ref.
+`0.1.0-alpha.38` publishes the viewport adoption with the mutable camera target retained as a ref.
 
 `0.1.0-alpha.37` publishes supported viewport inset and zoom policy for Paris; alpha.38 removes the new hook dependency warnings before Paris adoption. See the [policy contract](CAMERA-VIEWPORT-POLICY.md).
 
