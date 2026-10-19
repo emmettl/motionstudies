@@ -717,6 +717,20 @@ function CountryBorder({
   readonly subdued: boolean
   readonly opacityScale?: number
 }) {
+  const borderGroup = useRef<THREE.Group>(null)
+  const opacityPolicy = useMapStyle().materials?.borderOpacityScale
+  useFrame(({ camera }) => {
+    const group = borderGroup.current
+    if (!group) return
+    const scale = (opacityPolicy?.(camera.position.y) ?? 1) * opacityScale
+    group.visible = scale > (opacityPolicy ? 0.001 : 0)
+    for (const ring of group.children) {
+      const glow = ring.children[0] as THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>
+      const core = ring.children[1] as THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>
+      glow.material.opacity = (subdued ? 0.018 : 0.12) * scale
+      core.material.opacity = (subdued ? 0.13 : 0.84) * scale
+    }
+  })
   const tubes = useMemo(() => {
     return boundary.rings.flatMap((ring, index) => {
       const coordinates =
@@ -752,7 +766,7 @@ function CountryBorder({
   )
 
   return (
-    <group visible={opacityScale > 0}>
+    <group ref={borderGroup} visible={opacityScale > 0}>
       {tubes.map(({ id, glow, core }) => (
         <group key={id}>
           <mesh geometry={glow}>
@@ -1330,7 +1344,10 @@ function TrafficFlowLayer({
   readonly overviewEmphasis?: number
   readonly suppressAtIdentity?: boolean
 }) {
-  const flat = useMapStyle().surface === 'flat'
+  const style = useMapStyle()
+  const flat = style.surface === 'flat'
+  const emphasisPolicy = style.materials?.trafficFlowOverviewEmphasis
+  const weightedMaterial = useRef<THREE.LineBasicMaterial>(null)
   const pulseMaterial = useRef<THREE.LineBasicMaterial>(null)
   const geometries = useMemo(() => {
     const { strengths } = edgeTrafficWeights(snapshot)
@@ -1403,26 +1420,31 @@ function TrafficFlowLayer({
     [geometries],
   )
 
-  useFrame(({ clock }) => {
+  const identityAttenuation = suppressAtIdentity
+    ? 1 - identityMix
+    : 1 - identityMix * 0.78
+
+  useFrame(({ clock, camera }) => {
+    if (weightedMaterial.current) {
+      weightedMaterial.current.opacity = (subdued ? 0.045 : 0.62) * identityAttenuation *
+        (1 + (emphasisPolicy?.(camera.position.y) ?? overviewEmphasis) * 1.2)
+    }
     if (!pulseMaterial.current) return
     const wave = 0.5 + Math.sin(clock.elapsedTime * 1.35) * 0.5
-    const identityAttenuation = suppressAtIdentity
+    const pulseAttenuation = suppressAtIdentity
       ? 1 - identityMix
       : 1 - identityMix * 0.72
     pulseMaterial.current.opacity =
       (subdued ? 0.012 + wave * 0.012 : 0.1 + wave * 0.12) *
-      identityAttenuation *
+      pulseAttenuation *
       (1 + overviewEmphasis * 1.15)
   })
-
-  const identityAttenuation = suppressAtIdentity
-    ? 1 - identityMix
-    : 1 - identityMix * 0.78
 
   return (
     <group position={[0, 0.055, 0]} visible={identityAttenuation > 0}>
       <lineSegments geometry={geometries.weighted} renderOrder={flat ? 4 : 1}>
         <lineBasicMaterial
+          ref={weightedMaterial}
           vertexColors
           transparent
           opacity={

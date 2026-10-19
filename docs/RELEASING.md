@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.40` prepares supported border-opacity and weighted traffic-emphasis policies for Paris. See the [material policy record](PARIS-MATERIAL-POLICY-ALPHA-40.md); publication remains pending.
+
 `0.1.0-alpha.39` publishes optional camera command, gesture and standard-frame hooks for Paris. See the [journey policy contract](CAMERA-JOURNEY-POLICY.md); all four registry artifacts and the Paris adoption passed verification.
 
 `0.1.0-alpha.38` publishes the viewport adoption with the mutable camera target retained as a ref.
