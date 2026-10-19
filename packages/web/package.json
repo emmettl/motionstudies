@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.38",
+  "version": "0.1.0-alpha.39",
   "private": true,
   "type": "module",
   "exports": {
@@ -46,7 +46,7 @@
     "./observe-layout": "./src/observe-layout.ts"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.38"
+    "@motionstudies/core": "0.1.0-alpha.39"
   },
   "peerDependencies": {
     "react": "^19.3.0",

@@ -287,9 +287,7 @@ function projectCoordinate(
   height = 0,
 ): ProjectedStop {
   return [
-    (longitude - projection.centreLongitude) *
-      projection.longitudeScale *
-      projection.scale,
+    (longitude - projection.centreLongitude) * projection.longitudeScale * projection.scale,
     height,
     -(latitude - projection.centreLatitude) * projection.scale,
   ]
@@ -3850,45 +3848,24 @@ function NetworkCamera({
     if (cameraCommand.action === 'reset') {
       mapTarget.current.copy(mapFocus)
       distanceScale.current = homeMapDistanceScale(cameraFraming)
-      return
-    }
-    if (cameraCommand.action === 'reveal-station') {
-      if (!selectedStation) return
-      const centre = stationCentre(selectedStation, projectedStops)
-      camera.updateMatrixWorld()
-      if (
-        cameraCommand.distanceScale !== undefined ||
-        mapSelectionNeedsReveal(centre.clone().project(camera))
-      ) {
-        mapTarget.current.copy(centre)
+    } else if (cameraCommand.action === 'reveal-station') {
+      if (selectedStation) {
+        const centre = stationCentre(selectedStation, projectedStops)
+        camera.updateMatrixWorld()
+        if (cameraCommand.distanceScale !== undefined || mapSelectionNeedsReveal(centre.clone().project(camera))) mapTarget.current.copy(centre)
+        if (cameraCommand.distanceScale !== undefined) distanceScale.current = Math.max(minimumDistanceScale, cameraCommand.distanceScale)
       }
-      if (cameraCommand.distanceScale !== undefined) {
-        distanceScale.current = Math.max(
-          minimumDistanceScale,
-          cameraCommand.distanceScale,
-        )
+    } else if (cameraCommand.action === 'focus-road' || cameraCommand.action === 'focus-location') {
+      if (cameraCommand.focus) {
+        const [x, , z] = projectCoordinate(cameraCommand.focus, airProjection)
+        mapTarget.current.set(x, 0, z)
+        distanceScale.current = Math.max(minimumDistanceScale, cameraCommand.distanceScale ?? 0.58)
       }
-      return
+    } else {
+      const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
+      distanceScale.current = applyMapZoom(distanceScale.current, multiplier, minimumDistanceScale)
     }
-    if (
-      cameraCommand.action === 'focus-road' ||
-      cameraCommand.action === 'focus-location'
-    ) {
-      if (!cameraCommand.focus) return
-      const [x, , z] = projectCoordinate(cameraCommand.focus, airProjection)
-      mapTarget.current.set(x, 0, z)
-      distanceScale.current = Math.max(
-        minimumDistanceScale,
-        cameraCommand.distanceScale ?? 0.58,
-      )
-      return
-    }
-    const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
-    distanceScale.current = applyMapZoom(
-      distanceScale.current,
-      multiplier,
-      minimumDistanceScale,
-    )
+    cameraDriver.current?.onCommand?.(cameraCommand, selectedStation, mapTarget.current)
   }, [
     camera,
     cameraCommand,
@@ -3909,6 +3886,7 @@ function NetworkCamera({
     let pinchDistance: number | undefined
 
     const onPointerDown = (event: PointerEvent) => {
+      cameraDriver.current?.onGesture?.()
       if (selectedTrain || selectedAirTrack || (event.pointerType === 'mouse' && event.button !== 0)) return
       pointers.set(event.pointerId, {
         x: event.clientX,
@@ -3957,6 +3935,7 @@ function NetworkCamera({
       if (pointers.size < 2) pinchDistance = undefined
     }
     const onWheel = (event: WheelEvent) => {
+      cameraDriver.current?.onGesture?.()
       if (selectedTrain || selectedAirTrack) return
       distanceScale.current = applyMapZoom(
         distanceScale.current,
@@ -4001,6 +3980,8 @@ function NetworkCamera({
       ? projectAirPosition(airState, airProjection)
       : undefined
     const diagramMix = THREE.MathUtils.clamp(spatialLayoutMix, 0, 1)
+    const following = Boolean(trainPosition || airPosition)
+    const interpolation = cameraDriver.current?.prepareFrame?.(mapTarget.current, projectedStops, diagramMix, delta, following)
     if (trainPosition) {
       desiredTarget.set(trainPosition[0], 0, trainPosition[2])
       desiredPosition.set(
@@ -4028,15 +4009,8 @@ function NetworkCamera({
       )
     }
 
-    const damping =
-      1 -
-      Math.exp(
-        -delta *
-          mapCameraDampingRate(
-            Boolean(trainPosition || airPosition),
-            directTouch.current,
-          ),
-      )
+    const damping = interpolation ??
+      1 - Math.exp(-delta * mapCameraDampingRate(following, directTouch.current))
     camera.position.lerp(desiredPosition, damping)
     currentTarget.lerp(desiredTarget, damping)
     viewportFraming(cameraViewport?.({ ...size, spatialLayoutMix: diagramMix }), size)

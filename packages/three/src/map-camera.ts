@@ -1,4 +1,6 @@
-import type { PerspectiveCamera } from 'three'
+import { Vector3, type PerspectiveCamera } from 'three'
+import type { StationIndexEntry } from '@motionstudies/core/domain/network'
+import type { ProjectedPoint } from './scene-extensions.ts'
 
 export interface CameraViewportState {
   readonly width: number
@@ -187,4 +189,15 @@ export function applyMapZoom(
     return safeCurrent + (MAX_MAP_DISTANCE_SCALE - safeCurrent) * EDGE_EASING
   }
   return proposed
+}
+
+/** Shared visual/picking centre; reuse the output to avoid allocations during layout morphs. */
+export function stationCentre(station: StationIndexEntry, stops: readonly ProjectedPoint[], target = new Vector3()): Vector3 {
+  let x = 0, z = 0, count = 0
+  for (const index of station.stopIndexes) {
+    const stop = stops[index]
+    if (stop) { x += stop[0]; z += stop[2]; count++ }
+  }
+  count ||= 1
+  return target.set(x / count, 0, z / count)
 }

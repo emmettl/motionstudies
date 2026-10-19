@@ -1,0 +1,31 @@
+{
+  "version": "0.1.0-alpha.39",
+  "status": "candidate checked; ten-line payload decision pending; not published",
+  "sharedUnit": 476,
+  "hosting": 11,
+  "packedBrowserPassed": 100,
+  "packedBrowserSkipped": 2,
+  "loaderBrowser": 34,
+  "parisUnit": 31,
+  "parisBrowser": 18,
+  "javaScriptGzip": 364984,
+  "cssGzip": 9224,
+  "baseViewGzip": 449174,
+  "firstViewGzip": 644065,
+  "firstViewLimit": 645120,
+  "tenLineGzip": 697450,
+  "tenLineLimit": 697344,
+  "tenLineExcessBytes": 106,
+  "proposedTenLineLimit": 698368,
+  "budgetChangeApplied": false,
+  "otherParisDataChecks": [
+    "air",
+    "metro-layers",
+    "transilien",
+    "tram"
+  ],
+  "remainingTransforms": [
+    "material opacity",
+    "geometry morphing"
+  ]
+}

@@ -3,11 +3,11 @@ export type { CameraViewportPolicy, CameraViewportState, CameraViewportFrame } f
 import { useContext, type ComponentType } from 'react'
 import { NetworkSceneProviderContext } from './scene-context.ts'
 import type { Camera, PerspectiveCamera, Scene, Vector3 } from 'three'
-import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network'
+import type { NetworkSnapshot, NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain/network'
 import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road'
 import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
 import type { nationalRoadConditionsAtTime } from '@motionstudies/core/domain/road-day'
-import type { NationalNetworkSceneProps, NetworkProjection } from './NationalNetworkScene.tsx'
+import type { NationalNetworkSceneProps, NetworkProjection, MapCameraCommand } from './NationalNetworkScene.tsx'
 import type { ProjectedNetworkPath } from './network-paths.ts'
 import type { LakeAvoidingPathMap } from './lake-aware-paths.ts'
 
@@ -27,6 +27,13 @@ export interface NetworkCameraContext {
   readonly projection: NetworkProjection
 }
 export interface NetworkCameraDriver {
+  /** Notified once after a new command resolves the standard map target; never retain that target. */
+  onCommand?(command: MapCameraCommand, station: StationIndexEntry | undefined, target: Vector3): void
+  /** Pointer-down/wheel intent releases authored focus, even when selection suppresses movement. */
+  onGesture?(): void
+  /** Prepare the standard map target in place. Return an interpolation fraction, or undefined for default damping.
+   * Called only on standard frames; do not retain the renderer-owned target or stop array. */
+  prepareFrame?(target: Vector3, stops: readonly ProjectedPoint[], spatialLayoutMix: number, delta: number, following: boolean): number | undefined
   /** Return true when the driver owns this frame; false resumes the standard camera. */
   update(delta: number): boolean
   dispose(): void

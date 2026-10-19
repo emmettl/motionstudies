@@ -110,7 +110,7 @@ try {
     export const extensions: NetworkSceneExtensions = {
       cameraViewport: ({ width, height, spatialLayoutMix }) => ({ zoom: 1 - spatialLayoutMix * 0.1, offsetY: Math.min(width, height) * -0.1 }), acceptsStationPick: event => event.dragDistance <= 5,
       trainPosition: (_train, _time, stops) => stops[0],
-      createCameraDriver: ({ camera, target }) => ({ update: () => { camera.lookAt(target); return false }, dispose() {} }),
+      createCameraDriver: ({ camera, target }) => ({ onCommand: command => { void command.action }, onGesture() {}, prepareFrame: (mapTarget, stops, mix, _delta, following) => { if (stops.length && mix > 0) mapTarget.copy(target); return following ? undefined : 1 }, update: () => { camera.lookAt(target); return false }, dispose() {} }),
     }
     export const sceneOptions: Pick<NationalNetworkSceneProps, 'mapStyle' | 'extensions' | 'children' | 'frameloop'> = { mapStyle, extensions, children: null, frameloop: 'demand' }
     import { scenePickVertex, setSceneMotionMix, setSceneMotionClock } from '@motionstudies/three/scene-picking'

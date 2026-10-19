@@ -1,3 +1,5 @@
+import { stationCentre } from './map-camera.ts'
+export { stationCentre } from './map-camera.ts'
 import type { StationLabelStyle } from './scene-style.ts'
 import type { NetworkSceneExtensions } from './scene-extensions.ts'
 import * as THREE from 'three'
@@ -8,23 +10,6 @@ import { stationLabelCameraHeight, stationLabelRankLimit,
   stationIndexAtScreenPoint, stationTapRadius } from './station-labels.ts'
 
 export type ProjectedStop = readonly [x: number, y: number, z: number]
-
-export function stationCentre(
-  station: StationIndexEntry,
-  projectedStops: readonly ProjectedStop[],
-): THREE.Vector3 {
-  const centre = new THREE.Vector3()
-  let count = 0
-  station.stopIndexes.forEach((stopIndex) => {
-    const stop = projectedStops[stopIndex]
-    if (!stop) return
-    centre.x += stop[0]
-    centre.z += stop[2]
-    count += 1
-  })
-  if (count) centre.multiplyScalar(1 / count)
-  return centre
-}
 
 /** Owns only station pointer listeners. The caller owns the camera and canvas;
  * no Three.js resources or scene context are retained beyond this installation.

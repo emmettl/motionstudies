@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.39` prepares optional camera command, gesture and standard-frame hooks for Paris. See the [journey policy contract](CAMERA-JOURNEY-POLICY.md); publication remains pending candidate gates.
+
 `0.1.0-alpha.38` publishes the viewport adoption with the mutable camera target retained as a ref.
 
 `0.1.0-alpha.37` publishes supported viewport inset and zoom policy for Paris; alpha.38 removes the new hook dependency warnings before Paris adoption. See the [policy contract](CAMERA-VIEWPORT-POLICY.md).
