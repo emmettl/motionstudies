@@ -33,8 +33,14 @@ Swiss application-state separation has begun with a local startup-assets hook.
 It owns the three eager requests, cancellation and load failures; playback intent,
 time and on-demand studies retain their existing owners. Late cancelled responses
 cannot replace current assets. See the [state ownership record](https://github.com/emmettl/gleislicht/blob/main/docs/APPLICATION-STATE.md).
-This is the first bounded extraction; regional/day playback coordination and
-renderer internals remain follow-up work.
+The next local Swiss extraction separates regional/PostBus chunked playback
+coordination: loading gates scene playback without changing user intent, explicit
+seeks reject stale frames, and retired scene callbacks cannot alter another source.
+Regional retry now uses the shared loader's retry command directly. National-day
+loading and renderer internals remain follow-up work. Swiss commit `f3519a4`
+passes 59 focused unit/DOM checks and 14 Chromium/WebKit journeys, plus type,
+lint, architecture, fixture build and bundle checks (376.9 KiB opening JavaScript
+against a 380 KiB limit).
 Validation for this extraction: 24 focused unit/DOM cases and 12 Chromium/WebKit
 journeys passed, along with type, lint, architecture, fixture build and payload
 checks. Opening JavaScript is 376.7 KiB gzip against a 380 KiB limit; the three
