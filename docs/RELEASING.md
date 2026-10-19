@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.34` prepares the private station-picking extraction, with unchanged public renderer API. See the [release and adoption record](RENDERER-ALPHA-34.md).
+
 `0.1.0-alpha.33` adds the shared Node edition-boundary checker/import parser and the browser layout observer. Seven edition adoptions preserve their scan roots and additional-package rules; London and Switzerland use the observer while keeping local geometry policy. Publication uses the standard trusted workflow.
 
 `0.1.0-alpha.32` recovers initial hover or keyboard focus when deferred button help mounts after the first interaction. Local / Express adopts it with delayed-module regressions.
