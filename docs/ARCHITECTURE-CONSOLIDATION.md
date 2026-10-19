@@ -29,22 +29,21 @@ and ZENIT uses hash checks with maximum-size bounds rather than exact payload
 sizes. Neither fits the Swiss API without additional policy options; the helper
 therefore remains local and no package release is needed.
 
-Swiss application-state separation has begun with a local startup-assets hook.
-It owns the three eager requests, cancellation and load failures; playback intent,
-time and on-demand studies retain their existing owners. Late cancelled responses
-cannot replace current assets. See the [state ownership record](https://github.com/emmettl/gleislicht/blob/main/docs/APPLICATION-STATE.md).
-The next local Swiss extraction separates regional/PostBus chunked playback
-coordination: loading gates scene playback without changing user intent, explicit
-seeks reject stale frames, and retired scene callbacks cannot alter another source.
-Regional retry now uses the shared loader's retry command directly. National-day
-loading and renderer internals remain follow-up work. Swiss commit `f3519a4`
-passes 59 focused unit/DOM checks and 14 Chromium/WebKit journeys, plus type,
-lint, architecture, fixture build and bundle checks (376.9 KiB opening JavaScript
-against a 380 KiB limit).
-Validation for this extraction: 24 focused unit/DOM cases and 12 Chromium/WebKit
-journeys passed, along with type, lint, architecture, fixture build and payload
-checks. Opening JavaScript is 376.7 KiB gzip against a 380 KiB limit; the three
-existing Date-purity lint warnings remain. Swiss implementation: `1a8ef1d`.
+Swiss application-state separation now has two local boundaries: the startup-assets
+hook owns the three eager requests, while the chunked-playback hook owns explicit
+seek handoff to scene ticks. Loading gates scene playback without changing user
+intent. Cancelled responses and retired scene callbacks cannot alter another
+source. Regional retry uses the shared loader's explicit retry command.
+
+National full-day loading now uses the same published progressive network-day
+loader as regional/PostBus views, preserving the morning fallback until the
+manifest arrives and retaining successful neighbour prefetches independently.
+National playback uses the same local paused-seek coordination and exposes
+explicit manifest/chunk retry. See the [state ownership record](https://github.com/emmettl/gleislicht/blob/main/docs/APPLICATION-STATE.md).
+Swiss commit `9afe89e` validation covers 68 focused unit/DOM cases and 16 Chromium/WebKit
+journeys, plus type, lint, architecture, fixture build and bundle checks. Opening
+JavaScript is 376.6 KiB gzip against a 380 KiB limit; the three existing Date-purity
+lint warnings remain.
 
 ## Objective and scope
 
@@ -97,6 +96,22 @@ Start with local functions, hooks or reducers using the current stack. The exist
 **Deliverable:** a smaller Bristol composition root, explicit transition behaviour and focused regression checks. No shared controller is presumed. Promote a helper only after a second real consumer establishes compatible semantics and a useful API.
 
 ## 2. Renderer internals behind a stable public interface
+
+The first private extraction isolates station tap selection into
+`StationTapTarget.tsx` and `station-picking.ts`. Inputs are the camera, canvas,
+ranked station identities, projected platform positions, framing and selection
+callback. The installation owns pointer listeners and returns their disposer;
+it allocates no persistent GPU resources and subscribes to no whole-scene state.
+The scene and label/selection layers share the same station-centre calculation.
+Gesture behaviour, public exports and consumer API are unchanged. Seven new
+gesture/teardown checks plus the existing label tests protect the extraction.
+This source refactor is prepared for the next shared-package release; existing
+edition pins remain alpha.33. The shared validation passes 467 unit tests,
+11 hosting checks, type/lint/architecture gates and four Chromium/WebKit renderer
+journeys. Isolated packed-consumer validation also passes public imports,
+declarations, Node tooling, a production build and 100 browser checks with two
+existing skips. The existing unused-import lint warning remains unchanged.
+
 
 `NationalNetworkScene.tsx` is 4,487 lines, despite useful existing helpers for labels, picking, geometry, trails and performance. Its public extension interfaces now provide a better boundary for consumers. The next question is whether internal components have similarly clear boundaries.
 

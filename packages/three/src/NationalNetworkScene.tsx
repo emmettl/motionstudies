@@ -1,3 +1,5 @@
+import { StationTapTarget } from './StationTapTarget.tsx'
+import { stationCentre, type ProjectedStop } from './station-picking.ts'
 import {mapLabelBoxesOverlap} from '@motionstudies/core/map-labels'
 import { stationLabelTexture, createTrainLabelTexture, type StationLabelTexture, type TrainLabelTexture } from './label-textures.ts'
 import { setSceneMotionClock, setScenePickMetadata, setScenePickTrain } from './scene-picking.ts'
@@ -50,7 +52,6 @@ import {
   stationLabelPriority,
   MAX_STATION_LABELS,
   rankStationsForLabels,
-  stationIndexAtScreenPoint,
   stationLabelCameraHeight,
   stationLabelBudget,
   stationLabelRankLimit,
@@ -61,7 +62,6 @@ import {
   stationLabelWorldHeight,
   stationLabelsCanRepopulate,
   stationLabelWithinTier,
-  stationTapRadius,
   stableStationLabelBudget,
 } from './station-labels.ts'
 import {
@@ -231,7 +231,6 @@ export interface NationalNetworkSceneProps {
   readonly stationLabelSettleSeconds?: number
 }
 
-type ProjectedStop = readonly [x: number, y: number, z: number]
 
 const EMPTY_LAKE_AVOIDING_PATHS: LakeAvoidingPathMap = new Map()
 const LakeAvoidingPathsContext = createContext<LakeAvoidingPathMap>(
@@ -1900,137 +1899,12 @@ function SelectedLinePaths({
   )
 }
 
-function stationCentre(
-  station: StationIndexEntry,
-  projectedStops: readonly ProjectedStop[],
-): THREE.Vector3 {
-  const centre = new THREE.Vector3()
-  let count = 0
-  station.stopIndexes.forEach((stopIndex) => {
-    const stop = projectedStops[stopIndex]
-    if (!stop) return
-    centre.x += stop[0]
-    centre.z += stop[2]
-    count += 1
-  })
-  if (count) centre.multiplyScalar(1 / count)
-  return centre
-}
-
 interface StationLabelDatum {
   readonly station: StationIndexEntry
   readonly displayName: string
   readonly position: THREE.Vector3
   readonly rank: number
   readonly emphasised: boolean
-}
-
-function StationTapTarget({
-  stations,
-  projectedStops,
-  cameraFraming,
-  onSelectStation,
-}: {
-  readonly stations: readonly StationIndexEntry[]
-  readonly projectedStops: readonly ProjectedStop[]
-  readonly cameraFraming: MapCameraFraming
-  readonly onSelectStation?: (station: StationIndexEntry) => void
-}) {
-  const { camera, gl } = useThree()
-  const rankedStations = useMemo(() => rankStationsForLabels(stations), [stations])
-
-  useEffect(() => {
-    if (!onSelectStation) return
-    const element = gl.domElement
-    const activePointers = new Map<
-      number,
-      { x: number; y: number; pointerType: string }
-    >()
-    let multiPointerGesture = false
-
-    const onPointerDown = (event: PointerEvent) => {
-      if (event.pointerType === 'mouse' && event.button !== 0) return
-      activePointers.set(event.pointerId, {
-        x: event.clientX,
-        y: event.clientY,
-        pointerType: event.pointerType,
-      })
-      if (activePointers.size > 1) multiPointerGesture = true
-      element.setPointerCapture(event.pointerId)
-    }
-
-    const finishPointer = (event: PointerEvent, cancelled: boolean) => {
-      const start = activePointers.get(event.pointerId)
-      activePointers.delete(event.pointerId)
-      const wasMultiPointerGesture = multiPointerGesture
-      if (activePointers.size === 0) multiPointerGesture = false
-      if (!start || cancelled || wasMultiPointerGesture) return
-      if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10) {
-        return
-      }
-
-      const semanticHeight = stationLabelCameraHeight(
-        camera.position.y,
-        cameraFraming,
-      )
-      const rankLimit = Math.min(
-        rankedStations.length,
-        stationLabelRankLimit(semanticHeight),
-      )
-      const rect = element.getBoundingClientRect()
-      const projected = new THREE.Vector3()
-      const screenPoints = rankedStations
-        .slice(0, rankLimit)
-        .flatMap((station, index) => {
-          projected.copy(stationCentre(station, projectedStops)).project(camera)
-          if (
-            projected.z < -1 ||
-            projected.z > 1 ||
-            projected.x < -1.05 ||
-            projected.x > 1.05 ||
-            projected.y < -1.05 ||
-            projected.y > 1.05
-          ) {
-            return []
-          }
-          const x = (projected.x * 0.5 + 0.5) * rect.width
-          const y = (-projected.y * 0.5 + 0.5) * rect.height
-          const screenHeight = stationLabelScreenHeight(false, false)
-          const labelWidth = stationLabelScreenWidth(
-            stationLabelText(station.name, cameraFraming),
-            screenHeight,
-          )
-          const labelLeft = x - screenHeight * 0.34
-          return [
-            { index, x, y },
-            { index, x: labelLeft + labelWidth * 0.48, y },
-            { index, x: labelLeft + labelWidth * 0.86, y },
-          ]
-        })
-      const selectedIndex = stationIndexAtScreenPoint(
-        event.clientX - rect.left,
-        event.clientY - rect.top,
-        screenPoints,
-        stationTapRadius(start.pointerType),
-      )
-      const station =
-        selectedIndex === undefined ? undefined : rankedStations[selectedIndex]
-      if (station) onSelectStation(station)
-    }
-
-    const onPointerUp = (event: PointerEvent) => finishPointer(event, false)
-    const onPointerCancel = (event: PointerEvent) => finishPointer(event, true)
-    element.addEventListener('pointerdown', onPointerDown)
-    element.addEventListener('pointerup', onPointerUp)
-    element.addEventListener('pointercancel', onPointerCancel)
-    return () => {
-      element.removeEventListener('pointerdown', onPointerDown)
-      element.removeEventListener('pointerup', onPointerUp)
-      element.removeEventListener('pointercancel', onPointerCancel)
-    }
-  }, [camera, cameraFraming, gl, onSelectStation, projectedStops, rankedStations])
-
-  return null
 }
 
 function StationLabels({
