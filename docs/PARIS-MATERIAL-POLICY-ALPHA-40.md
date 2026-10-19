@@ -1,4 +1,4 @@
-# Paris material policies — alpha.40 candidate
+# Paris material policies — alpha.40
 
 19 October 2026
 
@@ -8,6 +8,8 @@ The material source transforms and their injected Paris import are removed. The 
 
 Shared type checks, 476 unit tests, 11 hosting checks and architecture checks pass. Paris passes 32 unit tests, type/lint/boundary checks, production build and every payload/data gate, including the previously approved 682 KiB ten-line cap. The isolated packed consumer passes declarations, Node tooling and 100 browser checks (two existing skips). All 18 Paris Chromium/WebKit journeys pass. Loader checks pass 33 cases on the full Metal run, with the single WebKit loader timeout passing on isolated retry (34 cases covered). All four publication dry runs pass.
 
-Alpha.39 is now published and registry-verified; Paris's alpha.39 adoption is pushed to main. GitHub's Actions status was delayed during its incident. Alpha.40 is a prepared candidate, not a published registry release; its Paris lock integrities currently identify local candidate tarballs. Final registry verification and the adoption's main-branch push must follow trusted publication.
+All four packages were published under public `next` from `eb3629e4e2c10f2d966ad57db5a82875d563ed50` through [trusted run 39285058900](https://github.com/emmettl/motionstudies/actions/runs/39285058900). Registry metadata, SHA-512 integrities, downloaded archives and next tags match. Every package file matches the checked candidates.
 
-Checked source `eb3629e4e2c10f2d966ad57db5a82875d563ed50` is pushed to main. [Trusted release 39285058900](https://github.com/emmettl/motionstudies/actions/runs/39285058900) is dispatched, but no retained artifact is available yet during the GitHub Actions incident. Paris adoption `354ffec` is pushed on `codex/paris-material-policy`; its main branch remains on verified alpha.39 until registry checks pass. See [candidate evidence](evidence/paris-material-policy-alpha40.json).
+Paris passed an empty-cache registry install, lock integrity and installed-file comparisons, 32 units, type/lint/boundary checks, production build and all payload/data gates. Its 18 browser journeys exercised byte-identical package contents before publication. Adoption commit: `ff091aed7c6e43f461259e644cd67c80e1f9122e`.
+
+The remaining private renderer adaptation is geometry morphing. See [release evidence](evidence/paris-material-policy-alpha40.json).

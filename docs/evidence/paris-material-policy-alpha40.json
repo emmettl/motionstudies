@@ -1,27 +1,51 @@
 {
   "version": "0.1.0-alpha.40",
-  "status": "checked source pushed; trusted publication and final registry adoption pending",
+  "status": "published and Paris adoption verified",
   "sourceCommit": "eb3629e4e2c10f2d966ad57db5a82875d563ed50",
-  "parisCandidateCommit": "354ffecc3ed43a1578f18a8d711df38412df3443",
-  "parisCandidateBranch": "codex/paris-material-policy",
+  "parisCommit": "ff091aed7c6e43f461259e644cd67c80e1f9122e",
   "releaseRun": "https://github.com/emmettl/motionstudies/actions/runs/39285058900",
   "sharedUnit": 476,
   "hosting": 11,
   "packedBrowserPassed": 100,
   "packedBrowserSkipped": 2,
+  "loaderBrowserCasesCovered": 34,
   "loaderFullRunPassed": 33,
   "loaderWebKitIsolatedRetryPassed": 1,
   "parisUnit": 32,
   "parisBrowser": 18,
-  "typeLintArchitecturePassed": true,
-  "parisTypeLintBoundaryPassed": true,
-  "allPayloadDataGatesPassed": true,
-  "publicationDryRuns": 4,
+  "emptyCacheRegistryInstall": true,
+  "registryLockIntegritiesVerified": true,
+  "installedPackageBytesVerified": true,
+  "allPayloadGatesPassed": true,
   "firstViewLimit": 645120,
   "tenLineLimit": 698368,
-  "registryVerified": false,
-  "emptyCacheRegistryInstall": false,
   "remainingTransforms": [
     "geometry morphing"
+  ],
+  "registryVerification": [
+    {
+      "name": "@motionstudies/core",
+      "integrity": "sha512-6ih+1M8Bi5ljIRZpbSB5Tjxf9qnzHQBjFxAJTa2Drza3pd3Pm3QrmjKO6JLLNcB45Y+J4dAYy4LXVjxkFFzUgw==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "integrity": "sha512-EQ2jWBw5IglJOf9v3P/MLurU1uvlnl1waHRRev0aaSa1n2z9oSoYnnDScuARkNUji7jXcGorjtGI5Fll+LgOMQ==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "integrity": "sha512-unzYOIR6FkDkiYWTGP8JaM9SSoVyV0zlHUI7TBRlDP9toLibO68yVmJohaLN0pn0/MmWe8QAPx0gmCTR7179Nw==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "integrity": "sha512-ECW1bB8zzjp7jgUDWhRjqhr8jSwhb/f9VRTEsL++WHd1LRrKtStGnYqef80NLPEQARTWD+FfQR06k4jCgM2lKQ==",
+      "candidateFilesIdentical": true,
+      "registryVerified": true
+    }
   ]
 }
