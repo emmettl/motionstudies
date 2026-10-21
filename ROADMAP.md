@@ -42,7 +42,7 @@ new published package or deployed edition.
   stack; it does not consume the transport packages.
 
 Edition maintenance checks and layout observation are consolidated in alpha.33.
-The [21 October idle/decode baseline](docs/IDLE-DECODE-2026-10-21.md) covers Paris, London and Switzerland: paused uploads and known zero-opacity draws are already suppressed; no speculative renderer or worker change follows.
+The [21 October idle/decode baseline](docs/IDLE-DECODE-2026-10-21.md) covers Paris, London and Switzerland: paused uploads and known zero-opacity draws are already suppressed; no speculative renderer or worker change follows. The [private rail/context extraction](docs/RENDERER-STATIC-LAYERS.md) preserves behaviour and resource ownership behind the existing renderer API.
 Remaining engineering priorities are broader verified-asset/loading measurements, heavy optional decode costs,
 physical-device performance evidence where still required, and gradual separation
 of large application/scene modules. No new acquisition or numbered catalogue

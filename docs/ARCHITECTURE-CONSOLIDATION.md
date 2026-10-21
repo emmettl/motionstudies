@@ -99,7 +99,7 @@ Start with local functions, hooks or reducers using the current stack. The exist
 
 Paris's supported policies are now published through alpha.41. Station and train labels, picking, camera control, materials and geometry morphing use public interfaces; no renderer source rewrite plugin remains. See the [geometry adoption record](PARIS-GEOMETRY-POLICY-ALPHA-41.md).
 
-The [21 October measurement baseline](IDLE-DECODE-2026-10-21.md) finds no paused buffer uploads or known zero-opacity submissions in the Paris, London and Swiss openings. Verified JSON reads are small on the measurement host. No worker migration or ambient-motion change is justified by that bounded evidence. The next private extraction should isolate static rail/context geometry and resource ownership, enabling a controlled batching/transform experiment without changing the public API.
+The [21 October measurement baseline](IDLE-DECODE-2026-10-21.md) finds no paused buffer uploads or known zero-opacity submissions in the Paris, London and Swiss openings. Verified JSON reads are small on the measurement host. No worker migration or ambient-motion change is justified by that bounded evidence. The [private rail/context extraction](RENDERER-STATIC-LAYERS.md) now isolates those layers and their existing resource ownership without changing the public API. A future batching or transform change still needs a controlled comparison and a measured benefit.
 
 The first private extraction isolates station tap selection into
 `StationTapTarget.tsx` and `station-picking.ts`. Inputs are the camera, canvas,
@@ -171,4 +171,4 @@ Avoid repeated full-suite runs without new changes or unresolved risk. File-coun
 
 ## Recommended first delivery
 
-Bristol's initial coordination refactor, Swiss state boundaries and Paris's public renderer-policy adoption are complete. Continue with the bounded static rail/context extraction described above, using the measured baseline and existing behaviour/payload gates. Shared abstractions still require a second compatible consumer rather than an assumed series-wide fit.
+Bristol's initial coordination refactor, Swiss state boundaries and Paris's public renderer-policy adoption are complete. The bounded static rail/context extraction is complete in source. Use its private boundaries and the measured baseline for any subsequent optimisation experiment; preserve the existing behaviour and payload gates. Shared abstractions still require a second compatible consumer rather than an assumed series-wide fit.
