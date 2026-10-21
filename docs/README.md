@@ -16,6 +16,7 @@
 - [Cost control](COST-CONTROL.md): $100/month series ceiling, traffic-spike protection, finite retention and proposed enforcement; live compliance still needs verification
 - [Edition architecture and ownership](EDITIONS.md)
 - [Topology-preserving spatial morphs](SPATIAL-MORPH-POLICY.md): persistent geometry, source-vertex blending and the Paris renderer adoption
+- [Renderer alpha.42 release and adoption](RENDERER-ALPHA-42.md) — verified npm artifacts, edition checks and rollout evidence
 - [Private renderer rail and context layers](RENDERER-STATIC-LAYERS.md) — internal boundaries, resource ownership and candidate validation.
 - [Idle rendering and verified JSON reads](IDLE-DECODE-2026-10-21.md): measured three-edition baseline, CPU/draw counters and bounded next work
 - [First view on a phone](FIRST-VIEW.md): measuring the first map frame, the shared waterfall patterns across public editions and tested practices for every edition

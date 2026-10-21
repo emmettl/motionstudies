@@ -2,7 +2,7 @@
 
 21 October 2026
 
-`NationalNetworkScene.tsx` now composes private rail and context modules instead of owning their implementation. Its public props, projection type and package exports are unchanged; the emitted scene declaration is byte-identical to alpha.41. This is an internal source refactor; editions continue to use their existing published versions.
+`NationalNetworkScene.tsx` now composes private rail and context modules instead of owning their implementation. Its public props, projection type and package exports are unchanged; the emitted scene declaration is byte-identical to alpha.41. The initial source pass retained the existing published versions. The refactor is now published in alpha.42; see the [release and edition adoption record](RENDERER-ALPHA-42.md).
 
 - `scene-context-layers.tsx` owns ground, geographic and diagram water, reference paths and borders. Each layer retains its geometry memoisation, spatial morph lifecycle, frame callback and disposal.
 - `scene-rail-layers.tsx` owns structural/local rails, station points, route ribbons and traffic strokes. Snapshot, projected geometry, framing and display inputs remain explicit props. Geometry and textures retain their existing component lifetime; no global cache or new scene subscription is introduced.

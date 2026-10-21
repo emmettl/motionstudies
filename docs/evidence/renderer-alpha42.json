@@ -1,0 +1,355 @@
+{
+  "version": "0.1.0-alpha.42",
+  "tag": "next",
+  "date": "2026-10-21",
+  "sourceCommit": "ee38610399d54f920d7affb5ff216aaa38ae77e2",
+  "releaseRun": {
+    "id": 39668146969,
+    "url": "https://github.com/emmettl/motionstudies/actions/runs/39668146969",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "verify",
+        "conclusion": "success"
+      },
+      {
+        "name": "publish",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.42",
+      "integrity": "sha512-vnhmdKhHFiNF3jrsgj9AWDEmLqUwu5bcDM5hZ/GNO7YMV99CAtJKXzBqLnCGwbjQniJzsQ4Ps0ud9d7nwK/3QA==",
+      "next": "0.1.0-alpha.42",
+      "files": 93,
+      "tarball": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.42.tgz"
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.42",
+      "integrity": "sha512-0uxCkWeHA1u/8N/gYL68TmRuitKzarQcSbJ7OZmTpgtWVhZnViQehoVMvr4ZGBa16JqYgzprj9AOinSwZ0QkhQ==",
+      "next": "0.1.0-alpha.42",
+      "files": 57,
+      "tarball": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.42.tgz"
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.42",
+      "integrity": "sha512-cL5LxDd7Qo+jOSzk5hQO+MyU3EiI8QFw/y562+2CRsGk2SYw9Ff7CqRQE8AXTQJ70CJxAaIYY9sP6Ot87Bg67A==",
+      "next": "0.1.0-alpha.42",
+      "files": 93,
+      "tarball": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.42.tgz"
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.42",
+      "integrity": "sha512-yz6G0vmLa7+nNDcZssWB2O/K1lAQq4FxDLKvVIseDL0P7tok2ZS47a5osUPW2zCu0Vhy2oYSc5aBv7HxsleGnw==",
+      "next": "0.1.0-alpha.42",
+      "files": 97,
+      "tarball": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.42.tgz"
+    }
+  ],
+  "toolchain": {
+    "node": "24.22.0",
+    "npm": "11.21.1"
+  },
+  "sharedChecks": {
+    "units": 481,
+    "hosting": 11,
+    "packedBrowser": 100,
+    "packedSkips": 2,
+    "loaderBrowser": 36,
+    "dryRunPackages": 4,
+    "typecheck": true,
+    "lint": true,
+    "architecture": true
+  },
+  "editionUnits": {
+    "allchange": 277,
+    "correspondances": 29,
+    "gleislicht": 1465,
+    "local-express": 2,
+    "norikae": 28,
+    "norikae-main": 28,
+    "umlauf": 20,
+    "underfall": 131
+  },
+  "unitRetries": {
+    "reason": "Existing timeout failures under concurrent test load; original assertions and timeouts retained.",
+    "allchange": {
+      "files": 2,
+      "cases": 19,
+      "passed": true
+    },
+    "gleislicht": {
+      "files": 9,
+      "cases": 128,
+      "passed": true
+    }
+  },
+  "registryInstallChecks": {
+    "allchange": {
+      "onlySharedPackageLockEntriesChanged": true,
+      "registryInstallVerified": true,
+      "installedFileParity": true
+    },
+    "correspondances": {
+      "onlySharedPackageLockEntriesChanged": true,
+      "registryInstallVerified": true,
+      "installedFileParity": true
+    },
+    "gleislicht": {
+      "onlySharedPackageLockEntriesChanged": true,
+      "registryInstallVerified": true,
+      "installedFileParity": true
+    },
+    "local-express": {
+      "onlySharedPackageLockEntriesChanged": true,
+      "registryInstallVerified": true,
+      "installedFileParity": true
+    },
+    "norikae": {
+      "onlySharedPackageLockEntriesChanged": true,
+      "registryInstallVerified": true,
+      "installedFileParity": true
+    },
+    "umlauf": {
+      "onlySharedPackageLockEntriesChanged": true,
+      "registryInstallVerified": true,
+      "installedFileParity": true
+    },
+    "underfall": {
+      "onlySharedPackageLockEntriesChanged": true,
+      "registryInstallVerified": true,
+      "installedFileParity": true
+    },
+    "norikae-main": {
+      "onlySharedPackageLockEntriesChanged": true,
+      "registryInstallVerified": true,
+      "installedFileParity": true
+    }
+  },
+  "browsers": {
+    "gleislicht": {
+      "passed": 7,
+      "skipped": 0,
+      "registryInstall": true
+    },
+    "allchange": {
+      "passed": 12,
+      "skipped": 0,
+      "registryInstall": true
+    },
+    "correspondances": {
+      "passed": 19,
+      "skipped": 1,
+      "registryInstall": true
+    },
+    "local-express": {
+      "passed": 17,
+      "skipped": 1,
+      "registryInstall": true
+    },
+    "norikae": {
+      "passed": 14,
+      "skipped": 0,
+      "registryInstall": true
+    },
+    "norikae-main": {
+      "passed": 12,
+      "skipped": 0,
+      "registryInstall": true
+    },
+    "umlauf": {
+      "passed": 18,
+      "skipped": 0,
+      "registryInstall": true
+    },
+    "underfall": {
+      "passed": 14,
+      "skipped": 0,
+      "registryInstall": true
+    }
+  },
+  "adoptions": [
+    {
+      "checkout": "allchange",
+      "branch": "main",
+      "commit": "490e75613c58842e97b5feb1ca13f2b4cc93f620",
+      "remoteHead": "490e75613c58842e97b5feb1ca13f2b4cc93f620",
+      "hostedRuns": [
+        {
+          "conclusion": "",
+          "databaseId": 39670405270,
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/allchange/actions/runs/39670405270",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    },
+    {
+      "checkout": "gleislicht",
+      "branch": "main",
+      "commit": "e1988ef3b3c6247500cedc9957b288ac887f4185",
+      "remoteHead": "e1988ef3b3c6247500cedc9957b288ac887f4185",
+      "hostedRuns": [
+        {
+          "conclusion": "success",
+          "databaseId": 39670438147,
+          "status": "completed",
+          "url": "https://github.com/emmettl/gleislicht/actions/runs/39670438147",
+          "workflowName": "Dependabot Updates"
+        },
+        {
+          "conclusion": "",
+          "databaseId": 39670417690,
+          "status": "queued",
+          "url": "https://github.com/emmettl/gleislicht/actions/runs/39670417690",
+          "workflowName": "Deploy to GitHub Pages"
+        }
+      ]
+    },
+    {
+      "checkout": "correspondances",
+      "branch": "main",
+      "commit": "735189492175c13f7db67756362d2f1b4e4f311e",
+      "remoteHead": "735189492175c13f7db67756362d2f1b4e4f311e",
+      "hostedRuns": [
+        {
+          "conclusion": "",
+          "databaseId": 39670599781,
+          "status": "pending",
+          "url": "https://github.com/emmettl/correspondances/actions/runs/39670599781",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    },
+    {
+      "checkout": "local-express",
+      "branch": "main",
+      "commit": "790588bd1a560f9c5c9b8c60fd13af623cef5994",
+      "remoteHead": "790588bd1a560f9c5c9b8c60fd13af623cef5994",
+      "hostedRuns": [
+        {
+          "conclusion": "",
+          "databaseId": 39670682826,
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/local-express/actions/runs/39670682826",
+          "workflowName": "Check Local / Express"
+        }
+      ]
+    },
+    {
+      "checkout": "norikae",
+      "branch": "codex/synthetic-player",
+      "commit": "10c1953e3aeea49151625faa7b487b81ce932261",
+      "remoteHead": "10c1953e3aeea49151625faa7b487b81ce932261",
+      "hostedRuns": []
+    },
+    {
+      "checkout": "norikae-main",
+      "branch": "main",
+      "commit": "8ab6cc8868ef7c9de56e3bd90621306f36b689e4",
+      "remoteHead": "8ab6cc8868ef7c9de56e3bd90621306f36b689e4",
+      "hostedRuns": [
+        {
+          "conclusion": "success",
+          "databaseId": 39670717637,
+          "status": "completed",
+          "url": "https://github.com/emmettl/norikae/actions/runs/39670717637",
+          "workflowName": "Validate"
+        },
+        {
+          "conclusion": "",
+          "databaseId": 39670717561,
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/norikae/actions/runs/39670717561",
+          "workflowName": "Deploy to GitHub Pages"
+        }
+      ]
+    },
+    {
+      "checkout": "umlauf",
+      "branch": "main",
+      "commit": "57a9fd20cb5b9bc61c6cfa6eaa62e7e945f1bab0",
+      "remoteHead": "57a9fd20cb5b9bc61c6cfa6eaa62e7e945f1bab0",
+      "hostedRuns": [
+        {
+          "conclusion": "",
+          "databaseId": 39670844378,
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/umlauf/actions/runs/39670844378",
+          "workflowName": "Deploy Pages"
+        }
+      ]
+    },
+    {
+      "checkout": "underfall",
+      "branch": "main",
+      "commit": "71afa956cadb1b1adb9e0a0e62ecaaec6ef54640",
+      "remoteHead": "71afa956cadb1b1adb9e0a0e62ecaaec6ef54640",
+      "hostedRuns": [
+        {
+          "conclusion": "",
+          "databaseId": 39671051529,
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/underfall/actions/runs/39671051529",
+          "workflowName": "Dependabot Updates"
+        },
+        {
+          "conclusion": "",
+          "databaseId": 39671017808,
+          "status": "in_progress",
+          "url": "https://github.com/emmettl/underfall/actions/runs/39671017808",
+          "workflowName": "Check"
+        }
+      ]
+    }
+  ],
+  "finalRegistryBudgets": {
+    "allchange": {
+      "javaScriptKiB": 365.7,
+      "javaScriptLimitKiB": 366,
+      "totalKiB": 578.5,
+      "totalLimitKiB": 650
+    },
+    "correspondances": {
+      "openingKiB": 629.2,
+      "openingLimitKiB": 630,
+      "tenLineKiB": 681.3,
+      "tenLineLimitKiB": 682
+    },
+    "gleislicht": {
+      "javaScriptKiB": 378.3,
+      "javaScriptLimitKiB": 380,
+      "totalKiB": 806.1,
+      "totalLimitKiB": 808
+    },
+    "local-express": {
+      "firstViewKiB": 383.7
+    },
+    "umlauf": {
+      "openingBytes": 584395,
+      "openingLimitBytes": 588800
+    }
+  },
+  "browserEnvironment": {
+    "chromium": "Metal on macOS",
+    "phone": "WebKit except Berlin Chromium",
+    "workers": 1,
+    "candidateSuitePassed": true,
+    "finalSuiteUsesEmptyCacheRegistryInstalls": true
+  },
+  "editionBrowserTotal": {
+    "passed": 113,
+    "skipped": 2
+  },
+  "swissRegistryBasemapCases": 2,
+  "hostedRolloutObservedAt": "2026-10-21T20:31:44.918328+00:00",
+  "hostedRolloutNote": "Snapshot after pushes. NORIKAE main validation passed; edition deployments/checks are still queued or running. The player branch has no matching hosted run. No completed deployment is implied.",
+  "preservedExistingWork": true
+}
