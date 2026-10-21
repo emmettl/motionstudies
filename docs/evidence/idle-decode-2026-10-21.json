@@ -1,0 +1,3865 @@
+{
+  "method": "1440x900 DPR1 Chromium Metal; unthrottled; 08:00 fixed study seek before each phase; CPU sampled at 1ms. Isolated JSON.parse and actual shared verifiedNetworkDayChunk (body read, SHA256, UTF8, parse) on captured payloads; transfer/domain expansion excluded",
+  "host": {
+    "cpu": "Apple M4 Max",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "chromium": "156.0.8078.4",
+  "node": "v26.12.0",
+  "results": [
+    {
+      "target": "correspondances",
+      "run": 0,
+      "url": "https://motionstudies.app/correspondances/",
+      "release": {
+        "repository": "emmettl/correspondances",
+        "run_id": 39291513285,
+        "commit": "4e887ef853c1c4b4d9ec4ac970592ecf85dd0c64",
+        "workflow_url": "https://github.com/emmettl/correspondances/actions/runs/39291513285",
+        "source_files": 223,
+        "source_bytes": 33439525,
+        "content_sha256": "71fd965e66922eb27618ccc8149d323d6fd0c8d6c9950352a3b5de496a4d04f3"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29280",
+          "draws": 9922,
+          "uploads": 2244,
+          "zeroOpacityDraws": 0,
+          "frames": 241,
+          "milliseconds": {
+            "TaskDuration": 236.25299999999982,
+            "ScriptDuration": 168.22199999999998,
+            "LayoutDuration": 4.418000000000019
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3779.775
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 107.098
+            },
+            {
+              "functionName": "p",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 11740,
+              "milliseconds": 17.004
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 63158,
+              "milliseconds": 6.479
+            },
+            {
+              "functionName": "(garbage collector)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 5.14
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 29385,
+              "milliseconds": 5.065
+            },
+            {
+              "functionName": "ye",
+              "scriptId": "5",
+              "url": "https://motionstudies.app/correspondances/assets/index-CZUBLLFT.js",
+              "lineNumber": 9,
+              "columnNumber": 60777,
+              "milliseconds": 4.831
+            },
+            {
+              "functionName": "zC",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 61221,
+              "milliseconds": 3.862
+            },
+            {
+              "functionName": "ht",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 34669,
+              "milliseconds": 3.813
+            },
+            {
+              "functionName": "o",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4,
+              "columnNumber": 149714,
+              "milliseconds": 3.799
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 49016,
+              "milliseconds": 3.785
+            },
+            {
+              "functionName": "Se",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 65842,
+              "milliseconds": 3.782
+            }
+          ],
+          "uploadSourceBytes": 41913300
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 9963,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 242,
+          "milliseconds": {
+            "TaskDuration": 213.7779999999998,
+            "ScriptDuration": 144.27100000000004,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3799.749
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 101.583
+            },
+            {
+              "functionName": "p",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 11740,
+              "milliseconds": 12.541
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 63158,
+              "milliseconds": 8.806
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 29385,
+              "milliseconds": 8
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 6.392
+            },
+            {
+              "functionName": "s",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 10926,
+              "milliseconds": 5.986
+            },
+            {
+              "functionName": "render",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 32618,
+              "milliseconds": 5.13
+            },
+            {
+              "functionName": "wt",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 41317,
+              "milliseconds": 3.959
+            },
+            {
+              "functionName": "u",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4168,
+              "columnNumber": 14000,
+              "milliseconds": 3.847
+            },
+            {
+              "functionName": "requestAnimationFrame",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3.823
+            },
+            {
+              "functionName": "",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 48547,
+              "milliseconds": 3.804
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-regional-rer-morning.json",
+          "verifiedReadMedianMs": 1,
+          "verifiedSamples": [
+            0.8999998569488525,
+            1,
+            1,
+            1.0999999046325684,
+            1.1000001430511475
+          ],
+          "sha256": "61d6e6e9361146712629ee9b63d2e069f7964604b2fc307bad4e8606360cc2a8",
+          "utf8Bytes": 371366,
+          "parseMedianMs": 0.5999999046325684,
+          "samples": [
+            0.5,
+            0.5,
+            0.5999999046325684,
+            0.5999999046325684,
+            0.5999999046325684,
+            0.6000001430511475,
+            0.7000000476837158
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-central-cross-morning.json",
+          "verifiedReadMedianMs": 1.0999999046325684,
+          "verifiedSamples": [
+            1,
+            1,
+            1.0999999046325684,
+            1.1000001430511475,
+            1.2000000476837158
+          ],
+          "sha256": "b4fd4dbb69d37d87bf1740540826c438e1e17dd49d3f859b09809e035e0c457d",
+          "utf8Bytes": 364801,
+          "parseMedianMs": 0.5999999046325684,
+          "samples": [
+            0.5,
+            0.5,
+            0.5,
+            0.5999999046325684,
+            0.5999999046325684,
+            0.6000001430511475,
+            0.6000001430511475
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-morning.json",
+          "verifiedReadMedianMs": 0.7000000476837158,
+          "verifiedSamples": [
+            0.5999999046325684,
+            0.6000001430511475,
+            0.7000000476837158,
+            0.7000000476837158,
+            1.6000001430511475
+          ],
+          "sha256": "a98b023a119afacb58b38743a8fbe723b98d6f57787c5f537113c5c688b00e31",
+          "utf8Bytes": 257594,
+          "parseMedianMs": 0.40000009536743164,
+          "samples": [
+            0.2999999523162842,
+            0.2999999523162842,
+            0.39999985694885254,
+            0.40000009536743164,
+            0.40000009536743164,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-geography.json",
+          "verifiedReadMedianMs": 0.10000014305114746,
+          "verifiedSamples": [
+            0,
+            0.09999990463256836,
+            0.10000014305114746,
+            0.20000004768371582,
+            0.20000004768371582
+          ],
+          "sha256": "1caa94d8361f3ff3dfceba5e101ddc4f346bed13409bf0b6a8c2ae9a0dd34f48",
+          "utf8Bytes": 32447,
+          "parseMedianMs": 0.09999990463256836,
+          "samples": [
+            0,
+            0,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746,
+            0.10000014305114746
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 6201.335
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 307.056
+        },
+        {
+          "functionName": "Ot",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/correspondances/assets/index-CZUBLLFT.js",
+          "lineNumber": 9,
+          "columnNumber": 85242,
+          "milliseconds": 188.862
+        },
+        {
+          "functionName": "C",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 101.156
+        },
+        {
+          "functionName": "p",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 3822,
+          "columnNumber": 11740,
+          "milliseconds": 29.084
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 29.004
+        },
+        {
+          "functionName": "Wb",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4230,
+          "columnNumber": 29243,
+          "milliseconds": 16.101
+        },
+        {
+          "functionName": "renderBufferDirect",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4219,
+          "columnNumber": 29385,
+          "milliseconds": 11.008
+        },
+        {
+          "functionName": "s",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 3822,
+          "columnNumber": 10926,
+          "milliseconds": 9.629
+        },
+        {
+          "functionName": "tick",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 23,
+          "columnNumber": 15,
+          "milliseconds": 9.091
+        },
+        {
+          "functionName": "updateMatrixWorld",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 0,
+          "columnNumber": 63158,
+          "milliseconds": 8.242
+        },
+        {
+          "functionName": "",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/correspondances/assets/index-CZUBLLFT.js",
+          "lineNumber": 9,
+          "columnNumber": 60221,
+          "milliseconds": 8.21
+        }
+      ]
+    },
+    {
+      "target": "allchange",
+      "run": 0,
+      "url": "https://motionstudies.app/allchange/",
+      "release": {
+        "repository": "emmettl/allchange",
+        "run_id": 39205252301,
+        "commit": "ae538e50c84da65c5018dae890539b11696993d1",
+        "workflow_url": "https://github.com/emmettl/allchange/actions/runs/39205252301",
+        "source_files": 1790,
+        "source_bytes": 70919004,
+        "content_sha256": "d237a16fd155627219af39e7bc8c8736bc75dfb2371a9d8d5a02abc46a4229fa"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29280",
+          "draws": 5082,
+          "uploads": 1424,
+          "zeroOpacityDraws": 0,
+          "frames": 241,
+          "milliseconds": {
+            "TaskDuration": 348.031,
+            "ScriptDuration": 229.89700000000002,
+            "LayoutDuration": 6.770999999999999
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3682.526
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 142.986
+            },
+            {
+              "functionName": "i",
+              "scriptId": "5",
+              "url": "https://motionstudies.app/allchange/assets/network-Jl-cE3Rm.js",
+              "lineNumber": 0,
+              "columnNumber": 1817,
+              "milliseconds": 12.613
+            },
+            {
+              "functionName": "p",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 11.845
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 62937,
+              "milliseconds": 11.366
+            },
+            {
+              "functionName": "Ce",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 10,
+              "columnNumber": 80759,
+              "milliseconds": 7.838
+            },
+            {
+              "functionName": "s",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 10895,
+              "milliseconds": 7.613
+            },
+            {
+              "functionName": "Or",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 10,
+              "columnNumber": 43317,
+              "milliseconds": 6.533
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 6.293
+            },
+            {
+              "functionName": "Et",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 41325,
+              "milliseconds": 6.283
+            },
+            {
+              "functionName": "Tn",
+              "scriptId": "6",
+              "url": "https://motionstudies.app/allchange/assets/index-CNf931ps.js",
+              "lineNumber": 1,
+              "columnNumber": 45325,
+              "milliseconds": 5.791
+            },
+            {
+              "functionName": "clear",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 5.656
+            }
+          ],
+          "uploadSourceBytes": 38790928
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 3318,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 157,
+          "milliseconds": {
+            "TaskDuration": 112.65999999999998,
+            "ScriptDuration": 70.48700000000008,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3885.936
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 90.843
+            },
+            {
+              "functionName": "p",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 8.158
+            },
+            {
+              "functionName": "Et",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 41325,
+              "milliseconds": 4.288
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 48791,
+              "milliseconds": 3.819
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 62937,
+              "milliseconds": 3.803
+            },
+            {
+              "functionName": "upload",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4117,
+              "columnNumber": 9516,
+              "milliseconds": 2.948
+            },
+            {
+              "functionName": "_t",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 34678,
+              "milliseconds": 2.564
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 29395,
+              "milliseconds": 2.55
+            },
+            {
+              "functionName": "due",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 1,
+              "columnNumber": 5104,
+              "milliseconds": 2.548
+            },
+            {
+              "functionName": "intersectsFrustum",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 181601,
+              "milliseconds": 2.116
+            },
+            {
+              "functionName": "proto.<computed>",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 14,
+              "columnNumber": 29,
+              "milliseconds": 1.494
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://motionstudies.app/allchange/data/all-change-rail-led-morning.json",
+          "verifiedReadMedianMs": 3.3000001907348633,
+          "verifiedSamples": [
+            3.0999999046325684,
+            3.200000047683716,
+            3.3000001907348633,
+            3.4000000953674316,
+            4.800000190734863
+          ],
+          "sha256": "3226599146c9d60ba7cc560efef011c66f1ceeaba2c0379a74aef940a7e4b5e5",
+          "utf8Bytes": 1405091,
+          "parseMedianMs": 2.1000001430511475,
+          "samples": [
+            2,
+            2,
+            2.0999999046325684,
+            2.1000001430511475,
+            2.200000047683716,
+            3.200000047683716,
+            3.5
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/allchange/data/all-change-geography.json",
+          "verifiedReadMedianMs": 0.09999990463256836,
+          "verifiedSamples": [
+            0,
+            0,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746
+          ],
+          "sha256": "a74ed12c09ac332178c0f413bb478857fd8c5402371eabd0e7937a0abf33f58d",
+          "utf8Bytes": 21665,
+          "parseMedianMs": 0,
+          "samples": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.09999990463256836,
+            0.10000014305114746
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 6167.824
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 236.845
+        },
+        {
+          "functionName": "C",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 27.643
+        },
+        {
+          "functionName": "Tn",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/allchange/assets/index-CNf931ps.js",
+          "lineNumber": 1,
+          "columnNumber": 45325,
+          "milliseconds": 19.083
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 18.238
+        },
+        {
+          "functionName": "p",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 3822,
+          "columnNumber": 11709,
+          "milliseconds": 17.736
+        },
+        {
+          "functionName": "tick",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 23,
+          "columnNumber": 15,
+          "milliseconds": 15.404
+        },
+        {
+          "functionName": "updateMatrixWorld",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 0,
+          "columnNumber": 62937,
+          "milliseconds": 14.08
+        },
+        {
+          "functionName": "i",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/allchange/assets/network-Jl-cE3Rm.js",
+          "lineNumber": 0,
+          "columnNumber": 1817,
+          "milliseconds": 13.015
+        },
+        {
+          "functionName": "ci",
+          "scriptId": "22",
+          "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+          "lineNumber": 10,
+          "columnNumber": 76190,
+          "milliseconds": 10.291
+        },
+        {
+          "functionName": "Et",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 4219,
+          "columnNumber": 41325,
+          "milliseconds": 10.239
+        },
+        {
+          "functionName": "Ce",
+          "scriptId": "22",
+          "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+          "lineNumber": 10,
+          "columnNumber": 80759,
+          "milliseconds": 10.225
+        }
+      ]
+    },
+    {
+      "target": "gleislicht",
+      "run": 0,
+      "url": "https://motionstudies.app/gleislicht/",
+      "release": {
+        "repository": "emmettl/gleislicht",
+        "run_id": 39503301315,
+        "commit": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+        "workflow_url": "https://github.com/emmettl/gleislicht/actions/runs/39503301315",
+        "source_files": 127,
+        "source_bytes": 3223031,
+        "content_sha256": "8952bc1c6c603cec2b3a8759febed00f32aa623c147ab7551b7554808f296fa6"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29280",
+          "draws": 8707,
+          "uploads": 1152,
+          "zeroOpacityDraws": 0,
+          "frames": 241,
+          "milliseconds": {
+            "TaskDuration": 405.85099999999994,
+            "ScriptDuration": 250.88100000000003,
+            "LayoutDuration": 3.6350000000000064
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3594.676
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 201.371
+            },
+            {
+              "functionName": "tn",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 1926,
+              "milliseconds": 16.311
+            },
+            {
+              "functionName": "p",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 15.782
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 62909,
+              "milliseconds": 12.692
+            },
+            {
+              "functionName": "Ht",
+              "scriptId": "5",
+              "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+              "lineNumber": 1,
+              "columnNumber": 58060,
+              "milliseconds": 12.544
+            },
+            {
+              "functionName": "hn",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 3779,
+              "milliseconds": 10.115
+            },
+            {
+              "functionName": "",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 32387,
+              "milliseconds": 8.873
+            },
+            {
+              "functionName": "ve",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 45438,
+              "milliseconds": 8.869
+            },
+            {
+              "functionName": "render",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 32626,
+              "milliseconds": 7.84
+            },
+            {
+              "functionName": "bufferSubData",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 6.374
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 29395,
+              "milliseconds": 6.2
+            }
+          ],
+          "uploadSourceBytes": 57968064
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 8748,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 242,
+          "milliseconds": {
+            "TaskDuration": 265.0009999999998,
+            "ScriptDuration": 124.92000000000014,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3752.459
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 201.654
+            },
+            {
+              "functionName": "p",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 15.13
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 29395,
+              "milliseconds": 8.965
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 62909,
+              "milliseconds": 7.636
+            },
+            {
+              "functionName": "clear",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 6.348
+            },
+            {
+              "functionName": "Et",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 41325,
+              "milliseconds": 6.329
+            },
+            {
+              "functionName": "",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 47232,
+              "milliseconds": 5.028
+            },
+            {
+              "functionName": "s",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 3822,
+              "columnNumber": 10895,
+              "milliseconds": 4.071
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 48763,
+              "milliseconds": 3.776
+            },
+            {
+              "functionName": "render",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 32626,
+              "milliseconds": 2.565
+            },
+            {
+              "functionName": "Jp",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4117,
+              "columnNumber": 3321,
+              "milliseconds": 2.536
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://gleislicht-realtime.louis-emmett.workers.dev/realtime.json",
+          "verifiedReadMedianMs": 4.799999952316284,
+          "verifiedSamples": [
+            4.5,
+            4.599999904632568,
+            4.799999952316284,
+            5.299999952316284,
+            5.599999904632568
+          ],
+          "sha256": "e76a60859497d63de58e1ecb3dac2bf8724114de94bf91f938907d0d3e90f98e",
+          "utf8Bytes": 2557213,
+          "parseMedianMs": 1.9000000953674316,
+          "samples": [
+            1.7999999523162842,
+            1.8999998569488525,
+            1.8999998569488525,
+            1.9000000953674316,
+            1.9000000953674316,
+            2,
+            3.700000047683716
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/calendar/2026-10-21/swiss-rail-morning.json",
+          "verifiedReadMedianMs": 4.700000047683716,
+          "verifiedSamples": [
+            4.599999904632568,
+            4.699999809265137,
+            4.700000047683716,
+            5.1000001430511475,
+            5.599999904632568
+          ],
+          "sha256": "94e869be7940b93f57254f09cd07c452be89fb4f5434010e9bdd0fae5b006d4a",
+          "utf8Bytes": 1708324,
+          "parseMedianMs": 2.5,
+          "samples": [
+            2.4000000953674316,
+            2.5,
+            2.5,
+            2.5,
+            2.5,
+            2.5999999046325684,
+            2.700000047683716
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/swiss-lakes.json",
+          "verifiedReadMedianMs": 0.2999999523162842,
+          "verifiedSamples": [
+            0.20000004768371582,
+            0.20000004768371582,
+            0.2999999523162842,
+            0.3000001907348633,
+            0.39999985694885254
+          ],
+          "sha256": "2ed8ae2942bb9fff570c0266bd1d0da11a7b6c99530e05761934b258594e58b7",
+          "utf8Bytes": 114150,
+          "parseMedianMs": 0.20000004768371582,
+          "samples": [
+            0.19999980926513672,
+            0.19999980926513672,
+            0.20000004768371582,
+            0.20000004768371582,
+            0.20000004768371582,
+            0.2999999523162842,
+            0.3000001907348633
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/swiss-boundary.json",
+          "verifiedReadMedianMs": 0,
+          "verifiedSamples": [
+            0,
+            0,
+            0,
+            0,
+            0.10000014305114746
+          ],
+          "sha256": "38fd890c6bc78415c8b2fef3047f210846d7660340977361afed9d40cc384599",
+          "utf8Bytes": 9435,
+          "parseMedianMs": 0,
+          "samples": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.10000014305114746
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 6089.868
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 371.396
+        },
+        {
+          "functionName": "Pe",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+          "lineNumber": 4219,
+          "columnNumber": 23791,
+          "milliseconds": 66.078
+        },
+        {
+          "functionName": "",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 47578,
+          "milliseconds": 38.612
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 27.816
+        },
+        {
+          "functionName": "Ht",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 58060,
+          "milliseconds": 23.838
+        },
+        {
+          "functionName": "C",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 19.989
+        },
+        {
+          "functionName": "proto.<computed>",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 14,
+          "columnNumber": 29,
+          "milliseconds": 15.896
+        },
+        {
+          "functionName": "",
+          "scriptId": "21",
+          "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+          "lineNumber": 10,
+          "columnNumber": 32387,
+          "milliseconds": 15.656
+        },
+        {
+          "functionName": "ve",
+          "scriptId": "21",
+          "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+          "lineNumber": 10,
+          "columnNumber": 45438,
+          "milliseconds": 12.961
+        },
+        {
+          "functionName": "zt",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 56860,
+          "milliseconds": 11.533
+        },
+        {
+          "functionName": "p",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+          "lineNumber": 3822,
+          "columnNumber": 11709,
+          "milliseconds": 10.904
+        }
+      ]
+    },
+    {
+      "target": "correspondances",
+      "run": 1,
+      "url": "https://motionstudies.app/correspondances/",
+      "release": {
+        "repository": "emmettl/correspondances",
+        "run_id": 39291513285,
+        "commit": "4e887ef853c1c4b4d9ec4ac970592ecf85dd0c64",
+        "workflow_url": "https://github.com/emmettl/correspondances/actions/runs/39291513285",
+        "source_files": 223,
+        "source_bytes": 33439525,
+        "content_sha256": "71fd965e66922eb27618ccc8149d323d6fd0c8d6c9950352a3b5de496a4d04f3"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29290",
+          "draws": 9876,
+          "uploads": 2024,
+          "zeroOpacityDraws": 0,
+          "frames": 241,
+          "milliseconds": {
+            "TaskDuration": 338.236,
+            "ScriptDuration": 237.61699999999996,
+            "LayoutDuration": 5.281000000000001
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3670.598
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 152.765
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 63158,
+              "milliseconds": 23.912
+            },
+            {
+              "functionName": "p",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 11740,
+              "milliseconds": 13.022
+            },
+            {
+              "functionName": "ye",
+              "scriptId": "5",
+              "url": "https://motionstudies.app/correspondances/assets/index-CZUBLLFT.js",
+              "lineNumber": 9,
+              "columnNumber": 60777,
+              "milliseconds": 10.012
+            },
+            {
+              "functionName": "(garbage collector)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 8.783
+            },
+            {
+              "functionName": "s",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 10926,
+              "milliseconds": 8.648
+            },
+            {
+              "functionName": "bufferSubData",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 8.567
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 49016,
+              "milliseconds": 7.73
+            },
+            {
+              "functionName": "ht",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 34669,
+              "milliseconds": 7.579
+            },
+            {
+              "functionName": "",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 67652,
+              "milliseconds": 5.929
+            },
+            {
+              "functionName": "zC",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 61221,
+              "milliseconds": 5.056
+            }
+          ],
+          "uploadSourceBytes": 37528524
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 9922,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 241,
+          "milliseconds": {
+            "TaskDuration": 222.86399999999995,
+            "ScriptDuration": 153.65299999999982,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3796.039
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 106.857
+            },
+            {
+              "functionName": "p",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 11740,
+              "milliseconds": 14.332
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 63158,
+              "milliseconds": 11.148
+            },
+            {
+              "functionName": "wt",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 41317,
+              "milliseconds": 7.601
+            },
+            {
+              "functionName": "ht",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 34669,
+              "milliseconds": 7.433
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 29385,
+              "milliseconds": 6.665
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 49016,
+              "milliseconds": 6.111
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 5.078
+            },
+            {
+              "functionName": "",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 74760,
+              "milliseconds": 5.061
+            },
+            {
+              "functionName": "",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 8641,
+              "milliseconds": 5.056
+            },
+            {
+              "functionName": "",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 67652,
+              "milliseconds": 4.937
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-regional-rer-morning.json",
+          "verifiedReadMedianMs": 1.0999999046325684,
+          "verifiedSamples": [
+            1,
+            1,
+            1.0999999046325684,
+            1.1000001430511475,
+            3.8999998569488525
+          ],
+          "sha256": "61d6e6e9361146712629ee9b63d2e069f7964604b2fc307bad4e8606360cc2a8",
+          "utf8Bytes": 371366,
+          "parseMedianMs": 0.7999999523162842,
+          "samples": [
+            0.7000000476837158,
+            0.7000000476837158,
+            0.7999999523162842,
+            0.7999999523162842,
+            0.7999999523162842,
+            0.7999999523162842,
+            0.9000000953674316
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-central-cross-morning.json",
+          "verifiedReadMedianMs": 1,
+          "verifiedSamples": [
+            0.7999999523162842,
+            0.8999998569488525,
+            1,
+            1.1000001430511475,
+            1.1000001430511475
+          ],
+          "sha256": "b4fd4dbb69d37d87bf1740540826c438e1e17dd49d3f859b09809e035e0c457d",
+          "utf8Bytes": 364801,
+          "parseMedianMs": 0.6000001430511475,
+          "samples": [
+            0.5999999046325684,
+            0.5999999046325684,
+            0.5999999046325684,
+            0.6000001430511475,
+            0.6000001430511475,
+            0.7000000476837158,
+            0.7999999523162842
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-morning.json",
+          "verifiedReadMedianMs": 0.8000001907348633,
+          "verifiedSamples": [
+            0.6999998092651367,
+            0.7999999523162842,
+            0.8000001907348633,
+            1,
+            1.0999999046325684
+          ],
+          "sha256": "a98b023a119afacb58b38743a8fbe723b98d6f57787c5f537113c5c688b00e31",
+          "utf8Bytes": 257594,
+          "parseMedianMs": 0.39999985694885254,
+          "samples": [
+            0.3000001907348633,
+            0.39999985694885254,
+            0.39999985694885254,
+            0.39999985694885254,
+            0.40000009536743164,
+            0.40000009536743164,
+            0.5
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-geography.json",
+          "verifiedReadMedianMs": 0.10000014305114746,
+          "verifiedSamples": [
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746,
+            0.20000004768371582,
+            0.20000004768371582
+          ],
+          "sha256": "1caa94d8361f3ff3dfceba5e101ddc4f346bed13409bf0b6a8c2ae9a0dd34f48",
+          "utf8Bytes": 32447,
+          "parseMedianMs": 0.09999990463256836,
+          "samples": [
+            0,
+            0,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746,
+            0.10000014305114746
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 6099.379
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 221.149
+        },
+        {
+          "functionName": "updateMatrixWorld",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 0,
+          "columnNumber": 63158,
+          "milliseconds": 35.107
+        },
+        {
+          "functionName": "C",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 30.217
+        },
+        {
+          "functionName": "p",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 3822,
+          "columnNumber": 11740,
+          "milliseconds": 22.923
+        },
+        {
+          "functionName": "tick",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 23,
+          "columnNumber": 15,
+          "milliseconds": 16.497
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 16.341
+        },
+        {
+          "functionName": "Wb",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4230,
+          "columnNumber": 29243,
+          "milliseconds": 14.555
+        },
+        {
+          "functionName": "proto.<computed>",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 14,
+          "columnNumber": 29,
+          "milliseconds": 14.042
+        },
+        {
+          "functionName": "ye",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/correspondances/assets/index-CZUBLLFT.js",
+          "lineNumber": 9,
+          "columnNumber": 60777,
+          "milliseconds": 11.099
+        },
+        {
+          "functionName": "zC",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4239,
+          "columnNumber": 61221,
+          "milliseconds": 10.121
+        },
+        {
+          "functionName": "s",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 3822,
+          "columnNumber": 10926,
+          "milliseconds": 10.042
+        }
+      ]
+    },
+    {
+      "target": "allchange",
+      "run": 1,
+      "url": "https://motionstudies.app/allchange/",
+      "release": {
+        "repository": "emmettl/allchange",
+        "run_id": 39205252301,
+        "commit": "ae538e50c84da65c5018dae890539b11696993d1",
+        "workflow_url": "https://github.com/emmettl/allchange/actions/runs/39205252301",
+        "source_files": 1790,
+        "source_bytes": 70919004,
+        "content_sha256": "d237a16fd155627219af39e7bc8c8736bc75dfb2371a9d8d5a02abc46a4229fa"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29260",
+          "draws": 4284,
+          "uploads": 1352,
+          "zeroOpacityDraws": 0,
+          "frames": 203,
+          "milliseconds": {
+            "TaskDuration": 242.24499999999992,
+            "ScriptDuration": 166.35900000000004,
+            "LayoutDuration": 3.772999999999999
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3759.276
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 109.551
+            },
+            {
+              "functionName": "i",
+              "scriptId": "10",
+              "url": "https://motionstudies.app/allchange/assets/network-Jl-cE3Rm.js",
+              "lineNumber": 0,
+              "columnNumber": 1817,
+              "milliseconds": 11.422
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 8.748
+            },
+            {
+              "functionName": "p",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 8.469
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 62937,
+              "milliseconds": 8.225
+            },
+            {
+              "functionName": "Ce",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 10,
+              "columnNumber": 80759,
+              "milliseconds": 7.5
+            },
+            {
+              "functionName": "clear",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 7.411
+            },
+            {
+              "functionName": "bufferSubData",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 6.77
+            },
+            {
+              "functionName": "s",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 10895,
+              "milliseconds": 6.505
+            },
+            {
+              "functionName": "Tn",
+              "scriptId": "8",
+              "url": "https://motionstudies.app/allchange/assets/index-CNf931ps.js",
+              "lineNumber": 1,
+              "columnNumber": 45325,
+              "milliseconds": 3.823
+            },
+            {
+              "functionName": "Et",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 41325,
+              "milliseconds": 3.809
+            }
+          ],
+          "uploadSourceBytes": 36643464
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 1806,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 85,
+          "milliseconds": {
+            "TaskDuration": 75.57800000000015,
+            "ScriptDuration": 46.126,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3934.104
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 67.967
+            },
+            {
+              "functionName": "bindVertexArray",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 4.38
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 2.486
+            },
+            {
+              "functionName": "due",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 1,
+              "columnNumber": 5104,
+              "milliseconds": 2.437
+            },
+            {
+              "functionName": "zp",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4117,
+              "columnNumber": 1786,
+              "milliseconds": 1.954
+            },
+            {
+              "functionName": "Ne",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 23748,
+              "milliseconds": 1.713
+            },
+            {
+              "functionName": "p",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 1.642
+            },
+            {
+              "functionName": "convert",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 26166,
+              "milliseconds": 1.475
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 48791,
+              "milliseconds": 1.297
+            },
+            {
+              "functionName": "wh",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4168,
+              "columnNumber": 13088,
+              "milliseconds": 1.287
+            },
+            {
+              "functionName": "getMaxScaleOnAxis",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 51270,
+              "milliseconds": 1.282
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://motionstudies.app/allchange/data/all-change-rail-led-morning.json",
+          "verifiedReadMedianMs": 3.5,
+          "verifiedSamples": [
+            3.299999952316284,
+            3.4000000953674316,
+            3.5,
+            3.700000047683716,
+            3.700000047683716
+          ],
+          "sha256": "3226599146c9d60ba7cc560efef011c66f1ceeaba2c0379a74aef940a7e4b5e5",
+          "utf8Bytes": 1405091,
+          "parseMedianMs": 3,
+          "samples": [
+            2.5999999046325684,
+            2.700000047683716,
+            2.799999952316284,
+            3,
+            4,
+            5.400000095367432,
+            5.799999952316284
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/allchange/data/all-change-geography.json",
+          "verifiedReadMedianMs": 0.2999999523162842,
+          "verifiedSamples": [
+            0.09999990463256836,
+            0.20000004768371582,
+            0.2999999523162842,
+            0.2999999523162842,
+            0.6000001430511475
+          ],
+          "sha256": "a74ed12c09ac332178c0f413bb478857fd8c5402371eabd0e7937a0abf33f58d",
+          "utf8Bytes": 21665,
+          "parseMedianMs": 0.09999990463256836,
+          "samples": [
+            0,
+            0,
+            0,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746,
+            0.40000009536743164
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 6225.422
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 287.801
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 24.093
+        },
+        {
+          "functionName": "C",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 21.475
+        },
+        {
+          "functionName": "p",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 3822,
+          "columnNumber": 11709,
+          "milliseconds": 13.947
+        },
+        {
+          "functionName": "tick",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 23,
+          "columnNumber": 15,
+          "milliseconds": 11.996
+        },
+        {
+          "functionName": "i",
+          "scriptId": "10",
+          "url": "https://motionstudies.app/allchange/assets/network-Jl-cE3Rm.js",
+          "lineNumber": 0,
+          "columnNumber": 1817,
+          "milliseconds": 10.74
+        },
+        {
+          "functionName": "updateMatrixWorld",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 0,
+          "columnNumber": 62937,
+          "milliseconds": 10.1
+        },
+        {
+          "functionName": "",
+          "scriptId": "22",
+          "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+          "lineNumber": 10,
+          "columnNumber": 82553,
+          "milliseconds": 9.439
+        },
+        {
+          "functionName": "Tn",
+          "scriptId": "8",
+          "url": "https://motionstudies.app/allchange/assets/index-CNf931ps.js",
+          "lineNumber": 1,
+          "columnNumber": 45325,
+          "milliseconds": 8.882
+        },
+        {
+          "functionName": "t",
+          "scriptId": "10",
+          "url": "https://motionstudies.app/allchange/assets/network-Jl-cE3Rm.js",
+          "lineNumber": 0,
+          "columnNumber": 620,
+          "milliseconds": 8.792
+        },
+        {
+          "functionName": "Ce",
+          "scriptId": "22",
+          "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+          "lineNumber": 10,
+          "columnNumber": 80759,
+          "milliseconds": 7.92
+        }
+      ]
+    },
+    {
+      "target": "gleislicht",
+      "run": 1,
+      "url": "https://motionstudies.app/gleislicht/",
+      "release": {
+        "repository": "emmettl/gleislicht",
+        "run_id": 39503301315,
+        "commit": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+        "workflow_url": "https://github.com/emmettl/gleislicht/actions/runs/39503301315",
+        "source_files": 127,
+        "source_bytes": 3223031,
+        "content_sha256": "8952bc1c6c603cec2b3a8759febed00f32aa623c147ab7551b7554808f296fa6"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29280",
+          "draws": 1894,
+          "uploads": 540,
+          "zeroOpacityDraws": 0,
+          "frames": 52,
+          "milliseconds": {
+            "TaskDuration": 148.7209999999999,
+            "ScriptDuration": 101.67300000000002,
+            "LayoutDuration": 2.666999999999996
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3866.409
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 77.917
+            },
+            {
+              "functionName": "Ht",
+              "scriptId": "6",
+              "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+              "lineNumber": 1,
+              "columnNumber": 58060,
+              "milliseconds": 10.483
+            },
+            {
+              "functionName": "ve",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 45438,
+              "milliseconds": 6.298
+            },
+            {
+              "functionName": "tn",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 1926,
+              "milliseconds": 5.072
+            },
+            {
+              "functionName": "$t",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 1321,
+              "milliseconds": 5.057
+            },
+            {
+              "functionName": "wt",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 1,
+              "columnNumber": 11921,
+              "milliseconds": 3.81
+            },
+            {
+              "functionName": "p",
+              "scriptId": "20",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 3.052
+            },
+            {
+              "functionName": "",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 47232,
+              "milliseconds": 2.542
+            },
+            {
+              "functionName": "hn",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 3779,
+              "milliseconds": 2.541
+            },
+            {
+              "functionName": "convert",
+              "scriptId": "20",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 26138,
+              "milliseconds": 2.536
+            },
+            {
+              "functionName": "br",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 40862,
+              "milliseconds": 2.529
+            }
+          ],
+          "uploadSourceBytes": 26913744
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 2074,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 60,
+          "milliseconds": {
+            "TaskDuration": 97.88799999999998,
+            "ScriptDuration": 46.61599999999999,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3925.736
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 93.726
+            },
+            {
+              "functionName": "(garbage collector)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 11.491
+            },
+            {
+              "functionName": "p",
+              "scriptId": "20",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 5.601
+            },
+            {
+              "functionName": "_t",
+              "scriptId": "20",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 34678,
+              "milliseconds": 2.572
+            },
+            {
+              "functionName": "d",
+              "scriptId": "7",
+              "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+              "lineNumber": 0,
+              "columnNumber": 8943,
+              "milliseconds": 1.305
+            },
+            {
+              "functionName": "Et",
+              "scriptId": "20",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 41325,
+              "milliseconds": 1.282
+            },
+            {
+              "functionName": "",
+              "scriptId": "7",
+              "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+              "lineNumber": 0,
+              "columnNumber": 10301,
+              "milliseconds": 1.274
+            },
+            {
+              "functionName": "due",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 1,
+              "columnNumber": 14362,
+              "milliseconds": 1.273
+            },
+            {
+              "functionName": "compose",
+              "scriptId": "20",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 52195,
+              "milliseconds": 1.272
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "20",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 62909,
+              "milliseconds": 1.27
+            },
+            {
+              "functionName": "",
+              "scriptId": "7",
+              "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+              "lineNumber": 0,
+              "columnNumber": 5625,
+              "milliseconds": 1.268
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://gleislicht-realtime.louis-emmett.workers.dev/realtime.json",
+          "verifiedReadMedianMs": 4.299999952316284,
+          "verifiedSamples": [
+            4.200000047683716,
+            4.299999952316284,
+            4.299999952316284,
+            5.1000001430511475,
+            5.700000047683716
+          ],
+          "sha256": "c7a88f070bf74cc940de630334b278ffe9c4d9c6087198b804e5b68fcf9db8b4",
+          "utf8Bytes": 2523016,
+          "parseMedianMs": 2.0999999046325684,
+          "samples": [
+            1.9000000953674316,
+            1.9000000953674316,
+            2,
+            2.0999999046325684,
+            2.0999999046325684,
+            2.0999999046325684,
+            2.0999999046325684
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/calendar/2026-10-21/swiss-rail-morning.json",
+          "verifiedReadMedianMs": 4.799999952316284,
+          "verifiedSamples": [
+            4.700000047683716,
+            4.799999952316284,
+            4.799999952316284,
+            4.900000095367432,
+            5.1000001430511475
+          ],
+          "sha256": "94e869be7940b93f57254f09cd07c452be89fb4f5434010e9bdd0fae5b006d4a",
+          "utf8Bytes": 1708324,
+          "parseMedianMs": 3.299999952316284,
+          "samples": [
+            3,
+            3.200000047683716,
+            3.200000047683716,
+            3.299999952316284,
+            3.299999952316284,
+            3.4000000953674316,
+            4.599999904632568
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/swiss-lakes.json",
+          "verifiedReadMedianMs": 0.3000001907348633,
+          "verifiedSamples": [
+            0.2999999523162842,
+            0.2999999523162842,
+            0.3000001907348633,
+            0.39999985694885254,
+            0.39999985694885254
+          ],
+          "sha256": "2ed8ae2942bb9fff570c0266bd1d0da11a7b6c99530e05761934b258594e58b7",
+          "utf8Bytes": 114150,
+          "parseMedianMs": 0.20000004768371582,
+          "samples": [
+            0.09999990463256836,
+            0.20000004768371582,
+            0.20000004768371582,
+            0.20000004768371582,
+            0.2999999523162842,
+            0.2999999523162842,
+            0.2999999523162842
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/swiss-boundary.json",
+          "verifiedReadMedianMs": 0,
+          "verifiedSamples": [
+            0,
+            0,
+            0,
+            0.09999990463256836,
+            0.10000014305114746
+          ],
+          "sha256": "38fd890c6bc78415c8b2fef3047f210846d7660340977361afed9d40cc384599",
+          "utf8Bytes": 9435,
+          "parseMedianMs": 0,
+          "samples": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.09999990463256836
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 6111.359
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 496.068
+        },
+        {
+          "functionName": "",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 47578,
+          "milliseconds": 48.878
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 36.683
+        },
+        {
+          "functionName": "Pe",
+          "scriptId": "20",
+          "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+          "lineNumber": 4219,
+          "columnNumber": 23791,
+          "milliseconds": 27.357
+        },
+        {
+          "functionName": "ct",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 48964,
+          "milliseconds": 19.344
+        },
+        {
+          "functionName": "C",
+          "scriptId": "20",
+          "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 18.874
+        },
+        {
+          "functionName": "Ht",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 58060,
+          "milliseconds": 13.988
+        },
+        {
+          "functionName": "proto.<computed>",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 14,
+          "columnNumber": 29,
+          "milliseconds": 12.595
+        },
+        {
+          "functionName": "zt",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 56860,
+          "milliseconds": 12.144
+        },
+        {
+          "functionName": "tn",
+          "scriptId": "21",
+          "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+          "lineNumber": 10,
+          "columnNumber": 1926,
+          "milliseconds": 8.846
+        },
+        {
+          "functionName": "de",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 30183,
+          "milliseconds": 8.796
+        }
+      ]
+    },
+    {
+      "target": "correspondances",
+      "run": 2,
+      "url": "https://motionstudies.app/correspondances/",
+      "release": {
+        "repository": "emmettl/correspondances",
+        "run_id": 39291513285,
+        "commit": "4e887ef853c1c4b4d9ec4ac970592ecf85dd0c64",
+        "workflow_url": "https://github.com/emmettl/correspondances/actions/runs/39291513285",
+        "source_files": 223,
+        "source_bytes": 33439525,
+        "content_sha256": "71fd965e66922eb27618ccc8149d323d6fd0c8d6c9950352a3b5de496a4d04f3"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29270",
+          "draws": 8572,
+          "uploads": 1828,
+          "zeroOpacityDraws": 0,
+          "frames": 209,
+          "milliseconds": {
+            "TaskDuration": 314.84299999999996,
+            "ScriptDuration": 197.986,
+            "LayoutDuration": 3.8749999999999964
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3697.086
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 172.648
+            },
+            {
+              "functionName": "ye",
+              "scriptId": "5",
+              "url": "https://motionstudies.app/correspondances/assets/index-CZUBLLFT.js",
+              "lineNumber": 9,
+              "columnNumber": 60777,
+              "milliseconds": 12.639
+            },
+            {
+              "functionName": "p",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 11740,
+              "milliseconds": 12.502
+            },
+            {
+              "functionName": "Se",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 65842,
+              "milliseconds": 9.13
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 63158,
+              "milliseconds": 7.715
+            },
+            {
+              "functionName": "(garbage collector)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 7.626
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 7.621
+            },
+            {
+              "functionName": "Ky",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4230,
+              "columnNumber": 13468,
+              "milliseconds": 6.621
+            },
+            {
+              "functionName": "bufferSubData",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 6.112
+            },
+            {
+              "functionName": "o_",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 62913,
+              "milliseconds": 5.132
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 49016,
+              "milliseconds": 5.028
+            }
+          ],
+          "uploadSourceBytes": 33960520
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 9963,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 242,
+          "milliseconds": {
+            "TaskDuration": 189.8900000000001,
+            "ScriptDuration": 134.86600000000004,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3846.452
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 86.683
+            },
+            {
+              "functionName": "p",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 11740,
+              "milliseconds": 14.163
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 63158,
+              "milliseconds": 7.556
+            },
+            {
+              "functionName": "",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4239,
+              "columnNumber": 67652,
+              "milliseconds": 7.549
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 29385,
+              "milliseconds": 6.343
+            },
+            {
+              "functionName": "ht",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4219,
+              "columnNumber": 34669,
+              "milliseconds": 5.041
+            },
+            {
+              "functionName": "getDelta",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 4,
+              "columnNumber": 113038,
+              "milliseconds": 5.03
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 5.002
+            },
+            {
+              "functionName": "s",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 3822,
+              "columnNumber": 10926,
+              "milliseconds": 3.856
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "19",
+              "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+              "lineNumber": 0,
+              "columnNumber": 49016,
+              "milliseconds": 3.778
+            },
+            {
+              "functionName": "proto.uniform1f",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 9,
+              "columnNumber": 31,
+              "milliseconds": 2.562
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-regional-rer-morning.json",
+          "verifiedReadMedianMs": 1,
+          "verifiedSamples": [
+            0.8999998569488525,
+            1,
+            1,
+            1.5,
+            1.5999999046325684
+          ],
+          "sha256": "61d6e6e9361146712629ee9b63d2e069f7964604b2fc307bad4e8606360cc2a8",
+          "utf8Bytes": 371366,
+          "parseMedianMs": 0.6999998092651367,
+          "samples": [
+            0.5999999046325684,
+            0.6000001430511475,
+            0.6999998092651367,
+            0.6999998092651367,
+            0.7000000476837158,
+            0.7999999523162842,
+            0.8000001907348633
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-central-cross-morning.json",
+          "verifiedReadMedianMs": 0.8000001907348633,
+          "verifiedSamples": [
+            0.7999999523162842,
+            0.7999999523162842,
+            0.8000001907348633,
+            0.8999998569488525,
+            0.9000000953674316
+          ],
+          "sha256": "b4fd4dbb69d37d87bf1740540826c438e1e17dd49d3f859b09809e035e0c457d",
+          "utf8Bytes": 364801,
+          "parseMedianMs": 0.5,
+          "samples": [
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5999999046325684,
+            0.6000001430511475,
+            0.7000000476837158
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-morning.json",
+          "verifiedReadMedianMs": 0.6999998092651367,
+          "verifiedSamples": [
+            0.5999999046325684,
+            0.6000001430511475,
+            0.6999998092651367,
+            0.7000000476837158,
+            0.7999999523162842
+          ],
+          "sha256": "a98b023a119afacb58b38743a8fbe723b98d6f57787c5f537113c5c688b00e31",
+          "utf8Bytes": 257594,
+          "parseMedianMs": 0.40000009536743164,
+          "samples": [
+            0.2999999523162842,
+            0.39999985694885254,
+            0.39999985694885254,
+            0.40000009536743164,
+            0.40000009536743164,
+            0.40000009536743164,
+            0.5
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/correspondances/data/correspondances-geography.json",
+          "verifiedReadMedianMs": 0.09999990463256836,
+          "verifiedSamples": [
+            0.09999990463256836,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746,
+            0.10000014305114746
+          ],
+          "sha256": "1caa94d8361f3ff3dfceba5e101ddc4f346bed13409bf0b6a8c2ae9a0dd34f48",
+          "utf8Bytes": 32447,
+          "parseMedianMs": 0.09999990463256836,
+          "samples": [
+            0,
+            0,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746,
+            0.10000014305114746
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 6301.438
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 227.657
+        },
+        {
+          "functionName": "C",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 29.551
+        },
+        {
+          "functionName": "p",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 3822,
+          "columnNumber": 11740,
+          "milliseconds": 23.91
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 19.667
+        },
+        {
+          "functionName": "Wb",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4230,
+          "columnNumber": 29243,
+          "milliseconds": 14.031
+        },
+        {
+          "functionName": "tick",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 23,
+          "columnNumber": 15,
+          "milliseconds": 11.355
+        },
+        {
+          "functionName": "proto.<computed>",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 14,
+          "columnNumber": 29,
+          "milliseconds": 11.274
+        },
+        {
+          "functionName": "ye",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/correspondances/assets/index-CZUBLLFT.js",
+          "lineNumber": 9,
+          "columnNumber": 60777,
+          "milliseconds": 11.216
+        },
+        {
+          "functionName": "updateMatrixWorld",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 0,
+          "columnNumber": 63158,
+          "milliseconds": 10.539
+        },
+        {
+          "functionName": "em",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4117,
+          "columnNumber": 2353,
+          "milliseconds": 10.076
+        },
+        {
+          "functionName": "",
+          "scriptId": "19",
+          "url": "https://motionstudies.app/correspondances/assets/ParisNetworkScene-BLo3v-EM.js",
+          "lineNumber": 4239,
+          "columnNumber": 67652,
+          "milliseconds": 8.959
+        }
+      ]
+    },
+    {
+      "target": "allchange",
+      "run": 2,
+      "url": "https://motionstudies.app/allchange/",
+      "release": {
+        "repository": "emmettl/allchange",
+        "run_id": 39205252301,
+        "commit": "ae538e50c84da65c5018dae890539b11696993d1",
+        "workflow_url": "https://github.com/emmettl/allchange/actions/runs/39205252301",
+        "source_files": 1790,
+        "source_bytes": 70919004,
+        "content_sha256": "d237a16fd155627219af39e7bc8c8736bc75dfb2371a9d8d5a02abc46a4229fa"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29280",
+          "draws": 5082,
+          "uploads": 1424,
+          "zeroOpacityDraws": 0,
+          "frames": 241,
+          "milliseconds": {
+            "TaskDuration": 261.62600000000003,
+            "ScriptDuration": 175.65299999999993,
+            "LayoutDuration": 5.116999999999996
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3776.676
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 113.372
+            },
+            {
+              "functionName": "Ce",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 10,
+              "columnNumber": 80759,
+              "milliseconds": 10.018
+            },
+            {
+              "functionName": "p",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 9.039
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 6.163
+            },
+            {
+              "functionName": "Tn",
+              "scriptId": "6",
+              "url": "https://motionstudies.app/allchange/assets/index-CNf931ps.js",
+              "lineNumber": 1,
+              "columnNumber": 45325,
+              "milliseconds": 5.039
+            },
+            {
+              "functionName": "clear",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 5.034
+            },
+            {
+              "functionName": "",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 10,
+              "columnNumber": 82553,
+              "milliseconds": 4.166
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 48791,
+              "milliseconds": 3.78
+            },
+            {
+              "functionName": "due",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 1,
+              "columnNumber": 5104,
+              "milliseconds": 3.779
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 62937,
+              "milliseconds": 3.762
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 29395,
+              "milliseconds": 3.659
+            }
+          ],
+          "uploadSourceBytes": 38790928
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 5082,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 241,
+          "milliseconds": {
+            "TaskDuration": 154.061,
+            "ScriptDuration": 96.88900000000001,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3862.341
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 83.377
+            },
+            {
+              "functionName": "p",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 8.773
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 62937,
+              "milliseconds": 4.84
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 29395,
+              "milliseconds": 3.815
+            },
+            {
+              "functionName": "s",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 3822,
+              "columnNumber": 10895,
+              "milliseconds": 3.802
+            },
+            {
+              "functionName": "due",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+              "lineNumber": 1,
+              "columnNumber": 5104,
+              "milliseconds": 3.783
+            },
+            {
+              "functionName": "clear",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3.767
+            },
+            {
+              "functionName": "u",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4168,
+              "columnNumber": 14000,
+              "milliseconds": 2.581
+            },
+            {
+              "functionName": "Et",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 4219,
+              "columnNumber": 41325,
+              "milliseconds": 2.55
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 2.542
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "22",
+              "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+              "lineNumber": 0,
+              "columnNumber": 48791,
+              "milliseconds": 2.52
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://motionstudies.app/allchange/data/all-change-rail-led-morning.json",
+          "verifiedReadMedianMs": 3.5,
+          "verifiedSamples": [
+            3.299999952316284,
+            3.4000000953674316,
+            3.5,
+            3.700000047683716,
+            4
+          ],
+          "sha256": "3226599146c9d60ba7cc560efef011c66f1ceeaba2c0379a74aef940a7e4b5e5",
+          "utf8Bytes": 1405091,
+          "parseMedianMs": 2.5999999046325684,
+          "samples": [
+            2.5,
+            2.5999999046325684,
+            2.5999999046325684,
+            2.5999999046325684,
+            4.299999952316284,
+            4.300000190734863,
+            6.200000047683716
+          ]
+        },
+        {
+          "asset": "https://motionstudies.app/allchange/data/all-change-geography.json",
+          "verifiedReadMedianMs": 0.09999990463256836,
+          "verifiedSamples": [
+            0,
+            0,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746
+          ],
+          "sha256": "a74ed12c09ac332178c0f413bb478857fd8c5402371eabd0e7937a0abf33f58d",
+          "utf8Bytes": 21665,
+          "parseMedianMs": 0.09999990463256836,
+          "samples": [
+            0,
+            0,
+            0,
+            0.09999990463256836,
+            0.09999990463256836,
+            0.10000014305114746,
+            0.10000014305114746
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 6331.225
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 201.206
+        },
+        {
+          "functionName": "C",
+          "scriptId": "22",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 17.68
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 15.486
+        },
+        {
+          "functionName": "Tn",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/allchange/assets/index-CNf931ps.js",
+          "lineNumber": 1,
+          "columnNumber": 45325,
+          "milliseconds": 12.217
+        },
+        {
+          "functionName": "p",
+          "scriptId": "22",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 3822,
+          "columnNumber": 11709,
+          "milliseconds": 11.759
+        },
+        {
+          "functionName": "tick",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 23,
+          "columnNumber": 15,
+          "milliseconds": 11.323
+        },
+        {
+          "functionName": "proto.<computed>",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 14,
+          "columnNumber": 29,
+          "milliseconds": 11.227
+        },
+        {
+          "functionName": "updateMatrixWorld",
+          "scriptId": "22",
+          "url": "https://motionstudies.app/allchange/assets/glow-point-texture-rMgqeRji.js",
+          "lineNumber": 0,
+          "columnNumber": 62937,
+          "milliseconds": 10.186
+        },
+        {
+          "functionName": "i",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/allchange/assets/network-Jl-cE3Rm.js",
+          "lineNumber": 0,
+          "columnNumber": 1817,
+          "milliseconds": 9.768
+        },
+        {
+          "functionName": "",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/allchange/assets/LondonNetworkScene-DagnsIi2.js",
+          "lineNumber": 10,
+          "columnNumber": 82553,
+          "milliseconds": 8.072
+        },
+        {
+          "functionName": "t",
+          "scriptId": "5",
+          "url": "https://motionstudies.app/allchange/assets/network-Jl-cE3Rm.js",
+          "lineNumber": 0,
+          "columnNumber": 620,
+          "milliseconds": 7.101
+        }
+      ]
+    },
+    {
+      "target": "gleislicht",
+      "run": 2,
+      "url": "https://motionstudies.app/gleislicht/",
+      "release": {
+        "repository": "emmettl/gleislicht",
+        "run_id": 39503301315,
+        "commit": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+        "workflow_url": "https://github.com/emmettl/gleislicht/actions/runs/39503301315",
+        "source_files": 127,
+        "source_bytes": 3223031,
+        "content_sha256": "8952bc1c6c603cec2b3a8759febed00f32aa623c147ab7551b7554808f296fa6"
+      },
+      "errors": [],
+      "phases": [
+        {
+          "name": "playing",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "29290",
+          "draws": 7450,
+          "uploads": 1040,
+          "zeroOpacityDraws": 0,
+          "frames": 206,
+          "milliseconds": {
+            "TaskDuration": 327.753,
+            "ScriptDuration": 206.26500000000004,
+            "LayoutDuration": 3.2039999999999984
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3685.424
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 182.863
+            },
+            {
+              "functionName": "Ht",
+              "scriptId": "6",
+              "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+              "lineNumber": 1,
+              "columnNumber": 58060,
+              "milliseconds": 22.925
+            },
+            {
+              "functionName": "p",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 14.051
+            },
+            {
+              "functionName": "(garbage collector)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 8.798
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 62909,
+              "milliseconds": 7.473
+            },
+            {
+              "functionName": "",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 32387,
+              "milliseconds": 7.347
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 29395,
+              "milliseconds": 5.085
+            },
+            {
+              "functionName": "_r",
+              "scriptId": "6",
+              "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+              "lineNumber": 1,
+              "columnNumber": 77168,
+              "milliseconds": 5.052
+            },
+            {
+              "functionName": "hn",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 3779,
+              "milliseconds": 5.045
+            },
+            {
+              "functionName": "render",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 32626,
+              "milliseconds": 4.876
+            },
+            {
+              "functionName": "clear",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3.88
+            }
+          ],
+          "uploadSourceBytes": 52332280
+        },
+        {
+          "name": "paused",
+          "duration": 4000,
+          "studyTimeBefore": "28800",
+          "studyTimeAfter": "28800",
+          "draws": 7308,
+          "uploads": 0,
+          "zeroOpacityDraws": 0,
+          "frames": 202,
+          "milliseconds": {
+            "TaskDuration": 189.31100000000023,
+            "ScriptDuration": 92.25900000000009,
+            "LayoutDuration": 0
+          },
+          "hot": [
+            {
+              "functionName": "(idle)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3827.032
+            },
+            {
+              "functionName": "(program)",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 143.482
+            },
+            {
+              "functionName": "renderBufferDirect",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4219,
+              "columnNumber": 29395,
+              "milliseconds": 12.567
+            },
+            {
+              "functionName": "p",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 3822,
+              "columnNumber": 11709,
+              "milliseconds": 12.371
+            },
+            {
+              "functionName": "updateMatrixWorld",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 62909,
+              "milliseconds": 7.552
+            },
+            {
+              "functionName": "multiplyMatrices",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 0,
+              "columnNumber": 48763,
+              "milliseconds": 3.844
+            },
+            {
+              "functionName": "tick",
+              "scriptId": "4",
+              "url": "",
+              "lineNumber": 23,
+              "columnNumber": 15,
+              "milliseconds": 3.817
+            },
+            {
+              "functionName": "clear",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 3.789
+            },
+            {
+              "functionName": "due",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 1,
+              "columnNumber": 14362,
+              "milliseconds": 3.785
+            },
+            {
+              "functionName": "uniformMatrix4fv",
+              "scriptId": "0",
+              "url": "",
+              "lineNumber": -1,
+              "columnNumber": -1,
+              "milliseconds": 2.66
+            },
+            {
+              "functionName": "",
+              "scriptId": "21",
+              "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+              "lineNumber": 10,
+              "columnNumber": 47232,
+              "milliseconds": 2.634
+            },
+            {
+              "functionName": "upload",
+              "scriptId": "23",
+              "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+              "lineNumber": 4117,
+              "columnNumber": 9516,
+              "milliseconds": 2.617
+            }
+          ],
+          "uploadSourceBytes": 0
+        }
+      ],
+      "decode": [
+        {
+          "asset": "https://gleislicht-realtime.louis-emmett.workers.dev/realtime.json",
+          "verifiedReadMedianMs": 7,
+          "verifiedSamples": [
+            5.699999809265137,
+            6.1000001430511475,
+            7,
+            8.299999952316284,
+            9.299999952316284
+          ],
+          "sha256": "0c3e5df361c197581cb7bf0bdf1fe543dbc778e762bc21e2c3c4ebdd7310c4a7",
+          "utf8Bytes": 2511832,
+          "parseMedianMs": 2.200000047683716,
+          "samples": [
+            2,
+            2.0999999046325684,
+            2.200000047683716,
+            2.200000047683716,
+            2.299999952316284,
+            2.299999952316284,
+            2.4000000953674316
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/calendar/2026-10-21/swiss-rail-morning.json",
+          "verifiedReadMedianMs": 5.299999952316284,
+          "verifiedSamples": [
+            4.800000190734863,
+            4.900000095367432,
+            5.299999952316284,
+            5.5,
+            6.5
+          ],
+          "sha256": "94e869be7940b93f57254f09cd07c452be89fb4f5434010e9bdd0fae5b006d4a",
+          "utf8Bytes": 1708324,
+          "parseMedianMs": 2.799999952316284,
+          "samples": [
+            2.5,
+            2.5999999046325684,
+            2.700000047683716,
+            2.799999952316284,
+            2.8999998569488525,
+            3,
+            3
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/swiss-lakes.json",
+          "verifiedReadMedianMs": 0.40000009536743164,
+          "verifiedSamples": [
+            0.19999980926513672,
+            0.19999980926513672,
+            0.40000009536743164,
+            0.40000009536743164,
+            0.40000009536743164
+          ],
+          "sha256": "2ed8ae2942bb9fff570c0266bd1d0da11a7b6c99530e05761934b258594e58b7",
+          "utf8Bytes": 114150,
+          "parseMedianMs": 0.20000004768371582,
+          "samples": [
+            0.10000014305114746,
+            0.20000004768371582,
+            0.20000004768371582,
+            0.20000004768371582,
+            0.20000004768371582,
+            0.2999999523162842,
+            0.39999985694885254
+          ]
+        },
+        {
+          "asset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/swiss-boundary.json",
+          "verifiedReadMedianMs": 0,
+          "verifiedSamples": [
+            0,
+            0,
+            0,
+            0,
+            0.09999990463256836
+          ],
+          "sha256": "38fd890c6bc78415c8b2fef3047f210846d7660340977361afed9d40cc384599",
+          "utf8Bytes": 9435,
+          "parseMedianMs": 0,
+          "samples": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.09999990463256836
+          ]
+        }
+      ],
+      "startupHot": [
+        {
+          "functionName": "(idle)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 5778.565
+        },
+        {
+          "functionName": "(program)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 277.459
+        },
+        {
+          "functionName": "",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 47578,
+          "milliseconds": 41.304
+        },
+        {
+          "functionName": "Ht",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 58060,
+          "milliseconds": 22.129
+        },
+        {
+          "functionName": "C",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+          "lineNumber": 4161,
+          "columnNumber": 291,
+          "milliseconds": 21.408
+        },
+        {
+          "functionName": "(garbage collector)",
+          "scriptId": "0",
+          "url": "",
+          "lineNumber": -1,
+          "columnNumber": -1,
+          "milliseconds": 19.983
+        },
+        {
+          "functionName": "ve",
+          "scriptId": "21",
+          "url": "https://motionstudies.app/gleislicht/assets/GleislichtNetworkScene-Cj5itzUW.js",
+          "lineNumber": 10,
+          "columnNumber": 45438,
+          "milliseconds": 19.702
+        },
+        {
+          "functionName": "p",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+          "lineNumber": 3822,
+          "columnNumber": 11709,
+          "milliseconds": 19.013
+        },
+        {
+          "functionName": "ct",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 48964,
+          "milliseconds": 17.082
+        },
+        {
+          "functionName": "_r",
+          "scriptId": "6",
+          "url": "https://motionstudies.app/gleislicht/assets/index-X52I4YMQ.js",
+          "lineNumber": 1,
+          "columnNumber": 77168,
+          "milliseconds": 14.381
+        },
+        {
+          "functionName": "renderBufferDirect",
+          "scriptId": "23",
+          "url": "https://motionstudies.app/gleislicht/assets/react-three-fiber.esm-BAGxN40Y.js",
+          "lineNumber": 4219,
+          "columnNumber": 29395,
+          "milliseconds": 14.087
+        },
+        {
+          "functionName": "tick",
+          "scriptId": "4",
+          "url": "",
+          "lineNumber": 23,
+          "columnNumber": 15,
+          "milliseconds": 12.667
+        }
+      ]
+    }
+  ],
+  "date": "2026-10-21",
+  "summary": [
+    {
+      "target": "correspondances",
+      "releaseCommit": "4e887ef853c1c4b4d9ec4ac970592ecf85dd0c64",
+      "pausedScriptMsPerRenderedFrame": 0.5961611570247936,
+      "pausedScriptMsPerFrameRange": [
+        0.5572975206611572,
+        0.6375643153526963
+      ],
+      "drawsPerRenderedFrame": 41.16942148760331,
+      "pausedUploads": 0,
+      "knownZeroOpacityDraws": 0,
+      "largestOpeningAsset": "https://motionstudies.app/correspondances/data/correspondances-regional-rer-morning.json",
+      "utf8Bytes": 371366,
+      "parseMedianMs": 0.6999998092651367,
+      "verifiedReadMedianMs": 1
+    },
+    {
+      "target": "allchange",
+      "releaseCommit": "ae538e50c84da65c5018dae890539b11696993d1",
+      "pausedScriptMsPerRenderedFrame": 0.44896178343949095,
+      "pausedScriptMsPerFrameRange": [
+        0.40202904564315356,
+        0.5426588235294117
+      ],
+      "drawsPerRenderedFrame": 21.133757961783438,
+      "pausedUploads": 0,
+      "knownZeroOpacityDraws": 0,
+      "largestOpeningAsset": "https://motionstudies.app/allchange/data/all-change-rail-led-morning.json",
+      "utf8Bytes": 1405091,
+      "parseMedianMs": 2.5999999046325684,
+      "verifiedReadMedianMs": 3.5
+    },
+    {
+      "target": "gleislicht",
+      "releaseCommit": "e1b513334abd7052c29e360b95ce38e5fe537b79",
+      "pausedScriptMsPerRenderedFrame": 0.5161983471074386,
+      "pausedScriptMsPerFrameRange": [
+        0.45672772277227763,
+        0.7769333333333333
+      ],
+      "drawsPerRenderedFrame": 36.14876033057851,
+      "pausedUploads": 0,
+      "knownZeroOpacityDraws": 0,
+      "largestOpeningAsset": "https://data.motionstudies.app/gleislicht/releases/a18eb029b0460ff88cf1d371ce67d83a2aa538fa8ae7b83fadffbf9f9838889b/calendar/2026-10-21/swiss-rail-morning.json",
+      "utf8Bytes": 1708324,
+      "parseMedianMs": 2.799999952316284,
+      "verifiedReadMedianMs": 4.799999952316284
+    }
+  ],
+  "uploadSourceBytesMeaning": "Sum of source view capacities submitted, not GPU transfer bandwidth; optional WebGL2 subranges were not inferred",
+  "limitations": [
+    "Instrumented host measurements, not phone or GPU elapsed time",
+    "Shared verified reader benchmark excludes network transfer, optional decompression and domain-specific expansion",
+    "Live Swiss realtime payloads vary; each captured payload has its own hash",
+    "Frame counts vary on this host: compare script work per rendered frame, not raw four-second totals"
+  ]
+}

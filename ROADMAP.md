@@ -42,7 +42,8 @@ new published package or deployed edition.
   stack; it does not consume the transport packages.
 
 Edition maintenance checks and layout observation are consolidated in alpha.33.
-Remaining engineering priorities are verified-asset loading, measured idle-rendering and decode costs,
+The [21 October idle/decode baseline](docs/IDLE-DECODE-2026-10-21.md) covers Paris, London and Switzerland: paused uploads and known zero-opacity draws are already suppressed; no speculative renderer or worker change follows.
+Remaining engineering priorities are broader verified-asset/loading measurements, heavy optional decode costs,
 physical-device performance evidence where still required, and gradual separation
 of large application/scene modules. No new acquisition or numbered catalogue
 admission follows from this maintenance pass. Normal repository CI and deployment

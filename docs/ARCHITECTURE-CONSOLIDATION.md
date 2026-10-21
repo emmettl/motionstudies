@@ -1,6 +1,6 @@
 # Code and library consolidation proposal
 
-13 September 2026 proposal · Implementation status updated 19 October 2026.
+13 September 2026 proposal · Implementation status updated 21 October 2026.
 
 ## Current implementation status
 
@@ -97,10 +97,9 @@ Start with local functions, hooks or reducers using the current stack. The exist
 
 ## 2. Renderer internals behind a stable public interface
 
-The next bounded delivery adds supported station-label and pick-acceptance
-policies, replacing Paris's matching build transforms. See the
-[alpha.35 delivery](PARIS-RENDERER-POLICY-ALPHA-35.md) for validation and the
-camera/material/morph transforms that remain.
+Paris's supported policies are now published through alpha.41. Station and train labels, picking, camera control, materials and geometry morphing use public interfaces; no renderer source rewrite plugin remains. See the [geometry adoption record](PARIS-GEOMETRY-POLICY-ALPHA-41.md).
+
+The [21 October measurement baseline](IDLE-DECODE-2026-10-21.md) finds no paused buffer uploads or known zero-opacity submissions in the Paris, London and Swiss openings. Verified JSON reads are small on the measurement host. No worker migration or ambient-motion change is justified by that bounded evidence. The next private extraction should isolate static rail/context geometry and resource ownership, enabling a controlled batching/transform experiment without changing the public API.
 
 The first private extraction isolates station tap selection into
 `StationTapTarget.tsx` and `station-picking.ts`. Inputs are the camera, canvas,
@@ -118,7 +117,7 @@ declarations, Node tooling, a production build and 100 browser checks with two
 existing skips. The existing unused-import lint warning remains unchanged.
 
 
-`NationalNetworkScene.tsx` is 4,487 lines, despite useful existing helpers for labels, picking, geometry, trails and performance. Its public extension interfaces now provide a better boundary for consumers. The next question is whether internal components have similarly clear boundaries.
+`NationalNetworkScene.tsx` remains a large composition root despite useful existing helpers for labels, picking, geometry, trails and performance. Its public extension interfaces now provide a better boundary for consumers. The next question is whether internal components have similarly clear boundaries.
 
 Inspect one coherent area, such as station labels and selection, before moving code. Identify its inputs, caches, frame updates, picking registrations and Three.js resource ownership. Extract implementation into private modules with explicit dependencies, preserving the public scene entry point and supported extension interfaces.
 
@@ -172,8 +171,4 @@ Avoid repeated full-suite runs without new changes or unresolved risk. File-coun
 
 ## Recommended first delivery
 
-Begin with **Bristol's loading/playback coordination**, covering the three interactions above. Produce a short dependency and state-ownership map, then implement the local refactor with focused behavioural verification. Use existing shared loaders wherever their contracts fit. Assess the second-consumer opportunity from actual code, not from a desire to make everything reusable.
-
-The renderer extraction and broader data/API follow-ups are subsequent bounded changes, selected by the coupling this work exposes. They do not all need to become one large milestone.
-
-Success means a loading fix has one clear home, a new view composes existing state without duplicating it, and a consumer can reuse a capability without adopting unrelated application machinery. A starter and simpler deployment should emerge from those boundaries.
+Bristol's initial coordination refactor, Swiss state boundaries and Paris's public renderer-policy adoption are complete. Continue with the bounded static rail/context extraction described above, using the measured baseline and existing behaviour/payload gates. Shared abstractions still require a second compatible consumer rather than an assumed series-wide fit.

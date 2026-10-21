@@ -23,6 +23,7 @@
     "test": "vitest run && node --test hosting/*-subdomain.test.mjs",
     "test:lab": "playwright test --config playwright.lab.config.ts",
     "test:loaders": "playwright test --config playwright.loaders.config.ts",
+    "profile:idle-decode": "node scripts/profile-idle-decode.mjs",
     "profile:first-view": "node scripts/profile-first-view.mjs",
     "fonts:vendor": "node scripts/vendor-web-fonts.mjs",
     "build": "npm run build:lab && node scripts/build-site.mjs",
