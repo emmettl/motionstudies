@@ -12,6 +12,8 @@ export interface ScenePickMetadata {
   /** Entries align with the rendered geometry's vertices. Respect its drawRange. */
   readonly trains?: readonly (NetworkTrain | undefined)[]
   readonly stopIndexes?: readonly number[]
+  /** Road identities align with visible line vertices; respect the geometry drawRange. */
+  readonly roadIds?: readonly string[]
 }
 
 const metadata = new WeakMap<object, ScenePickMetadata>()

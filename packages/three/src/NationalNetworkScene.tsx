@@ -1,43 +1,49 @@
-import { NationalGround, LakeLayer, DiagramWaterLayer, ReferencePathLayer, CountryBorder } from './scene-context-layers.tsx'
+import { MAP_LAYER } from './scene-layer-order.ts'
+import { EMPTY_LAKE_AVOIDING_PATHS, LakeAvoidingPathsContext } from './scene-lake-paths.ts'
+import { useProjectedTrainPosition } from './scene-train-position.ts'
+import { StationLabels, TrainLabels } from './scene-labels.tsx'
+import {
+  SelectedRoute,
+  SelectedLinePaths,
+  SelectedStationRoutes,
+  SelectedTrainMarker,
+} from './scene-selection-layers.tsx'
+import { mapSurfaceY } from './scene-surface.ts'
+import {
+  NationalGround,
+  LakeLayer,
+  DiagramWaterLayer,
+  ReferencePathLayer,
+  CountryBorder,
+} from './scene-context-layers.tsx'
 import { RailGraph } from './scene-rail-layers.tsx'
 import { useMapStyle } from './scene-map-style.ts'
-import { projectCoordinate, segmentPoints, appendLineSegments } from './scene-path-geometry.ts'
+import { projectCoordinate } from './scene-path-geometry.ts'
 import { trainLightTexture } from './scene-light-texture.ts'
 import { projectSpatialMorph } from './spatial-morph.ts'
 import { StationTapTarget } from './StationTapTarget.tsx'
 import { stationCentre, type ProjectedStop } from './station-picking.ts'
-import {mapLabelBoxesOverlap} from '@motionstudies/core/map-labels'
-import { stationLabelTexture, createTrainLabelTexture, type StationLabelTexture, type TrainLabelTexture } from './label-textures.ts'
-import { setSceneMotionClock, setScenePickMetadata, setScenePickTrain } from './scene-picking.ts'
+import { setSceneMotionClock, setScenePickTrain } from './scene-picking.ts'
 import { TrailFrameBudget } from './trail-frame-budget.ts'
-import { StationLabelFrame } from './station-label-frame.ts'
-import { LabelFrameBudget } from './label-frame-budget.ts'
 import { updateDirtyGeometry } from './active-geometry.ts'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { createContext, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
+import { lazy, Suspense, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { useNetworkScene, type NetworkSceneExtensions, type NetworkCameraDriver } from './scene-extensions.ts'
 import { NetworkSceneProviderContext } from './scene-context.ts'
-import { networkRouteColor as mixedRouteColor, trainLabelCollisionBox, type NetworkMapStyle } from './scene-style.ts'
-import { stationLabelBoxes, emptyLabelBoxes } from './map-cartography.ts'
+import {
+  networkRouteColor as mixedRouteColor,
+  COPLANAR_MAP_SURFACE_Y,
+  type NetworkMapStyle,
+} from './scene-style.ts'
 import * as THREE from 'three'
-import type {
-  BoundaryCoordinate,
-  MapBoundary,
-} from '@motionstudies/core/domain/boundary'
+import type { BoundaryCoordinate, MapBoundary } from '@motionstudies/core/domain/boundary'
 import type { StudyAirport } from '@motionstudies/core/domain/airport'
 import type { MapWaterBodies } from '@motionstudies/core/domain/lakes'
 import type { MapReferencePaths } from '@motionstudies/core/domain/map-reference'
 import type { SpatialLayoutSnapshot } from '@motionstudies/core/domain/spatial-layout'
-import type {
-  RoadTopologySnapshot,
-  RoadTrafficSnapshot,
-} from '@motionstudies/core/domain/road'
+import type { RoadTopologySnapshot, RoadTrafficSnapshot } from '@motionstudies/core/domain/road'
 import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
-import {
-  positionForAirTrack,
-  type AirSnapshot,
-  type AirTrack,
-} from '@motionstudies/core/domain/air'
+import { positionForAirTrack, type AirSnapshot, type AirTrack } from '@motionstudies/core/domain/air'
 import {
   positionForTrain,
   type NetworkSnapshot,
@@ -47,45 +53,9 @@ import {
   type StationIndexEntry,
 } from '@motionstudies/core/domain/network'
 import { SERVICE_COLORS } from '@motionstudies/core/theme'
-import {
-  buildTrainTimeIndex,
-  trainsNearTime,
-  type TrainTimeIndex,
-} from '@motionstudies/core/domain/train-time-index'
-import {
-  compareStationLabelCandidates,
-  stationLabelSelection,
-  stationLabelPriority,
-  MAX_STATION_LABELS,
-  rankStationsForLabels,
-  stationLabelCameraHeight,
-  stationLabelBudget,
-  stationLabelRankLimit,
-  stationLabelScreenHeight,
-  stationLabelOpacity,
-  stationLabelScreenWidth,
-  stationLabelText,
-  stationLabelWorldHeight,
-  stationLabelsCanRepopulate,
-  stationLabelWithinTier,
-  stableStationLabelBudget,
-} from './station-labels.ts'
-import {
-  categoryIsVisibleInAutoMode,
-  compareTrainLabelCandidates,
-  MAX_TRAIN_LABELS,
-  nonRailCategorySuppressesTrainLabels,
-  trainLabelArrivalOpacity,
-  styledTrainLabelBudget,
-  trainLabelIdentity,
-  styledTrainLabelScreenHeight,
-  trainLabelScreenWidth,
-  type TrainLabelMode,
-} from './train-labels.ts'
-import {
-  VEHICLE_TRAIL_SEGMENTS,
-  VEHICLE_TRAIL_STEP_SECONDS,
-} from './vehicle-trails.ts'
+import { buildTrainTimeIndex, type TrainTimeIndex } from '@motionstudies/core/domain/train-time-index'
+import { type TrainLabelMode } from './train-labels.ts'
+import { VEHICLE_TRAIL_SEGMENTS, VEHICLE_TRAIL_STEP_SECONDS } from './vehicle-trails.ts'
 import {
   VEHICLE_TRAIL_HISTORY_LENGTH,
   VEHICLE_TRAIL_HISTORY_STEP_SECONDS,
@@ -127,34 +97,19 @@ import {
   mapSelectionNeedsReveal,
   mapWheelZoomMultiplier,
   minimumMapDistanceScale,
-  STATION_SELECTION_PULSE_COUNT,
-  stationSelectionPulseFrame,
   type MapCameraFraming,
   createCameraViewportFraming,
 } from './map-camera.ts'
-import {
-  pointAlongProjectedPath,
-  pointAlongProjectedPathFrom,
-  prepareProjectedPath,
-  type ProjectedNetworkPath,
-} from './network-paths.ts'
-import {
-  createLakeAvoidingPathMap,
-  lakeAvoidingPathForStops,
-  type LakeAvoidingPathMap,
-} from './lake-aware-paths.ts'
-import {
-  regionalCameraHeight,
-  vehicleIsVisibleAtZoom,
-} from './regional-lod.ts'
-import { AirTrafficLayer, AirportMarker } from './AirTrafficLayer.tsx'
+import { prepareProjectedPath, type ProjectedNetworkPath } from './network-paths.ts'
+import { createLakeAvoidingPathMap } from './lake-aware-paths.ts'
+import { vehicleIsVisibleAtZoom } from './regional-lod.ts'
 import { projectAirPosition } from './air-projection.ts'
-import { RoadTrafficLayer } from './RoadTrafficLayer.tsx'
 import { createGlowPointTexture } from './glow-point-texture.ts'
-import {
-  blendProjectedSpatialLayout,
-  projectSpatialLayout,
-} from './spatial-layout.ts'
+import { blendProjectedSpatialLayout, projectSpatialLayout } from './spatial-layout.ts'
+
+const AirTrafficLayer = lazy(() => import('./AirTrafficLayer.tsx').then(module => ({ default: module.AirTrafficLayer })))
+const AirportMarker = lazy(() => import('./AirTrafficLayer.tsx').then(module => ({ default: module.AirportMarker })))
+const DefaultRoadLayer = lazy(() => import('./RoadTrafficLayer.tsx').then(module => ({ default: module.RoadTrafficLayer })))
 
 export type MapCameraAction =
   | 'zoom-in'
@@ -235,28 +190,6 @@ export interface NationalNetworkSceneProps {
   readonly stationLabelSettleSeconds?: number
 }
 
-
-const EMPTY_LAKE_AVOIDING_PATHS: LakeAvoidingPathMap = new Map()
-const LakeAvoidingPathsContext = createContext<LakeAvoidingPathMap>(
-  EMPTY_LAKE_AVOIDING_PATHS,
-)
-
-const STATION_SURFACE_Y = 0.035
-
-const MAP_LAYER = {
-  selectionGlow: 6,
-  selectionCore: 7,
-  selectionStopGlow: 8,
-  selectionStopCore: 9,
-  vehicleGlow: 10,
-  vehicleCore: 11,
-  vehicleSpark: 12,
-  focusMarkerGlow: 13,
-  focusMarkerCore: 14,
-  trainLabel: 16,
-  stationLabel: 20,
-} as const
-
 export interface NetworkProjection {
   readonly centreLongitude: number
   readonly centreLatitude: number
@@ -297,63 +230,6 @@ function projectPaths(
       path.map((coordinate) => projectCoordinate(coordinate, projection)),
     ),
   )
-}
-
-function projectedTrainPosition(
-  train: NetworkTrain,
-  time: number,
-  projectedStops: readonly ProjectedStop[],
-  projectedPaths: readonly ProjectedNetworkPath[] = [],
-  lakeAvoidingPaths: LakeAvoidingPathMap = EMPTY_LAKE_AVOIDING_PATHS,
-): ProjectedStop | undefined {
-  const position = positionForTrain(train, time)
-  if (!position) return undefined
-  const pathIndex =
-    position.segmentIndex === undefined
-      ? undefined
-      : train.pathSegments?.[position.segmentIndex]
-  const path =
-    pathIndex === undefined || pathIndex === null
-      ? undefined
-      : projectedPaths[pathIndex]
-  if (path) {
-    const from = projectedStops[position.fromStop]
-    const point = from
-      ? pointAlongProjectedPathFrom(path, position.progress, from)
-      : pointAlongProjectedPath(path, position.progress)
-    if (point) return [point[0], 0.2, point[2]]
-  }
-  const detour = lakeAvoidingPathForStops(
-    lakeAvoidingPaths,
-    position.fromStop,
-    position.toStop,
-  )
-  if (detour) {
-    const point = pointAlongProjectedPath(detour, position.progress)
-    if (point) return [point[0], 0.2, point[2]]
-  }
-  const from = projectedStops[position.fromStop]
-  const to = projectedStops[position.toStop]
-  if (!from || !to) return undefined
-  return [
-    THREE.MathUtils.lerp(from[0], to[0], position.progress),
-    0.2,
-    THREE.MathUtils.lerp(from[2], to[2], position.progress),
-  ]
-}
-
-function useProjectedTrainPosition() {
-  const { props } = useNetworkScene()
-  const resolver = props.extensions?.trainPosition
-  const elevation = props.mapStyle?.vehicleElevation
-  return useMemo(() => {
-    if (!resolver && elevation === undefined) return projectedTrainPosition
-    return (...args: Parameters<typeof projectedTrainPosition>): ProjectedStop | undefined => {
-      const result = resolver?.(args[0], args[1], args[2], args[3] ?? [], args[4] ?? EMPTY_LAKE_AVOIDING_PATHS)
-      const point = result === undefined ? projectedTrainPosition(...args) : result ?? undefined
-      return point && elevation !== undefined ? [point[0], elevation, point[2]] : point
-    }
-  }, [resolver, elevation])
 }
 
 function realtimeRingTexture(): THREE.CanvasTexture {
@@ -435,1319 +311,6 @@ function vehicleGlyphTexture(kind: 'tram' | 'bus'): THREE.CanvasTexture {
   texture.minFilter = THREE.LinearFilter
   texture.generateMipmaps = false
   return texture
-}
-
-function SelectedRoute({
-  train,
-  projectedStops,
-  projectedPaths,
-  color = SERVICE_COLORS[train.category],
-  comparisonLayer,
-}: {
-  readonly train: NetworkTrain
-  readonly projectedStops: readonly ProjectedStop[]
-  readonly projectedPaths: readonly ProjectedNetworkPath[]
-  readonly color?: string
-  readonly comparisonLayer?: 'foundation' | 'foreground'
-}) {
-  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
-  const geometry = useMemo(() => {
-    const points: THREE.Vector3[] = []
-    for (let index = 0; index < train.stops.length - 1; index += 1) {
-      segmentPoints(
-        train,
-        index,
-        projectedStops,
-        projectedPaths,
-        lakeAvoidingPaths,
-      ).forEach(
-        ([x, , z], pointIndex) => {
-          if (index > 0 && pointIndex === 0) return
-          const previous = points.at(-1)
-          if (previous && Math.hypot(previous.x - x, previous.z - z) < 0.0001) {
-            return
-          }
-          points.push(new THREE.Vector3(x, 0.12, z))
-        },
-      )
-    }
-    const line = new THREE.BufferGeometry().setFromPoints(points)
-    if (!comparisonLayer || points.length < 2) return { line }
-    const curve = new THREE.CatmullRomCurve3(points, false, 'centripetal')
-    const coreRadius = comparisonLayer === 'foundation' ? 0.045 : 0.022
-    const glowRadius = comparisonLayer === 'foundation' ? 0.15 : 0.085
-    const segments = THREE.MathUtils.clamp(points.length * 2, 32, 720)
-    return {
-      line,
-      core: new THREE.TubeGeometry(curve, segments, coreRadius, 5, false),
-      glow: new THREE.TubeGeometry(curve, segments, glowRadius, 5, false),
-    }
-  }, [comparisonLayer, lakeAvoidingPaths, projectedPaths, projectedStops, train])
-  const material = useMemo(() => {
-    const material = new THREE.LineBasicMaterial({
-      color,
-      transparent: true,
-      opacity: 0.95,
-      blending: THREE.NormalBlending,
-      depthTest: false,
-      depthWrite: false,
-      toneMapped: false,
-    })
-    return material
-  }, [color])
-  const line = useMemo(
-    () => new THREE.Line(geometry.line, material),
-    [geometry.line, material],
-  )
-
-  useEffect(
-    () => () => {
-      geometry.line.dispose()
-      geometry.core?.dispose()
-      geometry.glow?.dispose()
-      material.dispose()
-    },
-    [geometry, material],
-  )
-
-  return (
-    <group>
-      {geometry.glow && (
-        <mesh
-          geometry={geometry.glow}
-          renderOrder={MAP_LAYER.selectionGlow + (comparisonLayer === 'foreground' ? 2 : 0)}
-        >
-          <meshBasicMaterial
-            color={color}
-            transparent
-            opacity={comparisonLayer === 'foundation' ? 0.16 : 0.2}
-            blending={THREE.AdditiveBlending}
-            depthTest={false}
-            depthWrite={false}
-            toneMapped={false}
-            fog={false}
-          />
-        </mesh>
-      )}
-      {geometry.core && (
-        <mesh
-          geometry={geometry.core}
-          renderOrder={MAP_LAYER.selectionCore + (comparisonLayer === 'foreground' ? 2 : 0)}
-        >
-          <meshBasicMaterial
-            color={color}
-            transparent
-            opacity={0.88}
-            depthTest={false}
-            depthWrite={false}
-            toneMapped={false}
-            fog={false}
-          />
-        </mesh>
-      )}
-      <primitive
-        object={line}
-        renderOrder={MAP_LAYER.selectionCore + (comparisonLayer === 'foreground' ? 3 : 1)}
-      />
-    </group>
-  )
-}
-
-function SelectedLinePaths({
-  route,
-  snapshot,
-  projectedStops,
-  projectedPaths,
-  color = SERVICE_COLORS[route.category],
-}: {
-  readonly route: NetworkRouteIndexEntry
-  readonly snapshot: NetworkSnapshot
-  readonly projectedStops: readonly ProjectedStop[]
-  readonly projectedPaths: readonly ProjectedNetworkPath[]
-  readonly color?: string
-}) {
-  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
-  const glowMaterial = useRef<THREE.LineBasicMaterial>(null)
-  const stopTextures = useMemo(
-    () => ({
-      halo: trainLightTexture('halo'),
-      core: trainLightTexture('spark'),
-    }),
-    [],
-  )
-  const geometries = useMemo(() => {
-    const trainIds = new Set(route.trainIds)
-    const usedEdges = new Set<string>()
-    const pathPositions: number[] = []
-
-    for (const train of snapshot.trains) {
-      if (!trainIds.has(train.id)) continue
-      for (let index = 1; index < train.stops.length; index += 1) {
-        const firstIndex = train.stops[index - 1][0]
-        const secondIndex = train.stops[index][0]
-        const pathIndex = train.pathSegments?.[index - 1]
-        const key =
-          pathIndex === undefined || pathIndex === null
-            ? firstIndex < secondIndex
-              ? `${firstIndex}:${secondIndex}`
-              : `${secondIndex}:${firstIndex}`
-            : `path:${pathIndex}`
-        if (usedEdges.has(key)) continue
-        const points = segmentPoints(
-          train,
-          index - 1,
-          projectedStops,
-          projectedPaths,
-          lakeAvoidingPaths,
-        )
-        if (points.length < 2) continue
-        usedEdges.add(key)
-        appendLineSegments(pathPositions, points, 0.15)
-      }
-    }
-
-    const stopPositions = route.stopIndexes.flatMap((stopIndex) => {
-      const stop = projectedStops[stopIndex]
-      return stop ? [stop[0], 0.19, stop[2]] : []
-    })
-    const path = new THREE.BufferGeometry()
-    path.setAttribute(
-      'position',
-      new THREE.Float32BufferAttribute(pathPositions, 3),
-    )
-    const stops = new THREE.BufferGeometry()
-    stops.setAttribute(
-      'position',
-      new THREE.Float32BufferAttribute(stopPositions, 3),
-    )
-    return { path, stops }
-  }, [
-    projectedPaths,
-    projectedStops,
-    lakeAvoidingPaths,
-    route.stopIndexes,
-    route.trainIds,
-    snapshot.trains,
-  ])
-
-  useEffect(
-    () => () => {
-      geometries.path.dispose()
-      geometries.stops.dispose()
-    },
-    [geometries],
-  )
-
-  useEffect(
-    () => () => {
-      stopTextures.halo.dispose()
-      stopTextures.core.dispose()
-    },
-    [stopTextures],
-  )
-
-  useFrame(({ clock }) => {
-    if (!glowMaterial.current) return
-    glowMaterial.current.opacity =
-      0.12 + (Math.sin(clock.elapsedTime * 1.8) * 0.5 + 0.5) * 0.12
-  })
-
-  return (
-    <group>
-      <lineSegments
-        geometry={geometries.path}
-        renderOrder={MAP_LAYER.selectionCore}
-      >
-        <lineBasicMaterial
-          color={color}
-          transparent
-          opacity={0.96}
-          blending={THREE.NormalBlending}
-          depthTest={false}
-          depthWrite={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </lineSegments>
-      <lineSegments
-        geometry={geometries.path}
-        renderOrder={MAP_LAYER.selectionGlow}
-      >
-        <lineBasicMaterial
-          ref={glowMaterial}
-          color={color}
-          transparent
-          opacity={0.18}
-          blending={THREE.AdditiveBlending}
-          depthTest={false}
-          depthWrite={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </lineSegments>
-      <points
-        geometry={geometries.stops}
-        renderOrder={MAP_LAYER.selectionStopGlow}
-      >
-        <pointsMaterial
-          color={color}
-          map={stopTextures.halo}
-          size={5.2}
-          transparent
-          opacity={0.3}
-          alphaTest={0.01}
-          blending={THREE.AdditiveBlending}
-          depthTest={false}
-          depthWrite={false}
-          sizeAttenuation={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </points>
-      <points
-        geometry={geometries.stops}
-        renderOrder={MAP_LAYER.selectionStopCore}
-      >
-        <pointsMaterial
-          color={color}
-          map={stopTextures.core}
-          size={2.1}
-          transparent
-          opacity={0.9}
-          alphaTest={0.02}
-          blending={THREE.NormalBlending}
-          depthTest={false}
-          depthWrite={false}
-          sizeAttenuation={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </points>
-    </group>
-  )
-}
-
-interface StationLabelDatum {
-  readonly station: StationIndexEntry
-  readonly displayName: string
-  readonly position: THREE.Vector3
-  readonly rank: number
-  readonly emphasised: boolean
-}
-
-function StationLabels({
-  stations,
-  snapshot,
-  referenceSnapshot,
-  projectedStops,
-  selectedRoute,
-  selectedStation,
-  selectedTrain,
-  cameraFraming,
-  layoutTransitioning = false,
-  tierLimit,
-  settleSeconds,
-  hidden = false,
-  lineMapMix = 0,
-  spatialLayoutMix = 0,
-}: {
-  readonly stations: readonly StationIndexEntry[]
-  readonly snapshot: NetworkSnapshot
-  readonly referenceSnapshot: NetworkSnapshot
-  readonly projectedStops: readonly ProjectedStop[]
-  readonly selectedRoute?: NetworkRouteIndexEntry
-  readonly selectedStation?: StationIndexEntry
-  readonly selectedTrain?: NetworkTrain
-  readonly cameraFraming: MapCameraFraming
-  readonly layoutTransitioning?: boolean
-  readonly tierLimit?: number
-  readonly settleSeconds?: number
-  readonly hidden?: boolean
-  readonly lineMapMix?: number
-  readonly spatialLayoutMix?: number
-}) {
-  const { camera, size } = useThree()
-  const stationStyle = useMapStyle().stationLabels
-  const labelRefreshSeconds = useRef(0)
-  const sprites = useRef<Array<THREE.Sprite | null>>([])
-  const textures = useRef(new Map<string, StationLabelTexture>())
-  const retainedStationNames = useRef(new Set<string>())
-  const previousCameraPosition = useRef(new THREE.Vector3())
-  const previousCameraQuaternion = useRef(new THREE.Quaternion())
-  const cameraWasSampled = useRef(false)
-  const cameraStableSeconds = useRef(Number.POSITIVE_INFINITY)
-  const lineMapLabels = lineMapMix >= 0.72
-  const { stationNames: routeStationNames, terminalNames } = useMemo(
-    () => stationLabelSelection(snapshot, selectedRoute, selectedTrain, referenceSnapshot),
-    [snapshot, referenceSnapshot, selectedRoute, selectedTrain],
-  )
-  const labels = useMemo(() => {
-    const ranked = stationStyle?.orderStations?.(rankStationsForLabels(stations)) ?? rankStationsForLabels(stations)
-    const stationByName = new Map(ranked.map((station) => [station.name, station]))
-    const ordered: StationIndexEntry[] = []
-    const usedNames = new Set<string>()
-    const add = (station: StationIndexEntry | undefined) => {
-      if (!station || usedNames.has(station.name)) return
-      usedNames.add(station.name)
-      ordered.push(station)
-    }
-
-    add(selectedStation)
-    routeStationNames.forEach((name) => add(stationByName.get(name)))
-    ranked.forEach(add)
-
-    return ordered.map((station) => {
-      const centre = stationCentre(station, projectedStops)
-      return {
-        station,
-        displayName: stationLabelText(station.name, cameraFraming),
-        position: new THREE.Vector3(centre.x, STATION_SURFACE_Y, centre.z),
-        rank: ranked.indexOf(station),
-        emphasised:
-          station.name === selectedStation?.name || routeStationNames.has(station.name),
-      } satisfies StationLabelDatum
-    })
-  }, [cameraFraming, projectedStops, routeStationNames, selectedStation, stations, stationStyle])
-  // These dependencies invalidate cached frame work when render inputs change.
-  /* oxlint-disable react-hooks/exhaustive-deps */
-  const stationLabelFrame = useMemo(() => new StationLabelFrame(), [stationStyle, labels, selectedTrain, selectedRoute, selectedStation, terminalNames, cameraFraming, tierLimit, settleSeconds, hidden, lineMapMix, layoutTransitioning, spatialLayoutMix])
-  /* oxlint-enable react-hooks/exhaustive-deps */
-
-  useEffect(
-    () => () => {
-      textures.current.forEach(({ texture }) => texture.dispose())
-      textures.current.clear()
-    },
-    [],
-  )
-
-  useEffect(() => {
-    retainedStationNames.current.clear()
-  }, [
-    cameraFraming,
-    lineMapLabels,
-    selectedRoute,
-    selectedStation,
-    selectedTrain,
-    tierLimit,
-  ])
-
-  useFrame((_, delta) => {
-    const baseHeight = stationLabelCameraHeight(
-      camera.position.y,
-      cameraFraming,
-    )
-    const semanticHeight = stationStyle?.semanticHeight?.(baseHeight, spatialLayoutMix) ?? baseHeight
-    const cameraMoved = cameraWasSampled.current && (
-      previousCameraPosition.current.distanceToSquared(camera.position) > 0.000025 ||
-      1 - Math.abs(previousCameraQuaternion.current.dot(camera.quaternion)) > 0.000001
-    )
-    cameraWasSampled.current = true
-    previousCameraPosition.current.copy(camera.position)
-    previousCameraQuaternion.current.copy(camera.quaternion)
-    cameraStableSeconds.current = cameraMoved
-      ? 0
-      : cameraStableSeconds.current + delta
-    labelRefreshSeconds.current += delta
-    const canRepopulate = stationLabelsCanRepopulate(
-      cameraStableSeconds.current,
-      settleSeconds,
-    ) || labelRefreshSeconds.current >= (stationStyle?.refreshInterval ?? Infinity)
-    if (canRepopulate) labelRefreshSeconds.current = 0
-    if (!stationLabelFrame.shouldUpdate(camera, size, canRepopulate, retainedStationNames.current)) return
-    const budget = stableStationLabelBudget(
-      stationLabelBudget(semanticHeight),
-      retainedStationNames.current.size,
-      canRepopulate,
-    )
-    const rankLimit = (stationStyle?.rankLimit ?? stationLabelRankLimit)(semanticHeight)
-    const projected = new THREE.Vector3()
-    const viewPosition = new THREE.Vector3()
-    const candidates: Array<{
-      index: number
-      x: number
-      y: number
-      distance: number
-      depth: number
-      priority: number
-      rank: number
-      retained: boolean
-    }> = []
-
-    sprites.current.forEach((sprite) => {
-      if (sprite) sprite.visible = false
-    })
-    if (hidden) {
-      retainedStationNames.current.clear()
-      stationLabelBoxes.set(camera, emptyLabelBoxes)
-      return
-    }
-
-    labels.forEach((label, index) => {
-      const retained = retainedStationNames.current.has(label.station.name)
-      if ((selectedTrain || selectedRoute) && !label.emphasised) return
-      if (
-        !label.emphasised &&
-        !(stationStyle?.eligible?.(label.station, semanticHeight, tierLimit) ?? stationLabelWithinTier(label.station.labelRank, tierLimit))
-      ) return
-      if (layoutTransitioning && !label.emphasised && !retained) return
-      if (!label.emphasised && !retained && !canRepopulate) return
-      if (
-        !label.emphasised &&
-        (label.rank < 0 || label.rank >= rankLimit) &&
-        (canRepopulate || !retained)
-      ) return
-
-      viewPosition.copy(label.position).applyMatrix4(camera.matrixWorldInverse)
-      projected.copy(label.position).project(camera)
-      if (
-        projected.z < -1 ||
-        projected.z > 1 ||
-        projected.x < -1.08 ||
-        projected.x > 1.08 ||
-        projected.y < -1.08 ||
-        projected.y > 1.08
-      ) {
-        return
-      }
-      candidates.push({
-        index,
-        x: (projected.x * 0.5 + 0.5) * size.width,
-        y: (-projected.y * 0.5 + 0.5) * size.height,
-        distance: camera.position.distanceTo(label.position),
-        depth: Math.max(0.01, -viewPosition.z),
-        priority: stationLabelPriority(
-          label.station.name, selectedStation?.name, terminalNames, label.emphasised,
-        ),
-        rank: label.rank,
-        retained,
-      })
-    })
-
-    candidates.sort((first, second) =>
-      compareStationLabelCandidates(
-        {
-          name: labels[first.index].station.name,
-          rank: first.rank,
-          priority: first.priority,
-          retained: first.retained,
-          distance: first.distance,
-        },
-        {
-          name: labels[second.index].station.name,
-          rank: second.rank,
-          priority: second.priority,
-          retained: second.retained,
-          distance: second.distance,
-        },
-      ),
-    )
-    const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
-    const visibleTextureNames = new Set<string>()
-    const nextRetainedStationNames = new Set<string>()
-    const verticalFieldOfView =
-      camera instanceof THREE.PerspectiveCamera ? camera.fov : 44
-    let visible = 0
-
-    for (const candidate of candidates) {
-      if (visible >= budget || visible >= MAX_STATION_LABELS) break
-      const label = labels[candidate.index]
-      const selected = label.station.name === selectedStation?.name
-      const screenHeight = stationStyle?.screenHeight?.(size.width, selected || label.emphasised, label.station.labelRank, semanticHeight) ?? stationLabelScreenHeight(
-        selected,
-        label.emphasised,
-        label.station.labelRank,
-      )
-      const width = stationLabelScreenWidth(label.displayName, screenHeight)
-      const labelLeft = lineMapLabels
-        ? candidate.x + 3
-        : candidate.x - screenHeight * 0.34
-      const box = {
-        left: labelLeft,
-        right: labelLeft + width,
-        top: candidate.y - screenHeight * 0.5,
-        bottom: candidate.y + screenHeight * 0.5,
-      }
-      const padding = stationStyle?.viewportPadding
-      if (padding !== undefined && (box.left < padding || box.right > size.width - padding || box.top < padding || box.bottom > size.height - padding)) continue
-      const overlaps = occupied.some(
-        (other) =>
-          mapLabelBoxesOverlap(box, other),
-      )
-      if (overlaps) continue
-
-      const sprite = sprites.current[visible]
-      if (!sprite) continue
-      const textureKey = `${lineMapLabels ? 'line-map' : 'atlas'}:${label.station.name}`
-      let textureEntry = textures.current.get(textureKey)
-      if (!textureEntry) {
-        textureEntry = stationLabelTexture(
-          label.displayName,
-          lineMapLabels ? 'line-map' : 'atlas',
-        )
-        textures.current.set(textureKey, textureEntry)
-      } else {
-        textures.current.delete(textureKey)
-        textures.current.set(textureKey, textureEntry)
-      }
-      visibleTextureNames.add(textureKey)
-      nextRetainedStationNames.add(label.station.name)
-      sprite.visible = true
-      sprite.position.copy(label.position)
-      setScenePickMetadata(sprite, { target: { kind: 'station', value: label.station } })
-      sprite.center.set(textureEntry.anchorX, 0.5)
-      const worldHeight = stationLabelWorldHeight(
-        candidate.depth,
-        verticalFieldOfView,
-        size.height,
-        screenHeight,
-      )
-      sprite.scale.set(textureEntry.aspect * worldHeight, worldHeight, 1)
-      const material = sprite.material as THREE.SpriteMaterial
-      if (material.map !== textureEntry.texture) {
-        material.map = textureEntry.texture
-        material.needsUpdate = true
-      }
-      material.opacity = stationLabelOpacity(
-        selected,
-        label.emphasised,
-        label.station.labelRank,
-      )
-      occupied.push(box)
-      visible += 1
-    }
-
-    stationLabelBoxes.set(camera, occupied)
-    if (!layoutTransitioning) {
-      retainedStationNames.current = nextRetainedStationNames
-    }
-
-    if (textures.current.size > 192) {
-      for (const [name, entry] of textures.current) {
-        if (visibleTextureNames.has(name)) continue
-        entry.texture.dispose()
-        textures.current.delete(name)
-        if (textures.current.size <= 192) break
-      }
-    }
-  })
-
-  return (
-    <>
-      {Array.from({ length: MAX_STATION_LABELS }, (_, index) => (
-        <sprite
-          key={index}
-          ref={(sprite) => {
-            sprites.current[index] = sprite
-          }}
-          visible={false}
-          renderOrder={MAP_LAYER.stationLabel}
-        >
-          <spriteMaterial
-            transparent
-            opacity={0}
-            depthTest={false}
-            depthWrite={false}
-            toneMapped={false}
-          />
-        </sprite>
-      ))}
-    </>
-  )
-}
-
-function trainLabelText(
-  train: NetworkTrain,
-  selected: boolean,
-  compared = false,
-): string {
-  const identity = trainLabelIdentity(train.route, train.shortName)
-  const delay = train.realtime?.delaySeconds
-  const realtimeSuffix =
-    train.realtime?.status === 'adjusted' && delay
-      ? ` · ${delay > 0 ? '+' : '−'}${Math.round(Math.abs(delay) / 60)}′`
-      : ''
-  if (compared) {
-    const comparisonIdentity = [train.shortName, train.servicePattern?.toUpperCase()]
-      .filter(Boolean)
-      .join(' · ')
-    return `${comparisonIdentity || train.route}${realtimeSuffix} → ${train.headsign}`
-  }
-  return selected
-    ? `${identity}${realtimeSuffix} → ${train.headsign}`
-    : `${identity}${realtimeSuffix}`
-}
-
-function TrainLabels({
-  snapshot,
-  projectedStops,
-  projectedPaths,
-  selectedTrain,
-  comparisonTrains,
-  selectedRoute,
-  selectedStation,
-  selectedCategory,
-  airCategorySelected,
-  roadCategorySelected,
-  trainLabelMode,
-  isPlaying,
-  time,
-  playbackRate,
-  trainTimeIndex,
-  cameraFraming,
-  layoutTransitioning = false,
-  routeColors,
-  spatialLayoutMix = 0,
-  routeColorMix = spatialLayoutMix,
-  motion,
-}: NationalNetworkSceneProps & {
-  readonly projectedStops: readonly ProjectedStop[]
-  readonly projectedPaths: readonly ProjectedNetworkPath[]
-  readonly trainTimeIndex: TrainTimeIndex
-  readonly motion: VehicleMotionTable
-}) {
-  const mapStyle = useMapStyle()
-  const labelStyle = mapStyle.trainLabels
-  const categoryColors = mapStyle.categoryColors
-  const elevation = labelStyle?.elevation ?? 0.76
-  const { camera, size } = useThree()
-  const sprites = useRef<Array<THREE.Sprite | null>>([])
-  const textures = useRef(new Map<string, TrainLabelTexture>())
-  const retainedTrainIds = useRef(new Set<string>())
-  const localTime = useRef(time)
-  const selectedStationTrainIds = useMemo(
-    () => new Set(selectedStation?.trainIds ?? []),
-    [selectedStation],
-  )
-  const selectedRouteTrainIds = useMemo(
-    () => new Set(selectedRoute?.trainIds ?? []),
-    [selectedRoute],
-  )
-  const comparisonTrainIds = useMemo(
-    () => new Set(comparisonTrains?.map((train) => train.id) ?? []),
-    [comparisonTrains],
-  )
-
-  useEffect(() => {
-    localTime.current = time
-  }, [time])
-
-  useEffect(
-    () => () => {
-      textures.current.forEach(({ texture }) => texture.dispose())
-      textures.current.clear()
-    },
-    [],
-  )
-
-  const labelFrameBudget = useMemo(() => new LabelFrameBudget(), [])
-  const labelPoint = useMemo(() => new Float32Array(3), [])
-  const visibleLabelTrains = useRef<NetworkTrain[]>([])
-  // These dependencies invalidate cached frame work when render inputs change.
-  /* oxlint-disable react-hooks/exhaustive-deps */
-  const labelInputs = useMemo(() => ({}), [mapStyle, motion, snapshot, projectedStops, projectedPaths,
-    selectedTrain, comparisonTrains, selectedRoute, selectedStation, selectedCategory,
-    airCategorySelected, roadCategorySelected, trainLabelMode, isPlaying, playbackRate,
-    trainTimeIndex, cameraFraming, layoutTransitioning, routeColors, routeColorMix])
-  /* oxlint-enable react-hooks/exhaustive-deps */
-  useFrame((_, delta) => {
-    if (isPlaying) {
-      localTime.current += delta * playbackRate
-      if (localTime.current > snapshot.metadata.windowEnd) {
-        localTime.current = snapshot.metadata.windowStart
-      }
-    }
-
-    const stationBoxes = labelStyle?.avoidStationLabels ? stationLabelBoxes.get(camera) ?? emptyLabelBoxes : emptyLabelBoxes
-    const labelStale = motionStaleSeconds(isPlaying, playbackRate)
-    const labelWork = labelFrameBudget.update(labelInputs, camera, size.width, size.height,
-      localTime.current, delta, isPlaying, playbackRate, stationBoxes)
-    if (labelWork === 'idle') return
-    const labelTrains = labelWork === 'all' ? trainsNearTime(trainTimeIndex, localTime.current) : visibleLabelTrains.current
-    visibleLabelTrains.current = []
-    sprites.current.forEach((sprite) => {
-      if (sprite) sprite.visible = false
-    })
-    const semanticCameraHeight = regionalCameraHeight(
-      camera.position.y,
-      cameraFraming,
-    )
-    const labelBudget = nonRailCategorySuppressesTrainLabels(
-      airCategorySelected,
-      roadCategorySelected,
-    )
-      ? 0
-      : comparisonTrains?.length
-        ? trainLabelMode === 'off'
-          ? 0
-          : comparisonTrains.length
-      : selectedTrain
-      ? trainLabelMode === 'off'
-        ? 0
-        : 1
-      : styledTrainLabelBudget(labelStyle, semanticCameraHeight, size.width, trainLabelMode)
-    if (!labelBudget) {
-      retainedTrainIds.current.clear()
-      return
-    }
-
-    const projected = new THREE.Vector3()
-    const viewPosition = new THREE.Vector3()
-    const candidates: Array<{
-      train: NetworkTrain
-      position: ProjectedStop
-      x: number
-      y: number
-      depth: number
-      selected: boolean
-      retained: boolean
-      arrivalOpacity: number
-      comparisonIndex: number
-    }> = []
-
-    for (const train of labelTrains) {
-      const selected =
-        train.id === selectedTrain?.id || comparisonTrainIds.has(train.id)
-      const retained = retainedTrainIds.current.has(train.id)
-      if (comparisonTrains?.length && !selected) continue
-      if (selectedTrain && !selected) continue
-      if (layoutTransitioning && !selected && !retained) continue
-      if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
-      if (!selected && selectedStation && !selectedStationTrainIds.has(train.id)) continue
-      if (!selected && selectedCategory && train.category !== selectedCategory) continue
-      const focused = Boolean(
-        selected || selectedRoute || selectedStation || selectedCategory,
-      )
-      if (
-        !vehicleIsVisibleAtZoom(
-          train.category,
-          camera.position.y,
-          cameraFraming,
-          focused,
-        )
-      ) {
-        continue
-      }
-      if (
-        !selected &&
-        !focused &&
-        !selectedCategory &&
-        trainLabelMode === 'auto' &&
-        !categoryIsVisibleInAutoMode(train.category, semanticCameraHeight)
-      ) {
-        continue
-      }
-
-      if (semanticCameraHeight >= (labelStyle?.maxCameraHeight?.[train.category] ?? Infinity)) continue
-      const arrivalOpacity = trainLabelArrivalOpacity(
-        localTime.current,
-        train.end,
-        playbackRate,
-      )
-      if (arrivalOpacity <= 0) continue
-      // The motion layer schedules journeys on a frame budget; labels follow
-      // the position it draws instead of sampling paths again.
-      const trainIndex = motion.index.get(train)
-      if (trainIndex === undefined || !motion.displayed(trainIndex, localTime.current, labelStale, labelPoint)) continue
-      const position: ProjectedStop = [labelPoint[0], labelPoint[1], labelPoint[2]]
-      projected.set(position[0], elevation, position[2])
-      viewPosition.copy(projected).applyMatrix4(camera.matrixWorldInverse)
-      projected.project(camera)
-      if (
-        projected.z < -1 ||
-        projected.z > 1 ||
-        projected.x < -1.08 ||
-        projected.x > 1.08 ||
-        projected.y < -1.08 ||
-        projected.y > 1.08
-      ) {
-        continue
-      }
-      candidates.push({
-        train,
-        position,
-        x: (projected.x * 0.5 + 0.5) * size.width,
-        y: (-projected.y * 0.5 + 0.5) * size.height,
-        depth: Math.max(0.01, -viewPosition.z),
-        selected,
-        retained,
-        arrivalOpacity,
-        comparisonIndex: comparisonTrains?.findIndex(
-          (candidate) => candidate.id === train.id,
-        ) ?? -1,
-      })
-    }
-
-    candidates.sort(
-      (first, second) =>
-        Number(second.selected) - Number(first.selected) ||
-        compareTrainLabelCandidates(
-          {
-            id: first.train.id,
-            category: first.train.category,
-            retained: first.retained,
-          },
-          {
-            id: second.train.id,
-            category: second.train.category,
-            retained: second.retained,
-          },
-        ),
-    )
-
-    const occupied = [...stationBoxes]
-    const visibleTextureKeys = new Set<string>()
-    const nextRetainedTrainIds = new Set<string>()
-    const verticalFieldOfView =
-      camera instanceof THREE.PerspectiveCamera ? camera.fov : 44
-    let visible = 0
-
-    for (const candidate of candidates) {
-      if (visible >= labelBudget || visible >= MAX_TRAIN_LABELS) break
-      const text = trainLabelText(
-        candidate.train,
-        candidate.selected,
-        candidate.comparisonIndex >= 0,
-      )
-      const screenHeight = styledTrainLabelScreenHeight(
-        labelStyle,
-        size.width,
-        candidate.selected,
-        semanticCameraHeight,
-      )
-      const width = trainLabelScreenWidth(text, screenHeight) * (labelStyle?.collisionWidthScale ?? 1)
-      const anchorY = candidate.comparisonIndex < 0 ? labelStyle?.anchorY ?? 0.5 : 0.5
-      const box = trainLabelCollisionBox(candidate.x, candidate.y, width, screenHeight, anchorY)
-      const padding = labelStyle?.viewportPadding
-      if (padding !== undefined && (box.left < padding || box.right > size.width - padding || box.top < padding || box.bottom > size.height - padding)) continue
-      const overlaps = occupied.some(
-        (other) =>
-          mapLabelBoxesOverlap(box, other),
-      )
-      if (overlaps && !candidate.selected) continue
-
-      const sprite = sprites.current[visible]
-      if (!sprite) continue
-      const textColor = labelStyle?.routeTextCategories?.includes(candidate.train.category) ? routeColors?.[candidate.train.route] : undefined
-      const labelColor = textColor ?? mixedRouteColor(candidate.train.category, candidate.train.route, routeColors, routeColorMix, categoryColors)
-      const textureKey = `${candidate.train.category}:${labelColor}:${textColor ?? ''}:${text}`
-      let textureEntry = textures.current.get(textureKey)
-      if (!textureEntry) {
-        textureEntry = createTrainLabelTexture(text, labelColor, textColor)
-        textures.current.set(textureKey, textureEntry)
-      } else {
-        textures.current.delete(textureKey)
-        textures.current.set(textureKey, textureEntry)
-      }
-      visibleTextureKeys.add(textureKey)
-      nextRetainedTrainIds.add(candidate.train.id)
-
-      visibleLabelTrains.current.push(candidate.train)
-      sprite.visible = true
-      setScenePickMetadata(sprite, { target: { kind: 'train', value: candidate.train } })
-      sprite.renderOrder = candidate.selected && labelStyle?.selectedAboveStations ? MAP_LAYER.stationLabel + 1 : MAP_LAYER.trainLabel
-      sprite.center.set(0.5, anchorY)
-      const comparisonOffset =
-        candidate.comparisonIndex < 0
-          ? 0
-          : candidate.comparisonIndex === 0
-            ? -0.22
-            : 0.22
-      sprite.position.set(
-        candidate.position[0],
-        elevation + comparisonOffset,
-        candidate.position[2],
-      )
-      const worldHeight = stationLabelWorldHeight(
-        candidate.depth,
-        verticalFieldOfView,
-        size.height,
-        screenHeight,
-      )
-      sprite.scale.set(textureEntry.aspect * worldHeight, worldHeight, 1)
-      const material = sprite.material as THREE.SpriteMaterial
-      if (material.map !== textureEntry.texture) {
-        material.map = textureEntry.texture
-        material.needsUpdate = true
-      }
-      material.opacity = (candidate.selected ? 1 : 0.9) * candidate.arrivalOpacity
-      occupied.push(box)
-      visible += 1
-    }
-
-    if (!layoutTransitioning) {
-      retainedTrainIds.current = nextRetainedTrainIds
-    }
-
-    if (textures.current.size > 180) {
-      for (const [key, entry] of textures.current) {
-        if (visibleTextureKeys.has(key)) continue
-        entry.texture.dispose()
-        textures.current.delete(key)
-        if (textures.current.size <= 180) break
-      }
-    }
-  })
-
-  return (
-    <>
-      {Array.from({ length: MAX_TRAIN_LABELS }, (_, index) => (
-        <sprite
-          key={index}
-          ref={(sprite) => {
-            sprites.current[index] = sprite
-          }}
-          visible={false}
-          renderOrder={MAP_LAYER.trainLabel}
-        >
-          <spriteMaterial
-            transparent
-            opacity={0}
-            depthTest={false}
-            depthWrite={false}
-            toneMapped={false}
-          />
-        </sprite>
-      ))}
-    </>
-  )
-}
-
-function SelectedStationRouteLayer({
-  category,
-  pathGeometry,
-  stopGeometry,
-  haloTexture,
-  coreTexture,
-}: {
-  readonly category: ServiceCategory
-  readonly pathGeometry: THREE.BufferGeometry
-  readonly stopGeometry: THREE.BufferGeometry
-  readonly haloTexture: THREE.Texture
-  readonly coreTexture: THREE.Texture
-}) {
-  const glowMaterial = useRef<THREE.LineBasicMaterial>(null)
-
-  useFrame(({ clock }) => {
-    if (!glowMaterial.current) return
-    const pulse = Math.sin(clock.elapsedTime * 1.55) * 0.5 + 0.5
-    glowMaterial.current.opacity = 0.18 + pulse * 0.13
-  })
-
-  const color = useMapStyle().categoryColors?.[category] ?? SERVICE_COLORS[category]
-  return (
-    <group>
-      <lineSegments
-        geometry={pathGeometry}
-        renderOrder={MAP_LAYER.selectionCore}
-      >
-        <lineBasicMaterial
-          color={color}
-          transparent
-          opacity={1}
-          blending={THREE.NormalBlending}
-          depthTest={false}
-          depthWrite={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </lineSegments>
-      <lineSegments
-        geometry={pathGeometry}
-        renderOrder={MAP_LAYER.selectionGlow}
-      >
-        <lineBasicMaterial
-          ref={glowMaterial}
-          color="#ffffff"
-          transparent
-          opacity={0.24}
-          blending={THREE.AdditiveBlending}
-          depthTest={false}
-          depthWrite={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </lineSegments>
-      <points
-        geometry={stopGeometry}
-        renderOrder={MAP_LAYER.selectionStopGlow}
-      >
-        <pointsMaterial
-          color={color}
-          map={haloTexture}
-          size={4.2}
-          transparent
-          opacity={0.36}
-          alphaTest={0.01}
-          blending={THREE.AdditiveBlending}
-          depthTest={false}
-          depthWrite={false}
-          sizeAttenuation={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </points>
-      <points
-        geometry={stopGeometry}
-        renderOrder={MAP_LAYER.selectionStopCore}
-      >
-        <pointsMaterial
-          color="#ffffff"
-          map={coreTexture}
-          size={1.7}
-          transparent
-          opacity={0.88}
-          alphaTest={0.02}
-          blending={THREE.NormalBlending}
-          depthTest={false}
-          depthWrite={false}
-          sizeAttenuation={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </points>
-    </group>
-  )
-}
-
-function SelectedStationPulse({ centre }: { readonly centre: THREE.Vector3 }) {
-  const meshes = useRef<Array<THREE.Mesh | null>>([])
-  const materials = useRef<Array<THREE.MeshBasicMaterial | null>>([])
-  const origin = useMemo(
-    () => new THREE.Vector3(centre.x, 0.29, centre.z),
-    [centre],
-  )
-
-  useFrame(({ camera, clock, size }) => {
-    if (!(camera instanceof THREE.PerspectiveCamera) || size.height <= 0) return
-    const distance = camera.position.distanceTo(origin)
-    const visibleWorldHeight =
-      2 * distance * Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5))
-    const worldUnitsPerPixel = visibleWorldHeight / size.height
-
-    for (let index = 0; index < STATION_SELECTION_PULSE_COUNT; index += 1) {
-      const mesh = meshes.current[index]
-      const material = materials.current[index]
-      if (!mesh || !material) continue
-      const frame = stationSelectionPulseFrame(clock.elapsedTime, index)
-      mesh.scale.setScalar(frame.radiusPixels * worldUnitsPerPixel)
-      material.opacity = frame.opacity
-    }
-  })
-
-  return (
-    <group position={origin}>
-      {Array.from({ length: STATION_SELECTION_PULSE_COUNT }, (_, index) => (
-        <mesh
-          key={index}
-          ref={(mesh) => {
-            meshes.current[index] = mesh
-          }}
-          rotation={[Math.PI / 2, 0, 0]}
-          renderOrder={MAP_LAYER.focusMarkerGlow}
-        >
-          <torusGeometry args={[1, 0.026, 6, 72]} />
-          <meshBasicMaterial
-            ref={(material) => {
-              materials.current[index] = material
-            }}
-            color="#8dfaff"
-            transparent
-            opacity={0}
-            blending={THREE.AdditiveBlending}
-            depthTest={false}
-            depthWrite={false}
-            toneMapped={false}
-            fog={false}
-          />
-        </mesh>
-      ))}
-    </group>
-  )
-}
-
-function SelectedStationRoutes({
-  station,
-  snapshot,
-  projectedStops,
-  projectedPaths,
-  selectedCategory,
-}: {
-  readonly station: StationIndexEntry
-  readonly snapshot: NetworkSnapshot
-  readonly projectedStops: readonly ProjectedStop[]
-  readonly projectedPaths: readonly ProjectedNetworkPath[]
-  readonly selectedCategory?: ServiceCategory
-}) {
-  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
-  const textures = useMemo(
-    () => ({
-      halo: trainLightTexture('halo'),
-      core: trainLightTexture('spark'),
-    }),
-    [],
-  )
-  const lines = useMemo(() => {
-    const trainIds = new Set(station.trainIds)
-    const pathsByCategory = new Map<ServiceCategory, Map<string, number[]>>()
-    const stopsByCategory = new Map<ServiceCategory, Set<number>>()
-    for (const train of snapshot.trains) {
-      if (!trainIds.has(train.id)) continue
-      if (selectedCategory && train.category !== selectedCategory) continue
-      const categoryPaths = pathsByCategory.get(train.category) ?? new Map()
-      const categoryStops = stopsByCategory.get(train.category) ?? new Set()
-      train.stops.forEach(([stopIndex]) => categoryStops.add(stopIndex))
-      for (let index = 1; index < train.stops.length; index += 1) {
-        const firstIndex = train.stops[index - 1][0]
-        const secondIndex = train.stops[index][0]
-        const pathIndex = train.pathSegments?.[index - 1]
-        const key =
-          pathIndex === undefined || pathIndex === null
-            ? firstIndex < secondIndex
-              ? `${firstIndex}:${secondIndex}`
-              : `${secondIndex}:${firstIndex}`
-            : `path:${pathIndex}`
-        if (categoryPaths.has(key)) continue
-        const points = segmentPoints(
-          train,
-          index - 1,
-          projectedStops,
-          projectedPaths,
-          lakeAvoidingPaths,
-        )
-        if (points.length < 2) continue
-        const positions: number[] = []
-        appendLineSegments(positions, points, 0.14)
-        categoryPaths.set(key, positions)
-      }
-      pathsByCategory.set(train.category, categoryPaths)
-      stopsByCategory.set(train.category, categoryStops)
-    }
-
-    return [...pathsByCategory.entries()].map(([category, paths]) => {
-      const pathGeometry = new THREE.BufferGeometry()
-      pathGeometry.setAttribute(
-        'position',
-        new THREE.Float32BufferAttribute([...paths.values()].flat(), 3),
-      )
-      const stopPositions = [...(stopsByCategory.get(category) ?? [])].flatMap(
-        (stopIndex) => {
-          const stop = projectedStops[stopIndex]
-          return stop ? [stop[0], 0.2, stop[2]] : []
-        },
-      )
-      const stopGeometry = new THREE.BufferGeometry()
-      stopGeometry.setAttribute(
-        'position',
-        new THREE.Float32BufferAttribute(stopPositions, 3),
-      )
-      return { category, pathGeometry, stopGeometry }
-    })
-  }, [
-    projectedPaths,
-    projectedStops,
-    lakeAvoidingPaths,
-    selectedCategory,
-    snapshot.trains,
-    station.trainIds,
-  ])
-
-  useEffect(
-    () => () =>
-      lines.forEach(({ pathGeometry, stopGeometry }) => {
-        pathGeometry.dispose()
-        stopGeometry.dispose()
-      }),
-    [lines],
-  )
-
-  useEffect(
-    () => () => {
-      textures.halo.dispose()
-      textures.core.dispose()
-    },
-    [textures],
-  )
-
-  const centre = useMemo(
-    () => stationCentre(station, projectedStops),
-    [projectedStops, station],
-  )
-  const centreGeometry = useMemo(() => {
-    const geometry = new THREE.BufferGeometry()
-    geometry.setAttribute(
-      'position',
-      new THREE.Float32BufferAttribute([centre.x, 0.3, centre.z], 3),
-    )
-    return geometry
-  }, [centre])
-
-  useEffect(() => () => centreGeometry.dispose(), [centreGeometry])
-
-  return (
-    <>
-      {lines.map(({ category, pathGeometry, stopGeometry }) => (
-        <SelectedStationRouteLayer
-          key={category}
-          category={category}
-          pathGeometry={pathGeometry}
-          stopGeometry={stopGeometry}
-          haloTexture={textures.halo}
-          coreTexture={textures.core}
-        />
-      ))}
-      <SelectedStationPulse centre={centre} />
-      <points
-        geometry={centreGeometry}
-        renderOrder={MAP_LAYER.focusMarkerGlow}
-      >
-        <pointsMaterial
-          color="#8dfaff"
-          map={textures.halo}
-          size={25}
-          transparent
-          opacity={0.78}
-          alphaTest={0.01}
-          blending={THREE.AdditiveBlending}
-          depthTest={false}
-          depthWrite={false}
-          sizeAttenuation={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </points>
-      <points
-        geometry={centreGeometry}
-        renderOrder={MAP_LAYER.focusMarkerCore}
-      >
-        <pointsMaterial
-          color="#ffffff"
-          map={textures.core}
-          size={5.4}
-          transparent
-          opacity={1}
-          alphaTest={0.02}
-          blending={THREE.AdditiveBlending}
-          depthTest={false}
-          depthWrite={false}
-          sizeAttenuation={false}
-          toneMapped={false}
-          fog={false}
-        />
-      </points>
-      <group position={[centre.x, 0.28, centre.z]}>
-        <mesh rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[0.48, 0.055, 8, 48]} />
-          <meshBasicMaterial color="#ffffff" blending={THREE.AdditiveBlending} />
-        </mesh>
-        <mesh>
-          <sphereGeometry args={[0.14, 12, 12]} />
-          <meshStandardMaterial color="#ffffff" emissive="#8dfaff" emissiveIntensity={5} />
-        </mesh>
-        <pointLight color="#8dfaff" intensity={7} distance={5} />
-      </group>
-    </>
-  )
 }
 
 function useVehiclePalette(snapshot: NetworkSnapshot, routeColors: Readonly<Record<string, string>> | undefined,
@@ -1900,7 +463,7 @@ function VehicleMotion({
   const mapStyle = useMapStyle()
   const categoryColors = mapStyle.categoryColors
   const flat = mapStyle.surface === 'flat'
-  const vehicleElevation = mapStyle.vehicleElevation ?? 0.2
+  const vehicleElevation = mapStyle.vehicleElevation ?? mapSurfaceY(mapStyle.coplanar, 0.2)
   const trains = snapshot.trains
   const localTime = useRef(time)
   const lastReport = useRef(0)
@@ -2405,7 +968,7 @@ function VehicleMotion({
   const trailOpacity = [0.4, 0.22, 0.1]
   return (
     <>
-      <group position={[0, mapStyle.trailElevationOffset ?? -0.035, 0]}>
+      <group position={[0, mapStyle.trailElevationOffset ?? (mapStyle.coplanar ? 0 : -0.035), 0]}>
         {trailBuffers.map((buffers, index) => (
           <lineSegments
             key={index}
@@ -2533,58 +1096,6 @@ function VehicleMotion({
         />
       </points>
     </>
-  )
-}
-
-function SelectedTrainMarker({
-  train,
-  time,
-  projectedStops,
-  projectedPaths,
-  color = SERVICE_COLORS[train.category],
-}: {
-  readonly train: NetworkTrain
-  readonly time: number
-  readonly projectedStops: readonly ProjectedStop[]
-  readonly projectedPaths: readonly ProjectedNetworkPath[]
-  readonly color?: string
-}) {
-  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
-  const resolveTrainPosition = useProjectedTrainPosition()
-  const marker = useRef<THREE.Group>(null)
-
-  useFrame((state) => {
-    if (!marker.current) return
-    const position = resolveTrainPosition(
-      train,
-      time,
-      projectedStops,
-      projectedPaths,
-      lakeAvoidingPaths,
-    )
-    marker.current.visible = Boolean(position)
-    if (!position) return
-    marker.current.position.set(...position)
-    const pulse = 1 + Math.sin(state.clock.elapsedTime * 4) * 0.12
-    marker.current.scale.setScalar(pulse)
-  })
-
-  return (
-    <group ref={marker}>
-      <mesh renderOrder={MAP_LAYER.focusMarkerCore}>
-        <sphereGeometry args={[0.24, 12, 12]} />
-        <meshStandardMaterial
-          color="#ffffff"
-          emissive={color}
-          emissiveIntensity={4}
-          transparent
-          opacity={1}
-          depthTest={false}
-          depthWrite={false}
-        />
-      </mesh>
-      <pointLight color={color} intensity={7} distance={4.5} />
-    </group>
   )
 }
 
@@ -2867,6 +1378,7 @@ function UserLocationMarker({ location, projection }: {
 }
 
 function NetworkWorld(props: NationalNetworkSceneProps) {
+  const RoadLayer = props.extensions?.RoadLayer ?? DefaultRoadLayer
   const projection = useMemo(
     () => createNetworkProjection(props.referenceSnapshot),
     [props.referenceSnapshot],
@@ -3080,6 +1592,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       {props.contextSnapshot && contextProjectedStops && contextProjectedPaths && (
         <RailGraph
           snapshot={props.contextSnapshot}
+          pickable={false}
           projectedStops={contextProjectedStops}
           projectedPaths={contextProjectedPaths}
           cameraFraming={ATLAS_MAP_FRAMING}
@@ -3112,8 +1625,9 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         lineMapStyle={props.topologicalStyle === 'line-map'}
       />
       {(props.roadSnapshot || props.roadTopology) && (
-        <RoadTrafficLayer
+        <Suspense fallback={null}><RoadLayer
           style={props.mapStyle?.roads}
+          surfaceY={props.mapStyle?.coplanar ? COPLANAR_MAP_SURFACE_Y : undefined}
           Overlay={props.extensions?.RoadOverlay}
           snapshot={props.roadSnapshot}
           nationalSnapshot={props.nationalRoadSnapshot}
@@ -3132,17 +1646,17 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
               props.selectedCategory ||
               props.airCategorySelected
           )}
-        />
+        /></Suspense>
       )}
-      {props.mapStyle?.airports?.independent && <group visible={props.mapStyle.airports.visible ?? true}>
+      {props.mapStyle?.airports?.independent && <Suspense fallback={null}><group visible={props.mapStyle.airports.visible ?? true}>
         {props.airports?.map(airport => (
           <AirportMarker key={airport.id} airport={airport} projection={projection}
             showLabel={props.mapStyle?.airports?.showLabels ?? true}
             selected={airport.id === props.selectedAirport?.id} style={props.mapStyle?.airports} />
         ))}
-      </group>}
+      </group></Suspense>}
       {props.airSnapshot && (
-        <AirTrafficLayer
+        <Suspense fallback={null}><AirTrafficLayer
           airportStyle={props.mapStyle?.airports}
           picking={props.extensions?.aircraftPicking}
           snapshot={props.airSnapshot}
@@ -3164,7 +1678,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
               props.selectedCategory ||
               props.roadCategorySelected
           )}
-        />
+        /></Suspense>
       )}
       {props.selectedTrain && (
         <>

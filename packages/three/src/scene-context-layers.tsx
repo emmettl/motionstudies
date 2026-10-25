@@ -1,3 +1,5 @@
+import { COPLANAR_MAP_SURFACE_Y } from './scene-style.ts'
+import { mapSurfaceY, flattenMapTube } from './scene-surface.ts'
 import { useNetworkScene } from './scene-extensions.ts'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
@@ -13,16 +15,18 @@ import { appendLineSegments, projectCoordinate } from './scene-path-geometry.ts'
 
 export function NationalGround({ quiet = false }: { readonly quiet?: boolean }) {
   const { props } = useNetworkScene()
-  const gridScale = useMapStyle().materials?.groundGridOpacityScale?.(props.spatialLayoutMix ?? 0) ?? 1
+  const style = useMapStyle()
+  const coplanar = style.coplanar
+  const gridScale = style.materials?.groundGridOpacityScale?.(props.spatialLayoutMix ?? 0) ?? 1
   return (
-    <group position={[0, -0.11, 0]}>
-      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+    <group position={[0, coplanar ? -COPLANAR_MAP_SURFACE_Y : -0.11, 0]}>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} renderOrder={coplanar ? -7 : 0}>
         <planeGeometry args={[66, 56, 64, 48]} />
-        <meshBasicMaterial color="#090b1f" transparent opacity={0.7} />
+        <meshBasicMaterial color="#090b1f" transparent opacity={0.7} depthWrite={!coplanar} />
       </mesh>
-      {!quiet && <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.015, 0]}>
+      {!quiet && <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, coplanar ? 0.00002 : 0.015, 0]} renderOrder={coplanar ? -6 : 0}>
         <planeGeometry args={[66, 56, 64, 48]} />
-        <meshBasicMaterial color="#424b98" transparent opacity={0.1 * gridScale} wireframe />
+        <meshBasicMaterial color="#424b98" transparent opacity={0.1 * gridScale} wireframe depthWrite={!coplanar} />
       </mesh>}
     </group>
   )
@@ -39,6 +43,7 @@ export function LakeLayer({
   readonly subdued: boolean
   readonly opacityScale?: number
 }) {
+  const coplanar = useMapStyle().coplanar
   const geometry = useMemo(() => {
     const shapes: THREE.Shape[] = []
     const shorelinePositions: number[] = []
@@ -98,8 +103,8 @@ export function LakeLayer({
   )
 
   return (
-    <group position={[0, -0.072, 0]} visible={opacityScale > 0}>
-      <mesh geometry={geometry.fill} renderOrder={1}>
+    <group position={[0, coplanar ? 0 : -0.072, 0]} visible={opacityScale > 0}>
+      <mesh geometry={geometry.fill} renderOrder={coplanar ? -5 : 1}>
         <meshBasicMaterial
           color="#08233b"
           transparent
@@ -110,7 +115,7 @@ export function LakeLayer({
           fog={false}
         />
       </mesh>
-      <mesh geometry={geometry.fill} position={[0, 0.007, 0]} renderOrder={1}>
+      <mesh geometry={geometry.fill} position={[0, coplanar ? 0.00004 : 0.007, 0]} renderOrder={coplanar ? -4 : 1}>
         <meshBasicMaterial
           color="#20a9cb"
           transparent
@@ -125,8 +130,8 @@ export function LakeLayer({
       </mesh>
       <lineSegments
         geometry={geometry.shoreline}
-        position={[0, 0.014, 0]}
-        renderOrder={2}
+        position={[0, coplanar ? 0.00008 : 0.014, 0]}
+        renderOrder={coplanar ? -3 : 2}
       >
         <lineBasicMaterial
           color="#54dff7"
@@ -149,9 +154,10 @@ export function DiagramWaterLayer({
   readonly paths: readonly ProjectedNetworkPath[]
   readonly opacity: number
 }) {
+  const coplanar = useMapStyle().coplanar
   const geometry = useMemo(() => {
     const positions: number[] = []
-    paths.forEach((path) => appendLineSegments(positions, path.points, 0.025))
+    paths.forEach((path) => appendLineSegments(positions, path.points, mapSurfaceY(coplanar, 0.025)))
     const line = new THREE.BufferGeometry()
     line.setAttribute(
       'position',
@@ -161,20 +167,20 @@ export function DiagramWaterLayer({
       .filter((path) => path.points.length >= 2)
       .map((path) => {
         const curve = new THREE.CatmullRomCurve3(
-          path.points.map(([x, , z]) => new THREE.Vector3(x, 0.02, z)),
+          path.points.map(([x, , z]) => new THREE.Vector3(x, mapSurfaceY(coplanar, 0.02), z)),
           false,
           'centripetal',
         )
-        return new THREE.TubeGeometry(
+        return flattenMapTube(new THREE.TubeGeometry(
           curve,
           Math.max(24, path.points.length * 6),
           0.085,
           5,
           false,
-        )
+        ), coplanar)
       })
     return { line, ribbons }
-  }, [paths])
+  }, [paths, coplanar])
 
   useEffect(
     () => () => {
@@ -224,6 +230,7 @@ export function ReferencePathLayer({
   readonly projection: NetworkProjection
   readonly subdued: boolean
 }) {
+  const coplanar = useMapStyle().coplanar
   const paths = useMemo(
     () => references.references.map((reference) => {
       const positions: number[] = []
@@ -231,7 +238,7 @@ export function ReferencePathLayer({
         appendLineSegments(
           positions,
           path.map((coordinate) => projectCoordinate(coordinate, projection)),
-          0.028,
+          mapSurfaceY(coplanar, 0.028),
         )
       }
       const geometry = new THREE.BufferGeometry()
@@ -241,7 +248,7 @@ export function ReferencePathLayer({
       )
       return { ...reference, geometry }
     }),
-    [projection, references.references],
+    [projection, references.references, coplanar],
   )
   useSpatialGeometryMorph(paths)
 
@@ -280,7 +287,9 @@ export function CountryBorder({
   readonly opacityScale?: number
 }) {
   const borderGroup = useRef<THREE.Group>(null)
-  const opacityPolicy = useMapStyle().materials?.borderOpacityScale
+  const style = useMapStyle()
+  const coplanar = style.coplanar
+  const opacityPolicy = style.materials?.borderOpacityScale
   useFrame(({ camera }) => {
     const group = borderGroup.current
     if (!group) return
@@ -303,7 +312,7 @@ export function CountryBorder({
           : ring
       if (coordinates.length < 4) return []
       const points = coordinates.map((coordinate) => {
-        const [x, y, z] = projectCoordinate(coordinate, projection, 0.075)
+        const [x, y, z] = projectCoordinate(coordinate, projection, mapSurfaceY(coplanar, 0.075))
         return new THREE.Vector3(x, y, z)
       })
       const curve = new THREE.CatmullRomCurve3(points, true, 'centripetal', 0.5)
@@ -311,11 +320,11 @@ export function CountryBorder({
       curve.arcLengthDivisions = segments
       return [{
         id: `${index}:${coordinates.length}`,
-        glow: new THREE.TubeGeometry(curve, segments, 0.13, 5, true),
-        core: new THREE.TubeGeometry(curve, segments, 0.026, 5, true),
+        glow: flattenMapTube(new THREE.TubeGeometry(curve, segments, 0.13, 5, true), coplanar),
+        core: flattenMapTube(new THREE.TubeGeometry(curve, segments, 0.026, 5, true), coplanar),
       }]
     })
-  }, [boundary.rings, projection])
+  }, [boundary.rings, projection, coplanar])
   useSpatialGeometryMorph(tubes)
 
   useEffect(
@@ -332,7 +341,7 @@ export function CountryBorder({
     <group ref={borderGroup} visible={opacityScale > 0}>
       {tubes.map(({ id, glow, core }) => (
         <group key={id}>
-          <mesh geometry={glow}>
+          <mesh geometry={glow} renderOrder={coplanar ? -2 : 0}>
             <meshBasicMaterial
               color="#56e9ff"
               transparent
@@ -343,7 +352,7 @@ export function CountryBorder({
               fog={false}
             />
           </mesh>
-          <mesh geometry={core} renderOrder={2}>
+          <mesh geometry={core} renderOrder={coplanar ? -1 : 2}>
             <meshBasicMaterial
               color="#b9fbff"
               transparent

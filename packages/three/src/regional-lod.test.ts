@@ -39,3 +39,13 @@ describe('regional level of detail', () => {
     expect(localNetworkDetailAtZoom(37, atlas)).toBe(1)
   })
 })
+
+
+it('allows compact regional home views to use an independent local-detail scale', () => {
+  const framing = { ...compactRegion, localDetailDistanceScale: 0.18 }
+  const height = 37 * framing.homeDistanceScale
+  expect(vehicleIsVisibleAtZoom('tram', height, compactRegion)).toBe(false)
+  expect(vehicleIsVisibleAtZoom('tram', height, framing)).toBe(true)
+  expect(vehicleIsVisibleAtZoom('bus', height, framing)).toBe(false)
+  expect(vehicleIsVisibleAtZoom('tram', 37 * 0.18, framing)).toBe(false)
+})

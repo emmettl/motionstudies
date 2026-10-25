@@ -41,6 +41,8 @@ export interface MapCameraFraming {
   readonly minimumDistanceScale: number
   readonly portraitMinimumDistanceScale?: number
   readonly localDetailHierarchy?: boolean
+  /** Optional detail reference independent of home framing; only used with localDetailHierarchy. */
+  readonly localDetailDistanceScale?: number
   readonly stationLabelHeightScale?: number
   readonly stationLabelPrefix?: string
   readonly stationLabelPrimaryName?: string

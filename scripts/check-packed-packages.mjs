@@ -76,6 +76,11 @@ try {
     export const verifiedBytes = (bytes: Uint8Array, d: ReleaseDescriptor): Promise<Uint8Array> => verifyDescriptorBytes(bytes, d)
     export const openedRelease = (root: string): Promise<OpenedRelease> => openRelease(root, { kind: 'air-day-release', schemaVersions: [1] })
     export const releaseCheck = (root: string) => verifyRelease(root, { kind: 'power-evidence-release', schemaVersions: [1] })
+    import { RoadTrafficLayer, type RoadPathResolver, type RoadCurveFactory } from '@motionstudies/three/RoadTrafficLayer'
+    export const roadLayer: NetworkSceneExtensions['RoadLayer'] = RoadTrafficLayer
+    export const pathResolver: RoadPathResolver = ({ fallback }) => fallback
+    export const mapPolicy: NetworkMapStyle = { coplanar: true, selectionMarkers: { stationMaxRadiusPixels: 10 }, trainLabels: { screenOffset: height => height / 2 + 4 } }
+    export const curveFactoryContract = (factory: RoadCurveFactory) => factory
     import { network } from './fixtures.ts'
     import { readAirEnrichment, createEndpointResolver, endpointCoverage } from '@motionstudies/core/air-enrichment'
     export const enrichmentContract = [readAirEnrichment, createEndpointResolver, endpointCoverage]

@@ -1,0 +1,17 @@
+# Renderer policies and private scene boundaries
+
+25 October 2026 — release preparation
+
+This change replaces Switzerland's four Vite source-rewrite plugins with supported map and road policies, then separates label and selection components from the shared scene. The main scene falls from 3,302 to 1,816 lines. Private label textures, frame budgets, selection geometry and their disposal remain owned by the same components; shared path context and layer order have explicit private modules. Public defaults retain elevated geometry and the previous label placement.
+
+Switzerland uses the public coplanar surface, marker pixel caps, train label screen offsets and independent regional detail scale. Its road wrapper supplies matched official topology paths and its existing linear curve and labels. Unresolved roads stay absent. Mainline road IDs use public picking metadata, and decorative context rails no longer publish incompatible active indexes. Airport labels have stable audit names. Air/road modules are lazy, with separate suspension boundaries so they cannot replace an already mounted network.
+
+The Swiss train-label callback preserves its drawn placement below vehicles and comparison stacking. Collision boxes now use that same screen placement; the old source patch drew below the vehicle while admitting collisions above it. Open corridor heading samples clamp at their endpoints instead of wrapping to the opposite end.
+
+London, Paris and Local / Express budget scripts previously traversed every dynamic import as opening code. The newly deferred shared road closure now has a separate 5 KiB gzip cap and must remain a dynamic entry outside the opening closure. Browser checks verify it is not fetched on opening. Existing opening and composition limits are unchanged; air remains counted conservatively. Production measurements use the pinned Node 24 toolchain because its gzip sizes differ from host Node 26.
+
+A bounded static-transform prototype disabled local matrix recomputation at 30 JSX object sites in the private context/rail modules and used stable update callbacks. Five matched production pairs alternated baseline/trial order, with identical three opening-data hashes, 1,440 × 900 Chromium/Metal rendering and five-second paused/playing samples after warmup. Draw counts remained about 36 per frame. Only two of five pairs improved in either phase. Median script time was 0.242 → 0.245 ms/frame paused and 0.598 → 0.574 ms/frame playing; paired changes ranged from −22.8% to +12.4% paused and −16.8% to +5.9% playing. That variation does not establish a repeatable benefit. Screenshot review also showed a difference in ground-grid coverage, so the prototype is not visually equivalent. The prototype is excluded; default transforms and batching remain unchanged. See [raw measurements and source/data hashes](evidence/renderer-transform-trial-2026-10-25.json). These are desktop host observations, not phone or GPU benchmarks.
+
+Shared validation passes 488 unit tests, 11 hosting checks, public declarations, architecture checks, packed consumer checks and Chromium/WebKit renderer/loader checks. Switzerland passes 1,466 unit tests. The edition browser runs cover picking, labels, lazy road loading, regional tram selection, camera/morph transitions and paused buffer reuse. Underfall's three default Chromium failures (screenshot capture and timeouts) all pass with the host Metal renderer and original timeouts.
+
+Publication and exact registry adoption are recorded after the trusted workflow succeeds.

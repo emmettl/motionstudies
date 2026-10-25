@@ -5,6 +5,9 @@ import type { ServiceCategory, StationIndexEntry } from '@motionstudies/core/dom
 
 export type CategoryPalette = Readonly<Partial<Record<ServiceCategory, string>>>
 
+/** Shared map plane for co-located infrastructure, vehicles and edition overlays. */
+export const COPLANAR_MAP_SURFACE_Y = 0.0002
+
 export interface TrainLabelStyle {
   /** Ambient label count. Off, selection/comparison priority and the pool cap remain renderer-owned. Keep callbacks stable. */
   readonly budget?: (semanticCameraHeight: number, viewportWidth: number, mode: TrainLabelMode) => number
@@ -14,6 +17,9 @@ export interface TrainLabelStyle {
   readonly maxCameraHeight?: Readonly<Partial<Record<ServiceCategory, number>>>
   readonly viewportPadding?: number
   readonly elevation?: number
+  /** CSS-pixel offset from the vehicle; positive values place the label below it.
+   * Receives the final label height and comparison index (-1 when not comparing). */
+  readonly screenOffset?: (height: number, comparisonIndex: number) => number
   /** Sprite anchor: 0.5 centres the label; negative values place it above the anchor. */
   readonly anchorY?: number
   readonly collisionWidthScale?: number
@@ -73,6 +79,11 @@ export interface NetworkMaterialStyle {
 }
 
 export interface NetworkMapStyle {
+  /** Suppress street-zoom parallax by aligning map layers with the shared plane.
+   * Basemap painter order and thin tube geometry retain their existing appearance. */
+  readonly coplanar?: boolean
+  /** Cap existing world-space selection markers without enlarging overview markers. */
+  readonly selectionMarkers?: { readonly stationMaxRadiusPixels?: number; readonly trainMaxRadiusPixels?: number }
   readonly materials?: NetworkMaterialStyle
   readonly vehicleElevation?: number
   readonly trailElevationOffset?: number

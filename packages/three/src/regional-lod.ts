@@ -9,7 +9,7 @@ export function regionalCameraHeight(
   framing: MapCameraFraming,
 ): number {
   return framing.localDetailHierarchy
-    ? cameraHeight / homeMapDistanceScale(framing)
+    ? cameraHeight / (framing.localDetailDistanceScale ?? homeMapDistanceScale(framing))
     : cameraHeight
 }
 

@@ -1,0 +1,13 @@
+# Hosted failure checks — 25 October 2026
+
+The alpha.42 failures had three causes: Swiss Lausanne geometry coverage, a Local / Express tooltip test race, and GitHub Actions artifact storage.
+
+Switzerland's new October supplemental road cache restores TL bus geometry from 87.58% to 100% for Sunday 25 October and from 99.97% to 100% for Monday. The original 120 m connector and all other acceptance limits remain unchanged. All seven days reach 100% TL coverage; two complete regional audits and the production builder pass. The cache preserves existing geometry and includes source hashes, a pinned matcher revision and a visual review. See [Swiss repair commit](https://github.com/emmettl/gleislicht/commit/19e3ff84d65fd44642759f05da1dca66ce7a90cd).
+
+The subsequent production smoke run passed Chromium and failed WebKit on a cancelled adjacent-chunk prefetch. Local reproduction confirms WebKit reports the loader's AbortController cleanup as `cancelled`. The smoke test now excludes explicit cancellation reasons while retaining HTTP and other transport failures; all four production R2 cases pass locally. [Smoke-check correction](https://github.com/emmettl/gleislicht/commit/f870ebb).
+
+Local / Express now waits for the delayed tooltip module request before exercising real keyboard navigation and asserts focus-visible state. Fifteen repeated local cases and the next hosted browser suite pass. Successful runs no longer upload optional diagnostic reports; failure reports retain seven days. Required site artifacts remain required. [Keyboard correction](https://github.com/emmettl/local-express/commit/58baa8d97f3346f1bd9579be200b0aa3779b493d).
+
+The previously authorised account-wide cleanup removed 1,846 older artifacts, 6,205,641,670 bytes (5.78 GiB), with no deletion errors. It preserves every artifact from the last seven days and the newest two runs per workflow. Source, releases and recent diagnostics are unchanged. Underfall and Local / Express still hit quota on their required site upload at the last checked runs; GitHub's recalculation remains an external dependency. No mandatory verified-artifact deployment handoff has been bypassed.
+
+The remaining quota failures are in private Local / Express and Underfall; public Swiss data artifacts upload successfully. A fresh Edgerton inventory after cleanup contains zero artifacts. The previously retained private history has been removed under the approved age/run policy, so there is no further authorised old-artifact cleanup to perform there. The private quota error still explicitly reports a 6–12 hour recalculation interval on the 19:21 UTC retry. Public package publication can proceed independently.

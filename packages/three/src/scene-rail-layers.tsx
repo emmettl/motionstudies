@@ -1,3 +1,4 @@
+import { mapSurfaceY } from './scene-surface.ts'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
@@ -17,7 +18,7 @@ import { useNetworkScene } from './scene-extensions.ts'
 import { appendLineSegments, segmentPoints, routeSegmentKey, offsetProjectedPath } from './scene-path-geometry.ts'
 import { trainLightTexture } from './scene-light-texture.ts'
 
-const STATION_SURFACE_Y = 0.035
+import { STATION_SURFACE_Y } from './scene-layer-order.ts'
 
 function canonicalInterchangeName(name: string): string {
   return name
@@ -28,6 +29,7 @@ function canonicalInterchangeName(name: string): string {
 
 export function RailGraph({
   morph = false,
+  pickable = true,
   snapshot,
   infrastructureSnapshot = snapshot,
   projectedStops,
@@ -43,6 +45,7 @@ export function RailGraph({
 }: {
   readonly infrastructureSnapshot?: NetworkSnapshot
   readonly morph?: boolean
+  readonly pickable?: boolean
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -55,7 +58,9 @@ export function RailGraph({
   readonly trafficOverviewEmphasis?: number
   readonly lineMapStyle?: boolean
 }) {
-  const flat = useMapStyle().surface === 'flat'
+  const style = useMapStyle()
+  const flat = style.surface === 'flat'
+  const coplanar = style.coplanar
   const DiagramStations = useNetworkScene().props.extensions?.DiagramStations
   const { camera } = useThree()
   const stationMaterial = useRef<THREE.PointsMaterial>(null)
@@ -86,7 +91,7 @@ export function RailGraph({
           ? structuralPositions
           : localPositions,
         path?.points ?? detour?.points ?? [from, to],
-        0,
+        mapSurfaceY(coplanar, 0),
       )
     })
     const structural = new THREE.BufferGeometry()
@@ -102,7 +107,7 @@ export function RailGraph({
     if (flat) { compactMapLines(structural); compactMapLines(local) }
     return { structural, local }
   }, [
-    flat, lakeAvoidingPaths,
+    flat, coplanar, lakeAvoidingPaths,
     projectedPaths,
     projectedStops,
     snapshot.edgePaths,
@@ -114,9 +119,9 @@ export function RailGraph({
     projectedStops.forEach((stop, index) => positions.set(stop, index * 3))
     const geometry = new THREE.BufferGeometry()
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-    setScenePickMetadata(geometry, { stopIndexes: projectedStops.map((_, index) => index) })
+    setScenePickMetadata(geometry, pickable ? { stopIndexes: projectedStops.map((_, index) => index) } : undefined)
     return geometry
-  }, [projectedStops])
+  }, [projectedStops, pickable])
 
   const diagramStationGeometries = useMemo(() => {
     const stationRoutes = new Map<
@@ -162,10 +167,10 @@ export function RailGraph({
       'position',
       new THREE.Float32BufferAttribute(interchangePositions, 3),
     )
-    setScenePickMetadata(stops, { stopIndexes })
-    setScenePickMetadata(interchanges, { stopIndexes: interchangeIndexes })
+    setScenePickMetadata(stops, pickable ? { stopIndexes } : undefined)
+    setScenePickMetadata(interchanges, pickable ? { stopIndexes: interchangeIndexes } : undefined)
     return { stops, interchanges }
-  }, [projectedStops, snapshot.stops, infrastructureSnapshot.trains])
+  }, [projectedStops, snapshot.stops, infrastructureSnapshot.trains, pickable])
 
   const morphGeometry = useMemo(() => ({ railGeometry, stationGeometry, diagramStationGeometries }), [railGeometry, stationGeometry, diagramStationGeometries])
   useSpatialGeometryMorph(morphGeometry, morph)
@@ -266,7 +271,7 @@ export function RailGraph({
             <>
               <points
                 geometry={diagramStationGeometries.stops}
-                position={[0, STATION_SURFACE_Y + 0.09, 0]}
+                position={[0, mapSurfaceY(coplanar, STATION_SURFACE_Y + 0.09), 0]}
                 renderOrder={5}
               >
                 <pointsMaterial
@@ -285,7 +290,7 @@ export function RailGraph({
               </points>
               <points
                 geometry={diagramStationGeometries.interchanges}
-                position={[0, STATION_SURFACE_Y + 0.1, 0]}
+                position={[0, mapSurfaceY(coplanar, STATION_SURFACE_Y + 0.1), 0]}
                 renderOrder={6}
               >
                 <pointsMaterial
@@ -308,7 +313,7 @@ export function RailGraph({
           {!lineMapStyle && (
             <points
               geometry={diagramStationGeometries.interchanges}
-              position={[0, STATION_SURFACE_Y + 0.08, 0]}
+              position={[0, mapSurfaceY(coplanar, STATION_SURFACE_Y + 0.08), 0]}
               renderOrder={4}
             >
               <pointsMaterial
@@ -329,7 +334,7 @@ export function RailGraph({
           )}
         </>
       )}
-      <points visible={!lineMapStyle || routeColorMix < 1} geometry={stationGeometry} position={[0, STATION_SURFACE_Y, 0]}>
+      <points visible={!lineMapStyle || routeColorMix < 1} geometry={stationGeometry} position={[0, mapSurfaceY(coplanar, STATION_SURFACE_Y), 0]}>
         <pointsMaterial
           ref={stationMaterial}
           color="#a18cff"
@@ -413,7 +418,9 @@ function RouteIdentityLayer({
   readonly subdued: boolean
   readonly lineMapStyle?: boolean
 }) {
-  const diagram = useMapStyle().diagram
+  const style = useMapStyle()
+  const diagram = style.diagram
+  const coplanar = style.coplanar
   const { diagramSegmentKey, diagramOrderedPoints } = useNetworkScene().props.extensions ?? {}
   const routes = useMemo(() => {
     const segmentRoutes = new Map<string, Set<string>>()
@@ -461,7 +468,7 @@ function RouteIdentityLayer({
         appendLineSegments(
           record.positions,
           offsetProjectedPath(lineMapStyle && diagramOrderedPoints ? diagramOrderedPoints(points) : points, laneOffset),
-          0.075,
+          mapSurfaceY(coplanar, 0.075),
         )
       }
       records.set(train.route, record)
@@ -478,15 +485,15 @@ function RouteIdentityLayer({
         color: record.color,
         geometry,
         casing: lineMapStyle
-          ? diagramRibbonGeometry(record.positions, diagram?.casingWidth ?? 0.16, 0.072)
+          ? diagramRibbonGeometry(record.positions, diagram?.casingWidth ?? 0.16, mapSurfaceY(coplanar, 0.072))
           : undefined,
         core: lineMapStyle
-          ? diagramRibbonGeometry(record.positions, diagram?.coreWidth ?? 0.1, 0.078)
+          ? diagramRibbonGeometry(record.positions, diagram?.coreWidth ?? 0.1, mapSurfaceY(coplanar, 0.078))
           : undefined,
       }
     }).sort((first, second) => first.name.localeCompare(second.name, 'en'))
   }, [
-    diagram, diagramSegmentKey, diagramOrderedPoints, lakeAvoidingPaths,
+    coplanar, diagram, diagramSegmentKey, diagramOrderedPoints, lakeAvoidingPaths,
     lineMapStyle,
     projectedPaths,
     projectedStops,
@@ -589,6 +596,7 @@ function TrafficFlowLayer({
 }) {
   const style = useMapStyle()
   const flat = style.surface === 'flat'
+  const coplanar = style.coplanar
   const emphasisPolicy = style.materials?.trafficFlowOverviewEmphasis
   const weightedMaterial = useRef<THREE.LineBasicMaterial>(null)
   const pulseMaterial = useRef<THREE.LineBasicMaterial>(null)
@@ -686,7 +694,7 @@ function TrafficFlowLayer({
   })
 
   return (
-    <group position={[0, 0.055, 0]} visible={identityAttenuation > 0}>
+    <group position={[0, mapSurfaceY(coplanar, 0.055), 0]} visible={identityAttenuation > 0}>
       <lineSegments geometry={geometries.weighted} renderOrder={flat ? 4 : 1}>
         <lineBasicMaterial
           ref={weightedMaterial}

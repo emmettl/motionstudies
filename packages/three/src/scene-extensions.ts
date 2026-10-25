@@ -1,3 +1,4 @@
+import type { RoadTrafficLayerProps } from './RoadTrafficLayer.tsx'
 import type { SpatialMorphProjection } from './spatial-morph.ts'
 import type { CameraViewportPolicy } from './map-camera.ts'
 export type { CameraViewportPolicy, CameraViewportState, CameraViewportFrame } from './map-camera.ts'
@@ -84,6 +85,8 @@ export interface NetworkSceneExtensions {
   readonly aircraftPicking?: AircraftPickingPolicy
   readonly DiagramStations?: ComponentType<DiagramStationsProps>
   readonly RoadOverlay?: ComponentType<RoadOverlayProps>
+  /** Optional lazy road composition using the supported RoadTrafficLayer and its explicit inputs. */
+  readonly RoadLayer?: ComponentType<RoadTrafficLayerProps>
   /** Applied only to line-map route geometry; geographical route behaviour is unchanged. */
   readonly diagramSegmentKey?: (train: NetworkTrain, segment: number, stops: readonly ProjectedPoint[]) => string
   readonly diagramOrderedPoints?: (points: readonly ProjectedPoint[]) => readonly ProjectedPoint[]

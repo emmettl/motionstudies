@@ -486,7 +486,7 @@ export function AirportMarker({
         />
       </group>
       {showLabel && (
-        <sprite ref={label} renderOrder={style?.labelRenderOrder ?? 20}>
+        <sprite ref={label} name={`airport-label:${airport.id}`} renderOrder={style?.labelRenderOrder ?? 20}>
           <spriteMaterial
             map={labelTexture.texture}
             transparent

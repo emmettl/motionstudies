@@ -17,6 +17,26 @@ import {
 } from '@motionstudies/core/domain/road-day'
 import type { NetworkProjection } from './NationalNetworkScene.tsx'
 import { createGlowPointTexture } from './glow-point-texture.ts'
+import { setScenePickMetadata } from './scene-picking.ts'
+
+type RoadCoordinate = readonly [number, number]
+export interface RoadPathContext {
+  readonly topology?: RoadTopologySnapshot
+  readonly road: string
+  readonly from: RoadCoordinate
+  readonly to: RoadCoordinate
+  readonly fromSiteId?: string
+  readonly toSiteId?: string
+  readonly fallback: readonly RoadCoordinate[]
+}
+/** Undefined retains the source path; null omits an unresolved section. Keep stable. */
+export type RoadPathResolver = (context: RoadPathContext) => readonly RoadCoordinate[] | null | undefined
+export interface RoadPathCurve {
+  getPointAt(progress: number, target?: THREE.Vector3): THREE.Vector3
+  getPoints(divisions?: number): THREE.Vector3[]
+}
+export type RoadCurveFactory = (points: THREE.Vector3[]) => RoadPathCurve
+const defaultRoadCurve: RoadCurveFactory = points => new THREE.CatmullRomCurve3(points, false, 'centripetal', 0.5)
 
 const LIGHT_COLOR = new THREE.Color('#fff1cf')
 const HEAVY_COLOR = new THREE.Color('#ff9d52')
@@ -31,16 +51,19 @@ function RoadTopology({
   projection,
   subdued,
   selectedRoadId,
+  surfaceY,
 }: {
   readonly style?: RoadInfrastructureStyle
   readonly snapshot: RoadTopologySnapshot
   readonly projection: NetworkProjection
   readonly subdued: boolean
   readonly selectedRoadId?: string
+  readonly surfaceY?: number
 }) {
   const pointTexture = useMemo(() => createGlowPointTexture(), [])
   const geometry = useMemo(() => {
     const mainlinePoints: THREE.Vector3[] = []
+    const roadIds: string[] = []
     const connectorPoints: THREE.Vector3[] = []
     const selectedMainlinePoints: THREE.Vector3[] = []
     const selectedConnectorPoints: THREE.Vector3[] = []
@@ -53,10 +76,11 @@ function RoadTopology({
         const first = projectRoadCoordinate(
           path.points[index - 1],
           projection,
-          0.065,
+          surfaceY ?? 0.065,
         )
-        const second = projectRoadCoordinate(path.points[index], projection, 0.065)
+        const second = projectRoadCoordinate(path.points[index], projection, surfaceY ?? 0.065)
         target.push(first, second)
+        if (path.mainline) roadIds.push(path.road, path.road)
         if (path.road === selectedRoadId) selectedTarget.push(first, second)
       }
     }
@@ -77,7 +101,7 @@ function RoadTopology({
       const point = projectRoadCoordinate(
         site.match.projectedCoordinate,
         projection,
-        0.085,
+        surfaceY ?? 0.085,
       )
       if (
         site.match.road === selectedRoadId &&
@@ -88,8 +112,10 @@ function RoadTopology({
       }
       return [point]
     })
+    const mainline = new THREE.BufferGeometry().setFromPoints(mainlinePoints)
+    setScenePickMetadata(mainline, { roadIds })
     return {
-      mainline: new THREE.BufferGeometry().setFromPoints(mainlinePoints),
+      mainline,
       connectors: new THREE.BufferGeometry().setFromPoints(connectorPoints),
       sites: new THREE.BufferGeometry().setFromPoints(sitePoints),
       selectedMainline: new THREE.BufferGeometry().setFromPoints(
@@ -100,7 +126,7 @@ function RoadTopology({
       ),
       selectedSites: new THREE.BufferGeometry().setFromPoints(selectedSitePoints),
     }
-  }, [projection, selectedRoadId, snapshot.paths, snapshot.sites])
+  }, [projection, selectedRoadId, snapshot.paths, snapshot.sites, surfaceY])
 
   useEffect(
     () => () => {
@@ -221,15 +247,17 @@ function RoadDirectionFlow({
   isPlaying,
   playbackRate,
   subdued,
+  markerXOffset = 0.045,
 }: {
   readonly snapshot: RoadTrafficSnapshot
   readonly corridor: RoadTrafficSnapshot['corridors'][number]
   readonly direction: RoadTrafficSnapshot['corridors'][number]['directions'][number]
-  readonly curve: THREE.CatmullRomCurve3
+  readonly curve: RoadPathCurve
   readonly time: number
   readonly isPlaying: boolean
   readonly playbackRate: number
   readonly subdued: boolean
+  readonly markerXOffset?: number
 }) {
   const localTime = useRef(time)
   const lightsRef = useRef<THREE.InstancedMesh>(null)
@@ -289,10 +317,10 @@ function RoadDirectionFlow({
         if (direction.reverse) progress = 1 - progress
         curve.getPointAt(progress, point)
         const aheadProgress =
-          (progress + (direction.reverse ? -0.001 : 0.001) + 1) % 1
+          Math.max(0, Math.min(1, progress + (direction.reverse ? -0.001 : 0.001)))
         curve.getPointAt(aheadProgress, ahead)
         transform.position.copy(point)
-        transform.position.x += direction.reverse ? -0.045 : 0.045
+        transform.position.x += direction.reverse ? -markerXOffset : markerXOffset
         tangent.copy(ahead).sub(point).normalize()
         transform.quaternion.setFromUnitVectors(vehicleAxis, tangent)
         const pulse = 0.88 + 0.12 * Math.sin(index * 2.31 + localTime.current * 0.045)
@@ -356,6 +384,9 @@ function NationalRoadTrafficFlow({
   selectedRoadId,
   subdued,
   conditionsAtTime = nationalRoadConditionsAtTime,
+  surfaceY,
+  resolvePath,
+  createCurve = defaultRoadCurve,
 }: {
   readonly snapshot: NationalRoadStudySnapshot
   readonly topology: RoadTopologySnapshot
@@ -366,6 +397,9 @@ function NationalRoadTrafficFlow({
   readonly selectedRoadId?: string
   readonly subdued: boolean
   readonly conditionsAtTime?: typeof nationalRoadConditionsAtTime
+  readonly surfaceY?: number
+  readonly resolvePath?: RoadPathResolver
+  readonly createCurve?: RoadCurveFactory
 }) {
   const localTime = useRef(time)
   const lightsRef = useRef<THREE.InstancedMesh>(null)
@@ -384,17 +418,22 @@ function NationalRoadTrafficFlow({
       if (selectedRoadId && section.road !== selectedRoadId) return []
       const topologySection = topologyById.get(section.id)
       if (!topologySection) return []
-      const coordinates = topologySection.path ?? [
+      const fallback = topologySection.path ?? [
         topologySection.fromCoordinate,
         topologySection.toCoordinate,
       ]
+      const resolved = resolvePath?.({ topology, road: section.road,
+        from: topologySection.fromCoordinate, to: topologySection.toCoordinate,
+        fromSiteId: topologySection.fromSiteId, toSiteId: topologySection.toSiteId, fallback })
+      const coordinates = resolved === undefined ? fallback : resolved
+      if (!coordinates || coordinates.length < 2) return []
       const points = coordinates.map((coordinate) =>
-        projectRoadCoordinate(coordinate, projection, 0.12),
+        projectRoadCoordinate(coordinate, projection, surfaceY ?? 0.12),
       )
-      const curve = new THREE.CatmullRomCurve3(points, false, 'centripetal', 0.5)
+      const curve = createCurve(points)
       return [{ ...section, curve }]
     })
-  }, [projection, selectedRoadId, snapshot.sections, topology.sections])
+  }, [projection, selectedRoadId, snapshot.sections, topology, surfaceY, resolvePath, createCurve])
 
   useEffect(() => {
     localTime.current = time
@@ -522,6 +561,28 @@ function NationalRoadTrafficFlow({
   )
 }
 
+export interface RoadTrafficLayerProps {
+  readonly style?: RoadInfrastructureStyle
+  readonly Overlay?: ComponentType<RoadOverlayProps>
+  readonly snapshot?: RoadTrafficSnapshot
+  readonly topology?: RoadTopologySnapshot
+  readonly time: number
+  readonly isPlaying: boolean
+  readonly playbackRate: number
+  readonly projection: NetworkProjection
+  readonly subdued?: boolean
+  readonly selectedRoadId?: string
+  readonly nationalSnapshot?: NationalRoadStudySnapshot
+  readonly conditionsAtTime?: typeof nationalRoadConditionsAtTime
+  /** Override inferred display paths; null omits an unresolved section. */
+  readonly resolvePath?: RoadPathResolver
+  readonly createCurve?: RoadCurveFactory
+  /** Common world-space height for map-plane overlays and markers. */
+  readonly surfaceY?: number
+  /** Preserve the legacy corridor marker X offset unless explicitly replaced. */
+  readonly markerXOffset?: number
+}
+
 export function RoadTrafficLayer({
   style,
   Overlay,
@@ -535,35 +596,27 @@ export function RoadTrafficLayer({
   selectedRoadId,
   nationalSnapshot,
   conditionsAtTime,
-}: {
-  readonly style?: RoadInfrastructureStyle
-  readonly Overlay?: ComponentType<RoadOverlayProps>
-  readonly snapshot?: RoadTrafficSnapshot
-  readonly topology?: RoadTopologySnapshot
-  readonly time: number
-  readonly isPlaying: boolean
-  readonly playbackRate: number
-  readonly projection: NetworkProjection
-  readonly subdued?: boolean
-  readonly selectedRoadId?: string
-  readonly nationalSnapshot?: NationalRoadStudySnapshot
-  readonly conditionsAtTime?: typeof nationalRoadConditionsAtTime
-}) {
+  surfaceY,
+  resolvePath,
+  createCurve = defaultRoadCurve,
+  markerXOffset,
+}: RoadTrafficLayerProps) {
   const corridors = useMemo(
     () =>
-      (snapshot?.corridors ?? []).map((corridor) => {
-        const points = corridor.path.map((coordinate) =>
-          projectRoadCoordinate(coordinate, projection),
-        )
-        const curve = new THREE.CatmullRomCurve3(points, false, 'centripetal', 0.5)
+      (snapshot?.corridors ?? []).flatMap((corridor) => {
+        const resolved = resolvePath?.({ topology, road: corridor.road, from: corridor.path[0], to: corridor.path.at(-1)!, fallback: corridor.path })
+        const coordinates = resolved === undefined ? corridor.path : resolved
+        if (!coordinates || coordinates.length < 2) return []
+        const points = coordinates.map((coordinate) => projectRoadCoordinate(coordinate, projection, surfaceY))
+        const curve = createCurve(points)
         const roadPoints = curve.getPoints(180)
         const roadSegments = roadPoints.flatMap((point, index) =>
           index ? [roadPoints[index - 1], point] : [],
         )
         const road = new THREE.BufferGeometry().setFromPoints(roadSegments)
-        return { corridor, curve, road }
+        return [{ corridor, curve, road }]
       }),
-    [projection, snapshot?.corridors],
+    [projection, snapshot?.corridors, topology, surfaceY, resolvePath, createCurve],
   )
 
   useEffect(
@@ -576,6 +629,7 @@ export function RoadTrafficLayer({
       {topology && (
         <RoadTopology
           style={style}
+          surfaceY={surfaceY}
           snapshot={topology}
           projection={projection}
           subdued={subdued}
@@ -586,6 +640,9 @@ export function RoadTrafficLayer({
       {nationalSnapshot && topology && (
         <NationalRoadTrafficFlow
           conditionsAtTime={conditionsAtTime}
+          surfaceY={surfaceY}
+          resolvePath={resolvePath}
+          createCurve={createCurve}
           snapshot={nationalSnapshot}
           topology={topology}
           projection={projection}
@@ -617,6 +674,7 @@ export function RoadTrafficLayer({
               corridor={corridor}
               direction={direction}
               curve={curve}
+              markerXOffset={markerXOffset}
               time={time}
               isPlaying={isPlaying}
               playbackRate={playbackRate}

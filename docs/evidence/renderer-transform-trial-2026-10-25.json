@@ -1,0 +1,291 @@
+{
+  "date": "2026-10-25",
+  "environment": {
+    "browser": "Chromium with Metal",
+    "viewport": [
+      1440,
+      900
+    ],
+    "runs": 5,
+    "durationMs": 5000,
+    "warmupMs": 6000,
+    "settleMs": 3000,
+    "order": "Alternating baseline/trial, then trial/baseline per pair",
+    "physicalPhone": false
+  },
+  "source": [
+    {
+      "file": "scene-context-layers.tsx",
+      "sourceSha256": "be94d0cdd4e8d5359af13d15defed7a456653c013d052a0a4b1404546f6bd0d4",
+      "objectSites": 16
+    },
+    {
+      "file": "scene-rail-layers.tsx",
+      "sourceSha256": "e803d72917b8ab8a7088b8e3eb26185b82a0f6058158d84c03412f610dbc1394",
+      "objectSites": 14
+    }
+  ],
+  "data": [
+    [
+      "https://data.motionstudies.app/gleislicht/releases/a1c7039dda667a445f82d82b5fa7ccb2bc1784cadcf11d175c0d090b91ef522b/swiss-boundary.json",
+      "38fd890c6bc78415c8b2fef3047f210846d7660340977361afed9d40cc384599"
+    ],
+    [
+      "https://data.motionstudies.app/gleislicht/releases/a1c7039dda667a445f82d82b5fa7ccb2bc1784cadcf11d175c0d090b91ef522b/swiss-lakes.json",
+      "2ed8ae2942bb9fff570c0266bd1d0da11a7b6c99530e05761934b258594e58b7"
+    ],
+    [
+      "https://data.motionstudies.app/gleislicht/releases/a1c7039dda667a445f82d82b5fa7ccb2bc1784cadcf11d175c0d090b91ef522b/swiss-rail-morning.json",
+      "9225d97d8401f15787c62e130eb166b675f13d1c5381408165c69a15d26d8140"
+    ]
+  ],
+  "summary": {
+    "paused": {
+      "baselineMedianMsPerFrame": 0.24160999999999988,
+      "trialMedianMsPerFrame": 0.24498666666666652,
+      "pairedPercentChange": [
+        12.401075959131392,
+        -22.790703184230445,
+        4.8231458842704065,
+        -8.788267593780601,
+        1.4138392088856353
+      ],
+      "pairsImproved": 2
+    },
+    "playing": {
+      "baselineMedianMsPerFrame": 0.5980966666666668,
+      "trialMedianMsPerFrame": 0.5736200000000002,
+      "pairedPercentChange": [
+        2.8760619983783546,
+        -16.847820632483266,
+        0.26627201696686625,
+        -5.074430554704086,
+        5.912577415304746
+      ],
+      "pairsImproved": 2
+    }
+  },
+  "measurements": [
+    {
+      "pair": 0,
+      "variant": "baseline",
+      "phase": "paused",
+      "frames": 301,
+      "draws": 10836,
+      "TaskDuration": 145.11499999999998,
+      "ScriptDuration": 66.97900000000001,
+      "scriptPerFrame": 0.22252159468438543,
+      "errors": []
+    },
+    {
+      "pair": 0,
+      "variant": "baseline",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10798,
+      "TaskDuration": 264.88,
+      "ScriptDuration": 170.19800000000006,
+      "scriptPerFrame": 0.5673266666666669,
+      "errors": []
+    },
+    {
+      "pair": 0,
+      "variant": "trial",
+      "phase": "paused",
+      "frames": 300,
+      "draws": 10800,
+      "TaskDuration": 159.269,
+      "ScriptDuration": 75.03499999999997,
+      "scriptPerFrame": 0.25011666666666654,
+      "errors": []
+    },
+    {
+      "pair": 0,
+      "variant": "trial",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10798,
+      "TaskDuration": 267.34900000000005,
+      "ScriptDuration": 175.09300000000005,
+      "scriptPerFrame": 0.5836433333333335,
+      "errors": []
+    },
+    {
+      "pair": 1,
+      "variant": "trial",
+      "phase": "paused",
+      "frames": 300,
+      "draws": 10800,
+      "TaskDuration": 141.71999999999997,
+      "ScriptDuration": 65.17699999999998,
+      "scriptPerFrame": 0.2172566666666666,
+      "errors": []
+    },
+    {
+      "pair": 1,
+      "variant": "trial",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10796,
+      "TaskDuration": 259.75499999999994,
+      "ScriptDuration": 165.70399999999995,
+      "scriptPerFrame": 0.5523466666666665,
+      "errors": []
+    },
+    {
+      "pair": 1,
+      "variant": "baseline",
+      "phase": "paused",
+      "frames": 300,
+      "draws": 10800,
+      "TaskDuration": 173.95299999999992,
+      "ScriptDuration": 84.41599999999994,
+      "scriptPerFrame": 0.28138666666666645,
+      "errors": []
+    },
+    {
+      "pair": 1,
+      "variant": "baseline",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10796,
+      "TaskDuration": 309.3929999999998,
+      "ScriptDuration": 199.27799999999996,
+      "scriptPerFrame": 0.6642599999999999,
+      "errors": []
+    },
+    {
+      "pair": 2,
+      "variant": "baseline",
+      "phase": "paused",
+      "frames": 301,
+      "draws": 10836,
+      "TaskDuration": 147.8259999999999,
+      "ScriptDuration": 70.34800000000007,
+      "scriptPerFrame": 0.23371428571428596,
+      "errors": []
+    },
+    {
+      "pair": 2,
+      "variant": "baseline",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10796,
+      "TaskDuration": 268.092,
+      "ScriptDuration": 171.62900000000002,
+      "scriptPerFrame": 0.5720966666666667,
+      "errors": []
+    },
+    {
+      "pair": 2,
+      "variant": "trial",
+      "phase": "paused",
+      "frames": 300,
+      "draws": 10800,
+      "TaskDuration": 155.481,
+      "ScriptDuration": 73.49599999999995,
+      "scriptPerFrame": 0.24498666666666652,
+      "errors": []
+    },
+    {
+      "pair": 2,
+      "variant": "trial",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10799,
+      "TaskDuration": 264.6439999999999,
+      "ScriptDuration": 172.08600000000007,
+      "scriptPerFrame": 0.5736200000000002,
+      "errors": []
+    },
+    {
+      "pair": 3,
+      "variant": "trial",
+      "phase": "paused",
+      "frames": 300,
+      "draws": 10800,
+      "TaskDuration": 139.33700000000005,
+      "ScriptDuration": 66.11299999999997,
+      "scriptPerFrame": 0.22037666666666658,
+      "errors": []
+    },
+    {
+      "pair": 3,
+      "variant": "trial",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10799,
+      "TaskDuration": 264.9590000000002,
+      "ScriptDuration": 170.32400000000004,
+      "scriptPerFrame": 0.5677466666666668,
+      "errors": []
+    },
+    {
+      "pair": 3,
+      "variant": "baseline",
+      "phase": "paused",
+      "frames": 300,
+      "draws": 10800,
+      "TaskDuration": 151.36099999999996,
+      "ScriptDuration": 72.48299999999996,
+      "scriptPerFrame": 0.24160999999999988,
+      "errors": []
+    },
+    {
+      "pair": 3,
+      "variant": "baseline",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10795,
+      "TaskDuration": 274.14000000000004,
+      "ScriptDuration": 179.42900000000006,
+      "scriptPerFrame": 0.5980966666666668,
+      "errors": []
+    },
+    {
+      "pair": 4,
+      "variant": "baseline",
+      "phase": "paused",
+      "frames": 300,
+      "draws": 10800,
+      "TaskDuration": 163.142,
+      "ScriptDuration": 75.53899999999992,
+      "scriptPerFrame": 0.2517966666666664,
+      "errors": []
+    },
+    {
+      "pair": 4,
+      "variant": "baseline",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10799,
+      "TaskDuration": 294.918,
+      "ScriptDuration": 189.562,
+      "scriptPerFrame": 0.6318733333333334,
+      "errors": []
+    },
+    {
+      "pair": 4,
+      "variant": "trial",
+      "phase": "paused",
+      "frames": 300,
+      "draws": 10800,
+      "TaskDuration": 162.59199999999996,
+      "ScriptDuration": 76.60700000000004,
+      "scriptPerFrame": 0.2553566666666668,
+      "errors": []
+    },
+    {
+      "pair": 4,
+      "variant": "trial",
+      "phase": "playing",
+      "frames": 300,
+      "draws": 10799,
+      "TaskDuration": 310.48600000000005,
+      "ScriptDuration": 200.77,
+      "scriptPerFrame": 0.6692333333333333,
+      "errors": []
+    }
+  ],
+  "decision": "Do not ship static matrix caching: gains are inconsistent and smaller than run-to-run variation. Keep default transforms; no batching changes."
+}

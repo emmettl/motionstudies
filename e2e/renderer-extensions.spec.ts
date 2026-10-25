@@ -86,3 +86,29 @@ test('spatial morphs retain rail buffers and restore source positions before rep
   await page.getByLabel('Layout mix', { exact: true }).fill('0')
   await expect.poll(async () => (await state(page)).stop).toEqual(stop)
 })
+
+
+test('map-plane composition orders basemap layers below the network and restores defaults on removal', async ({page}) => {
+  const layers = () => page.evaluate(() => {
+    const probe=(globalThis as unknown as {rendererExtensionProbe:{scene:import('three').Scene}}).rendererExtensionProbe
+    const result:{order:number;depthWrite:boolean;transparent:boolean}[]=[]
+    probe.scene.traverse(object=>{
+      const mesh=object as import('three').Mesh
+      if(mesh.renderOrder<0 && mesh.material && !Array.isArray(mesh.material)) result.push({order:mesh.renderOrder,depthWrite:mesh.material.depthWrite,transparent:mesh.material.transparent})
+    })
+    return result.sort((a,b)=>a.order-b.order)
+  })
+  expect(await layers()).toEqual([])
+  await page.getByRole('button',{name:'Toggle plane'}).click()
+  await expect.poll(async()=> (await layers()).map(layer=>layer.order)).toEqual([-7,-6,-5,-4,-3,-2,-1])
+  expect((await layers()).every(layer=>layer.transparent && !layer.depthWrite)).toBe(true)
+  await page.getByRole('button',{name:'Toggle plane'}).click()
+  await expect.poll(layers).toEqual([])
+  expect((await state(page)).childMounts).toBe(1)
+})
+
+
+test('decorative context rails do not publish active snapshot picking indexes', async ({page}) => {
+  await page.getByRole('button',{name:'Toggle context'}).click()
+  await expect.poll(()=>page.evaluate(()=> (globalThis as unknown as {contextRailProbe:()=>{pickable:number;decorative:number}}).contextRailProbe())).toEqual({pickable:1,decorative:1})
+})
