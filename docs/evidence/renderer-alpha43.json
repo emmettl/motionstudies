@@ -1,0 +1,663 @@
+{
+  "version": "0.1.0-alpha.43",
+  "tag": "next",
+  "sourceCommit": "f999fe54a6b072f0fa0b343f902fe83242a1f21b",
+  "trustedRun": 40226379338,
+  "trustedRunConclusion": "success",
+  "release": {
+    "version": "0.1.0-alpha.43",
+    "tag": "next",
+    "sourceCommit": "f999fe54a6b072f0fa0b343f902fe83242a1f21b",
+    "packages": [
+      {
+        "name": "@motionstudies/core",
+        "version": "0.1.0-alpha.43",
+        "file": "motionstudies-core-0.1.0-alpha.43.tgz",
+        "integrity": "sha512-VUQ3uzzPxE8gUq58dzRpHt2uN1n142gc8EbPQPUHFDXu8lq7p5aCwaQn7CI96B7j+IwF7LtRgyIH+RO0jz41KA=="
+      },
+      {
+        "name": "@motionstudies/data",
+        "version": "0.1.0-alpha.43",
+        "file": "motionstudies-data-0.1.0-alpha.43.tgz",
+        "integrity": "sha512-m99Gz9fJdyvKhgcsxGWOVpDURBiySqvFIIejE3R0SX32E4S0Yi4A8iX7Gs0DIsrhNOWSh9bvHKhARjvsoAVznA=="
+      },
+      {
+        "name": "@motionstudies/three",
+        "version": "0.1.0-alpha.43",
+        "file": "motionstudies-three-0.1.0-alpha.43.tgz",
+        "integrity": "sha512-c5SU3fJqYfRS3DthOO4pAo7NneMst0Wtu6bJ+Xznme7um77DvzQHicVeCoVqcX5G76FEEoybVKwL+jKBiGZqkQ=="
+      },
+      {
+        "name": "@motionstudies/web",
+        "version": "0.1.0-alpha.43",
+        "file": "motionstudies-web-0.1.0-alpha.43.tgz",
+        "integrity": "sha512-9HrMpcwSTI9dDl309IPbatA3Gk1WmqQS+zdldUq1WSQg9yLT195eTUSScch/ZFB1LKi/Br+6u0lBE3gyN2+jNA=="
+      }
+    ]
+  },
+  "registry": [
+    {
+      "name": "@motionstudies/core",
+      "integrity": "sha512-VUQ3uzzPxE8gUq58dzRpHt2uN1n142gc8EbPQPUHFDXu8lq7p5aCwaQn7CI96B7j+IwF7LtRgyIH+RO0jz41KA==",
+      "filesMatched": 93,
+      "next": "0.1.0-alpha.43"
+    },
+    {
+      "name": "@motionstudies/data",
+      "integrity": "sha512-m99Gz9fJdyvKhgcsxGWOVpDURBiySqvFIIejE3R0SX32E4S0Yi4A8iX7Gs0DIsrhNOWSh9bvHKhARjvsoAVznA==",
+      "filesMatched": 57,
+      "next": "0.1.0-alpha.43"
+    },
+    {
+      "name": "@motionstudies/three",
+      "integrity": "sha512-c5SU3fJqYfRS3DthOO4pAo7NneMst0Wtu6bJ+Xznme7um77DvzQHicVeCoVqcX5G76FEEoybVKwL+jKBiGZqkQ==",
+      "filesMatched": 107,
+      "next": "0.1.0-alpha.43"
+    },
+    {
+      "name": "@motionstudies/web",
+      "integrity": "sha512-9HrMpcwSTI9dDl309IPbatA3Gk1WmqQS+zdldUq1WSQg9yLT195eTUSScch/ZFB1LKi/Br+6u0lBE3gyN2+jNA==",
+      "filesMatched": 97,
+      "next": "0.1.0-alpha.43"
+    }
+  ],
+  "emptyCacheInstalls": [
+    [
+      "allchange",
+      "verified",
+      354
+    ],
+    [
+      "gleislicht",
+      "verified",
+      354
+    ],
+    [
+      "correspondances",
+      "verified",
+      354
+    ],
+    [
+      "local-express",
+      "verified",
+      354
+    ],
+    [
+      "norikae",
+      "verified",
+      354
+    ],
+    [
+      "umlauf",
+      "verified",
+      354
+    ],
+    [
+      "underfall",
+      "verified",
+      354
+    ],
+    [
+      "norikae-main",
+      "verified",
+      354
+    ]
+  ],
+  "rootChecks": [
+    [
+      "typecheck",
+      0
+    ],
+    [
+      "lint",
+      0
+    ],
+    [
+      "check:architecture",
+      0
+    ],
+    [
+      "test",
+      0
+    ],
+    [
+      "check:release",
+      0
+    ],
+    [
+      "release:dry-run",
+      0
+    ],
+    [
+      "build",
+      0
+    ],
+    [
+      "loaders",
+      0
+    ]
+  ],
+  "editionChecks": [
+    [
+      "allchange",
+      [
+        [
+          "typecheck",
+          0
+        ],
+        [
+          "lint",
+          0
+        ],
+        [
+          "check:boundary",
+          0
+        ],
+        [
+          "build",
+          0
+        ],
+        [
+          "check:bundle",
+          0
+        ]
+      ]
+    ],
+    [
+      "gleislicht",
+      [
+        [
+          "typecheck",
+          0
+        ],
+        [
+          "lint",
+          0
+        ],
+        [
+          "check:architecture",
+          0
+        ],
+        [
+          "build",
+          0
+        ],
+        [
+          "check:bundle",
+          0
+        ]
+      ]
+    ],
+    [
+      "correspondances",
+      [
+        [
+          "typecheck",
+          0
+        ],
+        [
+          "lint",
+          0
+        ],
+        [
+          "check:boundary",
+          0
+        ],
+        [
+          "build",
+          0
+        ],
+        [
+          "check:bundle",
+          0
+        ]
+      ]
+    ],
+    [
+      "local-express",
+      [
+        [
+          "typecheck",
+          0
+        ],
+        [
+          "lint",
+          0
+        ],
+        [
+          "check:boundary",
+          0
+        ],
+        [
+          "build",
+          0
+        ],
+        [
+          "check:bundle",
+          0
+        ]
+      ]
+    ],
+    [
+      "norikae",
+      [
+        [
+          "typecheck",
+          0
+        ],
+        [
+          "lint",
+          0
+        ],
+        [
+          "check:boundary",
+          0
+        ],
+        [
+          "build",
+          0
+        ]
+      ]
+    ],
+    [
+      "umlauf",
+      [
+        [
+          "typecheck",
+          0
+        ],
+        [
+          "lint",
+          0
+        ],
+        [
+          "check:boundary",
+          0
+        ],
+        [
+          "build",
+          0
+        ],
+        [
+          "check:budget",
+          0
+        ]
+      ]
+    ],
+    [
+      "underfall",
+      [
+        [
+          "typecheck",
+          0
+        ],
+        [
+          "lint",
+          0
+        ],
+        [
+          "build",
+          0
+        ]
+      ]
+    ],
+    [
+      "norikae-main",
+      [
+        [
+          "typecheck",
+          0
+        ],
+        [
+          "lint",
+          0
+        ],
+        [
+          "check:boundary",
+          0
+        ],
+        [
+          "build",
+          0
+        ]
+      ]
+    ]
+  ],
+  "editionAdoptions": [
+    {
+      "checkout": "gleislicht",
+      "branch": "main",
+      "commit": "4faf824d2ddef9a66c8c602c5f2d9e0103a10448"
+    },
+    {
+      "checkout": "allchange",
+      "branch": "main",
+      "commit": "f0192cac891a94f5c8fe432ff02d77742461df18"
+    },
+    {
+      "checkout": "correspondances",
+      "branch": "main",
+      "commit": "c274a00465629eeb5dd6d68b136e8fcb184e0a67"
+    },
+    {
+      "checkout": "local-express",
+      "branch": "main",
+      "commit": "cd81be66e24589de985708cfe84550fdbb2f6c21"
+    },
+    {
+      "checkout": "norikae",
+      "branch": "codex/synthetic-player",
+      "commit": "2d635b5c24805cefc528c85711f46168d2528b48"
+    },
+    {
+      "checkout": "umlauf",
+      "branch": "main",
+      "commit": "5bcada0dbdad03dfad91db28bd094f65ee7badb1"
+    },
+    {
+      "checkout": "underfall",
+      "branch": "main",
+      "commit": "532dbe342366a7eedb260db4d507e34ece785c53"
+    },
+    {
+      "checkout": "norikae-main",
+      "branch": "main",
+      "commit": "0b695314924d63527ef5b87fcb9a7f71ecaa94fe"
+    }
+  ],
+  "swissFollowup": "c33819f61f448f9399a227af7f2b5cc5f7e45b4a",
+  "thirdPartyLockRecords": "Unchanged in all eight checkouts; only root shared pins and four @motionstudies records change.",
+  "preservedWork": [
+    "Root untracked recorder documents/evidence and read-feed-status.mjs",
+    "Swiss .gitignore, package script edits and stats.json",
+    "Underfall .claude/"
+  ],
+  "experiment": {
+    "evidence": "renderer-transform-trial-2026-10-25.json",
+    "shipped": false,
+    "reason": "Inconsistent paired timings and differing ground-grid coverage"
+  },
+  "hostedSnapshot": [
+    [
+      "gleislicht",
+      [
+        {
+          "conclusion": "",
+          "databaseId": 40227246161,
+          "headSha": "4faf824d2ddef9a66c8c602c5f2d9e0103a10448",
+          "name": "npm_and_yarn in /. for undici - Update #1651907224",
+          "status": "in_progress"
+        },
+        {
+          "conclusion": "",
+          "databaseId": 40227230375,
+          "headSha": "4faf824d2ddef9a66c8c602c5f2d9e0103a10448",
+          "name": "Deploy to GitHub Pages",
+          "status": "in_progress"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 40227043221,
+          "headSha": "f870ebb05c9e677e61aba00ca8568e46a5837bc7",
+          "name": "Check public freshness",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "databaseId": 40226472281,
+          "headSha": "f870ebb05c9e677e61aba00ca8568e46a5837bc7",
+          "name": "Check public freshness",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "databaseId": 40226468606,
+          "headSha": "f870ebb05c9e677e61aba00ca8568e46a5837bc7",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        }
+      ]
+    ],
+    [
+      "allchange",
+      [
+        {
+          "conclusion": "failure",
+          "databaseId": 40227246091,
+          "headSha": "f0192cac891a94f5c8fe432ff02d77742461df18",
+          "name": "npm_and_yarn in /. for undici - Update #1651907228",
+          "status": "completed"
+        },
+        {
+          "conclusion": "",
+          "databaseId": 40227235456,
+          "headSha": "f0192cac891a94f5c8fe432ff02d77742461df18",
+          "name": "Deploy Pages",
+          "status": "in_progress"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39671526801,
+          "headSha": "490e75613c58842e97b5feb1ca13f2b4cc93f620",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39670405270,
+          "headSha": "490e75613c58842e97b5feb1ca13f2b4cc93f620",
+          "name": "Deploy Pages",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39205861413,
+          "headSha": "ae538e50c84da65c5018dae890539b11696993d1",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        }
+      ]
+    ],
+    [
+      "correspondances",
+      [
+        {
+          "conclusion": "",
+          "databaseId": 40227237517,
+          "headSha": "c274a00465629eeb5dd6d68b136e8fcb184e0a67",
+          "name": "Deploy Pages",
+          "status": "in_progress"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39682671732,
+          "headSha": "735189492175c13f7db67756362d2f1b4e4f311e",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39674857060,
+          "headSha": "735189492175c13f7db67756362d2f1b4e4f311e",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39670599781,
+          "headSha": "735189492175c13f7db67756362d2f1b4e4f311e",
+          "name": "Deploy Pages",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39666953801,
+          "headSha": "280e614ffa114967c451fa319ebce88ea9965c30",
+          "name": "Deploy Pages",
+          "status": "completed"
+        }
+      ]
+    ],
+    [
+      "local-express",
+      [
+        {
+          "conclusion": "",
+          "databaseId": 40227240327,
+          "headSha": "cd81be66e24589de985708cfe84550fdbb2f6c21",
+          "name": "Check Local / Express",
+          "status": "in_progress"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 40221472579,
+          "headSha": "58baa8d97f3346f1bd9579be200b0aa3779b493d",
+          "name": "Check Local / Express",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 40219881739,
+          "headSha": "9bfe6dadfa04ef81bc027b1bb5b0d0f0da9e4982",
+          "name": "Check Local / Express",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 39670682826,
+          "headSha": "790588bd1a560f9c5c9b8c60fd13af623cef5994",
+          "name": "Check Local / Express",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 39205260327,
+          "headSha": "2c23de1522d80b4bb1df9790cbf8e340854bc4e1",
+          "name": "Check Local / Express",
+          "status": "completed"
+        }
+      ]
+    ],
+    [
+      "norikae",
+      [
+        {
+          "conclusion": "",
+          "databaseId": 40227252006,
+          "headSha": "0b695314924d63527ef5b87fcb9a7f71ecaa94fe",
+          "name": "Deploy to GitHub Pages",
+          "status": "in_progress"
+        },
+        {
+          "conclusion": "",
+          "databaseId": 40227251970,
+          "headSha": "0b695314924d63527ef5b87fcb9a7f71ecaa94fe",
+          "name": "Validate",
+          "status": "in_progress"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39671164140,
+          "headSha": "8ab6cc8868ef7c9de56e3bd90621306f36b689e4",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39670717637,
+          "headSha": "8ab6cc8868ef7c9de56e3bd90621306f36b689e4",
+          "name": "Validate",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39670717561,
+          "headSha": "8ab6cc8868ef7c9de56e3bd90621306f36b689e4",
+          "name": "Deploy to GitHub Pages",
+          "status": "completed"
+        }
+      ]
+    ],
+    [
+      "umlauf",
+      [
+        {
+          "conclusion": "",
+          "databaseId": 40227246746,
+          "headSha": "5bcada0dbdad03dfad91db28bd094f65ee7badb1",
+          "name": "Deploy Pages",
+          "status": "in_progress"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39671449694,
+          "headSha": "57a9fd20cb5b9bc61c6cfa6eaa62e7e945f1bab0",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39670844378,
+          "headSha": "57a9fd20cb5b9bc61c6cfa6eaa62e7e945f1bab0",
+          "name": "Deploy Pages",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39205625411,
+          "headSha": "463a5a933a41a0652d295e99d89bd7fa52a39eab",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 39205268807,
+          "headSha": "463a5a933a41a0652d295e99d89bd7fa52a39eab",
+          "name": "Deploy Pages",
+          "status": "completed"
+        }
+      ]
+    ],
+    [
+      "underfall",
+      [
+        {
+          "conclusion": "skipped",
+          "databaseId": 40227304109,
+          "headSha": "532dbe342366a7eedb260db4d507e34ece785c53",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 40227249206,
+          "headSha": "532dbe342366a7eedb260db4d507e34ece785c53",
+          "name": "Check",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "databaseId": 40225645234,
+          "headSha": "71afa956cadb1b1adb9e0a0e62ecaaec6ef54640",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "databaseId": 40221111984,
+          "headSha": "71afa956cadb1b1adb9e0a0e62ecaaec6ef54640",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "databaseId": 40219311977,
+          "headSha": "71afa956cadb1b1adb9e0a0e62ecaaec6ef54640",
+          "name": "Publish to Cloudflare",
+          "status": "completed"
+        }
+      ]
+    ]
+  ],
+  "hostedNote": "Initial post-push snapshot; public deployments continue. Private Local / Express and Underfall still encounter the previously recorded artifact storage quota."
+}

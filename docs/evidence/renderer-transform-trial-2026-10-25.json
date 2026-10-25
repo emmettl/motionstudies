@@ -11,7 +11,10 @@
     "warmupMs": 6000,
     "settleMs": 3000,
     "order": "Alternating baseline/trial, then trial/baseline per pair",
-    "physicalPhone": false
+    "physicalPhone": false,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "cpuModel": "Apple M4 Max"
   },
   "source": [
     {

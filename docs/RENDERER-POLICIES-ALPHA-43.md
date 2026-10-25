@@ -1,6 +1,6 @@
 # Renderer policies and private scene boundaries
 
-25 October 2026 — release preparation
+25 October 2026
 
 This change replaces Switzerland's four Vite source-rewrite plugins with supported map and road policies, then separates label and selection components from the shared scene. The main scene falls from 3,302 to 1,816 lines. Private label textures, frame budgets, selection geometry and their disposal remain owned by the same components; shared path context and layer order have explicit private modules. Public defaults retain elevated geometry and the previous label placement.
 
@@ -14,4 +14,21 @@ A bounded static-transform prototype disabled local matrix recomputation at 30 J
 
 Shared validation passes 488 unit tests, 11 hosting checks, public declarations, architecture checks, packed consumer checks and Chromium/WebKit renderer/loader checks. Switzerland passes 1,466 unit tests. The edition browser runs cover picking, labels, lazy road loading, regional tram selection, camera/morph transitions and paused buffer reuse. Underfall's three default Chromium failures (screenshot capture and timeouts) all pass with the host Metal renderer and original timeouts.
 
-Publication and exact registry adoption are recorded after the trusted workflow succeeds.
+All four public `0.1.0-alpha.43` packages are published under `next` from `f999fe5` through [trusted release 40226379338](https://github.com/emmettl/motionstudies/actions/runs/40226379338). Hosted verification and OIDC publication pass. The registry metadata, `next` tags, SHA-512 integrities and downloaded archives match the hosted artifacts. Every package file matches the local checked candidate: 93 core, 57 data, 107 three and 97 web files.
+
+Eight empty-cache registry installs pass every installed-file comparison (354 files per checkout), then all applicable type, lint, boundary, build and payload checks. Third-party lock records are unchanged. Final registry measurements retain all existing caps: London 365.9 KiB JS / 366; Paris 629.2 KiB opening / 630 and 681.3 KiB ten-line / 682; Switzerland 378.9 KiB JS / 380 and 806.7 KiB total / 808 with its old pinned data, or 798.0 KiB total with the actual 25–26 October production calendar; Local / Express 383.9 KiB opening; Berlin 577,088 / 588,800 bytes. Final Swiss Chromium/WebKit registry checks pass six airport/road cases and four production R2 cases. The Swiss policy factory moved to a pure module, and its internal road resolver ceased exporting from a component file, removing both newly introduced Fast Refresh warnings; the three existing Date-purity warnings remain.
+
+All eight registry adoptions are pushed:
+
+| Checkout | Branch | Commit |
+| --- | --- | --- |
+| gleislicht | `main` | [`4faf824d`](https://github.com/emmettl/gleislicht/commit/4faf824d2ddef9a66c8c602c5f2d9e0103a10448) |
+| allchange | `main` | [`f0192cac`](https://github.com/emmettl/allchange/commit/f0192cac891a94f5c8fe432ff02d77742461df18) |
+| correspondances | `main` | [`c274a004`](https://github.com/emmettl/correspondances/commit/c274a00465629eeb5dd6d68b136e8fcb184e0a67) |
+| local-express | `main` | [`cd81be66`](https://github.com/emmettl/local-express/commit/cd81be66e24589de985708cfe84550fdbb2f6c21) |
+| norikae | `codex/synthetic-player` | [`2d635b5c`](https://github.com/emmettl/norikae/commit/2d635b5c24805cefc528c85711f46168d2528b48) |
+| umlauf | `main` | [`5bcada0d`](https://github.com/emmettl/umlauf/commit/5bcada0dbdad03dfad91db28bd094f65ee7badb1) |
+| underfall | `main` | [`532dbe34`](https://github.com/emmettl/underfall/commit/532dbe342366a7eedb260db4d507e34ece785c53) |
+| norikae-main | `main` | [`0b695314`](https://github.com/emmettl/norikae/commit/0b695314924d63527ef5b87fcb9a7f71ecaa94fe) |
+
+Switzerland's follow-up `c33819f` separates pure policies from component exports without changing its renderer behaviour. Existing root, Swiss and Underfall local work is preserved. The [release and rollout evidence](evidence/renderer-alpha43.json) distinguishes verified local/registry checks from hosted deployment state.

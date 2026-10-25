@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.42` under `next`, published from `ee38610` through [trusted run 39668146969](https://github.com/emmettl/motionstudies/actions/runs/39668146969). All four registry integrities and downloaded archives match the tested tarballs; see the [renderer refactor release record](RENDERER-ALPHA-42.md).
+The latest verified coordinated release is `0.1.0-alpha.43` under `next`, published from `f999fe5` through [trusted run 40226379338](https://github.com/emmettl/motionstudies/actions/runs/40226379338). All four registry integrities and downloaded archives match the tested tarballs; see the [renderer policies and refactor release record](RENDERER-POLICIES-ALPHA-43.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -40,6 +40,8 @@ The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstud
 After a successful OIDC publication, revoke the bootstrap token in npm and delete the GitHub `NPM_TOKEN` secret. npm's “Require two-factor authentication and disallow tokens” setting is compatible with trusted publishers.
 
 ## Release history
+
+`0.1.0-alpha.43` replaces Switzerland's renderer source rewrites with supported policies and extracts private label/selection layers. All four registry artifacts and eight clean edition installs are verified; see the [release record](RENDERER-POLICIES-ALPHA-43.md). The bounded transform-caching prototype is excluded.
 
 `0.1.0-alpha.42` publishes the private rail/context extraction with unchanged public renderer API and behaviour. Seven network editions adopt it, with the NORIKAE main and player branches checked independently. See the [release and adoption record](RENDERER-ALPHA-42.md).
 
