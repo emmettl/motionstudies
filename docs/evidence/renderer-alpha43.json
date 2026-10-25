@@ -659,5 +659,57 @@
       ]
     ]
   ],
-  "hostedNote": "Initial post-push snapshot; public deployments continue. Private Local / Express and Underfall still encounter the previously recorded artifact storage quota."
+  "hostedNote": "Swiss production and freshness are verified. Paris full hosted regression and the Swiss pure-policy follow-up remain in progress at this snapshot. Private site uploads need an authorised account allowance/billing resolution; no mandatory artifact handoff was bypassed.",
+  "hostedChecks": {
+    "allchange": {
+      "run": 40227235456,
+      "conclusion": "success",
+      "cloudflareRun": 40227796260,
+      "cloudflareConclusion": "success"
+    },
+    "umlauf": {
+      "run": 40227246746,
+      "conclusion": "success",
+      "cloudflareRun": 40227691667,
+      "cloudflareConclusion": "success"
+    },
+    "norikae-main": {
+      "validationRun": 40227251970,
+      "validationConclusion": "success",
+      "pagesRun": 40227252006,
+      "pagesConclusion": "success",
+      "cloudflareRun": 40227403608,
+      "cloudflareConclusion": "success"
+    },
+    "gleislicht": {
+      "adoptionRun": 40227230375,
+      "adoptionConclusion": "success",
+      "cloudflareRun": 40229423237,
+      "cloudflareConclusion": "success",
+      "freshnessRun": 40229504916,
+      "freshnessConclusion": "success",
+      "serviceDate": "2026-10-25",
+      "feedVersion": "20261021",
+      "matchedTripUpdates": 1542,
+      "tomorrowReady": true,
+      "lintFollowupRun": 40227632424,
+      "lintFollowupConclusion": "in progress"
+    },
+    "correspondances": {
+      "run": 40227237517,
+      "conclusion": "in progress"
+    },
+    "local-express": {
+      "run": 40227240327,
+      "conclusion": "failure",
+      "browserPasses": 25,
+      "browserSkips": 3,
+      "failure": "Required site-artifact upload rejected by private storage quota"
+    },
+    "underfall": {
+      "run": 40227249206,
+      "conclusion": "failure",
+      "failure": "Code checks pass; required site-artifact upload rejected by private storage quota"
+    }
+  }
 }

@@ -32,3 +32,5 @@ All eight registry adoptions are pushed:
 | norikae-main | `main` | [`0b695314`](https://github.com/emmettl/norikae/commit/0b695314924d63527ef5b87fcb9a7f71ecaa94fe) |
 
 Switzerland's follow-up `c33819f` separates pure policies from component exports without changing its renderer behaviour. Existing root, Swiss and Underfall local work is preserved. The [release and rollout evidence](evidence/renderer-alpha43.json) distinguishes verified local/registry checks from hosted deployment state.
+
+At the recorded hosted snapshot, London, Berlin and NORIKAE main validation/Pages/Cloudflare succeed. Switzerland's main adoption, Cloudflare publication and public freshness succeed; its pure-policy lint follow-up is running. Paris's complete hosted regression suite is running. Local / Express's 25 browser cases pass (three skips), and Underfall's code checks pass; their required site-artifact uploads remain blocked by the private-storage quota. No deployment guard was bypassed. See the [failure-check record](FAILURE-CHECKS-2026-10-25.md).
