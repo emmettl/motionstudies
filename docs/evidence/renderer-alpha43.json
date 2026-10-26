@@ -659,7 +659,7 @@
       ]
     ]
   ],
-  "hostedNote": "Swiss production and freshness are verified. Paris full hosted regression and the Swiss pure-policy follow-up remain in progress at this snapshot. Private site uploads need an authorised account allowance/billing resolution; no mandatory artifact handoff was bypassed.",
+  "hostedNote": "All alpha.43 public adoption and follow-up gates recorded here succeeded. Private site uploads remain blocked pending an authorised account billing setup; no mandatory artifact handoff was bypassed.",
   "hostedChecks": {
     "allchange": {
       "run": 40227235456,
@@ -693,11 +693,13 @@
       "matchedTripUpdates": 1542,
       "tomorrowReady": true,
       "lintFollowupRun": 40227632424,
-      "lintFollowupConclusion": "in progress"
+      "lintFollowupConclusion": "success"
     },
     "correspondances": {
       "run": 40227237517,
-      "conclusion": "in progress"
+      "conclusion": "success",
+      "cloudflareRun": 40230870668,
+      "cloudflareConclusion": "success"
     },
     "local-express": {
       "run": 40227240327,
@@ -711,5 +713,13 @@
       "conclusion": "failure",
       "failure": "Code checks pass; required site-artifact upload rejected by private storage quota"
     }
+  },
+  "subsequentScheduledRefresh": {
+    "run": 40298429741,
+    "date": "2026-10-26",
+    "conclusion": "failure",
+    "sourceFailure": "National source-building process terminated with SIGKILL during PostBus road matching",
+    "publicationGate": "Rejected recovered 2026-10-25 data when 2026-10-26 was required; published site retained",
+    "relationship": "Later data-processing incident, separate from the successful renderer adoption"
   }
 }
