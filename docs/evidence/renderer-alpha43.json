@@ -659,7 +659,7 @@
       ]
     ]
   ],
-  "hostedNote": "All alpha.43 public adoption and follow-up gates recorded here succeeded. Private site uploads remain blocked pending an authorised account billing setup; no mandatory artifact handoff was bypassed.",
+  "hostedNote": "All alpha.43 adoption and follow-up checks succeeded, including the retried Local / Express and Underfall required artifact uploads. Underfall was published from its verified CI artifact using existing host authentication; live release identity and cache policies pass. Future automated Underfall publication requires its missing Cloudflare environment secret. No mandatory artifact handoff was bypassed.",
   "hostedChecks": {
     "allchange": {
       "run": 40227235456,
@@ -703,15 +703,28 @@
     },
     "local-express": {
       "run": 40227240327,
-      "conclusion": "failure",
+      "conclusion": "success",
       "browserPasses": 25,
       "browserSkips": 3,
-      "failure": "Required site-artifact upload rejected by private storage quota"
+      "requiredArtifactUpload": "success"
     },
     "underfall": {
       "run": 40227249206,
-      "conclusion": "failure",
-      "failure": "Code checks pass; required site-artifact upload rejected by private storage quota"
+      "conclusion": "success",
+      "requiredArtifactUpload": "success",
+      "cloudflareRun": 40342010408,
+      "cloudflareConclusion": "failure",
+      "cloudflareFailure": "Missing CLOUDFLARE_API_TOKEN in the cloudflare environment",
+      "hostPublication": {
+        "conclusion": "success",
+        "sourceRun": 40227249206,
+        "commit": "532dbe342366a7eedb260db4d507e34ece785c53",
+        "version": "3809b323-b8bd-4129-aaa1-a30650b30af8",
+        "url": "https://motionstudies.app/underfall/",
+        "contentSha256": "5929711f4816583b221b91b83bdd2b8d4ad177c7fd16559e133938de35fb9844",
+        "liveReleaseIdentity": "success",
+        "cachePolicies": "success"
+      }
     }
   },
   "subsequentScheduledRefresh": {
