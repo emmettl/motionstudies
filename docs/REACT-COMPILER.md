@@ -33,7 +33,7 @@ NORIKAE and Manifest have no convincing playback gain.
 ## What changed
 
 `lab/vite.config.mjs` enables `react({ compiler: { sources: ... } })` for the two
-measured source files listed in `config/react-compiler.mjs`. The `sources` option
+measured source files listed in `lab/react-compiler.mjs`. The `sources` option
 limits compilation while retaining the React plugin's normal file coverage for
 Fast Refresh. Three.js scenes, other components, existing manual memoization and
 the production package build remain unchanged. GRID/84 selects only
@@ -139,6 +139,13 @@ are in the same directory.
 [Native confirmation summary](evidence/react-compiler/native-confirmation-summary.json)
 contains the repeated NORIKAE, Underfall and Manifest samples.
 
+## Packed-consumer configuration
+
+The compiler source policy lives inside `lab/`, and the lab declares its own
+exact compiler dev dependency. The packed-consumer verifier copies that lab into
+an isolated directory; it must not depend on configuration files elsewhere in
+the workspace. Published package source remains uncompiled and ordinary JS.
+
 ## Validation
 
 The lab passed typechecking, the repository unit tests (505), hosting tests (16),
@@ -150,6 +157,8 @@ tests. Their required check/build commands also passed. Underfall passed its
 131 data tests and production build; its final browser suite passed 43 tests with one existing skipped case after
 the feed-history opt-out. Repository lint retains its
 pre-existing unused `extname` import warning in `check-edition-boundaries.mjs`.
+The final isolated release check also passed 100 packed-consumer browser tests
+(two skipped cases), the npm publication dry run, and all 40 loader browser tests.
 
 ## Reproducing the experiments
 

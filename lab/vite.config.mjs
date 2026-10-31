@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { labCompilerModules } from '../config/react-compiler.mjs'
+import { labCompilerModules } from './react-compiler.mjs'
 
 export default defineConfig({
   root: fileURLToPath(new URL('.', import.meta.url)),
