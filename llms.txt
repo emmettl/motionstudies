@@ -16,8 +16,8 @@ Each work begins with a place, a data source, and a visual claim. Scheduled move
 
 ## Research studies
 
-- [LUFT](https://motionstudies.app/luft/): A recorded day of European aircraft movement, routes, airport rhythms, and accumulating traces.
-- [PFAD](https://motionstudies.app/pfad/): A road search replayed at human scale, revealing the chosen route and the paths not taken.
+- [LUFT](https://luft.motionstudies.app/): A recorded day of European aircraft movement, routes, airport rhythms, and accumulating traces.
+- [PFAD](https://pfad.motionstudies.app/): A road search replayed at human scale, revealing the chosen route and the paths not taken.
 
 ## Optional
 
