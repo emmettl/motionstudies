@@ -36,12 +36,13 @@
     "feeds:evidence-plan": "node scripts/feed-evidence-plan.mjs",
     "feeds:observe": "node scripts/observe-feeds.mjs",
     "check:feed-observer": "tsc -p services/feed-observer",
-    "feeds:push": "node scripts/push-feed-health.mjs"
+    "feeds:push": "node scripts/push-feed-health.mjs",
+    "check:terrain-consumers": "node scripts/check-terrain-consumers.mjs"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.43",
-    "@motionstudies/three": "0.1.0-alpha.43",
-    "@motionstudies/web": "0.1.0-alpha.43",
+    "@motionstudies/core": "0.1.0-alpha.44",
+    "@motionstudies/three": "0.1.0-alpha.44",
+    "@motionstudies/web": "0.1.0-alpha.44",
     "@react-three/fiber": "9.8.2",
     "react": "19.3.1",
     "react-dom": "19.3.1",

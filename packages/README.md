@@ -305,3 +305,55 @@ Plain playback bars can use `@motionstudies/web/components/TimelineScrubber` wit
 `@motionstudies/three/RoadTrafficLayer` exports the default road layer and its props. Editions can supply a lazy `NetworkSceneExtensions.RoadLayer` to compose it with `RoadOverlay` labels, a stable `resolvePath`, a `createCurve`, `surfaceY` and `markerXOffset`. A path resolver returns coordinates, `undefined` to retain the source path, or `null` to omit an unresolved section. Its context includes topology, site IDs where available, endpoints and the source fallback. A curve implements `getPointAt(progress, target?)` and `getPoints(divisions?)`; the layer owns and disposes generated buffer geometry. Mainline picking metadata exposes vertex-aligned `roadIds` through `scenePickMetadata`; connectors carry no road IDs. Context rail infrastructure is decorative and does not publish active timetable indexes.
 
 Air and road code load lazily when their corresponding scene inputs are present. A suspended optional layer leaves the network mounted. Opening-transfer checks should count layers requested on opening and separately bound deferred closures, rather than treating every dynamic import as an opening request. The public scene owns React and GPU lifetimes; consumers do not rewrite installed renderer source.
+
+## Terrain primitives (0.1.0-alpha.44)
+
+- `@motionstudies/core/terrain`: local terrain points, north-to-south vertex grids,
+  3D path interpolation and source-labelled visibility masks. Masks control
+  presentation; they are not hydraulic obstructions. Extracted from Gleislicht's
+  measured-terrain paths; timetable binding stays in the edition.
+- `@motionstudies/data/terrain-raster`: bounded north-down raster windows,
+  pixel-centred bilinear sampling and vertex-grid resampling. The caller supplies
+  an elevation validity predicate (including nodata), CRS, vertical datum, source
+  selection, attribution and cache identity. No network or GeoTIFF dependency is
+  introduced; pass the bounded raster already read by the edition.
+- `@motionstudies/data/terrain-water`: projected polygon clipping and point-in-ring
+  tests extracted from Rigi ingestion. Lake-level estimation and hole composition
+  remain explicit edition policy.
+- `@motionstudies/three/terrain-surface`: CPU terrain geometry and GPU texture-height
+  surfaces, without React imports. Row zero is north (negative scene Z), elevation
+  is scene Y, geometry is centred, and widths/depths span first to last vertex.
+  Scale, exaggeration and elevation datum are explicit. GPU surfaces accept any
+  RGBA height channel, rebind ping-pong textures with `update()`, and dispose only
+  their own geometry/material with `dispose()`; textures remain caller-owned.
+  Custom fragment shaders receive `vBed` in source metres and `vNormal_` in local
+  Y-up coordinates. CPU colour attributes and all water physics remain edition-owned.
+
+A solver's cell-centred grid needs `(columns - 1) * dx` and `(rows - 1) * dx`
+vertex spans, with its origin shifted to the first cell centre. It is not the
+same footprint contract as an edge-to-edge raster. Texture row orientation must
+be adapted explicitly. GPU surfaces disable frustum culling until the caller
+supplies displaced bounds; CPU raycasting does not see texture displacement.
+These exports are introduced in coordinated release `0.1.0-alpha.44`. Earlier
+registry releases do not expose these subpaths.
+
+Reference consumer migrations are retained under `scripts/terrain-migrations/`. `gleislicht.patch` replaces the
+measured-terrain path/mask/mesh helpers and the Rigi raster/polygon helpers while
+retaining edition source checks, colours, timetable binding and metadata.
+`schwall.patch` uses the shared GPU terrain surface on the solver texture's alpha
+channel, explicitly adapts its south-to-north rows, and fixes vertex spacing to
+match the cell-centre contract. Water rendering stays with the solver.
+
+Run `npm run check:terrain-consumers -- --browser` from this repository. It builds
+and packs all four candidates, copies both sibling consumers to a temporary
+directory, checks/applies the patches there, physically installs the tarballs,
+runs the affected terrain/solver tests and both consumer typechecks/builds, then
+renders Schwall in Chromium and advances the solver through a texture swap.
+It leaves candidate consumers, a screenshot and tarball hashes in the printed
+temporary directory; it does not edit either edition or publish packages.
+Override sibling locations with `--gleislicht /path` and `--schwall /path`.
+The browser check uses Gleislicht's Playwright dependency and requires its
+Chromium binary. Release the new exports through the normal coordinated package
+release, update edition pins/locks, then apply the migration patches and run each
+edition's architecture checks. Candidate tarballs are test artifacts; publication uses the trusted release
+workflow and the retained, verified release tarballs.

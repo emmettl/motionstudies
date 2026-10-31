@@ -177,6 +177,7 @@ try {
   `
   await writeFile(join(consumer, 'smoke.mjs'), smoke)
   await cp(resolve('scripts/rail-contracts.typecheck.ts'), join(consumer, 'src/rail-contracts.ts'))
+  await cp(resolve('scripts/terrain-contracts.typecheck.ts'), join(consumer, 'src/terrain-contracts.ts'))
   run(process.execPath, ['smoke.mjs'], { cwd: consumer })
   run(process.execPath, ['node_modules/typescript/bin/tsc', '-p', 'tsconfig.json'], { cwd: consumer })
   run(process.execPath, ['node_modules/vite/bin/vite.js', 'build'], { cwd: consumer })

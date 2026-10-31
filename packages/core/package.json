@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.1.0-alpha.43",
+  "version": "0.1.0-alpha.44",
   "private": true,
   "type": "module",
   "exports": {
@@ -48,7 +48,8 @@
     "./timeline": "./src/timeline.ts",
     "./render-frame": "./src/render-frame.ts",
     "./map-labels": "./src/map-labels.ts",
-    "./air-enrichment": "./src/air-enrichment.ts"
+    "./air-enrichment": "./src/air-enrichment.ts",
+    "./terrain": "./src/terrain.ts"
   },
   "description": "Transport contracts and motion primitives for Motion Studies.",
   "sideEffects": false,

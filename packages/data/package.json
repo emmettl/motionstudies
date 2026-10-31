@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/data",
-  "version": "0.1.0-alpha.43",
+  "version": "0.1.0-alpha.44",
   "private": true,
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
@@ -111,10 +111,18 @@
     "./edition-boundary": {
       "types": "./src/edition-boundary.d.mts",
       "import": "./src/edition-boundary.mjs"
+    },
+    "./terrain-raster": {
+      "types": "./src/terrain-raster.d.mts",
+      "import": "./src/terrain-raster.mjs"
+    },
+    "./terrain-water": {
+      "types": "./src/terrain-water.d.mts",
+      "import": "./src/terrain-water.mjs"
     }
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.43",
+    "@motionstudies/core": "0.1.0-alpha.44",
     "fast-xml-parser": "5.11.2",
     "@babel/parser": "7.29.9"
   },

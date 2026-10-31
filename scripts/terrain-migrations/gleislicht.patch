@@ -1,0 +1,158 @@
+--- a/src/studies/measured-terrain.ts
++++ b/src/studies/measured-terrain.ts
+@@ -1,18 +1,20 @@
+ import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
+
+-export type TerrainPoint = [number, number, number]
+-export type MeasuredTerrainRoute = { routeId: string; legIndex: number; vehicle: 'train' | 'cogwheel' | 'funicular'; points: TerrainPoint[]; stops: { id: string; name: string; progress: number }[]; maskedRanges: { start: number; end: number; names: string[]; kinds: string[]; reason: 'tunnel' | 'covered' | 'alignment' }[] }
++import { terrainPathDistances as railSamples, terrainMaskAt, type TerrainPoint, type TerrainGrid, type TerrainPathMask } from '@motionstudies/core/terrain'
++export { terrainPathDistances as railSamples, terrainPathPoint as railPoint } from '@motionstudies/core/terrain'
++export type { TerrainPoint } from '@motionstudies/core/terrain'
++export type MeasuredTerrainRoute = { routeId: string; legIndex: number; vehicle: 'train' | 'cogwheel' | 'funicular'; points: TerrainPoint[]; stops: { id: string; name: string; progress: number }[]; maskedRanges: TerrainPathMask[] }
+ export type MeasuredTerrain = {
+  id: string; version: 1; viewScale?: number; contextTracks?: TerrainPoint[][]
+  metadata: { serviceDate: string; feedVersion: string; timetableSha256: string; source: string; terrainRelease: string; terrainProductUrl: string; railProductUrl: string; attribution: string }
+  origin: { easting: number; northing: number }
+- terrain: { rows: number; columns: number; widthMetres: number; depthMetres: number; minElevation: number; maxElevation: number; elevations: number[] }
++ terrain: TerrainGrid & { minElevation: number; maxElevation: number; elevations: number[] }
+  routes: MeasuredTerrainRoute[]
+ }
+ export type TerrainWindow = { start: number; end: number; legIndex: number }
+ export type MeasuredTerrainBinding = { data: MeasuredTerrain; routes: { route: MeasuredTerrainRoute; calls: { name: string; arrival: number; departure: number; progress: number }[] }[]; windows: TerrainWindow[] }
+ const root = (id: string | undefined) => id?.match(/^ch:1:sloid:\d+/)?.[0]
+-const visible = (route: MeasuredTerrainRoute, progress: number) => !route.maskedRanges.some(r => progress>=r.start && progress<=r.end)
++const visible = (route: MeasuredTerrainRoute, progress: number) => !terrainMaskAt(route.maskedRanges, progress)
+ export function bindMeasuredTerrain(value: unknown, network: NetworkSnapshot, sequence: { id: string; legs: { train: NetworkSnapshot['trains'][number]; departure: number; arrival: number; vehicle: 'train' | 'cogwheel' | 'funicular' }[]; allowOmittedStops?: boolean }): MeasuredTerrainBinding | undefined {
+  try {
+  const data=value as MeasuredTerrain | undefined
+@@ -62,19 +64,7 @@
+    const a=calls[j],b=calls[j+1]
+    if(time>=b.arrival)continue
+    const stopped=time<=a.departure,progress=stopped?a.progress:a.progress+(b.progress-a.progress)*(time-a.departure)/(b.arrival-a.departure)
+-   return {legIndex:i,route,progress,stopped,from:a.name,to:stopped?a.name:b.name,mask:route.maskedRanges.find(r=>progress>=r.start && progress<=r.end)}
++   return {legIndex:i,route,progress,stopped,from:a.name,to:stopped?a.name:b.name,mask:terrainMaskAt(route.maskedRanges, progress)}
+   }
+  }
+ }
+-export function railSamples(points: TerrainPoint[]) {
+- const distances=[0]
+- for(let i=1;i<points.length;i++)distances.push(distances[i-1]+Math.hypot(...points[i].map((n,j)=>n-points[i-1][j])))
+- return distances
+-}
+-export function railPoint(points: TerrainPoint[], distances: number[], progress: number): TerrainPoint {
+- const d=Math.max(0,Math.min(1,progress))*distances.at(-1)!
+- let lo=1,hi=distances.length-1
+- while(lo<hi){const mid=(lo+hi)>>1;if(distances[mid]<d)lo=mid+1;else hi=mid}
+- const t=(d-distances[lo-1])/(distances[lo]-distances[lo-1] || 1)
+- return points[lo-1].map((n,i)=>n+(points[lo][i]-n)*t) as TerrainPoint
+-}
+--- a/src/studies/MeasuredTerrainScene.tsx
++++ b/src/studies/MeasuredTerrainScene.tsx
+@@ -1,3 +1,5 @@
++import { createTerrainGeometry } from '@motionstudies/three/terrain-surface'
++import { terrainSegmentMasked } from '@motionstudies/core/terrain'
+ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+ import { Canvas, useFrame, useThree } from '@react-three/fiber'
+ import { BufferGeometry, Float32BufferAttribute, PerspectiveCamera, Vector3 } from 'three'
+@@ -9,22 +11,20 @@
+   const frames = useRef(0)
+   useFrame(() => { if (++frames.current === 3) onReady() })
+   const geometry = useMemo(() => {
+-    const mesh = new BufferGeometry(), vertices: number[] = [], indices: number[] = [], colors: number[] = []
++    const mesh = createTerrainGeometry(grid, { metresPerUnit: SCALE }), colors: number[] = []
+     for (let y=0;y<grid.rows;y++) for(let x=0;x<grid.columns;x++) {
+       const height=grid.elevations[y*grid.columns+x]
+-      vertices.push((x/(grid.columns-1)-.5)*grid.widthMetres/SCALE, height/SCALE, (y/(grid.rows-1)-.5)*grid.depthMetres/SCALE)
+       const snow=Math.max(0,Math.min(1,(height-2400)/1100))
+       colors.push(.13+snow*.38,.21+snow*.36,.25+snow*.39)
+-      if(x<grid.columns-1 && y<grid.rows-1) { const i=y*grid.columns+x;indices.push(i,i+grid.columns,i+1,i+1,i+grid.columns,i+grid.columns+1) }
+     }
+-    mesh.setAttribute('position',new Float32BufferAttribute(vertices,3));mesh.setAttribute('color',new Float32BufferAttribute(colors,3));mesh.setIndex(indices);mesh.computeVertexNormals()
++    mesh.setAttribute('color',new Float32BufferAttribute(colors,3))
+     return mesh
+   },[grid,SCALE])
+   const lines = useMemo(() => binding.routes.map(({route}) => {
+     const distances=railSamples(route.points), vertices:number[]=[]
+     for(let i=1;i<route.points.length;i++) {
+       const start=distances[i-1]/distances.at(-1)!,end=distances[i]/distances.at(-1)!
+-      if(route.maskedRanges.some(r=>r.start<=end && r.end>=start))continue
++      if(terrainSegmentMasked(route.maskedRanges,start,end))continue
+       for(const p of [route.points[i-1],route.points[i]])vertices.push(p[0]/SCALE,p[2]/SCALE,p[1]/SCALE)
+     }
+     return { geometry:new BufferGeometry().setAttribute('position',new Float32BufferAttribute(vertices,3)),distances }
+--- a/scripts/ingest-rigi-terrain.mjs
++++ b/scripts/ingest-rigi-terrain.mjs
+@@ -1,3 +1,6 @@
++import { sampleRaster, rasterWindow, rasterToTerrainGrid } from '@motionstudies/data/terrain-raster'
++import { clipRingToBounds, pointInRing as contains } from '@motionstudies/data/terrain-water'
++export { clipRingToBounds } from '@motionstudies/data/terrain-water'
+ import { createHash } from 'node:crypto'
+ import { readFile, writeFile } from 'node:fs/promises'
+ import { fromUrl } from 'geotiff'
+@@ -49,42 +52,14 @@
+   return { train, points: dense, length, stops: train.stops.map(([index, arrival, departure], i) => ({ name: network.stops[index][2], progress: stopDistances[i] / length, departure: i === train.stops.length - 1 ? arrival : departure })) }
+ }
+
++// Swiss source policy stays here; the shared sampler also supports other datums/nodata.
++const validElevation = value => value >= 0 && value <= 5000
+ export function sampleElevation(raster, easting, northing) {
+-  const x = (easting - raster.origin[0]) / raster.resolution[0] - 0.5 - raster.window[0]
+-  const y = (northing - raster.origin[1]) / raster.resolution[1] - 0.5 - raster.window[1]
+-  if (x < 0 || y < 0 || x > raster.width - 1 || y > raster.height - 1) throw new Error('Elevation query outside cached raster')
+-  const a = Math.floor(x), b = Math.floor(y), tx = x - a, ty = y - b
+-  const at = (c, r) => {
+-    const value = raster.values[Math.min(r, raster.height - 1) * raster.width + Math.min(c, raster.width - 1)]
+-    if (!Number.isFinite(value) || value < 0 || value > 5000) throw new Error('Invalid Swiss terrain sample')
+-    return value
++  try { return sampleRaster(raster, easting, northing, validElevation) }
++  catch (error) {
++    if (error.message === 'Invalid terrain sample') throw new Error('Invalid Swiss terrain sample')
++    throw error
+   }
+-  const result = (at(a, b) * (1 - tx) + at(a + 1, b) * tx) * (1 - ty) + (at(a, b + 1) * (1 - tx) + at(a + 1, b + 1) * tx) * ty
+-  if (!Number.isFinite(result) || result < 0 || result > 5000) throw new Error('Invalid Swiss terrain sample')
+-  return result
+-}
+-
+-export function clipRingToBounds(ring, bounds) {
+-  let result = ring
+-  for (const [axis, edge, sign] of [[0, bounds.minEasting, 1], [0, bounds.maxEasting, -1], [1, bounds.minNorthing, 1], [1, bounds.maxNorthing, -1]]) {
+-    const next = []
+-    for (let i = 0; i < result.length; i++) {
+-      const a = result[i], b = result[(i + 1) % result.length], ai = sign * (a[axis] - edge) >= 0, bi = sign * (b[axis] - edge) >= 0
+-      if (ai) next.push(a)
+-      if (ai !== bi) { const t = (edge - a[axis]) / (b[axis] - a[axis]); next.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]) }
+-    }
+-    result = next
+-  }
+-  return result
+-}
+-
+-function contains(point, ring) {
+-  let inside = false
+-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+-    const a = ring[i], b = ring[j]
+-    if ((a[1] > point[1]) !== (b[1] > point[1]) && point[0] < (b[0] - a[0]) * (point[1] - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside
+-  }
+-  return inside
+ }
+
+ async function main() {
+@@ -105,7 +80,7 @@
+     const tiff = await fromUrl(asset.href, { allowFullFile: false })
+     const image = await tiff.getImage(0), origin = image.getOrigin(), resolution = image.getResolution()
+     if (resolution[0] !== 10 || resolution[1] !== -10) throw new Error('Unexpected native terrain grid')
+-    const window = [Math.floor((bounds.minEasting - origin[0]) / 10) - 2, Math.floor((origin[1] - bounds.maxNorthing) / 10) - 2, Math.ceil((bounds.maxEasting - origin[0]) / 10) + 2, Math.ceil((origin[1] - bounds.minNorthing) / 10) + 2]
++    const window = rasterWindow(bounds, origin, resolution)
+     const values = await image.readRasters({ window, samples: [0], interleave: true })
+     raster = { bounds, origin, resolution, window, width: values.width, height: values.height, assetChecksum: asset['file:checksum'], values: [...values] }
+     if (cacheFile) await writeFile(cacheFile, JSON.stringify(raster))
+@@ -114,7 +89,7 @@
+   const origin = { easting: (bounds.minEasting + bounds.maxEasting) / 2, northing: (bounds.minNorthing + bounds.maxNorthing) / 2 }
+   const local = p => [Number((p[0] - origin.easting).toFixed(2)), Number((origin.northing - p[1]).toFixed(2))]
+   const gridPoints = Array.from({ length: columns * rows }, (_, i) => [bounds.minEasting + (i % columns) * width / (columns - 1), bounds.maxNorthing - Math.floor(i / columns) * depth / (rows - 1)])
+-  const elevations = gridPoints.map(p => Math.round(sampleElevation(raster, ...p)))
++  const elevations = rasterToTerrainGrid(raster, bounds, columns, rows, validElevation).elevations.map(Math.round)
+   const lakeBytes = await readFile(argument('lakes', 'public/data/swiss-lakes.json'))
+   const lakes = JSON.parse(lakeBytes).lakes.filter(l => APPROACHES[id].lakeIds.includes(l.id)).flatMap(water => water.polygons.flatMap(polygon => {
+     const rings = polygon.map(ring => clipRingToBounds(ring.map(coordinate), bounds))
