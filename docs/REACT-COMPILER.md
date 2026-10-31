@@ -30,6 +30,23 @@ changes are **−5.7%, −8.3% and −10.8%**, respectively. Their added emitted
 across both rounds. Underfall also improved playback CPU by 6.9% in confirmation;
 NORIKAE and Manifest have no convincing playback gain.
 
+## Vite 8.3.5 follow-up
+
+The pending lab and Underfall rollouts now use exact Vite 8.3.5; GRID/84 was
+already measured on that version. The original results above remain historical
+8.3.4 measurements for the other applications. Vite 8.3.5 includes build import-map
+hashing and HMR fixes; it does not change the React plugin's native compiler
+peer requirement, so compiler 0.152 and Underfall's explicit opt-out remain.
+
+Three new paired runs on 8.3.5 retained the compiler benefit: lab timeline seek
+CPU −15.8%; Underfall playback and seek CPU both −8.9%. These compare compiler
+on/off within the new toolchain, not Vite 8.3.5 against 8.3.4. They do not establish
+an additional runtime speedup caused by the Vite patch itself.
+
+[Lab follow-up](evidence/react-compiler/vite-835-lab-summary.json) and
+[Underfall follow-up](evidence/react-compiler/vite-835-underfall-summary.json)
+include absolute timings and matching compressed raw samples.
+
 ## What changed
 
 `lab/vite.config.mjs` enables `react({ compiler: { sources: ... } })` for the two

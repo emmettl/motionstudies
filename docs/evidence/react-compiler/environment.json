@@ -18,5 +18,15 @@
   "runs": 3,
   "playbackMs": 3500,
   "seekSteps": 120,
-  "decision": "Selective lab, GRID/84, NORIKAE, Underfall and Manifest adoption; no package release"
+  "decision": "Selective lab, GRID/84, NORIKAE, Underfall and Manifest adoption; no package release",
+  "followup": {
+    "vite": "8.3.5",
+    "targets": [
+      "lab:timeline",
+      "underfall"
+    ],
+    "runs": 3,
+    "compiler": "0.152.0",
+    "comparison": "compiler on/off within Vite 8.3.5"
+  }
 }
