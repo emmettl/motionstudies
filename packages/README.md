@@ -353,7 +353,7 @@ It leaves candidate consumers, a screenshot and tarball hashes in the printed
 temporary directory; it does not edit either edition or publish packages.
 Override sibling locations with `--gleislicht /path` and `--schwall /path`.
 The browser check uses Gleislicht's Playwright dependency and requires its
-Chromium binary. Release the new exports through the normal coordinated package
-release, update edition pins/locks, then apply the migration patches and run each
-edition's architecture checks. Candidate tarballs are test artifacts; publication uses the trusted release
-workflow and the retained, verified release tarballs.
+Chromium binary. Alpha.44 is published and both consumer working trees have been
+migrated to exact registry pins with architecture checks passing. The command
+also accepts already-applied migrations. Candidate tarballs remain test artifacts;
+publication uses the trusted workflow and its retained, verified release tarballs.

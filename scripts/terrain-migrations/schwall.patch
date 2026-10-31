@@ -46,7 +46,7 @@
    // PlaneGeometry's uv.y runs bottom to top, matching texture rows j = 0..ny-1.
    return new PlaneGeometry(width, depth, spec.nx - 1, spec.ny - 1)
  }
-@@ -117,25 +102,33 @@
+@@ -117,25 +102,31 @@
      uExaggeration: { value: exaggeration },
    })
    const geometry = plane(spec)
@@ -60,14 +60,13 @@
 -  }))
 +  const layer = createHeightfieldSurface({ rows: spec.ny, columns: spec.nx, widthMetres: (spec.nx - 1) * spec.dx, depthMetres: (spec.ny - 1) * spec.dx }, state, {
 +    channel: 3, rowOrder: 'south-to-north', metresPerUnit: METRES_PER_UNIT,
-+    verticalExaggeration: exaggeration, fragmentShader: terrainFragment,
++    verticalExaggeration: exaggeration, fragmentShader: terrainFragment, wireframe: false,
 +  })
 +  const terrain = layer.mesh
-+  const wireMaterial = terrain.material.clone()
-+  wireMaterial.fragmentShader = wireFragment
-+  wireMaterial.wireframe = true
-+  wireMaterial.transparent = true
-+  wireMaterial.depthWrite = false
++  const wireMaterial = new ShaderMaterial({
++    glslVersion: GLSL3, vertexShader: terrain.material.vertexShader, fragmentShader: wireFragment,
++    uniforms: terrain.material.uniforms, wireframe: true, transparent: true, depthWrite: false,
++  })
 +  const wire = new Mesh(terrain.geometry, wireMaterial)
 +  wire.frustumCulled = false
    const water = new Mesh(geometry, new ShaderMaterial({
@@ -84,7 +83,6 @@
    const update = () => {
 -    for (const m of [terrain, wire, water]) (m.material as ShaderMaterial).uniforms.uState.value = state()
 +    layer.update()
-+    wireMaterial.uniforms.uHeight.value = state()
 +    water.material.uniforms.uState.value = state()
    }
 -  return { terrain, wire, water, update }

@@ -1,0 +1,87 @@
+{
+  "version": "0.1.0-alpha.44",
+  "tag": "next",
+  "date": "2026-10-31",
+  "sourceCommit": "c91293701a65bf72846e271ec32f240a881ac091",
+  "workflow": "https://github.com/emmettl/motionstudies/actions/runs/41199053207",
+  "registryArchives": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.44",
+      "integrity": "sha512-G4kPatSRltW05/oRmRAzu+MncUMb0/GJ//gUIKVYUwcEuqccTSoRWmVOi+dFZppNtqRMWPxxEvuNnACXkwFEdA==",
+      "bytes": 74806,
+      "verified": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.44",
+      "integrity": "sha512-bKIikXollQISoLIEVqlWHsBufBsUOwxlK4S7l0m7mXDTMEQvTHdBjuDX+RepDtsSP/0REIyjPXJhjoTDixqM2w==",
+      "bytes": 81579,
+      "verified": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.44",
+      "integrity": "sha512-PAPTD3kTvR4KQuaOh0D4rHIU7M2/2gEoMW5fRbXnbNhnoZEAPrgFkx8jvOip343oc296JJH6AURbblmtQKel6Q==",
+      "bytes": 107688,
+      "verified": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.44",
+      "integrity": "sha512-uY5CXp194ZH8N9qtREiM0OxGWQGVroT6bzdbHXhWoYnMclgRK6+ZuZiPLzqhKCdYAA2FI4gifU7I03ktjusGHw==",
+      "bytes": 331051,
+      "verified": true
+    }
+  ],
+  "verification": {
+    "workspaceVitest": 501,
+    "hostingNodeTests": 11,
+    "packedBrowserPassed": 100,
+    "packedBrowserSkipped": 2,
+    "loaderBrowserPassed": 40,
+    "publicationDryRun": true,
+    "hostedTrustedRelease": "success"
+  },
+  "adoptions": {
+    "gleislicht": {
+      "registryPins": "0.1.0-alpha.44",
+      "cleanNpmCi": true,
+      "architecture": true,
+      "typecheck": true,
+      "build": true,
+      "terrainUnitTests": 43,
+      "terrainBrowserTests": 8
+    },
+    "schwall": {
+      "registryPins": "0.1.0-alpha.44",
+      "cleanNpmCi": true,
+      "architecture": true,
+      "typecheck": true,
+      "build": true,
+      "solverUnitTests": 6,
+      "viewerAdvancedSeconds": 0.5,
+      "pageAndShaderErrors": [],
+      "materialWarnings": []
+    }
+  },
+  "gleislichtFirstViewComparison": {
+    "before": {
+      "javaScript": 386705,
+      "css": 8163
+    },
+    "after": {
+      "javaScript": 386714,
+      "css": 8163
+    },
+    "deltaBytes": 9,
+    "existingDataBudgetOverageKiB": 0.8,
+    "budgetGate": "pre-existing failure on both alpha.43 and alpha.44; total 808.8 KiB against 808 KiB; data and CSS unchanged"
+  },
+  "notes": [
+    "Consumer changes are local working-tree changes; no consumer website deployment was requested.",
+    "Schwall wireframe shares the GPU surface uniforms instead of cloning the render-target texture.",
+    "Schwall supplies wireframe: false explicitly to the shared surface material.",
+    "The solver and water rendering stay in Schwall."
+  ]
+}

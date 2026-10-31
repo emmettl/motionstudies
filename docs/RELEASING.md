@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.43` under `next`, published from `f999fe5` through [trusted run 40226379338](https://github.com/emmettl/motionstudies/actions/runs/40226379338). All four registry integrities and downloaded archives match the tested tarballs; see the [renderer policies and refactor release record](RENDERER-POLICIES-ALPHA-43.md).
+The latest verified coordinated release is `0.1.0-alpha.44` under `next`, published from `c912937` through [trusted run 41199053207](https://github.com/emmettl/motionstudies/actions/runs/41199053207). All four registry integrities and downloaded archives match the tested tarballs. Gleislicht and Schwall adopt the terrain exports through exact registry pins; see the [terrain release evidence](evidence/terrain-alpha44.json).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -40,6 +40,8 @@ The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstud
 After a successful OIDC publication, revoke the bootstrap token in npm and delete the GitHub `NPM_TOKEN` secret. npm's “Require two-factor authentication and disallow tokens” setting is compatible with trusted publishers.
 
 ## Release history
+
+`0.1.0-alpha.44` publishes terrain grids, path sampling and visibility masks in core, bounded raster/grid and polygon preparation in data, and CPU/GPU terrain surfaces in three. Gleislicht adopts the extracted helpers; Schwall adopts GPU terrain displacement directly from its solver texture. The existing Gleislicht transfer-budget overage reproduces on alpha.43; the migration changes opening code by only 9 gzip bytes. See the [release evidence](evidence/terrain-alpha44.json).
 
 `0.1.0-alpha.43` replaces Switzerland's renderer source rewrites with supported policies and extracts private label/selection layers. All four registry artifacts and eight clean edition installs are verified; see the [release record](RENDERER-POLICIES-ALPHA-43.md). The bounded transform-caching prototype is excluded.
 
