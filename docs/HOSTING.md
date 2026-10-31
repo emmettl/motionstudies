@@ -15,7 +15,7 @@ All seven public editions are hosted directly by individual Cloudflare Workers S
 | `/norikae/` | Tokyo | `norikae-hosting` |
 | `/manifest/` | World trade | `manifest-hosting` |
 | `/zugunruhe/` | Bird migration studies | `zugunruhe-hosting` |
-| `/luft/` | Flights over Europe (research) | `luft-hosting` |
+| `/luft/` and `luft.motionstudies.app` | Flights over Europe (research) | `luft-hosting` |
 | `/grid84/` | Grid/84 Terminal Atlas (adjunct) | `grid84-hosting` |
 | `/underfall/` | Bristol (research, unlisted) | `underfall-hosting` |
 | `/pfad/` | Swiss pathfinding (first connectivity study) | `pfad-hosting` |
@@ -227,9 +227,12 @@ runs, using the same deployment credential provisioning as the other editions.
 
 ## LUFT hosting
 
-[LUFT](https://motionstudies.app/luft/) is a research study with a parallel
+[LUFT](https://luft.motionstudies.app/) is a research study with a parallel
 [GitHub Pages copy](https://emmettl.github.io/luft/). `luft-hosting` owns
-`motionstudies.app/luft*` and serves the complete successful `Check and deploy LUFT`
+`motionstudies.app/luft*` and the custom domain `luft.motionstudies.app`.
+The subdomain handler maps root requests into the same `/luft/` asset namespace,
+preserves query strings and missing-file 404 responses, and rewrites asset redirects
+back to the subdomain root. The publisher verifies both public addresses and serves the complete successful `Check and deploy LUFT`
 Pages artifact directly through Workers Static Assets. The recorded flight chunks,
 airport references and endpoint enrichment remain byte-identical to that artifact.
 All playback data is bundled; this route introduces no live-data service or R2 reads.

@@ -76,6 +76,9 @@
     "workflows": [
       "pages.yml",
       "daily-feed.yml"
+    ],
+    "additional_urls": [
+      "https://luft.motionstudies.app/"
     ]
   },
   "underfall": {
