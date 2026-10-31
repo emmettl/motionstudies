@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-31",
+  "timezone": "Europe/Zurich",
+  "cpu": "Apple M4 Max",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "node": "v26.13.0",
+  "playwright": "1.64.1",
+  "vite": "8.3.4",
+  "react": "19.3.1",
+  "pluginReact": "6.1.2",
+  "compiler": "0.152.0",
+  "cpuThrottling": 4,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "runs": 3,
+  "playbackMs": 3500,
+  "seekSteps": 120,
+  "decision": "Selective lab, GRID/84, NORIKAE, Underfall and Manifest adoption; no package release"
+}

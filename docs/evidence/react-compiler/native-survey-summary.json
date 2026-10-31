@@ -1,0 +1,716 @@
+[
+  {
+    "target": "lab",
+    "variants": {
+      "baseline": {
+        "buildMs": 259.96137500000003,
+        "gzipBytes": 383912,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 359.7130000000001,
+          "taskMs": 487.0309999999999,
+          "renders": 672,
+          "commits": 64,
+          "rendersPerCommit": 10.5,
+          "frameP95Ms": 16.799999999999272
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 430.40599999999995,
+          "taskMs": 618.661,
+          "renders": 2520,
+          "commits": 240,
+          "rendersPerCommit": 10.5,
+          "frameP95Ms": 16.799999999999272
+        }
+      },
+      "compiler": {
+        "buildMs": 271.82237499999997,
+        "gzipBytes": 418673,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 341.47099999999995,
+          "taskMs": 469.765,
+          "renders": 672,
+          "commits": 64,
+          "rendersPerCommit": 10.5,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 404.114,
+          "taskMs": 587.92,
+          "renders": 2520,
+          "commits": 240,
+          "rendersPerCommit": 10.5,
+          "frameP95Ms": 16.799999999999272
+        }
+      }
+    }
+  },
+  {
+    "target": "lab:timeline",
+    "variants": {
+      "baseline": {
+        "buildMs": 198.17016699999658,
+        "gzipBytes": 383912,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 9.327000000000002,
+          "taskMs": 97.051,
+          "renders": 0,
+          "commits": 0,
+          "rendersPerCommit": null,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 223.42499999999998,
+          "taskMs": 856.303,
+          "renders": 480,
+          "commits": 120,
+          "rendersPerCommit": 4,
+          "frameP95Ms": 16.799999999999272
+        }
+      },
+      "compiler": {
+        "buildMs": 215.48274999999558,
+        "gzipBytes": 418673,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 10.319000000000022,
+          "taskMs": 96.30699999999997,
+          "renders": 0,
+          "commits": 0,
+          "rendersPerCommit": null,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 191.172,
+          "taskMs": 813.8349999999999,
+          "renders": 480,
+          "commits": 120,
+          "rendersPerCommit": 4,
+          "frameP95Ms": 16.700000000000728
+        }
+      }
+    }
+  },
+  {
+    "target": "lab:hub",
+    "variants": {
+      "baseline": {
+        "buildMs": 225.24408299999777,
+        "gzipBytes": 383912,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 239.184,
+          "taskMs": 354.99800000000005,
+          "renders": 651,
+          "commits": 62,
+          "rendersPerCommit": 10.5,
+          "frameP95Ms": 16.800000000000182
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 269.016,
+          "taskMs": 427.49499999999995,
+          "renders": 2520,
+          "commits": 240,
+          "rendersPerCommit": 10.5,
+          "frameP95Ms": 16.799999999999272
+        }
+      },
+      "compiler": {
+        "buildMs": 254.69049999999697,
+        "gzipBytes": 418673,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 352.599,
+          "taskMs": 523.546,
+          "renders": 512,
+          "commits": 64,
+          "rendersPerCommit": 8,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 251.8109999999999,
+          "taskMs": 408.4590000000001,
+          "renders": 1920,
+          "commits": 240,
+          "rendersPerCommit": 8,
+          "frameP95Ms": 16.799999999999272
+        }
+      }
+    }
+  },
+  {
+    "target": "allchange",
+    "variants": {
+      "baseline": {
+        "buildMs": 187.31229100000928,
+        "gzipBytes": 431283,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 367.59299999999996,
+          "taskMs": 522.294,
+          "renders": 648,
+          "commits": 48,
+          "rendersPerCommit": 13.5,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 644.195,
+          "taskMs": 905.489,
+          "renders": 3249,
+          "commits": 241,
+          "rendersPerCommit": 13.5,
+          "frameP95Ms": 16.700000000000728
+        }
+      },
+      "compiler": {
+        "buildMs": 322.43004099998507,
+        "gzipBytes": 445520,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 330.196,
+          "taskMs": 474.79,
+          "renders": 624,
+          "commits": 48,
+          "rendersPerCommit": 13,
+          "frameP95Ms": 16.799999999999272
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 634.439,
+          "taskMs": 896.9919999999997,
+          "renders": 3120,
+          "commits": 240,
+          "rendersPerCommit": 13,
+          "frameP95Ms": 16.700000000000728
+        }
+      }
+    }
+  },
+  {
+    "target": "correspondances",
+    "variants": {
+      "baseline": {
+        "buildMs": 174.53941600001417,
+        "gzipBytes": 376202,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 393.2289999999999,
+          "taskMs": 523.1409999999998,
+          "renders": 759,
+          "commits": 46,
+          "rendersPerCommit": 16.5,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 640.0859999999999,
+          "taskMs": 879.839,
+          "renders": 3960,
+          "commits": 240,
+          "rendersPerCommit": 16.5,
+          "frameP95Ms": 16.799999999999272
+        }
+      },
+      "compiler": {
+        "buildMs": 224.0352079999866,
+        "gzipBytes": 384449,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 391.07500000000005,
+          "taskMs": 519.373,
+          "renders": 744,
+          "commits": 48,
+          "rendersPerCommit": 15.5,
+          "frameP95Ms": 16.799999999999727
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 634.3240000000001,
+          "taskMs": 871.9520000000001,
+          "renders": 3720,
+          "commits": 240,
+          "rendersPerCommit": 15.5,
+          "frameP95Ms": 16.799999999999272
+        }
+      }
+    }
+  },
+  {
+    "target": "gleislicht",
+    "variants": {
+      "baseline": {
+        "buildMs": 214.97587500000373,
+        "gzipBytes": 623092,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 482.5219999999999,
+          "taskMs": 705.7260000000001,
+          "renders": 828,
+          "commits": 46,
+          "rendersPerCommit": 18,
+          "frameP95Ms": 16.800000000000182
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 912.871,
+          "taskMs": 1205.9740000000004,
+          "renders": 4320,
+          "commits": 240,
+          "rendersPerCommit": 18,
+          "frameP95Ms": 16.799999999999272
+        }
+      },
+      "compiler": {
+        "buildMs": 1211.414625000034,
+        "gzipBytes": 663645,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 474.174,
+          "taskMs": 710.3650000000001,
+          "renders": 864,
+          "commits": 48,
+          "rendersPerCommit": 18,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 912.4020000000002,
+          "taskMs": 1197.3600000000001,
+          "renders": 4320,
+          "commits": 240,
+          "rendersPerCommit": 18,
+          "frameP95Ms": 16.800000000000182
+        }
+      }
+    }
+  },
+  {
+    "target": "luft",
+    "variants": {
+      "baseline": {
+        "buildMs": 173.90970799996285,
+        "gzipBytes": 267357,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 2323.578,
+          "taskMs": 3012.7210000000005,
+          "renders": 136,
+          "commits": 17,
+          "rendersPerCommit": 8,
+          "frameP95Ms": 33.30000000000018
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 2283.7660000000005,
+          "taskMs": 3701.651,
+          "renders": 1745,
+          "commits": 232,
+          "rendersPerCommit": 7.51948051948052,
+          "frameP95Ms": 50.100000000000364
+        }
+      },
+      "compiler": {
+        "buildMs": 202.75316699995892,
+        "gzipBytes": 272963,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 2415.984,
+          "taskMs": 3013.462,
+          "renders": 136,
+          "commits": 17,
+          "rendersPerCommit": 8,
+          "frameP95Ms": 16.800000000000182
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 2373.9790000000003,
+          "taskMs": 3856.6779999999994,
+          "renders": 1737,
+          "commits": 231,
+          "rendersPerCommit": 7.521739130434782,
+          "frameP95Ms": 50.100000000000364
+        }
+      }
+    }
+  },
+  {
+    "target": "norikae",
+    "variants": {
+      "baseline": {
+        "buildMs": 156.5054170000367,
+        "gzipBytes": 356708,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 274.67100000000005,
+          "taskMs": 399.2809999999999,
+          "renders": 704,
+          "commits": 64,
+          "rendersPerCommit": 11,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 433.71799999999996,
+          "taskMs": 630.7749999999999,
+          "renders": 2640,
+          "commits": 240,
+          "rendersPerCommit": 11,
+          "frameP95Ms": 16.799999999999272
+        }
+      },
+      "compiler": {
+        "buildMs": 155.46283399994718,
+        "gzipBytes": 360831,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 271.306,
+          "taskMs": 402.2950000000001,
+          "renders": 704,
+          "commits": 64,
+          "rendersPerCommit": 11,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 396.9360000000001,
+          "taskMs": 605.695,
+          "renders": 2640,
+          "commits": 240,
+          "rendersPerCommit": 11,
+          "frameP95Ms": 16.700000000000728
+        }
+      }
+    }
+  },
+  {
+    "target": "pfad",
+    "variants": {
+      "baseline": {
+        "buildMs": 170.43074999999953,
+        "gzipBytes": 278782,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 514.097,
+          "taskMs": 911.6949999999999,
+          "renders": 840,
+          "commits": 210,
+          "rendersPerCommit": 4,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 286.9790000000001,
+          "taskMs": 515.4930000000002,
+          "renders": 556,
+          "commits": 145,
+          "rendersPerCommit": 3.8344827586206898,
+          "frameP95Ms": 16.700000000000728
+        }
+      },
+      "compiler": {
+        "buildMs": 176.06091699999524,
+        "gzipBytes": 279887,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 520.951,
+          "taskMs": 927.4590000000001,
+          "renders": 840,
+          "commits": 210,
+          "rendersPerCommit": 4,
+          "frameP95Ms": 16.799999999999272
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 294.3769999999999,
+          "taskMs": 532.4090000000003,
+          "renders": 556,
+          "commits": 145,
+          "rendersPerCommit": 3.8344827586206898,
+          "frameP95Ms": 16.700000000000728
+        }
+      }
+    }
+  },
+  {
+    "target": "umlauf",
+    "variants": {
+      "baseline": {
+        "buildMs": 198.90187500003958,
+        "gzipBytes": 365388,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 253.72400000000005,
+          "taskMs": 357.98699999999997,
+          "renders": 621,
+          "commits": 54,
+          "rendersPerCommit": 11.5,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 402.44199999999995,
+          "taskMs": 540.7609999999999,
+          "renders": 2766,
+          "commits": 241,
+          "rendersPerCommit": 11.477178423236515,
+          "frameP95Ms": 16.799999999999272
+        }
+      },
+      "compiler": {
+        "buildMs": 191.8729999999632,
+        "gzipBytes": 372288,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 252.83100000000002,
+          "taskMs": 365.3810000000001,
+          "renders": 621,
+          "commits": 54,
+          "rendersPerCommit": 11.5,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 399.5270000000001,
+          "taskMs": 533.2889999999999,
+          "renders": 2760,
+          "commits": 240,
+          "rendersPerCommit": 11.5,
+          "frameP95Ms": 16.799999999999272
+        }
+      }
+    }
+  },
+  {
+    "target": "underfall",
+    "variants": {
+      "baseline": {
+        "buildMs": 203.87879200000316,
+        "gzipBytes": 424048,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 642.31,
+          "taskMs": 822.5170000000002,
+          "renders": 960,
+          "commits": 64,
+          "rendersPerCommit": 15,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 1917.897,
+          "taskMs": 2352.6690000000003,
+          "renders": 3640,
+          "commits": 243,
+          "rendersPerCommit": 14.979423868312757,
+          "frameP95Ms": 16.800000000000182
+        }
+      },
+      "compiler": {
+        "buildMs": 283.20549999992363,
+        "gzipBytes": 442032,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 610.188,
+          "taskMs": 769.1110000000001,
+          "renders": 960,
+          "commits": 64,
+          "rendersPerCommit": 15,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 1767.834,
+          "taskMs": 2193.621,
+          "renders": 3630,
+          "commits": 243,
+          "rendersPerCommit": 14.938271604938272,
+          "frameP95Ms": 16.799999999999272
+        }
+      }
+    }
+  },
+  {
+    "target": "zenit",
+    "variants": {
+      "baseline": {
+        "buildMs": 177.6681249999674,
+        "gzipBytes": 372176,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 1224.3490000000002,
+          "taskMs": 1433.5010000000002,
+          "renders": 836,
+          "commits": 209,
+          "rendersPerCommit": 4,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 0,
+          "scriptMs": null,
+          "taskMs": null,
+          "renders": null,
+          "commits": null,
+          "rendersPerCommit": null,
+          "frameP95Ms": null
+        }
+      },
+      "compiler": {
+        "buildMs": 218.1770419999957,
+        "gzipBytes": 372638,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 1252.997,
+          "taskMs": 1465.2059999999997,
+          "renders": 828,
+          "commits": 207,
+          "rendersPerCommit": 4,
+          "frameP95Ms": 16.799999999999727
+        },
+        "seek": {
+          "samples": 0,
+          "scriptMs": null,
+          "taskMs": null,
+          "renders": null,
+          "commits": null,
+          "rendersPerCommit": null,
+          "frameP95Ms": null
+        }
+      }
+    }
+  },
+  {
+    "target": "manifest",
+    "variants": {
+      "baseline": {
+        "buildMs": 58.83445800002664,
+        "gzipBytes": 103368,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 3271.8679999999995,
+          "taskMs": 3512.5040000000004,
+          "renders": 477,
+          "commits": 159,
+          "rendersPerCommit": 3,
+          "frameP95Ms": 33.40000000000009
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 2650.1899999999996,
+          "taskMs": 2997.739000000001,
+          "renders": 380,
+          "commits": 127,
+          "rendersPerCommit": 2.9921259842519685,
+          "frameP95Ms": 33.399999999999636
+        }
+      },
+      "compiler": {
+        "buildMs": 64.73554100003093,
+        "gzipBytes": 111133,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 3252.171,
+          "taskMs": 3508.041,
+          "renders": 527,
+          "commits": 176,
+          "rendersPerCommit": 3,
+          "frameP95Ms": 33.399999999999636
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 2423.1599999999994,
+          "taskMs": 2767.454999999999,
+          "renders": 380,
+          "commits": 127,
+          "rendersPerCommit": 2.9921259842519685,
+          "frameP95Ms": 33.399999999999636
+        }
+      }
+    }
+  },
+  {
+    "target": "grid84",
+    "variants": {
+      "baseline": {
+        "buildMs": 224.50333300000057,
+        "gzipBytes": 946967,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 4.471999999999997,
+          "taskMs": 30.03900000000001,
+          "renders": 0,
+          "commits": 0,
+          "rendersPerCommit": null,
+          "frameP95Ms": 16.799999999999272
+        },
+        "seek": {
+          "samples": 0,
+          "scriptMs": null,
+          "taskMs": null,
+          "renders": null,
+          "commits": null,
+          "rendersPerCommit": null,
+          "frameP95Ms": null
+        }
+      },
+      "compiler": {
+        "buildMs": 234.96858400001656,
+        "gzipBytes": 982168,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 3.1129999999999978,
+          "taskMs": 26.836,
+          "renders": 0,
+          "commits": 0,
+          "rendersPerCommit": null,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 0,
+          "scriptMs": null,
+          "taskMs": null,
+          "renders": null,
+          "commits": null,
+          "rendersPerCommit": null,
+          "frameP95Ms": null
+        }
+      }
+    }
+  }
+]
