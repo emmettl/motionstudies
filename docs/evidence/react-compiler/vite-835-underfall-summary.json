@@ -1,0 +1,53 @@
+[
+  {
+    "target": "underfall",
+    "variants": {
+      "baseline": {
+        "buildMs": 231.14712500000007,
+        "gzipBytes": 424016,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 634.938,
+          "taskMs": 787.101,
+          "renders": 960,
+          "commits": 64,
+          "rendersPerCommit": 15,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 1796.342,
+          "taskMs": 2200.223,
+          "renders": 3620,
+          "commits": 242,
+          "rendersPerCommit": 14.958677685950413,
+          "frameP95Ms": 16.800000000000182
+        }
+      },
+      "compiler": {
+        "buildMs": 296.2545,
+        "gzipBytes": 441807,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 578.5610000000001,
+          "taskMs": 733.377,
+          "renders": 960,
+          "commits": 64,
+          "rendersPerCommit": 15,
+          "frameP95Ms": 16.800000000000182
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 1636.416,
+          "taskMs": 2035.1209999999996,
+          "renders": 3610,
+          "commits": 242,
+          "rendersPerCommit": 14.917355371900827,
+          "frameP95Ms": 16.799999999999272
+        }
+      }
+    }
+  }
+]

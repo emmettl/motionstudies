@@ -1,0 +1,53 @@
+[
+  {
+    "target": "lab:timeline",
+    "variants": {
+      "baseline": {
+        "buildMs": 213.21854200000007,
+        "gzipBytes": 383862,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 3.450999999999982,
+          "taskMs": 28.11999999999998,
+          "renders": 0,
+          "commits": 0,
+          "rendersPerCommit": null,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 113.39100000000002,
+          "taskMs": 371.5729999999999,
+          "renders": 480,
+          "commits": 120,
+          "rendersPerCommit": 4,
+          "frameP95Ms": 16.700000000000728
+        }
+      },
+      "compiler": {
+        "buildMs": 192.81774999999993,
+        "gzipBytes": 386382,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 4.0879999999999805,
+          "taskMs": 32.23300000000001,
+          "renders": 0,
+          "commits": 0,
+          "rendersPerCommit": null,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 95.47500000000001,
+          "taskMs": 355.40500000000003,
+          "renders": 480,
+          "commits": 120,
+          "rendersPerCommit": 4,
+          "frameP95Ms": 16.700000000000728
+        }
+      }
+    }
+  }
+]

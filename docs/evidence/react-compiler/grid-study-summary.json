@@ -1,0 +1,53 @@
+[
+  {
+    "target": "grid84",
+    "variants": {
+      "baseline": {
+        "buildMs": 280.35112499999997,
+        "gzipBytes": 946967,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 39.17199999999998,
+          "taskMs": 230.4569999999999,
+          "renders": 0,
+          "commits": 0,
+          "rendersPerCommit": null,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 1780.6640000000002,
+          "taskMs": 2050.343,
+          "renders": 854,
+          "commits": 122,
+          "rendersPerCommit": 7,
+          "frameP95Ms": 16.800000000000182
+        }
+      },
+      "compiler": {
+        "buildMs": 240.19045900000003,
+        "gzipBytes": 982168,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 43.27100000000006,
+          "taskMs": 214.175,
+          "renders": 0,
+          "commits": 0,
+          "rendersPerCommit": null,
+          "frameP95Ms": 16.799999999999272
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 1688.3340000000003,
+          "taskMs": 1952.3709999999999,
+          "renders": 495,
+          "commits": 122,
+          "rendersPerCommit": 4.057377049180328,
+          "frameP95Ms": 16.800000000000182
+        }
+      }
+    }
+  }
+]
