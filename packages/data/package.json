@@ -126,6 +126,14 @@
     "fast-xml-parser": "5.11.2",
     "@babel/parser": "7.29.9"
   },
+  "peerDependencies": {
+    "@types/node": ">=22"
+  },
+  "peerDependenciesMeta": {
+    "@types/node": {
+      "optional": true
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emmettl/motionstudies.git",
