@@ -1,0 +1,25 @@
+# Motion Studies
+
+> A catalogue of authored works and research about transport, geography, and the patterns that movement reveals.
+
+Each work begins with a place, a data source, and a visual claim. Scheduled movement uses timetables and interpolated journeys; observed movement uses broadcast positions and smoothed trajectories; reconstructed movement uses aggregate flow and speed rather than individual tracking.
+
+## Catalogue
+
+- [Motion Studies](https://motionstudies.app/): Catalogue, descriptions of the works, and the approach to scheduled, observed, and reconstructed movement.
+
+## Live studies
+
+- [Gleislicht](https://motionstudies.app/gleislicht/): Switzerland's national clockwork revealed through rail, terrain, Takt, air, and road.
+- [All Change](https://motionstudies.app/allchange/): Physical London transforms into Beck-space while journeys continue uninterrupted.
+- [Correspondances](https://motionstudies.app/correspondances/): Paris Métro circulation and outward RER movements explore the relationship between centre and banlieue.
+
+## Research studies
+
+- [LUFT](https://motionstudies.app/luft/): A recorded day of European aircraft movement, routes, airport rhythms, and accumulating traces.
+- [PFAD](https://motionstudies.app/pfad/): A road search replayed at human scale, revealing the chosen route and the paths not taken.
+
+## Optional
+
+- [Widget lab](https://motionstudies.app/lab/): Interactive lab for shared Motion Studies widgets.
+- [Source repository](https://github.com/emmettl/motionstudies): Source code, shared packages, and project documentation.
