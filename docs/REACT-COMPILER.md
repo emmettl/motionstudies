@@ -141,14 +141,14 @@ contains the repeated NORIKAE, Underfall and Manifest samples.
 
 ## Validation
 
-The lab passed typechecking, the repository unit tests (505), hosting tests (11),
+The lab passed typechecking, the repository unit tests (505), hosting tests (16),
 architecture checks, its production build, and four production timeline tests
 covering Chromium and iPhone WebKit. GRID/84 passed typechecking, lint, 366 unit
 tests, build/prerender, and all eight production-browser tests. NORIKAE passed 28 data tests and 14 production-browser tests in Chromium and
-iPhone WebKit; Manifest passed 145 unit tests and 35 public/local-review browser
+iPhone WebKit (and 12 browser checks on the isolated main-based publication patch); Manifest passed 145 unit tests and 35 public/local-review browser
 tests. Their required check/build commands also passed. Underfall passed its
-131 data tests and production build; its full browser suite is rerun after the
-feed-history opt-out. Repository lint retains its
+131 data tests and production build; its final browser suite passed 43 tests with one existing skipped case after
+the feed-history opt-out. Repository lint retains its
 pre-existing unused `extname` import warning in `check-edition-boundaries.mjs`.
 
 ## Reproducing the experiments
