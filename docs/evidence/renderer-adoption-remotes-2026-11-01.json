@@ -1,5 +1,13 @@
 {
   "inspectedAt": "2026-11-01",
+  "registryTags": {
+    "checkedOnUtc": "2026-11-01",
+    "method": "npm view @motionstudies/{core,data,three,web} dist-tags --json; read-only host check",
+    "packages": ["@motionstudies/core", "@motionstudies/data", "@motionstudies/three", "@motionstudies/web"],
+    "latest": "0.1.0-alpha.0",
+    "next": "0.1.0-alpha.49",
+    "versionAvailability": "Not checked; recheck the selected release version before publishing."
+  },
   "scope": "Remote default-branch package manifests and targeted source excerpts; not deployed revisions or edition runtime validation.",
   "manifests": [
     {

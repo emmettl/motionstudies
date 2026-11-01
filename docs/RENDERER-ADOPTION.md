@@ -8,7 +8,9 @@ gates remain open; this document records a proposed order, not completed rollout
 
 ## Release prerequisite
 
-The workspace still carries coordinated version `0.1.0-alpha.49`. Existing
+The workspace still carries coordinated version `0.1.0-alpha.49`. A read-only npm
+registry check today confirms all four packages' `next` tags remain alpha.49
+(`latest` remains alpha.0). Existing
 registry archives cannot gain the new APIs through a merge. Prepare the next
 available coordinated version of all four packages, including internal pins,
 root/lab dependencies, lockfile and release workflow defaults, following
