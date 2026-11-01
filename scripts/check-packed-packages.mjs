@@ -87,6 +87,11 @@ try {
     import { startEditionDebug, registerDebugRenderer, editionDebugOptions } from '@motionstudies/three/debug'
     import { EditionDebug } from '@motionstudies/three/debug-fiber'
     export const debugContract = { startEditionDebug, registerDebugRenderer, editionDebugOptions, EditionDebug }
+    import { prepareNodeDebug, type NodeDebugSession } from '@motionstudies/three/debug-nodes'
+    import { createMotionUniforms } from '@motionstudies/three/motion-lerp'
+    import { createMotionLerpNodes, applyMotionLerpNodes } from '@motionstudies/three/motion-lerp-nodes'
+    export const nodeDebugContract: Promise<NodeDebugSession | undefined> = prepareNodeDebug({ edition: 'contract', build: 'test' })
+    export const nodeMotionContract = { nodes: createMotionLerpNodes(createMotionUniforms()), applyMotionLerpNodes }
     import { network } from './fixtures.ts'
     import { readAirEnrichment, createEndpointResolver, endpointCoverage } from '@motionstudies/core/air-enrichment'
     export const enrichmentContract = [readAirEnrichment, createEndpointResolver, endpointCoverage]

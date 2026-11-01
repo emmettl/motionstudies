@@ -8,5 +8,5 @@ export default defineConfig({
   base: './',
   plugins: [react({ compiler: { sources: labCompilerModules.map(file => `/packages/web/src/${file}`) } })],
   server: { proxy: { '/api/airports/': { target: process.env.MOTION_AIRPORT_WORKER_URL ?? 'https://motionstudies.app', changeOrigin: true, headers: { Origin: 'https://motionstudies.app' } } } },
-  build: { target: 'es2022', rolldownOptions: { input: { main: fileURLToPath(new URL('index.html', import.meta.url)), host: fileURLToPath(new URL('host.html', import.meta.url)) } } },
+  build: { target: 'es2022', rolldownOptions: { input: { main: fileURLToPath(new URL('index.html', import.meta.url)), host: fileURLToPath(new URL('host.html', import.meta.url)), motion: fileURLToPath(new URL('gpu-motion.html', import.meta.url)) } } },
 })

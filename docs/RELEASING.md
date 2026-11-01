@@ -4,6 +4,10 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
+The alpha.49 candidate adds optional windowed motion-LERP node materials and
+backend-aware node-renderer diagnostics. See [shared WebGPU adapters](WEBGPU-SUPPORT.md).
+It retains the existing WebGL scenes and uses the coordinated version policy.
+
 The latest verified coordinated release is `0.1.0-alpha.48` under `next`, published from `968bfb4` through [trusted run 41320101094](https://github.com/emmettl/motionstudies/actions/runs/41320101094). All four registry integrities and downloaded archives match the CI-tested tarballs byte-for-byte, and all four `next` tags were verified. Gleislicht and KRAFT adopt the release through clean registry installs. See [edition GPU debugging](EDITION-GPU-DEBUG.md) and the [release evidence](evidence/edition-debug-alpha48.json).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
