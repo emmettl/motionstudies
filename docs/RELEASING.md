@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.46` prepares the opt-in weather evidence contract, offline grid adapters, verified asset decoder and two-frame GPU playback. See [weather infrastructure](WEATHER-FIELDS.md) for semantics, consumer migrations and validation. Publication status is recorded separately from this implementation entry.
+
 `0.1.0-alpha.45` adds optional source-hash and exact-import-count verification for audited local generated modules in the edition boundary checker. Static dependencies remain checked, computed imports remain rejected by default, and unused or stale approvals fail. Schwall uses this for its independently verified CPU-reference generator.
 
 `0.1.0-alpha.44` publishes terrain grids, path sampling and visibility masks in core, bounded raster/grid and polygon preparation in data, and CPU/GPU terrain surfaces in three. Gleislicht adopts the extracted helpers; Schwall adopts GPU terrain displacement directly from its solver texture. The existing Gleislicht transfer-budget overage reproduces on alpha.43; the migration changes opening code by only 9 gzip bytes. See the [release evidence](evidence/terrain-alpha44.json).

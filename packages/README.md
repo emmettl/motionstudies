@@ -357,3 +357,7 @@ Chromium binary. Alpha.44 is published and both consumer working trees have been
 migrated to exact registry pins with architecture checks passing. The command
 also accepts already-applied migrations. Candidate tarballs remain test artifacts;
 publication uses the trusted workflow and its retained, verified release tarballs.
+
+## Weather evidence and rendering resources
+
+See [shared weather fields](https://github.com/emmettl/motionstudies/blob/main/docs/WEATHER-FIELDS.md) for the source contract and extraction boundaries. Opt-in exports are `core/domain/weather-field`, `data/weather`, `three/weather-textures` and `web/weather-assets`. They preserve source units, interval means/totals, missing values, evidence kinds and provenance while sharing offline compilation, verified decoding and GPU playback. Edition-specific appearance and provider collection remain outside these helpers.

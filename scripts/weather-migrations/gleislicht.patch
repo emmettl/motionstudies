@@ -1,0 +1,98 @@
+--- a/src/studies/orbital-clouds.ts
++++ b/src/studies/orbital-clouds.ts
+@@ -1,3 +1,5 @@
++import { cloudCoveragePixels } from '@motionstudies/core/domain/weather-field'
++import { decodeWeatherBytes } from '@motionstudies/web/weather-assets'
+ export interface CloudDay {
+   date: string
+   available: boolean
+@@ -29,16 +31,10 @@
+ export async function decodeCloudField(bytes: ArrayBuffer, manifest: CloudManifest, day: CloudDay): Promise<CloudField> {
+   validateCloudManifest(manifest)
+   if (!day.available) throw new Error('Cloud day unavailable')
+-  // Fetch decodes Content-Encoding: gzip automatically, whereas some static
+-  // hosts serve the gzip bytes unchanged. Inspect the payload, not the suffix.
+-  const prefix = new Uint8Array(bytes, 0, Math.min(2, bytes.byteLength))
+-  const compressed = prefix[0] === 0x1f && prefix[1] === 0x8b
+-  const buffer = compressed
+-    ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()
+-    : bytes
+-  const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', buffer)), n => n.toString(16).padStart(2, '0')).join('')
+-  const values = new Uint8Array(buffer)
+-  if (values.length !== day.decodedBytes || hash !== day.sha256 || values.some(n => n > 100 && n !== 255)) throw new Error('Cloud data failed verification')
++  let values: Uint8Array
++  try { values=await decodeWeatherBytes(bytes,{decodedBytes:day.decodedBytes!,sha256:day.sha256!}) }
++  catch { throw new Error('Cloud data failed verification') }
++  if (values.some(n => n > 100 && n !== 255)) throw new Error('Cloud data failed verification')
+   return { manifest, day, values }
+ }
+ 
+@@ -51,11 +47,5 @@
+ 
+ // Premultiplied coverage and validity keep missing cells from appearing as clear sky.
+ export function cloudTextureFrame(field: CloudField, frame: number): Uint8Array {
+-  const cells = field.manifest.columns * field.manifest.rows, pixels = new Uint8Array(cells * 4)
+-  for (let i = 0; i < cells; i++) {
+-    const value = field.values[frame * cells + i]
+-    pixels[i * 4] = value === 255 ? 0 : Math.round(value * 2.55)
+-    pixels[i * 4 + 3] = value === 255 ? 0 : 255
+-  }
+-  return pixels
++  return cloudCoveragePixels(field.values, frame, field.manifest.columns * field.manifest.rows)
+ }
+--- a/src/studies/orbital-cloud-material.ts
++++ b/src/studies/orbital-cloud-material.ts
+@@ -1,3 +1,4 @@
++import { createGridTexturePair } from '@motionstudies/three/weather-textures'
+ import * as THREE from 'three'
+ import { cloudFramePair, cloudTextureFrame, type CloudField } from './orbital-clouds.ts'
+ import { orbitalXZ } from './orbital-terrain.ts'
+@@ -36,15 +37,11 @@
+ 
+ export function createCloudMaterialResources(field: CloudField) {
+   const { columns, rows, bounds } = field.manifest
+-  const texture = (frame: number) => {
+-    const result = new THREE.DataTexture(cloudTextureFrame(field, frame), columns, rows, THREE.RGBAFormat)
+-    result.magFilter = THREE.LinearFilter; result.minFilter = THREE.LinearFilter; result.needsUpdate = true
+-    return result
+-  }
++  const pair=createGridTexturePair({width:columns,height:rows,times:Array.from({length:field.day.frames??25},(_,i)=>new Date(i*3600000).toISOString()),type:THREE.UnsignedByteType,frame:i=>cloudTextureFrame(field,i)})
+   const [west, south] = orbitalXZ(bounds.west, bounds.south), [east, north] = orbitalXZ(bounds.east, bounds.north)
+-  const a = texture(0), b = texture(1)
++  const {a,b}=pair
+   const uniforms = {
+-    orbitalCloudA: { value: a }, orbitalCloudB: { value: b }, orbitalCloudBlend: { value: 0 },
++    orbitalCloudA: { value: a }, orbitalCloudB: { value: b }, orbitalCloudBlend: pair.uniforms.weatherBlend,
+     orbitalCloudGrid: { value: new THREE.Vector2(columns, rows) },
+     orbitalCloudExtent: { value: new THREE.Vector2(east - west, south - north) },
+     orbitalCloudOrigin: { value: new THREE.Vector2(west, south) },
+@@ -52,7 +49,7 @@
+     orbitalCloudShadow: { value: 0 },
+     strength: { value: 0.65 }, daylight: { value: 1 }, illumination: { value: 1 },
+   }
+-  return { field, a, b, uniforms, west, south, east, north, frame: 0, time: NaN, opacity: NaN, sunlight: false }
++  return { field, a, b, pair, uniforms, west, south, east, north, frame: 0, time: NaN, opacity: NaN, sunlight: false }
+ }
+ export type CloudMaterialResources = ReturnType<typeof createCloudMaterialResources>
+ 
+@@ -60,11 +57,8 @@
+   if (resources.time === time && resources.opacity === opacity && resources.sunlight === sunlight) return
+   resources.time = time; resources.opacity = opacity; resources.sunlight = sunlight
+   const [first, second, blend] = cloudFramePair(time)
+-  if (resources.frame !== first) {
+-    resources.a.image.data!.set(cloudTextureFrame(resources.field, first)); resources.a.needsUpdate = true
+-    resources.b.image.data!.set(cloudTextureFrame(resources.field, second)); resources.b.needsUpdate = true
+-    resources.frame = first
+-  }
++  resources.pair.setFrames({a:first,b:second,fraction:blend})
++  resources.frame=first
+   const uniforms = resources.uniforms, sun = orbitalSun(time)
+   uniforms.orbitalCloudBlend.value = blend; uniforms.strength.value = opacity
+   uniforms.daylight.value = sunlight ? THREE.MathUtils.smoothstep(sun.altitude, -8, 18) : 0.75
+@@ -77,5 +71,5 @@
+ }
+ 
+ export function disposeCloudMaterialResources(resources: CloudMaterialResources) {
+-  resources.a.dispose(); resources.b.dispose()
++  resources.pair.dispose()
+ }

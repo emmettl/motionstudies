@@ -4,6 +4,8 @@
 
 ## Programme and shared work
 
+- [Shared weather infrastructure](WEATHER-FIELDS.md): evidence contracts, interval semantics, cached grid compilation, verified decoding and renderer resources for KRAFT, Zugunruhe and Gleislicht.
+
 - [October maintenance and alpha.32/33 releases](DEPENDENCIES-2026-10-18.md): current toolchain, package publication and edition reliability checks
 
 - [Project vision and goals](VISION.md): the creative premise, the world in miniature, and what these ask of the engineering
