@@ -6,6 +6,16 @@ Inspected 1 November 2026. This plan follows the
 must be published before any edition can consume them. All edition acceptance
 gates remain open; this document records a proposed order, not completed rollout.
 
+The review follow-up at shared source `69aa715` passes 557 unit and 16 hosting
+tests, typechecking, lint, architecture and build. Fresh runs pass 71 affected
+frozen-package browser cases, eight strict native-WebGPU cases and 40 loader/
+extension cases. The [follow-up report](evidence/renderer-9x-review-validation.json)
+records current source-input hashes and independently extracted backend captures.
+Two initial concurrent local runs collided on Playwright's default trace directory
+(missing files during context cleanup); the final native and loader runs use
+separate artifact directories and pass completely. This follow-up report preserves
+the original candidate reports and does not attest edition/device adoption.
+
 ## Release prerequisite
 
 The workspace still carries coordinated version `0.1.0-alpha.49`. A read-only npm
@@ -34,6 +44,10 @@ behind; a renderer-motivated update can also contain contract and UI changes.
    reads. Replace reconciler `onUpdate` work with effects or stable ref callbacks
    where present. Preserve study-owned playback clocks and scheduling order.
    Remove unused perf dependencies only after checking edition imports.
+   Call `useRequireWebGL('Edition layer')` in edition-owned GLSL components under
+   a custom Canvas, or `requireWebGLRenderer` before raw Three drawing. The shared
+   motion/extension layers and heightfield meshes now reject incompatible node
+   renderers themselves; a raw material factory cannot infer its future renderer.
 3. **Optional visual port.** Adopt the sprite, texture, luminous material and
    output helpers in a bounded scene. A WebGPU switch needs an actual node-material
    port, backend comparison, recovery checks and authored appearance review.
