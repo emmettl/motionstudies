@@ -1,0 +1,73 @@
+{
+  "version": "0.1.0-alpha.46",
+  "tag": "next",
+  "sourceCommit": "9e9837dacdefc551abd1efb28a4030b8eb60e392",
+  "workflow": "https://github.com/emmettl/motionstudies/actions/runs/41298308659",
+  "verifiedAt": "2026-11-01T10:47:07.869Z",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.46",
+      "url": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.46.tgz",
+      "bytes": 78038,
+      "integrity": "sha512-210+QCqmSU7w561IP+Gl0Jn+HInSE4gfxs1GKggj7FLxJLsRdXqx6HBoGKNzOdDYwLJaw7JGLi5RJ4iU/crsQQ==",
+      "byteIdenticalToTested": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.46",
+      "url": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.46.tgz",
+      "bytes": 83981,
+      "integrity": "sha512-EInoA3NTN4Iaz2jiqkH2yFNFgFrUy4PoO2Jsk8mNCm83tMka7AprBJPmQk/ZIOTT+vviLrqJC/Qdsjta1Gzt/Q==",
+      "byteIdenticalToTested": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.46",
+      "url": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.46.tgz",
+      "bytes": 109767,
+      "integrity": "sha512-PhWX3T163+dQjBKuHxS3NKHTh6V8bLp1j/Bh4u6TeyjiNprrmCpjm1ZQVZoltNVMV8TI36xJjWn+VhbbVkcXFg==",
+      "byteIdenticalToTested": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.46",
+      "url": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.46.tgz",
+      "bytes": 332093,
+      "integrity": "sha512-aHMgMXvCpGvzzzZH7a6FjUdoqCtYfNzlIf5ngWJWh49WhMw1W2pZNzT+C7YIy9oFLfzdQKQ/WRxuWf9CRwQnNQ==",
+      "byteIdenticalToTested": true
+    }
+  ],
+  "pullRequest": "https://github.com/emmettl/motionstudies/pull/51",
+  "nextTagsVerified": [
+    "@motionstudies/core",
+    "@motionstudies/data",
+    "@motionstudies/three",
+    "@motionstudies/web"
+  ],
+  "validation": {
+    "sharedTests": 525,
+    "hostingTests": 16,
+    "packedBrowserPassed": 102,
+    "packedBrowserExistingSkips": 2,
+    "loaderBrowserPassed": 40,
+    "weatherPixelBrowserPassed": 2,
+    "zugunruheTests": 127,
+    "gleislichtCloudTests": 10,
+    "retainedCloudGrid": {
+      "cells": 1363,
+      "hours": 13,
+      "variables": 4,
+      "identical": true
+    },
+    "editionBuilds": [
+      "gleislicht",
+      "zugunruhe"
+    ],
+    "registryInstalls": true
+  },
+  "adoptionPullRequests": {
+    "gleislicht": "https://github.com/emmettl/gleislicht/pull/23",
+    "zugunruhe": "https://github.com/emmettl/zugunruhe/pull/1"
+  }
+}
