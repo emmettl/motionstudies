@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.46` under `next`, published from `9e9837d` through [trusted run 41298308659](https://github.com/emmettl/motionstudies/actions/runs/41298308659). All four registry integrities and downloaded archives match the tested tarballs byte-for-byte, and all four `next` tags were verified. See [weather infrastructure](WEATHER-FIELDS.md) and the [release evidence](evidence/weather-alpha46.json).
+The latest verified coordinated release is `0.1.0-alpha.47` under `next`, published from `3e29128` through [trusted run 41305935510](https://github.com/emmettl/motionstudies/actions/runs/41305935510). All four registry integrities and downloaded archives match the tested tarballs byte-for-byte, and all four `next` tags were verified. See [KRAFT foundations](KRAFT-INFRASTRUCTURE.md) and the [release evidence](evidence/kraft-alpha47.json).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -41,7 +41,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
-`0.1.0-alpha.47` is prepared for the European area/border power evidence reader, coverage-aware integration and explicit offline column compiler. The lab adds integrated power/weather playback. See [KRAFT foundations](KRAFT-INFRASTRUCTURE.md) for the real dated release and validation; publication is recorded after registry verification.
+`0.1.0-alpha.47` publishes the European area/border power evidence reader, coverage-aware integration and explicit offline column compiler. The lab adds integrated power/weather playback. See [KRAFT foundations](KRAFT-INFRASTRUCTURE.md) for the real dated release and validation; publication and archive equality are [registry-verified](evidence/kraft-alpha47.json).
 
 `0.1.0-alpha.46` publishes the opt-in weather evidence contract, offline grid adapters, verified asset decoder and two-frame GPU playback. See [weather infrastructure](WEATHER-FIELDS.md) for semantics, consumer migrations and validation.
 

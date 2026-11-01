@@ -6,7 +6,7 @@
 
 [Shared foundations and recorded release](KRAFT-INFRASTRUCTURE.md)
 
-**1 November 2026 — study brief and first source proof.** KRAFT is an unnumbered European electricity study. The title and subtitle are the working identity; the first six-country data probe is complete. A composition, independent repository and public release remain to be made.
+**1 November 2026 — study brief and first source proof.** KRAFT is an unnumbered European electricity study. The title and subtitle are the working identity; the first six-country data probe is complete. The independent [private KRAFT scaffold](https://github.com/emmettl/kraft) now opens the verified first recorded day. The visual grammar and public release remain open.
 
 ## The proposition
 

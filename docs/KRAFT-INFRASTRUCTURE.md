@@ -1,6 +1,6 @@
 # KRAFT shared foundations and first recorded release
 
-**1 November 2026.** Shared area/border power contracts, offline column compilation and an integrated power/weather specimen are prepared for coordinated `0.1.0-alpha.47`. The recorder compiles the frozen six-country electricity survey and a complete coarse European ERA5 grid into a reproducible private research release for 16 September UTC. Publication verification and edition adoption are recorded below when complete.
+**1 November 2026.** Shared area/border power contracts, offline column compilation and an integrated power/weather specimen are published in coordinated `0.1.0-alpha.47`. The recorder compiles the frozen six-country electricity survey and a complete coarse European ERA5 grid into a reproducible private research release for 16 September UTC. All four registry archives match the tested publication bytes; see the [publication record](evidence/kraft-alpha47.json).
 
 ## Shared contracts
 
@@ -51,4 +51,4 @@ The lab's **Power + weather** specimen shares one UTC clock between a synthetic 
 
 Core/data tests cover quantities, categories, signs, partial coverage, invalid provenance, timestamps and ambiguous support. Recorder tests exercise cache/offline replay, rate-limit handling, source corruption, immutable publication and deterministic outputs. The existing England/recorder compatibility gate remains a regression for the GB writer/reader contract. See the [dated release evidence](evidence/kraft-recorded-day-2026-09-16.json).
 
-The independent KRAFT scaffold follows publication verification. It will consume exact registry pins and copied verified artifacts, keeping composition, geographic anchors, band treatments and source-selection policy in the edition. No shared power renderer is established by these foundations. The Swiss reconciliation, pumping, regional PV and geometry questions remain in the [data survey](KRAFT-SURVEY.md).
+The independent [private KRAFT scaffold](https://github.com/emmettl/kraft) follows verified publication. It consumes exact alpha.47 registry pins and copied verified artifacts, keeping composition, geographic anchors, band treatments and source-selection policy in the edition. The recorder adopts the published packages in [recorder #25](https://github.com/emmettl/motionstudies-recorder/pull/25), with all 192 tests/lint and the complete first-day source verification passing against registry packages. No shared power renderer is established by these foundations. The Swiss reconciliation, pumping, regional PV and geometry questions remain in the [data survey](KRAFT-SURVEY.md).

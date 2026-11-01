@@ -1,0 +1,44 @@
+# KRAFT rights register
+
+[Study](KRAFT.md) · [Reconciliation](KRAFT-RECONCILIATION.md) · [Provider requests](KRAFT-PROVIDER-REQUESTS.md) · [Receipts](evidence/kraft-rights-2026-11-01.json)
+
+Reviewed **1 November 2026** for **free, non-commercial public use**, as requested. The working release is a standalone study without advertising, paid access, sponsorship or commercial promotion. Free access alone does not establish non-commercial use. Commissions and commercial reuse are outside this review. No public deployment is authorised by this register.
+
+The current 146-series recorded day is **still private**. Thirty-seven individual physical-border reports have a documented CC BY 4.0 route. The other 109 series need upstream confirmation; this is an unresolved permission chain, not a finding that reuse is prohibited. The weather layer has a documented route within the specified non-commercial access conditions. A narrower border-and-weather edition is possible after making a separate artifact which actually excludes the unresolved series and aggregates. Hiding them in the interface would not remove them from a downloadable artifact.
+
+## Exact first-day material
+
+| Material | Decision for the requested scope | Conditions and evidence |
+| --- | --- | --- |
+| Energy-Charts `/v2/cbpf`, 37 individual non-UK border reports in the six-country compilation | Documented reuse route | Every frozen response declares CC BY 4.0. ENTSO-E's current linked [reuse list](https://transparencyplatform.zendesk.com/hc/article_attachments/40921869379729), dated 18 October 2023, includes physical flows, item 18, article 12.1.g. Inspected origins do not intersect its country/interconnector exclusions. Credit energy-charts.info and ENTSO-E Transparency Platform, link CC BY 4.0 and describe changes. Mirrored values are one provider family, not independent evidence. |
+| 6 provider `sum` net-exchange series | Hold | An aggregate retains its full source population. FR/NL aggregates can contain UK components removed from the individual edge set. No inference that removing a column clears an aggregate. |
+| 67 generation, 6 storage-intake, 6 demand, 6 residual-demand, 12 shares, 6 commercial-exchange series | Provider confirmation pending | Explicit Energy-Charts response licences are retained. ENTSO-E's list does not itself clear actual load or actual generation; Swiss post-2025 lineage also involves EEX, BFE, Pronovo and Solarlog. Ask Energy-Charts to confirm its redistribution grant covers these exact processed series and upstream interests. Do not substitute ENTSO-E's older 2022 list, or assume all UK/price products have these terms. |
+| ERA5 wind, cloud and radiation obtained through Open-Meteo | Documented reuse route for this scope | [Open-Meteo terms](https://open-meteo.com/en/terms): data CC BY 4.0; free-service access is non-commercial and subject to quotas. The 34 one-shot requests fit the documented limits. Credit Open-Meteo and C3S/ECMWF, retain licence links, identify modifications. The [ERA5 catalogue](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview) links CC BY 4.0. No direct CDS acquisition or acceptance of a CDS agreement is claimed. September's vintage may be ERA5T. |
+
+The [API documentation](https://api.energy-charts.info/) is response-specific. Its general CC BY default does not resolve contrary primary-owner conditions by itself. ENTSO-E's [terms](https://transparencyplatform.zendesk.com/hc/article_attachments/40921869376401), effective 1 November 2023, require checking the reuse list and respecting primary-owner rights. This register uses that narrower distinction rather than treating absence from the list as a blanket ban.
+
+The frozen v1 artifact `cc63ec969d56a24e7923fd40e608bfbb8e85ef7eb03c2f95734889bfa6be4f1c` has been superseded for research by method v2, which corrects Swiss evidence labels without changing native values. Neither is a public-clearance certificate. KRAFT's separate, digest-bound review enumerates every series and fails its publication check while any item remains unresolved.
+
+## Swiss additions and shared geographical/weather layers
+
+| Resource | Decision | Outstanding work |
+| --- | --- | --- |
+| BFE `ogd103` consumption and `ogd104` production CSV resources | Non-commercial reuse permitted with attribution | Both CKAN resource records explicitly link `terms_by_ask`. The [Swiss terms](https://opendata.swiss/en/terms-of-use) allow non-commercial use and reserve commercial use for prior permission. Use the BFE-published resources under their own terms; this does not clear Swissgrid's workbook. Record author, dataset title and exact resource URL. |
+| Swissgrid October 2026 energy-statistics workbook | Consent pending for public reuse | [Website terms](https://www.swissgrid.ch/en/home/footer/legal-information.html) restrict public as well as commercial reuse without consent. No data-specific override was located on the linked download/definition pages or workbook. Ask for public visualisation and redistribution of derived interval data, not a commercial licence. |
+| BFE regional PV `pv-stromproduktion-estimate` / `ogd127` | Hold | Exact catalogue lookup returned no matching package; the generic service catalogue is insufficient. The [linked model card](https://www.bfe-ogd.ch/pv_segmentation_model_card.pdf) still returns 404. Dataset-specific rights, timestamp support, bounds and district identity need a provider answer. |
+| BFE electricity-production installation register | Reuse permitted with attribution | The captured STAC collection links `terms_by`, despite a generic `proprietary` field. Preserve both and follow the explicit resource-specific terms. Attribution does not establish historical operation or per-site output. |
+| swissBOUNDARIES3D | Rights question closed | The official [product page](https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d) links the [OGD terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices), permitting use, distribution and processing with source credit, including commercial use. Credit ©swisstopo. The STAC collection's generic `proprietary` field is not the complete terms chain. Choose and pin the actual dated district asset before use; the regional PV join is not yet validated. |
+| MeteoSwiss open station/satellite data | Reuse permitted under CC BY 4.0 | [Terms](https://opendatadocs.meteoswiss.ch/general/terms-of-use): acknowledge “Source: MeteoSwiss”, indicate changes and avoid implied endorsement. The warning-product alteration rule is separate; KRAFT does not use warning products. Product/asset capture and temporal coverage remain necessary. |
+| Current KRAFT country anchors | No external geometry clearance needed | They are authored schematic reference points. Neither plant coordinates nor swisstopo geometry is present in the recorded-day scaffold. |
+
+## Attribution to carry into a public artifact
+
+Electricity: **Source: energy-charts.info / Fraunhofer ISE; upstream physical-flow publication: ENTSO-E Transparency Platform. CC BY 4.0.** Modifications: native GW converted to MW; intervals clipped to the recorded UTC day; selected series and missingness retained; reporting directions converted for display. Source records, response declarations and generated-at times remain available. These credits do not imply endorsement or resolve pending permissions for other categories.
+
+Weather: **Open-Meteo; Copernicus Climate Change Service / ECMWF ERA5. CC BY 4.0. Contains modified Copernicus Climate Change Service information 2026.** Modifications: 1° sample grid, speed/direction converted to east/north 100 m wind components, radiation end labels shifted to their supported preceding-hour intervals. Reanalysis is not a station observation; provisional versus final vintage is not established.
+
+BFE additions: **Swiss Federal Office of Energy (SFOE), [dataset title], [exact resource URL]**, with Swissgrid identified where the resource names it as the underlying source. Optional geometry: **©swisstopo**. Optional MeteoSwiss layer: **Source: MeteoSwiss**. Include the corresponding terms links beside each layer; a shared MIT package licence does not license source data or artwork.
+
+## Remaining decisions
+
+Three concrete provider requests cover the unresolved rights and source definitions. All three were sent on 1 November 2026 with Louis's explicit authorisation and are **awaiting replies**; [the request file](KRAFT-PROVIDER-REQUESTS.md) retains the exact sent texts. The pending rights decisions remain unchanged. A permission record needs the granting organisation, date, exact datasets, public/redistribution scope, attribution and any expiry or restrictions. A provider reply can close only the questions it actually answers. The immutable raw receipts remain private; committed evidence records their URLs, retrieval times, statuses and SHA-256 digests.
