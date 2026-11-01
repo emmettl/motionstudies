@@ -71,15 +71,22 @@
     "Regional PV semantics/rights",
     "Publication rights and upstream exceptions"
   ],
-  "candidateValidation": {
+  "validation": {
     "typecheck": "passed",
     "architecture": "passed",
     "unitTests": 533,
     "hostingTests": 16,
-    "packedBrowserPassed": 110,
+    "packedBrowserPassed": 149,
     "packedBrowserSkipped": 2,
     "loaderBrowserPassed": 40,
     "GBCompatibility": "passed; 452 compared files reproduce exactly",
-    "researchScriptSyntax": 4
-  }
+    "researchScriptSyntax": 4,
+    "isolatedSharedClockChecks": 5,
+    "recorderRegistryTests": 192,
+    "recorderLint": "passed"
+  },
+  "sharedVersion": "0.1.0-alpha.47",
+  "publication": "https://github.com/emmettl/motionstudies/actions/runs/41305935510",
+  "recorderAdoption": "https://github.com/emmettl/motionstudies-recorder/pull/25",
+  "edition": "https://github.com/emmettl/kraft"
 }
