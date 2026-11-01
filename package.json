@@ -40,9 +40,9 @@
     "check:terrain-consumers": "node scripts/check-terrain-consumers.mjs"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.44",
-    "@motionstudies/three": "0.1.0-alpha.44",
-    "@motionstudies/web": "0.1.0-alpha.44",
+    "@motionstudies/core": "0.1.0-alpha.45",
+    "@motionstudies/three": "0.1.0-alpha.45",
+    "@motionstudies/web": "0.1.0-alpha.45",
     "@react-three/fiber": "9.8.2",
     "react": "19.3.1",
     "react-dom": "19.3.1",

@@ -1,9 +1,10 @@
+import { createHash } from 'node:crypto'
 import { access, lstat, readFile, readdir, realpath } from 'node:fs/promises'
 import { builtinModules } from 'node:module'
-import { dirname, extname, relative, resolve, sep } from 'node:path'
+import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { moduleReferences } from './module-references.mjs'
 
-export async function checkEditionBoundary({ root = '.', directories = ['src', 'scripts'], additionalPackages = [] } = {}) {
+export async function checkEditionBoundary({ root = '.', directories = ['src', 'scripts'], additionalPackages = [], verifiedGeneratedReferences = [] } = {}) {
   root = resolve(root)
   const manifest = JSON.parse(await readFile(resolve(root, 'package.json'), 'utf8'))
   const lock = JSON.parse(await readFile(resolve(root, 'package-lock.json'), 'utf8'))
@@ -11,6 +12,13 @@ export async function checkEditionBoundary({ root = '.', directories = ['src', '
   if (manifest.workspaces) throw new Error('An edition must consume installed packages, not workspaces')
   try { await access(resolve(root, 'packages')); throw new Error('Shared package source belongs in Motion Studies') }
   catch (error) { if (error.code !== 'ENOENT') throw error }
+  const generated = new Map(), usedGenerated = new Set()
+  for (const entry of verifiedGeneratedReferences) {
+    if (!entry || typeof entry.file !== 'string' || !entry.file || isAbsolute(entry.file) || !/^[a-f0-9]{64}$/.test(entry.sourceSha256) || !Number.isInteger(entry.dynamicReferences) || entry.dynamicReferences < 1) throw new Error('Invalid verified generated-reference entry')
+    const file = resolve(root, entry.file), path = relative(root, file)
+    if (path === '..' || path.startsWith(`..${sep}`) || generated.has(file)) throw new Error('Duplicate or outside-root generated-reference entry')
+    generated.set(file, entry)
+  }
   const exported = new Map()
   for (const name of [...['core', 'data', 'three', 'web'].map(name => `@motionstudies/${name}`), ...additionalPackages]) {
     const version = declared[name]
@@ -29,8 +37,17 @@ export async function checkEditionBoundary({ root = '.', directories = ['src', '
       const file = resolve(directory, entry.name)
       if (entry.isDirectory()) { await visit(file); continue }
       if (!/\.(?:[cm]?[jt]sx?|css)$/.test(file)) continue
-      for (const reference of moduleReferences(await readFile(file, 'utf8'), file)) {
-        if (reference === undefined) throw new Error(`Unverifiable module reference in ${file}`)
+      const source = await readFile(file, 'utf8'), references = moduleReferences(source, file), allowance = generated.get(file)
+      if (allowance) {
+        if (createHash('sha256').update(source).digest('hex') !== allowance.sourceSha256) throw new Error(`Generated-reference source hash mismatch: ${file}`)
+        if (references.filter(reference => reference === undefined).length !== allowance.dynamicReferences) throw new Error(`Generated-reference count mismatch: ${file}`)
+        usedGenerated.add(file)
+      }
+      for (const reference of references) {
+        if (reference === undefined) {
+          if (allowance) continue
+          throw new Error(`Unverifiable module reference in ${file}`)
+        }
         if (/^https?:/.test(reference) && extname(file) === '.css') continue
         if (reference.startsWith('.')) {
           const target = relative(root, resolve(dirname(file), reference))
@@ -45,4 +62,5 @@ export async function checkEditionBoundary({ root = '.', directories = ['src', '
     }
   }
   for (const directory of directories) await visit(resolve(root, directory))
+  for (const file of generated.keys()) if (!usedGenerated.has(file)) throw new Error(`Unused generated-reference entry: ${file}`)
 }

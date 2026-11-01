@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { it, expect, onTestFinished } from 'vitest'
 import { mkdtemp, mkdir, writeFile, rm, symlink } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
@@ -95,4 +96,42 @@ it('rejects workspaces and vendored shared directories', async () => {
 it.each(['types.d.ts', 'types.d.mts', 'types.d.cts'])('parses ambient declarations in %s', file => {
   expect(moduleReferences("export const value: import('@motionstudies/core/public').Value", file))
     .toEqual(['@motionstudies/core/public'])
+})
+
+const digest = source => createHash('sha256').update(source).digest('hex')
+it('permits one exact audited generator while retaining static import checks', async () => {
+  const f = await fixture(), source = "import '@motionstudies/core/public'; const value = import(generatedUrl)"
+  await f.write('scripts/generated.mjs', source)
+  const entry = { file: 'scripts/generated.mjs', sourceSha256: digest(source), dynamicReferences: 1 }
+  await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [entry] })).resolves.toBeUndefined()
+  const privateSource = source.replace('/public', '/private')
+  await f.write(entry.file, privateSource)
+  await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [{ ...entry, sourceSha256: digest(privateSource) }] })).rejects.toThrow('Private package import')
+})
+it('rejects generator source changes and computed-reference count drift', async () => {
+  const f = await fixture(), source = 'const value = import(generatedUrl)'
+  await f.write('scripts/generated.mjs', source)
+  const entry = { file: 'scripts/generated.mjs', sourceSha256: digest(source), dynamicReferences: 1 }
+  await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [{ ...entry, dynamicReferences: 2 }] })).rejects.toThrow('count mismatch')
+  await f.write(entry.file, source + '; const other = import(otherUrl)')
+  await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [entry] })).rejects.toThrow('source hash mismatch')
+})
+it('does not permit another file or silently accept an unused generator entry', async () => {
+  const f = await fixture(), source = 'const value = import(generatedUrl)', entry = { file: 'scripts/generated.mjs', sourceSha256: digest(source), dynamicReferences: 1 }
+  await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [entry] })).rejects.toThrow('Unused generated-reference')
+  await f.write(entry.file, source); await f.write('src/other.ts', source)
+  await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [entry] })).rejects.toThrow('Unverifiable module reference')
+})
+it.each([
+  { file: '../outside.mjs', sourceSha256: '0'.repeat(64), dynamicReferences: 1 },
+  { file: 'scripts/generated.mjs', sourceSha256: 'not-a-digest', dynamicReferences: 1 },
+  { file: 'scripts/generated.mjs', sourceSha256: '0'.repeat(64), dynamicReferences: 0 },
+])('rejects invalid generated-reference entries: %s', async entry => {
+  const f = await fixture()
+  await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [entry] })).rejects.toThrow(/Invalid|outside-root/)
+})
+
+it('rejects duplicate audited-generator entries', async () => {
+  const f = await fixture(), entry = { file: 'scripts/generated.mjs', sourceSha256: digest('const value = import(url)'), dynamicReferences: 1 }
+  await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [entry,entry] })).rejects.toThrow('Duplicate')
 })
