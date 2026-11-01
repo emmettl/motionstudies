@@ -135,3 +135,17 @@ it('rejects duplicate audited-generator entries', async () => {
   const f = await fixture(), entry = { file: 'scripts/generated.mjs', sourceSha256: digest('const value = import(url)'), dynamicReferences: 1 }
   await expect(checkEditionBoundary({ root: f.root, verifiedGeneratedReferences: [entry,entry] })).rejects.toThrow('Duplicate')
 })
+
+it('rejects malformed source instead of accepting a recovered partial AST', () => {
+  expect(() => moduleReferences("import 'allowed'; const =", 'broken.ts')).toThrow(/Cannot parse broken.ts/)
+})
+
+it('parses JSX and declaration imports while treating computed references as unverifiable', () => {
+  expect(moduleReferences(`const node = <p>🚂</p>; export { x } from 'named'; const p = import(` + "`computed`" + `); require(variable)`, 'view.tsx'))
+    .toEqual(['named', undefined, undefined])
+  expect(moduleReferences(`declare const value: import('declaration').Value`, 'types.d.mts')).toEqual(['declaration'])
+})
+
+it('recognizes parenthesized static references', () => {
+  expect(moduleReferences("const value = import(('lazy')); require(('commonjs'))", 'app.js')).toEqual(['lazy', 'commonjs'])
+})
