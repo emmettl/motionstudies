@@ -1,6 +1,6 @@
 # KRAFT provider requests
 
-Prepared 1 November 2026 for free, non-commercial public use only. These messages are **unsent**; sending requires Louis's explicit instruction. Recipients come from the captured Energy-Charts API/contact page and BFE CKAN contact records. No commercial rights are requested. No raw captures are attached.
+Prepared and **sent on 1 November 2026**, following Louis's explicit authorisation, for free, non-commercial public use only. Gmail confirmed all three messages in Sent Mail at 14:15–14:16 UTC. All three requests are **awaiting replies**; sending is not permission granted. Recipients come from the captured Energy-Charts API/contact page and BFE CKAN contact records. No commercial rights were requested and no raw captures were attached. The exact sent texts are retained below; send confirmations and Gmail identifiers remain in the private archive.
 
 ## energy-charts
 
