@@ -2,6 +2,8 @@
 
 [Study brief](KRAFT.md) · [European source audit](KRAFT-SOURCES.md) · [Swiss probe record](evidence/kraft-swiss-2026-11-01.json)
 
+The [reconciliation follow-up](KRAFT-RECONCILIATION.md) establishes a DST-supported clock interpretation, resolves the frozen BFE CSV selection, and identifies the post-2025 Swiss Energy-Charts estimation method. The [rights register](KRAFT-RIGHTS.md) records the free-public scope and the remaining provider requests. Daily Italian-border agreement does not imply interval agreement.
+
 The [extended survey](KRAFT-SURVEY.md) adds workbook reconciliation, verified resource terms, installation geography, weather and comparison days. It establishes quarter-hourly Swiss regional series while preserving the unresolved Energy-Charts differences.
 
 **1 November 2026.** Switzerland offers a concrete first passage for KRAFT: simultaneous exchanges with different neighbours, changing hydro output and a descent into modelled regional solar production. The acquired day supports this relationship at area level. Individual power-station operation and pumping consumption remain unverified.

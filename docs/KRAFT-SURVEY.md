@@ -2,6 +2,8 @@
 
 [Study brief](KRAFT.md) · [Initial source audit](KRAFT-SOURCES.md) · [Swiss passage](KRAFT-SWITZERLAND.md) · [Survey evidence](evidence/kraft-survey-2026-11-01.json)
 
+The [rights register](KRAFT-RIGHTS.md) now resolves the non-commercial BFE resource terms and the swissBOUNDARIES3D terms chain. The [reconciliation follow-up](KRAFT-RECONCILIATION.md) adds DST evidence, pinned CSV revision handling, native border comparisons and the post-2025 Swiss estimation method. Its explicit findings supersede the corresponding open questions in this earlier survey.
+
 **Infrastructure follow-up:** the [shared foundations](KRAFT-INFRASTRUCTURE.md) now include a complete 1° ERA5 research grid and verified combined UTC-day release. The earlier four-point probe and remaining source questions below retain their survey date.
 
 **1 November 2026.** The bounded survey now covers Swiss reconciliation, weather, resource rights, plant geography, Nordic expansion and two comparison days. It establishes enough source access for visual experiments. A reconciled Swiss energy balance, standalone pumping consumption, regional solar permissions and a publication-ready continental weather grid remain open. These are specific limits on the composition, not reasons to defer experiments with the frozen evidence.

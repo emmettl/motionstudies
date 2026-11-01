@@ -2,6 +2,8 @@
 
 [Study brief](KRAFT.md) · [Machine-readable probe](evidence/kraft-sources-2026-11-01.json) · [England power sources](POWER.md) · [Cost controls](COST-CONTROL.md)
 
+The [non-commercial rights register](KRAFT-RIGHTS.md) and [Swiss reconciliation](KRAFT-RECONCILIATION.md) supersede the open rights/clock questions below where new evidence is explicit. The complete recorded artifact remains private pending upstream confirmation for 109 series; 37 individual physical-flow reports have a documented reuse route.
+
 [Swiss follow-up](KRAFT-SWITZERLAND.md): direct BFE day and district-solar probes, a German-border reversal sequence, consumption discrepancies and remaining rights checks.
 
 [Extended survey](KRAFT-SURVEY.md): Swissgrid quarter-hourly reconciliation, resource-specific rights, plant geography, historical weather probes, Nordic coverage and weekday/weekend comparisons. This follow-up narrows or supersedes the initial open questions below; it does not grant blanket publication clearance.
