@@ -39,7 +39,8 @@
     "check:feed-observer": "tsc -p services/feed-observer",
     "feeds:push": "node scripts/push-feed-health.mjs",
     "check:terrain-consumers": "node scripts/check-terrain-consumers.mjs",
-    "check:weather-consumers": "node scripts/check-weather-consumers.mjs"
+    "check:weather-consumers": "node scripts/check-weather-consumers.mjs",
+    "check:power-consumers": "node scripts/check-power-consumers.mjs"
   },
   "dependencies": {
     "@motionstudies/core": "0.1.0-alpha.46",

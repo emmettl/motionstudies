@@ -1,0 +1,142 @@
+{
+  "date": "2026-11-01",
+  "npmReleaseRequired": false,
+  "version": "0.1.0-alpha.46",
+  "sourceBases": {
+    "shared": "bc1a8b5",
+    "england": "45d4b72948bbd49b30a83ecdabda59ca5c97888b",
+    "recorder": "dc2e296651ab549353651b7281e5738349eefd8d"
+  },
+  "registry": {
+    "passed": true,
+    "mode": "registry",
+    "artifacts": [],
+    "consumers": [
+      {
+        "name": "england",
+        "checks": [
+          "test",
+          "lint",
+          "build"
+        ],
+        "packages": {
+          "@motionstudies/core": {
+            "version": "0.1.0-alpha.46",
+            "resolved": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.46.tgz",
+            "integrity": "sha512-210+QCqmSU7w561IP+Gl0Jn+HInSE4gfxs1GKggj7FLxJLsRdXqx6HBoGKNzOdDYwLJaw7JGLi5RJ4iU/crsQQ=="
+          },
+          "@motionstudies/data": {
+            "version": "0.1.0-alpha.46",
+            "resolved": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.46.tgz",
+            "integrity": "sha512-EInoA3NTN4Iaz2jiqkH2yFNFgFrUy4PoO2Jsk8mNCm83tMka7AprBJPmQk/ZIOTT+vviLrqJC/Qdsjta1Gzt/Q=="
+          },
+          "@motionstudies/three": {
+            "version": "0.1.0-alpha.46",
+            "resolved": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.46.tgz",
+            "integrity": "sha512-PhWX3T163+dQjBKuHxS3NKHTh6V8bLp1j/Bh4u6TeyjiNprrmCpjm1ZQVZoltNVMV8TI36xJjWn+VhbbVkcXFg=="
+          },
+          "@motionstudies/web": {
+            "version": "0.1.0-alpha.46",
+            "resolved": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.46.tgz",
+            "integrity": "sha512-aHMgMXvCpGvzzzZH7a6FjUdoqCtYfNzlIf5ngWJWh49WhMw1W2pZNzT+C7YIy9oFLfzdQKQ/WRxuWf9CRwQnNQ=="
+          }
+        }
+      },
+      {
+        "name": "recorder",
+        "checks": [
+          "power writer",
+          "power release"
+        ],
+        "packages": {
+          "@motionstudies/core": {
+            "version": "0.1.0-alpha.46",
+            "resolved": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.46.tgz",
+            "integrity": "sha512-210+QCqmSU7w561IP+Gl0Jn+HInSE4gfxs1GKggj7FLxJLsRdXqx6HBoGKNzOdDYwLJaw7JGLi5RJ4iU/crsQQ=="
+          },
+          "@motionstudies/data": {
+            "version": "0.1.0-alpha.46",
+            "resolved": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.46.tgz",
+            "integrity": "sha512-EInoA3NTN4Iaz2jiqkH2yFNFgFrUy4PoO2Jsk8mNCm83tMka7AprBJPmQk/ZIOTT+vviLrqJC/Qdsjta1Gzt/Q=="
+          }
+        }
+      }
+    ],
+    "replay": {
+      "date": "2026-09-05",
+      "units": 451,
+      "comparedFiles": 452,
+      "daySha256": "91f2d44f067c908029eb103f52095b9291c751f75d9f5711038f4745ffd9fc61",
+      "inputManifestSha256": "dc3f83129e5ed270fd88c698f101deb318427819a1da79d192b601c851e3a10a"
+    }
+  },
+  "packed": {
+    "passed": true,
+    "artifacts": [
+      {
+        "name": "core",
+        "file": "motionstudies-core-0.1.0-alpha.46.tgz",
+        "sha256": "d3832e11c1f6a0c615ecf84cb4d599d43ff4d4cff769089cfdf806a6a1148adb"
+      },
+      {
+        "name": "data",
+        "file": "motionstudies-data-0.1.0-alpha.46.tgz",
+        "sha256": "61dc304997ffbe9a2095103cd1c51f4cc26819e6990bdd7dfde8de7144fa96cc"
+      },
+      {
+        "name": "three",
+        "file": "motionstudies-three-0.1.0-alpha.46.tgz",
+        "sha256": "20aad7f332a578924c11b0cda42a9f7298720888227f0b1e973baf981be6195b"
+      },
+      {
+        "name": "web",
+        "file": "motionstudies-web-0.1.0-alpha.46.tgz",
+        "sha256": "6749c975b775f88e251d3597c217817e6728e60ab196be2681a8e1da392f06af"
+      }
+    ],
+    "checks": [
+      "England: 32 tests, lint, TypeScript/build",
+      "Recorder: six power writer/release tests"
+    ]
+  },
+  "browser": {
+    "passed": true,
+    "results": [
+      {
+        "browser": "chromium",
+        "passed": true,
+        "checks": [
+          "recorded study selection",
+          "station selection",
+          "verified source evidence",
+          "clock exclusive end",
+          "changing source period"
+        ],
+        "pageErrors": []
+      },
+      {
+        "browser": "webkit",
+        "passed": true,
+        "checks": [
+          "recorded study selection",
+          "station selection",
+          "verified source evidence",
+          "clock exclusive end",
+          "changing source period"
+        ],
+        "pageErrors": []
+      }
+    ]
+  },
+  "sharedChecks": {
+    "powerAndReleaseTests": 10,
+    "architecture": "passed",
+    "changedScriptLint": "passed"
+  },
+  "limitations": [
+    "Recorder pins are tested in isolation, not changed in its source repository.",
+    "Day and all 451 unit evidence files are byte-identical; release metadata is not part of that comparison.",
+    "No provider collection, European area/border schema or dated weather overlay is implemented by this audit.",
+    "Source adoption does not establish a served deployment."
+  ]
+}
