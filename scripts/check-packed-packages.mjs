@@ -84,6 +84,9 @@ try {
     export const pathResolver: RoadPathResolver = ({ fallback }) => fallback
     export const mapPolicy: NetworkMapStyle = { coplanar: true, selectionMarkers: { stationMaxRadiusPixels: 10 }, trainLabels: { screenOffset: height => height / 2 + 4 } }
     export const curveFactoryContract = (factory: RoadCurveFactory) => factory
+    import { startEditionDebug, registerDebugRenderer, editionDebugOptions } from '@motionstudies/three/debug'
+    import { EditionDebug } from '@motionstudies/three/debug-fiber'
+    export const debugContract = { startEditionDebug, registerDebugRenderer, editionDebugOptions, EditionDebug }
     import { network } from './fixtures.ts'
     import { readAirEnrichment, createEndpointResolver, endpointCoverage } from '@motionstudies/core/air-enrichment'
     export const enrichmentContract = [readAirEnrichment, createEndpointResolver, endpointCoverage]

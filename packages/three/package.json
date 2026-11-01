@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/three",
-  "version": "0.1.0-alpha.47",
+  "version": "0.1.0-alpha.48",
   "private": true,
   "type": "module",
   "exports": {
@@ -16,15 +16,19 @@
     "./spatial-morph": "./src/spatial-morph.ts",
     "./scene-extensions": "./src/scene-extensions.ts",
     "./terrain-surface": "./src/terrain-surface.ts",
-    "./weather-textures": "./src/weather-textures.ts"
+    "./weather-textures": "./src/weather-textures.ts",
+    "./debug": "./src/debug.ts",
+    "./debug-fiber": "./src/debug-fiber.tsx"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.47"
+    "@motionstudies/core": "0.1.0-alpha.48"
   },
   "peerDependencies": {
     "@react-three/fiber": "^9.8.1",
     "react": "^19.3.0",
-    "three": "^0.186.1"
+    "three": "^0.186.1",
+    "r3f-perf": "7.2.3",
+    "spectorjs": "0.9.33"
   },
   "description": "React Three Fiber scenes for Motion Studies.",
   "sideEffects": false,
@@ -37,5 +41,13 @@
   "bugs": {
     "url": "https://github.com/emmettl/motionstudies/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependenciesMeta": {
+    "r3f-perf": {
+      "optional": true
+    },
+    "spectorjs": {
+      "optional": true
+    }
+  }
 }

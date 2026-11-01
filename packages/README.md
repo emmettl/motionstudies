@@ -361,3 +361,22 @@ publication uses the trusted workflow and its retained, verified release tarball
 ## Weather evidence and rendering resources
 
 See [shared weather fields](https://github.com/emmettl/motionstudies/blob/main/docs/WEATHER-FIELDS.md) for the source contract and extraction boundaries. Opt-in exports are `core/domain/weather-field`, `data/weather`, `three/weather-textures` and `web/weather-assets`. They preserve source units, interval means/totals, missing values, evidence kinds and provenance while sharing offline compilation, verified decoding and GPU playback. Edition-specific appearance and provider collection remain outside these helpers.
+
+## Optional edition GPU debugging (alpha.48 candidate)
+
+`@motionstudies/three/debug` and `@motionstudies/three/debug-fiber` are optional public entry points. They import no lab code. Editions using them install `spectorjs@0.9.33` and `r3f-perf@7.2.3` as development dependencies, with the scoped npm override `"r3f-perf": { "@react-three/drei": "10.7.9" }` for React 19 / Fiber 9. The tools are optional peers of the Three package; other consumers do not need them.
+
+Call `await startEditionDebug({ edition, build, metadata: () => currentEditionState })` **before mounting** the application. `build` should identify the edition source revision; local builds should mark dirty sources. The metadata getter should return the data-release identity, playback clock, selection and enabled layers. With no supported `debug` flag, this call returns without importing browser tools, creating controls or registering timers.
+
+- `?debug=capture`: instrument contexts before creation; select a registered renderer and capture one WebGL frame.
+- `?debug=perf`: lazy-load a live Fiber overlay. Normal frame policy is preserved, including demand/hidden rendering. Idle scenes may have empty or stale live statistics.
+- `?debug=perf,capture`: enable both tools.
+- `&debugLoop=continuous`: explicit continuous Fiber profiling. The controls label this mode and offer a reload back to natural rendering. Raw Three renderers retain their natural policy.
+
+Inside a Fiber Canvas, mount `<EditionDebug label="Map" metadata={{ playbackTime, selection, layers }} />` from `debug-fiber`. It registers the actual renderer, camera transform/projection, drawing-buffer size and pixel ratio; unmount removes the registration. The profiler shares state: profile one active Fiber scene at a time.
+
+For raw Three, call `registerDebugRenderer(renderer, { label, redraw, metadata })` from `debug` after constructing the renderer, and call its returned cleanup before disposing. `redraw` should submit the current scene once, including clearing missing coverage. It is used to capture an otherwise idle scene; no ongoing raw render loop is introduced.
+
+The debug panel uses a shadow root, tracks canvas replacement/unmount and saves a native Spector capture with an extra `motionstudies` metadata field. Clock/camera/layer metadata describes the capture request; `requestedAt` and `capturedAt` bound its timing. These values support manual reproduction; the debug URL does not restore arbitrary edition state automatically. Exit through the reload link to remove instrumentation completely. Instrumented timings and renderer counts are diagnostic evidence, not portable GPU-memory or performance budgets.
+
+Gleislicht (Network) and KRAFT (raw Weather) are the initial pilots. The alpha.48 candidate and edition adoption branches must be released through the normal main-branch npm workflow before registry-only clean installations can use these new subpaths. Candidate tarballs are used for local cross-repository validation; do not publish from a development checkout.
