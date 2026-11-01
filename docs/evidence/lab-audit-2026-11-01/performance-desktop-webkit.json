@@ -1,0 +1,378 @@
+{
+  "date": "2026-11-01",
+  "project": "desktop-webkit",
+  "browserVersion": "27.2",
+  "platform": "darwin",
+  "arch": "arm64",
+  "mode": "production",
+  "viewport": {
+    "width": 1600,
+    "height": 2400
+  },
+  "host": {
+    "width": 760,
+    "height": 720,
+    "profile": "bare"
+  },
+  "telemetryIntervalMs": 250,
+  "samplesPerCase": 3,
+  "cases": [
+    {
+      "study": "network",
+      "scenario": "network-paused",
+      "samples": [
+        {
+          "study": "network",
+          "scenario": "network-paused",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 1,
+            "frames": 297,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [
+              {
+                "width": 1201,
+                "height": 693,
+                "pixelRatio": 1.65,
+                "frames": 298,
+                "framesSinceReset": 297,
+                "geometries": 15,
+                "textures": 12
+              }
+            ],
+            "rendererLifetimes": [
+              {
+                "id": 1,
+                "active": true,
+                "contextLost": false
+              }
+            ]
+          }
+        },
+        {
+          "study": "network",
+          "scenario": "network-paused",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 1,
+            "frames": 306,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [
+              {
+                "width": 1201,
+                "height": 693,
+                "pixelRatio": 1.65,
+                "frames": 632,
+                "framesSinceReset": 306,
+                "geometries": 15,
+                "textures": 12
+              }
+            ],
+            "rendererLifetimes": [
+              {
+                "id": 1,
+                "active": true,
+                "contextLost": false
+              }
+            ]
+          }
+        },
+        {
+          "study": "network",
+          "scenario": "network-paused",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 1,
+            "frames": 304,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [
+              {
+                "width": 1201,
+                "height": 693,
+                "pixelRatio": 1.65,
+                "frames": 958,
+                "framesSinceReset": 304,
+                "geometries": 15,
+                "textures": 12
+              }
+            ],
+            "rendererLifetimes": [
+              {
+                "id": 1,
+                "active": true,
+                "contextLost": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "study": "terrain",
+      "scenario": "terrain-adapter",
+      "samples": [
+        {
+          "study": "terrain",
+          "scenario": "terrain-adapter",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 0,
+            "frames": 0,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [
+              {
+                "width": 1456,
+                "height": 840,
+                "pixelRatio": 2,
+                "frames": 6,
+                "framesSinceReset": 0,
+                "geometries": 3,
+                "textures": 3
+              }
+            ],
+            "rendererLifetimes": [
+              {
+                "id": 1,
+                "active": true,
+                "contextLost": false
+              }
+            ]
+          }
+        },
+        {
+          "study": "terrain",
+          "scenario": "terrain-adapter",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 0,
+            "frames": 0,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [
+              {
+                "width": 1456,
+                "height": 840,
+                "pixelRatio": 2,
+                "frames": 6,
+                "framesSinceReset": 0,
+                "geometries": 3,
+                "textures": 3
+              }
+            ],
+            "rendererLifetimes": [
+              {
+                "id": 1,
+                "active": true,
+                "contextLost": false
+              }
+            ]
+          }
+        },
+        {
+          "study": "terrain",
+          "scenario": "terrain-adapter",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 0,
+            "frames": 0,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [
+              {
+                "width": 1456,
+                "height": 840,
+                "pixelRatio": 2,
+                "frames": 6,
+                "framesSinceReset": 0,
+                "geometries": 3,
+                "textures": 3
+              }
+            ],
+            "rendererLifetimes": [
+              {
+                "id": 1,
+                "active": true,
+                "contextLost": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "study": "vehicle-heroes",
+      "scenario": "vehicle-sbb-paused",
+      "samples": [
+        {
+          "study": "vehicle-heroes",
+          "scenario": "vehicle-sbb-paused",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 0,
+            "frames": 0,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [],
+            "rendererLifetimes": []
+          }
+        },
+        {
+          "study": "vehicle-heroes",
+          "scenario": "vehicle-sbb-paused",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 0,
+            "frames": 0,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [],
+            "rendererLifetimes": []
+          }
+        },
+        {
+          "study": "vehicle-heroes",
+          "scenario": "vehicle-sbb-paused",
+          "seconds": 5.25,
+          "width": 760,
+          "height": 720,
+          "profile": "bare",
+          "instances": 1,
+          "dpr": 2,
+          "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "metrics": {
+            "commits": null,
+            "callbacks": {},
+            "requests": 0,
+            "aborted": 0,
+            "failures": 0,
+            "pendingRequests": 0,
+            "timeouts": 0,
+            "intervals": 0,
+            "animationFrames": 0,
+            "frames": 0,
+            "longTasks": null,
+            "errors": [],
+            "renderers": [],
+            "rendererLifetimes": []
+          }
+        }
+      ]
+    }
+  ]
+}

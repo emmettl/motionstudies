@@ -1,0 +1,2055 @@
+{
+  "date": "2026-11-01",
+  "project": "desktop-chromium",
+  "browserVersion": "156.0.8078.4",
+  "mode": "production",
+  "cases": [
+    {
+      "specimen": "controls",
+      "study": "controls",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=controls&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "controls",
+      "study": "controls",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=controls&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "controls",
+      "study": "controls",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=controls&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "controls",
+      "study": "controls",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=controls&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "controls",
+      "study": "controls",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=controls&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network",
+      "study": "network",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=network&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network",
+      "study": "network",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=network&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network",
+      "study": "network",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=network&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network",
+      "study": "network",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=network&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network",
+      "study": "network",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=network&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "hub",
+      "study": "hub",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=hub&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "hub",
+      "study": "hub",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=hub&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "hub",
+      "study": "hub",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=hub&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "hub",
+      "study": "hub",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=hub&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "hub",
+      "study": "hub",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=hub&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airports",
+      "study": "airports",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=airports&host=bare&text=100&scenario=airport-unavailable",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airports",
+      "study": "airports",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=airports&host=light&text=100&scenario=airport-unavailable",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airports",
+      "study": "airports",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=airports&host=bare&text=100&scenario=airport-unavailable",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airports",
+      "study": "airports",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=airports&host=constrained&text=100&scenario=airport-unavailable",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airports",
+      "study": "airports",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=airports&host=serif&text=200&scenario=airport-unavailable",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "data",
+      "study": "data",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=data&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "data",
+      "study": "data",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=data&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "data",
+      "study": "data",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=data&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "data",
+      "study": "data",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=data&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "data",
+      "study": "data",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=data&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "now",
+      "study": "now",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=now&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "now",
+      "study": "now",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=now&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "now",
+      "study": "now",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=now&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "now",
+      "study": "now",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=now&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "now",
+      "study": "now",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=now&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-boards",
+      "study": "bus-boards",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=bus-boards&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-boards",
+      "study": "bus-boards",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=bus-boards&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-boards",
+      "study": "bus-boards",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=bus-boards&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-boards",
+      "study": "bus-boards",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=bus-boards&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-boards",
+      "study": "bus-boards",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=bus-boards&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "transport-heroes",
+      "study": "transport-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "transport-heroes",
+      "study": "transport-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "transport-heroes",
+      "study": "transport-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "transport-heroes",
+      "study": "transport-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "transport-heroes",
+      "study": "transport-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=transport-heroes&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-heroes",
+      "study": "vehicle-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-heroes",
+      "study": "vehicle-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-heroes",
+      "study": "vehicle-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-heroes",
+      "study": "vehicle-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-heroes",
+      "study": "vehicle-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=vehicle-heroes&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "panel-layout",
+      "study": "panel-layout",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=panel-layout&host=bare&text=100&v.panel-layout.width=680",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "panel-layout",
+      "study": "panel-layout",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=panel-layout&host=light&text=100&v.panel-layout.width=680",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "panel-layout",
+      "study": "panel-layout",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=panel-layout&host=bare&text=100&v.panel-layout.width=280",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "panel-layout",
+      "study": "panel-layout",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=panel-layout&host=constrained&text=100&v.panel-layout.width=680",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "panel-layout",
+      "study": "panel-layout",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=panel-layout&host=serif&text=200&v.panel-layout.width=320",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "fields",
+      "study": "fields",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=fields&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "fields",
+      "study": "fields",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=fields&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "fields",
+      "study": "fields",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=fields&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "fields",
+      "study": "fields",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=fields&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "fields",
+      "study": "fields",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=fields&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "published-day",
+      "study": "published-day",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=published-day&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "published-day",
+      "study": "published-day",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=published-day&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "published-day",
+      "study": "published-day",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=published-day&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "published-day",
+      "study": "published-day",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=published-day&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "published-day",
+      "study": "published-day",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=published-day&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "timeline",
+      "study": "timeline",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=timeline&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "timeline",
+      "study": "timeline",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=timeline&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "timeline",
+      "study": "timeline",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=timeline&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "timeline",
+      "study": "timeline",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=timeline&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "timeline",
+      "study": "timeline",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=timeline&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "terrain",
+      "study": "terrain",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=terrain&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "terrain",
+      "study": "terrain",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=terrain&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "terrain",
+      "study": "terrain",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=terrain&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "terrain",
+      "study": "terrain",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=terrain&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "terrain",
+      "study": "terrain",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=terrain&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-days",
+      "study": "power-days",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=power-days&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-days",
+      "study": "power-days",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=power-days&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-days",
+      "study": "power-days",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=power-days&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-days",
+      "study": "power-days",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=power-days&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-days",
+      "study": "power-days",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=power-days&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network-policies",
+      "study": "network-policies",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=network-policies&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network-policies",
+      "study": "network-policies",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=network-policies&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network-policies",
+      "study": "network-policies",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=network-policies&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network-policies",
+      "study": "network-policies",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=network-policies&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "network-policies",
+      "study": "network-policies",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=network-policies&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "weather",
+      "study": "weather",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=weather&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "weather",
+      "study": "weather",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=weather&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "weather",
+      "study": "weather",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=weather&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "weather",
+      "study": "weather",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=weather&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "weather",
+      "study": "weather",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=weather&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "rail-sbb",
+      "study": "transport-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100&v.transport-heroes.transport=%22rail%22&v.transport-heroes.presentation=%22sbb%22&v.transport-heroes.long=true&v.transport-heroes.lines=%226%22",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "rail-sbb",
+      "study": "transport-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=light&text=100&v.transport-heroes.transport=%22rail%22&v.transport-heroes.presentation=%22sbb%22&v.transport-heroes.long=true&v.transport-heroes.lines=%226%22",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "rail-sbb",
+      "study": "transport-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100&v.transport-heroes.transport=%22rail%22&v.transport-heroes.presentation=%22sbb%22&v.transport-heroes.long=true&v.transport-heroes.lines=%226%22",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "rail-sbb",
+      "study": "transport-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=constrained&text=100&v.transport-heroes.transport=%22rail%22&v.transport-heroes.presentation=%22sbb%22&v.transport-heroes.long=true&v.transport-heroes.lines=%226%22",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "rail-sbb",
+      "study": "transport-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=transport-heroes&host=serif&text=200&v.transport-heroes.transport=%22rail%22&v.transport-heroes.presentation=%22sbb%22&v.transport-heroes.long=true&v.transport-heroes.lines=%226%22",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-matrix",
+      "study": "transport-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22dot-matrix%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-matrix",
+      "study": "transport-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=light&text=100&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22dot-matrix%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-matrix",
+      "study": "transport-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22dot-matrix%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-matrix",
+      "study": "transport-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=constrained&text=100&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22dot-matrix%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-matrix",
+      "study": "transport-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=transport-heroes&host=serif&text=200&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22dot-matrix%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-flap",
+      "study": "transport-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22split-flap%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-flap",
+      "study": "transport-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=light&text=100&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22split-flap%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-flap",
+      "study": "transport-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22split-flap%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-flap",
+      "study": "transport-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=constrained&text=100&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22split-flap%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "bus-flap",
+      "study": "transport-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=transport-heroes&host=serif&text=200&v.transport-heroes.transport=%22bus%22&v.transport-heroes.presentation=%22split-flap%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airport-hero",
+      "study": "transport-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100&v.transport-heroes.transport=%22airport%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airport-hero",
+      "study": "transport-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=light&text=100&v.transport-heroes.transport=%22airport%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airport-hero",
+      "study": "transport-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=bare&text=100&v.transport-heroes.transport=%22airport%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airport-hero",
+      "study": "transport-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=transport-heroes&host=constrained&text=100&v.transport-heroes.transport=%22airport%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "airport-hero",
+      "study": "transport-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=transport-heroes&host=serif&text=200&v.transport-heroes.transport=%22airport%22&v.transport-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-bus",
+      "study": "vehicle-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=bare&text=100&v.vehicle-heroes.presentation=%22uk-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-bus",
+      "study": "vehicle-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=light&text=100&v.vehicle-heroes.presentation=%22uk-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-bus",
+      "study": "vehicle-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=bare&text=100&v.vehicle-heroes.presentation=%22uk-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-bus",
+      "study": "vehicle-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=constrained&text=100&v.vehicle-heroes.presentation=%22uk-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-bus",
+      "study": "vehicle-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=vehicle-heroes&host=serif&text=200&v.vehicle-heroes.presentation=%22uk-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-rail",
+      "study": "vehicle-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=bare&text=100&v.vehicle-heroes.presentation=%22uk-rail%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-rail",
+      "study": "vehicle-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=light&text=100&v.vehicle-heroes.presentation=%22uk-rail%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-rail",
+      "study": "vehicle-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=bare&text=100&v.vehicle-heroes.presentation=%22uk-rail%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-rail",
+      "study": "vehicle-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=constrained&text=100&v.vehicle-heroes.presentation=%22uk-rail%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-uk-rail",
+      "study": "vehicle-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=vehicle-heroes&host=serif&text=200&v.vehicle-heroes.presentation=%22uk-rail%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-yellow-bus",
+      "study": "vehicle-heroes",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=bare&text=100&v.vehicle-heroes.presentation=%22yellow-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-yellow-bus",
+      "study": "vehicle-heroes",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=light&text=100&v.vehicle-heroes.presentation=%22yellow-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-yellow-bus",
+      "study": "vehicle-heroes",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=bare&text=100&v.vehicle-heroes.presentation=%22yellow-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-yellow-bus",
+      "study": "vehicle-heroes",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=vehicle-heroes&host=constrained&text=100&v.vehicle-heroes.presentation=%22yellow-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "vehicle-yellow-bus",
+      "study": "vehicle-heroes",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=vehicle-heroes&host=serif&text=200&v.vehicle-heroes.presentation=%22yellow-bus%22&v.vehicle-heroes.long=true",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    }
+  ],
+  "followups": [
+    {
+      "specimen": "airports",
+      "conditions": 5,
+      "reason": "Refreshed against the verified local v1 capabilities fixture after final fixture-path correction."
+    }
+  ]
+}

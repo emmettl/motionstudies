@@ -1,0 +1,399 @@
+{
+  "date": "2026-11-01",
+  "source": {
+    "baseCommit": "358ea481cf10cecb26a827e9d9eb350a977a76c7",
+    "files": [
+      {
+        "path": "lab/src/audit-cases.ts",
+        "sha256": "b93efa4fc507b23be8362d13c3ba25a8c93994016b5743a5265cfcc42431a8aa"
+      },
+      {
+        "path": "lab/src/studies.ts",
+        "sha256": "c3c59ac6ebf6e422ecc0d7457934456685a5277fa14d66367f4e355fdab9c3dc"
+      },
+      {
+        "path": "lab/src/scenarios.ts",
+        "sha256": "0198e6ede0c84d0ccb3456bfc2db9925b02fbbe0163706b2f4511a11363c72ea"
+      },
+      {
+        "path": "lab/src/validation-metrics.ts",
+        "sha256": "1dd1c6d2f005b1e7c2d1f68fb99ad4641ea8c8dc9e1910b8af92359503b5a7a7"
+      },
+      {
+        "path": "lab/src/host.css",
+        "sha256": "a34d0178c20b366f777626488e3f9bfd2dbf0732d8f7f09ba16804201dd78fca"
+      },
+      {
+        "path": "lab/src/panel-layout-study.css",
+        "sha256": "999a64caaa61b7e2388bb00ae4686ea2773ae9a8e93333e973d10d45d3b1f322"
+      },
+      {
+        "path": "lab/src/PowerDayStudy.tsx",
+        "sha256": "782d4c74ba69c8b2d8623660ac30b477be980575c5cf327b73f13cfa3fd525a9"
+      },
+      {
+        "path": "lab/src/AirportStudy.tsx",
+        "sha256": "d134b599569f03520ee10286de7df0dfb37bd865f6f1d19e085c946bc77c4506"
+      },
+      {
+        "path": "lab/public/data/airport-unavailable/api/airports/v1/gleislicht/capabilities",
+        "sha256": "2497f1ee5094d869c56f8a2071a8b6fd4759b45a508e5a00dc604614cebb6114"
+      },
+      {
+        "path": "packages/web/src/components/airport-hero-card.css",
+        "sha256": "98c5a302131b413904295fb1fce1f7fdb34585f6332a0ca8cb28b10fb7639137"
+      },
+      {
+        "path": "lab/e2e/component-audit.spec.ts",
+        "sha256": "55de1a704dbb80189fa00b73771a2c234c7f62fe430acde4223e04789128e492"
+      },
+      {
+        "path": "lab/e2e/gpu-lifecycle.spec.ts",
+        "sha256": "9fe7918f8a85ac18e1aefc1180660a90a0c68bbb9f88ac5e6e6470716d1ce00f"
+      },
+      {
+        "path": "lab/e2e/performance-baseline.spec.ts",
+        "sha256": "42a8143303fb295c55db5b3b08197aba8de39e0c3180208fcc4fe6cd3873b6d2"
+      },
+      {
+        "path": "lab/e2e/airport-contrast.spec.ts",
+        "sha256": "71e36297168071c4492849e56ac12b55200382ea96e6ddb671c1273ec7fe5334"
+      },
+      {
+        "path": "lab/e2e/audit-regressions.spec.ts",
+        "sha256": "2a2df9edda3de6491042e651ee7b70e118f18f71960816ecef59759fbc6256f3"
+      }
+    ]
+  },
+  "protocol": {
+    "specimenPresentations": 24,
+    "hostConditions": 5,
+    "projects": 3,
+    "baselineSamplesPerCase": 3,
+    "telemetryIntervalMs": 250,
+    "note": "Submitted frames are cumulative renderer counters sampled over approximately 5.25 seconds. These observations are not FPS budgets or proof of physical GPU-memory reclamation. Production React commit counts are unavailable."
+  },
+  "conditions": 360,
+  "matrix": [
+    {
+      "project": "desktop-chromium",
+      "browserVersion": "156.0.8078.4",
+      "mode": "production",
+      "conditions": 120,
+      "findings": 0
+    },
+    {
+      "project": "desktop-webkit",
+      "browserVersion": "27.2",
+      "mode": "production",
+      "conditions": 120,
+      "findings": 0
+    },
+    {
+      "project": "iphone-webkit",
+      "browserVersion": "27.2",
+      "mode": "production",
+      "conditions": 120,
+      "findings": 0
+    }
+  ],
+  "baselines": [
+    {
+      "project": "desktop-chromium",
+      "study": "network",
+      "scenario": "network-paused",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.26
+      },
+      "submittedFrames": {
+        "min": 298,
+        "max": 304
+      },
+      "geometries": {
+        "min": 15,
+        "max": 15
+      },
+      "textures": {
+        "min": 12,
+        "max": 12
+      },
+      "commits": null,
+      "longTasks": {
+        "min": 0,
+        "max": 1
+      },
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": [
+        {
+          "width": 728,
+          "height": 420,
+          "pixelRatio": 1
+        }
+      ]
+    },
+    {
+      "project": "desktop-chromium",
+      "study": "terrain",
+      "scenario": "terrain-adapter",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.25
+      },
+      "submittedFrames": {
+        "min": 0,
+        "max": 0
+      },
+      "geometries": {
+        "min": 3,
+        "max": 3
+      },
+      "textures": {
+        "min": 3,
+        "max": 3
+      },
+      "commits": null,
+      "longTasks": {
+        "min": 0,
+        "max": 0
+      },
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": [
+        {
+          "width": 728,
+          "height": 420,
+          "pixelRatio": 1
+        }
+      ]
+    },
+    {
+      "project": "desktop-chromium",
+      "study": "vehicle-heroes",
+      "scenario": "vehicle-sbb-paused",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.25
+      },
+      "submittedFrames": {
+        "min": 0,
+        "max": 0
+      },
+      "geometries": {
+        "min": 0,
+        "max": 0
+      },
+      "textures": {
+        "min": 0,
+        "max": 0
+      },
+      "commits": null,
+      "longTasks": {
+        "min": 0,
+        "max": 0
+      },
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": []
+    },
+    {
+      "project": "desktop-webkit",
+      "study": "network",
+      "scenario": "network-paused",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.25
+      },
+      "submittedFrames": {
+        "min": 297,
+        "max": 306
+      },
+      "geometries": {
+        "min": 15,
+        "max": 15
+      },
+      "textures": {
+        "min": 12,
+        "max": 12
+      },
+      "commits": null,
+      "longTasks": null,
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": [
+        {
+          "width": 1201,
+          "height": 693,
+          "pixelRatio": 1.65
+        }
+      ]
+    },
+    {
+      "project": "desktop-webkit",
+      "study": "terrain",
+      "scenario": "terrain-adapter",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.25
+      },
+      "submittedFrames": {
+        "min": 0,
+        "max": 0
+      },
+      "geometries": {
+        "min": 3,
+        "max": 3
+      },
+      "textures": {
+        "min": 3,
+        "max": 3
+      },
+      "commits": null,
+      "longTasks": null,
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": [
+        {
+          "width": 1456,
+          "height": 840,
+          "pixelRatio": 2
+        }
+      ]
+    },
+    {
+      "project": "desktop-webkit",
+      "study": "vehicle-heroes",
+      "scenario": "vehicle-sbb-paused",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.25
+      },
+      "submittedFrames": {
+        "min": 0,
+        "max": 0
+      },
+      "geometries": {
+        "min": 0,
+        "max": 0
+      },
+      "textures": {
+        "min": 0,
+        "max": 0
+      },
+      "commits": null,
+      "longTasks": null,
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": []
+    },
+    {
+      "project": "iphone-webkit",
+      "study": "network",
+      "scenario": "network-paused",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.25
+      },
+      "submittedFrames": {
+        "min": 284,
+        "max": 295
+      },
+      "geometries": {
+        "min": 15,
+        "max": 15
+      },
+      "textures": {
+        "min": 12,
+        "max": 12
+      },
+      "commits": null,
+      "longTasks": null,
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": [
+        {
+          "width": 1201,
+          "height": 693,
+          "pixelRatio": 1.65
+        }
+      ]
+    },
+    {
+      "project": "iphone-webkit",
+      "study": "terrain",
+      "scenario": "terrain-adapter",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.25
+      },
+      "submittedFrames": {
+        "min": 0,
+        "max": 0
+      },
+      "geometries": {
+        "min": 3,
+        "max": 3
+      },
+      "textures": {
+        "min": 3,
+        "max": 3
+      },
+      "commits": null,
+      "longTasks": null,
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": [
+        {
+          "width": 1456,
+          "height": 840,
+          "pixelRatio": 2
+        }
+      ]
+    },
+    {
+      "project": "iphone-webkit",
+      "study": "vehicle-heroes",
+      "scenario": "vehicle-sbb-paused",
+      "mode": "production",
+      "samples": 3,
+      "seconds": {
+        "min": 5.25,
+        "max": 5.25
+      },
+      "submittedFrames": {
+        "min": 0,
+        "max": 0
+      },
+      "geometries": {
+        "min": 0,
+        "max": 0
+      },
+      "textures": {
+        "min": 0,
+        "max": 0
+      },
+      "commits": null,
+      "longTasks": null,
+      "requests": 0,
+      "consumerCallbacks": 0,
+      "buffers": []
+    }
+  ]
+}

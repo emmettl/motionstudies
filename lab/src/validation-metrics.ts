@@ -1,16 +1,32 @@
 import type { WebGLRenderer } from 'three'
+export interface RendererLifetime { id: number; active: boolean; contextLost: boolean }
 export interface ValidationMetrics {
-  mounted?: boolean; commits: number | null; callbacks: Record<string, number>; requests: number; aborted: number; failures: number
+  rendererLifetimes: RendererLifetime[]; mounted?: boolean; commits: number | null; callbacks: Record<string, number>; requests: number; aborted: number; failures: number
   pendingRequests: number; timeouts: number; intervals: number; animationFrames: number; frames: number
-  longTasks: number | null; errors: string[]; renderers: { frames: number; framesSinceReset: number; geometries: number; textures: number }[]
+  longTasks: number | null; errors: string[]; renderers: { width: number; height: number; pixelRatio: number; frames: number; framesSinceReset: number; geometries: number; textures: number }[]
 }
 
 /** Host-only instrumentation. Counts include framework work; compare settled baselines, not absolute zero. */
 export function installValidationMetrics() {
-  const metrics: ValidationMetrics = { commits: import.meta.env.DEV ? 0 : null, callbacks: {}, requests: 0, aborted: 0, failures: 0, pendingRequests: 0, timeouts: 0, intervals: 0, animationFrames: 0, frames: 0, longTasks: null, errors: [], renderers: [] }
+  const metrics: ValidationMetrics = { commits: import.meta.env.DEV ? 0 : null, callbacks: {}, requests: 0, aborted: 0, failures: 0, pendingRequests: 0, timeouts: 0, intervals: 0, animationFrames: 0, frames: 0, longTasks: null, errors: [], renderers: [], rendererLifetimes: [] }
   const renderers = new Set<WebGLRenderer>(), frameBaselines = new Map<WebGLRenderer, number>()
+  const lifetimes = new WeakMap<WebGLRenderer, RendererLifetime>()
+  let nextRendererId = 0
   window.addEventListener('lab:renderer', event => {
     const { renderer, active } = (event as CustomEvent<{ renderer: WebGLRenderer; active: boolean }>).detail
+    let record = lifetimes.get(renderer)
+    if (!record) {
+      record = { id: ++nextRendererId, active: true, contextLost: false }
+      lifetimes.set(renderer, record)
+      metrics.rendererLifetimes.push(record)
+      if (metrics.rendererLifetimes.length > 32) metrics.rendererLifetimes.shift()
+      const lifetime = record
+      renderer.domElement.addEventListener('webglcontextlost', () => {
+        lifetime.contextLost = true
+        if (lifetime.active) metrics.errors.push(`Renderer ${lifetime.id} lost its context while mounted`)
+      })
+    }
+    record.active = active
     if (active) { renderers.add(renderer); frameBaselines.set(renderer, renderer.info.render.frame) } else { renderers.delete(renderer); frameBaselines.delete(renderer) }
   })
   const pendingTimeouts = new Set<number>(), pendingIntervals = new Set<number>(), pendingFrames = new Set<number>()
@@ -51,7 +67,7 @@ export function installValidationMetrics() {
   }
   return {
     commit: () => { if (metrics.commits !== null) metrics.commits++ },
-    snapshot: (): ValidationMetrics => ({ ...metrics, renderers: [...renderers].map(r => ({ frames: r.info.render.frame, framesSinceReset: r.info.render.frame - (frameBaselines.get(r) ?? 0), geometries: r.info.memory.geometries, textures: r.info.memory.textures })), callbacks: { ...metrics.callbacks }, errors: [...metrics.errors], timeouts: pendingTimeouts.size, intervals: pendingIntervals.size, animationFrames: pendingFrames.size }),
+    snapshot: (): ValidationMetrics => ({ ...metrics, rendererLifetimes: metrics.rendererLifetimes.map(record => ({ ...record })), renderers: [...renderers].map(r => ({ width: r.domElement.width, height: r.domElement.height, pixelRatio: r.getPixelRatio(), frames: r.info.render.frame, framesSinceReset: r.info.render.frame - (frameBaselines.get(r) ?? 0), geometries: r.info.memory.geometries, textures: r.info.memory.textures })), callbacks: { ...metrics.callbacks }, errors: [...metrics.errors], timeouts: pendingTimeouts.size, intervals: pendingIntervals.size, animationFrames: pendingFrames.size }),
     schedule: originalInterval,
     reset: () => { for (const renderer of renderers) frameBaselines.set(renderer, renderer.info.render.frame); if (metrics.commits !== null) metrics.commits = 0; metrics.callbacks = {}; metrics.requests = 0; metrics.aborted = 0; metrics.failures = 0; metrics.frames = 0; if (metrics.longTasks !== null) metrics.longTasks = 0; metrics.errors = [] },
   }

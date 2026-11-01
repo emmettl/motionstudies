@@ -28,6 +28,8 @@ const railMovements = [
 ]
 
 export function AirportStudy() {
+  const [liveSource, setLiveSource] = useScenarioState('liveSource', 'live')
+  const liveBase = liveSource === 'unavailable-fixture' ? `${import.meta.env.BASE_URL}data/airport-unavailable` : import.meta.env.DEV ? '' : 'https://motionstudies.app'
   const [state, setState] = useScenarioState('state', 'ready')
   const reloadTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   useEffect(() => () => clearTimeout(reloadTimer.current), [])
@@ -65,7 +67,7 @@ export function AirportStudy() {
   }))
   const arrivalRows = observed ? arrivals.map((entry) => ({ ...entry, place: undefined, stand: undefined, status: 'Inferred' })) : arrivals
   return <>
-    <div className="toolbar">
+    <div className="toolbar"><label>Airport live source <select value={liveSource} onChange={e => setLiveSource(e.target.value)}><option value="live">Configured live service</option><option value="unavailable-fixture">Unavailable · local fixture</option></select></label>
       <button onClick={() => { if (time >= windowEnd) setTime(study.windowStart); setPlaying(time >= windowEnd || !playing) }}>{playing && time < windowEnd ? 'Pause study' : 'Play study'}</button>
       <label>Study window <select value={windowEnd} onChange={(event) => { const end = Number(event.target.value); setWindowEnd(end); setTime((current) => Math.min(current, end)) }}><option value="36000">08:30–10:00</option><option value="32400">08:30–09:00</option></select></label>
       <label>Look ahead <select value={ahead} onChange={(event) => setAhead(Number(event.target.value))}><option value="1800">30 minutes</option><option value="3600">60 minutes</option><option value="7200">120 minutes</option></select></label>
@@ -80,7 +82,7 @@ export function AirportStudy() {
       <label><input type="checkbox" checked={observed} onChange={(event) => setObserved(event.target.checked)} /> Observed tracks only</label>
     </div>
     <div className="airport-specimen">
-      <AirportBoard live={{ baseUrl: import.meta.env.DEV ? '' : 'https://motionstudies.app', edition: 'gleislicht', airport: 'ZRH' }} studyCard={{ airport:{ iata: 'NFL', name: 'Northfield International', city: 'Northfield' },
+      <AirportBoard live={{ baseUrl: liveBase, edition: 'gleislicht', airport: 'ZRH' }} studyCard={{ airport:{ iata: 'NFL', name: 'Northfield International', city: 'Northfield' },
         departures: state === 'empty' ? [] : departureRows, arrivals: state === 'empty' ? [] : arrivalRows,
         study, horizon, dateLabel: '08 SEP 2026',
         loading: state === 'loading', error: state === 'error' ? 'Airport movements unavailable.' : undefined,

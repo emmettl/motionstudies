@@ -125,3 +125,77 @@ batched. This avoids browser History rate limits. Reproduction links carry the
 latest control state even during that short address-bar delay.
 React commit counts are unavailable (`null`) in production builds that omit
 React profiling. Request, callback and renderer counters remain available.
+
+## Component audit · 1 November 2026
+
+The production audit covers all 17 specimens plus seven additional hero
+presentations in five conditions: bare, light, a 280 px viewport container,
+a 280 px container inside a wide viewport, and enlarged inherited serif text.
+Desktop Chromium, desktop WebKit and iPhone WebKit provide 360 conditions.
+Each condition checks runtime errors, component/page containment and axe rules
+with tags `wcag2a`, `wcag2aa` and `wcag21aa`. Narrow and enlarged-text screenshots
+are retained as test artifacts for visual review.
+
+The audit found and corrected:
+
+- AirportBoard availability and selected-flight detail text used a pale fixed
+  color outside the dark card. The shared stylesheet now uses the host's muted
+  token, falling back to inherited text color. This shared package fix requires
+  the normal release/adoption process before registry-pinned editions receive it.
+- The dark panel fixture overrode its surface without supplying matching ink.
+  Its own control palette now stays readable in a light host.
+- The settlement table's horizontal scroll region was not keyboard reachable.
+  It now has a named focus target and explicit Left/Right scrolling, including
+  on WebKit where focusing the region alone did not enable arrow scrolling.
+- The serif host used fixed pixels, defeating the 200% setting. It now uses rems;
+  the audit verifies a computed 40 px body font. Consumer controls and the bus
+  footer also wrap at enlarged sizes.
+
+`airport-unavailable`, `panel-dark-controls` and `power-table` reproduce the
+findings through the existing Scenario selector. For example, open
+`?study=airports&validate=1&scenario=airport-unavailable&host=light`.
+The unavailable airport uses a local, versioned capabilities fixture; it does
+not depend on the live service being down. Healthy selected-flight details use
+controlled API responses in the contrast regression.
+
+GPU checks now observe retired WebGL contexts as well as active allocations.
+Network and Terrain survive ten component mount cycles and hide/show recovery;
+retired contexts report context loss while the document remains alive. Terrain
+texture swaps and row adapters remain within a settled, warmed allocation
+baseline. These checks bring the canvas into view before expecting a redraw,
+so WebKit's offscreen rendering suspension is not mistaken for a component bug.
+Physical driver-memory reclamation is not inferred from these observations.
+
+Three fixed scenarios were sampled three times per browser, without concurrent
+benchmark workers. Each capture is approximately 5.25 seconds with a 250 ms
+telemetry interval and a fully visible 760 × 720 host. The raw samples record
+actual drawing-buffer dimensions and adaptive pixel ratios, browser version,
+platform and renderer allocations. Production React commit counts and unsupported
+long-task observations remain null.
+
+| Scenario | Submitted frames per capture | WebGL allocations during captures |
+| --- | --- | --- |
+| Paused Network | 284–306 across the three engines | 15 geometries, 12 textures |
+| Paused Terrain adapter | 0 | 3 geometries, 3 textures |
+| SBB vehicle hero | No WebGL renderer | None |
+
+All samples emitted no instrumented consumer callbacks or `window.fetch`
+requests. This does not count browser-native font/module loading. Network still
+submits frames while paused; that is the next performance investigation, not a
+new FPS budget. Compare samples on the same engine and drawing-buffer conditions.
+
+Evidence and initial findings are in
+[`docs/evidence/lab-audit-2026-11-01`](../docs/evidence/lab-audit-2026-11-01/summary.json).
+The summary records source hashes and rejects incomplete matrices or unresolved
+findings. Reproduce a production audit with `npm run build:lab`, serve it with
+`npx vite preview --config lab/vite.config.mjs --port 4176`, then run:
+
+```sh
+MOTION_LAB_URL=http://localhost:4176 MOTION_LAB_AUDIT_CAPTURE=1 npm run test:lab -- component-audit gpu-lifecycle airport-contrast audit-regressions
+MOTION_LAB_URL=http://localhost:4176 MOTION_LAB_AUDIT_CAPTURE=1 npm run test:lab -- performance-baseline --workers=1
+node scripts/summarize-lab-audit.mjs
+```
+
+Keep baseline captures serial and keep the host fully in view. The regular
+browser suite includes these regressions; evidence files are rewritten only
+when `MOTION_LAB_AUDIT_CAPTURE=1` is explicitly set.

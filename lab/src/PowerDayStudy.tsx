@@ -28,7 +28,12 @@ export function PowerDayStudy() {
     <p data-testid="power-day-length">{day.date} · {day.demandMw.length} half-hour periods · {day.timezone}</p>
     <div className="timeline"><label>Elapsed seconds <input aria-label="Power time" type="range" min="0" max={duration} step="60" value={time} onChange={e => setTime(+e.target.value)} /></label><output data-testid="power-clock">{clock} · {time} s elapsed</output></div>
     <div className="toolbar">{[0, 300, 600, 1800, 3600, 5400, 7200, duration].map(t => <button key={t} onClick={() => setTime(t)}>{t === duration ? 'Day end' : `${t} s`}</button>)}</div>
-    <div className="readout" data-testid="power-readout"><table><thead><tr><th>Unit</th><th>Interval energy</th><th>Average power</th><th>Planned power</th><th>Run</th></tr></thead><tbody>{day.units.map(u => { const p = unitPower(day, u, time); return <tr key={u.id}><th>{u.name}</th><td>{value(p.settledMwh, 'MWh')}</td><td>{value(p.averageMw, 'MW')}</td><td>{value(p.plannedMw, 'MW')}</td><td>{p.run ?? 'Missing'}</td></tr> })}</tbody></table></div>
+    <div className="readout" role="region" aria-label="Power settlement evidence" tabIndex={0} onKeyDown={event => {
+      const element = event.currentTarget
+      if (event.target !== element || element.scrollWidth <= element.clientWidth || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+      const direction = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0
+      if (direction) { event.preventDefault(); element.scrollLeft += direction * 96 }
+    }} data-testid="power-readout"><table><thead><tr><th>Unit</th><th>Interval energy</th><th>Average power</th><th>Planned power</th><th>Run</th></tr></thead><tbody>{day.units.map(u => { const p = unitPower(day, u, time); return <tr key={u.id}><th>{u.name}</th><td>{value(p.settledMwh, 'MWh')}</td><td>{value(p.averageMw, 'MW')}</td><td>{value(p.plannedMw, 'MW')}</td><td>{p.run ?? 'Missing'}</td></tr> })}</tbody></table></div>
     <p data-testid="power-total">Aggregate: {value(total.averageMw, 'MW')} · {total.available} available · {total.missing} missing contributors</p>
     <p data-testid="power-fuel">Fuel sample: {fuel ? Object.entries(fuel.byFuel).map(([name, n]) => `${name}: ${value(n, 'MW')}`).join(' · ') : 'Missing / expired'}</p>
     <p className="note">Invented settlement evidence. The first period includes signed storage energy; the next is measured zero. Period 3 is missing for both units, period 4 for storage only. Plans have a gap at 3600–5400 s. Fuel evidence expires after five minutes. Day end is outside the half-open evidence window.</p>

@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-01",
+  "project": "desktop-chromium",
+  "conditions": 96,
+  "note": "Initial discovery; serif host used fixed 20px and did not yet scale with the 200% setting. Corrected in the final audit.",
+  "findings": [
+    {
+      "specimen": "panel-layout",
+      "study": "panel-layout",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=panel-layout&host=light&text=100&v.panel-layout.width=680",
+      "layout": {
+        "bodyOverflow": false,
+        "outside": []
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                ".panel-layout-header > .ms-control:nth-child(1)"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.19 (foreground color: #171b21, background color: #182b3c, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "#panel-evidence"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.19 (foreground color: #171b21, background color: #182b3c, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-days",
+      "study": "power-days",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=power-days&host=bare&text=100",
+      "layout": {
+        "bodyOverflow": false,
+        "outside": []
+      },
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                ".readout"
+              ],
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-days",
+      "study": "power-days",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=power-days&host=serif&text=200",
+      "layout": {
+        "bodyOverflow": false,
+        "outside": []
+      },
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                ".readout"
+              ],
+              "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "alerts": []
+    }
+  ],
+  "productionFollowup": {
+    "note": "Availability text outside the AirportBoard card failed on a light host. The final audit uses a controlled unavailable capability response.",
+    "findings": [
+      {
+        "specimen": "airports",
+        "study": "airports",
+        "host": "light",
+        "width": 760,
+        "text": 100,
+        "url": "/host.html?study=airports&host=light&text=100",
+        "layout": {
+          "overflowElements": [],
+          "bodyOverflow": false,
+          "bodyFontPixels": 16,
+          "outside": []
+        },
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": [
+              {
+                "target": [
+                  ".ms-airport-board__modes > span"
+                ],
+                "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.97 (foreground color: #b8baaa, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ]
+          }
+        ],
+        "errors": [],
+        "alerts": []
+      }
+    ]
+  }
+}

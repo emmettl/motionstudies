@@ -33,13 +33,13 @@
   .ms-airport-hero__directions { width: 100%; gap: 20px; }
   .ms-airport-hero__window { margin: 6px 0 10px; }
 }
-.ms-airport-board__modes { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; color: #b8baaa; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; }
+.ms-airport-board__modes { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; color: var(--muted, currentColor); font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; }
 .ms-airport-board__modes button, .ms-airport-board__unavailable button { min-height: 44px; padding: 8px 16px; border: 1px solid #4b4d40; border-radius: 6px; color: #f0ecdd; background: #1d211c; font: inherit; cursor: pointer; }
 .ms-airport-board__modes button[aria-pressed='true'] { border-color: #edc96b; color: #edc96b; }
 .ms-airport-board__modes button:disabled { opacity: .5; cursor: default; }
 .ms-airport-board__modes button:focus-visible, .ms-airport-board__unavailable button:focus-visible { outline: 2px solid #edc96b; outline-offset: 3px; }
 .ms-airport-board__unavailable { padding: 28px; border: 1px solid #4b4d40; border-radius: 12px; color: #f0ecdd; background: #1d211c; font: 14px/1.6 ui-sans-serif, system-ui, sans-serif; }
-.ms-airport-board__detail { color: #b8baaa; font: 13px/1.6 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+.ms-airport-board__detail { color: var(--muted, currentColor); font: 13px/1.6 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
 
 /* Shared compact presentation, responsive to card width rather than the window. */
 .ms-airport-hero[data-density='compact'] { padding: 12px; }
