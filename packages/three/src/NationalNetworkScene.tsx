@@ -1,3 +1,6 @@
+import { useCameraFrame } from './use-camera-frame.ts'
+import { frameRenderer } from './frame-state.ts'
+import { frameElapsed } from './frame-state.ts'
 import { MAP_LAYER } from './scene-layer-order.ts'
 import { EMPTY_LAKE_AVOIDING_PATHS, LakeAvoidingPathsContext } from './scene-lake-paths.ts'
 import { useProjectedTrainPosition } from './scene-train-position.ts'
@@ -26,7 +29,7 @@ import { stationCentre, type ProjectedStop } from './station-picking.ts'
 import { setSceneMotionClock, setScenePickTrain } from './scene-picking.ts'
 import { TrailFrameBudget } from './trail-frame-budget.ts'
 import { updateDirtyGeometry } from './active-geometry.ts'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { WebGLStudyCanvas as Canvas, useWebGLStudyFrame as useFrame, useWebGLStudyState as useThree } from './webgl-study.ts'
 import { lazy, Suspense, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { useNetworkScene, type NetworkSceneExtensions, type NetworkCameraDriver } from './scene-extensions.ts'
 import { NetworkSceneProviderContext } from './scene-context.ts'
@@ -856,7 +859,7 @@ function VehicleMotion({
       }
     }
     const now = localTime.current
-    const clock = state.clock.elapsedTime
+    const clock = frameElapsed(state)
     if (!seek) {
       const expected = current.previousTime + (isPlaying ? delta * playbackRate : 0)
       seek = isPlaying
@@ -1128,7 +1131,8 @@ function NetworkCamera({
   readonly airProjection: NetworkProjection
   readonly spatialLayoutMix?: number
 }) {
-  const { camera, gl, size } = useThree()
+  const state = useThree(), renderer = frameRenderer(state)
+  const { camera, size } = state
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const resolveTrainPosition = useProjectedTrainPosition()
   const [desiredPosition, desiredTarget, currentTarget] = useMemo(() =>
@@ -1218,7 +1222,7 @@ function NetworkCamera({
   ])
 
   useEffect(() => {
-    const element = gl.domElement
+    const element = renderer.domElement
     const pointers = new Map<
       number,
       { x: number; y: number; pointerType: string }
@@ -1297,9 +1301,9 @@ function NetworkCamera({
       element.removeEventListener('pointercancel', onPointerUp)
       element.removeEventListener('wheel', onWheel)
     }
-  }, [gl, minimumDistanceScale, selectedAirTrack, selectedTrain])
+  }, [renderer, minimumDistanceScale, selectedAirTrack, selectedTrain])
 
-  useFrame((_, delta) => {
+  useCameraFrame((_, delta) => {
     if (cameraDriver.current?.update(delta)) return
     if (isPlaying) {
       localTime.current += delta * playbackRate
@@ -1356,7 +1360,7 @@ function NetworkCamera({
     viewportFraming(cameraViewport?.({ ...size, spatialLayoutMix: diagramMix }), size)
     camera.lookAt(currentTarget)
     camera.updateMatrixWorld()
-  }, -1)
+  })
 
   return null
 }

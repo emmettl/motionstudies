@@ -1,5 +1,6 @@
+import { frameElapsed } from './frame-state.ts'
 import { batchHubLines } from './batch-hub-lines.ts'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { WebGLStudyCanvas as Canvas, useWebGLStudyFrame as useFrame } from './webgl-study.ts'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import type { HubCall, HubDefinition } from '@motionstudies/core/domain/hub'
@@ -376,9 +377,9 @@ function StationCore({ hub }: { readonly hub: HubDefinition }) {
   const core = useRef<THREE.Group>(null)
   useFrame((state) => {
     if (!core.current) return
-    const scale = 1 + Math.sin(state.clock.elapsedTime * 2.4) * 0.06
+    const scale = 1 + Math.sin(frameElapsed(state) * 2.4) * 0.06
     core.current.scale.setScalar(scale)
-    core.current.rotation.y = state.clock.elapsedTime * 0.08
+    core.current.rotation.y = frameElapsed(state) * 0.08
   })
   return (
     <group ref={core}>
@@ -528,8 +529,8 @@ function HubTraffic({
     if (glow.current) glow.current.frustumCulled = false
 
     // A paused scene follows the consumer's clock.
-    if (isPlaying && state.clock.elapsedTime - lastReport.current > 0.1) {
-      lastReport.current = state.clock.elapsedTime
+    if (isPlaying && frameElapsed(state) - lastReport.current > 0.1) {
+      lastReport.current = frameElapsed(state)
       onTime(localTime.current)
     }
   })
@@ -587,7 +588,7 @@ function NightSignalField({ mix }: { readonly mix: number }) {
     [geometry, pointTexture],
   )
   useFrame((state) => {
-    if (group.current) group.current.rotation.y = state.clock.elapsedTime * 0.018
+    if (group.current) group.current.rotation.y = frameElapsed(state) * 0.018
   })
 
   if (mix <= 0.001) return null

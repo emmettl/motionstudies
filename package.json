@@ -19,7 +19,7 @@
     "check:packages": "tsc -p packages/core && tsc -p packages/three && tsc -p packages/web && tsc -p packages/data",
     "check:tests": "tsc -p packages/core/tsconfig.test.json && tsc -p packages/three/tsconfig.test.json && tsc -p packages/web/tsconfig.test.json && tsc -p services/airports/tsconfig.test.json && tsc -p services/feed-observer/tsconfig.test.json",
     "check:architecture": "node scripts/check-edition-boundaries.mjs",
-    "typecheck": "npm run check:packages && npm run check:tests && tsc -p lab && tsc -p tsconfig.tests.json && npm run check:airports && npm run check:feed-observer",
+    "typecheck": "npm run check:packages && npm run check:tests && tsc -p lab && tsc -p tsconfig.tests.json && npm run check:airports && npm run check:feed-observer && npm run check:renderer-compat",
     "lint": "oxlint",
     "test": "vitest run && node --test hosting/*-subdomain.test.mjs",
     "test:lab": "playwright test --config playwright.lab.config.ts",
@@ -40,7 +40,13 @@
     "feeds:push": "node scripts/push-feed-health.mjs",
     "check:terrain-consumers": "node scripts/check-terrain-consumers.mjs",
     "check:weather-consumers": "node scripts/check-weather-consumers.mjs",
-    "check:power-consumers": "node scripts/check-power-consumers.mjs"
+    "check:power-consumers": "node scripts/check-power-consumers.mjs",
+    "readiness:audit": "node scripts/audit-renderer-readiness.mjs",
+    "readiness:matrix": "playwright test --config playwright.lab.config.ts renderer-readiness motion-backends gpu-diagnostics recent-components gpu-lifecycle",
+    "readiness:native": "MOTION_REQUIRE_WEBGPU=1 playwright test --config playwright.lab.config.ts renderer-readiness motion-backends --project=desktop-chromium",
+    "readiness:bundles": "node scripts/measure-renderer-bundles.mjs",
+    "readiness:record": "node scripts/record-renderer-validation.mjs",
+    "check:renderer-compat": "node scripts/check-renderer-compat.mjs"
   },
   "dependencies": {
     "@motionstudies/core": "0.1.0-alpha.49",
@@ -66,10 +72,5 @@
     "vite": "8.3.5",
     "vitest": "5.0.5"
   },
-  "packageManager": "npm@11.21.1",
-  "overrides": {
-    "r3f-perf": {
-      "@react-three/drei": "10.7.9"
-    }
-  }
+  "packageManager": "npm@11.21.1"
 }
