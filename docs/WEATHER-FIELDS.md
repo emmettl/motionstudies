@@ -1,6 +1,6 @@
 # Shared weather fields and playback
 
-**1 November 2026 — alpha.46 implementation.** Shared infrastructure for KRAFT's weather experiments, Zugunruhe's ERA5 cloud grid and Gleislicht's satellite-derived cloud playback. Source acquisition remains offline; edition renderers retain their appearance, projection, lighting and interpretation.
+**1 November 2026 — alpha.46 published and registry-verified.** Shared infrastructure for KRAFT's weather experiments, Zugunruhe's ERA5 cloud grid and Gleislicht's satellite-derived cloud playback. Source acquisition remains offline; edition renderers retain their appearance, projection, lighting and interpretation.
 
 ## Package boundaries
 
@@ -70,6 +70,8 @@ node scripts/check-weather-consumers.mjs --gleislicht /path/to/gleislicht --zugu
 The checker builds real tarballs, installs them into isolated copies and runs the editions' checks/builds without modifying source checkouts. Measured and audio assets are read-only inputs. Registry adoption and public deployment are distinct from this check and from npm publication.
 
 The lab's Weather specimen renders the shared GPU path and displays the same CPU reading. It contrasts interpolated cloud fraction with hourly radiation means and demonstrates exclusive ends and a missing corner. Chromium and mobile WebKit tests also run against packed production builds. Pure tests exercise source rejection, reversed axes, interval gaps, paired winds, coverage bytes, texture caching and integrity failures.
+
+The [trusted publication](https://github.com/emmettl/motionstudies/actions/runs/41298308659) and [registry evidence](evidence/weather-alpha46.json) verify all four package archives. Registry-based edition adoption is tracked in [Gleislicht #23](https://github.com/emmettl/gleislicht/pull/23) and [Zugunruhe #1](https://github.com/emmettl/zugunruhe/pull/1).
 
 ## Remaining work
 

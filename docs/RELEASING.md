@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.44` under `next`, published from `c912937` through [trusted run 41199053207](https://github.com/emmettl/motionstudies/actions/runs/41199053207). All four registry integrities and downloaded archives match the tested tarballs. Gleislicht and Schwall adopt the terrain exports through exact registry pins; see the [terrain release evidence](evidence/terrain-alpha44.json).
+The latest verified coordinated release is `0.1.0-alpha.46` under `next`, published from `9e9837d` through [trusted run 41298308659](https://github.com/emmettl/motionstudies/actions/runs/41298308659). All four registry integrities and downloaded archives match the tested tarballs byte-for-byte, and all four `next` tags were verified. See [weather infrastructure](WEATHER-FIELDS.md) and the [release evidence](evidence/weather-alpha46.json).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -41,7 +41,7 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
-`0.1.0-alpha.46` prepares the opt-in weather evidence contract, offline grid adapters, verified asset decoder and two-frame GPU playback. See [weather infrastructure](WEATHER-FIELDS.md) for semantics, consumer migrations and validation. Publication status is recorded separately from this implementation entry.
+`0.1.0-alpha.46` publishes the opt-in weather evidence contract, offline grid adapters, verified asset decoder and two-frame GPU playback. See [weather infrastructure](WEATHER-FIELDS.md) for semantics, consumer migrations and validation.
 
 `0.1.0-alpha.45` adds optional source-hash and exact-import-count verification for audited local generated modules in the edition boundary checker. Static dependencies remain checked, computed imports remain rejected by default, and unused or stale approvals fail. Schwall uses this for its independently verified CPU-reference generator.
 
