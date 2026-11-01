@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { stressText } from './stress-fixtures.ts'
+import { useScenarioState } from './scenario-state.tsx'
 import { DotMatrixBoard, type DotMatrixColumn } from '@motionstudies/web/components/DotMatrixBoard'
 import { SplitFlapBoard, type SplitFlapRow } from '@motionstudies/web/components/SplitFlapBoard'
 import '@motionstudies/web/dot-matrix-board.css'
@@ -19,15 +20,15 @@ const services = [
 ]
 
 export function BusBoardStudy() {
-  const [presentation, setPresentation] = useState('matrix')
-  const [lines, setLines] = useState('auto')
-  const [height, setHeight] = useState(380)
-  const [state, setState] = useState('ready')
-  const [selected, setSelected] = useState<string>()
-  const [updated, setUpdated] = useState(false)
-  const [long, setLong] = useState(false)
+  const [presentation, setPresentation] = useScenarioState('presentation', 'matrix')
+  const [lines, setLines] = useScenarioState('lines', 'auto')
+  const [height, setHeight] = useScenarioState('height', 380)
+  const [state, setState] = useScenarioState('state', 'ready')
+  const [selected, setSelected] = useScenarioState<string | undefined>('selected', undefined)
+  const [updated, setUpdated] = useScenarioState('updated', false)
+  const [long, setLong] = useScenarioState('long', false)
   const rows: readonly SplitFlapRow[] = state === 'empty' ? [] : services.map(([route, destination, time], index) => ({
-    id: `bus-${index}`, cells: { route, destination: long && index === 0 ? 'Saint-Étienne — Gare routière / 中央駅' : destination,
+    id: `bus-${index}`, cells: { route, destination: long && index === 0 ? stressText.multilingualDestination : destination,
       time: updated && index === 1 ? '3 min' : time }, tone: index === 0 ? 'accent' : updated && index === 1 ? 'warning' : 'neutral',
   }))
   const props = { label: 'Anchor Road bus departures', columns, rows, onSelectRow: setSelected, selectedRowId: selected,

@@ -1,3 +1,4 @@
+import { useScenarioState } from './scenario-state.tsx'
 import { useMemo, useRef, useState } from 'react'
 import { buildRouteIndex, buildStationIndex } from '@motionstudies/core/domain/network'
 import { NationalNetworkScene, type MapCameraCommand } from '@motionstudies/three/NationalNetworkScene'
@@ -8,10 +9,10 @@ import { branchingLayout, branchingNetwork, denseNetwork, policyBoundary, policy
 import { NetworkStyleProbe } from './NetworkStyleProbe.tsx'
 
 export function NetworkPolicyStudy() {
-  const [dense, setDense] = useState(false), [time, setTime] = useState(60), [mix, setMix] = useState(0), [playing, setPlaying] = useState(false)
-  const [budget, setBudget] = useState(24), [height, setHeight] = useState(16), [offset, setOffset] = useState(20), [padding, setPadding] = useState(12), [radius, setRadius] = useState(12)
-  const [coplanar, setCoplanar] = useState(false), [opacity, setOpacity] = useState(1), [portrait, setPortrait] = useState(false), [viewport, setViewport] = useState(false), [detail, setDetail] = useState(1), [morph, setMorph] = useState(false)
-  const [selection, setSelection] = useState('none'), [camera, setCamera] = useState<MapCameraCommand>(), [mounted, setMounted] = useState(true)
+  const [dense, setDense] = useScenarioState('dense', false), [time, setTime] = useScenarioState('time', 60), [mix, setMix] = useScenarioState('mix', 0), [playing, setPlaying] = useScenarioState('playing', false)
+  const [budget, setBudget] = useScenarioState('budget', 24), [height, setHeight] = useScenarioState('height', 16), [offset, setOffset] = useScenarioState('offset', 20), [padding, setPadding] = useScenarioState('padding', 12), [radius, setRadius] = useScenarioState('radius', 12)
+  const [coplanar, setCoplanar] = useScenarioState('coplanar', false), [opacity, setOpacity] = useScenarioState('opacity', 1), [portrait, setPortrait] = useScenarioState('portrait', false), [viewport, setViewport] = useScenarioState('viewport', false), [detail, setDetail] = useScenarioState('detail', 1), [morph, setMorph] = useScenarioState('morph', false)
+  const [selection, setSelection] = useScenarioState('selection', 'none'), [camera, setCamera] = useState<MapCameraCommand>(), [mounted, setMounted] = useScenarioState('mounted', true)
   const command = useRef(0), source = dense ? denseNetwork : branchingNetwork
   const stations = useMemo(() => buildStationIndex(source), [source]), routes = useMemo(() => buildRouteIndex(source), [source])
   const style = useMemo<NetworkMapStyle>(() => ({ coplanar,

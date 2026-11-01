@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useScenarioState } from './scenario-state.tsx'
+import { useMemo } from 'react'
 import { fuelMixAt, readPowerDay, sumPower, unitPower, type PowerDay } from '@motionstudies/core/domain/power-day'
 
 function fixture(kind: string): PowerDay {
@@ -16,7 +17,7 @@ function fixture(kind: string): PowerDay {
 }
 const value = (n: number | null, unit: string) => n === null ? 'Missing' : `${+n.toFixed(2)} ${unit}`
 export function PowerDayStudy() {
-  const [kind, setKind] = useState('normal'), [time, setTime] = useState(0), [storage, setStorage] = useState(true)
+  const [kind, setKind] = useScenarioState('kind', 'normal'), [time, setTime] = useScenarioState('time', 0), [storage, setStorage] = useScenarioState('storage', true)
   const day = useMemo(() => fixture(kind), [kind]), duration = day.demandMw.length * 1800
   const members = storage ? day.units : day.units.slice(0, 1), total = sumPower(day, members, time), fuel = fuelMixAt(day, time)
   const clock = new Intl.DateTimeFormat('en-GB', { timeZone: day.timezone, hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }).format(Date.parse(day.startUtc) + time * 1000)

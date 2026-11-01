@@ -1,4 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { observeRenderer } from './renderer-observation.ts'
+import { useScenarioState } from './scenario-state.tsx'
+import { useEffect, useMemo } from 'react'
 import { Canvas, useThree } from '@react-three/fiber'
 import { BufferGeometry, DataTexture, FloatType, MeshStandardMaterial, LineSegments, LineBasicMaterial, RGBAFormat, Vector3, type Texture } from 'three'
 import { createHeightfieldSurface, createTerrainGeometry } from '@motionstudies/three/terrain-surface'
@@ -23,6 +25,7 @@ function textureSurface(textures: readonly Texture[], exaggeration: number, sout
 
 function Surfaces({ phase, exaggeration, southFirst, wireframe, progress, masked }: { phase: number; exaggeration: number; southFirst: boolean; wireframe: boolean; progress: number; masked: boolean }) {
   const { gl, scene, camera, invalidate, size: viewportSize } = useThree()
+  useEffect(() => observeRenderer(gl), [gl])
   useEffect(() => {
     const distance = Math.max(12, 25 / (viewportSize.width / viewportSize.height))
     camera.position.set(0, distance * .65, distance * .75)
@@ -76,8 +79,8 @@ function Surfaces({ phase, exaggeration, southFirst, wireframe, progress, masked
 }
 
 export function TerrainStudy() {
-  const [phase, setPhase] = useState(0), [exaggeration, setExaggeration] = useState(1), [southFirst, setSouthFirst] = useState(false)
-  const [wireframe, setWireframe] = useState(false), [progress, setProgress] = useState(.2), [masked, setMasked] = useState(true), [mounted, setMounted] = useState(true)
+  const [phase, setPhase] = useScenarioState('phase', 0), [exaggeration, setExaggeration] = useScenarioState('exaggeration', 1), [southFirst, setSouthFirst] = useScenarioState('southFirst', false)
+  const [wireframe, setWireframe] = useScenarioState('wireframe', false), [progress, setProgress] = useScenarioState('progress', .2), [masked, setMasked] = useScenarioState('masked', true), [mounted, setMounted] = useScenarioState('mounted', true)
   return <>
     <div className="toolbar">
       <button onClick={() => setPhase(1 - phase)}>Swap height texture</button><output>Landscape {phase + 1}</output>

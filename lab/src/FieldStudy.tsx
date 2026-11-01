@@ -1,3 +1,4 @@
+import { useScenarioState } from './scenario-state.tsx'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { createFieldGrid, sampleFieldGrid, sampleFieldGridAt, type FieldSample, type FieldStation, type FieldSupportOptions } from '@motionstudies/core/domain/supported-field'
 import { advanceFieldPath, mixFieldMovement, visibleTrailSegments, type FieldMovement, type FieldPoint, type FieldTrack } from '@motionstudies/core/domain/field-paths'
@@ -30,11 +31,11 @@ const clockAt = (time: number) => studyDate + time * minutesPerFrame * 60_000
 const supportFor = (scaleKm: number): FieldSupportOptions => ({ scaleKm, reachStartKm: scaleKm * 2, reachKm: scaleKm * 8 / 3, supportNearKm: scaleKm * 4 / 3, supportFarKm: scaleKm * 8 / 3 })
 
 export function FieldStudy() {
-  const [time, setTime] = useState(4)
-  const [scaleKm, setScaleKm] = useState(45)
-  const [movement, setMovement] = useState(false)
-  const [trails, setTrails] = useState(true)
-  const [haze, setHaze] = useState(true)
+  const [time, setTime] = useScenarioState('time', 4)
+  const [scaleKm, setScaleKm] = useScenarioState('scaleKm', 45)
+  const [movement, setMovement] = useScenarioState('movement', false)
+  const [trails, setTrails] = useScenarioState('trails', true)
+  const [haze, setHaze] = useScenarioState('haze', true)
   const [picked, setPicked] = useState<FieldPoint>()
   const canvas = useRef<HTMLCanvasElement>(null)
   const options = useMemo(() => supportFor(scaleKm), [scaleKm])

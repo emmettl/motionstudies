@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useScenarioState } from './scenario-state.tsx'
 import { VehicleHeroCard, type VehicleCallingPoint, type VehicleHeroPresentation } from '@motionstudies/web/components/VehicleHeroCard'
 import '@motionstudies/web/vehicle-hero-card.css'
 
@@ -34,16 +34,16 @@ const german = { bus: 'Bus', rail: 'Zug', destination: 'Nach', destinationUnknow
   callingAt: 'Weitere Halte', terminus: 'Endstation', platform: 'Gleis', loading: 'Halte werden geladen…', empty: 'Keine weiteren Halte verfügbar.', retry: 'Erneut versuchen' }
 
 export function VehicleHeroStudy() {
-  const [presentation, setPresentation] = useState<VehicleHeroPresentation>('sbb')
-  const [step, setStep] = useState(0)
-  const [state, setState] = useState('ready')
-  const [unknown, setUnknown] = useState(false)
-  const [missingTimes, setMissingTimes] = useState(false)
-  const [long, setLong] = useState(false)
-  const [delayed, setDelayed] = useState(false)
-  const [language, setLanguage] = useState('en')
-  const [width, setWidth] = useState(600)
-  const [selected, setSelected] = useState<string>()
+  const [presentation, setPresentation] = useScenarioState<VehicleHeroPresentation>('presentation', 'sbb')
+  const [step, setStep] = useScenarioState('step', 0)
+  const [state, setState] = useScenarioState('state', 'ready')
+  const [unknown, setUnknown] = useScenarioState('unknown', false)
+  const [missingTimes, setMissingTimes] = useScenarioState('missingTimes', false)
+  const [long, setLong] = useScenarioState('long', false)
+  const [delayed, setDelayed] = useScenarioState('delayed', false)
+  const [language, setLanguage] = useScenarioState('language', 'en')
+  const [width, setWidth] = useScenarioState('width', 600)
+  const [selected, setSelected] = useScenarioState<string | undefined>('selected', undefined)
   const example = examples[presentation]
   const stops = example.stops.slice(step).map((stop, index) => ({ ...stop,
     ...(unknown ? { isDestination: false } : {}),

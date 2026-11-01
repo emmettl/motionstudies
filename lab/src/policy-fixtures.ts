@@ -1,10 +1,11 @@
+import { stressText } from './stress-fixtures.ts'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import type { SpatialLayoutSnapshot } from '@motionstudies/core/domain/spatial-layout'
 import { network, layout } from './fixtures.ts'
 
 export const branchingNetwork: NetworkSnapshot = {
   ...network,
-  stops: [...network.stops, [.15, .175, 'North branch with a long station name', '4', 'north']],
+  stops: [...network.stops, [.15, .175, stressText.longStation, '4', 'north']],
   edges: [...network.edges, [1, 3]],
   paths: [...network.paths!, [[.14, .13], [.18, .145], [.15, .175]]], edgePaths: [0, 1, 2],
   trains: [...network.trains, { ...network.trains[0], id: 'branch', route: '3', category: 'bus', headsign: 'North', stops: [[0, 0, 0], [1, 110, 130], [3, 240, 240]], pathSegments: [0, 2] }],
