@@ -23,7 +23,7 @@ export function useScenarioState<T>(key: string, initial: T | (() => T)): [T, Di
   const name = `v${instance || ''}.${study}.${key}`
   const value = useMemo(() => {
     const candidate = read(new URLSearchParams(search).get(name), base)
-    const bounds: Record<string, [number, number]> = { phase: [0, 1], exaggeration: [.5, 4], progress: [0, 1], mix: [0, 1], diagram: [0, 1], scaleKm: [30, 200], budget: [0, 48], sliceIndex: [0, 2], step: [0, 10000] }
+    const bounds: Record<string, [number, number]> = { phase: [0, 1], exaggeration: [.5, 4], progress: [0, 1], mix: [0, 1], diagram: [0, 1], scaleKm: [30, 200], budget: [0, 48], sliceIndex: [0, 2], step: [0, 10000], powerMinutes: [0, 120] }
     const limit = key === 'time' && study === 'fields' ? [0, 24] : bounds[key]
     return typeof candidate === 'number' && limit && (candidate < limit[0] || candidate > limit[1] || ((key === 'phase' || key === 'sliceIndex' || key === 'step') && !Number.isInteger(candidate))) ? base : candidate
   }, [search, name, base, study, key])

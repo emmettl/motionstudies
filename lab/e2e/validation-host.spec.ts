@@ -9,6 +9,20 @@ async function open(page: Page, study: string, extra = '') {
   await expect(page.getByRole('button', { name: 'Unmount specimen', exact: true })).toBeEnabled()
 }
 
+test('power-weather scenario keeps each isolated clock independent and replayable', async ({ page }) => {
+  await open(page,'power-weather','&scenario=power-weather-gap&instances=2')
+  const first=frame(page).getByRole('region',{name:'Instance 1',exact:true}),second=frame(page).getByRole('region',{name:'Instance 2',exact:true})
+  await expect(first.getByTestId('area-exchange')).toHaveText('Exchange: Unavailable')
+  await expect(first.getByTestId('weather-value')).toContainText('100 W/m²')
+  await expect(second.getByTestId('area-exchange')).toHaveText('Exchange: -40 MW')
+  await first.getByRole('slider',{name:'Power and weather minute'}).fill('60')
+  await expect(first.getByTestId('area-exchange')).toHaveText('Exchange: 80 MW')
+  await expect(second.getByTestId('area-exchange')).toHaveText('Exchange: -40 MW')
+  await page.reload()
+  await expect(first.getByTestId('area-exchange')).toHaveText('Exchange: 80 MW')
+  await expect(first.getByTestId('weather-value')).toContainText('400 W/m²')
+})
+
 test('gallery controls and named scenarios survive reload and browser navigation', async ({ page }) => {
   await page.goto('/?study=power-days&scenario=power-repeat')
   await expect(page.getByTestId('power-clock')).toContainText('01:00 GMT')

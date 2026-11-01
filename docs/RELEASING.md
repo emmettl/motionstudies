@@ -41,6 +41,8 @@ After a successful OIDC publication, revoke the bootstrap token in npm and delet
 
 ## Release history
 
+`0.1.0-alpha.47` is prepared for the European area/border power evidence reader, coverage-aware integration and explicit offline column compiler. The lab adds integrated power/weather playback. See [KRAFT foundations](KRAFT-INFRASTRUCTURE.md) for the real dated release and validation; publication is recorded after registry verification.
+
 `0.1.0-alpha.46` publishes the opt-in weather evidence contract, offline grid adapters, verified asset decoder and two-frame GPU playback. See [weather infrastructure](WEATHER-FIELDS.md) for semantics, consumer migrations and validation.
 
 `0.1.0-alpha.45` adds optional source-hash and exact-import-count verification for audited local generated modules in the edition boundary checker. Static dependencies remain checked, computed imports remain rejected by default, and unused or stale approvals fail. Schwall uses this for its independently verified CPU-reference generator.

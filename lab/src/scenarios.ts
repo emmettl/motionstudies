@@ -7,6 +7,7 @@ export const scenarios = [
   { id: 'dense-paused', label: 'Dense paused network', study: 'network-policies', values: { dense: true, time: 120, mix: .5, coplanar: true } },
   { id: 'terrain-adapter', label: 'Swapped south-first terrain', study: 'terrain', values: { phase: 1, southFirst: true, progress: .5, exaggeration: 2 } },
   { id: 'power-repeat', label: 'Repeated autumn hour', study: 'power-days', values: { kind: 'long', time: 7200 } },
+  { id: 'power-weather-gap', label: 'Power gap with hourly radiation', study: 'power-weather', values: { powerMinutes: 30, variable: 'radiation' } },
   { id: 'loader-error', label: 'Loader integrity failure', study: 'data', values: { enabled: true, file: 'bad-digest.json' } },
   { id: 'polling', label: 'Observed operations polling', study: 'data', values: { observing: true, endpoint: 'observations-a.json' } },
   { id: 'long-vehicle', label: 'Long vehicle calls', study: 'vehicle-heroes', values: { long: true, width: 320 } },

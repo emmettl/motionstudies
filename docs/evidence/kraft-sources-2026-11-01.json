@@ -1,0 +1,1329 @@
+{
+  "kind": "kraft-source-probe",
+  "schemaVersion": 1,
+  "auditDate": "2026-11-01",
+  "studyWindow": {
+    "startUtc": "2026-09-16T00:00:00Z",
+    "endUtcExclusive": "2026-09-17T00:00:00Z"
+  },
+  "rawStore": "work/kraft-source-probe/2026-11-01",
+  "rawResponsesCommitted": false,
+  "openapiSha256": "523d3ec0fd82a7f148a94c02ffc08e8251c231d74e74b6019978af1e64b610d4",
+  "totalResponseBytes": 367244,
+  "captures": [
+    {
+      "country": "at",
+      "endpoint": "public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=at&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "at-public_power.json",
+      "bytes": 44048,
+      "sha256": "6015bccf318b9aa19cbd111de0ab6b2d182487c8003812e1f8d124336d0e15cc",
+      "generatedAt": "2026-11-01T10:39:13+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "MW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "hydro_pumped_storage_consumption",
+          "unit": "MW",
+          "missing": 0,
+          "min": -1215.2,
+          "max": -0.0
+        },
+        {
+          "id": "cross_border_electricity_trading",
+          "unit": "MW",
+          "missing": 0,
+          "min": -298.0,
+          "max": 3102.9
+        },
+        {
+          "id": "hydro_run_of_river",
+          "unit": "MW",
+          "missing": 0,
+          "min": 1764.8,
+          "max": 2411.6
+        },
+        {
+          "id": "biomass",
+          "unit": "MW",
+          "missing": 0,
+          "min": 172.0,
+          "max": 180.0
+        },
+        {
+          "id": "fossil_gas",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 409.6
+        },
+        {
+          "id": "geothermal",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.1,
+          "max": 0.1
+        },
+        {
+          "id": "hydro_water_reservoir",
+          "unit": "MW",
+          "missing": 0,
+          "min": 96.4,
+          "max": 919.6
+        },
+        {
+          "id": "hydro_pumped_storage",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 1841.6
+        },
+        {
+          "id": "others",
+          "unit": "MW",
+          "missing": 0,
+          "min": 22.0,
+          "max": 22.0
+        },
+        {
+          "id": "waste",
+          "unit": "MW",
+          "missing": 0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        {
+          "id": "wind_onshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 212.0,
+          "max": 2604.0
+        },
+        {
+          "id": "solar",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 3788.0
+        },
+        {
+          "id": "load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 4963.6,
+          "max": 7745.2
+        },
+        {
+          "id": "residual_load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 2362.8,
+          "max": 6513.2
+        },
+        {
+          "id": "renewable_share_of_load",
+          "unit": "%",
+          "missing": 0,
+          "min": 50.8,
+          "max": 98.4
+        },
+        {
+          "id": "renewable_share_of_generation",
+          "unit": "%",
+          "missing": 0,
+          "min": 87.2,
+          "max": 98.9
+        }
+      ]
+    },
+    {
+      "country": "at",
+      "endpoint": "cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=at&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "at-cbpf.json",
+      "bytes": 17805,
+      "sha256": "d6317f321dd695f494098e7bf1bce0fced5127f59ce16214b8ea6d86fe6ee8af",
+      "generatedAt": "2026-11-01T10:39:13+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "GW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "czech_republic",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.247,
+          "max": 2.635
+        },
+        {
+          "id": "germany",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.636,
+          "max": 1.246
+        },
+        {
+          "id": "hungary",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.947,
+          "max": 1.3
+        },
+        {
+          "id": "italy",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.33,
+          "max": -0.168
+        },
+        {
+          "id": "slovenia",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.828,
+          "max": 1.037
+        },
+        {
+          "id": "switzerland",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.876,
+          "max": 0.726
+        },
+        {
+          "id": "sum",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.111,
+          "max": 3.049
+        }
+      ]
+    },
+    {
+      "country": "ch",
+      "endpoint": "public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=ch&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "ch-public_power.json",
+      "bytes": 9904,
+      "sha256": "84717c3e6846abdd5c5a3dc325fc3fdf3501f4f0ae9c0fc700c9048ae3ec29c1",
+      "generatedAt": "2026-11-01T10:38:48+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "MW",
+      "resolution": "PT1H",
+      "sourceRows": 25,
+      "selectedRows": 24,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "cross_border_electricity_trading",
+          "unit": "MW",
+          "missing": 0,
+          "min": -4677.0,
+          "max": 1370.5
+        },
+        {
+          "id": "nuclear",
+          "unit": "MW",
+          "missing": 0,
+          "min": 2728.3,
+          "max": 2901.8
+        },
+        {
+          "id": "hydro_run_of_river",
+          "unit": "MW",
+          "missing": 0,
+          "min": 930.1,
+          "max": 2405.9
+        },
+        {
+          "id": "hydro_water_reservoir",
+          "unit": "MW",
+          "missing": 0,
+          "min": 695.2,
+          "max": 3741.8
+        },
+        {
+          "id": "hydro_pumped_storage",
+          "unit": "MW",
+          "missing": 0,
+          "min": 44.3,
+          "max": 1337.1
+        },
+        {
+          "id": "others",
+          "unit": "MW",
+          "missing": 0,
+          "min": 350.0,
+          "max": 350.0
+        },
+        {
+          "id": "wind_onshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 8.6,
+          "max": 30.0
+        },
+        {
+          "id": "solar",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 3632.0
+        },
+        {
+          "id": "load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 6549.0,
+          "max": 9431.3
+        },
+        {
+          "id": "residual_load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 4412.2,
+          "max": 8645.9
+        },
+        {
+          "id": "renewable_share_of_load",
+          "unit": "%",
+          "missing": 0,
+          "min": 26.5,
+          "max": 75.2
+        },
+        {
+          "id": "renewable_share_of_generation",
+          "unit": "%",
+          "missing": 0,
+          "min": 35.1,
+          "max": 66.9
+        }
+      ]
+    },
+    {
+      "country": "ch",
+      "endpoint": "cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=ch&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "ch-cbpf.json",
+      "bytes": 13252,
+      "sha256": "1c1b53a6e63423a21da37d45987eaa1cdb975f5eb4b0690ea780a06dbef25d9d",
+      "generatedAt": "2026-11-01T10:38:48+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "GW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "austria",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.726,
+          "max": 0.876
+        },
+        {
+          "id": "france",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.495,
+          "max": 3.199
+        },
+        {
+          "id": "germany",
+          "unit": "GW",
+          "missing": 0,
+          "min": -1.955,
+          "max": 0.959
+        },
+        {
+          "id": "italy",
+          "unit": "GW",
+          "missing": 0,
+          "min": -2.338,
+          "max": -0.6
+        },
+        {
+          "id": "sum",
+          "unit": "GW",
+          "missing": 0,
+          "min": -4.335,
+          "max": 2.111
+        }
+      ]
+    },
+    {
+      "country": "de",
+      "endpoint": "public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=de&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "de-public_power.json",
+      "bytes": 58465,
+      "sha256": "5eb3b07a8be9c394d79b1bac95e4dd4e3ffda96dfa0738a2a2098201c3e23b7a",
+      "generatedAt": "2026-11-01T10:38:37+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "MW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "hydro_pumped_storage_consumption",
+          "unit": "MW",
+          "missing": 0,
+          "min": -3570.6,
+          "max": -7.2
+        },
+        {
+          "id": "cross_border_electricity_trading",
+          "unit": "MW",
+          "missing": 0,
+          "min": 826.2,
+          "max": 9419.5
+        },
+        {
+          "id": "hydro_run_of_river",
+          "unit": "MW",
+          "missing": 0,
+          "min": 1164.7,
+          "max": 1345.4
+        },
+        {
+          "id": "biomass",
+          "unit": "MW",
+          "missing": 0,
+          "min": 3445.6,
+          "max": 4078.7
+        },
+        {
+          "id": "fossil_brown_coal_lignite",
+          "unit": "MW",
+          "missing": 0,
+          "min": 7152.9,
+          "max": 11854.9
+        },
+        {
+          "id": "fossil_hard_coal",
+          "unit": "MW",
+          "missing": 0,
+          "min": 3754.9,
+          "max": 5811.2
+        },
+        {
+          "id": "fossil_oil",
+          "unit": "MW",
+          "missing": 0,
+          "min": 255.9,
+          "max": 786.7
+        },
+        {
+          "id": "fossil_coal_derived_gas",
+          "unit": "MW",
+          "missing": 0,
+          "min": 182.3,
+          "max": 402.3
+        },
+        {
+          "id": "fossil_gas",
+          "unit": "MW",
+          "missing": 0,
+          "min": 2457.6,
+          "max": 8451.6
+        },
+        {
+          "id": "geothermal",
+          "unit": "MW",
+          "missing": 0,
+          "min": 13.2,
+          "max": 13.2
+        },
+        {
+          "id": "hydro_water_reservoir",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.8,
+          "max": 530.3
+        },
+        {
+          "id": "hydro_pumped_storage",
+          "unit": "MW",
+          "missing": 0,
+          "min": 9.1,
+          "max": 4378.6
+        },
+        {
+          "id": "others",
+          "unit": "MW",
+          "missing": 0,
+          "min": 159.7,
+          "max": 213.5
+        },
+        {
+          "id": "waste",
+          "unit": "MW",
+          "missing": 0,
+          "min": 1103.3,
+          "max": 1203.9
+        },
+        {
+          "id": "wind_offshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 826.4,
+          "max": 3764.3
+        },
+        {
+          "id": "wind_onshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 5771.2,
+          "max": 13308.8
+        },
+        {
+          "id": "solar",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 29652.4
+        },
+        {
+          "id": "load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 43823.6,
+          "max": 64818.3
+        },
+        {
+          "id": "residual_load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 22245.6,
+          "max": 48041.6
+        },
+        {
+          "id": "renewable_share_of_load",
+          "unit": "%",
+          "missing": 0,
+          "min": 28.9,
+          "max": 71.9
+        },
+        {
+          "id": "renewable_share_of_generation",
+          "unit": "%",
+          "missing": 0,
+          "min": 39.0,
+          "max": 74.2
+        }
+      ]
+    },
+    {
+      "country": "de",
+      "endpoint": "cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=de&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "de-cbpf.json",
+      "bytes": 26444,
+      "sha256": "6e7756dc7496e7432d935c0aa06a291254d4489fd9422e148dbb1c706560897b",
+      "generatedAt": "2026-11-01T10:38:37+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "GW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "austria",
+          "unit": "GW",
+          "missing": 0,
+          "min": -1.246,
+          "max": 0.636
+        },
+        {
+          "id": "belgium",
+          "unit": "GW",
+          "missing": 0,
+          "min": -1.0,
+          "max": 0.993
+        },
+        {
+          "id": "czech_republic",
+          "unit": "GW",
+          "missing": 0,
+          "min": -1.307,
+          "max": 2.099
+        },
+        {
+          "id": "denmark",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.73,
+          "max": 3.537
+        },
+        {
+          "id": "france",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.751,
+          "max": 3.019
+        },
+        {
+          "id": "luxembourg",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.592,
+          "max": -0.119
+        },
+        {
+          "id": "netherlands",
+          "unit": "GW",
+          "missing": 0,
+          "min": -2.766,
+          "max": 2.191
+        },
+        {
+          "id": "norway",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.772,
+          "max": 1.404
+        },
+        {
+          "id": "poland",
+          "unit": "GW",
+          "missing": 0,
+          "min": -2.192,
+          "max": 2.038
+        },
+        {
+          "id": "sweden",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.432,
+          "max": 0.433
+        },
+        {
+          "id": "switzerland",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.959,
+          "max": 1.955
+        },
+        {
+          "id": "sum",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.503,
+          "max": 10.394
+        }
+      ]
+    },
+    {
+      "country": "fr",
+      "endpoint": "public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=fr&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "fr-public_power.json",
+      "bytes": 51657,
+      "sha256": "7125c36355ee34cfb6ec3e22aa900caf1b1f512f546a8e4dcbad7f32a3cb0824",
+      "generatedAt": "2026-11-01T10:38:48+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "MW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "hydro_pumped_storage_consumption",
+          "unit": "MW",
+          "missing": 0,
+          "min": -983.0,
+          "max": -0.4
+        },
+        {
+          "id": "battery_consumption",
+          "unit": "MW",
+          "missing": 0,
+          "min": -342.3,
+          "max": -1.5
+        },
+        {
+          "id": "cross_border_electricity_trading",
+          "unit": "MW",
+          "missing": 0,
+          "min": -8444.6,
+          "max": -2703.4
+        },
+        {
+          "id": "nuclear",
+          "unit": "MW",
+          "missing": 0,
+          "min": 36300.3,
+          "max": 39509.5
+        },
+        {
+          "id": "hydro_run_of_river",
+          "unit": "MW",
+          "missing": 0,
+          "min": 1661.2,
+          "max": 2541.5
+        },
+        {
+          "id": "biomass",
+          "unit": "MW",
+          "missing": 0,
+          "min": 242.3,
+          "max": 274.6
+        },
+        {
+          "id": "fossil_oil",
+          "unit": "MW",
+          "missing": 0,
+          "min": 35.4,
+          "max": 37.0
+        },
+        {
+          "id": "fossil_gas",
+          "unit": "MW",
+          "missing": 0,
+          "min": 159.1,
+          "max": 2667.7
+        },
+        {
+          "id": "hydro_water_reservoir",
+          "unit": "MW",
+          "missing": 0,
+          "min": 176.6,
+          "max": 2206.7
+        },
+        {
+          "id": "hydro_pumped_storage",
+          "unit": "MW",
+          "missing": 0,
+          "min": 48.6,
+          "max": 2583.5
+        },
+        {
+          "id": "battery",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.1,
+          "max": 416.1
+        },
+        {
+          "id": "waste",
+          "unit": "MW",
+          "missing": 0,
+          "min": 381.9,
+          "max": 422.7
+        },
+        {
+          "id": "wind_offshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 184.6,
+          "max": 1110.2
+        },
+        {
+          "id": "wind_onshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 2362.5,
+          "max": 5684.8
+        },
+        {
+          "id": "solar",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 16206.9
+        },
+        {
+          "id": "load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 35139.4,
+          "max": 50605.3
+        },
+        {
+          "id": "residual_load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 28699.9,
+          "max": 43860.3
+        },
+        {
+          "id": "renewable_share_of_load",
+          "unit": "%",
+          "missing": 0,
+          "min": 14.6,
+          "max": 47.3
+        },
+        {
+          "id": "renewable_share_of_generation",
+          "unit": "%",
+          "missing": 0,
+          "min": 12.8,
+          "max": 39.3
+        }
+      ]
+    },
+    {
+      "country": "fr",
+      "endpoint": "cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=fr&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "fr-cbpf.json",
+      "bytes": 17831,
+      "sha256": "0da7609058917e8fba1513b621dd785304d3e30a941ddadffe410ced8d66741c",
+      "generatedAt": "2026-11-01T10:38:48+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "GW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "belgium",
+          "unit": "GW",
+          "missing": 0,
+          "min": -2.639,
+          "max": -0.694
+        },
+        {
+          "id": "germany",
+          "unit": "GW",
+          "missing": 0,
+          "min": -3.019,
+          "max": -0.751
+        },
+        {
+          "id": "italy",
+          "unit": "GW",
+          "missing": 0,
+          "min": -3.143,
+          "max": -1.791
+        },
+        {
+          "id": "spain",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.293,
+          "max": 2.444
+        },
+        {
+          "id": "switzerland",
+          "unit": "GW",
+          "missing": 0,
+          "min": -3.199,
+          "max": -0.495
+        },
+        {
+          "id": "united_kingdom",
+          "unit": "GW",
+          "missing": 0,
+          "min": -3.058,
+          "max": 1.431
+        },
+        {
+          "id": "sum",
+          "unit": "GW",
+          "missing": 0,
+          "min": -11.544,
+          "max": -5.522
+        }
+      ]
+    },
+    {
+      "country": "it",
+      "endpoint": "public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=it&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "it-public_power.json",
+      "bytes": 57165,
+      "sha256": "326405e43270a043c4628a6bbf41f6f702279eb30c6c7ba82fb9c0e83f354b3e",
+      "generatedAt": "2026-11-01T10:39:13+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "MW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "hydro_pumped_storage_consumption",
+          "unit": "MW",
+          "missing": 33,
+          "min": 0.0,
+          "max": 0.0
+        },
+        {
+          "id": "battery_consumption",
+          "unit": "MW",
+          "missing": 53,
+          "min": -1492.0,
+          "max": 0.0
+        },
+        {
+          "id": "cross_border_electricity_trading",
+          "unit": "MW",
+          "missing": 0,
+          "min": 4367.3,
+          "max": 7010.0
+        },
+        {
+          "id": "hydro_run_of_river",
+          "unit": "MW",
+          "missing": 0,
+          "min": 1701.0,
+          "max": 3475.0
+        },
+        {
+          "id": "biomass",
+          "unit": "MW",
+          "missing": 0,
+          "min": 483.0,
+          "max": 521.0
+        },
+        {
+          "id": "fossil_hard_coal",
+          "unit": "MW",
+          "missing": 0,
+          "min": 374.0,
+          "max": 546.0
+        },
+        {
+          "id": "fossil_oil",
+          "unit": "MW",
+          "missing": 0,
+          "min": 155.0,
+          "max": 245.0
+        },
+        {
+          "id": "fossil_coal_derived_gas",
+          "unit": "MW",
+          "missing": 0,
+          "min": 288.0,
+          "max": 514.0
+        },
+        {
+          "id": "fossil_gas",
+          "unit": "MW",
+          "missing": 0,
+          "min": 8648.0,
+          "max": 20728.0
+        },
+        {
+          "id": "geothermal",
+          "unit": "MW",
+          "missing": 0,
+          "min": 555.0,
+          "max": 583.0
+        },
+        {
+          "id": "hydro_water_reservoir",
+          "unit": "MW",
+          "missing": 0,
+          "min": 126.0,
+          "max": 1080.0
+        },
+        {
+          "id": "hydro_pumped_storage",
+          "unit": "MW",
+          "missing": 33,
+          "min": 0.0,
+          "max": 2297.0
+        },
+        {
+          "id": "battery",
+          "unit": "MW",
+          "missing": 53,
+          "min": 0.0,
+          "max": 1605.0
+        },
+        {
+          "id": "others",
+          "unit": "MW",
+          "missing": 0,
+          "min": 1457.0,
+          "max": 2595.0
+        },
+        {
+          "id": "wind_offshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 6.0
+        },
+        {
+          "id": "wind_onshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 128.0,
+          "max": 1650.0
+        },
+        {
+          "id": "solar",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 16514.0
+        },
+        {
+          "id": "load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 25881.0,
+          "max": 42081.0
+        },
+        {
+          "id": "residual_load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 18078.0,
+          "max": 41103.0
+        },
+        {
+          "id": "renewable_share_of_load",
+          "unit": "%",
+          "missing": 0,
+          "min": 14.1,
+          "max": 56.7
+        },
+        {
+          "id": "renewable_share_of_generation",
+          "unit": "%",
+          "missing": 0,
+          "min": 17.6,
+          "max": 63.3
+        }
+      ]
+    },
+    {
+      "country": "it",
+      "endpoint": "cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=it&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "it-cbpf.json",
+      "bytes": 18445,
+      "sha256": "4a2db9d8d881d23c988746d5de25f174bb11bd9951f47e0570195b205a5bfa15",
+      "generatedAt": "2026-11-01T10:39:13+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "GW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "austria",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.168,
+          "max": 0.33
+        },
+        {
+          "id": "france",
+          "unit": "GW",
+          "missing": 0,
+          "min": 1.791,
+          "max": 3.143
+        },
+        {
+          "id": "greece",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.506,
+          "max": 0.507
+        },
+        {
+          "id": "malta",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.227,
+          "max": -0.13
+        },
+        {
+          "id": "montenegro",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        {
+          "id": "slovenia",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.416,
+          "max": 1.028
+        },
+        {
+          "id": "switzerland",
+          "unit": "GW",
+          "missing": 0,
+          "min": 0.6,
+          "max": 2.338
+        },
+        {
+          "id": "sum",
+          "unit": "GW",
+          "missing": 0,
+          "min": 4.29,
+          "max": 7.147
+        }
+      ]
+    },
+    {
+      "country": "nl",
+      "endpoint": "public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=nl&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "nl-public_power.json",
+      "bytes": 36586,
+      "sha256": "c968b1e5ea836303737358f8523d1a50a7f7621c2ce2aac3d59f5e11229dd12c",
+      "generatedAt": "2026-11-01T10:39:13+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "MW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "cross_border_electricity_trading",
+          "unit": "MW",
+          "missing": 0,
+          "min": -3505.6,
+          "max": 2408.5
+        },
+        {
+          "id": "nuclear",
+          "unit": "MW",
+          "missing": 0,
+          "min": 470.4,
+          "max": 471.8
+        },
+        {
+          "id": "biomass",
+          "unit": "MW",
+          "missing": 0,
+          "min": 24.9,
+          "max": 28.0
+        },
+        {
+          "id": "fossil_hard_coal",
+          "unit": "MW",
+          "missing": 0,
+          "min": 2074.3,
+          "max": 2537.0
+        },
+        {
+          "id": "fossil_gas",
+          "unit": "MW",
+          "missing": 0,
+          "min": 701.3,
+          "max": 7573.4
+        },
+        {
+          "id": "others",
+          "unit": "MW",
+          "missing": 0,
+          "min": 770.2,
+          "max": 9743.0
+        },
+        {
+          "id": "waste",
+          "unit": "MW",
+          "missing": 0,
+          "min": 254.4,
+          "max": 288.8
+        },
+        {
+          "id": "wind_offshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 712.6,
+          "max": 2036.4
+        },
+        {
+          "id": "wind_onshore",
+          "unit": "MW",
+          "missing": 0,
+          "min": 134.1,
+          "max": 717.0
+        },
+        {
+          "id": "solar",
+          "unit": "MW",
+          "missing": 0,
+          "min": 0.0,
+          "max": 266.0
+        },
+        {
+          "id": "load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 11444.9,
+          "max": 15200.9
+        },
+        {
+          "id": "residual_load",
+          "unit": "MW",
+          "missing": 0,
+          "min": 9596.0,
+          "max": 13736.1
+        },
+        {
+          "id": "renewable_share_of_load",
+          "unit": "%",
+          "missing": 0,
+          "min": 8.3,
+          "max": 19.9
+        },
+        {
+          "id": "renewable_share_of_generation",
+          "unit": "%",
+          "missing": 0,
+          "min": 8.6,
+          "max": 25.7
+        }
+      ]
+    },
+    {
+      "country": "nl",
+      "endpoint": "cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=nl&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "file": "nl-cbpf.json",
+      "bytes": 15642,
+      "sha256": "fa7e4ffcce80c977a8236ff958747ebe100b05e8aa36dbca48d40989663e2bd4",
+      "generatedAt": "2026-11-01T10:39:13+01:00",
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info",
+      "unit": "GW",
+      "resolution": "PT15M",
+      "sourceRows": 97,
+      "selectedRows": 96,
+      "excludedEndBoundaryRows": 1,
+      "series": [
+        {
+          "id": "belgium",
+          "unit": "GW",
+          "missing": 0,
+          "min": -3.424,
+          "max": -1.22
+        },
+        {
+          "id": "denmark",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.243,
+          "max": 0.7
+        },
+        {
+          "id": "germany",
+          "unit": "GW",
+          "missing": 0,
+          "min": -2.191,
+          "max": 2.766
+        },
+        {
+          "id": "norway",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.627,
+          "max": 0.601
+        },
+        {
+          "id": "united_kingdom",
+          "unit": "GW",
+          "missing": 0,
+          "min": -0.0,
+          "max": -0.0
+        },
+        {
+          "id": "sum",
+          "unit": "GW",
+          "missing": 0,
+          "min": -3.927,
+          "max": 2.604
+        }
+      ]
+    }
+  ],
+  "borderChecks": [
+    {
+      "areas": [
+        "de",
+        "fr"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    },
+    {
+      "areas": [
+        "de",
+        "ch"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    },
+    {
+      "areas": [
+        "fr",
+        "ch"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    },
+    {
+      "areas": [
+        "de",
+        "at"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    },
+    {
+      "areas": [
+        "de",
+        "nl"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    },
+    {
+      "areas": [
+        "ch",
+        "it"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    },
+    {
+      "areas": [
+        "fr",
+        "it"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    },
+    {
+      "areas": [
+        "at",
+        "it"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    },
+    {
+      "areas": [
+        "at",
+        "ch"
+      ],
+      "pairedIntervals": 96,
+      "maxOppositeResidualGw": 0.0
+    }
+  ]
+}

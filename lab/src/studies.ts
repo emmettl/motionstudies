@@ -20,5 +20,6 @@ export const studies = [
   entry('power-days', 'Power days', () => import('./PowerDayStudy.tsx').then(m => ({ default: m.PowerDayStudy })), ['Signed MWh, zero and missing quantities remain distinct.', 'Civil-day periods respect clock changes and exclusive end bounds.']),
   entry('network-policies', 'Network policies', () => import('./NetworkPolicyStudy.tsx').then(m => ({ default: m.NetworkPolicyStudy })), ['A dwelling vehicle stays at its junction throughout the morph.', 'Disabling authored viewport framing restores default projection.']),
   entry('weather', 'Weather', () => import('./WeatherStudy.tsx').then(m => ({ default: m.WeatherStudy })), ['Instant samples interpolate; interval means retain their support window.', 'Coverage ends exclusively; unsupported values remain absent.']),
+  entry('power-weather', 'Power + weather', () => import('./PowerWeatherStudy.tsx').then(m => ({ default: m.PowerWeatherStudy })), ['Power and weather share an absolute UTC clock while retaining native support.', 'GPU pixels clear outside coverage; source rows and missing duration remain inspectable.']),
 ]
 export function findStudy(id: string | null) { return studies.find(s => s.id === id) ?? studies[0] }

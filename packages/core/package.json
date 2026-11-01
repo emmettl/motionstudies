@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.1.0-alpha.46",
+  "version": "0.1.0-alpha.47",
   "private": true,
   "type": "module",
   "exports": {
@@ -50,7 +50,8 @@
     "./map-labels": "./src/map-labels.ts",
     "./air-enrichment": "./src/air-enrichment.ts",
     "./terrain": "./src/terrain.ts",
-    "./domain/weather-field": "./src/domain/weather-field.ts"
+    "./domain/weather-field": "./src/domain/weather-field.ts",
+    "./domain/power-series": "./src/domain/power-series.ts"
   },
   "description": "Transport contracts and motion primitives for Motion Studies.",
   "sideEffects": false,

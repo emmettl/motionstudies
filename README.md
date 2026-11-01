@@ -22,6 +22,8 @@ The catalogue for authored works and research about transport, geography and mov
 
 [Project goals](docs/VISION.md) · [Overall roadmap](ROADMAP.md) · [City briefs and source audits](docs/README.md) · [Catalogue programme](docs/CATALOGUE.md)
 
+[KRAFT — The flow of power](docs/KRAFT.md) is a new unnumbered European electricity research candidate, with a [six-country recorded-day source audit](docs/KRAFT-SOURCES.md).
+
 PFAD is an independent, unnumbered [pathfinding study](https://pfad.motionstudies.app/) ([repository](https://github.com/emmettl/pfad)). [England](https://github.com/emmettl/england) remains private national research; [motionstudies-recorder](https://github.com/emmettl/motionstudies-recorder) provides recording infrastructure. [Grid/84](https://github.com/emmettl/grid84) is a separate project rather than a Motion Studies edition.
 
 ## Development
