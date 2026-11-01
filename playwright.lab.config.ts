@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test'
 const externalUrl = (globalThis as { process?: { env?: { MOTION_LAB_URL?: string } } }).process?.env?.MOTION_LAB_URL
 export default defineConfig({
   testDir: './lab/e2e',
+  snapshotPathTemplate: '{testDir}/{testFilePath}-snapshots/{arg}-{projectName}{ext}',
   timeout: 45_000,
   expect: { timeout: 10_000 },
   workers: 1,
