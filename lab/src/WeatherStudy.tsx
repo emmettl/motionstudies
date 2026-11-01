@@ -11,7 +11,7 @@ export function WeatherStudy({epoch}:{epoch?:number}={}){
  const reading=sampleWeather(field,variable,46,6,time)
  useEffect(()=>{
   const element=canvas.current;if(!element)return
-  const renderer=new THREE.WebGLRenderer({canvas:element,alpha:true,preserveDrawingBuffer:true});renderer.setSize(480,240,false)
+  const renderer=new THREE.WebGLRenderer({canvas:element,alpha:true,preserveDrawingBuffer:true});renderer.setSize(480,240,false);renderer.setClearColor(0x000000,0)
   const v=field.variables[variable]
   const pair=createGridTexturePair({width:3,height:3,times:v.times,timeSupport:v.timeSupport,intervalSeconds:v.intervalSeconds,frame:i=>scalarGridPixels(v.frames[i])})
   const material=new THREE.ShaderMaterial({transparent:true,uniforms:{...pair.uniforms,scale:{value:variable==='cover'?100:400}},vertexShader:'varying vec2 p;void main(){p=uv;gl_Position=vec4(position.xy,0.,1.);}',fragmentShader:`uniform sampler2D weatherA,weatherB;uniform float weatherBlend,scale;varying vec2 p;${WEATHER_SAMPLE_GLSL} void main(){vec2 s=sampleWeatherScalar(weatherA,weatherB,(p*2.+.5)/3.,weatherBlend);gl_FragColor=vec4(vec3(.2,.5,.8)*s.x/scale,s.y);}`})
