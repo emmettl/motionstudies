@@ -1,0 +1,71 @@
+{
+  "version": "0.1.0-alpha.49",
+  "tag": "next",
+  "sourceCommit": "e26d26fd23f543287049d764b353a5806e504ffb",
+  "workflow": "https://github.com/emmettl/motionstudies/actions/runs/41337297853",
+  "verifiedAt": "2026-11-01T19:04:46.852Z",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.49",
+      "url": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.49.tgz",
+      "bytes": 82399,
+      "integrity": "sha512-tdFDZGH+m5xaazLOxfa9t9+fXxDU/mUuY9vkyopzL+ozoer95jOzc/b/s9vs0yI9CnvSGzx/zbIopkr1PtTNuQ==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.49",
+      "url": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.49.tgz",
+      "bytes": 86371,
+      "integrity": "sha512-vw9fgJjDlWMIwM+1wau0UzOpsU4Nm1ijuJx24sYv7H+LIpBXiRb5idIEHHKrZ5bCnq6p/8ZQwWrDeGeoEePNjA==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.49",
+      "url": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.49.tgz",
+      "bytes": 119999,
+      "integrity": "sha512-BysAHzcQIuAmbjHsvHQY5Iuh3GudBUwqstgZ1fzjF/imukQewe6yyL/9sXbmhhjfjw1KYveedp4g8uAB5/587g==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.49",
+      "url": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.49.tgz",
+      "bytes": 333613,
+      "integrity": "sha512-mjkPmhbYeFxj0W9LjVZ3Qx5of93XlGvcHiSdlzL89pjj5BhHaJz0PWzApkqwCzDEN6/ZJr+1I8ZnZCevCvVc8Q==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    }
+  ],
+  "validation": {
+    "unitTestsPassed": 538,
+    "packedBrowserPassed": 276,
+    "packedBrowserSkipped": 2,
+    "loaderBrowserPassed": 40,
+    "nativeMotionCasesPassed": 36,
+    "registryArchivesByteIdentical": true,
+    "allNextTagsVerified": true,
+    "schwallCleanRegistryInstall": true,
+    "allSchwallLockIntegritiesVerified": true
+  },
+  "consumers": [
+    {
+      "repository": "emmettl/schwall",
+      "branch": "codex/webgpu-fluid",
+      "commit": "85d8bf9523b042dba32124f2c0dc96dd8fcecc3e",
+      "cleanRegistryInstall": true,
+      "allLockIntegritiesVerified": true,
+      "unitTestsPassed": 205,
+      "unitTestTimeoutMs": 120000,
+      "note": "Existing CPU convergence check exceeded the default 60-second budget in earlier runs; all assertions passed with the extended run allowance.",
+      "fluidBuildPassed": true,
+      "nativeWebGPUPreviewVerified": true,
+      "candidateWebGLCaptureVerified": true
+    }
+  ]
+}

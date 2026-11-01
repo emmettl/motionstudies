@@ -4,11 +4,14 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The alpha.49 candidate adds optional windowed motion-LERP node materials and
-backend-aware node-renderer diagnostics. See [shared WebGPU adapters](WEBGPU-SUPPORT.md).
-It retains the existing WebGL scenes and uses the coordinated version policy.
-
-The latest verified coordinated release is `0.1.0-alpha.48` under `next`, published from `968bfb4` through [trusted run 41320101094](https://github.com/emmettl/motionstudies/actions/runs/41320101094). All four registry integrities and downloaded archives match the CI-tested tarballs byte-for-byte, and all four `next` tags were verified. Gleislicht and KRAFT adopt the release through clean registry installs. See [edition GPU debugging](EDITION-GPU-DEBUG.md) and the [release evidence](evidence/edition-debug-alpha48.json).
+The latest verified coordinated release is `0.1.0-alpha.49` under `next`, published
+from `e26d26f` through [trusted run 41337297853](https://github.com/emmettl/motionstudies/actions/runs/41337297853).
+All four registry archives match the tested CI tarballs byte-for-byte, and all
+four `next` tags were verified. It adds optional windowed motion-LERP node
+materials and backend-aware node-renderer diagnostics; existing WebGL scenes
+retain their current backend. Schwall's fluid branch adopts the release through
+a clean registry install. See [shared WebGPU adapters](WEBGPU-SUPPORT.md) and the
+[release evidence](evidence/webgpu-alpha49-release.json).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -44,6 +47,13 @@ The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstud
 After a successful OIDC publication, revoke the bootstrap token in npm and delete the GitHub `NPM_TOKEN` secret. npm's “Require two-factor authentication and disallow tokens” setting is compatible with trusted publishers.
 
 ## Release history
+
+`0.1.0-alpha.49` adds the optional `three/motion-lerp`, `three/motion-lerp-nodes`
+and `three/debug-nodes` entry points. Verification passes 538 unit tests,
+276 packed browser checks (2 skipped) and 40 loader checks. Native browser
+verification additionally matches 12 point/line motion cases on each of legacy
+WebGL, node WebGL 2 and native WebGPU. Schwall replaces its local node-debug
+runtime with the published shared adapter. See [the contract](WEBGPU-SUPPORT.md).
 
 `0.1.0-alpha.48` publishes optional edition GPU-debug entry points, lazy Spector capture and Fiber profiling. Natural rendering is preserved by default; continuous profiling is explicit. Gleislicht and KRAFT adopt the release, including the current raw atmosphere/weather renderers. The release passes 272 packed browser tests (2 skipped) and 40 loader tests. Registry archives and both pilots' lockfile hashes are verified against the CI artifacts; clean registry installs pass 32 pilot browser checks. See the [release record](EDITION-GPU-DEBUG.md).
 

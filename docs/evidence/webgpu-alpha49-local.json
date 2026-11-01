@@ -1,0 +1,35 @@
+{
+  "verifiedAt": "2026-11-01T18:36:12.185Z",
+  "sourceCommit": "e26d26fd23f543287049d764b353a5806e504ffb",
+  "motion": [
+    {
+      "backend": "legacy",
+      "cases": 12,
+      "pass": true,
+      "pixelResultsMatchLegacy": true
+    },
+    {
+      "backend": "webgl2",
+      "cases": 12,
+      "pass": true,
+      "pixelResultsMatchLegacy": true
+    },
+    {
+      "backend": "webgpu",
+      "cases": 12,
+      "pass": true,
+      "pixelResultsMatchLegacy": true
+    }
+  ],
+  "schwallCandidate": {
+    "native": {
+      "backend": "webgpu",
+      "stageWGSL": true,
+      "errors": []
+    },
+    "webgl": {
+      "commands": 41,
+      "solverTime": 0
+    }
+  }
+}

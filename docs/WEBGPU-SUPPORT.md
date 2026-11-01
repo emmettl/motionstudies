@@ -4,6 +4,12 @@ Coordinated alpha.49 adds opt-in node-renderer support to `@motionstudies/three`
 The existing WebGL scene components and their default backend are unchanged.
 Hydraulic solvers, data releases and water appearance remain edition-owned.
 
+Published under `next` through [trusted run 41337297853](https://github.com/emmettl/motionstudies/actions/runs/41337297853).
+All four registry tarballs and tags are [verified against CI](evidence/webgpu-alpha49-release.json).
+The release passes 538 unit tests, 276 packed browser checks (2 skipped) and
+40 loader checks. Local native verification additionally confirms 36 matching
+point/line pixel-result cases across legacy WebGL, node WebGL 2 and native WebGPU.
+
 ## Windowed motion
 
 `three/motion-lerp` exposes the existing `createMotionUniforms`,
