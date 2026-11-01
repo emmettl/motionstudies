@@ -3,6 +3,7 @@ import type { SpatialMorphProjection } from './spatial-morph.ts'
 import type { CameraViewportPolicy } from './map-camera.ts'
 export type { CameraViewportPolicy, CameraViewportState, CameraViewportFrame } from './map-camera.ts'
 import { useContext, type ComponentType } from 'react'
+import { useRequireWebGL } from './webgl-study.ts'
 import { NetworkSceneProviderContext } from './scene-context.ts'
 import type { Camera, PerspectiveCamera, Scene, Vector3 } from 'three'
 import type { NetworkSnapshot, NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain/network'
@@ -110,6 +111,7 @@ export interface NetworkSceneContext {
  * with useFrame. It must not start a second onTime reporter.
  */
 export function useNetworkScene(): NetworkSceneContext {
+  useRequireWebGL('NationalNetworkScene extension')
   const context = useContext(NetworkSceneProviderContext)
   if (!context) throw new Error('useNetworkScene requires a NationalNetworkScene child')
   return context

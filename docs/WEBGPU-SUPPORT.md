@@ -216,3 +216,8 @@ Save Playwright JSON with `PLAYWRIGHT_JSON_OUTPUT_FILE=/absolute/path/report.jso
 --native native.json --loaders loaders.json --output validation.json` merges
 scoped reruns by stable case identity, rejects unresolved failures or missing
 native proof, and records candidate source-input hashes and backend observations.
+It also writes the three `*-scene.png` files directly from each strict-native
+test's paired report/capture attachments and records their hashes and provenance.
+Identical pixels are reported explicitly, not rejected: the unlit fixture disables
+antialiasing and aims for backend parity. Its runtime reports establish backend
+identity. The recorder leaves author visual review pending rather than attesting it.

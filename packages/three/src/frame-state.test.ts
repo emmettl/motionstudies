@@ -1,10 +1,17 @@
 import { expect, test } from 'vitest'
-import { frameElapsed, frameRenderer } from './frame-state.ts'
+import { frameElapsed, frameRenderer, requireWebGLRenderer } from './frame-state.ts'
 
 test('elapsed reads preserve the shared v9 clock origin without advancing it',()=>{
   const clock={elapsedTime:124,getDelta(){throw Error('Clock advanced')},getElapsedTime(){throw Error('Clock advanced')}}
   expect(frameElapsed({clock})).toBe(124);expect(frameElapsed({clock})).toBe(124)
   clock.elapsedTime=130;expect(frameElapsed({clock})).toBe(130)
+})
+
+test('GLSL guard accepts WebGLRenderer and rejects node renderers even with a WebGL backend', () => {
+  expect(() => requireWebGLRenderer({ isWebGLRenderer: true })).not.toThrow()
+  for (const renderer of [undefined, {}, { isWebGPURenderer: true, backend: { isWebGLBackend: true } }]) {
+    expect(() => requireWebGLRenderer(renderer, 'Test motion layer')).toThrow('Test motion layer requires Three WebGLRenderer')
+  }
 })
 test('modern elapsed values, including zero, take precedence over the legacy clock',()=>{
   expect(frameElapsed({elapsed:0,clock:{elapsedTime:124}})).toBe(0)
