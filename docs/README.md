@@ -5,6 +5,7 @@
 ## Programme and shared work
 
 - [Stable Fiber 9.x preparation](RENDERER-9X-PREPARATION.md): public WebGL/frame boundaries and portable work that can land before v10.
+- [Renderer alpha.50 release](RENDERER-ALPHA-50.md): coordinated version, publication gates and the first Umlauf adoption.
 - [Edition renderer adoption paths](RENDERER-ADOPTION.md): release prerequisite, remote package snapshot, pilot order and per-edition validation.
 - [Renderer readiness register](RENDERER-READINESS.md): edition source inventory, R3F v10 compatibility candidate, shared luminous primitives and backend comparison gates.
 

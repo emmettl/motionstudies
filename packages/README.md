@@ -401,14 +401,26 @@ actual WebGL 2 capture path imports Spector; native WebGPU explicitly offers a
 report rather than a WebGL command capture. Ordinary URLs load no debug runtime.
 The legacy raw-WebGL and Fiber debug entry points remain supported.
 
-## Stable Fiber 9.x preparation
+## Stable Fiber 9.x APIs (alpha.50)
 
-The unpublished `codex/renderer-9x-preparation` branch retains exact Fiber 9.8.2.
-Its public `three/webgl-study` boundary re-exports the actual WebGL Canvas/frame/state
+The alpha.50 API retains the validated Fiber `^9.8.2` peer range; the workspace
+and lab use exact 9.8.2. Its public `three/webgl-study` boundary re-exports the actual WebGL Canvas/frame/state
 hooks. `three/frame-state` centralizes renderer access and elapsed-seconds reads
 without advancing a clock. It also brings the luminous primitives, portable RGBA
 textures, explicit output profile and opt-in renderer counters to the 9.x baseline.
 See [the preparation plan](https://github.com/emmettl/motionstudies/blob/main/docs/RENDERER-9X-PREPARATION.md).
+
+`useRequireWebGL` and `frame-state`'s `requireWebGLRenderer` reject incompatible
+node renderers for GLSL layers, including their WebGL2 fallback. Shared motion and
+extension layers and raw heightfield meshes guard their own renderer boundary.
+Edition-owned raw materials must declare and check their renderer as well.
+
+Alpha.50 also removes the optional r3f-perf/Drei dependency chain. `debug-fiber`
+uses the opt-in `debug-performance` panel with CPU frame cadence and Three counts;
+these are not GPU timings. Spector remains an optional peer for WebGL capture.
+The alpha.49 debugging instructions above describe the older release. When
+upgrading, inspect edition-owned imports before removing its direct perf packages
+or override. No scene switches backend on upgrade.
 
 ## Separate R3F v10 prototype
 

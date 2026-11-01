@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.49",
+  "version": "0.1.0-alpha.50",
   "private": true,
   "type": "module",
   "exports": {
@@ -47,7 +47,7 @@
     "./weather-assets": "./src/weather-assets.ts"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.49"
+    "@motionstudies/core": "0.1.0-alpha.50"
   },
   "peerDependencies": {
     "react": "^19.3.0",

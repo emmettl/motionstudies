@@ -15,6 +15,12 @@ a clean registry install. See [shared WebGPU adapters](WEBGPU-SUPPORT.md) and th
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
+The next prepared coordinated candidate is
+[`0.1.0-alpha.50`](RENDERER-ALPHA-50.md), containing the stable Fiber 9 renderer
+boundaries, guards and readiness primitives merged in #60. Its publication is
+authorized separately from the previous release; record trusted-workflow and
+registry verification before identifying it as the latest verified release.
+
 ## Completed bootstrap
 
 `0.1.0-alpha.0` bootstrapped the package names. `0.1.0-alpha.1` verified OIDC for all four packages without a token fallback. The GitHub bootstrap secret has been removed. The historical bootstrap procedure follows.
