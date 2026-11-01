@@ -1,0 +1,550 @@
+{
+  "kind": "kraft-swiss-reconciliation",
+  "schemaVersion": 1,
+  "date": "2026-09-16",
+  "inputs": [
+    {
+      "file": "swissgrid-2026.xlsx",
+      "bytes": 18228651,
+      "sha256": "42726ea9e0e075831250d92048a13b98d772a1201af52c995a20cca809b5ee4a"
+    },
+    {
+      "file": "ch-local-flows.json",
+      "bytes": 13243,
+      "sha256": "78ec91f0cf0ddcffa842853e0f06c1b7c50740209fda1b495c6ffbc429afc469"
+    },
+    {
+      "file": "ch-local-power.json",
+      "bytes": 9903,
+      "sha256": "a52d7e58630a66bda05f79186387faad1fd3e347e8d8f849f8de45c1d2d6be34"
+    },
+    {
+      "file": "bfe-consumption-csv-2.body",
+      "bytes": 67684,
+      "sha256": "1d9f5f292acdf0ebeacc75ae69d37ae319bec4468b8b59d06740f5b1ceb1ac22"
+    },
+    {
+      "file": "bfe-production-csv-2.body",
+      "bytes": 683686,
+      "sha256": "dbf95b286f541d190790d289875682699a46e7438f846c91e8709aa8758a7906"
+    },
+    {
+      "file": "consumption-day.json",
+      "bytes": 252,
+      "sha256": "69f6c810e059d46ae2fd82e3fc54acda6adbdebee2cd5a0bb2c008f0ebcd59e6"
+    },
+    {
+      "file": "production-day.json",
+      "bytes": 999,
+      "sha256": "d3cc3ff1843b31c4f7d4af175217aaa00dd5b4579baa0ac6eb48573921735b33"
+    }
+  ],
+  "clock": {
+    "interpretation": "Europe/Zurich civil interval starts, supported by workbook DST pattern; provider confirmation pending",
+    "springForwardDate": "2026-03-29",
+    "springRows": 92,
+    "missingMinuteLabels": [
+      120,
+      135,
+      150,
+      165
+    ],
+    "studyRows": 96,
+    "studyRowRange": [
+      24767,
+      24862
+    ],
+    "comparisonStartUtc": "2026-09-15T22:00:00+00:00",
+    "comparisonEndUtc": "2026-09-16T22:00:00+00:00",
+    "compilerRule": "interval kWh * 4 / 1000 = interval-mean MW; exclusive end"
+  },
+  "bfeConsumption": {
+    "csvDatedRow": {
+      "Datum": "2026-09-16",
+      "Landesverbrauch_GWh": "163",
+      "Endverbrauch_GWh": "145"
+    },
+    "apiDatedRows": 1,
+    "csvRows": 3560,
+    "csvDatesUnique": true,
+    "rule": "Use this pinned CSV snapshot with unique dates; reject duplicate dates, never pick last from unordered API.",
+    "workbookEndUserGwh": 144.538574935,
+    "workbookTotalGwh": 163.355258393,
+    "roundedWorkbookEqualsBfe": true
+  },
+  "load": {
+    "energyChartsGwh": 188.3001,
+    "workbookTotalGwh": 163.355258393,
+    "differenceGwh": 24.944841607,
+    "hourlyPairs": 24,
+    "meanDifferenceMw": 1039.368400292,
+    "minimumHourlyDifferenceMw": -299.259497,
+    "maximumHourlyDifferenceMw": 2413.626793,
+    "status": "unresolved scope/upstream/revision difference; not corrected"
+  },
+  "borders": [
+    {
+      "border": "austria",
+      "swissgridNetImportGwh": -0.980629,
+      "energyChartsNetImportGwh": -0.852,
+      "differenceGwh": 0.128629,
+      "meanDifferenceMw": 5.359541667,
+      "maximumAbsoluteDifferenceMw": 300.084,
+      "sameDirectionIntervals": 93,
+      "nativePairs": 96,
+      "shiftDiagnostics": [
+        {
+          "energyChartsIndexShiftMinutes": -120,
+          "pairs": 80,
+          "rmseMw": 520.397407201
+        },
+        {
+          "energyChartsIndexShiftMinutes": -105,
+          "pairs": 80,
+          "rmseMw": 481.632924457
+        },
+        {
+          "energyChartsIndexShiftMinutes": -90,
+          "pairs": 80,
+          "rmseMw": 439.431648065
+        },
+        {
+          "energyChartsIndexShiftMinutes": -75,
+          "pairs": 80,
+          "rmseMw": 392.638630959
+        },
+        {
+          "energyChartsIndexShiftMinutes": -60,
+          "pairs": 80,
+          "rmseMw": 336.57226508
+        },
+        {
+          "energyChartsIndexShiftMinutes": -45,
+          "pairs": 80,
+          "rmseMw": 283.880871355
+        },
+        {
+          "energyChartsIndexShiftMinutes": -30,
+          "pairs": 80,
+          "rmseMw": 225.281868381
+        },
+        {
+          "energyChartsIndexShiftMinutes": -15,
+          "pairs": 80,
+          "rmseMw": 150.317728567
+        },
+        {
+          "energyChartsIndexShiftMinutes": 0,
+          "pairs": 80,
+          "rmseMw": 73.267728376
+        },
+        {
+          "energyChartsIndexShiftMinutes": 15,
+          "pairs": 80,
+          "rmseMw": 146.141067881
+        },
+        {
+          "energyChartsIndexShiftMinutes": 30,
+          "pairs": 80,
+          "rmseMw": 212.990220718
+        },
+        {
+          "energyChartsIndexShiftMinutes": 45,
+          "pairs": 80,
+          "rmseMw": 270.113063774
+        },
+        {
+          "energyChartsIndexShiftMinutes": 60,
+          "pairs": 80,
+          "rmseMw": 326.180867651
+        },
+        {
+          "energyChartsIndexShiftMinutes": 75,
+          "pairs": 80,
+          "rmseMw": 392.625265134
+        },
+        {
+          "energyChartsIndexShiftMinutes": 90,
+          "pairs": 80,
+          "rmseMw": 448.373496453
+        },
+        {
+          "energyChartsIndexShiftMinutes": 105,
+          "pairs": 80,
+          "rmseMw": 497.554908248
+        },
+        {
+          "energyChartsIndexShiftMinutes": 120,
+          "pairs": 80,
+          "rmseMw": 546.131296779
+        }
+      ]
+    },
+    {
+      "border": "germany",
+      "swissgridNetImportGwh": -6.482297,
+      "energyChartsNetImportGwh": -6.44525,
+      "differenceGwh": 0.037047,
+      "meanDifferenceMw": 1.543625,
+      "maximumAbsoluteDifferenceMw": 9.336,
+      "sameDirectionIntervals": 96,
+      "nativePairs": 96,
+      "shiftDiagnostics": [
+        {
+          "energyChartsIndexShiftMinutes": -120,
+          "pairs": 80,
+          "rmseMw": 860.352027663
+        },
+        {
+          "energyChartsIndexShiftMinutes": -105,
+          "pairs": 80,
+          "rmseMw": 803.106671684
+        },
+        {
+          "energyChartsIndexShiftMinutes": -90,
+          "pairs": 80,
+          "rmseMw": 737.304947023
+        },
+        {
+          "energyChartsIndexShiftMinutes": -75,
+          "pairs": 80,
+          "rmseMw": 650.632104729
+        },
+        {
+          "energyChartsIndexShiftMinutes": -60,
+          "pairs": 80,
+          "rmseMw": 553.003134986
+        },
+        {
+          "energyChartsIndexShiftMinutes": -45,
+          "pairs": 80,
+          "rmseMw": 464.2066542
+        },
+        {
+          "energyChartsIndexShiftMinutes": -30,
+          "pairs": 80,
+          "rmseMw": 374.799958383
+        },
+        {
+          "energyChartsIndexShiftMinutes": -15,
+          "pairs": 80,
+          "rmseMw": 249.496300582
+        },
+        {
+          "energyChartsIndexShiftMinutes": 0,
+          "pairs": 80,
+          "rmseMw": 3.702567217
+        },
+        {
+          "energyChartsIndexShiftMinutes": 15,
+          "pairs": 80,
+          "rmseMw": 249.895344302
+        },
+        {
+          "energyChartsIndexShiftMinutes": 30,
+          "pairs": 80,
+          "rmseMw": 378.418230274
+        },
+        {
+          "energyChartsIndexShiftMinutes": 45,
+          "pairs": 80,
+          "rmseMw": 477.41162083
+        },
+        {
+          "energyChartsIndexShiftMinutes": 60,
+          "pairs": 80,
+          "rmseMw": 575.000340786
+        },
+        {
+          "energyChartsIndexShiftMinutes": 75,
+          "pairs": 80,
+          "rmseMw": 699.491882658
+        },
+        {
+          "energyChartsIndexShiftMinutes": 90,
+          "pairs": 80,
+          "rmseMw": 801.940936668
+        },
+        {
+          "energyChartsIndexShiftMinutes": 105,
+          "pairs": 80,
+          "rmseMw": 891.554917548
+        },
+        {
+          "energyChartsIndexShiftMinutes": 120,
+          "pairs": 80,
+          "rmseMw": 969.997523968
+        }
+      ]
+    },
+    {
+      "border": "france",
+      "swissgridNetImportGwh": 35.944443,
+      "energyChartsNetImportGwh": 47.053,
+      "differenceGwh": 11.108557,
+      "meanDifferenceMw": 462.856541667,
+      "maximumAbsoluteDifferenceMw": 1248.592,
+      "sameDirectionIntervals": 94,
+      "nativePairs": 96,
+      "shiftDiagnostics": [
+        {
+          "energyChartsIndexShiftMinutes": -120,
+          "pairs": 80,
+          "rmseMw": 1118.630791215
+        },
+        {
+          "energyChartsIndexShiftMinutes": -105,
+          "pairs": 80,
+          "rmseMw": 1049.863577116
+        },
+        {
+          "energyChartsIndexShiftMinutes": -90,
+          "pairs": 80,
+          "rmseMw": 976.139857733
+        },
+        {
+          "energyChartsIndexShiftMinutes": -75,
+          "pairs": 80,
+          "rmseMw": 899.351569607
+        },
+        {
+          "energyChartsIndexShiftMinutes": -60,
+          "pairs": 80,
+          "rmseMw": 815.391522126
+        },
+        {
+          "energyChartsIndexShiftMinutes": -45,
+          "pairs": 80,
+          "rmseMw": 733.666645525
+        },
+        {
+          "energyChartsIndexShiftMinutes": -30,
+          "pairs": 80,
+          "rmseMw": 658.465660042
+        },
+        {
+          "energyChartsIndexShiftMinutes": -15,
+          "pairs": 80,
+          "rmseMw": 589.369980619
+        },
+        {
+          "energyChartsIndexShiftMinutes": 0,
+          "pairs": 80,
+          "rmseMw": 538.239742545
+        },
+        {
+          "energyChartsIndexShiftMinutes": 15,
+          "pairs": 80,
+          "rmseMw": 521.327251978
+        },
+        {
+          "energyChartsIndexShiftMinutes": 30,
+          "pairs": 80,
+          "rmseMw": 539.095659373
+        },
+        {
+          "energyChartsIndexShiftMinutes": 45,
+          "pairs": 80,
+          "rmseMw": 575.592107881
+        },
+        {
+          "energyChartsIndexShiftMinutes": 60,
+          "pairs": 80,
+          "rmseMw": 629.285495507
+        },
+        {
+          "energyChartsIndexShiftMinutes": 75,
+          "pairs": 80,
+          "rmseMw": 700.633643251
+        },
+        {
+          "energyChartsIndexShiftMinutes": 90,
+          "pairs": 80,
+          "rmseMw": 777.117102408
+        },
+        {
+          "energyChartsIndexShiftMinutes": 105,
+          "pairs": 80,
+          "rmseMw": 851.124424368
+        },
+        {
+          "energyChartsIndexShiftMinutes": 120,
+          "pairs": 80,
+          "rmseMw": 922.203011682
+        }
+      ]
+    },
+    {
+      "border": "italy",
+      "swissgridNetImportGwh": -38.636244,
+      "energyChartsNetImportGwh": -38.635,
+      "differenceGwh": 0.001244,
+      "meanDifferenceMw": 0.051833333,
+      "maximumAbsoluteDifferenceMw": 392.68,
+      "sameDirectionIntervals": 96,
+      "nativePairs": 96,
+      "shiftDiagnostics": [
+        {
+          "energyChartsIndexShiftMinutes": -120,
+          "pairs": 80,
+          "rmseMw": 421.31298262
+        },
+        {
+          "energyChartsIndexShiftMinutes": -105,
+          "pairs": 80,
+          "rmseMw": 396.287530872
+        },
+        {
+          "energyChartsIndexShiftMinutes": -90,
+          "pairs": 80,
+          "rmseMw": 367.2310683
+        },
+        {
+          "energyChartsIndexShiftMinutes": -75,
+          "pairs": 80,
+          "rmseMw": 328.894451039
+        },
+        {
+          "energyChartsIndexShiftMinutes": -60,
+          "pairs": 80,
+          "rmseMw": 287.511225562
+        },
+        {
+          "energyChartsIndexShiftMinutes": -45,
+          "pairs": 80,
+          "rmseMw": 262.688736958
+        },
+        {
+          "energyChartsIndexShiftMinutes": -30,
+          "pairs": 80,
+          "rmseMw": 227.020508599
+        },
+        {
+          "energyChartsIndexShiftMinutes": -15,
+          "pairs": 80,
+          "rmseMw": 181.85439402
+        },
+        {
+          "energyChartsIndexShiftMinutes": 0,
+          "pairs": 80,
+          "rmseMw": 121.590234494
+        },
+        {
+          "energyChartsIndexShiftMinutes": 15,
+          "pairs": 80,
+          "rmseMw": 183.116922551
+        },
+        {
+          "energyChartsIndexShiftMinutes": 30,
+          "pairs": 80,
+          "rmseMw": 222.963020307
+        },
+        {
+          "energyChartsIndexShiftMinutes": 45,
+          "pairs": 80,
+          "rmseMw": 253.743602726
+        },
+        {
+          "energyChartsIndexShiftMinutes": 60,
+          "pairs": 80,
+          "rmseMw": 288.655733399
+        },
+        {
+          "energyChartsIndexShiftMinutes": 75,
+          "pairs": 80,
+          "rmseMw": 333.050229882
+        },
+        {
+          "energyChartsIndexShiftMinutes": 90,
+          "pairs": 80,
+          "rmseMw": 362.94188822
+        },
+        {
+          "energyChartsIndexShiftMinutes": 105,
+          "pairs": 80,
+          "rmseMw": 391.335276872
+        },
+        {
+          "energyChartsIndexShiftMinutes": 120,
+          "pairs": 80,
+          "rmseMw": 420.035664586
+        }
+      ]
+    }
+  ],
+  "productionComparisons": [
+    {
+      "bfeCategory": "Flusskraft",
+      "bfeGwh": 36.0,
+      "energyChartsCategories": [
+        "hydro_run_of_river"
+      ],
+      "energyChartsGwh": 36.0001,
+      "bfeMinusEnergyChartsGwh": -0.0001,
+      "comparisonStatus": "candidate category correspondence; not proof of equivalent measurement scope"
+    },
+    {
+      "bfeCategory": "Kernkraft",
+      "bfeGwh": 69.5,
+      "energyChartsCategories": [
+        "nuclear"
+      ],
+      "energyChartsGwh": 69.1585,
+      "bfeMinusEnergyChartsGwh": 0.3415,
+      "comparisonStatus": "candidate category correspondence; not proof of equivalent measurement scope"
+    },
+    {
+      "bfeCategory": "Photovoltaik",
+      "bfeGwh": 23.7,
+      "energyChartsCategories": [
+        "solar"
+      ],
+      "energyChartsGwh": 23.6998,
+      "bfeMinusEnergyChartsGwh": 0.0002,
+      "comparisonStatus": "candidate category correspondence; not proof of equivalent measurement scope"
+    },
+    {
+      "bfeCategory": "Speicherkraft",
+      "bfeGwh": 61.2,
+      "energyChartsCategories": [
+        "hydro_water_reservoir",
+        "hydro_pumped_storage"
+      ],
+      "energyChartsGwh": 53.5767,
+      "bfeMinusEnergyChartsGwh": 7.6233,
+      "comparisonStatus": "candidate category correspondence; not proof of equivalent measurement scope"
+    },
+    {
+      "bfeCategory": "Thermische",
+      "bfeGwh": 8.4,
+      "energyChartsCategories": [
+        "others"
+      ],
+      "energyChartsGwh": 8.4,
+      "bfeMinusEnergyChartsGwh": 0.0,
+      "comparisonStatus": "candidate category correspondence; not proof of equivalent measurement scope"
+    },
+    {
+      "bfeCategory": "Wind",
+      "bfeGwh": 0.5,
+      "energyChartsCategories": [
+        "wind_onshore"
+      ],
+      "energyChartsGwh": 0.5,
+      "bfeMinusEnergyChartsGwh": 0.0,
+      "comparisonStatus": "candidate category correspondence; not proof of equivalent measurement scope"
+    }
+  ],
+  "pumping": {
+    "standaloneConsumptionPresent": false,
+    "totalMinusEndUserGwh": 18.816683458,
+    "meaning": "combined pumps, grid losses and power-station own-use; never a pumping series"
+  },
+  "limitations": [
+    "Native source values are frozen; these calculations do not revise the recorded release.",
+    "Clock diagnostics establish a consistent interpretation, not provider certification.",
+    "Category comparisons do not reconcile gross/net generation or mixed estimation methods.",
+    "No reconciliation residual is allocated to pumping, transit or individual plants."
+  ]
+}
+
