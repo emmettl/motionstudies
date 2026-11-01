@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useScenarioState } from './scenario-state.tsx'
+import { useEffect, useRef } from 'react'
 import { formatServiceTime } from '@motionstudies/core/domain/network'
 import { movementBoardWindow, movementsForBoard } from '@motionstudies/core/domain/movement-board'
 import { type AirportBoardEntry } from '@motionstudies/web/components/AirportHeroCard'
@@ -27,7 +28,7 @@ const railMovements = [
 ]
 
 export function AirportStudy() {
-  const [state, setState] = useState('ready')
+  const [state, setState] = useScenarioState('state', 'ready')
   const reloadTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   useEffect(() => () => clearTimeout(reloadTimer.current), [])
   function changeBoardState(next: string) {
@@ -39,15 +40,15 @@ export function AirportStudy() {
     changeBoardState('loading')
     reloadTimer.current = setTimeout(() => { reloadTimer.current = undefined; setState('ready') }, 1400)
   }
-  const [updated, setUpdated] = useState(false)
-  const [long, setLong] = useState(false)
-  const [selected, setSelected] = useState<string>()
-  const [french, setFrench] = useState(false)
-  const [observed, setObserved] = useState(false)
-  const [time, setTime] = useState(30720)
-  const [windowEnd, setWindowEnd] = useState(36000)
-  const [ahead, setAhead] = useState(3600)
-  const [playing, setPlaying] = useState(false)
+  const [updated, setUpdated] = useScenarioState('updated', false)
+  const [long, setLong] = useScenarioState('long', false)
+  const [selected, setSelected] = useScenarioState<string | undefined>('selected', undefined)
+  const [french, setFrench] = useScenarioState('french', false)
+  const [observed, setObserved] = useScenarioState('observed', false)
+  const [time, setTime] = useScenarioState('time', 30720)
+  const [windowEnd, setWindowEnd] = useScenarioState('windowEnd', 36000)
+  const [ahead, setAhead] = useScenarioState('ahead', 3600)
+  const [playing, setPlaying] = useScenarioState('playing', false)
   const atEnd = time >= windowEnd
   const study = { time, windowStart: 30600, windowEnd }
   const horizon = { lookAheadSeconds: ahead }
@@ -56,7 +57,7 @@ export function AirportStudy() {
     if (!playing || atEnd) return
     const timer = setInterval(() => setTime((current) => Math.min(current + 30, windowEnd)), 250)
     return () => clearInterval(timer)
-  }, [playing, windowEnd, atEnd])
+  }, [playing, windowEnd, atEnd, setTime])
   const departureRows = departures.map((entry, index) => ({ ...entry,
     place: long && index === 0 ? 'Saint-Étienne International — Terminal Nord' : entry.place,
     ...(updated && index === 1 ? { time: 33300, status: 'Delayed', tone: 'warning' as const } : {}),

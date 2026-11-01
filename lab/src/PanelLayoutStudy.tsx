@@ -1,14 +1,15 @@
-import { useState, type CSSProperties } from 'react'
+import { useScenarioState } from './scenario-state.tsx'
+import { type CSSProperties } from 'react'
 import { AirportHeroCard } from '@motionstudies/web/components/AirportHeroCard'
 import '@motionstudies/web/airport-hero-card.css'
 import '@motionstudies/web/study-layout.css'
 import './panel-layout-study.css'
 
 export function PanelLayoutStudy() {
-  const [compact, setCompact] = useState(true)
-  const [quiet, setQuiet] = useState(false)
-  const [height, setHeight] = useState(540)
-  const [width, setWidth] = useState(680)
+  const [compact, setCompact] = useScenarioState('compact', true)
+  const [quiet, setQuiet] = useScenarioState('quiet', false)
+  const [height, setHeight] = useScenarioState('height', 540)
+  const [width, setWidth] = useScenarioState('width', 680)
   return <>
     <div className="toolbar">
       <label><input type="checkbox" checked={compact} onChange={event => setCompact(event.target.checked)} /> Compact airport</label>

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useScenarioState } from './scenario-state.tsx'
+import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { readWeatherField, sampleWeather, type WeatherField } from '@motionstudies/core/domain/weather-field'
 import { createGridTexturePair, scalarGridPixels, WEATHER_SAMPLE_GLSL } from '@motionstudies/three/weather-textures'
@@ -6,7 +7,7 @@ import { createGridTexturePair, scalarGridPixels, WEATHER_SAMPLE_GLSL } from '@m
 const times=['2026-09-16T00:00:00Z','2026-09-16T01:00:00Z']
 const field:WeatherField=readWeatherField({kind:'weather-field',schemaVersion:1,grid:{west:6,south:46,step:1,width:3,height:3},sources:[{id:'synthetic',publisher:'Widget lab',url:'https://motionstudies.app/lab/',retrievedAt:times[0],sha256:'0'.repeat(64),license:'MIT',attribution:'Synthetic fixture, no weather observation'}],variables:{cover:{unit:'%',evidenceKind:'reanalysis',timeSupport:'instant',sourceIds:['synthetic'],times,frames:[[0,20,40,40,50,60,70,80,null],[100,80,60,60,50,40,30,20,null]]},radiation:{unit:'W/m²',evidenceKind:'reanalysis',timeSupport:'interval-mean',intervalSeconds:3600,sourceIds:['synthetic'],times,frames:[Array(9).fill(100),Array(9).fill(400)]}}})
 export function WeatherStudy(){
- const [minutes,setMinutes]=useState(30),[variable,setVariable]=useState('cover'),canvas=useRef<HTMLCanvasElement>(null)
+ const [minutes,setMinutes]=useScenarioState('minutes', 30),[variable,setVariable]=useScenarioState('variable', 'cover'),canvas=useRef<HTMLCanvasElement>(null)
  const time=Date.parse(times[0])+minutes*60000
  const reading=sampleWeather(field,variable,46,6,time)
  useEffect(()=>{

@@ -6,10 +6,12 @@ declare global {
 
 test('Now follows the wall clock, leaves on scrub and speed changes, and catches up after a gap', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-09-08T11:59:00Z') })
-  await page.clock.pauseAt(new Date('2026-09-08T12:00:00Z'))
   await page.goto('/')
   await page.getByRole('button', { name: '06 Now' }).click()
   const now = page.getByRole('button', { name: 'Now', exact: true })
+  await expect(now).toBeVisible()
+  // Finish lazy loading before freezing timers used by React's Suspense reveal.
+  await page.clock.pauseAt(new Date('2026-09-08T12:00:00Z'))
   await now.click()
   await expect(now).toHaveAttribute('aria-pressed', 'true')
   await expect(page.getByLabel('Playback speed')).toHaveValue('1')

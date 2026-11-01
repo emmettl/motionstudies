@@ -1,0 +1,17 @@
+/* Host layout only: deliberately no lab button, input, focus or universal reset rules. */
+body { margin: 16px; }
+.host-title { font: 1rem/1.4 system-ui, sans-serif; margin: 0 0 16px; }
+main > section + section { margin-top: 32px; border-top: 1px solid currentColor; padding-top: 24px; }
+.toolbar { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+.toolbar label { display: inline-flex; align-items: center; gap: 4px; }
+.scene-preview { height: 420px; width: 100%; }
+.scene-grid.is-paired { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.timeline { margin: 16px 0; }
+.theme-grid { display: grid; gap: 16px; }
+.theme-panel { padding: 24px; }
+.field-specimen canvas { max-width: 100%; }
+.readout { max-width: 100%; overflow: auto; }
+[data-host="light"] { --background: #fff; --ink: #171b21; --muted: #454e59; --line: #607080; --panel: #f3f5f8; color: #171b21; background: #fff; }
+[data-host="serif"] body { font: 20px/1.7 Georgia, serif; }
+[data-host="serif"] button, [data-host="serif"] input, [data-host="serif"] select { font: inherit; }
+[data-host="constrained"] main { max-width: 280px; }

@@ -1,3 +1,4 @@
+import { useScenarioState } from './scenario-state.tsx'
 import { useState } from 'react'
 import { sbbDepartures, sbbLabels } from './sbb-fixtures.ts'
 import { RailStationHeroCard, type RailDeparture } from '@motionstudies/web/components/RailStationHeroCard'
@@ -24,16 +25,16 @@ const buses: readonly BusDeparture[] = [
 ]
 
 export function TransportHeroStudy() {
-  const [transport, setTransport] = useState('rail')
-  const [presentation, setPresentation] = useState<'uk-rail' | 'dot-matrix' | 'split-flap' | 'sbb'>('uk-rail')
-  const [railExample, setRailExample] = useState('uk')
-  const [language, setLanguage] = useState<keyof typeof sbbLabels>('de')
-  const [lines, setLines] = useState('10')
-  const [height, setHeight] = useState(430)
-  const [width, setWidth] = useState(980)
-  const [state, setState] = useState('ready')
-  const [updated, setUpdated] = useState(false)
-  const [long, setLong] = useState(false)
+  const [transport, setTransport] = useScenarioState('transport', 'rail')
+  const [presentation, setPresentation] = useScenarioState<'uk-rail' | 'dot-matrix' | 'split-flap' | 'sbb'>('presentation', 'uk-rail')
+  const [railExample, setRailExample] = useScenarioState('railExample', 'uk')
+  const [language, setLanguage] = useScenarioState<keyof typeof sbbLabels>('language', 'de')
+  const [lines, setLines] = useScenarioState('lines', '10')
+  const [height, setHeight] = useScenarioState('height', 430)
+  const [width, setWidth] = useScenarioState('width', 980)
+  const [state, setState] = useScenarioState('state', 'ready')
+  const [updated, setUpdated] = useScenarioState('updated', false)
+  const [long, setLong] = useScenarioState('long', false)
   const [selected, setSelected] = useState<Record<string, string | undefined>>({})
   const select = (id: string) => setSelected((current) => ({ ...current, [transport]: id }))
   const shared = { presentation, lineCount: lines === 'auto' ? 'auto' as const : Number(lines), boardHeight: height,

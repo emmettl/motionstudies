@@ -1,3 +1,4 @@
+import { useScenarioState } from './scenario-state.tsx'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { cellKey, cellOf, fetchTransport, journeyAt, openPublishedDay, positionAt, sliceStart, type MembersFile, type PublishedDay, type SliceCell, type SliceFile, type VehicleDay } from '@motionstudies/core/domain/published-day'
 
@@ -10,7 +11,7 @@ interface Picked { readonly key: string; readonly cell: SliceCell | null; readon
 export function PublishedDayStudy() {
   const [day, setDay] = useState<PublishedDay>()
   const [error, setError] = useState<string>()
-  const [sliceIndex, setSliceIndex] = useState(0)
+  const [sliceIndex, setSliceIndex] = useScenarioState('sliceIndex', 0)
   const [slice, setSlice] = useState<SliceFile>()
   const [members, setMembers] = useState<MembersFile>()
   const [picked, setPicked] = useState<Picked>()

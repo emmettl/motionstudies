@@ -70,3 +70,13 @@ pre { font-size: 14px; overflow: auto; }
 .readout { overflow-x: auto; }
 .readout table { border-collapse: collapse; width: 100%; min-width: 520px; text-align: left; font-variant-numeric: tabular-nums; }
 .readout th, .readout td { padding: 12px 10px; border-bottom: 1px solid #2d3a4c; }
+.validation-toolbar input[type="number"] { width: 88px; }
+.validation-frame-scroll { overflow: auto; max-width: 100%; border: 1px solid #344256; background: #fff; }
+.validation-frame-scroll iframe { display: block; border: 0; flex-shrink: 0; }
+.validation-contract, .validation-metrics { border: 1px solid #344256; padding: 16px; margin: 20px 0; border-radius: 8px; }
+.validation-metrics pre { max-height: 280px; }
+.validation-contract summary, .validation-metrics summary { cursor: pointer; }
+.validation-toolbar ~ .toolbar a, .validation-metrics a { color: #8dfaff; text-underline-offset: 3px; }
+.validation-frame-scroll { background: #0b111c; }
+.validation-toolbar { border: 0; padding: 0; min-width: 0; }
+.validation-toolbar legend { margin-bottom: 12px; color: #a7b8cd; font-size: 14px; }
