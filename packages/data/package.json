@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/data",
-  "version": "0.1.0-alpha.46",
+  "version": "0.1.0-alpha.47",
   "private": true,
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
@@ -123,10 +123,14 @@
     "./weather": {
       "types": "./src/weather.d.mts",
       "import": "./src/weather.mjs"
+    },
+    "./power-series": {
+      "types": "./src/power-series.d.mts",
+      "import": "./src/power-series.mjs"
     }
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.46",
+    "@motionstudies/core": "0.1.0-alpha.47",
     "fast-xml-parser": "5.11.2",
     "@babel/parser": "7.29.9"
   },

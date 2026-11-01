@@ -4,6 +4,8 @@
 
 ## Programme and shared work
 
+- [KRAFT shared foundations](KRAFT-INFRASTRUCTURE.md): European area/border contracts, a complete coarse weather grid, deterministic recorded-day compilation and integrated validation.
+
 - [England power alignment](POWER-ALIGNMENT.md): existing core adoption, ownership decisions, repeatable writer/reader checks and the separate area/border contract KRAFT needs.
 
 - [Shared weather infrastructure](WEATHER-FIELDS.md): evidence contracts, interval semantics, cached grid compilation, verified decoding and renderer resources for KRAFT, Zugunruhe and Gleislicht.
@@ -76,6 +78,7 @@ These briefs retain their dated source audits, proposed compositions and publica
 
 ## Research for potential studies
 
+- [KRAFT — The flow of power](KRAFT.md) — European electricity study brief; [initial source audit](KRAFT-SOURCES.md) and [extended survey](KRAFT-SURVEY.md): nine-country source coverage, Swiss regional evidence, historical weather, resource rights and comparison days.
 - [ZENIT — Earth orbit](ZENIT.md) — working brief and [public camera scaffold](https://zenit.motionstudies.app/) in an [independent repository](https://github.com/emmettl/zenit), for a descent beneath a naked-eye stellar field; [7 October source audit](ZENIT-SOURCES.md) with live GP samples, metadata joins, stellar sources, visibility assumptions and historical/publication boundaries. Orbital and stellar datasets remain pending.
 - [A national motion study — England, Great Britain or the UK](NATIONAL-STUDY.md) — refined artistic thesis and composition, with a [technical feasibility report](NATIONAL-DATA-FEASIBILITY.md) covering sources, volumes, timeliness, accuracy and the evidence chain between aggregate and individual records.
 - [Power — the national study's second axis](POWER.md) — Elexon and NESO sources probed on 13 September 2026: per-unit plans and settled generation, live fuel mix, national and grid-supply-point demand, geometry, licences and how a unit is placed.

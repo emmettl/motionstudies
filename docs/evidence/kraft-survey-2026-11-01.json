@@ -1,0 +1,1346 @@
+{
+  "kind": "kraft-survey-audit",
+  "auditDate": "2026-11-01",
+  "captures": [
+    {
+      "name": "weather-era5",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=54%2C46.5%2C48%2C52&longitude=6%2C8%2C2%2C10&start_date=2026-09-15&end_date=2026-09-16&models=era5&hourly=wind_speed_100m%2Cwind_direction_100m%2Cshortwave_radiation%2Ccloud_cover&wind_speed_unit=ms&timezone=UTC&elevation=nan&cell_selection=nearest",
+      "retrievalStartedAt": "2026-11-01T10:00:49.970131+00:00",
+      "status": 400,
+      "headers": {
+        "Date": "Sun, 01 Nov 2026 10:00:50 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "100",
+        "Connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:00:50.210333+00:00",
+      "bytes": 100,
+      "sha256": "5fc431de8e0bf629ae4c6bc254b3e5d3891a7764fa3d579adec7ec05dcd15de5",
+      "file": "weather-era5.json"
+    },
+    {
+      "name": "meteoswiss-collection",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.meteoschweiz.ogd-smn",
+      "retrievalStartedAt": "2026-11-01T10:00:50.210794+00:00",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "3581",
+        "Connection": "close",
+        "Date": "Sun, 01 Nov 2026 10:00:50 GMT",
+        "apigw-requestid": "GJ8Y7jK9liAEPYg=",
+        "Server": "gunicorn",
+        "access-control-allow-headers": "Content-Type,Accept,Accept-Language",
+        "access-control-allow-methods": "GET,HEAD",
+        "access-control-allow-origin": "*",
+        "Allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+        "Cache-Control": "max-age=10, public",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "referrer-policy": "same-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "ETag": "\"04bf937b-5d0e-493b-992f-401e4bbd9dc8\"",
+        "Vary": "Accept",
+        "X-Cache": "Miss from cloudfront",
+        "Via": "1.1 67ff75e05c92bc5ca2eabbdc5e6a1ae0.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "ZRH52-P1",
+        "X-Amz-Cf-Id": "KLCGHplS5MZbHy5UWADs9FNVC04KlhLDmk5Wed8939IcSYkFW1HGDg=="
+      },
+      "retrievedAt": "2026-11-01T10:00:50.373833+00:00",
+      "bytes": 3581,
+      "sha256": "e27c181a01b5ad8a8f07175630715335c6c34e4c88e05b17ce7f860bcb95a2e0",
+      "file": "meteoswiss-collection.json"
+    },
+    {
+      "name": "meteoswiss-items",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.meteoschweiz.ogd-smn/items?limit=1",
+      "retrievalStartedAt": "2026-11-01T10:00:50.374276+00:00",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "6934",
+        "Connection": "close",
+        "Date": "Sun, 01 Nov 2026 10:00:50 GMT",
+        "apigw-requestid": "GJ8Y9jrIFiAEP6w=",
+        "Server": "gunicorn",
+        "access-control-allow-headers": "Content-Type,Accept,Accept-Language",
+        "access-control-allow-methods": "GET,HEAD",
+        "access-control-allow-origin": "*",
+        "Allow": "GET, POST, HEAD, OPTIONS",
+        "Cache-Control": "max-age=10, public",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "referrer-policy": "same-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "Vary": "Accept",
+        "X-Cache": "Miss from cloudfront",
+        "Via": "1.1 05648470f141fa8f78f96e650d89cee6.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "ZRH52-P1",
+        "X-Amz-Cf-Id": "VkL4CMRa5kWm1avtL2tUGv3GOcXmzfdxPnzrCVHgpcY4CfsPMoOnLQ=="
+      },
+      "retrievedAt": "2026-11-01T10:00:50.510822+00:00",
+      "bytes": 6934,
+      "sha256": "3374c72896286b952ecd3d0245af8696fbd4ae2bedf3cad92a61d9b0d8bb5456",
+      "file": "meteoswiss-items.json"
+    },
+    {
+      "name": "plants-collection",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bfe.elektrizitaetsproduktionsanlagen",
+      "retrievalStartedAt": "2026-11-01T10:00:50.511532+00:00",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "3078",
+        "Connection": "close",
+        "Date": "Sun, 01 Nov 2026 10:00:50 GMT",
+        "apigw-requestid": "GJ8Y-gPoliAEMCA=",
+        "Server": "gunicorn",
+        "access-control-allow-headers": "Content-Type,Accept,Accept-Language",
+        "access-control-allow-methods": "GET,HEAD",
+        "access-control-allow-origin": "*",
+        "Allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+        "Cache-Control": "max-age=600, public",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "ETag": "\"dccf6585-335d-42c7-a57d-1a5e5e908b61\"",
+        "Expires": "Sun, 01 Nov 2026 10:10:50 GMT",
+        "referrer-policy": "same-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "Vary": "Accept",
+        "X-Cache": "Miss from cloudfront",
+        "Via": "1.1 319e9c7c3a6c2c5b2bab4ef63ef59812.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "ZRH52-P1",
+        "X-Amz-Cf-Id": "nK6sERAMCgdCu4ESsick8KWQ0O7S_NQo-3YVyGRLnELdYQHPzQWesQ=="
+      },
+      "retrievedAt": "2026-11-01T10:00:50.660137+00:00",
+      "bytes": 3078,
+      "sha256": "1b080e05590ce72a001ec165001308bcf980348b344d7583a12078a152cc3089",
+      "file": "plants-collection.json"
+    },
+    {
+      "name": "bfe-production-rights",
+      "url": "https://ckan.opendata.swiss/api/3/action/package_show?id=energiedashboard-ch-stromproduktion-swissgrid",
+      "retrievalStartedAt": "2026-11-01T10:00:50.660594+00:00",
+      "status": 200,
+      "headers": {
+        "Date": "Sun, 01 Nov 2026 10:00:50 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "11361",
+        "Connection": "close",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Vary": "Cookie",
+        "X-Robots-Tag": "noindex, nofollow",
+        "Strict-Transport-Security": "max-age=15724800; includeSubDomains",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
+        "Access-Control-Max-Age": "1728000"
+      },
+      "retrievedAt": "2026-11-01T10:00:50.865661+00:00",
+      "bytes": 11361,
+      "sha256": "c9e4ac8eccc451dab05038b6ba7620d323a34a6c430ca99d076393715638062f",
+      "file": "bfe-production-rights.json"
+    },
+    {
+      "name": "bfe-pv-rights",
+      "url": "https://ckan.opendata.swiss/api/3/action/package_search?q=pv-stromproduktion-estimate&rows=3",
+      "retrievalStartedAt": "2026-11-01T10:00:50.866219+00:00",
+      "status": 200,
+      "headers": {
+        "Date": "Sun, 01 Nov 2026 10:00:50 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "72110",
+        "Connection": "close",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Vary": "Cookie",
+        "X-Robots-Tag": "noindex, nofollow",
+        "Strict-Transport-Security": "max-age=15724800; includeSubDomains",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
+        "Access-Control-Max-Age": "1728000"
+      },
+      "retrievedAt": "2026-11-01T10:00:51.058166+00:00",
+      "bytes": 72110,
+      "sha256": "41c5f3212779428b3da9f46ba87d22191a2f9a1c84c38a81e29b519226104328",
+      "file": "bfe-pv-rights.json"
+    },
+    {
+      "name": "dk-2026-09-16-public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=dk&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:01:20.904607+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:01:21 GMT",
+        "content-type": "application/json",
+        "content-length": "32701",
+        "x-cache": "MISS",
+        "x-process-time-ms": "66.1",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:01:21.086094+00:00",
+      "bytes": 32701,
+      "sha256": "82b679616ddb34274117ab377948486a5f8525739795319d65b0fb761150608b",
+      "file": "dk-2026-09-16-public_power.json"
+    },
+    {
+      "name": "dk-2026-09-16-cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=dk&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:01:21.086741+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:01:20 GMT",
+        "content-type": "application/json",
+        "content-length": "16197",
+        "x-cache": "MISS",
+        "x-process-time-ms": "44.6",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:01:21.245228+00:00",
+      "bytes": 16197,
+      "sha256": "70b12b6abf3419aeef21efc24e1424564a8149be1c00ef1cf62038f162355e4d",
+      "file": "dk-2026-09-16-cbpf.json"
+    },
+    {
+      "name": "no-2026-09-16-public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=no&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:01:51.908693+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:01:52 GMT",
+        "content-type": "application/json",
+        "content-length": "44019",
+        "x-cache": "MISS",
+        "x-process-time-ms": "81.1",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:01:52.152172+00:00",
+      "bytes": 44019,
+      "sha256": "25cbda389ac890aacf3a29fce06592aaf5e4907cc046b2abd3160dcbe35770a9",
+      "file": "no-2026-09-16-public_power.json"
+    },
+    {
+      "name": "no-2026-09-16-cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=no&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:01:52.152724+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:01:52 GMT",
+        "content-type": "application/json",
+        "content-length": "18045",
+        "x-cache": "MISS",
+        "x-process-time-ms": "59.2",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:01:52.332908+00:00",
+      "bytes": 18045,
+      "sha256": "8d1ab1ae3c7b97ea34b93d723e67699dc5f1413f45434001fd378628e3592100",
+      "file": "no-2026-09-16-cbpf.json"
+    },
+    {
+      "name": "se-2026-09-16-public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=se&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:02:22.914455+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:02:22 GMT",
+        "content-type": "application/json",
+        "content-length": "31789",
+        "x-cache": "MISS",
+        "x-process-time-ms": "87.6",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:02:23.202402+00:00",
+      "bytes": 31789,
+      "sha256": "d4df50d435aebd6938a201e2daf69bcc3be3842cc09f3b21d205ffd9098ca4e4",
+      "file": "se-2026-09-16-public_power.json"
+    },
+    {
+      "name": "se-2026-09-16-cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=se&start=2026-09-16T00%3A00Z&end=2026-09-17T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:02:23.203160+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:02:22 GMT",
+        "content-type": "application/json",
+        "content-length": "17081",
+        "x-cache": "MISS",
+        "x-process-time-ms": "46.9",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:02:23.412889+00:00",
+      "bytes": 17081,
+      "sha256": "4e16703af96e662ec036f6fb51494b7c6aeda81c11fc2a44cdb1f1a15862c4e2",
+      "file": "se-2026-09-16-cbpf.json"
+    },
+    {
+      "name": "ch-2026-09-18-public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=ch&start=2026-09-18T00%3A00Z&end=2026-09-19T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:02:53.914762+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:02:54 GMT",
+        "content-type": "application/json",
+        "content-length": "9877",
+        "x-cache": "MISS",
+        "x-process-time-ms": "47.9",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:02:54.114614+00:00",
+      "bytes": 9877,
+      "sha256": "b3cd6b07caa45dc304f1bcda387e3d62333f1eef111edd0db9bec8b56009f2df",
+      "file": "ch-2026-09-18-public_power.json"
+    },
+    {
+      "name": "ch-2026-09-18-cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=ch&start=2026-09-18T00%3A00Z&end=2026-09-19T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:02:54.205540+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:02:54 GMT",
+        "content-type": "application/json",
+        "content-length": "13227",
+        "x-cache": "MISS",
+        "x-process-time-ms": "18.8",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:02:54.317055+00:00",
+      "bytes": 13227,
+      "sha256": "7858d32323842cf885775d7a55d899211d2d5904aa70dead916557e5a93cec3f",
+      "file": "ch-2026-09-18-cbpf.json"
+    },
+    {
+      "name": "ch-2026-09-20-public_power",
+      "url": "https://api.energy-charts.info/v2/public_power?country=ch&start=2026-09-20T00%3A00Z&end=2026-09-21T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:03:24.916786+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:03:24 GMT",
+        "content-type": "application/json",
+        "content-length": "9848",
+        "x-cache": "MISS",
+        "x-process-time-ms": "21.3",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:03:25.032810+00:00",
+      "bytes": 9848,
+      "sha256": "0047a72c494b09f0cd37f99c180400ad81eb7e5ec5aa6b0630b1289a84fac8d0",
+      "file": "ch-2026-09-20-public_power.json"
+    },
+    {
+      "name": "ch-2026-09-20-cbpf",
+      "url": "https://api.energy-charts.info/v2/cbpf?country=ch&start=2026-09-20T00%3A00Z&end=2026-09-21T00%3A00Z",
+      "retrievalStartedAt": "2026-11-01T10:03:25.206634+00:00",
+      "status": 200,
+      "headers": {
+        "date": "Sun, 01 Nov 2026 10:03:24 GMT",
+        "content-type": "application/json",
+        "content-length": "13192",
+        "x-cache": "MISS",
+        "x-process-time-ms": "22.0",
+        "server": "Nginx",
+        "content-security-policy": "frame-ancestors 'self' *.ise.fraunhofer.de ;",
+        "access-control-allow-origin": "https://www.api.energy-charts.info",
+        "strict-transport-security": "max-age=16000000; includeSubDomains; preload;",
+        "connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:03:25.359648+00:00",
+      "bytes": 13192,
+      "sha256": "d423ec0ac5b0ae17baaa993b72b67397714f0f317e929868a87ac47d9b7035f5",
+      "file": "ch-2026-09-20-cbpf.json"
+    },
+    {
+      "name": "weather-era5",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=54%2C46.5%2C48%2C52&longitude=6%2C8%2C2%2C10&start_date=2026-09-15&end_date=2026-09-16&models=era5&hourly=wind_speed_100m%2Cwind_direction_100m%2Cshortwave_radiation%2Ccloud_cover&wind_speed_unit=ms&timezone=UTC&elevation=nan%2Cnan%2Cnan%2Cnan&cell_selection=nearest",
+      "retrievalStartedAt": "2026-11-01T10:03:51.173604+00:00",
+      "status": 200,
+      "headers": {
+        "Date": "Sun, 01 Nov 2026 10:03:51 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:03:51.395819+00:00",
+      "bytes": 8556,
+      "sha256": "7d7e95d9b6ba26e10c88d4a620edca918f28e35dc492572494f083259969cc08",
+      "file": "weather-era5-attempt2.json"
+    },
+    {
+      "name": "bfe-pv-rights-targeted",
+      "url": "https://ckan.opendata.swiss/api/3/action/package_search?q=%22energiedashboard%22+AND+%22Photovoltaik%22&rows=10",
+      "retrievalStartedAt": "2026-11-01T10:03:51.396530+00:00",
+      "status": 200,
+      "headers": {
+        "Date": "Sun, 01 Nov 2026 10:03:51 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "11484",
+        "Connection": "close",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Vary": "Cookie",
+        "X-Robots-Tag": "noindex, nofollow",
+        "Strict-Transport-Security": "max-age=15724800; includeSubDomains",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
+        "Access-Control-Max-Age": "1728000"
+      },
+      "retrievedAt": "2026-11-01T10:03:51.537572+00:00",
+      "bytes": 11484,
+      "sha256": "b26732fb471d0ce0b3a3173c0ef48af61b4772df1191d291ad320fd19fc41ece",
+      "file": "bfe-pv-rights-targeted.json"
+    },
+    {
+      "name": "meteoswiss-abo-hourly",
+      "url": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-smn/abo/ogd-smn_abo_h_recent.csv",
+      "retrievalStartedAt": "2026-11-01T10:03:51.538110+00:00",
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/csv",
+        "Content-Length": "978356",
+        "Connection": "close",
+        "Accept-Ranges": "bytes",
+        "Date": "Sun, 01 Nov 2026 10:03:51 GMT",
+        "Server": "AmazonS3",
+        "Last-Modified": "Sun, 01 Nov 2026 02:51:55 GMT",
+        "X-Amz-Meta-Sha256": "9aeb2edbc60721cf0a731d34970335c774f095651a89164785722362fb69d98f",
+        "Cache-Control": "max-age=10, public",
+        "X-Amz-Server-Side-Encryption": "AES256",
+        "Etag": "\"3a610882819b090b65c5aa94e43a872a-1\"",
+        "Via": "1.1 a59d4986c8def904895cd9c21c73a7e2.cloudfront.net (CloudFront)",
+        "X-Bgdi-Managed": "true",
+        "X-Cache": "Miss from cloudfront",
+        "X-Amz-Cf-Pop": "ZRH52-P1",
+        "X-Amz-Cf-Id": "E50xA20eMfdA0fSc-BFuuXPBeEPKkMgKQBNs5myEBZ2voiYk7w1hQQ=="
+      },
+      "retrievedAt": "2026-11-01T10:03:51.752878+00:00",
+      "bytes": 978356,
+      "sha256": "9aeb2edbc60721cf0a731d34970335c774f095651a89164785722362fb69d98f",
+      "file": "meteoswiss-abo-hourly.json"
+    },
+    {
+      "name": "meteoswiss-parameters",
+      "url": "https://data.geo.admin.ch/ch.meteoschweiz.ogd-smn/ogd-smn_meta_parameters.csv",
+      "retrievalStartedAt": "2026-11-01T10:03:51.754006+00:00",
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/csv",
+        "Content-Length": "50180",
+        "Connection": "close",
+        "Accept-Ranges": "bytes",
+        "Date": "Sun, 01 Nov 2026 10:03:51 GMT",
+        "Server": "AmazonS3",
+        "Last-Modified": "Sun, 01 Nov 2026 04:21:43 GMT",
+        "X-Amz-Meta-Sha256": "9fa4358356a1f856d5ba2ab8117e750ea5c742ec4c18594f16bf31e8a87fc2c0",
+        "Cache-Control": "max-age=10, public",
+        "X-Amz-Server-Side-Encryption": "AES256",
+        "Etag": "\"5590fbae376c2f895f6fa430de59bfb7-1\"",
+        "Via": "1.1 15ec222720b66945bbc5c3c677b15d28.cloudfront.net (CloudFront)",
+        "X-Bgdi-Managed": "true",
+        "X-Cache": "Miss from cloudfront",
+        "X-Amz-Cf-Pop": "ZRH52-P1",
+        "X-Amz-Cf-Id": "3DgHZRupFRbC7zHhWEvOx3shxp1NTF2FrLElWKXqLZshhufmQ-BIsA=="
+      },
+      "retrievedAt": "2026-11-01T10:03:51.874162+00:00",
+      "bytes": 50180,
+      "sha256": "9fa4358356a1f856d5ba2ab8117e750ea5c742ec4c18594f16bf31e8a87fc2c0",
+      "file": "meteoswiss-parameters.json"
+    },
+    {
+      "name": "plants-items",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bfe.elektrizitaetsproduktionsanlagen/items?limit=1",
+      "retrievalStartedAt": "2026-11-01T10:03:51.874769+00:00",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "3093",
+        "Connection": "close",
+        "Date": "Sun, 01 Nov 2026 10:03:51 GMT",
+        "apigw-requestid": "GJ81Ui9HliAEPuA=",
+        "Server": "gunicorn",
+        "access-control-allow-headers": "Content-Type,Accept,Accept-Language",
+        "access-control-allow-methods": "GET,HEAD",
+        "access-control-allow-origin": "*",
+        "Allow": "GET, POST, HEAD, OPTIONS",
+        "Cache-Control": "max-age=600, public",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Expires": "Sun, 01 Nov 2026 10:13:51 GMT",
+        "referrer-policy": "same-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "Vary": "Accept",
+        "X-Cache": "Miss from cloudfront",
+        "Via": "1.1 46b024d4c93b0e8b446bcf305ad21868.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "ZRH52-P1",
+        "X-Amz-Cf-Id": "heWtQA2LUFaSjpovxHL-e3Mg0f6mJghmqQifsBDM82eNbaZh0qeqrw=="
+      },
+      "retrievedAt": "2026-11-01T10:03:52.007106+00:00",
+      "bytes": 3093,
+      "sha256": "b86526a68dd1283add00d0db78c9bb63fa08a8baa60109d425ad3a4006e6275e",
+      "file": "plants-items.json"
+    },
+    {
+      "name": "plants-csv-zip",
+      "url": "https://data.geo.admin.ch/ch.bfe.elektrizitaetsproduktionsanlagen/elektrizitaetsproduktionsanlagen/elektrizitaetsproduktionsanlagen_2056.csv.zip",
+      "retrievalStartedAt": "2026-11-01T10:04:57.570095+00:00",
+      "error": "response exceeds 8 MiB cap",
+      "retrievedAt": "2026-11-01T10:04:58.006783+00:00",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file": "plants-csv-zip.json"
+    },
+    {
+      "name": "bfe-consumption-rights",
+      "url": "https://ckan.opendata.swiss/api/3/action/package_show?id=energiedashboard-ch-landesverbrauch-und-endverbrauch",
+      "retrievalStartedAt": "2026-11-01T10:04:58.007583+00:00",
+      "status": 200,
+      "headers": {
+        "Date": "Sun, 01 Nov 2026 10:04:58 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "11532",
+        "Connection": "close",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Vary": "Cookie",
+        "X-Robots-Tag": "noindex, nofollow",
+        "Strict-Transport-Security": "max-age=15724800; includeSubDomains",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
+        "Access-Control-Max-Age": "1728000"
+      },
+      "retrievedAt": "2026-11-01T10:04:58.242301+00:00",
+      "bytes": 11532,
+      "sha256": "220d73bfc54f49cc5a8938a1ae6355e21f2afb3cdcca1cee872377a1e50dc369",
+      "file": "bfe-consumption-rights.json"
+    },
+    {
+      "name": "swiss-boundaries",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swissboundaries3d",
+      "retrievalStartedAt": "2026-11-01T10:04:58.242935+00:00",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1712",
+        "Connection": "close",
+        "Date": "Sun, 01 Nov 2026 10:04:58 GMT",
+        "apigw-requestid": "GJ8_rjNaliAEJWg=",
+        "Server": "gunicorn",
+        "access-control-allow-headers": "Content-Type,Accept,Accept-Language",
+        "access-control-allow-methods": "GET,HEAD",
+        "access-control-allow-origin": "*",
+        "Allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+        "Cache-Control": "max-age=600, public",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Expires": "Sun, 01 Nov 2026 10:14:58 GMT",
+        "referrer-policy": "same-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "ETag": "\"b4e388b2-3817-419a-ae73-f787d31e1750\"",
+        "Vary": "Accept",
+        "X-Cache": "Miss from cloudfront",
+        "Via": "1.1 f106bccd16721a0e4902884b35263d12.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "ZRH52-P1",
+        "X-Amz-Cf-Id": "qW0USpBSAHXj658stlgaY8ULLRI_nDPldo_1kgOqFGO5_I-f8TBM7A=="
+      },
+      "retrievedAt": "2026-11-01T10:04:58.367537+00:00",
+      "bytes": 1712,
+      "sha256": "55aeb8fe7b90ce0c0e4975211dcbb7ad21de780b338518c178a48652b3ef9baf",
+      "file": "swiss-boundaries.json"
+    },
+    {
+      "name": "weather-era5-day-aligned",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=54%2C46.5%2C48%2C52&longitude=6%2C8%2C2%2C10&start_date=2026-09-16&end_date=2026-09-17&models=era5&hourly=wind_speed_100m%2Cwind_direction_100m%2Cshortwave_radiation%2Ccloud_cover&wind_speed_unit=ms&timezone=UTC&elevation=nan%2Cnan%2Cnan%2Cnan&cell_selection=nearest",
+      "retrievalStartedAt": "2026-11-01T10:04:58.368476+00:00",
+      "status": 200,
+      "headers": {
+        "Date": "Sun, 01 Nov 2026 10:04:58 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close"
+      },
+      "retrievedAt": "2026-11-01T10:04:58.582622+00:00",
+      "bytes": 8583,
+      "sha256": "99a3eeb3b9fbc9dfc750ed10f6c75bd785388f9cf630c0b7f9b8ffaff244e972",
+      "file": "weather-era5-day-aligned.json"
+    },
+    {
+      "name": "plants-csv-zip",
+      "url": "https://data.geo.admin.ch/ch.bfe.elektrizitaetsproduktionsanlagen/elektrizitaetsproduktionsanlagen/elektrizitaetsproduktionsanlagen_2056.csv.zip",
+      "retrievalStartedAt": "2026-11-01T10:05:26.987966+00:00",
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/x.csv+zip",
+        "Content-Length": "19195387",
+        "Connection": "close",
+        "Server": "AmazonS3",
+        "Date": "Sun, 01 Nov 2026 10:04:58 GMT",
+        "X-Amz-Meta-Sha256": "8f207b57a5df548a78c587ba1e6a732549b1b16525d9b07db2f2a1d63c1cb2c6",
+        "Cache-Control": "max-age=7200, public",
+        "Last-Modified": "Wed, 16 Sep 2026 21:49:19 GMT",
+        "X-Amz-Version-Id": "D81caCOnf0ZcDLgUgW2DOGVEvb1epcjo",
+        "Etag": "\"fe25699c31c30f61d593918ffcdbf708-1\"",
+        "Via": "1.1 16a83c328ec1b5af4d0dc28e1e3a8198.cloudfront.net (CloudFront)",
+        "Age": "30",
+        "X-Cache": "Hit from cloudfront",
+        "X-Amz-Cf-Pop": "ZRH52-P1",
+        "X-Amz-Cf-Id": "1gNme-BJGfFXxfasAjyC1LyTx9r5b0MspA-PHpaklPi-VPykk_WH2Q=="
+      },
+      "retrievedAt": "2026-11-01T10:05:27.532187+00:00",
+      "bytes": 19195387,
+      "sha256": "8f207b57a5df548a78c587ba1e6a732549b1b16525d9b07db2f2a1d63c1cb2c6",
+      "file": "plants-csv-zip-attempt2.json"
+    }
+  ],
+  "electricity": [
+    {
+      "country": "dk",
+      "endpoint": "public_power",
+      "dateUtc": "2026-09-16",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "MW",
+      "missingValues": {
+        "solar": 5
+      },
+      "series": [
+        "cross_border_electricity_trading",
+        "biomass",
+        "fossil_oil",
+        "fossil_gas",
+        "waste",
+        "wind_offshore",
+        "wind_onshore",
+        "solar",
+        "load",
+        "residual_load",
+        "renewable_share_of_load",
+        "renewable_share_of_generation"
+      ],
+      "completeSeriesEnergyGwh": {
+        "cross_border_electricity_trading": -40.344025,
+        "biomass": 33.493425,
+        "fossil_oil": 0.212925,
+        "fossil_gas": 2.5536,
+        "waste": 4.655425,
+        "wind_offshore": 36.639275,
+        "wind_onshore": 42.8515,
+        "load": 105.2676,
+        "residual_load": 2.4198
+      },
+      "nonzeroSignChanges": {},
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "dk",
+      "endpoint": "cbpf",
+      "dateUtc": "2026-09-16",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "GW",
+      "missingValues": {},
+      "series": [
+        "germany",
+        "netherlands",
+        "norway",
+        "sweden",
+        "united_kingdom",
+        "sum"
+      ],
+      "completeSeriesEnergyGwh": {
+        "germany": -52.402,
+        "netherlands": -9.917,
+        "norway": 7.53575,
+        "sweden": 26.1035,
+        "united_kingdom": -9.24225,
+        "sum": -37.925
+      },
+      "nonzeroSignChanges": {
+        "germany": 0,
+        "netherlands": 10,
+        "norway": 5,
+        "sweden": 0,
+        "united_kingdom": 3,
+        "sum": 2
+      },
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "no",
+      "endpoint": "public_power",
+      "dateUtc": "2026-09-16",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "MW",
+      "missingValues": {
+        "hydro_pumped_storage_consumption": 74,
+        "hydro_pumped_storage": 74,
+        "renewable_share_of_generation": 39
+      },
+      "series": [
+        "hydro_pumped_storage_consumption",
+        "cross_border_electricity_trading",
+        "hydro_run_of_river",
+        "fossil_gas",
+        "hydro_water_reservoir",
+        "hydro_pumped_storage",
+        "other_renewables",
+        "waste",
+        "wind_offshore",
+        "wind_onshore",
+        "solar",
+        "load",
+        "residual_load",
+        "renewable_share_of_load",
+        "renewable_share_of_generation"
+      ],
+      "completeSeriesEnergyGwh": {
+        "cross_border_electricity_trading": -41.826375,
+        "hydro_run_of_river": 74.44575,
+        "fossil_gas": 3.594325,
+        "hydro_water_reservoir": 237.278675,
+        "other_renewables": 1.659125,
+        "waste": 0.5621,
+        "wind_offshore": 0.0385,
+        "wind_onshore": 50.26955,
+        "solar": 0.0762,
+        "load": 324.282725,
+        "residual_load": 273.8984
+      },
+      "nonzeroSignChanges": {},
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "no",
+      "endpoint": "cbpf",
+      "dateUtc": "2026-09-16",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "GW",
+      "missingValues": {},
+      "series": [
+        "denmark",
+        "finland",
+        "germany",
+        "netherlands",
+        "sweden",
+        "united_kingdom",
+        "sum"
+      ],
+      "completeSeriesEnergyGwh": {
+        "denmark": -7.53575,
+        "finland": -1.1425,
+        "germany": -20.28,
+        "netherlands": -9.141,
+        "sweden": 21.39425,
+        "united_kingdom": -26.45,
+        "sum": -43.155
+      },
+      "nonzeroSignChanges": {
+        "denmark": 5,
+        "finland": 0,
+        "germany": 4,
+        "netherlands": 2,
+        "sweden": 0,
+        "united_kingdom": 0,
+        "sum": 2
+      },
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "se",
+      "endpoint": "public_power",
+      "dateUtc": "2026-09-16",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "MW",
+      "missingValues": {},
+      "series": [
+        "cross_border_electricity_trading",
+        "nuclear",
+        "fossil_gas",
+        "hydro_water_reservoir",
+        "others",
+        "wind_onshore",
+        "solar",
+        "load",
+        "residual_load",
+        "renewable_share_of_load",
+        "renewable_share_of_generation"
+      ],
+      "completeSeriesEnergyGwh": {
+        "cross_border_electricity_trading": -60.788875,
+        "nuclear": 71.574,
+        "fossil_gas": 0.13995,
+        "hydro_water_reservoir": 103.14265,
+        "others": 11.5175,
+        "wind_onshore": 174.114575,
+        "solar": 7.849,
+        "load": 326.18375,
+        "residual_load": 144.220275
+      },
+      "nonzeroSignChanges": {},
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "se",
+      "endpoint": "cbpf",
+      "dateUtc": "2026-09-16",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "GW",
+      "missingValues": {},
+      "series": [
+        "denmark",
+        "finland",
+        "germany",
+        "lithuania",
+        "norway",
+        "poland",
+        "sum"
+      ],
+      "completeSeriesEnergyGwh": {
+        "denmark": -26.1035,
+        "finland": 16.52325,
+        "germany": -10.37025,
+        "lithuania": -5.9245,
+        "norway": -21.39425,
+        "poland": -7.34375,
+        "sum": -54.6175
+      },
+      "nonzeroSignChanges": {
+        "denmark": 0,
+        "finland": 0,
+        "germany": 0,
+        "lithuania": 8,
+        "norway": 0,
+        "poland": 0,
+        "sum": 0
+      },
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "ch",
+      "endpoint": "public_power",
+      "dateUtc": "2026-09-18",
+      "rows": 24,
+      "resolution": "PT1H",
+      "unit": "MW",
+      "missingValues": {},
+      "series": [
+        "cross_border_electricity_trading",
+        "nuclear",
+        "hydro_run_of_river",
+        "hydro_water_reservoir",
+        "hydro_pumped_storage",
+        "others",
+        "wind_onshore",
+        "solar",
+        "load",
+        "residual_load",
+        "renewable_share_of_load",
+        "renewable_share_of_generation"
+      ],
+      "completeSeriesEnergyGwh": {
+        "cross_border_electricity_trading": -3.2527,
+        "nuclear": 69.8154,
+        "hydro_run_of_river": 30.6092,
+        "hydro_water_reservoir": 34.9507,
+        "hydro_pumped_storage": 4.9397,
+        "others": 8.4,
+        "wind_onshore": 0.2888,
+        "solar": 28.2,
+        "load": 171.8795,
+        "residual_load": 143.391
+      },
+      "nonzeroSignChanges": {},
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "ch",
+      "endpoint": "cbpf",
+      "dateUtc": "2026-09-18",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "GW",
+      "missingValues": {},
+      "series": [
+        "austria",
+        "france",
+        "germany",
+        "italy",
+        "sum"
+      ],
+      "completeSeriesEnergyGwh": {
+        "austria": 3.168,
+        "france": 47.066,
+        "germany": 7.39775,
+        "italy": -55.087,
+        "sum": 2.544
+      },
+      "nonzeroSignChanges": {
+        "austria": 9,
+        "france": 0,
+        "germany": 6,
+        "italy": 0,
+        "sum": 12
+      },
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "ch",
+      "endpoint": "public_power",
+      "dateUtc": "2026-09-20",
+      "rows": 24,
+      "resolution": "PT1H",
+      "unit": "MW",
+      "missingValues": {},
+      "series": [
+        "cross_border_electricity_trading",
+        "nuclear",
+        "hydro_run_of_river",
+        "hydro_water_reservoir",
+        "hydro_pumped_storage",
+        "others",
+        "wind_onshore",
+        "solar",
+        "load",
+        "residual_load",
+        "renewable_share_of_load",
+        "renewable_share_of_generation"
+      ],
+      "completeSeriesEnergyGwh": {
+        "cross_border_electricity_trading": -4.4213,
+        "nuclear": 69.5731,
+        "hydro_run_of_river": 23.4285,
+        "hydro_water_reservoir": 23.9003,
+        "hydro_pumped_storage": 2.5867,
+        "others": 8.4,
+        "wind_onshore": 0.2038,
+        "solar": 33.5999,
+        "load": 154.3109,
+        "residual_load": 120.507
+      },
+      "nonzeroSignChanges": {},
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "ch",
+      "endpoint": "cbpf",
+      "dateUtc": "2026-09-20",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "GW",
+      "missingValues": {},
+      "series": [
+        "austria",
+        "france",
+        "germany",
+        "italy",
+        "sum"
+      ],
+      "completeSeriesEnergyGwh": {
+        "austria": 9.621,
+        "france": 17.884,
+        "germany": 28.3465,
+        "italy": -63.815,
+        "sum": -7.96625
+      },
+      "nonzeroSignChanges": {
+        "austria": 2,
+        "france": 4,
+        "germany": 0,
+        "italy": 0,
+        "sum": 11
+      },
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "ch",
+      "endpoint": "public_power",
+      "dateUtc": "2026-09-16",
+      "rows": 24,
+      "resolution": "PT1H",
+      "unit": "MW",
+      "missingValues": {},
+      "series": [
+        "cross_border_electricity_trading",
+        "nuclear",
+        "hydro_run_of_river",
+        "hydro_water_reservoir",
+        "hydro_pumped_storage",
+        "others",
+        "wind_onshore",
+        "solar",
+        "load",
+        "residual_load",
+        "renewable_share_of_load",
+        "renewable_share_of_generation"
+      ],
+      "completeSeriesEnergyGwh": {
+        "cross_border_electricity_trading": -10.4804,
+        "nuclear": 69.1949,
+        "hydro_run_of_river": 36.0474,
+        "hydro_water_reservoir": 46.9241,
+        "hydro_pumped_storage": 8.2912,
+        "others": 8.4,
+        "wind_onshore": 0.4695,
+        "solar": 23.6998,
+        "load": 189.1125,
+        "residual_load": 164.943
+      },
+      "nonzeroSignChanges": {},
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    },
+    {
+      "country": "ch",
+      "endpoint": "cbpf",
+      "dateUtc": "2026-09-16",
+      "rows": 96,
+      "resolution": "PT15M",
+      "unit": "GW",
+      "missingValues": {},
+      "series": [
+        "austria",
+        "france",
+        "germany",
+        "italy",
+        "sum"
+      ],
+      "completeSeriesEnergyGwh": {
+        "austria": -0.723,
+        "france": 47.192,
+        "germany": -6.94475,
+        "italy": -40.068,
+        "sum": -0.5455
+      },
+      "nonzeroSignChanges": {
+        "austria": 4,
+        "france": 0,
+        "germany": 4,
+        "italy": 0,
+        "sum": 6
+      },
+      "license": "CC BY 4.0 (creativecommons.org/licenses/by/4.0), attribution: energy-charts.info"
+    }
+  ],
+  "weather": [
+    {
+      "latitude": 54.0,
+      "longitude": 6.0,
+      "elevation": 0.0,
+      "utcOffsetSeconds": 0,
+      "series": {
+        "wind_speed_100m": {
+          "missing": 0,
+          "min": 6.64,
+          "max": 9.59,
+          "unit": "m/s"
+        },
+        "wind_direction_100m": {
+          "missing": 0,
+          "min": 265,
+          "max": 324,
+          "unit": "°"
+        },
+        "shortwave_radiation": {
+          "missing": 0,
+          "min": 0.0,
+          "max": 529.0,
+          "unit": "W/m²"
+        },
+        "cloud_cover": {
+          "missing": 0,
+          "min": 12,
+          "max": 76,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "latitude": 46.5,
+      "longitude": 8.0,
+      "elevation": 2247.0,
+      "utcOffsetSeconds": 0,
+      "series": {
+        "wind_speed_100m": {
+          "missing": 0,
+          "min": 0.76,
+          "max": 2.6,
+          "unit": "m/s"
+        },
+        "wind_direction_100m": {
+          "missing": 0,
+          "min": 256,
+          "max": 342,
+          "unit": "°"
+        },
+        "shortwave_radiation": {
+          "missing": 0,
+          "min": 0.0,
+          "max": 453.0,
+          "unit": "W/m²"
+        },
+        "cloud_cover": {
+          "missing": 0,
+          "min": 47,
+          "max": 100,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "latitude": 48.0,
+      "longitude": 2.0,
+      "elevation": 125.0,
+      "utcOffsetSeconds": 0,
+      "series": {
+        "wind_speed_100m": {
+          "missing": 0,
+          "min": 3.62,
+          "max": 6.81,
+          "unit": "m/s"
+        },
+        "wind_direction_100m": {
+          "missing": 0,
+          "min": 289,
+          "max": 334,
+          "unit": "°"
+        },
+        "shortwave_radiation": {
+          "missing": 0,
+          "min": 0.0,
+          "max": 513.0,
+          "unit": "W/m²"
+        },
+        "cloud_cover": {
+          "missing": 0,
+          "min": 9,
+          "max": 89,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "latitude": 52.0,
+      "longitude": 10.0,
+      "elevation": 188.0,
+      "utcOffsetSeconds": 0,
+      "series": {
+        "wind_speed_100m": {
+          "missing": 0,
+          "min": 3.91,
+          "max": 7.15,
+          "unit": "m/s"
+        },
+        "wind_direction_100m": {
+          "missing": 0,
+          "min": 231,
+          "max": 326,
+          "unit": "°"
+        },
+        "shortwave_radiation": {
+          "missing": 0,
+          "min": 0.0,
+          "max": 446.0,
+          "unit": "W/m²"
+        },
+        "cloud_cover": {
+          "missing": 0,
+          "min": 42,
+          "max": 100,
+          "unit": "%"
+        }
+      }
+    }
+  ],
+  "meteoswissStation": {
+    "id": "ABO",
+    "name": "Adelboden",
+    "utcIntervalEndRows": 24,
+    "fields": {
+      "fu3010h0": {
+        "missing": 0,
+        "min": 2.2,
+        "max": 17.3
+      },
+      "dkl010h0": {
+        "missing": 0,
+        "min": 35.0,
+        "max": 319.0
+      },
+      "gre000h0": {
+        "missing": 0,
+        "min": 3.0,
+        "max": 720.0
+      }
+    }
+  },
+  "swissgridWorkbook": {
+    "file": "work/kraft-source-probe/swiss-2026-11-01/swissgrid-2026.xlsx",
+    "sha256": "42726ea9e0e075831250d92048a13b98d772a1201af52c995a20cca809b5ee4a",
+    "sheet": "Zeitreihen0h15",
+    "rowStart": 24767,
+    "rowEnd": 24862,
+    "rows": 96,
+    "dateLabels": "2026-09-16; timezone not explicit in inspected cells",
+    "units": "kWh per quarter-hour",
+    "totalsGwhByColumn": {
+      "B": 144.538574935,
+      "C": 173.672371153,
+      "D": 163.355258393,
+      "K": 7.705198,
+      "L": 6.724569,
+      "M": 23.860159,
+      "N": 17.377862,
+      "O": 5.035845,
+      "P": 40.980288,
+      "Q": 39.677509,
+      "R": 1.041265,
+      "T": 66.123984,
+      "U": 76.278711
+    },
+    "selectedRegions": {
+      "AF": {
+        "label": "Produktion Kanton GR\nProduction Canton GR",
+        "missing": 0,
+        "gwh": 11.647862478
+      },
+      "AG": {
+        "label": "Verbrauch Kanton GR\nConsumption Canton GR",
+        "missing": 0,
+        "gwh": 4.77610225
+      },
+      "AT": {
+        "label": "Produktion Kanton VS\nProduction Canton VS",
+        "missing": 0,
+        "gwh": 47.39913106
+      },
+      "AU": {
+        "label": "Verbrauch Kanton VS\nConsumption Canton VS",
+        "missing": 0,
+        "gwh": 14.799749035
+      },
+      "AP": {
+        "label": "Produktion Kanton TI\nProduction Canton TI",
+        "missing": 0,
+        "gwh": 4.193707354
+      },
+      "AQ": {
+        "label": "Verbrauch Kanton TI\nConsumption Canton TI",
+        "missing": 0,
+        "gwh": 7.213142395
+      }
+    },
+    "manualLeftAlignedSince": 2025,
+    "pumpingConsumptionColumnPresent": false
+  },
+  "swissBorderComparison": [
+    {
+      "border": "austria",
+      "swissgridDatedNetImportGwh": -0.980629,
+      "energyChartsLocalDayNetImportGwh": -0.852,
+      "differenceGwh": 0.128629
+    },
+    {
+      "border": "germany",
+      "swissgridDatedNetImportGwh": -6.482297,
+      "energyChartsLocalDayNetImportGwh": -6.44525,
+      "differenceGwh": 0.037047
+    },
+    {
+      "border": "france",
+      "swissgridDatedNetImportGwh": 35.944443,
+      "energyChartsLocalDayNetImportGwh": 47.053,
+      "differenceGwh": 11.108557
+    },
+    {
+      "border": "italy",
+      "swissgridDatedNetImportGwh": -38.636244,
+      "energyChartsLocalDayNetImportGwh": -38.635,
+      "differenceGwh": 0.001244
+    }
+  ],
+  "plantRegister": {
+    "records": 339499,
+    "crs": "EPSG:2056",
+    "missingCoordinates": 2514,
+    "missingOperationDate": 0,
+    "operationAfterStudyDate": 0,
+    "duplicateIds": 0,
+    "countsByMainCategory": {
+      "maincat_1": 1325,
+      "maincat_2": 337981,
+      "maincat_4": 189,
+      "maincat_3": 4
+    },
+    "missingCoordinatesByMainCategory": {
+      "maincat_1": 104,
+      "maincat_2": 2408,
+      "maincat_4": 2
+    },
+    "catalogues": {
+      "MainCategoryCatalogue.csv": "Catalogue_id,de,fr,it,en\r\nmaincat_1,Wasserkraft,Énergie hydraulique,Forza idrica,Hydroelectric power\r\nmaincat_2,Übrige erneuerbare Energien,Autres énergies renouvelables,Altre energie rinnovabili,Other renewable energies\r\nmaincat_3,Kernenergie,Énergie nucléaire,Energia nucleare,Nuclear energy\r\nmaincat_4,Fossile Energieträger,Agents énergétiques fossiles,Vettori energetici fossili,Fossil fuel\r\n",
+      "PlantCategoryCatalogue.csv": "Catalogue_id,de,fr,it,en\r\nplantcat_1,Abwasserkraftwerk,Centrale sur les eaux usées,Centrale ad acqua di scarico,Wastewater power plant\r\nplantcat_2,Ausleitkraftwerk,Centrale de dérivation,Centrale a derivazione,Diversion power plant\r\nplantcat_3,Dotierwasserkraftwerk,Centrale de dotation,Centrale ad acqua di dotazione,Weir plant\r\nplantcat_4,Durchlaufkraftwerk,Centrale au fil de l’eau,Centrale ad acque di deflusso,Continuous power plant\r\nplantcat_5,Trinkwasserkraftwerk,Centrale sur l’eau potable,Centrale ad acqua potabile,Drinking water power plant\r\nplantcat_6,Pumpspeicherkraftwerk,Centrale de pompage-turbinage,Centrale di pompaggio-turbinaggio,Pumped storage power plant\r\nplantcat_7,Speicherkraftwerk,Centrale à accumulation,Centrale ad accumulazione,Storage power plant\r\nplantcat_8,Angebaut,Ajoutée,Annesso,Attached\r\nplantcat_9,Integriert,Intégrée,Integrato,Integrated\r\nplantcat_10,Freistehend,Isolée,Isolato,Freestanding\r\nplantcat_11,Biomassenutzung,Utilisation de biomasse,Utilisation de biomasse,Biomass usage\r\nplantcat_12,Kehrichtverbrennung,Incinération des ordures ménagères,Incenerimento dei rifiuti,Waste incineration\r\nplantcat_13,Abwasserreinigung,Épuration des eaux,Depurazione delle acque di scarico,Wastewater treatment\r\n"
+    },
+    "licenseLinks": [
+      {
+        "href": "https://opendata.swiss/en/terms-of-use/#terms_by",
+        "rel": "license",
+        "title": "Terms of use"
+      }
+    ]
+  },
+  "resourceRights": {
+    "bfe-production-rights": [
+      {
+        "rights": "https://opendata.swiss/terms-of-use#terms_by_ask",
+        "url": "https://www.bfe-ogd.ch/ogd104_stromproduktion_swissgrid.csv"
+      }
+    ],
+    "bfe-consumption-rights": [
+      {
+        "rights": "https://opendata.swiss/terms-of-use#terms_by_ask",
+        "url": "https://www.bfe-ogd.ch/ogd103_stromverbrauch_swissgrid_lv_und_endv.csv"
+      }
+    ]
+  }
+}

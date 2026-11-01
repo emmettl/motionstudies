@@ -1,0 +1,166 @@
+{
+  "kind": "kraft-swiss-probe",
+  "auditDate": "2026-11-01",
+  "rawStore": "work/kraft-source-probe/swiss-2026-11-01",
+  "captures": [
+    {
+      "file": "ch-local-flows.json",
+      "bytes": 13243,
+      "sha256": "78ec91f0cf0ddcffa842853e0f06c1b7c50740209fda1b495c6ffbc429afc469"
+    },
+    {
+      "file": "ch-local-power.json",
+      "bytes": 9903,
+      "sha256": "a52d7e58630a66bda05f79186387faad1fd3e347e8d8f849f8de45c1d2d6be34"
+    },
+    {
+      "file": "consumption-day.json",
+      "bytes": 252,
+      "sha256": "69f6c810e059d46ae2fd82e3fc54acda6adbdebee2cd5a0bb2c008f0ebcd59e6"
+    },
+    {
+      "file": "consumption-metadata.json",
+      "bytes": 1471,
+      "sha256": "c432df3296abe07b5a9f09243a0c8ac5cdbdafa3f3b3fc8a95ce31f7605ced93"
+    },
+    {
+      "file": "production-day.json",
+      "bytes": 999,
+      "sha256": "d3cc3ff1843b31c4f7d4af175217aaa00dd5b4579baa0ac6eb48573921735b33"
+    },
+    {
+      "file": "production-metadata.json",
+      "bytes": 383,
+      "sha256": "abbe04d0c56d97ac2da62144a694893df17352f85b26d169e945ecf067f7cff3"
+    },
+    {
+      "file": "pv-day.json",
+      "bytes": 239355,
+      "sha256": "dc8a6adc07cbe696e964806498f7ea807d797e7d9bf91f39b25bcd4aabf10343"
+    },
+    {
+      "file": "pv-entremont.json",
+      "bytes": 6002,
+      "sha256": "7c25d4176ecd77a0104e639383bbb24b4f7b6af8655e0f6b97d4e329e83574a2"
+    },
+    {
+      "file": "pv-metadata.json",
+      "bytes": 883,
+      "sha256": "fe82d322868fce37e2404c1946fca31cccb082ad43707cce800c9f9930f67ee2"
+    },
+    {
+      "file": "swissgrid-2026.xlsx",
+      "bytes": 18228651,
+      "sha256": "42726ea9e0e075831250d92048a13b98d772a1201af52c995a20cca809b5ee4a"
+    }
+  ],
+  "utcDayBorderEnergyGwh": {
+    "austria": -0.723,
+    "france": 47.192,
+    "germany": -6.94475,
+    "italy": -40.068,
+    "sum": -0.5455
+  },
+  "germanBorderDirectionSpans": [
+    {
+      "intervalStart": "2026-09-16T02:00:00+02:00",
+      "directionRelativeToSwitzerland": "export",
+      "gw": -0.184
+    },
+    {
+      "intervalStart": "2026-09-16T09:00:00+02:00",
+      "directionRelativeToSwitzerland": "import",
+      "gw": 0.542
+    },
+    {
+      "intervalStart": "2026-09-16T17:00:00+02:00",
+      "directionRelativeToSwitzerland": "export",
+      "gw": -0.206
+    },
+    {
+      "intervalStart": "2026-09-16T22:30:00+02:00",
+      "directionRelativeToSwitzerland": "import",
+      "gw": 0.062
+    },
+    {
+      "intervalStart": "2026-09-17T00:00:00+02:00",
+      "directionRelativeToSwitzerland": "export",
+      "gw": -0.307
+    }
+  ],
+  "localDayEnergyChartsEnergyGwh": {
+    "cross_border_electricity_trading": -8.3679,
+    "nuclear": 69.1585,
+    "hydro_run_of_river": 36.0001,
+    "hydro_water_reservoir": 45.2948,
+    "hydro_pumped_storage": 8.2819,
+    "others": 8.4,
+    "wind_onshore": 0.5,
+    "solar": 23.6998,
+    "load": 188.3001,
+    "residual_load": 164.1001
+  },
+  "bfeDatedProduction": [
+    {
+      "datum": "2026-09-16",
+      "energietraeger": "Flusskraft",
+      "produktion_gwh": 36
+    },
+    {
+      "datum": "2026-09-16",
+      "energietraeger": "Kernkraft",
+      "produktion_gwh": 69.5
+    },
+    {
+      "datum": "2026-09-16",
+      "energietraeger": "Speicherkraft",
+      "produktion_gwh": 61.2
+    },
+    {
+      "datum": "2026-09-16",
+      "energietraeger": "Thermische",
+      "produktion_gwh": 8.4
+    },
+    {
+      "datum": "2026-09-16",
+      "energietraeger": "Photovoltaik",
+      "produktion_gwh": 23.7
+    },
+    {
+      "datum": "2026-09-16",
+      "energietraeger": "Wind",
+      "produktion_gwh": 0.5
+    }
+  ],
+  "bfeDatedConsumption": [
+    {
+      "datum": "2026-09-16",
+      "landesverbrauch_gwh": 163,
+      "endverbrauch_gwh": 145
+    }
+  ],
+  "entremontPv": {
+    "rowsInUtcDay": 24,
+    "peakRecord": {
+      "datetime_utc": "2026-09-16T09:00:00.000Z",
+      "bezirk": "Entremont",
+      "pv_produktion_schaetzung_kwh": 7351,
+      "pv_produktion_pronovo_schaetzung_kwh": 3344,
+      "pv_produktion_schaetzung_fehler_lower_kwh": 5901,
+      "pv_produktion_schaetzung_fehler_upper_kwh": 8801
+    },
+    "truncatedUnfilteredPage": {
+      "from": "2026-09-16 00:00:00.000Z",
+      "to": "2026-09-17 00:00:00.000Z",
+      "count": 1000,
+      "limit": 1000
+    }
+  },
+  "limitations": [
+    "BFE dated totals have no timezone metadata in the inspected schema.",
+    "No pumping-consumption series in acquired Swiss Energy-Charts response.",
+    "Unfiltered PV page is capped at 1000 rows, not a complete Swiss day.",
+    "Swissgrid workbook downloaded but not audited.",
+    "Capture date recorded; exact retrieval instants not retained."
+  ]
+}
