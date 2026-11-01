@@ -26,7 +26,7 @@ These studies already have independent repositories. Repository existence is sep
 
 ## Working slate
 
-**1 November 2026 — KRAFT — The flow of power.** Working identity for an unnumbered European electricity study: a recorded day of generation, demand and measured border exchanges. See the [brief](KRAFT.md) and [source audit](KRAFT-SOURCES.md). No repository or catalogue number assigned.
+**1 November 2026 — KRAFT — The flow of power.** Working identity for an unnumbered European electricity study: a recorded day of generation, demand and measured border exchanges. See the [brief](KRAFT.md) and [source audit](KRAFT-SOURCES.md). The [private KRAFT scaffold](https://github.com/emmettl/kraft) now exists. No catalogue number assigned.
 
 | City | Preferred candidate | Alternatives | Core proposition |
 | --- | --- | --- | --- |

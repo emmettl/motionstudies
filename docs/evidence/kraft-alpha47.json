@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0-alpha.47",
+  "tag": "next",
+  "sourceCommit": "3e29128550e9859cd267faa06fbeff4a98075b9d",
+  "workflow": "https://github.com/emmettl/motionstudies/actions/runs/41305935510",
+  "verifiedAt": "2026-11-01T12:33:03.039Z",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.47",
+      "url": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.47.tgz",
+      "bytes": 80686,
+      "integrity": "sha512-+02p6+ZJOWtAMzHydS4AUvD1dQKEc0iqgPDx7D8ldBcJQSqFBE8x+gs3x7qz0YQ73z94zB3EYfjAui+0z+rU9A==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.47",
+      "url": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.47.tgz",
+      "bytes": 84841,
+      "integrity": "sha512-6HoAMk6u+V1Te9LLGtn94r9rSo6INY5zp3zJUa+pBMidzxtPnQXGPZs+EQq/6S0uJI3KLYyvZCes6Fi/B4ZALA==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.47",
+      "url": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.47.tgz",
+      "bytes": 109767,
+      "integrity": "sha512-Jubb+SOIdUV+GZ9DJrDoHhiP4fNi4MPjChuU2M4AS5XFpQz/+bWQWWZKjlO5K0ok3JCZNnCre9boUuih2vKQwg==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.47",
+      "url": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.47.tgz",
+      "bytes": 332089,
+      "integrity": "sha512-ytdkOn1SV9t4fhQv+dp0wbX+6ym3NAUzNQ7q7bX0qyT3atfd1X48aofmTxmNGFMIcqdmYwGSOGHBU3iAj374xg==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    }
+  ],
+  "pullRequest": "https://github.com/emmettl/motionstudies/pull/54",
+  "recorderAdoption": "https://github.com/emmettl/motionstudies-recorder/pull/25",
+  "edition": "https://github.com/emmettl/kraft",
+  "validation": {
+    "unitTests": 533,
+    "hostingTests": 16,
+    "packedBrowserPassed": 149,
+    "packedBrowserSkipped": 2,
+    "loaderBrowserPassed": 40,
+    "recorderRegistryTests": 192,
+    "firstDaySourceRows": 13152,
+    "offlineReplay": "byte-identical"
+  },
+  "scaffoldSourceCommit": "6352613ae10fb3829dcb19610b2fdc8bffb232bd",
+  "scaffoldHostedChecks": "https://github.com/emmettl/kraft/actions/runs/41309655333",
+  "scaffoldBrowserChecks": 12
+}

@@ -1,5 +1,7 @@
 # England, shared power infrastructure and KRAFT
 
+**Follow-up:** the separate European area/border contract is now implemented and published in alpha.47, with the [KRAFT recorded-day foundations](KRAFT-INFRASTRUCTURE.md) and an independent private scaffold. The assessment below retains its original decision context.
+
 **1 November 2026.** Implementation audit of England and the recorder, following the [shared weather extraction](WEATHER-FIELDS.md). England already consumes the shared power contract. Its remaining power code mostly expresses British source interpretation and the work's composition; a second wholesale extraction would blur that useful boundary.
 
 ## Reuse, ownership and adoption
