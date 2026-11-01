@@ -4,6 +4,8 @@
 
 **Prepared 13 September 2026 in the shared workspace; not yet published.** This is the first shared extraction justified by a non-transport work. It is recorded here before any version is assigned so that the reason for the shared code precedes its release.
 
+**1 November 2026 follow-up:** [weather infrastructure](WEATHER-FIELDS.md) extends these field primitives with an evidence contract, explicit interval support, offline adapters, verified assets and reusable texture playback. Alpha.46 is published; its edition adoptions are tracked separately. The original extraction record below remains historical.
+
 ## Why
 
 Zugunruhe consumed only the shared design tokens. Its continental estimate, currents, cloud context and daylight were local vanilla JavaScript with their own tests, even though they implement rules the series has since adopted generally: a smooth surface must expose where its evidence weakens; missing values stay missing; illustrative flow is not a trajectory; a rendering's softness is set by the measurement, not by taste.

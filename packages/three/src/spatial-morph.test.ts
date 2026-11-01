@@ -31,7 +31,7 @@ it('keeps source vertices, lengths and train positions aligned throughout revers
 it('deduplicates cyclic resources, preserves topology and bounds both endpoints', () => {
   const geometry = new BufferGeometry().setAttribute('position', new Float32BufferAttribute([0, 2, 0, 3, 2, 4], 3))
   geometry.setIndex([0, 1])
-  const position = geometry.getAttribute('position'), index = geometry.index
+  const position = geometry.getAttribute('position') as BufferAttribute, index = geometry.index
   const resource: { geometry: BufferGeometry; duplicate: BufferGeometry; self?: unknown } = { geometry, duplicate: geometry }
   resource.self = resource
   let disposals = 0; geometry.addEventListener('dispose', () => disposals++)

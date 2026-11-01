@@ -78,6 +78,7 @@ export async function buildPackages({ release = false } = {}) {
       sideEffects: manifest.sideEffects ?? false,
       ...(manifest.dependencies ? { dependencies: manifest.dependencies } : {}),
       ...(manifest.peerDependencies ? { peerDependencies: manifest.peerDependencies } : {}),
+      ...(manifest.peerDependenciesMeta ? { peerDependenciesMeta: manifest.peerDependenciesMeta } : {}),
     }
     await writeFile(join(output, 'package.json'), `${JSON.stringify(distribution, null, 2)}\n`)
     await cp(resolve('packages/README.md'), join(output, 'README.md'))

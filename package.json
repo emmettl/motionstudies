@@ -16,9 +16,10 @@
     "build:lab": "tsc -p lab && vite build --config lab/vite.config.mjs",
     "build:packages": "node scripts/build-packages.mjs",
     "check:packed": "node scripts/check-packed-packages.mjs",
-    "check:packages": "tsc -p packages/core && tsc -p packages/three && tsc -p packages/web",
+    "check:packages": "tsc -p packages/core && tsc -p packages/three && tsc -p packages/web && tsc -p packages/data",
+    "check:tests": "tsc -p packages/core/tsconfig.test.json && tsc -p packages/three/tsconfig.test.json && tsc -p packages/web/tsconfig.test.json && tsc -p services/airports/tsconfig.test.json && tsc -p services/feed-observer/tsconfig.test.json",
     "check:architecture": "node scripts/check-edition-boundaries.mjs",
-    "typecheck": "npm run check:packages && tsc -p lab && tsc -p tsconfig.tests.json && npm run check:airports && npm run check:feed-observer",
+    "typecheck": "npm run check:packages && npm run check:tests && tsc -p lab && tsc -p tsconfig.tests.json && npm run check:airports && npm run check:feed-observer",
     "lint": "oxlint",
     "test": "vitest run && node --test hosting/*-subdomain.test.mjs",
     "test:lab": "playwright test --config playwright.lab.config.ts",
@@ -37,12 +38,13 @@
     "feeds:observe": "node scripts/observe-feeds.mjs",
     "check:feed-observer": "tsc -p services/feed-observer",
     "feeds:push": "node scripts/push-feed-health.mjs",
-    "check:terrain-consumers": "node scripts/check-terrain-consumers.mjs"
+    "check:terrain-consumers": "node scripts/check-terrain-consumers.mjs",
+    "check:weather-consumers": "node scripts/check-weather-consumers.mjs"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.44",
-    "@motionstudies/three": "0.1.0-alpha.44",
-    "@motionstudies/web": "0.1.0-alpha.44",
+    "@motionstudies/core": "0.1.0-alpha.46",
+    "@motionstudies/three": "0.1.0-alpha.46",
+    "@motionstudies/web": "0.1.0-alpha.46",
     "@react-three/fiber": "9.8.2",
     "react": "19.3.1",
     "react-dom": "19.3.1",
@@ -51,13 +53,15 @@
   "devDependencies": {
     "@babel/parser": "7.29.9",
     "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@types/three": "0.186.0",
     "@vitejs/plugin-react": "6.1.2",
+    "oxc-transform-react": "0.152.0",
     "oxlint": "1.88.0",
     "typescript": "7.0.2",
-    "vite": "8.3.4",
+    "vite": "8.3.5",
     "vitest": "5.0.5"
   },
   "packageManager": "npm@11.21.1"

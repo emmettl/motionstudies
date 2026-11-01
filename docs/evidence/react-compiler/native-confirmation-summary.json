@@ -1,0 +1,155 @@
+[
+  {
+    "target": "norikae",
+    "variants": {
+      "baseline": {
+        "buildMs": 187.06304200000005,
+        "gzipBytes": 356708,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 246.10899999999998,
+          "taskMs": 366.9840000000001,
+          "renders": 704,
+          "commits": 64,
+          "rendersPerCommit": 11,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 409.49800000000005,
+          "taskMs": 604.371,
+          "renders": 2640,
+          "commits": 240,
+          "rendersPerCommit": 11,
+          "frameP95Ms": 16.700000000000728
+        }
+      },
+      "compiler": {
+        "buildMs": 162.20779100000004,
+        "gzipBytes": 360831,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 247.79000000000002,
+          "taskMs": 375.735,
+          "renders": 704,
+          "commits": 64,
+          "rendersPerCommit": 11,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 386.09300000000013,
+          "taskMs": 577.695,
+          "renders": 2640,
+          "commits": 240,
+          "rendersPerCommit": 11,
+          "frameP95Ms": 16.700000000000728
+        }
+      }
+    }
+  },
+  {
+    "target": "underfall",
+    "variants": {
+      "baseline": {
+        "buildMs": 212.31133399999817,
+        "gzipBytes": 424048,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 607.847,
+          "taskMs": 772.6329999999999,
+          "renders": 960,
+          "commits": 64,
+          "rendersPerCommit": 15,
+          "frameP95Ms": 16.799999999999272
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 1806.897,
+          "taskMs": 2230.031,
+          "renders": 3620,
+          "commits": 242,
+          "rendersPerCommit": 14.958677685950413,
+          "frameP95Ms": 16.800000000000182
+        }
+      },
+      "compiler": {
+        "buildMs": 297.05016700000124,
+        "gzipBytes": 442032,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 565.637,
+          "taskMs": 715.3210000000004,
+          "renders": 960,
+          "commits": 64,
+          "rendersPerCommit": 15,
+          "frameP95Ms": 16.700000000000728
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 1656.9979999999998,
+          "taskMs": 2042.3870000000002,
+          "renders": 3630,
+          "commits": 243,
+          "rendersPerCommit": 14.938271604938272,
+          "frameP95Ms": 16.799999999999272
+        }
+      }
+    }
+  },
+  {
+    "target": "manifest",
+    "variants": {
+      "baseline": {
+        "buildMs": 60.920458000007784,
+        "gzipBytes": 103368,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 3283.334,
+          "taskMs": 3515.7450000000003,
+          "renders": 495,
+          "commits": 165,
+          "rendersPerCommit": 3,
+          "frameP95Ms": 33.399999999999636
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 2423.963999999999,
+          "taskMs": 2743.380000000001,
+          "renders": 362,
+          "commits": 121,
+          "rendersPerCommit": 2.9917355371900825,
+          "frameP95Ms": 33.399999999999636
+        }
+      },
+      "compiler": {
+        "buildMs": 65.9512090000062,
+        "gzipBytes": 111133,
+        "errors": [],
+        "playback": {
+          "samples": 3,
+          "scriptMs": 3258.194,
+          "taskMs": 3516.507,
+          "renders": 542,
+          "commits": 181,
+          "rendersPerCommit": 2.994475138121547,
+          "frameP95Ms": 33.399999999999636
+        },
+        "seek": {
+          "samples": 3,
+          "scriptMs": 2161.6359999999995,
+          "taskMs": 2475.771999999999,
+          "renders": 362,
+          "commits": 121,
+          "rendersPerCommit": 2.9918032786885247,
+          "frameP95Ms": 33.399999999999636
+        }
+      }
+    }
+  }
+]

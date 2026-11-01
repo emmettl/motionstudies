@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.44",
+  "version": "0.1.0-alpha.46",
   "private": true,
   "type": "module",
   "exports": {
@@ -43,10 +43,11 @@
     "./study-timeline.css": "./src/components/study-timeline.css",
     "./components/TimelineScrubber": "./src/components/TimelineScrubber.tsx",
     "./timeline-scrubber.css": "./src/components/timeline-scrubber.css",
-    "./observe-layout": "./src/observe-layout.ts"
+    "./observe-layout": "./src/observe-layout.ts",
+    "./weather-assets": "./src/weather-assets.ts"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.44"
+    "@motionstudies/core": "0.1.0-alpha.46"
   },
   "peerDependencies": {
     "react": "^19.3.0",
