@@ -4,6 +4,8 @@
 
 ## Programme and shared work
 
+- [England power alignment](POWER-ALIGNMENT.md): existing core adoption, ownership decisions, repeatable writer/reader checks and the separate area/border contract KRAFT needs.
+
 - [Shared weather infrastructure](WEATHER-FIELDS.md): evidence contracts, interval semantics, cached grid compilation, verified decoding and renderer resources for KRAFT, Zugunruhe and Gleislicht.
 
 - [October maintenance and alpha.32/33 releases](DEPENDENCIES-2026-10-18.md): current toolchain, package publication and edition reliability checks

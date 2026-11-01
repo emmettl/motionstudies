@@ -1,5 +1,7 @@
 # Power — the national study's second axis
 
+**1 November 2026 follow-up:** [England/core alignment](POWER-ALIGNMENT.md) reviews the existing extraction, alpha.46 adoption, writer/reader compatibility checks and reuse for KRAFT. The September source and placement history below remains dated evidence.
+
 [National study](NATIONAL-STUDY.md#a-second-axis-power-weather-and-light) · [Feasibility](NATIONAL-DATA-FEASIBILITY.md) · [Readiness register](DATA-READINESS.md) · [Shared fields](SHARED-FIELDS.md) · [Series vision](VISION.md#the-view-from-altitude--13-september-2026)
 
 **Updated 15 September 2026 — recorded power view implemented in England; partial placement and shared reader released.** Initial source counts come from the 13 September [probe record](evidence/power-sources-2026-09-13.json), which retained only aggregate findings. The subsequent capture and placement of the 5 September day are recorded below. Acquisition and the private evidence handoff live in the recorder; placement and the first power composition now live in England. Core supplies the shared power-day reader.
