@@ -1,0 +1,69 @@
+{
+  "version": "0.1.0-alpha.48",
+  "tag": "next",
+  "sourceCommit": "968bfb4c251cd21bfddf8bbd95bef610e55c38c1",
+  "workflow": "https://github.com/emmettl/motionstudies/actions/runs/41320101094",
+  "verifiedAt": "2026-11-01T15:44:30.937Z",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.48",
+      "url": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.48.tgz",
+      "bytes": 82002,
+      "integrity": "sha512-F80GmpfzqoZRoeJni3LRu5YXL3Wf/roV99gIoF+hVmQsOo72nca3DJSSuPIkiE5cSzBoGglMxIsSmvfVA58n/A==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.48",
+      "url": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.48.tgz",
+      "bytes": 85989,
+      "integrity": "sha512-6xtxH53+V2v0UGIwRcxoDuSKojXrrGFsaE7MoQvrC57nzmq1HZrjdmVKuyKadlut1mC8tKIU6ZfNQUGl+wuxRw==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.48",
+      "url": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.48.tgz",
+      "bytes": 115325,
+      "integrity": "sha512-kKp/W3qb4GiehWz8NPG3LJ+jsEePEa1zRR0AdPpP9G19esSH0mtvVvUoTZi0I/betVTFUjMsmlcFz8iz7WAlTA==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.48",
+      "url": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.48.tgz",
+      "bytes": 333249,
+      "integrity": "sha512-kFRR+t08z7oE2bLjqFfgDy17pJ+g1ROi1dyU9jmMewidqwtnxk9u7+uqocVY7992Vp4Epp7mhk5RWp4MIdkd+g==",
+      "byteIdenticalToTested": true,
+      "nextTagVerified": true
+    }
+  ],
+  "pilots": [
+    {
+      "repository": "emmettl/gleislicht",
+      "mainCommit": "515420091c5a0d1ef5aeaadd37bb26ad5ed706a7",
+      "cleanRegistryInstall": true,
+      "browserChecksPassed": 6
+    },
+    {
+      "repository": "emmettl/kraft",
+      "mainCommit": "014c310769e7a895a5d672bbdff812fccc97248e",
+      "cleanRegistryInstall": true,
+      "browserChecksPassed": 26
+    }
+  ],
+  "validation": {
+    "packedBrowserPassed": 272,
+    "packedBrowserSkipped": 2,
+    "loaderBrowserPassed": 40,
+    "registryArchivesByteIdentical": true,
+    "allNextTagsVerified": true,
+    "allPilotLockIntegritiesVerified": true,
+    "gleislichtOpeningJavaScriptKiB": 379.0,
+    "gleislichtOpeningJavaScriptBudgetKiB": 380.0
+  }
+}

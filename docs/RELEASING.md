@@ -4,7 +4,7 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.47` under `next`, published from `3e29128` through [trusted run 41305935510](https://github.com/emmettl/motionstudies/actions/runs/41305935510). All four registry integrities and downloaded archives match the tested tarballs byte-for-byte, and all four `next` tags were verified. See [KRAFT foundations](KRAFT-INFRASTRUCTURE.md) and the [release evidence](evidence/kraft-alpha47.json).
+The latest verified coordinated release is `0.1.0-alpha.48` under `next`, published from `968bfb4` through [trusted run 41320101094](https://github.com/emmettl/motionstudies/actions/runs/41320101094). All four registry integrities and downloaded archives match the CI-tested tarballs byte-for-byte, and all four `next` tags were verified. Gleislicht and KRAFT adopt the release through clean registry installs. See [edition GPU debugging](EDITION-GPU-DEBUG.md) and the [release evidence](evidence/edition-debug-alpha48.json).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -40,6 +40,8 @@ The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstud
 After a successful OIDC publication, revoke the bootstrap token in npm and delete the GitHub `NPM_TOKEN` secret. npm's “Require two-factor authentication and disallow tokens” setting is compatible with trusted publishers.
 
 ## Release history
+
+`0.1.0-alpha.48` publishes optional edition GPU-debug entry points, lazy Spector capture and Fiber profiling. Natural rendering is preserved by default; continuous profiling is explicit. Gleislicht and KRAFT adopt the release, including the current raw atmosphere/weather renderers. The release passes 272 packed browser tests (2 skipped) and 40 loader tests. Registry archives and both pilots' lockfile hashes are verified against the CI artifacts; clean registry installs pass 32 pilot browser checks. See the [release record](EDITION-GPU-DEBUG.md).
 
 `0.1.0-alpha.47` publishes the European area/border power evidence reader, coverage-aware integration and explicit offline column compiler. The lab adds integrated power/weather playback. See [KRAFT foundations](KRAFT-INFRASTRUCTURE.md) for the real dated release and validation; publication and archive equality are [registry-verified](evidence/kraft-alpha47.json).
 
