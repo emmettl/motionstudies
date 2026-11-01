@@ -1,11 +1,11 @@
 import { mapSurfaceY } from './scene-surface.ts'
 import * as THREE from 'three'
-import { useFrame } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber/legacy'
 import { useEffect, useMemo, useRef } from 'react'
 import { useMapStyle } from './scene-map-style.ts'
 import { useSpatialGeometryMorph } from './use-spatial-geometry-morph.ts'
 import type { ProjectedNetworkPath } from './network-paths.ts'
-import { useThree } from '@react-three/fiber'
+import { useThree } from '@react-three/fiber/legacy'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import type { ProjectedStop } from './station-picking.ts'
 import { setScenePickMetadata } from './scene-picking.ts'
@@ -677,13 +677,13 @@ function TrafficFlowLayer({
     ? 1 - identityMix
     : 1 - identityMix * 0.78
 
-  useFrame(({ clock, camera }) => {
+  useFrame(({ elapsed, camera }) => {
     if (weightedMaterial.current) {
       weightedMaterial.current.opacity = (subdued ? 0.045 : 0.62) * identityAttenuation *
         (1 + (emphasisPolicy?.(camera.position.y) ?? overviewEmphasis) * 1.2)
     }
     if (!pulseMaterial.current) return
-    const wave = 0.5 + Math.sin(clock.elapsedTime * 1.35) * 0.5
+    const wave = 0.5 + Math.sin(elapsed * 1.35) * 0.5
     const pulseAttenuation = suppressAtIdentity
       ? 1 - identityMix
       : 1 - identityMix * 0.72

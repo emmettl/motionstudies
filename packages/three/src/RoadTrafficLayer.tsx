@@ -1,7 +1,7 @@
 import { roadStrokeOpacity, type RoadInfrastructureStyle } from './scene-style.ts'
 import type { RoadOverlayProps } from './scene-extensions.ts'
 import type { ComponentType } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber/legacy'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import {

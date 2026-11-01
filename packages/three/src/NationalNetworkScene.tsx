@@ -26,7 +26,7 @@ import { stationCentre, type ProjectedStop } from './station-picking.ts'
 import { setSceneMotionClock, setScenePickTrain } from './scene-picking.ts'
 import { TrailFrameBudget } from './trail-frame-budget.ts'
 import { updateDirtyGeometry } from './active-geometry.ts'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber/legacy'
 import { lazy, Suspense, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { useNetworkScene, type NetworkSceneExtensions, type NetworkCameraDriver } from './scene-extensions.ts'
 import { NetworkSceneProviderContext } from './scene-context.ts'
@@ -856,7 +856,7 @@ function VehicleMotion({
       }
     }
     const now = localTime.current
-    const clock = state.clock.elapsedTime
+    const clock = state.elapsed
     if (!seek) {
       const expected = current.previousTime + (isPlaying ? delta * playbackRate : 0)
       seek = isPlaying
@@ -1128,7 +1128,7 @@ function NetworkCamera({
   readonly airProjection: NetworkProjection
   readonly spatialLayoutMix?: number
 }) {
-  const { camera, gl, size } = useThree()
+  const { camera, renderer, size } = useThree()
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const resolveTrainPosition = useProjectedTrainPosition()
   const [desiredPosition, desiredTarget, currentTarget] = useMemo(() =>
@@ -1218,7 +1218,7 @@ function NetworkCamera({
   ])
 
   useEffect(() => {
-    const element = gl.domElement
+    const element = renderer.domElement
     const pointers = new Map<
       number,
       { x: number; y: number; pointerType: string }
@@ -1297,7 +1297,7 @@ function NetworkCamera({
       element.removeEventListener('pointercancel', onPointerUp)
       element.removeEventListener('wheel', onWheel)
     }
-  }, [gl, minimumDistanceScale, selectedAirTrack, selectedTrain])
+  }, [renderer, minimumDistanceScale, selectedAirTrack, selectedTrain])
 
   useFrame((_, delta) => {
     if (cameraDriver.current?.update(delta)) return
@@ -1356,7 +1356,7 @@ function NetworkCamera({
     viewportFraming(cameraViewport?.({ ...size, spatialLayoutMix: diagramMix }), size)
     camera.lookAt(currentTarget)
     camera.updateMatrixWorld()
-  }, -1)
+  }, { phase: 'input' })
 
   return null
 }

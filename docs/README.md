@@ -4,6 +4,8 @@
 
 ## Programme and shared work
 
+- [Renderer readiness register](RENDERER-READINESS.md): edition source inventory, R3F v10 compatibility candidate, shared luminous primitives and backend comparison gates.
+
 - [KRAFT shared foundations](KRAFT-INFRASTRUCTURE.md): European area/border contracts, a complete coarse weather grid, deterministic recorded-day compilation and integrated validation.
 
 - [England power alignment](POWER-ALIGNMENT.md): existing core adoption, ownership decisions, repeatable writer/reader checks and the separate area/border contract KRAFT needs.

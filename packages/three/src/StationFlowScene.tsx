@@ -1,4 +1,4 @@
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber/legacy'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import {
@@ -280,8 +280,8 @@ function StationTraffic({
     if (glow.current) glow.current.frustumCulled = false
 
     // A paused scene follows the consumer's clock.
-    if (isPlaying && state.clock.elapsedTime - lastReport.current > 0.1) {
-      lastReport.current = state.clock.elapsedTime
+    if (isPlaying && state.elapsed - lastReport.current > 0.1) {
+      lastReport.current = state.elapsed
       onTime(localTime.current)
     }
   })
