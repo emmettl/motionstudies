@@ -1,6 +1,6 @@
 import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { join, relative } from 'node:path'
-import { parse } from '@babel/parser'
+import { parseSync } from 'oxc-parser'
 import { transform } from 'oxc-transform-react'
 
 // Rewrite module specifiers only; strings displayed by components are untouched.
@@ -11,7 +11,7 @@ function rewriteExtensions(code) {
     let source
     if (['ImportDeclaration', 'ExportNamedDeclaration', 'ExportAllDeclaration'].includes(node.type)) source = node.source
     if (node.type === 'ImportExpression') source = node.source
-    if (source?.type === 'StringLiteral' && source.value.startsWith('.') && /\.tsx?$/.test(source.value)) {
+    if (source?.type === 'Literal' && typeof source.value === 'string' && source.value.startsWith('.') && /\.tsx?$/.test(source.value)) {
       edits.push({ start: source.start, end: source.end, text: JSON.stringify(source.value.replace(/\.tsx?$/, '.js')) })
     }
     for (const value of Object.values(node)) {
@@ -19,7 +19,9 @@ function rewriteExtensions(code) {
       else if (value && typeof value === 'object') visit(value)
     }
   }
-  visit(parse(code, { sourceType: 'module', createImportExpressions: true }))
+  const { program, errors } = parseSync('compiled.js', code, { sourceType: 'module', preserveParens: false })
+  if (errors.length) throw new SyntaxError(`Cannot parse compiled module: ${errors.map(error => error.message).join('; ')}`)
+  visit(program)
   for (const edit of edits.sort((a, b) => b.start - a.start)) code = code.slice(0, edit.start) + edit.text + code.slice(edit.end)
   return code
 }

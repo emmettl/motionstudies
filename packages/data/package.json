@@ -132,7 +132,7 @@
   "dependencies": {
     "@motionstudies/core": "0.1.0-alpha.49",
     "fast-xml-parser": "5.11.2",
-    "@babel/parser": "7.29.9"
+    "oxc-parser": "0.156.0"
   },
   "peerDependencies": {
     "@types/node": ">=22"
