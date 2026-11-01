@@ -1,3 +1,4 @@
+import { DiagnosticPerf } from './DiagnosticPerf.tsx'
 import { useEffect } from 'react'
 import { observeRenderer } from './renderer-observation.ts'
 import { useNetworkScene } from '@motionstudies/three/scene-extensions'
@@ -7,9 +8,9 @@ import { NormalBlending, type PerspectiveCamera, type BufferGeometry, type Mater
 
 /** Observe the actual packed renderer so the lab can verify live style changes. */
 export function NetworkStyleProbe() {
-  const { gl, scene, camera } = useThree()
+  const { gl, scene, camera, invalidate } = useThree()
   const context = useNetworkScene()
-  useEffect(() => observeRenderer(gl), [gl])
+  useEffect(() => observeRenderer(gl, invalidate), [gl, invalidate])
   useFrame(() => {
     let flatStrokes = 0, customRoutes = 0, roadOverlays = 0, gridOpacity: number | undefined
     const airports: string[] = [], trains: string[] = [], stopIndexes: number[] = [], heights: number[] = []
@@ -51,5 +52,5 @@ export function NetworkStyleProbe() {
     })
     gl.domElement.setAttribute('data-style-audit', JSON.stringify({ selectedTrain: context.props.selectedTrain?.id, trainColors, trainPositions, projectedStops: context.projectedStops, cameraZoom: (camera as PerspectiveCamera).zoom, gridOpacity, flatStrokes, colors, labels, airportResources, airportLabels, airports, trains, stopIndexes, heights, customRoutes, roadOverlays }))
   })
-  return null
+  return <DiagnosticPerf />
 }

@@ -9,6 +9,8 @@ import { releaseTag } from './release-policy.mjs'
 
 const root = resolve('.')
 const release = process.argv.includes('--release')
+// Forward optional Playwright filters/flags while retaining the full suite by default.
+const browserChecks = process.argv.slice(2).filter(argument => argument !== '--release')
 await buildPackages({ release })
 const tarballs = join(packageOutput, 'tarballs')
 await rm(tarballs, { recursive: true, force: true })
@@ -47,7 +49,8 @@ try {
     if (name.startsWith('@motionstudies/')) continue
     dependencies[name] = JSON.parse(await readFile(resolve('node_modules', name, 'package.json'), 'utf8')).version
   }
-  await writeFile(join(consumer, 'package.json'), `${JSON.stringify({ name: 'motion-studies-packed-consumer', version: '0.0.0', private: true, type: 'module', dependencies }, null, 2)}\n`)
+  const { overrides } = JSON.parse(await readFile(resolve('package.json'), 'utf8'))
+  await writeFile(join(consumer, 'package.json'), `${JSON.stringify({ name: 'motion-studies-packed-consumer', version: '0.0.0', private: true, type: 'module', dependencies, overrides }, null, 2)}\n`)
   run('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', '--package-lock=false'], { cwd: consumer })
   for (const name of packageNames) {
     const installed = join(consumer, 'node_modules/@motionstudies', name)
@@ -199,7 +202,7 @@ try {
     await delay(100)
   }
   if (!ready) throw new Error('Packed consumer preview did not start')
-  run(process.execPath, [resolve('node_modules/@playwright/test/cli.js'), 'test', '--config', 'playwright.lab.config.ts'], {
+  run(process.execPath, [resolve('node_modules/@playwright/test/cli.js'), 'test', '--config', 'playwright.lab.config.ts', ...browserChecks], {
     env: { ...process.env, MOTION_LAB_URL: 'http://127.0.0.1:4175' },
   })
   console.log('Packed consumer passed: public imports, declarations, Node tooling, lab build and browser specimens.')

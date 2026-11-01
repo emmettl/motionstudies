@@ -14,6 +14,7 @@ import './host.css'
 
 const audit = installValidationMetrics()
 const params = new URLSearchParams(location.search), study = findStudy(params.get('study'))
+const Diagnostics = params.get('diagnostics') === '1' ? (await import('./GpuDiagnostics.tsx')).GpuDiagnostics : null
 seedScenario(study.id)
 const send = (type: string, data: object) => { if (parent !== window) parent.postMessage({ type, ...data }, location.origin) }
 class Boundary extends Component<{ children: ReactNode }, { error: string | null }> {
@@ -22,7 +23,7 @@ class Boundary extends Component<{ children: ReactNode }, { error: string | null
   render() { return this.state.error ? <p role="alert">Specimen failed: {this.state.error}</p> : this.props.children }
 }
 export function Host() {
-  const [mounted, setMounted] = useState(params.get('mounted') !== '0'), [visible, setVisible] = useState(params.get('visible') !== '0'), [instances, setInstances] = useState(params.get('instances') === '2' ? 2 : 1), [generation, setGeneration] = useState(0)
+  const [mounted, setMounted] = useState(params.get('mounted') !== '0'), [visible, setVisible] = useState(params.get('visible') !== '0'), [instances, setInstances] = useState(params.get('perf') !== '1' && params.get('instances') === '2' ? 2 : 1), [generation, setGeneration] = useState(0)
   useEffect(() => {
     const handle = (event: MessageEvent) => {
       if (event.source !== parent || event.origin !== location.origin || event.data?.type !== 'lab:command') return
@@ -45,13 +46,13 @@ export function Host() {
     send('lab:ready', { study: study.id })
     return () => { window.removeEventListener('message', handle); clearInterval(timer) }
   }, [mounted, visible, instances, generation])
-  return <main aria-label={`${study.label} isolated specimen`} hidden={!visible}>
+  return <>{Diagnostics && <Diagnostics />}<main aria-label={`${study.label} isolated specimen`} hidden={!visible}>
     {mounted && Array.from({ length: instances }, (_, i) => <section key={`${generation}:${i}`} aria-label={`Instance ${i + 1}`}>
       <h1 className="host-title">{study.label} · instance {i + 1}</h1>
       <Boundary><InstanceContext value={i}><Profiler id={`instance-${i}`} onRender={audit.commit}><StudyView id={study.id} /></Profiler></InstanceContext></Boundary>
     </section>)}
     <ButtonTooltips />
-  </main>
+  </main></>
 }
 document.documentElement.dataset.host = params.get('host') ?? 'bare'
 document.documentElement.style.fontSize = params.get('text') === '200' ? '200%' : '100%'

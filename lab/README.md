@@ -207,3 +207,29 @@ node scripts/summarize-lab-audit.mjs
 Keep baseline captures serial and keep the host fully in view. The regular
 browser suite includes these regressions; evidence files are rewritten only
 when `MOTION_LAB_AUDIT_CAPTURE=1` is explicitly set.
+
+### Opt-in GPU diagnostics
+
+From **Validate in isolation**, choose **Open GPU diagnostics**. This opens a fresh host document with `diagnostics=1`, preserving the selected scenario, host and component state. Normal hosts do not load Spector or r3f-perf. Close the diagnostics tab or use **Exit diagnostics (reload)** before collecting an ordinary performance baseline.
+
+- **Capture WebGL frame** captures the selected observed canvas through Spector.js. The selector distinguishes independent instances and drops unmounted renderers. Capture requests also invalidate demand-rendered Terrain or redraw the raw Three Weather specimen, so an idle scene produces a frame. Network, Network policies, Terrain, Weather and Power + weather expose their actual specimen renderers.
+- **Inspect capture** opens Spector's command/state/shader viewer. **Download capture JSON** saves a native Spector capture with an extra `lab` field containing the reproduction URL and capture time; it can be imported into Spector.
+- **Enable r3f-perf (reload)** adds the live overlay inside the Network or Terrain Fiber canvas (`perf=1`). This switches to one specimen instance because the profiler uses shared state. Perf mode explicitly runs Terrain continuously so live statistics update; ordinary Terrain validation retains demand rendering. The overlay adds its own rendering work. Unsupported GPU timing is not evidence of zero GPU cost. Disable/reload to remove instrumentation completely.
+
+Useful starting points:
+
+```text
+/host.html?study=network&scenario=network-paused&diagnostics=1
+/host.html?study=terrain&diagnostics=1
+/host.html?study=weather&diagnostics=1
+```
+
+Capture the paused Network, then compare layer toggles and draw commands. For Terrain, compare height-texture swaps and adapter changes, checking bound textures, shaders and geometry. Use the existing lifecycle tests and uninstrumented baselines for regression assertions; captured timings are diagnostic evidence rather than portable performance budgets.
+
+The lab pins `r3f-perf` and `spectorjs` as development dependencies. A scoped root npm override selects Drei 10.7.9 for r3f-perf's React 19/Fiber 9 compatibility; the packed-consumer checker carries this override into its isolated install.
+
+```sh
+MOTION_LAB_URL=http://127.0.0.1:4177 npx playwright test --config playwright.lab.config.ts gpu-diagnostics
+# Repeat against installed package tarballs, including host/lifecycle/weather regressions:
+npm run check:packed -- gpu-diagnostics.spec.ts validation-host.spec.ts gpu-lifecycle.spec.ts weather.spec.ts
+```

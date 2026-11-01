@@ -1,4 +1,5 @@
-import { observeRenderer } from './renderer-observation.ts'
+import { DiagnosticPerf } from './DiagnosticPerf.tsx'
+import { observeRenderer, perfEnabled } from './renderer-observation.ts'
 import { useScenarioState } from './scenario-state.tsx'
 import { useEffect, useMemo } from 'react'
 import { Canvas, useThree } from '@react-three/fiber'
@@ -25,7 +26,7 @@ function textureSurface(textures: readonly Texture[], exaggeration: number, sout
 
 function Surfaces({ phase, exaggeration, southFirst, wireframe, progress, masked }: { phase: number; exaggeration: number; southFirst: boolean; wireframe: boolean; progress: number; masked: boolean }) {
   const { gl, scene, camera, invalidate, size: viewportSize } = useThree()
-  useEffect(() => observeRenderer(gl), [gl])
+  useEffect(() => observeRenderer(gl, invalidate), [gl, invalidate])
   useEffect(() => {
     const distance = Math.max(12, 25 / (viewportSize.width / viewportSize.height))
     camera.position.set(0, distance * .65, distance * .75)
@@ -91,7 +92,7 @@ export function TerrainStudy() {
       <button onClick={() => setMounted(!mounted)}>{mounted ? 'Unmount terrain' : 'Mount terrain'}</button>
     </div>
     <p>CPU geometry (left) · GPU texture displacement (right). North is the far edge; the isolated peak starts in the northwest.</p>
-    <div className="scene-preview">{mounted && <Canvas frameloop="demand" camera={{ position: [0, 14, 16], fov: 48 }} onCreated={({ camera }) => camera.lookAt(0, 0, 0)}><Surfaces {...{ phase, exaggeration, southFirst, wireframe, progress, masked }} /></Canvas>}</div>
+    <div className="scene-preview">{mounted && <Canvas frameloop={perfEnabled ? 'always' : 'demand'} camera={{ position: [0, 14, 16], fov: 48 }} onCreated={({ camera }) => camera.lookAt(0, 0, 0)}><DiagnosticPerf /><Surfaces {...{ phase, exaggeration, southFirst, wireframe, progress, masked }} /></Canvas>}</div>
     <div className="timeline"><label>Path progress <input aria-label="Terrain path progress" type="range" min="0" max="1" step=".01" value={progress} onChange={e => setProgress(+e.target.value)} /></label><output data-testid="terrain-mask">{masked && terrainMaskAt(masks, progress) ? 'Hidden · Synthetic covered section' : 'Visible'}</output></div>
     <p className="note">Synthetic 160 × 160 m vertex grid; 10 m spacing. The gold alignment follows the terrain. The mask hides the alignment and moving marker between 40% and 60%; it is a presentation rule. Both surfaces should agree after every swap and orientation change.</p>
   </>

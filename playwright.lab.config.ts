@@ -11,7 +11,7 @@ export default defineConfig({
   use: { baseURL: externalUrl ?? 'http://127.0.0.1:4174', screenshot: 'only-on-failure', trace: 'retain-on-failure' },
   projects: [
     { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'desktop-webkit', use: { ...devices['Desktop Safari'] }, testMatch: /(validation-host|component-audit|gpu-lifecycle|performance-baseline|airport-contrast|audit-regressions)\.spec\.ts/ },
+    { name: 'desktop-webkit', use: { ...devices['Desktop Safari'] }, testMatch: /(gpu-diagnostics|validation-host|component-audit|gpu-lifecycle|performance-baseline|airport-contrast|audit-regressions)\.spec\.ts/ },
     { name: 'iphone-webkit', use: { ...devices['iPhone 13'] } },
   ],
   webServer: externalUrl ? undefined : {

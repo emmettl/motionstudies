@@ -1,0 +1,57 @@
+import { expect, test } from '@playwright/test'
+
+for (const study of ['network', 'terrain', 'weather']) {
+  test(`${study} captures a real frame with downloadable WebGL commands`, async ({ page, isMobile }) => {
+    const errors: string[] = []
+    page.on('pageerror', error => errors.push(error.message))
+    await page.goto(`/host.html?study=${study}&diagnostics=1`)
+    await expect(page.getByRole('button', { name: 'Capture WebGL frame', exact: true })).toBeEnabled()
+    await page.getByRole('button', { name: 'Capture WebGL frame', exact: true }).click()
+    await expect(page.getByTestId('gpu-capture-status')).toHaveText(/Captured [1-9]\d* WebGL commands\./, { timeout: 20_000 })
+    const result = await page.getByRole('link', { name: 'Download capture JSON' }).evaluate(async link => (await fetch((link as HTMLAnchorElement).href)).json())
+    expect(new URL(result.lab.url).searchParams.get('study')).toBe(study)
+    expect(result.commands.some((command: { name: string }) => command.name.startsWith('draw'))).toBe(true)
+    await page.getByRole('button', { name: 'Inspect capture' }).click()
+    if (isMobile) await page.getByText('Menu', { exact: true }).click()
+    await expect(page.getByText(`Commands (${result.commands.length})`, { exact: true })).toBeVisible()
+    expect(errors).toEqual([])
+  })
+}
+
+for (const study of ['network', 'terrain']) test(`${study} profiling is lazy and can be enabled and removed on a fresh document`, async ({ page }) => {
+  const errors: string[] = [], requests: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  page.on('request', request => requests.push(request.url()))
+  await page.goto(`/host.html?study=${study}`)
+  await expect(page.locator('canvas')).toBeVisible()
+  expect(requests.some(url => /GpuDiagnostics|r3f-perf|spector|dist-/.test(url))).toBe(false)
+  await page.goto(`/host.html?study=${study}&diagnostics=1&perf=1`)
+  await expect(page.getByRole('link', { name: 'Disable r3f-perf (reload)' })).toBeVisible()
+  await expect(page.locator('canvas')).toHaveCount(2)
+  const overlay = await page.locator('.lab-perf-overlay').boundingBox()
+  const scene = await page.locator('main canvas').first().boundingBox()
+  expect(overlay!.y).toBeGreaterThanOrEqual(scene!.y)
+  expect(overlay!.x).toBeGreaterThanOrEqual(scene!.x)
+  await page.getByRole('button', { name: 'Capture WebGL frame', exact: true }).click()
+  await expect(page.getByTestId('gpu-capture-status')).toHaveText(/Captured [1-9]\d* WebGL commands\./)
+  const capture = await page.getByRole('link', { name: 'Download capture JSON' }).evaluate(async link => (await fetch((link as HTMLAnchorElement).href)).json())
+  expect(capture.commands.some((command: { name: string }) => command.name.startsWith('draw'))).toBe(true)
+  await page.getByRole('link', { name: 'Exit diagnostics (reload)' }).click()
+  await expect(page.locator('canvas')).toHaveCount(1)
+  await expect(page.getByRole('complementary', { name: 'GPU diagnostics' })).toHaveCount(0)
+  expect(errors).toEqual([])
+})
+
+test('canvas selection tracks independent instances and removes retired renderers', async ({ page }) => {
+  await page.goto('/host.html?study=terrain&diagnostics=1&instances=2')
+  const options = page.getByLabel('Capture canvas').locator('option')
+  await expect(options).toHaveCount(2)
+  await page.getByLabel('Capture canvas').selectOption('1')
+  await page.getByRole('button', { name: 'Capture WebGL frame', exact: true }).click()
+  await expect(page.getByTestId('gpu-capture-status')).toHaveText(/Captured [1-9]\d* WebGL commands\./)
+  await page.getByRole('button', { name: 'Unmount terrain', exact: true }).nth(1).click()
+  await expect(options).toHaveCount(1)
+  await page.getByRole('button', { name: 'Unmount terrain', exact: true }).click()
+  await expect(options).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Capture WebGL frame', exact: true })).toBeDisabled()
+})

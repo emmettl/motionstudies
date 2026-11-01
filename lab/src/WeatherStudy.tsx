@@ -1,3 +1,4 @@
+import { observeRenderer } from './renderer-observation.ts'
 import { useScenarioState } from './scenario-state.tsx'
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
@@ -17,8 +18,10 @@ export function WeatherStudy({epoch}:{epoch?:number}={}){
   const pair=createGridTexturePair({width:3,height:3,times:v.times,timeSupport:v.timeSupport,intervalSeconds:v.intervalSeconds,frame:i=>scalarGridPixels(v.frames[i])})
   const material=new THREE.ShaderMaterial({transparent:true,uniforms:{...pair.uniforms,scale:{value:variable==='cover'?100:400}},vertexShader:'varying vec2 p;void main(){p=uv;gl_Position=vec4(position.xy,0.,1.);}',fragmentShader:`uniform sampler2D weatherA,weatherB;uniform float weatherBlend,scale;varying vec2 p;${WEATHER_SAMPLE_GLSL} void main(){vec2 s=sampleWeatherScalar(weatherA,weatherB,(p*2.+.5)/3.,weatherBlend);gl_FragColor=vec4(vec3(.2,.5,.8)*s.x/scale,s.y);}`})
   const geometry=new THREE.PlaneGeometry(2,2),scene=new THREE.Scene();scene.add(new THREE.Mesh(geometry,material))
-  if(pair.update(time))renderer.render(scene,new THREE.Camera());else renderer.clear()
-  return()=>{pair.dispose();material.dispose();geometry.dispose();renderer.dispose()}
+  const render=()=>{if(pair.update(time))renderer.render(scene,new THREE.Camera());else renderer.clear()}
+  const stopObserving=observeRenderer(renderer,render)
+  render()
+  return()=>{stopObserving();pair.dispose();material.dispose();geometry.dispose();renderer.dispose()}
  },[time,variable])
  return <section><h2>Weather fields</h2><p>Synthetic evidence. Instant cover interpolates; hourly radiation holds its interval. The missing corner remains transparent.</p><div className="toolbar"><label>Weather variable <select value={variable} onChange={e=>setVariable(e.target.value)}><option value="cover">Cloud fraction</option><option value="radiation">Radiation mean</option></select></label>{epoch===undefined&&<label>Weather minute <input type="range" min="0" max="120" value={minutes} onChange={e=>setMinutes(Number(e.target.value))}/></label>}</div><canvas ref={canvas} aria-label="Synthetic weather field" style={{width:'100%',maxWidth:480,background:'#131d2b'}}/><p data-testid="weather-value">{reading?`${reading.value} ${reading.unit} · ${reading.timeSupport}`:'Unavailable'}</p><p data-testid="weather-span">{reading?`${reading.from} → ${reading.to}`:'Outside source coverage'}</p></section>
 }

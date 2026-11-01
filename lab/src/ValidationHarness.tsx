@@ -69,6 +69,7 @@ export function ValidationHarness({ studyId }: { studyId: string }) {
       <output aria-live="polite" data-testid="cycle-status">{running ? `Cycling ${cycle}/10` : `${cycle} cycles completed`}</output>
       <a href={`./host.html${search}`} target="_blank" rel="noreferrer">Open bare specimen</a>
       <a href={`${location.pathname}${search}`}>Reproduction link</a>
+      <a href={`./host.html${search}${search ? '&' : '?'}diagnostics=1`} target="_blank" rel="noreferrer">Open GPU diagnostics</a>
     </div>
     <details className="validation-contract" open><summary>Expected behavior</summary><ul>{study.expectations.map(text => <li key={text}>{text}</li>)}</ul><p>Checks exercise these expectations; controls expose additional manual inspection states.</p></details>
     <div className="validation-frame-scroll"><iframe ref={frame} src={source} title={`${study.label} validation host`} width={width} height={height} /></div>

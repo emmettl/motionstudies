@@ -66,5 +66,10 @@
     "vite": "8.3.5",
     "vitest": "5.0.5"
   },
-  "packageManager": "npm@11.21.1"
+  "packageManager": "npm@11.21.1",
+  "overrides": {
+    "r3f-perf": {
+      "@react-three/drei": "10.7.9"
+    }
+  }
 }
