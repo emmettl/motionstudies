@@ -12,6 +12,7 @@ export const scenarios = [
   { id: 'power-table', label: 'Keyboard-readable settlement table', study: 'power-days', values: {} },
   { id: 'panel-dark-controls', label: 'Dark panel controls on a light host', study: 'panel-layout', values: { width: 280 } },
   { id: 'power-repeat', label: 'Repeated autumn hour', study: 'power-days', values: { kind: 'long', time: 7200 } },
+  { id: 'power-weather-gap', label: 'Power gap with hourly radiation', study: 'power-weather', values: { powerMinutes: 30, variable: 'radiation' } },
   { id: 'loader-error', label: 'Loader integrity failure', study: 'data', values: { enabled: true, file: 'bad-digest.json' } },
   { id: 'polling', label: 'Observed operations polling', study: 'data', values: { observing: true, endpoint: 'observations-a.json' } },
   { id: 'long-vehicle', label: 'Long vehicle calls', study: 'vehicle-heroes', values: { long: true, width: 320 } },

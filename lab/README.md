@@ -5,6 +5,12 @@ The lab is a consumer of public package exports with invented, local fixtures.
 
 ## Recent component exercises
 
+**Power + weather** puts reporting-area power and GPU weather on one UTC clock.
+It preserves native quarter-hour/hourly intervals, zero and negative exchanges,
+missing samples, source rows, partial integration coverage and exclusive ends.
+The public lab uses synthetic fixtures; the dated European evidence release is
+verified privately by the recorder.
+
 **Terrain** compares CPU terrain geometry with GPU texture displacement. The
 asymmetric peak makes row flips visible. Swap between two caller-owned textures
 without rebuilding the GPU geometry; enable the south-first adapter to change

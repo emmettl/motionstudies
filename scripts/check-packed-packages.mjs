@@ -179,6 +179,7 @@ try {
   await cp(resolve('scripts/rail-contracts.typecheck.ts'), join(consumer, 'src/rail-contracts.ts'))
   await cp(resolve('scripts/terrain-contracts.typecheck.ts'), join(consumer, 'src/terrain-contracts.ts'))
   await cp(resolve('scripts/weather-contracts.typecheck.ts'), join(consumer, 'src/weather-contracts.ts'))
+  await cp(resolve('scripts/power-series-contracts.typecheck.ts'), join(consumer, 'src/power-series-contracts.ts'))
   run(process.execPath, ['smoke.mjs'], { cwd: consumer })
   run(process.execPath, ['node_modules/typescript/bin/tsc', '-p', 'tsconfig.json'], { cwd: consumer })
   run(process.execPath, ['node_modules/vite/bin/vite.js', 'build'], { cwd: consumer })

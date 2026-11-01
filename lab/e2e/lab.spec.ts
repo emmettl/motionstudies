@@ -11,6 +11,38 @@ test.beforeEach(async ({ page }) => {
 
 test.afterEach(async ({ page }) => { expect(runtimeErrors.get(page)).toEqual([]) })
 
+test('area power and GPU weather retain independent native support on one UTC clock', async ({ page }) => {
+  await page.getByRole('button', { name: '18 Power + weather' }).click()
+  const clock=page.getByRole('slider',{name:'Power and weather minute'})
+  await expect(page.getByTestId('area-exchange')).toHaveText('Exchange: -40 MW')
+  await clock.focus();await clock.press('ArrowRight')
+  await expect(page.getByTestId('area-exchange')).toHaveText('Exchange: 0 MW')
+  await expect(page.getByTestId('area-demand')).toHaveText('Demand: 100 MW')
+  await clock.press('ArrowRight')
+  await expect(page.getByTestId('area-exchange')).toHaveText('Exchange: Unavailable')
+  await page.getByText('Inspect interval evidence',{exact:true}).click()
+  await expect(page.getByTestId('area-evidence')).toContainText('"sourceRow": 2')
+  await expect(page.getByTestId('weather-value')).toContainText('50 %')
+  await page.getByRole('combobox',{name:'Weather variable'}).selectOption('radiation')
+  await expect(page.getByTestId('weather-value')).toContainText('100 W/m²')
+  const pixel=()=>page.getByLabel('Synthetic weather field').evaluate(canvas=>{
+    const gl=(canvas as HTMLCanvasElement).getContext('webgl2')!,p=new Uint8Array(4)
+    gl.readPixels(60,30,1,1,gl.RGBA,gl.UNSIGNED_BYTE,p);return [...p]
+  })
+  await expect.poll(async()=>(await pixel())[2]).toBeGreaterThan(40)
+  await expect.poll(async()=>(await pixel())[2]).toBeLessThan(60)
+  await clock.focus();await clock.press('ArrowRight');await clock.press('ArrowRight')
+  await expect(page.getByTestId('area-exchange')).toHaveText('Exchange: 80 MW')
+  await expect(page.getByTestId('area-demand')).toHaveText('Demand: 200 MW')
+  await expect(page.getByTestId('weather-value')).toContainText('400 W/m²')
+  await expect.poll(async()=>(await pixel())[2]).toBeGreaterThan(180)
+  await expect(page.getByTestId('area-evidence')).toContainText('"sourceRow": 3')
+  await clock.focus();await clock.press('End')
+  await expect(page.getByTestId('area-exchange')).toHaveText('Exchange: Unavailable')
+  await expect(page.getByTestId('weather-value')).toHaveText('Unavailable')
+  await expect.poll(async()=>(await pixel())[3]).toBe(0)
+})
+
 test('themes and pickers work independently of any edition stylesheet', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Controls' })).toBeVisible()
   const first = page.getByRole('button', { name: 'cyan service' })

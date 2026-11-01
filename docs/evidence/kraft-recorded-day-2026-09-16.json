@@ -1,0 +1,85 @@
+{
+  "kind": "kraft-recorded-day-evidence",
+  "schemaVersion": 1,
+  "auditDate": "2026-11-01",
+  "date": "2026-09-16",
+  "window": {
+    "startUtc": "2026-09-16T00:00:00.000Z",
+    "endUtc": "2026-09-17T00:00:00.000Z"
+  },
+  "verification": {
+    "passed": true,
+    "manifestSha256": "cc63ec969d56a24e7923fd40e608bfbb8e85ef7eb03c2f95734889bfa6be4f1c",
+    "files": 4,
+    "bytes": 2336890,
+    "powerSeries": 146,
+    "checkedRows": 13152,
+    "partialSeries": [
+      "energy-charts:it:public_power:hydro_pumped_storage_consumption",
+      "energy-charts:it:public_power:battery_consumption",
+      "energy-charts:it:public_power:hydro_pumped_storage",
+      "energy-charts:it:public_power:battery"
+    ],
+    "weatherCells": 1656
+  },
+  "weather": {
+    "grid": {
+      "west": -15,
+      "south": 35,
+      "step": 1,
+      "width": 46,
+      "height": 36
+    },
+    "model": "era5",
+    "batches": 34,
+    "sourceBytes": 3551478,
+    "method": "nearest ERA5 cells on an explicit 1-degree research grid; no elevation downscaling",
+    "revision": "Provider vintage as retrieved; recent ERA5 may include preliminary ERA5T."
+  },
+  "release": {
+    "manifestSha256": "cc63ec969d56a24e7923fd40e608bfbb8e85ef7eb03c2f95734889bfa6be4f1c",
+    "bytesIncludingManifest": 2338889,
+    "files": [
+      {
+        "path": "power.json",
+        "bytes": 1453332,
+        "sha256": "85e5658bce3cadc3a4e9a5ba55d3d3b51b7ec8b3d9c7e20ac3ec0e82d12c1526"
+      },
+      {
+        "path": "weather.json.gz",
+        "bytes": 784903,
+        "sha256": "b7c3abbb6ffb3c40bf9c75a0e848a3eff9f8fc0dea065015b418355d1fab229c"
+      },
+      {
+        "path": "audit.json",
+        "bytes": 41586,
+        "sha256": "6f08c31f6f2ef3963ccc3ebede6458947b63674fbbe90473f128df6aaf675626"
+      },
+      {
+        "path": "sources.json",
+        "bytes": 57069,
+        "sha256": "743e96cc06720a659cc47b6869c6297af5a855cdc4022738ffd1eeae66f53576"
+      }
+    ],
+    "publicationStatus": "private research; upstream exceptions and publication rights require review"
+  },
+  "offlineReplay": "byte-identical manifest and artifacts",
+  "sourceResponsesCommitted": false,
+  "remainingDataQuestions": [
+    "Swiss provider reconciliation",
+    "Standalone Swiss pumping consumption",
+    "Regional PV semantics/rights",
+    "Publication rights and upstream exceptions"
+  ],
+  "candidateValidation": {
+    "typecheck": "passed",
+    "architecture": "passed",
+    "unitTests": 533,
+    "hostingTests": 16,
+    "packedBrowserPassed": 110,
+    "packedBrowserSkipped": 2,
+    "loaderBrowserPassed": 40,
+    "GBCompatibility": "passed; 452 compared files reproduce exactly",
+    "researchScriptSyntax": 4
+  }
+}
