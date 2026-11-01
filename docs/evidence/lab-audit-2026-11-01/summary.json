@@ -1,7 +1,7 @@
 {
   "date": "2026-11-01",
   "source": {
-    "baseCommit": "358ea481cf10cecb26a827e9d9eb350a977a76c7",
+    "baseCommit": "473792b9d6ca71c75aca0e89371f0b570e75fffb",
     "files": [
       {
         "path": "lab/src/audit-cases.ts",
@@ -9,11 +9,11 @@
       },
       {
         "path": "lab/src/studies.ts",
-        "sha256": "c3c59ac6ebf6e422ecc0d7457934456685a5277fa14d66367f4e355fdab9c3dc"
+        "sha256": "a445a0d8da4d45fe42558a9e002ca7f0678a2a0eb46d7777d2642a419f6c3eea"
       },
       {
         "path": "lab/src/scenarios.ts",
-        "sha256": "0198e6ede0c84d0ccb3456bfc2db9925b02fbbe0163706b2f4511a11363c72ea"
+        "sha256": "e2dea512888d0b626c52db64802f28bc2fb1b343378a6372bceb55b65a75b6bb"
       },
       {
         "path": "lab/src/validation-metrics.ts",
@@ -34,6 +34,14 @@
       {
         "path": "lab/src/AirportStudy.tsx",
         "sha256": "d134b599569f03520ee10286de7df0dfb37bd865f6f1d19e085c946bc77c4506"
+      },
+      {
+        "path": "lab/src/PowerWeatherStudy.tsx",
+        "sha256": "a298e5e98298bcd169602d50d2c8b27a44c5dda8343c38ab6f836a80f67f4228"
+      },
+      {
+        "path": "lab/src/WeatherStudy.tsx",
+        "sha256": "fc66cc7e4799a3f3d0b86d83f56088c4ee18464bc46f250e042d80c122756507"
       },
       {
         "path": "lab/public/data/airport-unavailable/api/airports/v1/gleislicht/capabilities",
@@ -66,34 +74,34 @@
     ]
   },
   "protocol": {
-    "specimenPresentations": 24,
+    "specimenPresentations": 25,
     "hostConditions": 5,
     "projects": 3,
     "baselineSamplesPerCase": 3,
     "telemetryIntervalMs": 250,
     "note": "Submitted frames are cumulative renderer counters sampled over approximately 5.25 seconds. These observations are not FPS budgets or proof of physical GPU-memory reclamation. Production React commit counts are unavailable."
   },
-  "conditions": 360,
+  "conditions": 375,
   "matrix": [
     {
       "project": "desktop-chromium",
       "browserVersion": "156.0.8078.4",
       "mode": "production",
-      "conditions": 120,
+      "conditions": 125,
       "findings": 0
     },
     {
       "project": "desktop-webkit",
       "browserVersion": "27.2",
       "mode": "production",
-      "conditions": 120,
+      "conditions": 125,
       "findings": 0
     },
     {
       "project": "iphone-webkit",
       "browserVersion": "27.2",
       "mode": "production",
-      "conditions": 120,
+      "conditions": 125,
       "findings": 0
     }
   ],

@@ -2043,6 +2043,91 @@
       "violations": [],
       "errors": [],
       "alerts": []
+    },
+    {
+      "specimen": "power-weather",
+      "study": "power-weather",
+      "host": "bare",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=power-weather&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-weather",
+      "study": "power-weather",
+      "host": "light",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=power-weather&host=light&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-weather",
+      "study": "power-weather",
+      "host": "narrow",
+      "width": 312,
+      "text": 100,
+      "url": "/host.html?study=power-weather&host=bare&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-weather",
+      "study": "power-weather",
+      "host": "constrained",
+      "width": 760,
+      "text": 100,
+      "url": "/host.html?study=power-weather&host=constrained&text=100",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 16,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
+    },
+    {
+      "specimen": "power-weather",
+      "study": "power-weather",
+      "host": "large-text",
+      "width": 352,
+      "text": 200,
+      "url": "/host.html?study=power-weather&host=serif&text=200",
+      "layout": {
+        "overflowElements": [],
+        "bodyOverflow": false,
+        "bodyFontPixels": 40,
+        "outside": []
+      },
+      "violations": [],
+      "errors": [],
+      "alerts": []
     }
   ],
   "followups": [
@@ -2050,6 +2135,11 @@
       "specimen": "airports",
       "conditions": 5,
       "reason": "Refreshed against the verified local v1 capabilities fixture after final fixture-path correction."
+    },
+    {
+      "specimen": "power-weather",
+      "conditions": 5,
+      "reason": "Added the newly merged alpha.47 specimen and verified enlarged timestamp/evidence wrapping."
     }
   ]
 }

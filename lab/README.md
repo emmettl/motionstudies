@@ -134,10 +134,10 @@ React profiling. Request, callback and renderer counters remain available.
 
 ## Component audit · 1 November 2026
 
-The production audit covers all 17 specimens plus seven additional hero
+The production audit covers all 18 specimens plus seven additional hero
 presentations in five conditions: bare, light, a 280 px viewport container,
 a 280 px container inside a wide viewport, and enlarged inherited serif text.
-Desktop Chromium, desktop WebKit and iPhone WebKit provide 360 conditions.
+Desktop Chromium, desktop WebKit and iPhone WebKit provide 375 conditions.
 Each condition checks runtime errors, component/page containment and axe rules
 with tags `wcag2a`, `wcag2aa` and `wcag21aa`. Narrow and enlarged-text screenshots
 are retained as test artifacts for visual review.
@@ -153,6 +153,8 @@ The audit found and corrected:
 - The settlement table's horizontal scroll region was not keyboard reachable.
   It now has a named focus target and explicit Left/Right scrolling, including
   on WebKit where focusing the region alone did not enable arrow scrolling.
+- The merged Power + weather fixture now wraps its UTC timestamp and expanded
+  source evidence at enlarged text sizes.
 - The serif host used fixed pixels, defeating the 200% setting. It now uses rems;
   the audit verifies a computed 40 px body font. Consumer controls and the bus
   footer also wrap at enlarged sizes.
