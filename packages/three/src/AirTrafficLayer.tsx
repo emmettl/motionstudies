@@ -1,8 +1,8 @@
 import { setScenePickMetadata } from './scene-picking.ts'
 import type { AirportInfrastructureStyle } from './scene-style.ts'
 import type { AircraftPickingPolicy } from './scene-extensions.ts'
-import type { ThreeEvent } from '@react-three/fiber'
-import { useFrame, useThree } from '@react-three/fiber'
+import type { ThreeEvent } from '@react-three/fiber/legacy'
+import { useFrame, useThree } from '@react-three/fiber/legacy'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import {
@@ -407,7 +407,7 @@ export function AirportMarker({
     if (label.current) setScenePickMetadata(label.current, { target })
   }, [airport, showLabel])
 
-  useFrame(({ clock }) => {
+  useFrame(({ elapsed }) => {
     const projected = new THREE.Vector3(...position).applyMatrix4(
       camera.matrixWorldInverse,
     )
@@ -421,7 +421,7 @@ export function AirportMarker({
       AIRPORT_MARKER_DIAMETER_PX,
     )
     if (marker.current) {
-      const pulse = 1 + (Math.sin(clock.elapsedTime * 2.15) + 1) * 0.12
+      const pulse = 1 + (Math.sin(elapsed * 2.15) + 1) * 0.12
       marker.current.scale.setScalar((markerDiameter / 1.3) * pulse)
     }
     if (label.current) {
@@ -533,7 +533,7 @@ export function AirTrafficLayer({
   readonly labelMode: TrainLabelMode
   readonly subdued?: boolean
 }) {
-  const { scene, camera, gl } = useThree()
+  const { scene, camera, renderer } = useThree()
   const localTime = useRef(time)
   const aircraftRef = useRef<readonly CurrentAircraft[]>([])
   const aircraftTransform = useMemo(() => new THREE.Object3D(), [])
@@ -714,7 +714,7 @@ export function AirTrafficLayer({
 
   const selectAircraft = (event: ThreeEvent<PointerEvent | MouseEvent>) => {
     if (event.instanceId === undefined) return
-    if (picking?.accepts && !picking.accepts({ scene, camera, canvas: gl.domElement,
+    if (picking?.accepts && !picking.accepts({ scene, camera, canvas: renderer.domElement,
       clientX: event.clientX, clientY: event.clientY, dragDistance: event.delta,
       touch: 'pointerType' in event.nativeEvent && event.nativeEvent.pointerType === 'touch' })) return
     event.stopPropagation()

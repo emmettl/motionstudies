@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { useThree } from '@react-three/fiber'
+import { useThree } from '@react-three/fiber/legacy'
 import { Points, type Camera, type Scene } from 'three'
 import { scenePickMetadata } from '@motionstudies/three/scene-picking'
 import { NationalNetworkScene } from '@motionstudies/three/NationalNetworkScene'

@@ -11,7 +11,7 @@ import {
 import { setScenePickMetadata } from './scene-picking.ts'
 import { StationLabelFrame } from './station-label-frame.ts'
 import { LabelFrameBudget } from './label-frame-budget.ts'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber/legacy'
 import { useEffect, useMemo, useRef } from 'react'
 import { networkRouteColor as mixedRouteColor, trainLabelCollisionBox } from './scene-style.ts'
 import { stationLabelBoxes, emptyLabelBoxes } from './map-cartography.ts'

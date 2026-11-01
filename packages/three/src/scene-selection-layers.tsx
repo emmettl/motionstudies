@@ -4,7 +4,7 @@ import { useMapStyle } from './scene-map-style.ts'
 import { segmentPoints, appendLineSegments } from './scene-path-geometry.ts'
 import { trainLightTexture } from './scene-light-texture.ts'
 import { stationCentre, type ProjectedStop } from './station-picking.ts'
-import { useFrame } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber/legacy'
 import { useContext, useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import {
@@ -232,10 +232,10 @@ export function SelectedLinePaths({
     [stopTextures],
   )
 
-  useFrame(({ clock }) => {
+  useFrame(({ elapsed }) => {
     if (!glowMaterial.current) return
     glowMaterial.current.opacity =
-      0.12 + (Math.sin(clock.elapsedTime * 1.8) * 0.5 + 0.5) * 0.12
+      0.12 + (Math.sin(elapsed * 1.8) * 0.5 + 0.5) * 0.12
   })
 
   return (
@@ -328,9 +328,9 @@ export function SelectedStationRouteLayer({
 }) {
   const glowMaterial = useRef<THREE.LineBasicMaterial>(null)
 
-  useFrame(({ clock }) => {
+  useFrame(({ elapsed }) => {
     if (!glowMaterial.current) return
-    const pulse = Math.sin(clock.elapsedTime * 1.55) * 0.5 + 0.5
+    const pulse = Math.sin(elapsed * 1.55) * 0.5 + 0.5
     glowMaterial.current.opacity = 0.18 + pulse * 0.13
   })
 
@@ -419,7 +419,7 @@ export function SelectedStationPulse({ centre }: { readonly centre: THREE.Vector
     [centre, coplanar],
   )
 
-  useFrame(({ camera, clock, size }) => {
+  useFrame(({ camera, elapsed, size }) => {
     if (!(camera instanceof THREE.PerspectiveCamera) || size.height <= 0) return
     const distance = camera.position.distanceTo(origin)
     const visibleWorldHeight =
@@ -430,7 +430,7 @@ export function SelectedStationPulse({ centre }: { readonly centre: THREE.Vector
       const mesh = meshes.current[index]
       const material = materials.current[index]
       if (!mesh || !material) continue
-      const frame = stationSelectionPulseFrame(clock.elapsedTime, index)
+      const frame = stationSelectionPulseFrame(elapsed, index)
       mesh.scale.setScalar(frame.radiusPixels * worldUnitsPerPixel)
       material.opacity = frame.opacity
     }
@@ -689,7 +689,7 @@ export function SelectedTrainMarker({
     marker.current.visible = Boolean(position)
     if (!position) return
     marker.current.position.set(...position)
-    const pulse = 1 + Math.sin(state.clock.elapsedTime * 4) * 0.12
+    const pulse = 1 + Math.sin(state.elapsed * 4) * 0.12
     marker.current.scale.setScalar(pulse * (maxRadius === undefined ? 1 : selectionMarkerScale(state.camera, marker.current.position, state.size.height, 0.24 * pulse, maxRadius)))
   })
 

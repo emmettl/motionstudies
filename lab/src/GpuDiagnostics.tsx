@@ -48,8 +48,8 @@ export function GpuDiagnostics() {
   return <aside aria-label="GPU diagnostics" style={{ font: '14px/1.5 system-ui', border: '1px solid currentColor', padding: 12, marginBottom: 16 }}>
     <h2>GPU diagnostics</h2>
     <p>Instrumented session · use a fresh normal host for baseline measurements. Perf mode runs Terrain continuously and adds its own rendering work. GPU timings depend on browser support.</p>
-    <p><a href={link(true, new URLSearchParams(location.search).get('perf') !== '1')}>{new URLSearchParams(location.search).get('perf') === '1' ? 'Disable' : 'Enable'} r3f-perf (reload)</a> · <a href={link(false, false)}>Exit diagnostics (reload)</a></p>
-    <p>r3f-perf applies to Network and Terrain canvases. Spector also captures the raw Three weather canvas. Enabling the overlay opens one instance for reliable attribution.</p>
+    <p><a href={link(true, new URLSearchParams(location.search).get('perf') !== '1')}>{new URLSearchParams(location.search).get('perf') === '1' ? 'Disable' : 'Enable'} renderer statistics (reload)</a> · <a href={link(false, false)}>Exit diagnostics (reload)</a></p>
+    <p>renderer statistics applies to Network and Terrain canvases. Spector also captures the raw Three weather canvas. Enabling the overlay opens one instance for reliable attribution.</p>
     <div className="toolbar">
       <label>Capture canvas <select disabled={busy || !renderers.length} value={selected} onChange={event => setSelected(Number(event.target.value))}>
         {renderers.map(({ renderer }, i) => <option key={i} value={i}>Canvas {i + 1} · {renderer.domElement.closest('section[aria-label]')?.getAttribute('aria-label') ?? 'specimen'}</option>)}

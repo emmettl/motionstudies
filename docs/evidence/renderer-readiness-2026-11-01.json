@@ -1,0 +1,2100 @@
+{
+  "inspectedAt": "2026-11-01T19:56:00.851Z",
+  "scope": "Local working-tree source and manifests; no builds, runtime or deployment claims. Dirty entries include unrelated work. Findings are audit prompts, not proof of incompatibility.",
+  "editions": [
+    {
+      "edition": "gleislicht",
+      "commit": "c33819f61f448f9399a227af7f2b5cc5f7e45b4a",
+      "branch": "main",
+      "dirtyEntries": 11,
+      "workingTreeSourceSha256": "be63e2b0b977eb3ef09c3cc2c8c5fd269f57fef7f1421fa29774b11048f6b77f",
+      "manifestSha256": "f8c6d41b90403ba9c55bdf11f9edefff51d6bcbd6338008efc19707d93d5b1e6",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.44",
+        "@motionstudies/three": "0.1.0-alpha.44",
+        "@motionstudies/web": "0.1.0-alpha.44",
+        "@react-three/fiber": "^9.8.2",
+        "react": "19.3.1",
+        "three": "^0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.44"
+      },
+      "imports": [
+        "@motionstudies/three/HubPulseScene",
+        "@motionstudies/three/NationalNetworkScene",
+        "@motionstudies/three/RoadTrafficLayer",
+        "@motionstudies/three/StationFlowScene",
+        "@motionstudies/three/map-camera",
+        "@motionstudies/three/render-performance",
+        "@motionstudies/three/scene-extensions",
+        "@motionstudies/three/scene-picking",
+        "@motionstudies/three/scene-style",
+        "@motionstudies/three/terrain-surface",
+        "@motionstudies/three/train-labels",
+        "@react-three/fiber",
+        "three",
+        "three/addons/controls/OrbitControls.js"
+      ],
+      "findings": [
+        {
+          "kind": "points",
+          "path": "src/studies/GleislichtJourneyScene.tsx",
+          "line": 467
+        },
+        {
+          "kind": "frameClock",
+          "path": "src/studies/GleislichtJourneyScene.tsx",
+          "line": 866
+        },
+        {
+          "kind": "frameClock",
+          "path": "src/studies/GleislichtJourneyScene.tsx",
+          "line": 867
+        },
+        {
+          "kind": "canvas",
+          "path": "src/studies/GleislichtJourneyScene.tsx",
+          "line": 902
+        },
+        {
+          "kind": "canvas",
+          "path": "src/studies/MeasuredTerrainScene.tsx",
+          "line": 86
+        },
+        {
+          "kind": "glsl",
+          "path": "src/studies/OrbitalClouds.tsx",
+          "line": 9
+        },
+        {
+          "kind": "glsl",
+          "path": "src/studies/OrbitalClouds.tsx",
+          "line": 24
+        },
+        {
+          "kind": "glsl",
+          "path": "src/studies/OrbitalClouds.tsx",
+          "line": 33
+        },
+        {
+          "kind": "points",
+          "path": "src/studies/OrbitalScene.tsx",
+          "line": 252
+        },
+        {
+          "kind": "points",
+          "path": "src/studies/OrbitalScene.tsx",
+          "line": 253
+        },
+        {
+          "kind": "glsl",
+          "path": "src/studies/OrbitalSnowMaterial.tsx",
+          "line": 16
+        },
+        {
+          "kind": "canvas",
+          "path": "src/studies/OrbitalView.tsx",
+          "line": 270
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "allchange",
+      "commit": "f0192cac891a94f5c8fe432ff02d77742461df18",
+      "branch": "main",
+      "dirtyEntries": 2,
+      "workingTreeSourceSha256": "afd973b3fd9a10f4703939d6423f63a989c20ac4d28a5b03aee6e2c92b9b2e84",
+      "manifestSha256": "3877cece1cc5295f415d35223b322f42361750e855e85a9dfdb9fe937a5e9f10",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "imports": [
+        "@motionstudies/three/HubPulseScene",
+        "@motionstudies/three/NationalNetworkScene",
+        "@motionstudies/three/map-camera",
+        "@motionstudies/three/render-performance",
+        "@motionstudies/three/scene-extensions",
+        "@motionstudies/three/scene-picking",
+        "@motionstudies/three/scene-style",
+        "@motionstudies/three/train-labels",
+        "@react-three/fiber",
+        "three"
+      ],
+      "findings": [
+        {
+          "kind": "points",
+          "path": "src/studies/LondonDiagramStations.tsx",
+          "line": 64
+        },
+        {
+          "kind": "points",
+          "path": "src/studies/LondonNationalRailLayer.tsx",
+          "line": 121
+        },
+        {
+          "kind": "points",
+          "path": "src/studies/LondonNationalRailLayer.tsx",
+          "line": 124
+        },
+        {
+          "kind": "frameClock",
+          "path": "src/studies/LondonNationalRailLayer.tsx",
+          "line": 78
+        },
+        {
+          "kind": "frameClock",
+          "path": "src/studies/LondonNationalRailLayer.tsx",
+          "line": 84
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "correspondances",
+      "commit": "c274a00465629eeb5dd6d68b136e8fcb184e0a67",
+      "branch": "main",
+      "dirtyEntries": 0,
+      "workingTreeSourceSha256": "4046fe6b8fdb9cb86cbe126e0497fb2972e93ff9adc209b20312c0eb1df1f35c",
+      "manifestSha256": "601cd9d913310fc230ada12440d12e6ac917fc16afffccde6f597df756306738",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "imports": [
+        "@motionstudies/three/NationalNetworkScene",
+        "@motionstudies/three/map-camera",
+        "@motionstudies/three/render-performance",
+        "@motionstudies/three/scene-extensions",
+        "@motionstudies/three/scene-picking",
+        "@motionstudies/three/scene-style",
+        "@motionstudies/three/train-labels",
+        "@react-three/fiber",
+        "three"
+      ],
+      "findings": [],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "luft",
+      "commit": "d45d898e3036cf4b536c5d1ca39467772a9cca74",
+      "branch": "main",
+      "dirtyEntries": 0,
+      "workingTreeSourceSha256": "72284e4be9859a9c3470dfca20a145ef9cdfa03c848dde6587db12a85fcb09df",
+      "manifestSha256": "ca2804a45d578dce350452e0b7ef44468cb53ec3e33176435cf63f1b4473f676",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "react": "19.3.1",
+        "three": "0.186.1"
+      },
+      "imports": [
+        "three"
+      ],
+      "findings": [
+        {
+          "kind": "glsl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 48
+        },
+        {
+          "kind": "glsl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 55
+        },
+        {
+          "kind": "glsl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 58
+        },
+        {
+          "kind": "glsl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 59
+        },
+        {
+          "kind": "glsl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 74
+        },
+        {
+          "kind": "glsl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 86
+        },
+        {
+          "kind": "points",
+          "path": "src/gpu-aircraft.ts",
+          "line": 56
+        },
+        {
+          "kind": "webgl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 62
+        },
+        {
+          "kind": "webgl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 82
+        },
+        {
+          "kind": "webgl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 89
+        },
+        {
+          "kind": "webgl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 150
+        },
+        {
+          "kind": "webgl",
+          "path": "src/gpu-aircraft.ts",
+          "line": 150
+        },
+        {
+          "kind": "canvas",
+          "path": "src/main.tsx",
+          "line": 338
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "local-express",
+      "commit": "cd81be66e24589de985708cfe84550fdbb2f6c21",
+      "branch": "main",
+      "dirtyEntries": 0,
+      "workingTreeSourceSha256": "38d803e5d0f21914412e489e82b496814530f14af2126159ce65d688fd374330",
+      "manifestSha256": "e15bb6dc66ef79c9dc8252389a9af8418111c71ea6880c064e77fabe35f84581",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "imports": [
+        "@motionstudies/three/NationalNetworkScene",
+        "@motionstudies/three/map-camera",
+        "@motionstudies/three/train-labels"
+      ],
+      "findings": [],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "norikae",
+      "commit": "93b4f0537891ba0464fecb4c6acb75f0574b84ed",
+      "branch": "codex/synthetic-player",
+      "dirtyEntries": 2,
+      "workingTreeSourceSha256": "df20238781f1f31b9c96e05de9bd6fe7f04a83e993dd52434d0675583e559afd",
+      "manifestSha256": "8261b7b9c1f01de5001c2981d55b253b290de8f3b6b5ff7dcc9775814ce5b949",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "imports": [
+        "@motionstudies/three/NationalNetworkScene"
+      ],
+      "findings": [
+        {
+          "kind": "canvas",
+          "path": "src/main.tsx",
+          "line": 12
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "manifest",
+      "commit": "a539f153c214df3993a5d5c045f8b9fec53640c0",
+      "branch": "main",
+      "dirtyEntries": 0,
+      "workingTreeSourceSha256": "cac89338ce6720e475dc8666f12ae46f4dbce062e6eb1eba320fa4f7afabe842",
+      "manifestSha256": "adad2439db70557b03e944e63a793b2c3090e45bee42a4ab602b720b3bc5b330",
+      "versions": {
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "react": "19.3.1"
+      },
+      "imports": [],
+      "findings": [
+        {
+          "kind": "webgl",
+          "path": "src/components/OceanScene.tsx",
+          "line": 42
+        },
+        {
+          "kind": "webgl",
+          "path": "src/components/OceanScene.tsx",
+          "line": 43
+        },
+        {
+          "kind": "webgl",
+          "path": "src/components/OceanScene.tsx",
+          "line": 46
+        },
+        {
+          "kind": "webgl",
+          "path": "src/components/OceanScene.tsx",
+          "line": 47
+        },
+        {
+          "kind": "canvas",
+          "path": "src/main.tsx",
+          "line": 11
+        },
+        {
+          "kind": "glsl",
+          "path": "src/maritime/fleet-webgl.ts",
+          "line": 39
+        },
+        {
+          "kind": "glsl",
+          "path": "src/maritime/fleet-webgl.ts",
+          "line": 44
+        },
+        {
+          "kind": "glsl",
+          "path": "src/maritime/fleet-webgl.ts",
+          "line": 49
+        },
+        {
+          "kind": "glsl",
+          "path": "src/maritime/fleet-webgl.ts",
+          "line": 71
+        },
+        {
+          "kind": "glsl",
+          "path": "src/maritime/fleet-webgl.ts",
+          "line": 74
+        },
+        {
+          "kind": "points",
+          "path": "src/maritime/fleet-webgl.ts",
+          "line": 71
+        },
+        {
+          "kind": "points",
+          "path": "src/maritime/fleet-webgl.ts",
+          "line": 75
+        },
+        {
+          "kind": "webgl",
+          "path": "src/maritime/fleet-webgl.ts",
+          "line": 94
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "umlauf",
+      "commit": "5bcada0dbdad03dfad91db28bd094f65ee7badb1",
+      "branch": "main",
+      "dirtyEntries": 2,
+      "workingTreeSourceSha256": "8f34b32ab984b3e02a29b6129b55d2d4f7cf54fa0383728e0818bcad5ad48816",
+      "manifestSha256": "e37a82933e24a2b70ee5eff0e2925a31ee9165fb1799ce101a4dba7d9c467e41",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "imports": [
+        "@motionstudies/three/NationalNetworkScene"
+      ],
+      "findings": [],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "zugunruhe",
+      "commit": "d3fd0bd377ad3297588cc4063abaf45504dcafb3",
+      "branch": "main",
+      "dirtyEntries": 5,
+      "workingTreeSourceSha256": "9476b3ebf8d03367a6e1fb61a09cc6c9338d0ae01c1f8e52857d04a876234c14",
+      "manifestSha256": "92f33bdcdbf2cb1271b7d21e8fb818add02e6dcd95ca24e7bec5c80f8e79652d",
+      "versions": {
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "three": "0.186.1"
+      },
+      "imports": [
+        "three",
+        "three/addons/controls/OrbitControls.js"
+      ],
+      "findings": [
+        {
+          "kind": "webgl",
+          "path": "src/air-station.js",
+          "line": 68
+        },
+        {
+          "kind": "glsl",
+          "path": "src/air-wind.js",
+          "line": 11
+        },
+        {
+          "kind": "glsl",
+          "path": "src/air-wind.js",
+          "line": 15
+        },
+        {
+          "kind": "glsl",
+          "path": "src/air-wind.js",
+          "line": 18
+        },
+        {
+          "kind": "webgl",
+          "path": "src/air.js",
+          "line": 58
+        },
+        {
+          "kind": "glsl",
+          "path": "src/atmosphere.js",
+          "line": 4
+        },
+        {
+          "kind": "glsl",
+          "path": "src/atmosphere.js",
+          "line": 11
+        },
+        {
+          "kind": "glsl",
+          "path": "src/atmosphere.js",
+          "line": 30
+        },
+        {
+          "kind": "glsl",
+          "path": "src/cloud-cover.js",
+          "line": 13
+        },
+        {
+          "kind": "glsl",
+          "path": "src/cloud-cover.js",
+          "line": 16
+        },
+        {
+          "kind": "glsl",
+          "path": "src/cloud-cover.js",
+          "line": 28
+        },
+        {
+          "kind": "glsl",
+          "path": "src/continent-field.js",
+          "line": 27
+        },
+        {
+          "kind": "glsl",
+          "path": "src/continent-field.js",
+          "line": 30
+        },
+        {
+          "kind": "glsl",
+          "path": "src/continent-field.js",
+          "line": 46
+        },
+        {
+          "kind": "webgl",
+          "path": "src/continent-scene.js",
+          "line": 17
+        },
+        {
+          "kind": "webgl",
+          "path": "src/continent.js",
+          "line": 109
+        },
+        {
+          "kind": "glsl",
+          "path": "src/currents-field.js",
+          "line": 16
+        },
+        {
+          "kind": "glsl",
+          "path": "src/currents-field.js",
+          "line": 21
+        },
+        {
+          "kind": "glsl",
+          "path": "src/currents-field.js",
+          "line": 27
+        },
+        {
+          "kind": "webgl",
+          "path": "src/currents.js",
+          "line": 123
+        },
+        {
+          "kind": "glsl",
+          "path": "src/flock-scene.js",
+          "line": 30
+        },
+        {
+          "kind": "glsl",
+          "path": "src/flock-scene.js",
+          "line": 32
+        },
+        {
+          "kind": "glsl",
+          "path": "src/flock-scene.js",
+          "line": 39
+        },
+        {
+          "kind": "glsl",
+          "path": "src/flock-scene.js",
+          "line": 65
+        },
+        {
+          "kind": "glsl",
+          "path": "src/flock-scene.js",
+          "line": 73
+        },
+        {
+          "kind": "glsl",
+          "path": "src/flock-scene.js",
+          "line": 77
+        },
+        {
+          "kind": "webgl",
+          "path": "src/flock-scene.js",
+          "line": 7
+        },
+        {
+          "kind": "webgl",
+          "path": "src/flock-scene.js",
+          "line": 130
+        },
+        {
+          "kind": "glsl",
+          "path": "src/layers.js",
+          "line": 25
+        },
+        {
+          "kind": "glsl",
+          "path": "src/layers.js",
+          "line": 67
+        },
+        {
+          "kind": "glsl",
+          "path": "src/layers.js",
+          "line": 115
+        },
+        {
+          "kind": "webgl",
+          "path": "src/layers.js",
+          "line": 72
+        },
+        {
+          "kind": "webgl",
+          "path": "src/main.js",
+          "line": 135
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-landscape.js",
+          "line": 38
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-landscape.js",
+          "line": 40
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-landscape.js",
+          "line": 56
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-landscape.js",
+          "line": 72
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-landscape.js",
+          "line": 73
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-landscape.js",
+          "line": 74
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-scene.js",
+          "line": 60
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-scene.js",
+          "line": 65
+        },
+        {
+          "kind": "glsl",
+          "path": "src/network-scene.js",
+          "line": 71
+        },
+        {
+          "kind": "webgl",
+          "path": "src/network-scene.js",
+          "line": 13
+        },
+        {
+          "kind": "webgl",
+          "path": "src/network.js",
+          "line": 70
+        },
+        {
+          "kind": "glsl",
+          "path": "src/night-field.js",
+          "line": 32
+        },
+        {
+          "kind": "glsl",
+          "path": "src/night-field.js",
+          "line": 38
+        },
+        {
+          "kind": "glsl",
+          "path": "src/night-field.js",
+          "line": 48
+        },
+        {
+          "kind": "glsl",
+          "path": "src/regional-air-field.js",
+          "line": 19
+        },
+        {
+          "kind": "glsl",
+          "path": "src/regional-air-field.js",
+          "line": 24
+        },
+        {
+          "kind": "glsl",
+          "path": "src/regional-air-field.js",
+          "line": 27
+        },
+        {
+          "kind": "points",
+          "path": "src/season-geography.js",
+          "line": 27
+        },
+        {
+          "kind": "glsl",
+          "path": "src/season-passage-scene.js",
+          "line": 32
+        },
+        {
+          "kind": "glsl",
+          "path": "src/season-passage-scene.js",
+          "line": 43
+        },
+        {
+          "kind": "glsl",
+          "path": "src/season-passage-scene.js",
+          "line": 69
+        },
+        {
+          "kind": "points",
+          "path": "src/season-passage-scene.js",
+          "line": 89
+        },
+        {
+          "kind": "webgl",
+          "path": "src/season-passage-scene.js",
+          "line": 8
+        },
+        {
+          "kind": "webgl",
+          "path": "src/season-passage-scene.js",
+          "line": 170
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 50
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 52
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 58
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 66
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 71
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 72
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 84
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 85
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-scene.js",
+          "line": 86
+        },
+        {
+          "kind": "webgl",
+          "path": "src/soaring-scene.js",
+          "line": 37
+        },
+        {
+          "kind": "webgl",
+          "path": "src/soaring-scene.js",
+          "line": 101
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-terrain.js",
+          "line": 13
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-terrain.js",
+          "line": 17
+        },
+        {
+          "kind": "glsl",
+          "path": "src/soaring-terrain.js",
+          "line": 29
+        },
+        {
+          "kind": "glsl",
+          "path": "src/terrain.js",
+          "line": 13
+        },
+        {
+          "kind": "glsl",
+          "path": "src/terrain.js",
+          "line": 21
+        },
+        {
+          "kind": "glsl",
+          "path": "src/terrain.js",
+          "line": 51
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "underfall",
+      "commit": "2dfa884f2ad90fe2c6818a1887a25062ad9a157b",
+      "branch": "main",
+      "dirtyEntries": 1,
+      "workingTreeSourceSha256": "10fd47512446e1c77867ef88fc6633624273dc70af765803baccfd8110d6b51b",
+      "manifestSha256": "ffff5acf342199da2dfdd5cca098e3bb2da06d99ed5f35d7a9f08334974c1a0c",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "imports": [
+        "@motionstudies/three/NationalNetworkScene",
+        "@motionstudies/three/scene-extensions",
+        "@motionstudies/three/scene-picking",
+        "@react-three/fiber",
+        "three"
+      ],
+      "findings": [
+        {
+          "kind": "canvas",
+          "path": "src/main.tsx",
+          "line": 14
+        },
+        {
+          "kind": "points",
+          "path": "src/studies/TerrainLayer.tsx",
+          "line": 58
+        },
+        {
+          "kind": "points",
+          "path": "src/studies/TerrainLayer.tsx",
+          "line": 60
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "zenit",
+      "commit": "39b0e7227b9ee783bbd0ee70418abc3afc55b6dd",
+      "branch": "main",
+      "dirtyEntries": 0,
+      "workingTreeSourceSha256": "961cbe0dc6575f0faa84a2c8fa68c6d05a0fbd3617bf05025016d3caf65a5ef8",
+      "manifestSha256": "caad2f5b0069bfc33500eb2d51acf93b34fe1e9d4dba479d0e115069843e95bd",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "react": "19.3.1",
+        "three": "0.186.1"
+      },
+      "imports": [
+        "three",
+        "three/addons/controls/OrbitControls.js"
+      ],
+      "findings": [
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 2
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 53
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 53
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 54
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 56
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 59
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 59
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 60
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 63
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 63
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 63
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 72
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 72
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 72
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 72
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 76
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 76
+        },
+        {
+          "kind": "glsl",
+          "path": "src/Scene.tsx",
+          "line": 76
+        },
+        {
+          "kind": "points",
+          "path": "src/Scene.tsx",
+          "line": 59
+        },
+        {
+          "kind": "points",
+          "path": "src/Scene.tsx",
+          "line": 63
+        },
+        {
+          "kind": "points",
+          "path": "src/Scene.tsx",
+          "line": 72
+        },
+        {
+          "kind": "webgl",
+          "path": "src/Scene.tsx",
+          "line": 2
+        },
+        {
+          "kind": "webgl",
+          "path": "src/Scene.tsx",
+          "line": 30
+        },
+        {
+          "kind": "webgl",
+          "path": "src/Scene.tsx",
+          "line": 31
+        },
+        {
+          "kind": "webgl",
+          "path": "src/Scene.tsx",
+          "line": 201
+        },
+        {
+          "kind": "webgl",
+          "path": "src/Scene.tsx",
+          "line": 204
+        },
+        {
+          "kind": "webgl",
+          "path": "src/Scene.tsx",
+          "line": 204
+        },
+        {
+          "kind": "webgl",
+          "path": "src/collision-entry.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/collision-entry.ts",
+          "line": 14
+        },
+        {
+          "kind": "webgl",
+          "path": "src/collision-entry.ts",
+          "line": 168
+        },
+        {
+          "kind": "glsl",
+          "path": "src/debris-view.js",
+          "line": 4
+        },
+        {
+          "kind": "glsl",
+          "path": "src/debris-view.js",
+          "line": 20
+        },
+        {
+          "kind": "glsl",
+          "path": "src/debris-view.js",
+          "line": 20
+        },
+        {
+          "kind": "glsl",
+          "path": "src/debris-view.js",
+          "line": 20
+        },
+        {
+          "kind": "glsl",
+          "path": "src/debris-view.js",
+          "line": 20
+        },
+        {
+          "kind": "points",
+          "path": "src/debris-view.js",
+          "line": 20
+        },
+        {
+          "kind": "webgl",
+          "path": "src/debris-view.js",
+          "line": 4
+        },
+        {
+          "kind": "webgl",
+          "path": "src/debris-view.js",
+          "line": 15
+        },
+        {
+          "kind": "webgl",
+          "path": "src/debris-view.js",
+          "line": 67
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "pfad",
+      "commit": "492236d5e788ddb5291ebfa08e283209037d6056",
+      "branch": "main",
+      "dirtyEntries": 64,
+      "workingTreeSourceSha256": "088155735ac8d98b3498a20b86272c607ccbcaae1e3ef817c55b1f695fe15408",
+      "manifestSha256": "29e6132152dc4ccac1cd64158da96e4085b8f6b23a59600048c9a50cd2622a7a",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.33",
+        "@motionstudies/three": "0.1.0-alpha.33",
+        "@motionstudies/web": "0.1.0-alpha.33",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.33"
+      },
+      "imports": [
+        "three",
+        "three/addons/lines/LineMaterial.js",
+        "three/addons/lines/LineSegments2.js",
+        "three/addons/lines/LineSegmentsGeometry.js"
+      ],
+      "findings": [
+        {
+          "kind": "canvas",
+          "path": "src/main.tsx",
+          "line": 7
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/RoadScene.ts",
+          "line": 35
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/RoadScene.ts",
+          "line": 101
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/RoadScene.ts",
+          "line": 174
+        },
+        {
+          "kind": "webgl",
+          "path": "src/map/RoadScene.ts",
+          "line": 98
+        },
+        {
+          "kind": "webgl",
+          "path": "src/map/RoadScene.ts",
+          "line": 160
+        },
+        {
+          "kind": "webgl",
+          "path": "src/map/RoadScene.ts",
+          "line": 183
+        },
+        {
+          "kind": "webgl",
+          "path": "src/map/RoadScene.ts",
+          "line": 184
+        },
+        {
+          "kind": "webgl",
+          "path": "src/map/RoadScene.ts",
+          "line": 625
+        },
+        {
+          "kind": "webgl",
+          "path": "src/map/RoadScene.ts",
+          "line": 626
+        },
+        {
+          "kind": "webgl",
+          "path": "src/map/RoadScene.ts",
+          "line": 636
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/meetingFlash.ts",
+          "line": 21
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/meetingFlash.ts",
+          "line": 26
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/meetingFlash.ts",
+          "line": 40
+        },
+        {
+          "kind": "points",
+          "path": "src/map/meetingFlash.ts",
+          "line": 27
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/routeMaterial.ts",
+          "line": 4
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/routeMaterial.ts",
+          "line": 19
+        },
+        {
+          "kind": "glsl",
+          "path": "src/map/routeMaterial.ts",
+          "line": 41
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "england",
+      "commit": "45d4b72948bbd49b30a83ecdabda59ca5c97888b",
+      "branch": "main",
+      "dirtyEntries": 0,
+      "workingTreeSourceSha256": "500a8273d962ec9b0ff15bdb16eeeda77ddf23d2ed65b4a30a855fd966da5519",
+      "manifestSha256": "4ac1598ab30b94ae8d9e17b8a936ba3deb6060d671629d4eda2d5570a0930da1",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/data": "0.1.0-alpha.31",
+        "@motionstudies/three": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "react": "19.3.1",
+        "three": "0.186.1"
+      },
+      "imports": [],
+      "findings": [
+        {
+          "kind": "canvas",
+          "path": "src/main.tsx",
+          "line": 10
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "kraft",
+      "commit": "91e39f2505521d9fa1f131544478a82b6e7c22d2",
+      "branch": "main",
+      "dirtyEntries": 0,
+      "workingTreeSourceSha256": "41633718209b999e5276ab48395087855431698b66e39541c558e6024b7396cf",
+      "manifestSha256": "21cc3a402b5d72928edc8355a483945134f7ad3c1d1bd5e911fee0bde7e4abef",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/data": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "r3f-perf": "7.2.3"
+      },
+      "imports": [
+        "@motionstudies/three/debug",
+        "@motionstudies/three/weather-textures",
+        "three"
+      ],
+      "findings": [
+        {
+          "kind": "glsl",
+          "path": "src/AtmosphereCanvas.tsx",
+          "line": 28
+        },
+        {
+          "kind": "glsl",
+          "path": "src/AtmosphereCanvas.tsx",
+          "line": 33
+        },
+        {
+          "kind": "glsl",
+          "path": "src/AtmosphereCanvas.tsx",
+          "line": 45
+        },
+        {
+          "kind": "webgl",
+          "path": "src/AtmosphereCanvas.tsx",
+          "line": 18
+        },
+        {
+          "kind": "glsl",
+          "path": "src/EuropeExchangeCanvas.tsx",
+          "line": 17
+        },
+        {
+          "kind": "glsl",
+          "path": "src/EuropeExchangeCanvas.tsx",
+          "line": 18
+        },
+        {
+          "kind": "glsl",
+          "path": "src/EuropeExchangeCanvas.tsx",
+          "line": 26
+        },
+        {
+          "kind": "glsl",
+          "path": "src/EuropeExchangeCanvas.tsx",
+          "line": 28
+        },
+        {
+          "kind": "glsl",
+          "path": "src/EuropeExchangeCanvas.tsx",
+          "line": 33
+        },
+        {
+          "kind": "glsl",
+          "path": "src/EuropeExchangeCanvas.tsx",
+          "line": 41
+        },
+        {
+          "kind": "glsl",
+          "path": "src/EuropeExchangeCanvas.tsx",
+          "line": 45
+        },
+        {
+          "kind": "webgl",
+          "path": "src/EuropeExchangeCanvas.tsx",
+          "line": 12
+        },
+        {
+          "kind": "glsl",
+          "path": "src/ExchangeCanvas.tsx",
+          "line": 21
+        },
+        {
+          "kind": "glsl",
+          "path": "src/ExchangeCanvas.tsx",
+          "line": 33
+        },
+        {
+          "kind": "glsl",
+          "path": "src/ExchangeCanvas.tsx",
+          "line": 41
+        },
+        {
+          "kind": "webgl",
+          "path": "src/ExchangeCanvas.tsx",
+          "line": 10
+        },
+        {
+          "kind": "glsl",
+          "path": "src/MaterialCanvas.tsx",
+          "line": 46
+        },
+        {
+          "kind": "glsl",
+          "path": "src/MaterialCanvas.tsx",
+          "line": 53
+        },
+        {
+          "kind": "webgl",
+          "path": "src/MaterialCanvas.tsx",
+          "line": 20
+        },
+        {
+          "kind": "glsl",
+          "path": "src/WeatherCanvas.tsx",
+          "line": 55
+        },
+        {
+          "kind": "glsl",
+          "path": "src/WeatherCanvas.tsx",
+          "line": 63
+        },
+        {
+          "kind": "glsl",
+          "path": "src/WeatherCanvas.tsx",
+          "line": 64
+        },
+        {
+          "kind": "webgl",
+          "path": "src/WeatherCanvas.tsx",
+          "line": 28
+        },
+        {
+          "kind": "canvas",
+          "path": "src/main.tsx",
+          "line": 10
+        },
+        {
+          "kind": "glsl",
+          "path": "src/material-shader.ts",
+          "line": 103
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    },
+    {
+      "edition": "schwall",
+      "commit": "749d70ab4039d3f1714370706b706aaa2860e93f",
+      "branch": "main",
+      "dirtyEntries": 485,
+      "workingTreeSourceSha256": "59a3e9d788d1032968577835f870762802b244a30a4d14a09f0ee11758b0c5f3",
+      "manifestSha256": "6142a17c6f8c5ceee538d1633eabd915187e3bf804d84dc5a2fd2330179c7b01",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.49",
+        "@motionstudies/three": "0.1.0-alpha.49",
+        "@motionstudies/web": "0.1.0-alpha.49",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.49"
+      },
+      "imports": [
+        "@motionstudies/three/debug",
+        "@motionstudies/three/debug-nodes",
+        "@motionstudies/three/map-camera",
+        "@motionstudies/three/terrain-surface",
+        "three",
+        "three/addons/controls/OrbitControls.js",
+        "three/examples/jsm/controls/OrbitControls.js",
+        "three/tsl",
+        "three/webgpu"
+      ],
+      "findings": [
+        {
+          "kind": "glsl",
+          "path": "src/app/flow.ts",
+          "line": 6
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/flow.ts",
+          "line": 28
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/flow.ts",
+          "line": 66
+        },
+        {
+          "kind": "webgl",
+          "path": "src/app/main.ts",
+          "line": 3
+        },
+        {
+          "kind": "webgl",
+          "path": "src/app/main.ts",
+          "line": 41
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/picking.ts",
+          "line": 13
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/picking.ts",
+          "line": 42
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/picking.ts",
+          "line": 52
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/picking.ts",
+          "line": 67
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/picking.ts",
+          "line": 71
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/picking.ts",
+          "line": 156
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/picking.ts",
+          "line": 170
+        },
+        {
+          "kind": "webgl",
+          "path": "src/app/picking.ts",
+          "line": 18
+        },
+        {
+          "kind": "webgl",
+          "path": "src/app/picking.ts",
+          "line": 26
+        },
+        {
+          "kind": "canvas",
+          "path": "src/app/shell.tsx",
+          "line": 433
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/summary-surface.ts",
+          "line": 1
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/summary-surface.ts",
+          "line": 13
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/summary-surface.ts",
+          "line": 29
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/summary.ts",
+          "line": 8
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/summary.ts",
+          "line": 54
+        },
+        {
+          "kind": "webgl",
+          "path": "src/app/summary.ts",
+          "line": 13
+        },
+        {
+          "kind": "webgl",
+          "path": "src/app/summary.ts",
+          "line": 41
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/surfaces.ts",
+          "line": 2
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/surfaces.ts",
+          "line": 83
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/surfaces.ts",
+          "line": 156
+        },
+        {
+          "kind": "glsl",
+          "path": "src/app/surfaces.ts",
+          "line": 169
+        },
+        {
+          "kind": "points",
+          "path": "src/geography/corridor-surface.ts",
+          "line": 8
+        },
+        {
+          "kind": "points",
+          "path": "src/geography/corridor-surface.ts",
+          "line": 55
+        },
+        {
+          "kind": "points",
+          "path": "src/geography/ground-profile-guide.ts",
+          "line": 8
+        },
+        {
+          "kind": "points",
+          "path": "src/geography/ground-profile-guide.ts",
+          "line": 39
+        },
+        {
+          "kind": "glsl",
+          "path": "src/geography/main.ts",
+          "line": 114
+        },
+        {
+          "kind": "webgl",
+          "path": "src/geography/main.ts",
+          "line": 19
+        },
+        {
+          "kind": "webgl",
+          "path": "src/geography/main.ts",
+          "line": 97
+        },
+        {
+          "kind": "canvas",
+          "path": "src/geography/progression-page.tsx",
+          "line": 8
+        },
+        {
+          "kind": "canvas",
+          "path": "src/geography/progression-player.tsx",
+          "line": 536
+        },
+        {
+          "kind": "glsl",
+          "path": "src/geography/published-surface.ts",
+          "line": 14
+        },
+        {
+          "kind": "glsl",
+          "path": "src/geography/published-surface.ts",
+          "line": 39
+        },
+        {
+          "kind": "glsl",
+          "path": "src/geography/published-surface.ts",
+          "line": 54
+        },
+        {
+          "kind": "webgl",
+          "path": "src/research/main.ts",
+          "line": 6
+        },
+        {
+          "kind": "webgl",
+          "path": "src/research/main.ts",
+          "line": 44
+        },
+        {
+          "kind": "webgl",
+          "path": "src/research/main.ts",
+          "line": 52
+        },
+        {
+          "kind": "webgl",
+          "path": "src/research/main.ts",
+          "line": 337
+        },
+        {
+          "kind": "glsl",
+          "path": "src/research/terrain-recording-view.ts",
+          "line": 28
+        },
+        {
+          "kind": "glsl",
+          "path": "src/research/terrain-recording-view.ts",
+          "line": 111
+        },
+        {
+          "kind": "glsl",
+          "path": "src/research/terrain-recording-view.ts",
+          "line": 125
+        },
+        {
+          "kind": "points",
+          "path": "src/research/terrain-recording-view.ts",
+          "line": 7
+        },
+        {
+          "kind": "points",
+          "path": "src/research/terrain-recording-view.ts",
+          "line": 200
+        },
+        {
+          "kind": "webgl",
+          "path": "src/research/terrain-recording-view.ts",
+          "line": 32
+        },
+        {
+          "kind": "webgl",
+          "path": "src/research/terrain-recording-view.ts",
+          "line": 55
+        },
+        {
+          "kind": "glsl",
+          "path": "src/solver/gpu.ts",
+          "line": 19
+        },
+        {
+          "kind": "glsl",
+          "path": "src/solver/gpu.ts",
+          "line": 57
+        },
+        {
+          "kind": "glsl",
+          "path": "src/solver/gpu.ts",
+          "line": 58
+        },
+        {
+          "kind": "glsl",
+          "path": "src/solver/gpu.ts",
+          "line": 101
+        },
+        {
+          "kind": "glsl",
+          "path": "src/solver/gpu.ts",
+          "line": 123
+        },
+        {
+          "kind": "glsl",
+          "path": "src/solver/gpu.ts",
+          "line": 356
+        },
+        {
+          "kind": "webgl",
+          "path": "src/solver/gpu.ts",
+          "line": 26
+        },
+        {
+          "kind": "webgl",
+          "path": "src/solver/gpu.ts",
+          "line": 44
+        },
+        {
+          "kind": "webgl",
+          "path": "src/solver/gpu.ts",
+          "line": 60
+        },
+        {
+          "kind": "glsl",
+          "path": "src/solver/shaders.ts",
+          "line": 7
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/backends.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/backends.ts",
+          "line": 16
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/boundary-readback.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/boundary-readback.ts",
+          "line": 6
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-capability.ts",
+          "line": 9
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-capability.ts",
+          "line": 42
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-capability.ts",
+          "line": 12
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-capability.ts",
+          "line": 34
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-checkpoint.ts",
+          "line": 6
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-checkpoint.ts",
+          "line": 104
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-checkpoint.ts",
+          "line": 105
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-checkpoint.ts",
+          "line": 7
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-checkpoint.ts",
+          "line": 117
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 19
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 57
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 68
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 69
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 124
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 149
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 158
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 436
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 26
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 52
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 71
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-gpu.ts",
+          "line": 92
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-restart.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/compensated-restart.ts",
+          "line": 24
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/controlled-float-probe.ts",
+          "line": 8
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/controlled-float-probe.ts",
+          "line": 34
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/controlled-float-probe.ts",
+          "line": 12
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/controlled-float-probe.ts",
+          "line": 26
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/controlled-native.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/controlled-native.ts",
+          "line": 14
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay-continuation.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay-continuation.ts",
+          "line": 46
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay-restart.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay-restart.ts",
+          "line": 19
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/fionnay-stage-budget.ts",
+          "line": 9
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/fionnay-stage-budget.ts",
+          "line": 82
+        },
+        {
+          "kind": "glsl",
+          "path": "src/verify/fionnay-stage-budget.ts",
+          "line": 96
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay-stage-budget.ts",
+          "line": 12
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay-stage-budget.ts",
+          "line": 39
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay-step-parity.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay-step-parity.ts",
+          "line": 52
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/fionnay.ts",
+          "line": 9
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/gpu-page.ts",
+          "line": 14
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/gpu-page.ts",
+          "line": 42
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/inflow-diagnostic.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/inflow-diagnostic.ts",
+          "line": 14
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/malpasset.ts",
+          "line": 3
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/malpasset.ts",
+          "line": 91
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/native-motion.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/native-motion.ts",
+          "line": 21
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/summary.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/summary.ts",
+          "line": 5
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/upstream-parity.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/upstream-parity.ts",
+          "line": 22
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/upstream-refinement.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/upstream-refinement.ts",
+          "line": 22
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/upstream.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/upstream.ts",
+          "line": 13
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-continuation.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-continuation.ts",
+          "line": 38
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-controlled.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-controlled.ts",
+          "line": 15
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-restart.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-restart.ts",
+          "line": 13
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-source-transfer-halfstep.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-source-transfer-halfstep.ts",
+          "line": 15
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-source-transfer.ts",
+          "line": 1
+        },
+        {
+          "kind": "webgl",
+          "path": "src/verify/valley-source-transfer.ts",
+          "line": 15
+        }
+      ],
+      "sourceInspected": true,
+      "v10Validated": false,
+      "nativeWebGPUValidated": false,
+      "deployedBackend": "not inspected"
+    }
+  ]
+}
