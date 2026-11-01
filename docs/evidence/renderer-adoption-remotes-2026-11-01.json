@@ -1,0 +1,376 @@
+{
+  "inspectedAt": "2026-11-01",
+  "registryTags": {
+    "checkedOnUtc": "2026-11-01",
+    "method": "npm view @motionstudies/{core,data,three,web} dist-tags --json; read-only host check",
+    "packages": ["@motionstudies/core", "@motionstudies/data", "@motionstudies/three", "@motionstudies/web"],
+    "latest": "0.1.0-alpha.0",
+    "next": "0.1.0-alpha.49",
+    "versionAvailability": "Not checked; recheck the selected release version before publishing."
+  },
+  "scope": "Remote default-branch package manifests and targeted source excerpts; not deployed revisions or edition runtime validation.",
+  "manifests": [
+    {
+      "repo": "gleislicht",
+      "manifestBlob": "a4c98e27686317a558aed79b8da8392dd06e5512",
+      "url": "https://github.com/emmettl/gleislicht/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48",
+        "@react-three/fiber": "^9.8.2",
+        "react": "19.3.1",
+        "three": "^0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.48",
+        "r3f-perf": "7.2.3"
+      },
+      "verificationScripts": {
+        "check:bundle": "node scripts/check-bundle-budget.mjs",
+        "check:architecture": "node scripts/check-edition-boundaries.mjs",
+        "lint": "oxlint",
+        "typecheck": "tsc -b",
+        "test": "vitest run",
+        "test:e2e:ci": "playwright test",
+        "test:components": "vitest run src/test"
+      }
+    },
+    {
+      "repo": "allchange",
+      "manifestBlob": "060300c62cffef678cd7b34f79f4328a47455e2b",
+      "url": "https://github.com/emmettl/allchange/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -b",
+        "lint": "oxlint",
+        "test": "vitest run",
+        "test:e2e:ci": "playwright test --grep-invert @frame-cadence && playwright test --grep @frame-cadence --project=iphone-webkit --workers=1",
+        "check:bundle": "node scripts/check-london-fixture-budget.mjs",
+        "check:boundary": "node scripts/check-boundary.mjs"
+      }
+    },
+    {
+      "repo": "correspondances",
+      "manifestBlob": "31b41a088ba83c74160de6d6ae76fb0683a7c485",
+      "url": "https://github.com/emmettl/correspondances/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -b",
+        "lint": "oxlint",
+        "test": "vitest run",
+        "test:e2e:ci": "playwright test",
+        "check:boundary": "node scripts/check-boundary.mjs",
+        "check:bundle": "node scripts/check-paris-proof.mjs && node scripts/check-paris-air.mjs && node scripts/check-paris-metro-layers.mjs && node scripts/check-paris-transilien.mjs && node scripts/check-paris-tram.mjs"
+      }
+    },
+    {
+      "repo": "luft",
+      "manifestBlob": "3e73bc6d0b6a615a361b8b57efff8051f01dd2b0",
+      "url": "https://github.com/emmettl/luft/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/data": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48",
+        "react": "19.3.1",
+        "three": "0.186.1"
+      },
+      "verificationScripts": {
+        "test": "vitest run",
+        "test:browser": "playwright test"
+      }
+    },
+    {
+      "repo": "local-express",
+      "manifestBlob": "afd6633f776a32deb9ff591787f7d74b86a8846c",
+      "url": "https://github.com/emmettl/local-express/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -b",
+        "lint": "oxlint",
+        "test": "vitest run",
+        "test:e2e:ci": "playwright test",
+        "check:boundary": "node scripts/check-boundary.mjs",
+        "check:bundle": "node scripts/check-new-york-proof.mjs"
+      }
+    },
+    {
+      "repo": "norikae",
+      "manifestBlob": "5549229297472a10529935376824e3dd94c1e63f",
+      "url": "https://github.com/emmettl/norikae/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -p tsconfig.json",
+        "lint": "oxlint",
+        "check:boundary": "node scripts/check-boundary.mjs",
+        "check": "npm test && npm run lint && npm run check:boundary && npm run build",
+        "test": "node --test tests/*.test.mjs"
+      }
+    },
+    {
+      "repo": "manifest",
+      "manifestBlob": "d4f328fee883560f416c7da663a310aa2e206b2d",
+      "url": "https://github.com/emmettl/manifest/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "react": "19.3.1"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "check:boundary": "node scripts/check-boundary.mjs",
+        "check:bundle": "node scripts/check-bundle.mjs",
+        "check": "npm run check:boundary && npm test && npm run build && npm run check:bundle"
+      }
+    },
+    {
+      "repo": "umlauf",
+      "manifestBlob": "4c86f9264267554d83da403918c3b3f11f2d3ab3",
+      "url": "https://github.com/emmettl/umlauf/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -p .",
+        "test": "node --test tests/*.test.mjs",
+        "test:browser": "playwright test",
+        "lint": "oxlint src scripts tests",
+        "check:boundary": "node scripts/check-boundary.mjs",
+        "check:budget": "node scripts/check-budget.mjs"
+      }
+    },
+    {
+      "repo": "zugunruhe",
+      "manifestBlob": "394472297cb100aa9e1d2bba43e95cd4d6760a1a",
+      "url": "https://github.com/emmettl/zugunruhe/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/web": "0.1.0-alpha.46",
+        "three": "0.186.1",
+        "@motionstudies/core": "0.1.0-alpha.46",
+        "@motionstudies/three": "0.1.0-alpha.46"
+      },
+      "verificationScripts": {
+        "test": "node --test src/*.test.js",
+        "test:browser": "playwright test"
+      }
+    },
+    {
+      "repo": "underfall",
+      "manifestBlob": "d2a69cd4ea53346d406593ec377bdded9c3f4161",
+      "url": "https://github.com/emmettl/underfall/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.48",
+        "r3f-perf": "7.2.3"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -b",
+        "lint": "oxlint --deny-warnings",
+        "check": "npm run test && npm run lint && npm run build",
+        "test": "node --test scripts/feeds/*.test.mjs"
+      }
+    },
+    {
+      "repo": "zenit",
+      "manifestBlob": "107263df6f9fb9904d1cac9add3b36689d031c4e",
+      "url": "https://github.com/emmettl/zenit/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31",
+        "react": "19.3.1",
+        "three": "0.186.1"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "check": "npm run test && npm run build",
+        "test:browser": "playwright test"
+      }
+    },
+    {
+      "repo": "pfad",
+      "manifestBlob": "48c51bfdedafd32d900ecd6c40a6df04832d7e70",
+      "url": "https://github.com/emmettl/pfad/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.33",
+        "@motionstudies/three": "0.1.0-alpha.33",
+        "@motionstudies/web": "0.1.0-alpha.33",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.33"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -p .",
+        "lint": "oxlint src scripts tests",
+        "check:boundary": "node scripts/check-boundary.mjs",
+        "check:budget": "node scripts/check-budget.mjs",
+        "test": "vitest run",
+        "test:browser": "playwright test",
+        "check": "npm run typecheck && npm run lint && npm run check:boundary && npm test && npm run build && npm run check:budget"
+      }
+    },
+    {
+      "repo": "england",
+      "manifestBlob": "0357bd1d3a9964adf3a683623b7d3be10940fcfe",
+      "url": "https://github.com/emmettl/england/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.46",
+        "@motionstudies/data": "0.1.0-alpha.46",
+        "@motionstudies/three": "0.1.0-alpha.46",
+        "@motionstudies/web": "0.1.0-alpha.46",
+        "react": "19.3.1",
+        "three": "0.186.1"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -b",
+        "lint": "oxlint --deny-warnings",
+        "test": "node --test \"src/**/*.test.ts\" \"scripts/*.test.mjs\" \"scripts/power/*.test.mjs\"",
+        "check": "npm run test && npm run lint && npm run build"
+      }
+    },
+    {
+      "repo": "kraft",
+      "manifestBlob": "864aafb967faf7375c027dc3da45940ba070eb06",
+      "url": "https://github.com/emmettl/kraft/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/data": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48",
+        "@react-three/fiber": "9.8.2",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "r3f-perf": "7.2.3"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc --noEmit",
+        "lint": "oxlint --deny-warnings",
+        "test": "node --test src/*.test.ts scripts/*.test.mjs",
+        "test:browser": "playwright test",
+        "check": "npm run data:verify && npm run check:rights && npm test && npm run check:architecture && npm run lint && npm run build",
+        "check:publication": "node scripts/check-publication.mjs",
+        "check:architecture": "node scripts/check-architecture.mjs"
+      }
+    },
+    {
+      "repo": "schwall",
+      "manifestBlob": "5bc6a282723f3dfa1eb67de0f6daf11d2685eeae",
+      "url": "https://github.com/emmettl/schwall/blob/main/package.json",
+      "dependencies": {
+        "@motionstudies/core": "0.1.0-alpha.49",
+        "@motionstudies/three": "0.1.0-alpha.49",
+        "@motionstudies/web": "0.1.0-alpha.49",
+        "react": "19.3.1",
+        "three": "0.186.1",
+        "@motionstudies/data": "0.1.0-alpha.49"
+      },
+      "verificationScripts": {
+        "typecheck": "tsc -p .",
+        "test": "vitest run",
+        "check:architecture": "node scripts/check-edition-boundaries.mjs",
+        "check:gpu-debug": "npm run build:research && node scripts/check-gpu-debug.mjs",
+        "check:fluid-debug": "npm run build:fluid && node scripts/check-fluid-debug.mjs",
+        "lint": "oxlint"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "repo": "umlauf",
+      "path": "src/App.tsx",
+      "blob": "0c49b2fbd716df9e6044f92b557a1783fa8b43c8",
+      "url": "https://github.com/emmettl/umlauf/blob/main/src/App.tsx"
+    },
+    {
+      "repo": "umlauf",
+      "path": "src/OstkreuzScene.tsx",
+      "blob": "5ceb39b7f892084e457a02d007778dec16a30ee3",
+      "url": "https://github.com/emmettl/umlauf/blob/main/src/OstkreuzScene.tsx"
+    },
+    {
+      "repo": "correspondances",
+      "path": "src/studies/ParisAirportSelection.tsx",
+      "blob": "92bc18d03b3adc9459bf662ae485b3786ac91544",
+      "url": "https://github.com/emmettl/correspondances/blob/main/src/studies/ParisAirportSelection.tsx"
+    },
+    {
+      "repo": "allchange",
+      "path": "src/studies/LondonNationalRailLayer.tsx",
+      "blob": "52911f1c4c0429a1a87e761888315f345ab32409",
+      "url": "https://github.com/emmettl/allchange/blob/main/src/studies/LondonNationalRailLayer.tsx"
+    },
+    {
+      "repo": "gleislicht",
+      "path": "src/studies/OrbitalView.tsx",
+      "blob": "5cf3e4546c096fd8d025ca8b14092dcf91acd5c6",
+      "url": "https://github.com/emmettl/gleislicht/blob/main/src/studies/OrbitalView.tsx"
+    },
+    {
+      "repo": "gleislicht",
+      "path": "src/studies/MeasuredTerrainScene.tsx",
+      "blob": "b2c0c7049e89289f17bd87d764fbc363544d4203",
+      "url": "https://github.com/emmettl/gleislicht/blob/main/src/studies/MeasuredTerrainScene.tsx"
+    },
+    {
+      "repo": "underfall",
+      "path": "src/studies/RouteEventsLayer.tsx",
+      "blob": "1cf82375c1b677c13d43043dd9739f00476e22ce",
+      "url": "https://github.com/emmettl/underfall/blob/main/src/studies/RouteEventsLayer.tsx"
+    },
+    {
+      "repo": "kraft",
+      "path": "src/debug.ts",
+      "blob": "c9752ab9cc805c0222924f644a473a8c0f83f71d",
+      "url": "https://github.com/emmettl/kraft/blob/main/src/debug.ts"
+    },
+    {
+      "repo": "schwall",
+      "path": "src/debug.ts",
+      "blob": "69ee5feb8dad423d900cf4342c53f751703089d4",
+      "url": "https://github.com/emmettl/schwall/blob/main/src/debug.ts"
+    }
+  ]
+}

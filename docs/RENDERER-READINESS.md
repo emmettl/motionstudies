@@ -1,6 +1,8 @@
 # Renderer readiness register
 
 The current release-preparation path is [stable Fiber 9.x](RENDERER-9X-PREPARATION.md).
+The [adoption plan](RENDERER-ADOPTION.md) adds a dated remote-manifest snapshot
+and recommended edition order without changing this local-checkout inventory.
 The separate v10 prototype and its validation below are retained as historical evidence.
 
 Inspected 1 November 2026. This register separates **source inventory**, **R3F v10
