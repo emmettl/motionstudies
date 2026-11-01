@@ -42,13 +42,21 @@ const consumer = await mkdtemp(join(tmpdir(), 'motion-studies-consumer-'))
 console.log(`Checking an isolated consumer at ${consumer}`)
 let server
 try {
-  await cp(resolve('lab'), consumer, { recursive: true, filter: (source) => !['dist', 'node_modules', 'e2e'].includes(source.split('/').at(-1)) })
+  await cp(resolve('lab'), consumer, { recursive: true, filter: (source) => !['dist', 'node_modules'].includes(source.split('/').at(-1)) })
   const labManifest = JSON.parse(await readFile(join(consumer, 'package.json'), 'utf8'))
   // Pin installed tool/peer versions. npm installs real tarballs, never workspace links.
   for (const name of Object.keys({ ...labManifest.dependencies, ...labManifest.devDependencies })) {
     if (name.startsWith('@motionstudies/')) continue
     dependencies[name] = JSON.parse(await readFile(resolve('node_modules', name, 'package.json'), 'utf8')).version
   }
+  // Keep the browser runner and its fixtures in the same frozen consumer as the app.
+  // A long run must not pick up newly edited root tests after its lab was built.
+  for (const tool of ['@playwright/test', '@axe-core/playwright']) {
+    dependencies[tool] = JSON.parse(await readFile(resolve('node_modules', tool, 'package.json'), 'utf8')).version
+  }
+  const browserConfig = (await readFile(resolve('playwright.lab.config.ts'), 'utf8'))
+    .replace("testDir: './lab/e2e'", "testDir: './e2e'")
+  await writeFile(join(consumer, 'playwright.packed.config.ts'), browserConfig)
   const { overrides } = JSON.parse(await readFile(resolve('package.json'), 'utf8'))
   await writeFile(join(consumer, 'package.json'), `${JSON.stringify({ name: 'motion-studies-packed-consumer', version: '0.0.0', private: true, type: 'module', dependencies, overrides }, null, 2)}\n`)
   run('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', '--package-lock=false'], { cwd: consumer })
@@ -210,8 +218,8 @@ try {
     await delay(100)
   }
   if (!ready) throw new Error('Packed consumer preview did not start')
-  run(process.execPath, [resolve('node_modules/@playwright/test/cli.js'), 'test', '--config', 'playwright.lab.config.ts', ...browserChecks], {
-    env: { ...process.env, MOTION_LAB_URL: 'http://127.0.0.1:4175' },
+  run(process.execPath, [join(consumer, 'node_modules/@playwright/test/cli.js'), 'test', '--config', join(consumer, 'playwright.packed.config.ts'), '--output', resolve('test-results/packed'), ...browserChecks], {
+    env: { ...process.env, MOTION_LAB_URL: 'http://127.0.0.1:4175' }, cwd: consumer,
   })
   console.log('Packed consumer passed: public imports, declarations, Node tooling, lab build and browser specimens.')
   if (release) {

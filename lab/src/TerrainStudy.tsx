@@ -1,8 +1,9 @@
+import { frameRenderer } from '@motionstudies/three/frame-state'
 import { DiagnosticPerf } from './DiagnosticPerf.tsx'
 import { observeRenderer, perfEnabled } from './renderer-observation.ts'
 import { useScenarioState } from './scenario-state.tsx'
 import { useEffect, useMemo } from 'react'
-import { Canvas, useThree } from '@react-three/fiber'
+import { WebGLStudyCanvas as Canvas, useWebGLStudyState as useThree } from '@motionstudies/three/webgl-study'
 import { BufferGeometry, DataTexture, FloatType, MeshStandardMaterial, LineSegments, LineBasicMaterial, RGBAFormat, Vector3, type Texture } from 'three'
 import { createHeightfieldSurface, createTerrainGeometry } from '@motionstudies/three/terrain-surface'
 import { terrainMaskAt, terrainPathDistances, terrainPathPoint, terrainSegmentMasked, type TerrainPoint, type TerrainPathMask } from '@motionstudies/core/terrain'
@@ -25,8 +26,9 @@ function textureSurface(textures: readonly Texture[], exaggeration: number, sout
 }
 
 function Surfaces({ phase, exaggeration, southFirst, wireframe, progress, masked }: { phase: number; exaggeration: number; southFirst: boolean; wireframe: boolean; progress: number; masked: boolean }) {
-  const { gl, scene, camera, invalidate, size: viewportSize } = useThree()
-  useEffect(() => observeRenderer(gl, invalidate), [gl, invalidate])
+  const state = useThree(), renderer = frameRenderer(state)
+  const { scene, camera, invalidate, size: viewportSize } = state
+  useEffect(() => observeRenderer(renderer, invalidate), [renderer, invalidate])
   useEffect(() => {
     const distance = Math.max(12, 25 / (viewportSize.width / viewportSize.height))
     camera.position.set(0, distance * .65, distance * .75)
@@ -61,9 +63,9 @@ function Surfaces({ phase, exaggeration, southFirst, wireframe, progress, masked
     // Rebind the existing surface to a different caller-owned texture, as a ping-pong solver would.
     gpu.bind(textures[phase])
     invalidate()
-    gl.domElement.setAttribute('data-terrain-audit', JSON.stringify({ phase, texture: textures[phase].uuid, geometry: gpu.mesh.geometry.uuid, north: grids[phase].elevations[0], southFirst, hidden: masked && !!terrainMaskAt(masks, progress) }))
-    gl.render(scene, camera)
-  }, [gpu, textures, phase, invalidate, gl, scene, camera, southFirst, masked, progress])
+    renderer.domElement.setAttribute('data-terrain-audit', JSON.stringify({ phase, texture: textures[phase].uuid, geometry: gpu.mesh.geometry.uuid, north: grids[phase].elevations[0], southFirst, hidden: masked && !!terrainMaskAt(masks, progress) }))
+    renderer.render(scene, camera)
+  }, [gpu, textures, phase, invalidate, renderer, scene, camera, southFirst, masked, progress])
   useEffect(() => () => gpu.dispose(), [gpu])
   useEffect(() => () => { textures.forEach(t => t.dispose()) }, [textures])
   useEffect(() => () => cpu.dispose(), [cpu])

@@ -10,7 +10,7 @@ vi.mock('react', async original => ({ ...await original<typeof import('react')>(
   useMemo: (build: () => unknown) => build(), useRef: (current: unknown) => ({current}),
   useEffect: (effect: () => void | (() => void)) => { const cleanup = effect(); if (cleanup) hooks.cleanups.push(cleanup) },
 }))
-vi.mock('@react-three/fiber', () => ({ useFrame: (frame: typeof hooks.frames[number]) => hooks.frames.push(frame) }))
+vi.mock('./webgl-study.ts', () => ({ useWebGLStudyFrame: (frame: typeof hooks.frames[number]) => hooks.frames.push(frame) }))
 vi.mock('./glow-point-texture.ts', () => ({ createGlowPointTexture: () => new THREE.Texture() }))
 vi.mock('@motionstudies/core/domain/road', () => ({
   roadDistanceTravelledKm: () => 0.9199,

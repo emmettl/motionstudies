@@ -1,16 +1,18 @@
+import { frameRenderer } from '@motionstudies/three/frame-state'
 import { DiagnosticPerf } from './DiagnosticPerf.tsx'
 import { useEffect } from 'react'
 import { observeRenderer } from './renderer-observation.ts'
 import { useNetworkScene } from '@motionstudies/three/scene-extensions'
 import { scenePickMetadata } from '@motionstudies/three/scene-picking'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useWebGLStudyFrame as useFrame, useWebGLStudyState as useThree } from '@motionstudies/three/webgl-study'
 import { NormalBlending, type PerspectiveCamera, type BufferGeometry, type Material, type Object3D, type SpriteMaterial } from 'three'
 
 /** Observe the actual packed renderer so the lab can verify live style changes. */
 export function NetworkStyleProbe() {
-  const { gl, scene, camera, invalidate } = useThree()
+  const state = useThree(), renderer = frameRenderer(state)
+  const { scene, camera, invalidate } = state
   const context = useNetworkScene()
-  useEffect(() => observeRenderer(gl, invalidate), [gl, invalidate])
+  useEffect(() => observeRenderer(renderer, invalidate), [renderer, invalidate])
   useFrame(() => {
     let flatStrokes = 0, customRoutes = 0, roadOverlays = 0, gridOpacity: number | undefined
     const airports: string[] = [], trains: string[] = [], stopIndexes: number[] = [], heights: number[] = []
@@ -50,7 +52,7 @@ export function NetworkStyleProbe() {
       if (object.isLineSegments && material?.blending === NormalBlending && !material.depthTest && !material.depthWrite && [3, 4].includes(object.renderOrder)) flatStrokes++
       if (object.isSprite && object.visible && [16, 21].includes(object.renderOrder)) labels.push((material as SpriteMaterial).map?.uuid ?? '')
     })
-    gl.domElement.setAttribute('data-style-audit', JSON.stringify({ selectedTrain: context.props.selectedTrain?.id, trainColors, trainPositions, projectedStops: context.projectedStops, cameraZoom: (camera as PerspectiveCamera).zoom, gridOpacity, flatStrokes, colors, labels, airportResources, airportLabels, airports, trains, stopIndexes, heights, customRoutes, roadOverlays }))
+    renderer.domElement.setAttribute('data-style-audit', JSON.stringify({ selectedTrain: context.props.selectedTrain?.id, trainColors, trainPositions, projectedStops: context.projectedStops, cameraZoom: (camera as PerspectiveCamera).zoom, gridOpacity, flatStrokes, colors, labels, airportResources, airportLabels, airports, trains, stopIndexes, heights, customRoutes, roadOverlays }))
   })
   return <DiagnosticPerf />
 }

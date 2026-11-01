@@ -364,7 +364,7 @@ See [shared weather fields](https://github.com/emmettl/motionstudies/blob/main/d
 
 ## Optional edition GPU debugging (alpha.48)
 
-`@motionstudies/three/debug` and `@motionstudies/three/debug-fiber` are optional public entry points. They import no lab code. Editions using them install `spectorjs@0.9.33` and `r3f-perf@7.2.3` as development dependencies, with the scoped npm override `"r3f-perf": { "@react-three/drei": "10.7.9" }` for React 19 / Fiber 9. The tools are optional peers of the Three package; other consumers do not need them.
+`@motionstudies/three/debug` and `@motionstudies/three/debug-fiber` are optional public entry points. **Published alpha.49 / Fiber 9 contract:** They import no lab code. Editions using them install `spectorjs@0.9.33` and `r3f-perf@7.2.3` as development dependencies, with the scoped npm override `"r3f-perf": { "@react-three/drei": "10.7.9" }` for React 19 / Fiber 9. The tools are optional peers of the Three package; other consumers do not need them.
 
 Call `await startEditionDebug({ edition, build, metadata: () => currentEditionState })` **before mounting** the application. `build` should identify the edition source revision; local builds should mark dirty sources. The metadata getter should return the data-release identity, playback clock, selection and enabled layers. With no supported `debug` flag, this call returns without importing browser tools, creating controls or registering timers.
 
@@ -400,3 +400,24 @@ generated WGSL/GLSL and GPU errors without advancing the application. Only the
 actual WebGL 2 capture path imports Spector; native WebGPU explicitly offers a
 report rather than a WebGL command capture. Ordinary URLs load no debug runtime.
 The legacy raw-WebGL and Fiber debug entry points remain supported.
+
+## Stable Fiber 9.x preparation
+
+The unpublished `codex/renderer-9x-preparation` branch retains exact Fiber 9.8.2.
+Its public `three/webgl-study` boundary re-exports the actual WebGL Canvas/frame/state
+hooks. `three/frame-state` centralizes renderer access and elapsed-seconds reads
+without advancing a clock. It also brings the luminous primitives, portable RGBA
+textures, explicit output profile and opt-in renderer counters to the 9.x baseline.
+See [the preparation plan](https://github.com/emmettl/motionstudies/blob/main/docs/RENDERER-9X-PREPARATION.md).
+
+## Separate R3F v10 prototype
+
+The unpublished `codex/v10-readiness` branch requires exact Fiber 10.0.0-alpha.6,
+keeps existing shared scenes on `/legacy`, and adds opt-in luminous sprite, line,
+texture and output adapters. Its `debug-fiber` entry uses the shared
+`debug-performance` DOM panel; r3f-perf/Drei and their override are removed on this
+branch. Spector remains an optional peer for WebGL capture. Existing published
+alpha.49 consumers retain the contract above until they adopt a new release.
+
+See [the readiness register](https://github.com/emmettl/motionstudies/blob/main/docs/RENDERER-READINESS.md)
+and [primitive/output contracts](https://github.com/emmettl/motionstudies/blob/main/docs/WEBGPU-SUPPORT.md#readiness-primitives-and-composed-scene).

@@ -19,6 +19,14 @@ describe('terrain surfaces', () => {
     expect(() => createTerrainGeometry(grid, { metresPerUnit: 0 })).toThrow()
     expect(() => createTerrainGeometry({ ...grid, rows: 1 })).toThrow()
   })
+  it('rejects node renderers from the object callback before a GLSL surface can draw', () => {
+    const texture = new DataTexture(), surface = createHeightfieldSurface(grid, () => texture)
+    const beforeRender = surface.mesh.onBeforeRender as (renderer: unknown) => void
+    try {
+      expect(() => beforeRender({ isWebGLRenderer: true })).not.toThrow()
+      expect(() => beforeRender({ isWebGPURenderer: true, backend: { isWebGLBackend: true } })).toThrow('Heightfield surface requires Three WebGLRenderer')
+    } finally { surface.dispose(); texture.dispose() }
+  })
   it('rebinds ping-pong textures, supports packed channels and owns disposal', () => {
     let texture = new DataTexture()
     const surface = createHeightfieldSurface(grid, () => texture, { channel: 3, metresPerUnit: 10, rowOrder: 'south-to-north' })

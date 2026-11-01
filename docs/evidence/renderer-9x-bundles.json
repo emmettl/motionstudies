@@ -1,0 +1,276 @@
+{
+  "measuredAt": "2026-11-01T20:41:59.083Z",
+  "scope": "Static JavaScript entry dependency closures from a built lab. Lazy scene imports, CSS, fonts, data and server compression are excluded; not an edition first-view budget or a before/after speed claim.",
+  "entries": [
+    {
+      "entry": "gpu-motion.html",
+      "assets": [
+        {
+          "file": "assets/motion-Bcg4lnyA.js",
+          "bytes": 4818,
+          "gzipBytes": 2163
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "bytes": 670,
+          "gzipBytes": 392
+        },
+        {
+          "file": "assets/three.module-CzvHOW00.js",
+          "bytes": 738106,
+          "gzipBytes": 185176
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "bytes": 726,
+          "gzipBytes": 431
+        },
+        {
+          "file": "assets/motion-lerp-nodes-B7-IIisJ.js",
+          "bytes": 686581,
+          "gzipBytes": 189359
+        },
+        {
+          "file": "assets/motion-lerp-DBOzeUX1.js",
+          "bytes": 972,
+          "gzipBytes": 448
+        },
+        {
+          "file": "assets/preload-helper-CRzLMJPS.js",
+          "bytes": 1534,
+          "gzipBytes": 802
+        }
+      ],
+      "bytes": 1433407,
+      "gzipBytes": 378771
+    },
+    {
+      "entry": "gpu-readiness.html",
+      "assets": [
+        {
+          "file": "assets/readiness-BwchSS6e.js",
+          "bytes": 9643,
+          "gzipBytes": 4180
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "bytes": 670,
+          "gzipBytes": 392
+        },
+        {
+          "file": "assets/three.module-CzvHOW00.js",
+          "bytes": 738106,
+          "gzipBytes": 185176
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "bytes": 726,
+          "gzipBytes": 431
+        },
+        {
+          "file": "assets/motion-lerp-nodes-B7-IIisJ.js",
+          "bytes": 686581,
+          "gzipBytes": 189359
+        },
+        {
+          "file": "assets/light-textures-B7nvR-jV.js",
+          "bytes": 3760,
+          "gzipBytes": 1658
+        },
+        {
+          "file": "assets/scene-light-texture-soh9En57.js",
+          "bytes": 1022,
+          "gzipBytes": 396
+        },
+        {
+          "file": "assets/motion-lerp-DBOzeUX1.js",
+          "bytes": 972,
+          "gzipBytes": 448
+        }
+      ],
+      "bytes": 1441480,
+      "gzipBytes": 382040
+    },
+    {
+      "entry": "gpu-study.html",
+      "assets": [
+        {
+          "file": "assets/study-wQ9V3kmO.js",
+          "bytes": 1463,
+          "gzipBytes": 845
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "bytes": 726,
+          "gzipBytes": 431
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "bytes": 670,
+          "gzipBytes": 392
+        },
+        {
+          "file": "assets/jsx-runtime-C3cWAN_r.js",
+          "bytes": 8243,
+          "gzipBytes": 3129
+        },
+        {
+          "file": "assets/client-BoVNztUg.js",
+          "bytes": 207032,
+          "gzipBytes": 63773
+        },
+        {
+          "file": "assets/scheduler-wLjwYBbT.js",
+          "bytes": 3566,
+          "gzipBytes": 1570
+        },
+        {
+          "file": "assets/three.module-CzvHOW00.js",
+          "bytes": 738106,
+          "gzipBytes": 185176
+        },
+        {
+          "file": "assets/react-three-fiber.esm-CyNgbaU-.js",
+          "bytes": 5510,
+          "gzipBytes": 2204
+        },
+        {
+          "file": "assets/events-e51d7528.esm-DM2R3Iwy.js",
+          "bytes": 169973,
+          "gzipBytes": 53353
+        },
+        {
+          "file": "assets/frame-state-DRpNnyl8.js",
+          "bytes": 271,
+          "gzipBytes": 182
+        },
+        {
+          "file": "assets/light-textures-B7nvR-jV.js",
+          "bytes": 3760,
+          "gzipBytes": 1658
+        },
+        {
+          "file": "assets/scene-light-texture-soh9En57.js",
+          "bytes": 1022,
+          "gzipBytes": 396
+        }
+      ],
+      "bytes": 1140342,
+      "gzipBytes": 313109
+    },
+    {
+      "entry": "host.html",
+      "assets": [
+        {
+          "file": "assets/host-BihCvbcM.js",
+          "bytes": 3159,
+          "gzipBytes": 1546
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "bytes": 726,
+          "gzipBytes": 431
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "bytes": 670,
+          "gzipBytes": 392
+        },
+        {
+          "file": "assets/url-store-uFink488.js",
+          "bytes": 1657,
+          "gzipBytes": 763
+        },
+        {
+          "file": "assets/mobile-picker-Bgoy_kJN.js",
+          "bytes": 16114,
+          "gzipBytes": 6203
+        },
+        {
+          "file": "assets/jsx-runtime-C3cWAN_r.js",
+          "bytes": 8243,
+          "gzipBytes": 3129
+        },
+        {
+          "file": "assets/preload-helper-CRzLMJPS.js",
+          "bytes": 1534,
+          "gzipBytes": 802
+        },
+        {
+          "file": "assets/client-BoVNztUg.js",
+          "bytes": 207032,
+          "gzipBytes": 63773
+        },
+        {
+          "file": "assets/scheduler-wLjwYBbT.js",
+          "bytes": 3566,
+          "gzipBytes": 1570
+        },
+        {
+          "file": "assets/scenario-state-yez1uU38.js",
+          "bytes": 1239,
+          "gzipBytes": 726
+        }
+      ],
+      "bytes": 243940,
+      "gzipBytes": 79335
+    },
+    {
+      "entry": "index.html",
+      "assets": [
+        {
+          "file": "assets/main-DUraG-Qs.js",
+          "bytes": 7709,
+          "gzipBytes": 3018
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "bytes": 726,
+          "gzipBytes": 431
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "bytes": 670,
+          "gzipBytes": 392
+        },
+        {
+          "file": "assets/jsx-runtime-C3cWAN_r.js",
+          "bytes": 8243,
+          "gzipBytes": 3129
+        },
+        {
+          "file": "assets/client-BoVNztUg.js",
+          "bytes": 207032,
+          "gzipBytes": 63773
+        },
+        {
+          "file": "assets/scheduler-wLjwYBbT.js",
+          "bytes": 3566,
+          "gzipBytes": 1570
+        },
+        {
+          "file": "assets/mobile-picker-Bgoy_kJN.js",
+          "bytes": 16114,
+          "gzipBytes": 6203
+        },
+        {
+          "file": "assets/preload-helper-CRzLMJPS.js",
+          "bytes": 1534,
+          "gzipBytes": 802
+        },
+        {
+          "file": "assets/scenario-state-yez1uU38.js",
+          "bytes": 1239,
+          "gzipBytes": 726
+        },
+        {
+          "file": "assets/url-store-uFink488.js",
+          "bytes": 1657,
+          "gzipBytes": 763
+        }
+      ],
+      "bytes": 248490,
+      "gzipBytes": 80807
+    }
+  ]
+}

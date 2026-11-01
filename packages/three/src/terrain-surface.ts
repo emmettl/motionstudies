@@ -1,5 +1,6 @@
 import { BufferGeometry, Float32BufferAttribute, GLSL3, Mesh, PlaneGeometry, ShaderMaterial, Vector2, Vector4, type Texture } from 'three'
 import type { TerrainGrid } from '@motionstudies/core/terrain'
+import { requireWebGLRenderer } from './frame-state.ts'
 
 export interface TerrainTransform {
   metresPerUnit?: number
@@ -97,6 +98,8 @@ export function createHeightfieldSurface(grid: Pick<TerrainGrid, 'rows' | 'colum
     },
   })
   const mesh = new Mesh(geometry, material)
+  // Object callbacks run on both renderer families; a material callback does not.
+  mesh.onBeforeRender = renderer => requireWebGLRenderer(renderer, 'Heightfield surface')
   // The undisplaced plane cannot bound texture heights. Callers can supply bounds later.
   mesh.frustumCulled = false
   return { mesh, update: () => { material.uniforms.uHeight.value = height() }, dispose: () => { geometry.dispose(); material.dispose() } }
