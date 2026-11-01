@@ -29,7 +29,7 @@ import { stationCentre, type ProjectedStop } from './station-picking.ts'
 import { setSceneMotionClock, setScenePickTrain } from './scene-picking.ts'
 import { TrailFrameBudget } from './trail-frame-budget.ts'
 import { updateDirtyGeometry } from './active-geometry.ts'
-import { WebGLStudyCanvas as Canvas, useWebGLStudyFrame as useFrame, useWebGLStudyState as useThree } from './webgl-study.ts'
+import { WebGLStudyCanvas as Canvas, useWebGLStudyFrame as useFrame, useWebGLStudyState as useThree, useRequireWebGL } from './webgl-study.ts'
 import { lazy, Suspense, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { useNetworkScene, type NetworkSceneExtensions, type NetworkCameraDriver } from './scene-extensions.ts'
 import { NetworkSceneProviderContext } from './scene-context.ts'
@@ -474,6 +474,7 @@ function VehicleMotion({
   const frameBudget = useMemo(() => new MotionFrameBudget(), [])
   const cycle = useMemo(() => new MotionCycle(), [])
   const uniforms = useMemo(() => createMotionUniforms(), [])
+  useRequireWebGL('NationalNetworkScene motion interpolation')
   const lerp = useMemo(() => createMotionLerp(uniforms), [uniforms])
   const viewBounds = useMemo(() => createGroundBounds(), [])
   const expandedView = useMemo(() => createGroundBounds(), [])

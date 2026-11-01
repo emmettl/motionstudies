@@ -123,3 +123,8 @@ for [legacy](evidence/renderer-v10-legacy-scene.png),
 [bundle report](evidence/renderer-v10-bundles.json) records static entry dependency
 sizes, with its exclusions explicit. These are shared-candidate results, not
 edition adoption, physical-phone budgets or publication approval.
+The original native-run attachments now supply per-capture provenance and hashes.
+The three raw-Three captures are byte-identical here; they do not exercise Fiber
+itself. Automated comparison results are retained, while the earlier hard-coded
+manual visual-review claim is corrected to pending. This provenance correction
+does not rerun or relabel the historical v10 validation on the stable branch.

@@ -12,3 +12,10 @@ export function frameElapsed(state: { readonly elapsed?: number; readonly clock?
   if (typeof elapsed !== 'number' || !Number.isFinite(elapsed)) throw Error('The frame has no finite elapsed time')
   return elapsed
 }
+
+/** Node renderers (including their WebGL2 backend) cannot execute our GLSL. */
+export function requireWebGLRenderer(renderer: unknown, layer = 'Motion Studies GLSL layer'): void {
+  if (!renderer || (renderer as { isWebGLRenderer?: boolean }).isWebGLRenderer !== true) {
+    throw Error(`${layer} requires Three WebGLRenderer. Use WebGLStudyCanvas (Fiber 9) or the Fiber v10 /legacy Canvas; WebGPURenderer, including its WebGL2 fallback, cannot run this GLSL layer.`)
+  }
+}

@@ -1924,11 +1924,71 @@
     "skipped": 0,
     "unexpected": 0
   },
-  "visualReview": "Final legacy and native WebGPU canvas captures reviewed. Explicit display-space output preserves the faint halo; offscreen, final-canvas tile and halo-annulus energy checks pass.",
+  "visualReview": {
+    "status": "pending",
+    "scope": "Author review and physical-device acceptance are not attested by this recorder."
+  },
   "limits": [
     "Local working-tree edition inventory; deployments and downstream v10 adoption not inspected.",
     "Renderer primitives and composed synthetic fixtures are validated; complete shared-scene node ports remain open.",
     "Desktop WebKit mobile viewports are not physical-phone memory, thermal or sustained-frame evidence.",
     "Frame intervals and first submission are CPU observations; Three counters are not total GPU/browser memory."
-  ]
+  ],
+  "captures": [
+    {
+      "backend": "legacy",
+      "file": "renderer-9x-legacy-scene.png",
+      "sha256": "e571266f34a4e99ed894a80d0cf34854ddc68f5a05c7ec2876ced6c6f5723470",
+      "bytes": 4908,
+      "width": 384,
+      "height": 193,
+      "source": {
+        "nativeReportSha256": "394f5a0df8e016b928354c2d25eb7cc941ce39296e71f8f865de878d861f560e",
+        "case": "desktop-chromium:renderer-readiness.spec.ts:legacy: glyph size, picking, camera, resize, backward seek and recreation",
+        "attachment": "legacy-scene",
+        "pairedReportSha256": "7b86e5cfe19463176d82ea6671c354532a63d01ccb103695acea03152a3d483d",
+        "generation": 5
+      }
+    },
+    {
+      "backend": "webgl2",
+      "file": "renderer-9x-webgl2-scene.png",
+      "sha256": "e571266f34a4e99ed894a80d0cf34854ddc68f5a05c7ec2876ced6c6f5723470",
+      "bytes": 4908,
+      "width": 384,
+      "height": 193,
+      "source": {
+        "nativeReportSha256": "394f5a0df8e016b928354c2d25eb7cc941ce39296e71f8f865de878d861f560e",
+        "case": "desktop-chromium:renderer-readiness.spec.ts:webgl2: glyph size, picking, camera, resize, backward seek and recreation",
+        "attachment": "webgl2-scene",
+        "pairedReportSha256": "655755ed486102af350b931b6d9e2cf2a31db2c3300071d40435f22a825cb11c",
+        "generation": 5
+      }
+    },
+    {
+      "backend": "webgpu",
+      "file": "renderer-9x-webgpu-scene.png",
+      "sha256": "e571266f34a4e99ed894a80d0cf34854ddc68f5a05c7ec2876ced6c6f5723470",
+      "bytes": 4908,
+      "width": 384,
+      "height": 193,
+      "source": {
+        "nativeReportSha256": "394f5a0df8e016b928354c2d25eb7cc941ce39296e71f8f865de878d861f560e",
+        "case": "desktop-chromium:renderer-readiness.spec.ts:webgpu: glyph size, picking, camera, resize, backward seek and recreation",
+        "attachment": "webgpu-scene",
+        "pairedReportSha256": "21f9136c42fd2b4dcd9e21284e14a2683625712a1a8f8aff7b12108fc17b968e",
+        "generation": 5
+      }
+    }
+  ],
+  "duplicateGroups": [
+    [
+      "legacy",
+      "webgl2",
+      "webgpu"
+    ]
+  ],
+  "comparison": "Automated footprint, tile and halo-energy gates; independently sourced captures may be pixel-identical. Hashes identify artifacts, not renderer identity.",
+  "captureProvenanceAddedAt": "2026-11-01T21:11:58.793Z",
+  "captureProvenanceScope": "Extracted from the original native-run attachments; original verification time, inputs and runtime results retained."
 }

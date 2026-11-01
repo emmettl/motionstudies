@@ -31,6 +31,11 @@ retains the release-specific experiment.
   their own renderer; the shared network/hub/station scenes retain WebGL.
 - Lightweight opt-in renderer counters replace the r3f-perf/Drei dependency
   chain on 9.x already. Spector capture and node diagnostics retain their scopes.
+- `useRequireWebGL` rejects node renderers in shared motion and extension layers,
+  including node WebGL2 fallback. Raw heightfield meshes check the renderer in
+  their object callback, which both Three renderer families execute. Edition-owned
+  GLSL layers can use the public hook or `requireWebGLRenderer`; a public Canvas
+  alias alone cannot protect a layer mounted under an edition's own Canvas.
 - The frozen packed-consumer harness, isolated loader-server settings, renderer
   inventory and bundle/evidence tools also land in this preparation candidate.
 
@@ -78,6 +83,11 @@ and physical-phone memory/frame/thermal checks remain adoption gates in the
 `npm run typecheck` includes `check:renderer-compat`, an AST check that keeps
 version-sensitive state access, Fiber imports and ordered scheduling inside their
 named boundaries. It also verifies the stable dependency pins and peer range.
+It follows hook-produced state through lexical aliases, selectors, bracket reads
+and destructuring in shared source, lab source and edition fixtures. It is a
+static backstop, not a whole-program data-flow proof. A real Fiber-root test mounts
+camera and default pick callbacks in reverse registration order and verifies
+camera-first execution over successive frames; a v10 priority reversal fails it.
 
 ```sh
 npm run typecheck
@@ -92,6 +102,10 @@ npm run readiness:native
 
 The current candidate results are in
 [evidence/renderer-9x-validation.json](evidence/renderer-9x-validation.json).
+Its input hashes identify the initial 9.x candidate. The later review fixes add
+runtime WebGL guards, real-scheduler regression tests, broader static checks and
+capture provenance; the PR's fresh CI checks validate that updated head. Original
+runtime measurements and their verification time are retained as dated evidence.
 Earlier `renderer-v10-*` evidence belongs to the independently tested v10
 prototype and is retained as historical evidence, not relabelled as a 9.x pass.
 
@@ -108,3 +122,12 @@ Final fixture captures are retained for
 [node WebGL 2](evidence/renderer-9x-webgl2-scene.png) and
 [native WebGPU](evidence/renderer-9x-webgpu-scene.png), with
 [static bundle observations](evidence/renderer-9x-bundles.json).
+The recorder extracts each PNG from its own test's paired backend report and
+records the attachment, case identity, native-report and PNG SHA-256 hashes.
+These unlit, antialias-disabled raw-Three fixtures produce byte-identical final
+captures in this run. The original report attachments confirm that equality; it
+does not imply a copied capture. The raw fixture uses the same Three version on
+both branches and does not render through Fiber. Renderer identity is verified
+by the paired runtime report, not by requiring different image hashes. Automated
+pixel/energy gates are recorded separately from author visual review, which
+remains pending; the recorder no longer asserts a completed manual review.
