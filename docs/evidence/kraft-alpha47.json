@@ -54,5 +54,8 @@
     "recorderRegistryTests": 192,
     "firstDaySourceRows": 13152,
     "offlineReplay": "byte-identical"
-  }
+  },
+  "scaffoldSourceCommit": "6352613ae10fb3829dcb19610b2fdc8bffb232bd",
+  "scaffoldHostedChecks": "https://github.com/emmettl/kraft/actions/runs/41309655333",
+  "scaffoldBrowserChecks": 12
 }
