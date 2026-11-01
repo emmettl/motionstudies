@@ -51,7 +51,9 @@ try {
   }
   // Keep the browser runner and its fixtures in the same frozen consumer as the app.
   // A long run must not pick up newly edited root tests after its lab was built.
-  dependencies['@playwright/test'] = JSON.parse(await readFile(resolve('node_modules/@playwright/test/package.json'), 'utf8')).version
+  for (const tool of ['@playwright/test', '@axe-core/playwright']) {
+    dependencies[tool] = JSON.parse(await readFile(resolve('node_modules', tool, 'package.json'), 'utf8')).version
+  }
   const browserConfig = (await readFile(resolve('playwright.lab.config.ts'), 'utf8'))
     .replace("testDir: './lab/e2e'", "testDir: './e2e'")
   await writeFile(join(consumer, 'playwright.packed.config.ts'), browserConfig)
