@@ -92,8 +92,8 @@
       "sourceCommit": "94fd7a561267eab5da98070fe2d5306db611a0be",
       "applicationCodeCommit": "ab64285",
       "hostedWorkflow": "https://github.com/emmettl/allchange/actions/runs/41511103154",
-      "hostedConclusion": "in_progress",
-      "scope": "Adoption PR; not merged or deployed. Physical-device and author visual acceptance remain open.",
+      "hostedConclusion": "success",
+      "scope": "Adoption PR, all hosted checks green; not merged or deployed. Physical-device and author acceptance remain open.",
       "packageLockSha256": "f80d09b8743212d337dc09c17575b9fd6c5685109721f947452453c5729e6b56",
       "fixtureTree": "8b9256578cc1c5cc30838b39a3b4c95dfa918382",
       "stagedDataFilesUnchanged": 1742,
@@ -128,7 +128,11 @@
           "busChunkGzip": 563200,
           "busDayTotalGzip": 8192000
         }
-      }
+      },
+      "hostedBrowserPassed": 62,
+      "hostedBrowserSkipped": 1,
+      "hostedBrowserFlaky": 0,
+      "hostedScope": "Complete production suite: Chromium shards 16+14 passed, one intentional desktop skip; native macOS phone WebKit 31 functional +1 cadence passed."
     }
   ]
 }

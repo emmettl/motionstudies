@@ -36,7 +36,7 @@ behind; a renderer-motivated update can also contain contract and UI changes.
 | --- | --- | --- |
 | Umlauf | [PR #2](https://github.com/emmettl/umlauf/pull/2), merged `4b4fe93`, deployed | Main CI: 20 unit / 68 browser checks; all 16 files on both hosts equal the successful CI artifact; eight live Chromium/WebKit desktop/phone smoke checks pass. |
 | Correspondances | [PR #1](https://github.com/emmettl/correspondances/pull/1), `fabb766`, hosted validation in progress | Local: 29 unit / 240 production browser passes, two existing desktop skips, no retries. Exact registry pins and all 211 staged data hashes retained. Opening +324 gzip bytes, under the unchanged gate. |
-| All Change | [PR #3](https://github.com/emmettl/allchange/pull/3), `94fd7a5`, hosted validation in progress | Local: 277 unit tests, worker checks/dry runs, strict WebKit cadence and focused renderer cases. A loading-readiness wait fixes an airport test race; six repeated airport cases pass. All 1,742 staged data hashes retained; opening JavaScript −215 gzip bytes, under the unchanged gate. |
+| All Change | [PR #3](https://github.com/emmettl/allchange/pull/3), `94fd7a5`, [hosted checks green](https://github.com/emmettl/allchange/actions/runs/41511103154) | Hosted: 277 unit / 62 browser passes, one existing desktop skip, worker checks/dry runs and native macOS WebKit cadence. A loading-readiness wait fixes an airport test race; six repeated airport cases pass. All 1,742 staged data hashes retained; opening JavaScript −215 gzip bytes, under the unchanged gate. |
 
 Both new PRs use the public WebGL frame/state boundaries and retain Fiber 9.8.2,
 WebGL, authored materials and independent study clocks. Their source branches do
