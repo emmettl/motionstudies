@@ -31,8 +31,10 @@ and [live browser evidence](evidence/umlauf-alpha50-deployment/browser.json).
 
 [Correspondances #1](https://github.com/emmettl/correspondances/pull/1) and
 [All Change #3](https://github.com/emmettl/allchange/pull/3) are isolated alpha.50
-adoption PRs with hosted validation in progress.
-They retain Fiber 9.8.2 and WebGL, preserve their fixture trees and all 211 / 1,742
+adoption PRs. All Change has green hosted checks (277 unit / 62 browser passes,
+one existing desktop skip). Correspondances passes all 29 unit / 240 production
+browser cases locally, with two existing desktop skips; its hosted browser run
+is still in progress. They retain Fiber 9.8.2 and WebGL, preserve their fixture trees and all 211 / 1,742
 staged data hashes, and adapt edition-owned hooks through the published boundaries.
 Their PR and validation status are tracked in the [adoption plan](RENDERER-ADOPTION.md).
 This does not change either edition's served revision.
