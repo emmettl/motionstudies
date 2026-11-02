@@ -1,0 +1,219 @@
+{
+  "verifiedAt": "2026-11-02T19:07:03.555Z",
+  "release": {
+    "repository": "emmettl/umlauf",
+    "run_id": 41505708023,
+    "commit": "4b4fe93042fa69d604a2de8420d1654bdb6eaf12",
+    "workflow_url": "https://github.com/emmettl/umlauf/actions/runs/41505708023",
+    "source_files": 16,
+    "source_bytes": 3237590,
+    "content_sha256": "eceea814834200cb20a90719ede82935f1b70dfec0dfe0e00e944cb3db60f3dd"
+  },
+  "sourceArtifactContentSha256": "eceea814834200cb20a90719ede82935f1b70dfec0dfe0e00e944cb3db60f3dd",
+  "hosts": [
+    {
+      "base": "https://motionstudies.app/umlauf/",
+      "allFilesMatch": true,
+      "files": [
+        {
+          "file": "assets/AirTrafficLayer-qa3r2-k3.js",
+          "sha256": "5a5965869aa77c0f0fff9eada899061dcabfa419c322f304b423cd3428fe218b",
+          "bytes": 11668,
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        {
+          "file": "assets/ButtonTooltips-XI6vCloG.js",
+          "sha256": "999fef7d653e8913d373655bc714b640b2e852087fa0d3838c004696d14158c8",
+          "bytes": 3678,
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        {
+          "file": "assets/OstkreuzScene-DQcqrY2r.js",
+          "sha256": "aa685e7a80520e8f2bbd68554cd2dceb1a63193c63bf440cf0d2de1eeed8160d",
+          "bytes": 12508,
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        {
+          "file": "assets/RoadTrafficLayer-CZ9Vmsou.js",
+          "sha256": "2cfb9cdae926217c8f9e1d3eb1151dd515de1c70cec56cba3e8febfd53d81dc4",
+          "bytes": 11146,
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        {
+          "file": "assets/index-CDGQNE7j.css",
+          "sha256": "b25d4d39c030c40c5ec6c61afb6d60bf50a458fb764659e62522cf118eea4ad9",
+          "bytes": 37066,
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        {
+          "file": "assets/index-IgG7Be7o.js",
+          "sha256": "f0e551eaff8da0921439a9c3865782f862dbfae3b5e7411125b7e09fbb5639c1",
+          "bytes": 1258081,
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        {
+          "file": "assets/jsx-runtime-NdI66nBG.js",
+          "sha256": "688c0488e520a25cfd11429fbef4fe37e04501912b41ba3db96671f9b79bfc7c",
+          "bytes": 424,
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        {
+          "file": "assets/react-COMFa4n5.js",
+          "sha256": "37e1a43c8b2da02d2b367c01cea4c331b095db6a6a4d9de584a498da20aa9567",
+          "bytes": 8529,
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        {
+          "file": "data/berlin-morning.json",
+          "sha256": "d7952463be860883043bce038f9d246f14b8e26c4f3c46ee1ee6a4239b7a59e8",
+          "bytes": 836314,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "file": "data/berlin-water.json",
+          "sha256": "d223dd4400bf7e4eabbb73fa5276085a2224d5ed355a82fc5231010df8cc9123",
+          "bytes": 171580,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "file": "data/lineage.json",
+          "sha256": "53cb9e0bf3ef70685d39bd6574ec587fba2e2581d54dbb7db2ad1fd458295ca6",
+          "bytes": 164147,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "file": "data/ostkreuz-bridge.json",
+          "sha256": "498c89f83dd4bf55094d582736a0fec9b50c3dca2a6862c0321c27d1eecdea3c",
+          "bytes": 2605,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "file": "data/ostkreuz.json",
+          "sha256": "a96e20cd5bd3a3a22a07f1a399bfcee326a5cd061981bf98126b2ccfa0b2e73e",
+          "bytes": 310956,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "file": "data/ring-layout.json",
+          "sha256": "d46933ee0caed37861b398a56b621b00346f623fefcc499bbaf31b7fbf63b480",
+          "bytes": 407300,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "file": "favicon.svg",
+          "sha256": "ee9d6bbb7fd8880bd12bd9dd75d5b74e36f26d8482c2d040edce759f152de237",
+          "bytes": 325,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        },
+        {
+          "file": "index.html",
+          "sha256": "41f8a0b8cfc3fc10157d37dccbccc11db5bdf51866053e1b15c9639f04f5b5a5",
+          "bytes": 1263,
+          "cacheControl": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "base": "https://emmettl.github.io/umlauf/",
+      "allFilesMatch": true,
+      "files": [
+        {
+          "file": "assets/AirTrafficLayer-qa3r2-k3.js",
+          "sha256": "5a5965869aa77c0f0fff9eada899061dcabfa419c322f304b423cd3428fe218b",
+          "bytes": 11668,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "assets/ButtonTooltips-XI6vCloG.js",
+          "sha256": "999fef7d653e8913d373655bc714b640b2e852087fa0d3838c004696d14158c8",
+          "bytes": 3678,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "assets/OstkreuzScene-DQcqrY2r.js",
+          "sha256": "aa685e7a80520e8f2bbd68554cd2dceb1a63193c63bf440cf0d2de1eeed8160d",
+          "bytes": 12508,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "assets/RoadTrafficLayer-CZ9Vmsou.js",
+          "sha256": "2cfb9cdae926217c8f9e1d3eb1151dd515de1c70cec56cba3e8febfd53d81dc4",
+          "bytes": 11146,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "assets/index-CDGQNE7j.css",
+          "sha256": "b25d4d39c030c40c5ec6c61afb6d60bf50a458fb764659e62522cf118eea4ad9",
+          "bytes": 37066,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "assets/index-IgG7Be7o.js",
+          "sha256": "f0e551eaff8da0921439a9c3865782f862dbfae3b5e7411125b7e09fbb5639c1",
+          "bytes": 1258081,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "assets/jsx-runtime-NdI66nBG.js",
+          "sha256": "688c0488e520a25cfd11429fbef4fe37e04501912b41ba3db96671f9b79bfc7c",
+          "bytes": 424,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "assets/react-COMFa4n5.js",
+          "sha256": "37e1a43c8b2da02d2b367c01cea4c331b095db6a6a4d9de584a498da20aa9567",
+          "bytes": 8529,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "data/berlin-morning.json",
+          "sha256": "d7952463be860883043bce038f9d246f14b8e26c4f3c46ee1ee6a4239b7a59e8",
+          "bytes": 836314,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "data/berlin-water.json",
+          "sha256": "d223dd4400bf7e4eabbb73fa5276085a2224d5ed355a82fc5231010df8cc9123",
+          "bytes": 171580,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "data/lineage.json",
+          "sha256": "53cb9e0bf3ef70685d39bd6574ec587fba2e2581d54dbb7db2ad1fd458295ca6",
+          "bytes": 164147,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "data/ostkreuz-bridge.json",
+          "sha256": "498c89f83dd4bf55094d582736a0fec9b50c3dca2a6862c0321c27d1eecdea3c",
+          "bytes": 2605,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "data/ostkreuz.json",
+          "sha256": "a96e20cd5bd3a3a22a07f1a399bfcee326a5cd061981bf98126b2ccfa0b2e73e",
+          "bytes": 310956,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "data/ring-layout.json",
+          "sha256": "d46933ee0caed37861b398a56b621b00346f623fefcc499bbaf31b7fbf63b480",
+          "bytes": 407300,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "favicon.svg",
+          "sha256": "ee9d6bbb7fd8880bd12bd9dd75d5b74e36f26d8482c2d040edce759f152de237",
+          "bytes": 325,
+          "cacheControl": "max-age=600"
+        },
+        {
+          "file": "index.html",
+          "sha256": "41f8a0b8cfc3fc10157d37dccbccc11db5bdf51866053e1b15c9639f04f5b5a5",
+          "bytes": 1263,
+          "cacheControl": "max-age=600"
+        }
+      ]
+    }
+  ]
+}

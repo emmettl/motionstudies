@@ -1,10 +1,14 @@
 # Renderer preparation on stable Fiber 9
 
+The preparation in [PR #60](https://github.com/emmettl/motionstudies/pull/60)
+has merged and is published in [coordinated alpha.50](RENDERER-ALPHA-50.md).
+The candidate evidence below retains its original source identities.
+
 `codex/renderer-9x-preparation` keeps the workspace and lab on exact
 **@react-three/fiber 9.8.2**, React 19.3.1 and Three 0.186.1. The shared Three
 package advertises the validated `^9.8.2` peer range. This is the preparation
-candidate intended to land before Fiber 10; it is not an npm publication or an
-edition dependency rollout. The separate [v10 prototype](https://github.com/emmettl/motionstudies/pull/59)
+candidate developed before Fiber 10; its original source audit is separate from
+the later npm publication and edition dependency rollout. The separate [v10 prototype](https://github.com/emmettl/motionstudies/pull/59)
 retains the release-specific experiment.
 
 ## Changes available on 9.x

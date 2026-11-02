@@ -1,0 +1,110 @@
+{
+  "verifiedAt": "2026-11-02T19:07:59.014Z",
+  "scope": "Live smoke: reduced motion, nonzero real journeys, paused seek, crossing/diagram controls, lazy SVG station teardown and return with clock preserved. Desktop/phone emulation; not physical-device acceptance.",
+  "results": [
+    {
+      "base": "https://motionstudies.app/umlauf/",
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "layout": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "passed": true,
+      "screenshot": "cloudflare-chromium-desktop.png",
+      "pageErrors": []
+    },
+    {
+      "base": "https://motionstudies.app/umlauf/",
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "layout": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true,
+      "screenshot": "cloudflare-chromium-phone.png",
+      "pageErrors": []
+    },
+    {
+      "base": "https://emmettl.github.io/umlauf/",
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "layout": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "passed": true,
+      "screenshot": "pages-chromium-desktop.png",
+      "pageErrors": []
+    },
+    {
+      "base": "https://emmettl.github.io/umlauf/",
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "layout": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true,
+      "screenshot": "pages-chromium-phone.png",
+      "pageErrors": []
+    },
+    {
+      "base": "https://motionstudies.app/umlauf/",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "layout": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "passed": true,
+      "screenshot": "cloudflare-webkit-desktop.png",
+      "pageErrors": []
+    },
+    {
+      "base": "https://motionstudies.app/umlauf/",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "layout": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true,
+      "screenshot": "cloudflare-webkit-phone.png",
+      "pageErrors": []
+    },
+    {
+      "base": "https://emmettl.github.io/umlauf/",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "layout": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "passed": true,
+      "screenshot": "pages-webkit-desktop.png",
+      "pageErrors": []
+    },
+    {
+      "base": "https://emmettl.github.io/umlauf/",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "layout": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true,
+      "screenshot": "pages-webkit-phone.png",
+      "pageErrors": []
+    }
+  ]
+}

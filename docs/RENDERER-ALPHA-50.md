@@ -34,8 +34,15 @@ opening budget is 580,478 / 588,800 gzip bytes, 186 bytes below the comparably
 accounted alpha.43 baseline. Local checks passed 20 source/model tests and 68
 Chromium/WebKit browser cases against both development and production servers.
 The adoption PR retains fresh evidence and runs hosted CI against the production
-build. [Umlauf PR #2](https://github.com/emmettl/umlauf/pull/2) is open with production
-checks in progress. The source branch is not a deployed-revision claim.
+build. [Umlauf PR #2](https://github.com/emmettl/umlauf/pull/2) merged at `4b4fe93` after
+both PR checks passed. [Pages run 41505708023](https://github.com/emmettl/umlauf/actions/runs/41505708023)
+passed 20 unit and 68 production browser checks and published successfully;
+[Cloudflare run 41506812525](https://github.com/emmettl/umlauf/actions/runs/41506812525)
+published the same artifact. Live metadata identifies that merge. All 16 files on
+both hosts match the CI artifact byte-for-byte, and all eight live Chromium/WebKit
+desktop/phone smoke cases pass. The [artifact proof](evidence/umlauf-alpha50-deployment/artifact.json)
+and [live browser proof](evidence/umlauf-alpha50-deployment/browser.json) retain
+that served-revision evidence. Physical-device and author acceptance remain open.
 
 [Machine-readable release evidence](evidence/renderer-alpha50-release.json)
 records fresh registry/archive equality, tag verification and the pilot source.

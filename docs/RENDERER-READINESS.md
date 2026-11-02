@@ -1,6 +1,7 @@
 # Renderer readiness register
 
-The current release-preparation path is [stable Fiber 9.x](RENDERER-9X-PREPARATION.md).
+The stable Fiber 9 APIs are published in [coordinated alpha.50](RENDERER-ALPHA-50.md).
+Their contract is documented in [stable Fiber 9.x preparation](RENDERER-9X-PREPARATION.md).
 The [adoption plan](RENDERER-ADOPTION.md) adds a dated remote-manifest snapshot
 and recommended edition order without changing this local-checkout inventory.
 The separate v10 prototype and its validation below are retained as historical evidence.
@@ -8,15 +9,43 @@ The separate v10 prototype and its validation below are retained as historical e
 Inspected 1 November 2026. This register separates **source inventory**, **R3F v10
 compatibility**, **native WebGPU verification** and **deployed backend**. A clean
 inventory is not a runtime pass. Local edition checkouts can be behind their
-remote repositories or contain uncommitted work; no edition was updated here.
+remote repositories or contain uncommitted work; no edition was updated as part
+of that original scan.
 
 [Machine-readable inventory](evidence/renderer-readiness-2026-11-01.json) records
 full local HEADs, package pins, dirty-entry counts, public renderer imports and
 source locations for audit prompts, plus source/manifest SHA-256 fingerprints. It is an AST/module scan plus targeted source
 inspection, not an exhaustive material or dependency compatibility proof.
-Deployment state was not inspected. All edition v10/native acceptance gates below
+Deployment state was not inspected for that inventory. All edition v10/native acceptance gates below
 remain open; Schwall's existing preview evidence is recorded separately in
 [WebGPU support](WEBGPU-SUPPORT.md).
+
+## Stable Fiber 9 adoption · 2 November 2026
+
+Umlauf has adopted alpha.50 in [PR #2](https://github.com/emmettl/umlauf/pull/2),
+merged at `4b4fe93`. Its main build passes 20 unit and 68 production browser
+checks. Pages and Cloudflare publish the same artifact: all 16 served files on
+both hosts match that artifact byte-for-byte, and eight live desktop/phone
+Chromium/WebKit smoke checks pass. See the [served-revision proof](evidence/umlauf-alpha50-deployment/artifact.json)
+and [live browser evidence](evidence/umlauf-alpha50-deployment/browser.json).
+
+[Correspondances #1](https://github.com/emmettl/correspondances/pull/1) and
+[All Change #3](https://github.com/emmettl/allchange/pull/3) are isolated alpha.50
+adoption PRs with hosted validation in progress.
+They retain Fiber 9.8.2 and WebGL, preserve their fixture trees and all 211 / 1,742
+staged data hashes, and adapt edition-owned hooks through the published boundaries.
+Their PR and validation status are tracked in the [adoption plan](RENDERER-ADOPTION.md).
+This does not change either edition's served revision.
+
+Existing edition tests that extract functions from compiled shared package files
+remain a compatibility coupling. Correspondances needed new real frame-helper
+bindings and a camera registration adapter in that harness; its original assertions
+remain intact. Prefer public-contract or real-browser coverage when replacing
+those tests. No production source imports sibling repositories or private files.
+
+Physical-device memory/thermal, leak/recovery, author visual review and all v10/native
+WebGPU adoption gates remain separate. The local inventory below is the original
+1 November snapshot, not a new rollout or deployment inventory.
 
 ## Edition inventory
 

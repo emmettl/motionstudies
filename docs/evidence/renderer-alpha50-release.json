@@ -59,7 +59,76 @@
       "edition": "Umlauf",
       "pullRequest": "https://github.com/emmettl/umlauf/pull/2",
       "sourceCommit": "7c5f4b2808741638b1a51cd041106776a17afb7b",
-      "scope": "Adoption PR; hosted production checks pending; not a deployed revision."
+      "scope": "Merged and deployed; all 16 files byte-identical to the successful CI artifact on both hosts. Eight live Chromium/WebKit desktop/phone smoke checks passed. Physical-device and author visual acceptance remain open.",
+      "mergeCommit": "4b4fe93042fa69d604a2de8420d1654bdb6eaf12",
+      "pagesWorkflow": "https://github.com/emmettl/umlauf/actions/runs/41505708023",
+      "cloudflareWorkflow": "https://github.com/emmettl/umlauf/actions/runs/41506812525",
+      "deploymentEvidence": "umlauf-alpha50-deployment/artifact.json",
+      "liveBrowserEvidence": "umlauf-alpha50-deployment/browser.json"
+    },
+    {
+      "edition": "correspondances",
+      "pullRequest": "https://github.com/emmettl/correspondances/pull/1",
+      "sourceCommit": "fabb766cbc4a4ccd802cfd27092af818d7b5a6e8",
+      "applicationCodeCommit": "4a1cd87",
+      "hostedWorkflow": "https://github.com/emmettl/correspondances/actions/runs/41509850394",
+      "hostedConclusion": "in_progress",
+      "scope": "Adoption PR; not merged or deployed. Physical-device and author visual acceptance remain open.",
+      "packageLockSha256": "0f937bd61f55adb66ede2b8a794652a532943cc29d9cd4e002a52065dd4b289c",
+      "fixtureTree": "2268289372238d41c0678e6d4f22a5d0f143774a",
+      "stagedDataFilesUnchanged": 211,
+      "unitTestsPassed": 29,
+      "budget": {
+        "javaScriptGzip": 365503,
+        "cssGzip": 9236,
+        "baseViewGzip": 449705,
+        "firstViewGzip": 644596,
+        "limitGzipBytes": 645120
+      }
+    },
+    {
+      "edition": "allchange",
+      "pullRequest": "https://github.com/emmettl/allchange/pull/3",
+      "sourceCommit": "94fd7a561267eab5da98070fe2d5306db611a0be",
+      "applicationCodeCommit": "ab64285",
+      "hostedWorkflow": "https://github.com/emmettl/allchange/actions/runs/41511103154",
+      "hostedConclusion": "in_progress",
+      "scope": "Adoption PR; not merged or deployed. Physical-device and author visual acceptance remain open.",
+      "packageLockSha256": "f80d09b8743212d337dc09c17575b9fd6c5685109721f947452453c5729e6b56",
+      "fixtureTree": "8b9256578cc1c5cc30838b39a3b4c95dfa918382",
+      "stagedDataFilesUnchanged": 1742,
+      "unitTestsPassed": 277,
+      "budget": {
+        "transfer": {
+          "javaScript": 374417,
+          "css": 8701,
+          "total": 592318
+        },
+        "limits": {
+          "raw": 1638400,
+          "gzip": 266240,
+          "javaScript": 374784,
+          "css": 14336,
+          "total": 665600,
+          "layoutRaw": 92160,
+          "layoutGzip": 16384,
+          "dayManifestGzip": 40960,
+          "dayChunkGzip": 194560,
+          "dayTotalGzip": 1638400,
+          "airMorningGzip": 225280,
+          "airManifestGzip": 138240,
+          "airChunkGzip": 148480,
+          "airDayTotalGzip": 2355200,
+          "roadTopologyGzip": 66560,
+          "roadManifestGzip": 8192,
+          "roadChunkGzip": 51200,
+          "roadDayTotalGzip": 256000,
+          "surfaceGzip": 32768,
+          "busManifestGzip": 2355200,
+          "busChunkGzip": 563200,
+          "busDayTotalGzip": 8192000
+        }
+      }
     }
   ]
 }

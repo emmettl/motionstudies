@@ -82,7 +82,7 @@ node-fluid preview is the first adopter; its numerical model stays in Schwall.
 
 ## Readiness primitives and composed scene
 
-The **unpublished stable `codex/renderer-9x-preparation` candidate** adds public
+The **published stable alpha.50 release** adds public
 building blocks for preserving the luminous family on a node renderer while
 retaining Fiber 9.8.2. See [the stable preparation plan](RENDERER-9X-PREPARATION.md). Alpha.49's published adapters
 and evidence above remain historical release facts. See the
@@ -179,7 +179,7 @@ and line fixture remains an independent check of the regular vertex adapter.
 `gpu-study.html` exercises the **stable public WebGL study Canvas** with a real
 renderer and finite elapsed seconds/delta. The default v10 Canvas probe remains
 on the separate v10 prototype. Ordinary national/hub/station/terrain compositions
-use the stable WebGL boundary on this candidate.
+use the stable WebGL boundary on this release.
 
 ```sh
 npm run typecheck
