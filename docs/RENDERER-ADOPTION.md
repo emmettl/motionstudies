@@ -3,8 +3,8 @@
 Inspected 1 November 2026. This plan follows the
 [stable Fiber 9 preparation](RENDERER-9X-PREPARATION.md) in
 [PR #60](https://github.com/emmettl/motionstudies/pull/60). Its new public exports
-must be published before any edition can consume them. All edition acceptance
-gates remain open; this document records a proposed order, not completed rollout.
+are now published in coordinated alpha.50. Umlauf is the first pilot; edition
+acceptance remains recorded separately from package publication.
 
 The review follow-up at shared source `69aa715` passes 557 unit and 16 hosting
 tests, typechecking, lint, architecture and build. Fresh runs pass 71 affected
@@ -18,16 +18,11 @@ the original candidate reports and does not attest edition/device adoption.
 
 ## Release prerequisite
 
-The workspace still carries coordinated version `0.1.0-alpha.49`. A read-only npm
-registry check today confirms all four packages' `next` tags remain alpha.49
-(`latest` remains alpha.0). Existing
-registry archives cannot gain the new APIs through a merge. Prepare the next
-available coordinated version of all four packages, including internal pins,
-root/lab dependencies, lockfile and release workflow defaults, following
-[the release process](RELEASING.md). Check the registry before choosing the version.
-Run the packed-package, release-dry-run and loader gates for that exact release
-candidate. Publication is a separate authorized action; merging the preparation
-does not publish npm packages.
+The release prerequisite is complete: all four alpha.50 packages were published
+through [trusted run 41356252074](https://github.com/emmettl/motionstudies/actions/runs/41356252074)
+from source `6385364`. Registry bytes and the tested artifacts match. See the
+[release record](RENDERER-ALPHA-50.md). The initial alpha.49 inspection below is
+historical; the edition pin snapshot remains the pre-adoption baseline.
 
 Edition PRs must consume exact published versions through public exports. Keep
 Fiber on the validated `9.8.2` baseline. The initial package update should retain

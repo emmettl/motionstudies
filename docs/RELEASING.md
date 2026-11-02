@@ -4,22 +4,16 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.49` under `next`, published
-from `e26d26f` through [trusted run 41337297853](https://github.com/emmettl/motionstudies/actions/runs/41337297853).
+The latest verified coordinated release is `0.1.0-alpha.50` under `next`, published
+from `63853645636cd706303c39ac614c16080e82d3d4` through
+[trusted run 41356252074](https://github.com/emmettl/motionstudies/actions/runs/41356252074).
 All four registry archives match the tested CI tarballs byte-for-byte, and all
-four `next` tags were verified. It adds optional windowed motion-LERP node
-materials and backend-aware node-renderer diagnostics; existing WebGL scenes
-retain their current backend. Schwall's fluid branch adopts the release through
-a clean registry install. See [shared WebGPU adapters](WEBGPU-SUPPORT.md) and the
-[release evidence](evidence/webgpu-alpha49-release.json).
+four `next` tags were verified. It publishes the stable Fiber 9 renderer boundaries,
+guards and readiness primitives. Existing scenes retain WebGL and Fiber 9.8.2.
+See [the release and adoption record](RENDERER-ALPHA-50.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
-The next prepared coordinated candidate is
-[`0.1.0-alpha.50`](RENDERER-ALPHA-50.md), containing the stable Fiber 9 renderer
-boundaries, guards and readiness primitives merged in #60. Its publication is
-authorized separately from the previous release; record trusted-workflow and
-registry verification before identifying it as the latest verified release.
 
 ## Completed bootstrap
 

@@ -1,0 +1,65 @@
+{
+  "verifiedAt": "2026-11-02T18:46:57.190Z",
+  "sourceCommit": "63853645636cd706303c39ac614c16080e82d3d4",
+  "version": "0.1.0-alpha.50",
+  "publicationWorkflow": "https://github.com/emmettl/motionstudies/actions/runs/41356252074",
+  "publicationConclusion": "success",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.50",
+      "file": "motionstudies-core-0.1.0-alpha.50.tgz",
+      "integrity": "sha512-+sIHC4W2dnY0ghxax+fChpbX3DClS5LS/n3NW4WuS/Z+9lgVvDF/JTMZxMv/nLPv6No8Jn2eqD/PHAM9n8L1GA==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.50.tgz",
+      "bytes": 83146,
+      "registryMatchesTestedArchive": true,
+      "nextTag": "0.1.0-alpha.50"
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.50",
+      "file": "motionstudies-data-0.1.0-alpha.50.tgz",
+      "integrity": "sha512-DS3YwVKus1a06Uv2fg3+Qr7IWjjnjGE/TPTgt2tAfiJQvGmiCQltvsQsEr6MquSFsTVpamq4RbxbK4bTyznRpA==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.50.tgz",
+      "bytes": 87096,
+      "registryMatchesTestedArchive": true,
+      "nextTag": "0.1.0-alpha.50"
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.50",
+      "file": "motionstudies-three-0.1.0-alpha.50.tgz",
+      "integrity": "sha512-dRXuZHmknmNgumA17yUM7Ds2nQrG+O95sAC04z6ec22w8NZ0CyE/cf1S0ThKZku+MzlmMJosEn3OGN5NByGMFQ==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.50.tgz",
+      "bytes": 127927,
+      "registryMatchesTestedArchive": true,
+      "nextTag": "0.1.0-alpha.50"
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.50",
+      "file": "motionstudies-web-0.1.0-alpha.50.tgz",
+      "integrity": "sha512-G3XeUKErzOk7MuO2kEL/99cT2pvjhLPDLOKJrb9F/cGHmdrAIAnGhSRFCC8A8PpRYtadtUz7drzaYoemT4lV0w==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.50.tgz",
+      "bytes": 334312,
+      "registryMatchesTestedArchive": true,
+      "nextTag": "0.1.0-alpha.50"
+    }
+  ],
+  "validation": {
+    "unitPassed": 557,
+    "hostingPassed": 16,
+    "packedBrowserPassed": 296,
+    "packedBrowserSkipped": 2,
+    "loaderPassed": 40,
+    "strictNativePassed": 8
+  },
+  "consumers": [
+    {
+      "edition": "Umlauf",
+      "pullRequest": "https://github.com/emmettl/umlauf/pull/2",
+      "sourceCommit": "7c5f4b2808741638b1a51cd041106776a17afb7b",
+      "scope": "Adoption PR; hosted production checks pending; not a deployed revision."
+    }
+  ]
+}
