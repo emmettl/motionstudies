@@ -147,7 +147,7 @@ class EditionHostingTests(unittest.TestCase):
         self.assertEqual([call.args[2] for call in verify.call_args_list],
                          ["https://motionstudies.app/pfad/", "https://pfad.motionstudies.app/"])
 
-    def test_zenit_is_bounded_to_its_star_and_cohort_releases_and_verifies_both_addresses(self):
+    def test_zenit_is_bounded_to_its_audited_releases_and_verifies_both_addresses(self):
         publisher = hosting.Publisher("zenit")
         destination = self.root / "zenit"
         publisher.stage_artifact(self.archive("zenit"), destination, self.run_metadata("zenit"))
@@ -163,7 +163,11 @@ class EditionHostingTests(unittest.TestCase):
         member = tarfile.TarInfo("data/orbital/window-56773faa0a8b.json")
         member.size = 1
         publisher.stage_artifact(self.archive("zenit", member), self.root / "window", self.run_metadata("zenit"))
-        for name in ["data/raw-gp.json", "data/hyg.csv", "data/keys.json", "data/foreign/manifest.json", "data/stellar/hyg_v44.csv.gz", "data/stellar/hyg-v44-bright-latest.json", "data/stellar/hyg-v42-bright-abcdef123456.json", "data/orbital/gp.json", "data/orbital/iss-latest.json", "data/orbital/stations-abcdef123456.json", "data/orbital/cohorts-latest.json", "data/orbital/raw-stations-gp.json", "data/orbital/window-latest.json", "data/orbital/window-56773faa0a8b-extra.json", "data/orbital/window-56773faa0a8.json"]:
+        for filename in ["constellation-d909e54f48fb.json", "constellation-fecda3965828.json", "constellation-005f4ac83fc1.json"]:
+            member = tarfile.TarInfo("data/orbital/" + filename)
+            member.size = 1
+            publisher.stage_artifact(self.archive("zenit", member), self.root / filename, self.run_metadata("zenit"))
+        for name in ["data/raw-gp.json", "data/hyg.csv", "data/keys.json", "data/foreign/manifest.json", "data/stellar/hyg_v44.csv.gz", "data/stellar/hyg-v44-bright-latest.json", "data/stellar/hyg-v42-bright-abcdef123456.json", "data/orbital/gp.json", "data/orbital/iss-latest.json", "data/orbital/stations-abcdef123456.json", "data/orbital/cohorts-latest.json", "data/orbital/raw-stations-gp.json", "data/orbital/window-latest.json", "data/orbital/window-56773faa0a8b-extra.json", "data/orbital/window-56773faa0a8.json", "data/orbital/constellation-latest.json", "data/orbital/constellation-fecda396582.json", "data/orbital/constellation-fecda3965828-extra.json", "data/orbital/raw-starlink.json", "data/orbital/constellation-FECDA3965828.json"]:
             with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unapproved edition data"):
                 publisher.stage_artifact(self.archive("zenit", tarfile.TarInfo(name)), self.root / "invalid", self.run_metadata("zenit"))
         with patch.object(publisher, "verify_url") as verify:
