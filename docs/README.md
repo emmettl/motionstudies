@@ -18,6 +18,7 @@
 - [October maintenance and alpha.32/33 releases](DEPENDENCIES-2026-10-18.md): current toolchain, package publication and edition reliability checks
 
 - [Project vision and goals](VISION.md): the creative premise, the world in miniature, and what these ask of the engineering
+- [Working principles](WORKING-PRINCIPLES.md): the owner's working notes synthesised with edition lessons about composition, evidence, state, reuse, budgets, verification and publication
 - [Historical study status — 13 September 2026](STUDY-STATUS.md): inspected implementations, served revisions, evidence boundaries and remaining work
 - [Overall roadmap and delivery history](../ROADMAP.md)
 - [Catalogue programme and admission criteria](CATALOGUE.md)
