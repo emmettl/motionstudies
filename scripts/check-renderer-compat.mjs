@@ -1,7 +1,7 @@
 import { readFile, readdir } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { parse } from '@babel/parser'
+import { parseSync } from 'oxc-parser'
 
 export const rendererRoots = ['packages/three/src', 'lab/src', 'e2e/fixtures']
 const sensitive = new Set(['gl', 'renderer', 'clock', 'elapsed'])
@@ -14,7 +14,7 @@ const key = node => node?.name ?? node?.value
 /** Follow hook-produced state and callback bindings through lexical aliases. */
 export function rendererCompatibilityViolations(file, source) {
   const path = resolve(file), failures = [], nodes = [], scopes = new WeakMap()
-  const fail = (node, message) => failures.push(`${file}:${node.loc.start.line}: ${message}`)
+  const fail = (node, message) => failures.push(`${file}:${source.slice(0, node.start).split('\n').length}: ${message}`)
   const lookup = (scope, name) => scope?.bindings.get(name) ?? (scope?.parent ? lookup(scope.parent, name) : undefined)
   function bind(pattern, scope) {
     if (!pattern) return
@@ -41,7 +41,9 @@ export function rendererCompatibilityViolations(file, source) {
     }
     children(node).forEach(child => collect(child, scope))
   }
-  collect(parse(source, { sourceType: 'module', plugins: ['typescript', 'jsx'] }), undefined)
+  const { program, errors } = parseSync(file, source, { sourceType: 'module', preserveParens: false })
+  if (errors.length) throw new SyntaxError(`Cannot parse ${file}: ${errors.map(error => error.message).join('; ')}`)
+  collect(program, undefined)
   function kind(node) {
     if (!node) return undefined
     if (node.type === 'Identifier') return lookup(scopes.get(node), node.name)?.kind
