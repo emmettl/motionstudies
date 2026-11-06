@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { readFile, readdir, stat } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { execFileSync } from 'node:child_process'
-import { parse } from '@babel/parser'
+import { parseSync } from 'oxc-parser'
 import { moduleReferences } from '../packages/data/src/module-references.mjs'
 
 const editions = ['gleislicht', 'allchange', 'correspondances', 'luft', 'local-express', 'norikae', 'manifest', 'umlauf', 'zugunruhe', 'underfall', 'zenit', 'pfad', 'england', 'kraft', 'schwall']
@@ -37,11 +37,13 @@ for (const edition of editions) {
           if (!node || typeof node !== 'object') return
           if (node.type === 'CallExpression' && node.callee?.name === 'useFrame') {
             const priority = node.arguments?.[1]
-            if (priority?.type === 'NumericLiteral' || priority?.type === 'UnaryExpression' && priority.argument?.type === 'NumericLiteral') findings.push({kind:'framePriority',path,line:node.loc.start.line})
+            if (priority?.type === 'Literal' && typeof priority.value === 'number' || priority?.type === 'UnaryExpression' && priority.argument?.type === 'Literal' && typeof priority.argument.value === 'number') findings.push({kind:'framePriority',path,line:source.slice(0, node.start).split('\n').length})
           }
           for (const value of Object.values(node)) if (Array.isArray(value)) value.forEach(visit); else if (value && typeof value === 'object') visit(value)
         }
-        visit(parse(source,{sourceType:'unambiguous',plugins:['typescript','jsx']}))
+        const { program, errors } = parseSync(path, source, { preserveParens: false })
+        if (errors.length) throw new SyntaxError(`Cannot parse ${path}: ${errors.map(error => error.message).join('; ')}`)
+        visit(program)
       }
       for (const [kind, pattern] of Object.entries(patterns)) {
         // Keep each affected source line; multi-line frame-priority matches point at their opening line.

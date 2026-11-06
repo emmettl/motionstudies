@@ -16,7 +16,7 @@ async function fixture() {
 
 test('ships automatic memoization with public JS imports and declarations intact', async () => {
   const dir = await fixture()
-  await writeFile(join(dir, 'src/Card.tsx'), `import { label } from './label.ts'; const loadDialog = () => import('./Dialog.tsx'); export function Card({ value }: { value: string }) { return <p onClick={loadDialog} title="./label.ts">{label(value)}</p> }`)
+  await writeFile(join(dir, 'src/Card.tsx'), `const emoji = '🚂'; import { label } from './label.ts'; const loadDialog = () => import('./Dialog.tsx'); export function Card({ value }: { value: string }) { return <p onClick={loadDialog} title="./label.ts">{emoji}{label(value)}</p> }`)
   await writeFile(join(dir, 'out/Card.d.ts'), 'export declare function Card(props: { value: string }): unknown\n')
   const helper = 'export function label(value) { return value.toUpperCase() }\n'
   await writeFile(join(dir, 'out/label.js'), helper)
@@ -26,6 +26,7 @@ test('ships automatic memoization with public JS imports and declarations intact
   expect(code).toContain('react/compiler-runtime')
   expect(code).toContain('./label.js')
   expect(code).toContain('./Dialog.js')
+  expect(code).toContain('🚂')
   expect(code).toContain('./label.ts') // Displayed strings are not module specifiers.
   expect(await readFile(join(dir, 'out/Card.d.ts'), 'utf8')).toBe('export declare function Card(props: { value: string }): unknown\n')
   expect(await readFile(join(dir, 'out/label.js'), 'utf8')).toBe(helper)

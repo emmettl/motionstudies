@@ -28,3 +28,15 @@ test('covers lab and extension fixtures and rejects direct Fiber imports there',
   expect(rendererRoots).toContain('lab/src'); expect(rendererRoots).toContain('e2e/fixtures')
   expect(check('e2e/fixtures/probe.tsx', `import {useThree} from '@react-three/fiber'`)[0]).toContain('WebGL study boundary')
 })
+
+test('reports Oxc source lines for optional and parenthesized reads after Unicode', () => {
+  const failures = check('lab/src/probe.tsx', `
+    import {useWebGLStudyState} from '@motionstudies/three/webgl-study'
+    const label = '🚆'; const state = useWebGLStudyState()
+    ;(state)?.['gl']
+  `)
+  expect(failures).toEqual(['lab/src/probe.tsx:4: Read frame renderer/time through frame-state'])
+})
+test('rejects malformed renderer sources instead of accepting recovered ASTs', () => {
+  expect(() => check('lab/src/probe.tsx', 'const broken =')).toThrow(SyntaxError)
+})
