@@ -1,0 +1,2888 @@
+{
+  "verifiedAt": "2026-11-06T10:11:04Z",
+  "sourceCommit": "71a2e3b84095576e0129d6b4540c13e32572bcdf",
+  "version": "0.1.0-alpha.51",
+  "publicationWorkflow": "https://github.com/emmettl/motionstudies/actions/runs/42197273783",
+  "publicationConclusion": "success",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "0.1.0-alpha.51",
+      "file": "motionstudies-core-0.1.0-alpha.51.tgz",
+      "integrity": "sha512-GpB/W1VSRZjptvkHmVbPzz62cgSMODQdGJZn02djhstdDgcXfMCI+fn0hrePmGTX9PbH+Ed8fnfiRdttWpHO8g==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/core/-/core-0.1.0-alpha.51.tgz",
+      "bytes": 83146,
+      "registryMatchesTestedArchive": true,
+      "nextTag": "0.1.0-alpha.51",
+      "localCandidateMatchesTestedArchive": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "0.1.0-alpha.51",
+      "file": "motionstudies-data-0.1.0-alpha.51.tgz",
+      "integrity": "sha512-k7Tgu3dlBtYAkZxkoV+5V5QWXXj4Y0KRgGNeqtZktopD1RhLC4KHg9J40mgT/IC+y+iF/QAn+Iz8IOxjfWWl2A==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/data/-/data-0.1.0-alpha.51.tgz",
+      "bytes": 87110,
+      "registryMatchesTestedArchive": true,
+      "nextTag": "0.1.0-alpha.51",
+      "localCandidateMatchesTestedArchive": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "0.1.0-alpha.51",
+      "file": "motionstudies-three-0.1.0-alpha.51.tgz",
+      "integrity": "sha512-j+2at9OOe9y3h+z+ha+ZaIIrp7y07G6AknJURSnr4uUskW9e0HT4K/i013jrkjKfKTWsXRTPzWrdzdA6rrpMqg==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/three/-/three-0.1.0-alpha.51.tgz",
+      "bytes": 127927,
+      "registryMatchesTestedArchive": true,
+      "nextTag": "0.1.0-alpha.51",
+      "localCandidateMatchesTestedArchive": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "0.1.0-alpha.51",
+      "file": "motionstudies-web-0.1.0-alpha.51.tgz",
+      "integrity": "sha512-AW+D11Cybr0qH2hdRrNSjj3GCBBaaGAVOqeyI5EESzDXw8wYotezb+IxpgKiRJBd1TV00UEjtk27wYM+Q53a/Q==",
+      "registryTarball": "https://registry.npmjs.org/@motionstudies/web/-/web-0.1.0-alpha.51.tgz",
+      "bytes": 334312,
+      "registryMatchesTestedArchive": true,
+      "nextTag": "0.1.0-alpha.51",
+      "localCandidateMatchesTestedArchive": true
+    }
+  ],
+  "sharedValidation": {
+    "unitPassed": 562,
+    "hostingPassed": 16,
+    "packedBrowserPassed": 296,
+    "packedBrowserSkipped": 2,
+    "loaderPassed": 40,
+    "catalogueWorkflow": "https://github.com/emmettl/motionstudies/actions/runs/42197273493",
+    "catalogueConclusion": "success"
+  },
+  "remotePinVerification": {
+    "verifiedAt": "2026-11-06T11:08:26Z",
+    "consumers": [
+      {
+        "edition": "england",
+        "repository": "emmettl/england",
+        "branch": "main",
+        "commit": "1387b6be65bda9abd4807d3fcebbecbb711beadb",
+        "manifestBlobSha": "942b9ae8dc797d2be53392b5fbb2236804e5fd7d",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "manifest",
+        "repository": "emmettl/manifest",
+        "branch": "main",
+        "commit": "ef1c96a5a0d7b081725222ac29ba6565ce19c331",
+        "manifestBlobSha": "0d0425f573797f8b10b7fbf48fc0ac5e5e66725c",
+        "pins": {
+          "@motionstudies/web": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "motionstudies-recorder",
+        "repository": "emmettl/motionstudies-recorder",
+        "branch": "main",
+        "commit": "a60a407493d03bf5137cc9c99b9b34b409905c2f",
+        "manifestBlobSha": "e98e8bc92ed5d5466ed8ac26a22b54a298d38c91",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "norikae",
+        "repository": "emmettl/norikae",
+        "branch": "main",
+        "commit": "aedd40145a92210b8036d2b09ec3352bc4704ea8",
+        "manifestBlobSha": "d148db7c29a9b8cd493205592ca8944983132efc",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "norikae-player",
+        "repository": "emmettl/norikae",
+        "branch": "codex/synthetic-player",
+        "commit": "f33c7c6b1a45b3e855c1ce0448c624f702ab3fb9",
+        "manifestBlobSha": "3f3cba46ad90d0d45a5151869fe4fee53a0fdb05",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "underfall",
+        "repository": "emmettl/underfall",
+        "branch": "main",
+        "commit": "b2230618ba0c5d1a525a24dc1123ed0a953d02d3",
+        "manifestBlobSha": "35ca98d4c59408dc5142ce220bcc6b582f26ab66",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "kraft",
+        "repository": "emmettl/kraft",
+        "branch": "main",
+        "commit": "844a318e928bfdb6279906e38d0666f54f7e6f56",
+        "manifestBlobSha": "e301c634f275086d82abfdf9b86ea5deba9ff2dd",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "schwall",
+        "repository": "emmettl/schwall",
+        "branch": "main",
+        "commit": "49f8a8c0f18ade66946a5899850c102f80f07719",
+        "manifestBlobSha": "59771ada36845ff9c1728e7ec5a11984e3717065",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "allchange",
+        "repository": "emmettl/allchange",
+        "branch": "main",
+        "commit": "d13b1645901a5b222f6a34d7bc326ad1c61f3520",
+        "manifestBlobSha": "d0afb66392d8ef566891008222748d1e302e0397",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "local-express",
+        "repository": "emmettl/local-express",
+        "branch": "main",
+        "commit": "3751b382f7bc4c7cd164c366eef7940117411440",
+        "manifestBlobSha": "032bce2aec5df06b7ad7836770baaba749957689",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "umlauf",
+        "repository": "emmettl/umlauf",
+        "branch": "main",
+        "commit": "1f082656b14fc726c28a8587edef72cee0be82ec",
+        "manifestBlobSha": "480722bf922f05d38923c4d3a8419c083f6b2859",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "pfad",
+        "repository": "emmettl/pfad",
+        "branch": "main",
+        "commit": "26b2f87ade630162c81594a78e12255f2cf4b876",
+        "manifestBlobSha": "a4342bd487b2be82ffebfe6b56fcd5d4ea973b4d",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "gleislicht",
+        "repository": "emmettl/gleislicht",
+        "branch": "main",
+        "commit": "dafd298bcd9d56482ae8e10465f87b82847544d8",
+        "manifestBlobSha": "24dbe52e99fded28e4ca71765d0f5e26aaf5944e",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "zenit",
+        "repository": "emmettl/zenit",
+        "branch": "main",
+        "commit": "8c70b60d50b77e96740e387d5b2e303236e178f9",
+        "manifestBlobSha": "21da625f2bf0ad529774442589d18913a37dd0f0",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "luft",
+        "repository": "emmettl/luft",
+        "branch": "main",
+        "commit": "8a23e7da4d115abfaef3ced785c4267545d15429",
+        "manifestBlobSha": "c72f12bfe42d6c3a2385c2824763c8ed13474896",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "zugunruhe",
+        "repository": "emmettl/zugunruhe",
+        "branch": "main",
+        "commit": "aee0a859a320120d57a682d07a3cac562cf013f6",
+        "manifestBlobSha": "3cffdcabb6f879bbcbde6de7c4782d26d97570ee",
+        "pins": {
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51"
+        }
+      },
+      {
+        "edition": "correspondances",
+        "repository": "emmettl/correspondances",
+        "branch": "main",
+        "commit": "c38014fc9cfa104d6c68d3e2184f028d8c03d9fe",
+        "manifestBlobSha": "6f6734c11b3b97f60a2470312f00ecae6942afba",
+        "pins": {
+          "@motionstudies/core": "0.1.0-alpha.51",
+          "@motionstudies/three": "0.1.0-alpha.51",
+          "@motionstudies/web": "0.1.0-alpha.51",
+          "@motionstudies/data": "0.1.0-alpha.51"
+        }
+      }
+    ]
+  },
+  "underfallStagedArtifact": {
+    "repository": "emmettl/underfall",
+    "run_id": 42201946556,
+    "commit": "b2230618ba0c5d1a525a24dc1123ed0a953d02d3",
+    "workflow_url": "https://github.com/emmettl/underfall/actions/runs/42201946556",
+    "source_files": 1286,
+    "source_bytes": 158554737,
+    "content_sha256": "2f3b1c23bc9418964f5edc2491d509c434232d3667c0cb8816aaeddfc7be23a1"
+  },
+  "gleislichtFollowup": {
+    "pullRequest": "https://github.com/emmettl/gleislicht/pull/25",
+    "sourceCommit": "6b16c05717f0c4dbba54b7f2af551342bab8a686",
+    "mergeCommit": "dafd298bcd9d56482ae8e10465f87b82847544d8",
+    "developmentDebugBrowserPassed": 8,
+    "productionDebugBrowserPassed": 8,
+    "productionJavaScriptKiB": 379.6,
+    "productionJavaScriptLimitKiB": 380,
+    "productionTotalKiB": 807.4,
+    "productionTotalLimitKiB": 808,
+    "hostedFollowupWorkflow": "https://github.com/emmettl/gleislicht/actions/runs/42207402918",
+    "hostedFollowupStatus": "in_progress",
+    "regionalDataGate": "unchanged 65% rail geometry threshold blocks the original main workflow",
+    "preparationDifferential": [
+      {
+        "package": "core",
+        "baseline": "0.1.0-alpha.48",
+        "current": "0.1.0-alpha.51",
+        "changed": [
+          "package/README.md",
+          "package/package.json"
+        ],
+        "added": []
+      },
+      {
+        "package": "data",
+        "baseline": "0.1.0-alpha.48",
+        "current": "0.1.0-alpha.51",
+        "changed": [
+          "package/README.md",
+          "package/module-references.mjs",
+          "package/package.json"
+        ],
+        "added": []
+      }
+    ],
+    "hostedJobs": [
+      {
+        "name": "check",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Browser tests (desktop-chromium, 2/2)",
+        "status": "in_progress",
+        "conclusion": ""
+      },
+      {
+        "name": "regional (today)",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "national (tomorrow)",
+        "status": "in_progress",
+        "conclusion": ""
+      },
+      {
+        "name": "regional (tomorrow)",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "national (today)",
+        "status": "in_progress",
+        "conclusion": ""
+      },
+      {
+        "name": "Browser tests (desktop-chromium, 1/2)",
+        "status": "in_progress",
+        "conclusion": ""
+      },
+      {
+        "name": "Browser tests (iphone-webkit, 1/1)",
+        "status": "in_progress",
+        "conclusion": ""
+      }
+    ]
+  },
+  "parserCompatibility": {
+    "version": "0.1.0-alpha.51",
+    "verifiedAt": "2026-11-06T10:25:00.126Z",
+    "total": 2604,
+    "consumers": [
+      {
+        "edition": "allchange",
+        "commit": "c305ebbe28682899c8b511880e3a56b26f657335",
+        "sourceFiles": 179,
+        "sourceSha256": "beae90ea264d5c88ecfb974c8ff65585e35f17566fa042046e0d9a9ea435c0ef",
+        "parseErrors": 0
+      },
+      {
+        "edition": "correspondances",
+        "commit": "4d6cda869c2428fd87234eafbd53eba9c4e54e21",
+        "sourceFiles": 63,
+        "sourceSha256": "dafbcef1da1608c92827b768349560faf6b952dfd4e4c9b536f0412955fd854c",
+        "parseErrors": 0
+      },
+      {
+        "edition": "england",
+        "commit": "d97ed252ac395d5d01ffdbe9981152a6177610b1",
+        "sourceFiles": 42,
+        "sourceSha256": "bf71b3defb477c640ea789649f35e6dad99bbc42ac8b6aa4356cd4757fd61a8f",
+        "parseErrors": 0
+      },
+      {
+        "edition": "gleislicht",
+        "commit": "360e6e2fd436dc003ded4cfcf82a4eb81cfcf1c3",
+        "sourceFiles": 1004,
+        "sourceSha256": "b35ee1cef509cf23dea8c2f2316a0f35c67162102f718c12474fd8d047c42a3a",
+        "parseErrors": 0
+      },
+      {
+        "edition": "kraft",
+        "commit": "c7c8b20050967a9358ec310877513501b649659c",
+        "sourceFiles": 43,
+        "sourceSha256": "0a55b3d09eeabeb92770c7d99a5116c1bd0ce93a81d34500b9fcd9ce2cc5b8b6",
+        "parseErrors": 0
+      },
+      {
+        "edition": "local-express",
+        "commit": "cd741f1e26beb1768da345fa4cf93d3de25d68b2",
+        "sourceFiles": 21,
+        "sourceSha256": "b9731f5785cc70439b76cf5c3ed5f8431c754d359e25ec2abafb36bcddbfd6c0",
+        "parseErrors": 0
+      },
+      {
+        "edition": "luft",
+        "commit": "3e77740fd0e236b5e9c4d61634a4ff7f69fbd51a",
+        "sourceFiles": 81,
+        "sourceSha256": "59c05f4de011c6ddd1f96f034799a3a7b43dbdfa8dfa08e1da5b6226142465b6",
+        "parseErrors": 0
+      },
+      {
+        "edition": "manifest",
+        "commit": "6e89dc2e04fe2111b7676a9fd8fbb3e9b0cd4be0",
+        "sourceFiles": 46,
+        "sourceSha256": "458cde683fe7417b835d5860adf70818ec4771de996fea1b1081a9342fe7b871",
+        "parseErrors": 0
+      },
+      {
+        "edition": "motionstudies-recorder",
+        "commit": "114c4c7aa045c6a227488a7cb14aa53c363640f2",
+        "sourceFiles": 156,
+        "sourceSha256": "bb0c088ac88d2ad4f270273ba2923ddd652cb5ca0ba13fbdfc60c6ca2020265b",
+        "parseErrors": 0
+      },
+      {
+        "edition": "norikae",
+        "commit": "96a34a15f7241445404a471af775a7e5fb4c474b",
+        "sourceFiles": 15,
+        "sourceSha256": "a628bbfd24b75d20598d39addf58be9f0a1b3fb96f688a95972b929b87584540",
+        "parseErrors": 0
+      },
+      {
+        "edition": "norikae-player",
+        "commit": "3c683459474ca671630c363b6ae6f96da36067e1",
+        "sourceFiles": 16,
+        "sourceSha256": "6076f522b60692697e73fc7b1cec46958f5c3fed62aadbffd465d8c93bf150a8",
+        "parseErrors": 0
+      },
+      {
+        "edition": "pfad",
+        "commit": "1bf07915cd07115b63dd2531856aa8e0737acdb1",
+        "sourceFiles": 78,
+        "sourceSha256": "b518417c379513a6a00ee04a0ed75abefaae645848ef1a8ff59262631ef1bab4",
+        "parseErrors": 0
+      },
+      {
+        "edition": "schwall",
+        "commit": "a95cfb4a9d996dc493653740d0fbc31a72605275",
+        "sourceFiles": 476,
+        "sourceSha256": "154e910b49c34ea8e60bccaa38a82adcf52b62bd9da82baea07dfe4a0edc8068",
+        "parseErrors": 0
+      },
+      {
+        "edition": "umlauf",
+        "commit": "b02cb8e1dfe7fb5b6da003c85cab726139c82f2f",
+        "sourceFiles": 24,
+        "sourceSha256": "085d67d105239dacd6d6172e83b5be6049c15e0d12561ee0714efac664d0aa3b",
+        "parseErrors": 0
+      },
+      {
+        "edition": "underfall",
+        "commit": "bcea3e0f7eec1ab8fbb12d108dda03756b55e8b5",
+        "sourceFiles": 145,
+        "sourceSha256": "0924ae9ddff230e7fb84e93bed0d2b124183e9c4e82009d724a690f84aa900a0",
+        "parseErrors": 0
+      },
+      {
+        "edition": "zenit",
+        "commit": "3e33b778daefb8c2d35ee7e3ed5c2087c3abf7ff",
+        "sourceFiles": 75,
+        "sourceSha256": "95b25d0d6d3f68e8377ab9048c5eafbb39a559e01cb2c20041f37c6b41423a20",
+        "parseErrors": 0
+      },
+      {
+        "edition": "zugunruhe",
+        "commit": "6f62805441c8b93f059f958300ab30c70bc55c9d",
+        "sourceFiles": 140,
+        "sourceSha256": "6d13d9443f46ced3a36736be8779632865a0f923d9a8990846e61043ecdf2ac6",
+        "parseErrors": 0
+      }
+    ]
+  },
+  "localBrowserValidation": {
+    "gleislicht": {
+      "productionPassed": 8,
+      "engines": [
+        "Chromium desktop",
+        "WebKit iPhone viewport"
+      ]
+    },
+    "luft": {
+      "developmentPassed": 159,
+      "developmentSkipped": 5,
+      "productionSmokePassed": 30,
+      "engines": [
+        "Chromium desktop",
+        "WebKit iPhone viewport"
+      ]
+    },
+    "underfall": {
+      "productionPassed": 51,
+      "productionSkipped": 1,
+      "engines": [
+        "Chromium desktop",
+        "WebKit iPhone viewport"
+      ]
+    }
+  },
+  "consumers": [
+    {
+      "edition": "allchange",
+      "source": "d4b3362360833fee4ce051fd912ebece0cb7c6ce",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.50",
+        "@motionstudies/three": "0.1.0-alpha.50",
+        "@motionstudies/web": "0.1.0-alpha.50",
+        "@motionstudies/data": "0.1.0-alpha.50"
+      },
+      "retainedDataFiles": 1780,
+      "retainedDataTreeSha256": "0bde45d01e63eaf3136fb770dc498dac0b577d1ed63ce23f80db2b8e889175a1",
+      "repo": "allchange",
+      "branch": "codex/alpha51-adoption",
+      "commit": "c305ebbe28682899c8b511880e3a56b26f657335",
+      "url": "https://github.com/emmettl/allchange/pull/4",
+      "number": 4,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:boundary"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "worker:check"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:bundle"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 1780,
+          "sha256": "0bde45d01e63eaf3136fb770dc498dac0b577d1ed63ce23f80db2b8e889175a1"
+        }
+      ],
+      "mergeCommit": "d13b1645901a5b222f6a34d7bc326ad1c61f3520",
+      "mergedAt": "2026-11-06T10:25:05Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:18:41Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/allchange/actions/runs/42201477089/job/127837546258",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:08Z",
+          "status": "COMPLETED",
+          "workflowName": "Check All Change"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:24:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/allchange/actions/runs/42201477089/job/127838216931",
+          "name": "Browser tests (desktop-chromium, 1/2)",
+          "startedAt": "2026-11-06T10:18:45Z",
+          "status": "COMPLETED",
+          "workflowName": "Check All Change"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:23:18Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/allchange/actions/runs/42201477089/job/127838216889",
+          "name": "Browser tests (desktop-chromium, 2/2)",
+          "startedAt": "2026-11-06T10:19:15Z",
+          "status": "COMPLETED",
+          "workflowName": "Check All Change"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:23:25Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/allchange/actions/runs/42201477089/job/127838216854",
+          "name": "Browser tests (iphone-webkit, 1/1)",
+          "startedAt": "2026-11-06T10:18:43Z",
+          "status": "COMPLETED",
+          "workflowName": "Check All Change"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42203329811,
+          "headSha": "d13b1645901a5b222f6a34d7bc326ad1c61f3520",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42202513234,
+          "headSha": "d13b1645901a5b222f6a34d7bc326ad1c61f3520",
+          "status": "completed",
+          "workflowName": "Deploy Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "correspondances",
+      "source": "7e84cc48efae70b2ff6bea5551691b98c27f1962",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.50",
+        "@motionstudies/three": "0.1.0-alpha.50",
+        "@motionstudies/web": "0.1.0-alpha.50",
+        "@motionstudies/data": "0.1.0-alpha.50"
+      },
+      "retainedDataFiles": 221,
+      "retainedDataTreeSha256": "f01759a6a23c83ad72d5c6d33fefdfc9c54bf1095c57f5382a7879485eba005c",
+      "repo": "correspondances",
+      "branch": "codex/alpha51-adoption",
+      "commit": "4d6cda869c2428fd87234eafbd53eba9c4e54e21",
+      "url": "https://github.com/emmettl/correspondances/pull/2",
+      "number": 2,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:boundary"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:bundle"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 221,
+          "sha256": "f01759a6a23c83ad72d5c6d33fefdfc9c54bf1095c57f5382a7879485eba005c"
+        }
+      ],
+      "mergeCommit": "c38014fc9cfa104d6c68d3e2184f028d8c03d9fe",
+      "mergedAt": "2026-11-06T11:02:47Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T11:01:57Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/correspondances/actions/runs/42201488297/job/127837582767",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:14Z",
+          "status": "COMPLETED",
+          "workflowName": "Check Correspondances"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "",
+          "databaseId": 42207256802,
+          "headSha": "c38014fc9cfa104d6c68d3e2184f028d8c03d9fe",
+          "status": "in_progress",
+          "workflowName": "Deploy Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "england",
+      "source": "e6ec36683d24f2d9a6551e0ea569493f4e42eff1",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.46",
+        "@motionstudies/data": "0.1.0-alpha.46",
+        "@motionstudies/three": "0.1.0-alpha.46",
+        "@motionstudies/web": "0.1.0-alpha.46"
+      },
+      "retainedDataFiles": 1095,
+      "retainedDataTreeSha256": "7483c2e083feb947fd20170eb241ccc545d9235a243f24efda1226deb6101199",
+      "repo": "england",
+      "branch": "codex/alpha51-adoption",
+      "commit": "d97ed252ac395d5d01ffdbe9981152a6177610b1",
+      "url": "https://github.com/emmettl/england/pull/4",
+      "number": 4,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 1095,
+          "sha256": "7483c2e083feb947fd20170eb241ccc545d9235a243f24efda1226deb6101199"
+        }
+      ],
+      "mergeCommit": "1387b6be65bda9abd4807d3fcebbecbb711beadb",
+      "mergedAt": "2026-11-06T10:20:13Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:17:42Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/england/actions/runs/42201496447/job/127837607703",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:17Z",
+          "status": "COMPLETED",
+          "workflowName": "Check"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:17:49Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/england/actions/runs/42201488206/job/127837581699",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:14Z",
+          "status": "COMPLETED",
+          "workflowName": "Check"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42201886544,
+          "headSha": "1387b6be65bda9abd4807d3fcebbecbb711beadb",
+          "status": "completed",
+          "workflowName": "Check"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "gleislicht",
+      "source": "7457eac936ef12f436eddf16dccac8d0b2a980a8",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48",
+        "@motionstudies/data": "0.1.0-alpha.48"
+      },
+      "retainedDataFiles": 817,
+      "retainedDataTreeSha256": "da5ff1baaa1174d25ebd3e4557c624c599e9a73c39fa5a6badd7183f00a1721e",
+      "repo": "gleislicht",
+      "branch": "codex/alpha51-adoption",
+      "commit": "360e6e2fd436dc003ded4cfcf82a4eb81cfcf1c3",
+      "url": "https://github.com/emmettl/gleislicht/pull/24",
+      "number": 24,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:architecture"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "worker:check"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 817,
+          "sha256": "da5ff1baaa1174d25ebd3e4557c624c599e9a73c39fa5a6badd7183f00a1721e"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0,
+          "log": "/private/tmp/alpha51-gleislicht-final.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:bundle"
+          ],
+          "exitCode": 0,
+          "log": "/private/tmp/alpha51-gleislicht-final.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0,
+          "log": "/private/tmp/alpha51-gleislicht-fixture-final.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:architecture"
+          ],
+          "exitCode": 0,
+          "log": "/private/tmp/alpha51-gleislicht-fixture-final.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build:fixtures"
+          ],
+          "exitCode": 0,
+          "log": "/private/tmp/alpha51-gleislicht-fixture-final.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:bundle"
+          ],
+          "exitCode": 0,
+          "log": "/private/tmp/alpha51-gleislicht-fixture-final.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "pages:prepare"
+          ],
+          "exitCode": 0,
+          "log": "/private/tmp/alpha51-gleislicht-fixture-final.log"
+        },
+        {
+          "command": [
+            "npx",
+            "playwright",
+            "test",
+            "e2e/gpu-debug.spec.ts",
+            "--workers=1"
+          ],
+          "exitCode": 0,
+          "log": "/private/tmp/alpha51-gleislicht-final.log"
+        }
+      ],
+      "mergeCommit": "00c08e6ca761ec1a27f7f115d762b730785e9dae",
+      "mergedAt": "2026-11-06T10:29:14Z",
+      "hostedChecks": [],
+      "mainWorkflows": [
+        {
+          "conclusion": "skipped",
+          "databaseId": 42207099643,
+          "headSha": "00c08e6ca761ec1a27f7f115d762b730785e9dae",
+          "status": "completed",
+          "workflowName": "Check public freshness"
+        },
+        {
+          "conclusion": "skipped",
+          "databaseId": 42207090845,
+          "headSha": "00c08e6ca761ec1a27f7f115d762b730785e9dae",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 42206400758,
+          "headSha": "00c08e6ca761ec1a27f7f115d762b730785e9dae",
+          "status": "completed",
+          "workflowName": "Check public freshness"
+        },
+        {
+          "conclusion": "failure",
+          "databaseId": 42203034219,
+          "headSha": "00c08e6ca761ec1a27f7f115d762b730785e9dae",
+          "status": "completed",
+          "workflowName": "Deploy to GitHub Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "kraft",
+      "source": "abcc83dc1e0325ac6db6274e9659e0b7007eb5f8",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/data": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48"
+      },
+      "retainedDataFiles": 5,
+      "retainedDataTreeSha256": "9bee0d46e750955af4e34cbc17ddcdf7b7ef4d6b72a2c5566f96b62a8f2fd510",
+      "repo": "kraft",
+      "branch": "codex/alpha51-adoption",
+      "commit": "c7c8b20050967a9358ec310877513501b649659c",
+      "url": "https://github.com/emmettl/kraft/pull/11",
+      "number": 11,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:architecture"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "data:verify"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:rights"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 5,
+          "sha256": "9bee0d46e750955af4e34cbc17ddcdf7b7ef4d6b72a2c5566f96b62a8f2fd510"
+        }
+      ],
+      "mergeCommit": "844a318e928bfdb6279906e38d0666f54f7e6f56",
+      "mergedAt": "2026-11-06T10:21:44Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:20:55Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/kraft/actions/runs/42201506814/job/127837642684",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:22Z",
+          "status": "COMPLETED",
+          "workflowName": "Check KRAFT"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:21:38Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/kraft/actions/runs/42201498127/job/127837613928",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:18Z",
+          "status": "COMPLETED",
+          "workflowName": "Check KRAFT"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42202084823,
+          "headSha": "844a318e928bfdb6279906e38d0666f54f7e6f56",
+          "status": "completed",
+          "workflowName": "Check KRAFT"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "local-express",
+      "source": "cd81be66e24589de985708cfe84550fdbb2f6c21",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "retainedDataFiles": 20,
+      "retainedDataTreeSha256": "79a5a6d48c13f27a9a4e11e7027c356bd39d45093672ca10ef52ac5f780508f3",
+      "repo": "local-express",
+      "branch": "codex/alpha51-adoption",
+      "commit": "cd741f1e26beb1768da345fa4cf93d3de25d68b2",
+      "url": "https://github.com/emmettl/local-express/pull/1",
+      "number": 1,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:boundary"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:bundle"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 20,
+          "sha256": "79a5a6d48c13f27a9a4e11e7027c356bd39d45093672ca10ef52ac5f780508f3"
+        }
+      ],
+      "mergeCommit": "3751b382f7bc4c7cd164c366eef7940117411440",
+      "mergedAt": "2026-11-06T10:25:10Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:23:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/local-express/actions/runs/42201515351/job/127837671724",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:26Z",
+          "status": "COMPLETED",
+          "workflowName": "Check Local / Express"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42202526114,
+          "headSha": "3751b382f7bc4c7cd164c366eef7940117411440",
+          "status": "completed",
+          "workflowName": "Check Local / Express"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "luft",
+      "source": "e784f8d8ec452096314c3f1dff132750782f24f0",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/data": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48"
+      },
+      "retainedDataFiles": 13,
+      "retainedDataTreeSha256": "61c94fe88bafa9e4f3d748b5662558dd259cbaa9d4962a0ac3cd1e29375a6971",
+      "repo": "luft",
+      "branch": "codex/alpha51-adoption",
+      "commit": "3e77740fd0e236b5e9c4d61634a4ff7f69fbd51a",
+      "url": "https://github.com/emmettl/luft/pull/10",
+      "number": 10,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 13,
+          "sha256": "61c94fe88bafa9e4f3d748b5662558dd259cbaa9d4962a0ac3cd1e29375a6971"
+        }
+      ],
+      "mergeCommit": "8a23e7da4d115abfaef3ced785c4267545d15429",
+      "mergedAt": "2026-11-06T10:39:24Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:36:44Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/luft/actions/runs/42201526066/job/127837706934",
+          "name": "build",
+          "startedAt": "2026-11-06T10:17:31Z",
+          "status": "COMPLETED",
+          "workflowName": "Check and deploy LUFT"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:36:44Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/emmettl/luft/actions/runs/42201526066/job/127845935958",
+          "name": "deploy",
+          "startedAt": "2026-11-06T10:36:44Z",
+          "status": "COMPLETED",
+          "workflowName": "Check and deploy LUFT"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42206814984,
+          "headSha": "8a23e7da4d115abfaef3ced785c4267545d15429",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42204331618,
+          "headSha": "8a23e7da4d115abfaef3ced785c4267545d15429",
+          "status": "completed",
+          "workflowName": "Check and deploy LUFT"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "manifest",
+      "source": "a539f153c214df3993a5d5c045f8b9fec53640c0",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/web": "0.1.0-alpha.31"
+      },
+      "retainedDataFiles": 38,
+      "retainedDataTreeSha256": "1c95baa1deff3cfb23eab6b408c500c5d509900cb77900f99271c9b25aa7cfc7",
+      "repo": "manifest",
+      "branch": "codex/alpha51-adoption",
+      "commit": "6e89dc2e04fe2111b7676a9fd8fbb3e9b0cd4be0",
+      "url": "https://github.com/emmettl/manifest/pull/2",
+      "number": 2,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 198
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:boundary"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:bundle"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 38,
+          "sha256": "1c95baa1deff3cfb23eab6b408c500c5d509900cb77900f99271c9b25aa7cfc7"
+        }
+      ],
+      "mergeCommit": "ef1c96a5a0d7b081725222ac29ba6565ce19c331",
+      "mergedAt": "2026-11-06T10:20:21Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:19:25Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/manifest/actions/runs/42201539890/job/127837753049",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:38Z",
+          "status": "COMPLETED",
+          "workflowName": "Check MANIFEST"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42202381326,
+          "headSha": "ef1c96a5a0d7b081725222ac29ba6565ce19c331",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42201903177,
+          "headSha": "ef1c96a5a0d7b081725222ac29ba6565ce19c331",
+          "status": "completed",
+          "workflowName": "Deploy Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "motionstudies-recorder",
+      "source": "b02b70b654c99d148b2293be652e82eaf8e35f20",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.47",
+        "@motionstudies/data": "0.1.0-alpha.47"
+      },
+      "retainedDataFiles": 0,
+      "retainedDataTreeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "repo": "motionstudies-recorder",
+      "branch": "codex/alpha51-adoption",
+      "commit": "114c4c7aa045c6a227488a7cb14aa53c363640f2",
+      "url": "https://github.com/emmettl/motionstudies-recorder/pull/27",
+      "number": 27,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 164
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "mergeCommit": "a60a407493d03bf5137cc9c99b9b34b409905c2f",
+      "mergedAt": "2026-11-06T10:20:27Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:18:23Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/motionstudies-recorder/actions/runs/42201548466/job/127837780950",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:41Z",
+          "status": "COMPLETED",
+          "workflowName": "Check"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:18:24Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/motionstudies-recorder/actions/runs/42201539705/job/127837752478",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:38Z",
+          "status": "COMPLETED",
+          "workflowName": "Check"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42201915029,
+          "headSha": "a60a407493d03bf5137cc9c99b9b34b409905c2f",
+          "status": "completed",
+          "workflowName": "Check"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "norikae",
+      "source": "cda6ecd6540ada8bbdd497d1c7d9b7b59b4ce760",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "retainedDataFiles": 1,
+      "retainedDataTreeSha256": "27986dec75ea947c58ad34b5292831453a094898620190c50017ca8faf85e08c",
+      "repo": "norikae",
+      "branch": "codex/alpha51-adoption",
+      "commit": "96a34a15f7241445404a471af775a7e5fb4c474b",
+      "url": "https://github.com/emmettl/norikae/pull/4",
+      "number": 4,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:boundary"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 1,
+          "sha256": "27986dec75ea947c58ad34b5292831453a094898620190c50017ca8faf85e08c"
+        }
+      ],
+      "mergeCommit": "aedd40145a92210b8036d2b09ec3352bc4704ea8",
+      "mergedAt": "2026-11-06T10:20:32Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:19:51Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/norikae/actions/runs/42201556861/job/127837810081",
+          "name": "validate",
+          "startedAt": "2026-11-06T10:17:45Z",
+          "status": "COMPLETED",
+          "workflowName": "Validate"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42202470167,
+          "headSha": "aedd40145a92210b8036d2b09ec3352bc4704ea8",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42201924217,
+          "headSha": "aedd40145a92210b8036d2b09ec3352bc4704ea8",
+          "status": "completed",
+          "workflowName": "Validate"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42201924288,
+          "headSha": "aedd40145a92210b8036d2b09ec3352bc4704ea8",
+          "status": "completed",
+          "workflowName": "Deploy to GitHub Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "norikae-player",
+      "source": "2d635b5c24805cefc528c85711f46168d2528b48",
+      "baseBranch": "codex/synthetic-player",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.43",
+        "@motionstudies/three": "0.1.0-alpha.43",
+        "@motionstudies/web": "0.1.0-alpha.43",
+        "@motionstudies/data": "0.1.0-alpha.43"
+      },
+      "retainedDataFiles": 1,
+      "retainedDataTreeSha256": "27986dec75ea947c58ad34b5292831453a094898620190c50017ca8faf85e08c",
+      "repo": "norikae",
+      "branch": "codex/alpha51-player-adoption",
+      "commit": "3c683459474ca671630c363b6ae6f96da36067e1",
+      "url": "https://github.com/emmettl/norikae/pull/5",
+      "number": 5,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:boundary"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 1,
+          "sha256": "27986dec75ea947c58ad34b5292831453a094898620190c50017ca8faf85e08c"
+        }
+      ],
+      "mergeCommit": "f33c7c6b1a45b3e855c1ce0448c624f702ab3fb9",
+      "mergedAt": "2026-11-06T10:20:36Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:19:12Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/norikae/actions/runs/42201566917/job/127837843256",
+          "name": "validate",
+          "startedAt": "2026-11-06T10:17:50Z",
+          "status": "COMPLETED",
+          "workflowName": "Validate"
+        }
+      ],
+      "mainWorkflows": [],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "pfad",
+      "source": "6b2f60e817bbaf01ed4a5dbc601a121115dcb60e",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.33",
+        "@motionstudies/three": "0.1.0-alpha.33",
+        "@motionstudies/web": "0.1.0-alpha.33",
+        "@motionstudies/data": "0.1.0-alpha.33"
+      },
+      "retainedDataFiles": 37,
+      "retainedDataTreeSha256": "0ea11c1a4b63e6919bc36fd4dda2c771b44716aa00ea43f9298f45ae64012bbb",
+      "repo": "pfad",
+      "branch": "codex/alpha51-adoption",
+      "commit": "1bf07915cd07115b63dd2531856aa8e0737acdb1",
+      "url": "https://github.com/emmettl/pfad/pull/4",
+      "number": 4,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:boundary"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:budget"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 37,
+          "sha256": "0ea11c1a4b63e6919bc36fd4dda2c771b44716aa00ea43f9298f45ae64012bbb"
+        }
+      ],
+      "mergeCommit": "26b2f87ade630162c81594a78e12255f2cf4b876",
+      "mergedAt": "2026-11-06T10:29:22Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:18:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/pfad/actions/runs/42201576515/job/127837876773",
+          "name": "build",
+          "startedAt": "2026-11-06T10:17:54Z",
+          "status": "COMPLETED",
+          "workflowName": "Check PFAD"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:18:38Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/pfad/actions/runs/42201568949/job/127837850479",
+          "name": "build",
+          "startedAt": "2026-11-06T10:17:51Z",
+          "status": "COMPLETED",
+          "workflowName": "Check PFAD"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:25:56Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/pfad/actions/runs/42201576515/job/127838125288",
+          "name": "browser (chromium)",
+          "startedAt": "2026-11-06T10:18:30Z",
+          "status": "COMPLETED",
+          "workflowName": "Check PFAD"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:26:53Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/pfad/actions/runs/42201568949/job/127838195395",
+          "name": "browser (chromium)",
+          "startedAt": "2026-11-06T10:18:40Z",
+          "status": "COMPLETED",
+          "workflowName": "Check PFAD"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:24:22Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/pfad/actions/runs/42201576515/job/127838125362",
+          "name": "browser (webkit-mobile)",
+          "startedAt": "2026-11-06T10:18:30Z",
+          "status": "COMPLETED",
+          "workflowName": "Check PFAD"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:25:27Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/pfad/actions/runs/42201568949/job/127838195462",
+          "name": "browser (webkit-mobile)",
+          "startedAt": "2026-11-06T10:18:40Z",
+          "status": "COMPLETED",
+          "workflowName": "Check PFAD"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42204080606,
+          "headSha": "26b2f87ade630162c81594a78e12255f2cf4b876",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42203052500,
+          "headSha": "26b2f87ade630162c81594a78e12255f2cf4b876",
+          "status": "completed",
+          "workflowName": "Deploy Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "schwall",
+      "source": "28c504feb4bd0285a1d4025d07ac9739f399fd0d",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.49",
+        "@motionstudies/three": "0.1.0-alpha.49",
+        "@motionstudies/web": "0.1.0-alpha.49",
+        "@motionstudies/data": "0.1.0-alpha.49"
+      },
+      "retainedDataFiles": 1050,
+      "retainedDataTreeSha256": "c7541581e6d55ac9c76c2938a7eac697aaecd9e9fb4a221287b199925393ae8e",
+      "repo": "schwall",
+      "branch": "codex/alpha51-adoption",
+      "commit": "a95cfb4a9d996dc493653740d0fbc31a72605275",
+      "url": "https://github.com/emmettl/schwall/pull/1",
+      "number": 1,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:architecture"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:fluid-source"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 1050,
+          "sha256": "c7541581e6d55ac9c76c2938a7eac697aaecd9e9fb4a221287b199925393ae8e"
+        }
+      ],
+      "mergeCommit": "49f8a8c0f18ade66946a5899850c102f80f07719",
+      "mergedAt": "2026-11-06T10:21:51Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:21:05Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/schwall/actions/runs/42201586427/job/127837910065",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:59Z",
+          "status": "COMPLETED",
+          "workflowName": "Source checks"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42202098588,
+          "headSha": "49f8a8c0f18ade66946a5899850c102f80f07719",
+          "status": "completed",
+          "workflowName": "Source checks"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "umlauf",
+      "source": "4b4fe93042fa69d604a2de8420d1654bdb6eaf12",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.50",
+        "@motionstudies/three": "0.1.0-alpha.50",
+        "@motionstudies/web": "0.1.0-alpha.50",
+        "@motionstudies/data": "0.1.0-alpha.50"
+      },
+      "retainedDataFiles": 7,
+      "retainedDataTreeSha256": "a136d454a17e407a80160e5fba4caccb47d07d5d0d4e10eeb408373b7c6cd249",
+      "repo": "umlauf",
+      "branch": "codex/alpha51-adoption",
+      "commit": "b02cb8e1dfe7fb5b6da003c85cab726139c82f2f",
+      "url": "https://github.com/emmettl/umlauf/pull/3",
+      "number": 3,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:boundary"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:budget"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 7,
+          "sha256": "a136d454a17e407a80160e5fba4caccb47d07d5d0d4e10eeb408373b7c6cd249"
+        }
+      ],
+      "mergeCommit": "1f082656b14fc726c28a8587edef72cee0be82ec",
+      "mergedAt": "2026-11-06T10:26:25Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:22:52Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/umlauf/actions/runs/42201598110/job/127837948869",
+          "name": "check",
+          "startedAt": "2026-11-06T10:18:04Z",
+          "status": "COMPLETED",
+          "workflowName": "Check Umlauf"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:25:20Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/umlauf/actions/runs/42201586374/job/127837910018",
+          "name": "check",
+          "startedAt": "2026-11-06T10:17:59Z",
+          "status": "COMPLETED",
+          "workflowName": "Check Umlauf"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42203777512,
+          "headSha": "1f082656b14fc726c28a8587edef72cee0be82ec",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42202685192,
+          "headSha": "1f082656b14fc726c28a8587edef72cee0be82ec",
+          "status": "completed",
+          "workflowName": "Deploy Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "underfall",
+      "source": "2170a3e2d3aa18cc9d9e00b181dfb61d1fabe09a",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.48",
+        "@motionstudies/three": "0.1.0-alpha.48",
+        "@motionstudies/web": "0.1.0-alpha.48",
+        "@motionstudies/data": "0.1.0-alpha.48"
+      },
+      "retainedDataFiles": 1277,
+      "retainedDataTreeSha256": "0cdff344e4a9aa5dd400f7b8a8db5e2d1850698697bc3ade5a81f7450fc02585",
+      "repo": "underfall",
+      "branch": "codex/alpha51-adoption",
+      "commit": "bcea3e0f7eec1ab8fbb12d108dda03756b55e8b5",
+      "url": "https://github.com/emmettl/underfall/pull/16",
+      "number": 16,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 404
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 1277,
+          "sha256": "0cdff344e4a9aa5dd400f7b8a8db5e2d1850698697bc3ade5a81f7450fc02585"
+        }
+      ],
+      "mergeCommit": "b2230618ba0c5d1a525a24dc1123ed0a953d02d3",
+      "mergedAt": "2026-11-06T10:20:42Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:18:33Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/underfall/actions/runs/42201606525/job/127837977618",
+          "name": "check",
+          "startedAt": "2026-11-06T10:18:08Z",
+          "status": "COMPLETED",
+          "workflowName": "Check"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:18:44Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/underfall/actions/runs/42201598164/job/127837949690",
+          "name": "check",
+          "startedAt": "2026-11-06T10:18:04Z",
+          "status": "COMPLETED",
+          "workflowName": "Check"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "failure",
+          "databaseId": 42202267255,
+          "headSha": "b2230618ba0c5d1a525a24dc1123ed0a953d02d3",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42201946556,
+          "headSha": "b2230618ba0c5d1a525a24dc1123ed0a953d02d3",
+          "status": "completed",
+          "workflowName": "Check"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "zenit",
+      "source": "d179e43886978d621e877fc34ea50c2973687490",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/core": "0.1.0-alpha.31",
+        "@motionstudies/web": "0.1.0-alpha.31"
+      },
+      "retainedDataFiles": 23,
+      "retainedDataTreeSha256": "de48a5366a0681d62e0c912cc6cae091f0c3a6a220dcd1ff5b8655c1f1f7a620",
+      "repo": "zenit",
+      "branch": "codex/alpha51-adoption",
+      "commit": "3e33b778daefb8c2d35ee7e3ed5c2087c3abf7ff",
+      "url": "https://github.com/emmettl/zenit/pull/1",
+      "number": 1,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 198
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 23,
+          "sha256": "de48a5366a0681d62e0c912cc6cae091f0c3a6a220dcd1ff5b8655c1f1f7a620"
+        }
+      ],
+      "mergeCommit": "8c70b60d50b77e96740e387d5b2e303236e178f9",
+      "mergedAt": "2026-11-06T10:32:57Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:31:42Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/zenit/actions/runs/42201615052/job/127838005602",
+          "name": "check",
+          "startedAt": "2026-11-06T10:18:12Z",
+          "status": "COMPLETED",
+          "workflowName": "Check ZENIT"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:31:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/zenit/actions/runs/42201607110/job/127837979772",
+          "name": "check",
+          "startedAt": "2026-11-06T10:18:09Z",
+          "status": "COMPLETED",
+          "workflowName": "Check ZENIT"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42205483025,
+          "headSha": "8c70b60d50b77e96740e387d5b2e303236e178f9",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42203512608,
+          "headSha": "8c70b60d50b77e96740e387d5b2e303236e178f9",
+          "status": "completed",
+          "workflowName": "Deploy Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    },
+    {
+      "edition": "zugunruhe",
+      "source": "26a17572ef8a88894fd57457e5bb2a3d9e7f3814",
+      "baseBranch": "main",
+      "versions": {
+        "@motionstudies/web": "0.1.0-alpha.46",
+        "@motionstudies/core": "0.1.0-alpha.46",
+        "@motionstudies/three": "0.1.0-alpha.46"
+      },
+      "retainedDataFiles": 0,
+      "retainedDataTreeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "repo": "zugunruhe",
+      "branch": "codex/alpha51-adoption",
+      "commit": "6f62805441c8b93f059f958300ab30c70bc55c9d",
+      "url": "https://github.com/emmettl/zugunruhe/pull/2",
+      "number": 2,
+      "version": "0.1.0-alpha.51",
+      "localValidation": [
+        {
+          "command": [
+            "npm",
+            "install",
+            "--package-lock-only",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "ci",
+            "--no-audit",
+            "--no-fund",
+            "--cache",
+            "/private/tmp/alpha51-registry-cache"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-installed-files-with-tested-registry-archives"
+          ],
+          "exitCode": 0,
+          "files": 339
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "test"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "compare-retained-public-and-fixture-data"
+          ],
+          "exitCode": 0,
+          "files": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "mergeCommit": "aee0a859a320120d57a682d07a3cac562cf013f6",
+      "mergedAt": "2026-11-06T10:41:11Z",
+      "hostedChecks": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:19:21Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/zugunruhe/actions/runs/42201625284/job/127838040392",
+          "name": "check",
+          "startedAt": "2026-11-06T10:18:25Z",
+          "status": "COMPLETED",
+          "workflowName": "Check Zugunruhe"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:40:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/zugunruhe/actions/runs/42201625284/job/127838505802",
+          "name": "browser (chromium)",
+          "startedAt": "2026-11-06T10:19:27Z",
+          "status": "COMPLETED",
+          "workflowName": "Check Zugunruhe"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-06T10:29:30Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/emmettl/zugunruhe/actions/runs/42201625284/job/127838505636",
+          "name": "browser (webkit)",
+          "startedAt": "2026-11-06T10:19:23Z",
+          "status": "COMPLETED",
+          "workflowName": "Check Zugunruhe"
+        }
+      ],
+      "mainWorkflows": [
+        {
+          "conclusion": "success",
+          "databaseId": 42207031672,
+          "headSha": "aee0a859a320120d57a682d07a3cac562cf013f6",
+          "status": "completed",
+          "workflowName": "Publish to Cloudflare"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 42204553903,
+          "headSha": "aee0a859a320120d57a682d07a3cac562cf013f6",
+          "status": "completed",
+          "workflowName": "Deploy Pages"
+        }
+      ],
+      "liveDeployment": "not attested by this adoption record"
+    }
+  ]
+}

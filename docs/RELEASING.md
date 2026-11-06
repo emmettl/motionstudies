@@ -4,13 +4,13 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.50` under `next`, published
-from `63853645636cd706303c39ac614c16080e82d3d4` through
-[trusted run 41356252074](https://github.com/emmettl/motionstudies/actions/runs/41356252074).
-All four registry archives match the tested CI tarballs byte-for-byte, and all
-four `next` tags were verified. It publishes the stable Fiber 9 renderer boundaries,
-guards and readiness primitives. Existing scenes retain WebGL and Fiber 9.8.2.
-See [the release and adoption record](RENDERER-ALPHA-50.md).
+The latest verified coordinated release is `0.1.0-alpha.51` under `next`, published
+from `71a2e3b84095576e0129d6b4540c13e32572bcdf` through
+[trusted run 42197273783](https://github.com/emmettl/motionstudies/actions/runs/42197273783).
+All four downloaded registry archives match the tested CI tarballs byte-for-byte,
+and all four `next` tags were verified. The data package's module analysis and the
+workspace's parser tooling use exact Oxc 0.156.0. See the
+[release and adoption record](OXC-PARSER-ALPHA-51.md).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
