@@ -19,6 +19,10 @@ Each work begins with a place, a data source, and a visual claim. Scheduled move
 - [LUFT](https://luft.motionstudies.app/): A recorded day of European aircraft movement, routes, airport rhythms, and accumulating traces.
 - [PFAD](https://pfad.motionstudies.app/): A road search replayed at human scale, revealing the chosen route and the paths not taken.
 
+## Independent studies
+
+- [FLAT SIX](https://flatsix.motionstudies.app/): A love letter to the Neun-Elfer, the Porsche 911 and its air- and water-cooled flat-six engines, explored part by part.
+
 ## Optional
 
 - [Widget lab](https://motionstudies.app/lab/): Interactive lab for shared Motion Studies widgets.
