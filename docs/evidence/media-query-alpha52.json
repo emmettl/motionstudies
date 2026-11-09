@@ -1,0 +1,386 @@
+{
+  "date": "2026-11-09",
+  "status": "published-and-six-source-adoptions-merged",
+  "version": "0.1.0-alpha.52",
+  "sourceCommit": "d8aee8c666b51fd52face6ab6222b6de1bfedfc6",
+  "packagePR": "https://github.com/emmettl/motionstudies/pull/64",
+  "packagePRValidation": "https://github.com/emmettl/motionstudies/actions/runs/42619261707",
+  "trustedRelease": "https://github.com/emmettl/motionstudies/actions/runs/42627012927",
+  "catalogueMainCI": "https://github.com/emmettl/motionstudies/actions/runs/42626983004",
+  "registryVerification": {
+    "verifiedAt": "2026-11-09T14:06:10.430Z",
+    "releaseRun": 42627012927,
+    "sourceCommit": "d8aee8c666b51fd52face6ab6222b6de1bfedfc6",
+    "packages": [
+      {
+        "name": "@motionstudies/core",
+        "version": "0.1.0-alpha.52",
+        "integrity": "sha512-qIliEwGMX62sPxbGpIeD8sUSqKLDwR89Kzr183bJ3eZH+gl4RMCJidfxV+O+PgaXA5EERpRVbINQRw7ifLlFqg==",
+        "sha256": "713cbd06b5726ed7bf9124a139e498535afe06ba2a363097af7da047b0cd3593",
+        "bytes": 83483,
+        "next": "0.1.0-alpha.52"
+      },
+      {
+        "name": "@motionstudies/data",
+        "version": "0.1.0-alpha.52",
+        "integrity": "sha512-b5J276ET+OhVsreonU3mMR63fwIVn3IlAfOK8E7LJuntgzvWYvuoWXSkekUzbzM1h9RkA82PzwlbpU1RWBGZyQ==",
+        "sha256": "e8461c1a12680e46cc3facce7f0f8d4e8b6ebbb2a8a0ca1902fdc33d12adb61a",
+        "bytes": 87439,
+        "next": "0.1.0-alpha.52"
+      },
+      {
+        "name": "@motionstudies/three",
+        "version": "0.1.0-alpha.52",
+        "integrity": "sha512-kx6v4rEvZGStjtB7mHPEEpJnwP29YkltKBHi9Gg8wOBKS9mGH5k5zMPTqJDo2UePCctLzBXQc9/i6zu4vD9XEw==",
+        "sha256": "4aeb84a172d678a7f95fd1cd050dc7058870c646304fa57875b516afdc1c75b2",
+        "bytes": 128243,
+        "next": "0.1.0-alpha.52"
+      },
+      {
+        "name": "@motionstudies/web",
+        "version": "0.1.0-alpha.52",
+        "integrity": "sha512-DQvnKxQMJUsbkUDnLUuzW2VoYaFte6zU8HyziQTXBSb426Yu+c4QrBI0GjQ/NOXkS0jf/fCGZ9y6Q95L3NP3bg==",
+        "sha256": "563bc6ccd3a769e2d7979ff2283d1e46d061fc1607f3219de169fc5eb87c64a2",
+        "bytes": 335012,
+        "next": "0.1.0-alpha.52"
+      }
+    ]
+  },
+  "localCandidateComparison": {
+    "compressedArchivesIdentical": false,
+    "uncompressedTarStreamsIdentical": true,
+    "allShippedFilesIdentical": true
+  },
+  "sharedChecks": {
+    "unit": 563,
+    "hosting": 16,
+    "packedBrowserPassed": 296,
+    "packedBrowserExistingSkips": 2,
+    "loaderAndControllerBrowserPassed": 42,
+    "typeLintArchitecture": "passed",
+    "publicationDryRun": "passed"
+  },
+  "installedRegistryPackages": {
+    "norikae": {
+      "@motionstudies/core": {
+        "version": "0.1.0-alpha.52",
+        "files": 99
+      },
+      "@motionstudies/three": {
+        "version": "0.1.0-alpha.52",
+        "files": 141
+      },
+      "@motionstudies/web": {
+        "version": "0.1.0-alpha.52",
+        "files": 101
+      },
+      "@motionstudies/data": {
+        "version": "0.1.0-alpha.52",
+        "files": 65
+      }
+    },
+    "umlauf": {
+      "@motionstudies/core": {
+        "version": "0.1.0-alpha.52",
+        "files": 99
+      },
+      "@motionstudies/three": {
+        "version": "0.1.0-alpha.52",
+        "files": 141
+      },
+      "@motionstudies/web": {
+        "version": "0.1.0-alpha.52",
+        "files": 101
+      },
+      "@motionstudies/data": {
+        "version": "0.1.0-alpha.52",
+        "files": 65
+      }
+    },
+    "zenit": {
+      "@motionstudies/core": {
+        "version": "0.1.0-alpha.52",
+        "files": 99
+      },
+      "@motionstudies/web": {
+        "version": "0.1.0-alpha.52",
+        "files": 101
+      }
+    },
+    "gleislicht": {
+      "@motionstudies/core": {
+        "version": "0.1.0-alpha.52",
+        "files": 99
+      },
+      "@motionstudies/three": {
+        "version": "0.1.0-alpha.52",
+        "files": 141
+      },
+      "@motionstudies/web": {
+        "version": "0.1.0-alpha.52",
+        "files": 101
+      },
+      "@motionstudies/data": {
+        "version": "0.1.0-alpha.52",
+        "files": 65
+      }
+    },
+    "allchange": {
+      "@motionstudies/core": {
+        "version": "0.1.0-alpha.52",
+        "files": 99
+      },
+      "@motionstudies/three": {
+        "version": "0.1.0-alpha.52",
+        "files": 141
+      },
+      "@motionstudies/web": {
+        "version": "0.1.0-alpha.52",
+        "files": 101
+      },
+      "@motionstudies/data": {
+        "version": "0.1.0-alpha.52",
+        "files": 65
+      }
+    },
+    "underfall": {
+      "@motionstudies/core": {
+        "version": "0.1.0-alpha.52",
+        "files": 99
+      },
+      "@motionstudies/three": {
+        "version": "0.1.0-alpha.52",
+        "files": 141
+      },
+      "@motionstudies/web": {
+        "version": "0.1.0-alpha.52",
+        "files": 101
+      },
+      "@motionstudies/data": {
+        "version": "0.1.0-alpha.52",
+        "files": 65
+      }
+    }
+  },
+  "zenitHostedValidation": {
+    "pushRun": 42631822963,
+    "pushConclusion": "success",
+    "prRun": 42631953164,
+    "prConclusion": "cancelled",
+    "browserStepConclusion": "success",
+    "browserPassed": 198,
+    "reason": "15-minute job limit reached during cleanup; no tests or job limits changed"
+  },
+  "adoptions": {
+    "norikae": {
+      "number": 6,
+      "url": "https://github.com/emmettl/norikae/pull/6",
+      "head": "375bdea46e42d53596ec4c90302a78a05b3166f7",
+      "base": "codex/synthetic-player",
+      "merged": "b89da3bab22b065c2d0f7a9921d117378dbc8406",
+      "registryBytesAndPins": "verified",
+      "applicableRegistryBoundaryAndTypeChecks": "passed",
+      "hostedPRRuns": [
+        {
+          "id": 42631928889,
+          "name": "Validate"
+        }
+      ]
+    },
+    "umlauf": {
+      "number": 4,
+      "url": "https://github.com/emmettl/umlauf/pull/4",
+      "head": "3a8a6e091d2e425ef8c4f02f04fe3721ce3e4e83",
+      "base": "main",
+      "merged": "8840016ba0348cdf5d4d7bbd3d3dd1bea8dc6f98",
+      "registryBytesAndPins": "verified",
+      "applicableRegistryBoundaryAndTypeChecks": "passed",
+      "hostedPRRuns": [
+        {
+          "id": 42631941853,
+          "name": "Check Umlauf"
+        }
+      ]
+    },
+    "zenit": {
+      "number": 2,
+      "url": "https://github.com/emmettl/zenit/pull/2",
+      "head": "1ad8d950d032fb81e3f47ab7af95d9b0ee35c99e",
+      "base": "main",
+      "merged": "b1042be435c542e606eeaa4acd2f474d6d50b009",
+      "registryBytesAndPins": "verified",
+      "applicableRegistryBoundaryAndTypeChecks": "passed",
+      "hostedPRRuns": [
+        {
+          "id": 42631953164,
+          "name": "Check ZENIT"
+        }
+      ]
+    },
+    "gleislicht": {
+      "number": 26,
+      "url": "https://github.com/emmettl/gleislicht/pull/26",
+      "head": "39e85a1664a47cd8b12bd1088bbd45549e1f3388",
+      "base": "main",
+      "merged": "4b90c81c7587edd52c2ee8f8d4268cb2fe7ba75f",
+      "registryBytesAndPins": "verified",
+      "applicableRegistryBoundaryAndTypeChecks": "passed",
+      "hostedPRRuns": []
+    },
+    "allchange": {
+      "number": 5,
+      "url": "https://github.com/emmettl/allchange/pull/5",
+      "head": "250a5c9bf9f4bcc532c82427f7875235bc9f6706",
+      "base": "main",
+      "merged": "1ca6638d83e90d98e61f866d63b5a77b0dd98199",
+      "registryBytesAndPins": "verified",
+      "applicableRegistryBoundaryAndTypeChecks": "passed",
+      "hostedPRRuns": [
+        {
+          "id": 42631978964,
+          "name": "Check All Change"
+        }
+      ]
+    },
+    "underfall": {
+      "number": 17,
+      "url": "https://github.com/emmettl/underfall/pull/17",
+      "head": "6cc208378ebd3dce8cdc9089efa4e9145853186b",
+      "base": "main",
+      "merged": "3fcfb522b2f0d90817cf256fc81e4d8d25647a1b",
+      "registryBytesAndPins": "verified",
+      "applicableRegistryBoundaryAndTypeChecks": "passed",
+      "hostedPRRuns": [
+        {
+          "id": 42631989855,
+          "name": "Check"
+        }
+      ]
+    }
+  },
+  "localEditionChecks": {
+    "norikae": {
+      "unit": 28,
+      "browser": 12
+    },
+    "umlauf": {
+      "unit": 20,
+      "focusedBrowser": 10,
+      "openingGzipBytes": 583535,
+      "openingGzipLimit": 588800
+    },
+    "zenit": {
+      "unit": 86,
+      "fullBrowserPassed": 197,
+      "fullBrowserFailed": 1,
+      "isolatedUnmodifiedRerunPassed": 3,
+      "failure": "Mobile WebKit orientation assertion: accepted worker frame trailed requested paused time by 320 ms."
+    },
+    "gleislicht": {
+      "unitAndDOM": 1466,
+      "responsiveBrowser": 2,
+      "openingJavaScriptGzipKiB": 378.2,
+      "openingJavaScriptLimitKiB": 380
+    },
+    "allchange": {
+      "focusedUnit": 9,
+      "focusedBrowser": 8,
+      "openingJavaScriptGzipKiB": 364.5,
+      "openingJavaScriptLimitKiB": 366
+    },
+    "underfall": {
+      "unit": 131,
+      "browser": 2
+    }
+  },
+  "livePublication": {
+    "gleislicht": {
+      "workflow": "https://github.com/emmettl/gleislicht/actions/runs/42632080332",
+      "codeAndBuildGate": "passed",
+      "regionalDataRefresh": "failed",
+      "error": "zurich-city: insufficient rail geometry",
+      "preExistingFailure": "https://github.com/emmettl/gleislicht/actions/runs/42529947844",
+      "preExistingFailureDate": "2026-11-08"
+    },
+    "otherEditionServedBuilds": "Not independently verified; source merges and PR validation are recorded separately."
+  },
+  "localWorkingTrees": "Existing local edits were preserved; changes were prepared in isolated worktrees.",
+  "remoteMergeVerification": {
+    "norikae": {
+      "mergeCommit": "b89da3bab22b065c2d0f7a9921d117378dbc8406",
+      "testedHead": "375bdea46e42d53596ec4c90302a78a05b3166f7",
+      "base": "codex/synthetic-player",
+      "remoteContainsMerge": true,
+      "mergedTreeMatchesTestedTree": true,
+      "pins": {
+        "@motionstudies/core": "0.1.0-alpha.52",
+        "@motionstudies/three": "0.1.0-alpha.52",
+        "@motionstudies/web": "0.1.0-alpha.52",
+        "@motionstudies/data": "0.1.0-alpha.52"
+      }
+    },
+    "umlauf": {
+      "mergeCommit": "8840016ba0348cdf5d4d7bbd3d3dd1bea8dc6f98",
+      "testedHead": "3a8a6e091d2e425ef8c4f02f04fe3721ce3e4e83",
+      "base": "main",
+      "remoteContainsMerge": true,
+      "mergedTreeMatchesTestedTree": true,
+      "pins": {
+        "@motionstudies/core": "0.1.0-alpha.52",
+        "@motionstudies/three": "0.1.0-alpha.52",
+        "@motionstudies/web": "0.1.0-alpha.52",
+        "@motionstudies/data": "0.1.0-alpha.52"
+      }
+    },
+    "zenit": {
+      "mergeCommit": "b1042be435c542e606eeaa4acd2f474d6d50b009",
+      "testedHead": "1ad8d950d032fb81e3f47ab7af95d9b0ee35c99e",
+      "base": "main",
+      "remoteContainsMerge": true,
+      "mergedTreeMatchesTestedTree": true,
+      "pins": {
+        "@motionstudies/core": "0.1.0-alpha.52",
+        "@motionstudies/web": "0.1.0-alpha.52"
+      }
+    },
+    "gleislicht": {
+      "mergeCommit": "4b90c81c7587edd52c2ee8f8d4268cb2fe7ba75f",
+      "testedHead": "39e85a1664a47cd8b12bd1088bbd45549e1f3388",
+      "base": "main",
+      "remoteContainsMerge": true,
+      "mergedTreeMatchesTestedTree": true,
+      "pins": {
+        "@motionstudies/core": "0.1.0-alpha.52",
+        "@motionstudies/three": "0.1.0-alpha.52",
+        "@motionstudies/web": "0.1.0-alpha.52",
+        "@motionstudies/data": "0.1.0-alpha.52"
+      }
+    },
+    "allchange": {
+      "mergeCommit": "1ca6638d83e90d98e61f866d63b5a77b0dd98199",
+      "testedHead": "250a5c9bf9f4bcc532c82427f7875235bc9f6706",
+      "base": "main",
+      "remoteContainsMerge": true,
+      "mergedTreeMatchesTestedTree": true,
+      "pins": {
+        "@motionstudies/core": "0.1.0-alpha.52",
+        "@motionstudies/three": "0.1.0-alpha.52",
+        "@motionstudies/web": "0.1.0-alpha.52",
+        "@motionstudies/data": "0.1.0-alpha.52"
+      }
+    },
+    "underfall": {
+      "mergeCommit": "3fcfb522b2f0d90817cf256fc81e4d8d25647a1b",
+      "testedHead": "6cc208378ebd3dce8cdc9089efa4e9145853186b",
+      "base": "main",
+      "remoteContainsMerge": true,
+      "mergedTreeMatchesTestedTree": true,
+      "pins": {
+        "@motionstudies/core": "0.1.0-alpha.52",
+        "@motionstudies/three": "0.1.0-alpha.52",
+        "@motionstudies/web": "0.1.0-alpha.52",
+        "@motionstudies/data": "0.1.0-alpha.52"
+      }
+    }
+  }
+}

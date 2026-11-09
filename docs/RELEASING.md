@@ -4,13 +4,14 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.51` under `next`, published
-from `71a2e3b84095576e0129d6b4540c13e32572bcdf` through
-[trusted run 42197273783](https://github.com/emmettl/motionstudies/actions/runs/42197273783).
-All four downloaded registry archives match the tested CI tarballs byte-for-byte,
-and all four `next` tags were verified. The data package's module analysis and the
-workspace's parser tooling use exact Oxc 0.156.0. See the
-[release and adoption record](OXC-PARSER-ALPHA-51.md).
+The latest verified coordinated release is `0.1.0-alpha.52` under `next`, published
+from `d8aee8c666b51fd52face6ab6222b6de1bfedfc6` through
+[trusted run 42627012927](https://github.com/emmettl/motionstudies/actions/runs/42627012927).
+All four downloaded registry archives match the retained, tested CI tarballs
+byte-for-byte; all four `next` tags and six clean edition installs are verified.
+The local candidates have identical uncompressed tar streams; their compressed
+archive bytes differ. The release adds `@motionstudies/web/use-media-query`.
+See the [release and adoption evidence](evidence/media-query-alpha52.json).
 
 For a new version, update all four package versions and internal pins, root/lab pins, the lockfile and the workflow input default. Run the workspace checks, `npm run check:release`, loader checks and `npm run release:dry-run`; commit the checked source. Dispatch `release.yml` on `main` with that exact version and mode **trusted** only when publication is authorized. The workflow verifies and publishes its retained tarballs, then verifies registry integrity. A normal push never publishes npm packages.
 
@@ -47,6 +48,27 @@ The package names are `@motionstudies/core`, `@motionstudies/data`, `@motionstud
 After a successful OIDC publication, revoke the bootstrap token in npm and delete the GitHub `NPM_TOKEN` secret. npm's “Require two-factor authentication and disallow tokens” setting is compatible with trusted publishers.
 
 ## Release history
+
+`0.1.0-alpha.52` adds a live `useMediaQuery` hook backed by React's
+`useSyncExternalStore`, with query replacement, listener cleanup and an explicit
+server/hydration fallback. London, Underfall, Gleislicht, NORIKAE's synthetic
+player branch, Umlauf and ZENIT adopt exact registry pins, retaining edition-owned
+pause, restart and settings-dismissal behaviour. One-time defaults and imperative
+renderer subscriptions retain their previous ownership. All source adoptions are
+merged after applicable local/hosted checks; existing local work remains intact.
+
+Shared hosted validation passes 563 unit tests, 16 hosting checks, 296 packed
+browser cases with two existing skips, and 42 loader/controller cases. Registry
+bytes and installed files match the retained CI artifacts. Gleislicht's hosted
+code/build gate passes, while its normal live publication remains held by the
+regional `zurich-city: insufficient rail geometry` check, also seen before this
+change on 8 November. Source adoption and live served builds are distinct; see
+[the dated evidence](evidence/media-query-alpha52.json).
+
+`0.1.0-alpha.51` moves shared module analysis and workspace parser tooling to
+exact Oxc 0.156.0. Published from `71a2e3b84095576e0129d6b4540c13e32572bcdf`
+through [trusted run 42197273783](https://github.com/emmettl/motionstudies/actions/runs/42197273783);
+see the [release and adoption record](OXC-PARSER-ALPHA-51.md).
 
 `0.1.0-alpha.49` adds the optional `three/motion-lerp`, `three/motion-lerp-nodes`
 and `three/debug-nodes` entry points. Verification passes 538 unit tests,
