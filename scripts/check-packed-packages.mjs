@@ -107,6 +107,8 @@ try {
     export const mapLabelsContract = selectMapLabels([], mapLabelBudget(32), {left:0,top:0,right:400,bottom:300})
     import { readPowerDay, unitPower, sumPower, fuelMixAt, type PowerDay } from '@motionstudies/core/domain/power-day'
     export const powerContract = (input: unknown) => { const day: PowerDay = readPowerDay(input); return [sumPower(day, day.units, 0), fuelMixAt(day, 0), day.units[0] ? unitPower(day, day.units[0], 0) : null] }
+    import { useMediaQuery } from '@motionstudies/web/use-media-query'
+    export const mediaQuery: (query: string, serverMatches?: boolean) => boolean = useMediaQuery
     import { observeLayout } from '@motionstudies/web/observe-layout'
     export const layoutObserver: (elements: readonly Element[], measure: () => void) => () => void = observeLayout
     import { checkEditionBoundary, type EditionBoundaryOptions } from '@motionstudies/data/edition-boundary'

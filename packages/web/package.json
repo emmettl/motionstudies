@@ -1,9 +1,10 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.51",
+  "version": "0.1.0-alpha.52",
   "private": true,
   "type": "module",
   "exports": {
+    "./use-media-query": "./src/use-media-query.ts",
     "./use-now-clock": "./src/use-now-clock.ts",
     "./use-browser-location": "./src/use-browser-location.ts",
     "./components/SplitFlapBoard": "./src/components/SplitFlapBoard.tsx",
@@ -47,7 +48,7 @@
     "./weather-assets": "./src/weather-assets.ts"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.51"
+    "@motionstudies/core": "0.1.0-alpha.52"
   },
   "peerDependencies": {
     "react": "^19.3.0",
