@@ -24,7 +24,7 @@ The catalogue for authored works and research about transport, geography and mov
 
 [KRAFT — The flow of power](docs/KRAFT.md) is an unnumbered European electricity study with a [private recorded-day scaffold](https://github.com/emmettl/kraft) and a [six-country source audit](docs/KRAFT-SOURCES.md).
 
-PFAD is an independent, unnumbered [pathfinding study](https://pfad.motionstudies.app/) ([repository](https://github.com/emmettl/pfad)). [England](https://github.com/emmettl/england) remains private national research; [motionstudies-recorder](https://github.com/emmettl/motionstudies-recorder) provides recording infrastructure. [Grid/84](https://github.com/emmettl/grid84) is a separate project rather than a Motion Studies edition.
+PFAD is an independent, unnumbered [pathfinding study](https://pfad.motionstudies.app/) ([repository](https://github.com/emmettl/pfad)). [FLAT SIX](https://flatsix.motionstudies.app/) · Stuttgart is an independent, unnumbered love letter to the *Neun-Elfer*, listed in the catalogue. [England](https://github.com/emmettl/england) remains private national research; [motionstudies-recorder](https://github.com/emmettl/motionstudies-recorder) provides recording infrastructure. [Grid/84](https://github.com/emmettl/grid84) is a separate project rather than a Motion Studies edition.
 
 ## Development
 
