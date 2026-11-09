@@ -433,3 +433,18 @@ alpha.49 consumers retain the contract above until they adopt a new release.
 
 See [the readiness register](https://github.com/emmettl/motionstudies/blob/main/docs/RENDERER-READINESS.md)
 and [primitive/output contracts](https://github.com/emmettl/motionstudies/blob/main/docs/WEBGPU-SUPPORT.md#readiness-primitives-and-composed-scene).
+
+## Browser media queries
+
+`useMediaQuery(query, serverMatches = false)` from
+`@motionstudies/web/use-media-query` reads a live browser media query through
+React's `useSyncExternalStore`. It reads the current match on mount and query
+replacement, subscribes to changes, and removes its listener on replacement or
+unmount. Each mounted hook owns its MediaQueryList and subscription; there is no
+global cache. The query should be a CSS media-query string.
+
+`serverMatches` supplies the server-rendered and initial hydration value; choose
+the same value on server and client. The browser value takes over after hydration.
+The hook returns only a boolean. Playback pauses, settings dismissal and other
+reactions belong to the edition. Keep one-time defaults and imperative renderer
+listeners when their existing semantics call for them. Introduced in alpha.52.
