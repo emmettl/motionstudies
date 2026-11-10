@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import { basename, resolve } from 'node:path'
 import { spawnSync } from 'node:child_process'
-import { existingVersionAction, releasePackages, releaseRegistry, releaseTag, validateReleaseManifests } from './release-policy.mjs'
+import { publicationAction, releasePackages, releaseRegistry, releaseTag, validateReleaseManifests } from './release-policy.mjs'
 
 const directory = resolve(process.env.RELEASE_ARTIFACTS ?? '.package-dist/tarballs')
 const release = JSON.parse(await readFile(resolve(directory, 'release.json'), 'utf8'))
@@ -36,12 +36,9 @@ validateReleaseManifests(manifests)
 // Preflight all packages before publishing the first. A rerun can resume a partial release.
 const plan = []
 for (const artifact of release.packages) {
-  let action = 'dry-run'
-  if (publish) {
-    const response = await fetch(`${releaseRegistry}${encodeURIComponent(artifact.name)}/${encodeURIComponent(release.version)}`, { signal: AbortSignal.timeout(30_000) })
-    if (!response.ok && response.status !== 404) throw new Error(`Registry check failed (${response.status}): ${artifact.name}`)
-    action = existingVersionAction(response.status === 404 ? null : await response.json(), artifact.integrity)
-  }
+  const response = await fetch(`${releaseRegistry}${encodeURIComponent(artifact.name)}/${encodeURIComponent(release.version)}`, { signal: AbortSignal.timeout(30_000) })
+  if (!response.ok && response.status !== 404) throw new Error(`Registry check failed (${response.status}): ${artifact.name}`)
+  const action = publicationAction(response.status === 404 ? null : await response.json(), artifact.integrity, { publish })
   plan.push({ ...artifact, action })
 }
 for (const artifact of plan) {

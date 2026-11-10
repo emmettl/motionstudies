@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { existingVersionAction, releasePackages, releaseRepository, releaseTag, validateReleaseManifests } from './release-policy.mjs'
+import { existingVersionAction, publicationAction, releasePackages, releaseRepository, releaseTag, validateReleaseManifests } from './release-policy.mjs'
 function manifests() {
   return releasePackages.map((name) => ({ name: `@motionstudies/${name}`, version: '0.1.0-alpha.0', license: 'MIT', repository: { url: releaseRepository, directory: `packages/${name}` }, ...(name === 'core' ? {} : { dependencies: { '@motionstudies/core': '0.1.0-alpha.0' } }) }))
 }
@@ -33,4 +33,12 @@ describe('release policy', () => {
     expect(existingVersionAction({ dist: { integrity: 'sha512-test' } }, 'sha512-test')).toBe('skip')
     expect(() => existingVersionAction({ dist: { integrity: 'sha512-other' } }, 'sha512-test')).toThrow('different bytes')
   })
+  it('dry-runs new versions and skips only byte-identical existing releases', () => {
+    expect(publicationAction(null, 'sha512-tested')).toBe('dry-run')
+    expect(publicationAction(null, 'sha512-tested', { publish: true })).toBe('publish')
+    expect(publicationAction({ dist: { integrity: 'sha512-tested' } }, 'sha512-tested')).toBe('skip')
+    expect(publicationAction({ dist: { integrity: 'sha512-tested' } }, 'sha512-tested', { publish: true })).toBe('skip')
+    expect(() => publicationAction({ dist: { integrity: 'sha512-other' } }, 'sha512-tested')).toThrow('different bytes')
+  })
+
 })

@@ -31,3 +31,9 @@ export function existingVersionAction(existing, integrity) {
   if (existing.dist?.integrity !== integrity) throw new Error('This version already exists with different bytes; bump the version')
   return 'skip'
 }
+
+/** npm 12 also rejects existing versions during publish --dry-run. */
+export function publicationAction(existing, integrity, { publish = false } = {}) {
+  if (existingVersionAction(existing, integrity) === 'skip') return 'skip'
+  return publish ? 'publish' : 'dry-run'
+}
