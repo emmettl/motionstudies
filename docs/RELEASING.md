@@ -163,3 +163,13 @@ References: [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/)
 `0.1.0-alpha.10` adds typed scene children, train and road resolvers, trail backend and camera lifecycles, Canvas scheduling, and hub flow policy. See [renderer extensions and edition migration](RENDERER-EXTENSIONS-ALPHA-10.md).
 
 `0.1.0-alpha.12` adds vehicle hero cards and snapshot calling points alongside the shared ground-transport modules. See [release and edition adoption](VEHICLE-CARDS-ALPHA-12.md).
+
+## Stable 1.0 migration
+
+The 1.0 candidate is based on the complete alpha.52 source, preserving existing public subpaths. Upgrade runtime packages together and retain exact registry pins. Tooling has a separate release workflow and follows the runtime publication because its dependency is `@motionstudies/data@1.0.0`. Existing editions keep their current pins until explicitly adopted and verified.
+
+The development target is Node 26 (`.nvmrc`) and npm 12.2.2. Node-only data and tooling require Node >=26. Browser consumers use React 19.3.1/Fiber 9.8.2 and Three.js 0.187.0; three's peer range follows that new minor. The source packages stay private. Stable tarballs publish to `latest`; `next` retains the prerelease channel.
+
+Registry audit on 10 November 2026 selected Playwright 1.65.0, Node types 26.6.6, Three.js/types 0.187.0, Vite 8.3.7, React plugin 6.3.0, Vitest 5.1.0, Oxc parser 0.158.0, Oxlint 1.93.0 and fast-xml-parser 5.12.0. React, Fiber, TypeScript and Oxfmt were already current. Oxc Transform stays at 0.156.0 because React plugin 6.3.0 requires >=0.152.0 <0.157.0. npm 12 pack output is keyed by package name; pack readers accept both the old array and the new object shape.
+
+Each runtime tarball now carries its own README rather than a copy of the combined contracts. Packed verification checks that identity and includes imports, declarations, source isolation and browser behaviour. Before publishing tooling, it can be checked against the tested runtime candidates with `npm run check:packed --workspace @motionstudies/tooling -- --runtime-tarballs /absolute/path/to/.package-dist/tarballs`.

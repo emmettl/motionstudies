@@ -9,6 +9,17 @@ import { createHash } from 'node:crypto'
 const source = fileURLToPath(new URL('.', import.meta.url))
 const manifest = JSON.parse(await readFile(resolve(source, 'package.json'), 'utf8'))
 const output = resolve(source, '../../.package-dist/tooling')
+const runtimeIndex = process.argv.indexOf('--runtime-tarballs')
+const runtimeDirectory = runtimeIndex < 0 ? undefined : process.argv[runtimeIndex + 1]
+if (runtimeIndex >= 0 && !runtimeDirectory) throw new Error('--runtime-tarballs needs a directory')
+const overrides = runtimeDirectory
+  ? Object.fromEntries(
+      ['core', 'data'].map((name) => [
+        `@motionstudies/${name}`,
+        `file:${resolve(runtimeDirectory, `motionstudies-${name}-${manifest.version}.tgz`)}`,
+      ]),
+    )
+  : undefined
 const temporary = await mkdtemp(resolve(tmpdir(), 'study-tooling-consumer-'))
 function run(command, args, cwd = source) {
   const result = spawnSync(command, args, { cwd, encoding: 'utf8', env: process.env })
@@ -30,6 +41,7 @@ await writeFile(
     version: '0.0.0',
     private: true,
     type: 'module',
+    ...(overrides ? { overrides } : {}),
   }),
 )
 run('npm', ['install', tarball, '--ignore-scripts', '--no-audit', '--no-fund'], temporary)

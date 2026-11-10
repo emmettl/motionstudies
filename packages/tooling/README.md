@@ -20,7 +20,7 @@ npm run format:check --workspace @motionstudies/tooling
 npm run check:packed --workspace @motionstudies/tooling
 ```
 
-The packed check builds a public candidate, installs its tarball in a temporary consumer, exercises exports, config resolution and the configurable checker, and formats/typechecks/lints a sample with the installed presets. It verifies Working Models' bootstrap pins/configs, including formatting style, against the candidate when `--consumer /absolute/path/to/workingmodels` is supplied. It never changes that consumer or its dependency lockfile.
+The packed check builds a public candidate, installs its tarball in a temporary consumer, exercises exports, config resolution and the configurable checker, and formats/typechecks/lints a sample with the installed presets. It verifies Working Models' bootstrap pins/configs, including formatting style, against the candidate when `--consumer /absolute/path/to/workingmodels` is supplied. It never changes that consumer or its dependency lockfile. Before the runtime version is published, add `--runtime-tarballs /absolute/path/to/.package-dist/tarballs` to test against the packed core/data candidates; normal release verification uses registry dependencies.
 
 ## Release and adoption
 
