@@ -2,13 +2,17 @@
 
 The four shared packages are MIT-licensed. The first coordinated release is `0.1.0-alpha.0`, published under the npm `next` tag. Stable versions use `latest`. All four packages share a version; internal dependencies pin that exact version. Source workspaces stay private. Only an explicit release build produces publishable compiled distributions.
 
-## 1.0.1 patch candidate
+## Stable runtime 1.0.1
 
-The patch fixes unrelated pointer exits cancelling pending/visible keyboard help. A deterministic browser regression fails on 1.0.0 and passes with the two-line guard. Runtime and tooling baseline pins move together to 1.0.1; Node 26/npm 12.2.2 are unchanged. Publication and registry verification must be recorded after the trusted workflows finish.
+Published on 10 November 2026 from `7560d8c` through [trusted run 42904432565](https://github.com/emmettl/motionstudies/actions/runs/42904432565). All four runtime `latest` tags and downloaded registry archives are verified against the retained tested CI tarballs. See [the patch evidence](evidence/packages-1.0.1.json).
+
+The patch prevents unrelated pointer exits from cancelling pending or visible keyboard help. The deterministic regression fails on 1.0.0; the patch passes in Chromium and desktop WebKit. Pointer exits from controls and the tooltip keep their existing dismissal behaviour. CI passed 563 unit tests, 298 packed browser checks (three intended skips) and 42 loader checks. Node 26/npm 12.2.2 are unchanged; tooling is independently versioned.
+
+npm 12 dry runs now compare registry integrity and skip only byte-identical existing releases. Conflicting bytes still fail and require a version bump, so post-release validation does not attempt to republish an immutable version.
 
 ## Current release procedure
 
-The stable release is **1.0.0** for all five packages, published on 10 November 2026 from `a6e46beea79251d6848ca7a52023d4d96a4cb2d4`. The [runtime workflow](https://github.com/emmettl/motionstudies/actions/runs/42888908491) and [tooling workflow, attempt 2](https://github.com/emmettl/motionstudies/actions/runs/42893932965/attempts/2) passed. All five `latest` tags resolve to 1.0.0, and downloaded registry archives match the retained tested CI tarballs byte-for-byte. A fresh registry install through all five `latest` tags installed 1.0.0 without workspace links. See [release evidence](evidence/packages-1.0.0.json).
+The initial stable **1.0.0** release for all five packages was published on 10 November 2026 from `a6e46beea79251d6848ca7a52023d4d96a4cb2d4`. The [runtime workflow](https://github.com/emmettl/motionstudies/actions/runs/42888908491) and [tooling workflow, attempt 2](https://github.com/emmettl/motionstudies/actions/runs/42893932965/attempts/2) passed. All five `latest` tags resolve to 1.0.0, and downloaded registry archives match the retained tested CI tarballs byte-for-byte. A fresh registry install through all five `latest` tags installed 1.0.0 without workspace links. See [release evidence](evidence/packages-1.0.0.json).
 
 Development and CI target Node 26 and npm 12.2.2. Runtime distributions ship package-specific READMEs. CI passed 563 unit tests, 296 packed browser checks (two deliberate skips), 42 loader checks and the tooling tests/packed consumer. Tooling's first attempt encountered Core's registry propagation delay; the successful second attempt used the published dependencies. `next` retains the previous prereleases. Edition adoption remains explicit.
 

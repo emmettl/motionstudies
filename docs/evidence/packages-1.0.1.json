@@ -1,0 +1,64 @@
+{
+  "sourceCommit": "7560d8c2e6cdd5fbb3b0d730eb5f75f30f1b3792",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "1.0.1",
+      "tags": {
+        "next": "0.1.0-alpha.52",
+        "latest": "1.0.1"
+      },
+      "integrity": "sha512-tZq6ZRVLwNdsLNBEPwF07ih3Nqn0qgiQkaJ+I7vOaytAUTTztU/Tsr882OekNCHJEfsL9kNlZmz6PARWaZlEMA==",
+      "sha256": "37facd9efeaec5ad8717b8d8670bfe5a1c9ba952fb0fbca1bda01deb3cb1ab45",
+      "bytes": 62168,
+      "readme": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "1.0.1",
+      "tags": {
+        "next": "0.1.0-alpha.52",
+        "latest": "1.0.1"
+      },
+      "integrity": "sha512-CmDLv3TIUiktfjMmCGyfHOUWFN8p0NjWqAZ/pzm05PLwBbCafjkxEbthA9UAECE2O/c1TMdYATmOpLh+2HwZYQ==",
+      "sha256": "dce1ff713bc9b21d453b41d9b118d31f7fc3dc144bf7e3d3e2e62621f9366036",
+      "bytes": 66487,
+      "readme": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "1.0.1",
+      "tags": {
+        "next": "0.1.0-alpha.52",
+        "latest": "1.0.1"
+      },
+      "integrity": "sha512-gt6pWb6UykJN4HudW0QCVXRWqjywWCv/w7EDZS4lWer888nEzFTrwIZwbtznYRLxGxN+QjfZYA6iYrKeGFUm1Q==",
+      "sha256": "afe5a80468091975f46d7695a80ded97b3ee5dab5bcb1b5eba4e9e5f6883f310",
+      "bytes": 107421,
+      "readme": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "1.0.1",
+      "tags": {
+        "next": "0.1.0-alpha.52",
+        "latest": "1.0.1"
+      },
+      "integrity": "sha512-RO3WiSRk0tWbuLPuDnm6t1EtBWbOxPrEO9bJpdD3wrg00ElkmxkmmA/yx6dqoh3YyX0rhoD+3GGy/vcO02LuWw==",
+      "sha256": "0fe30a01a585c14a09661a35cf7f6d65d729368acd36ec93ce9520d7d1fac0d8",
+      "bytes": 313361,
+      "readme": true
+    }
+  ],
+  "date": "2026-11-10",
+  "version": "1.0.1",
+  "workflow": "https://github.com/emmettl/motionstudies/actions/runs/42904432565",
+  "validation": {
+    "unitTests": 563,
+    "packedBrowserPassed": 298,
+    "packedBrowserSkipped": 3,
+    "loaderBrowserPassed": 42,
+    "archiveComparison": "all four npm downloads equal retained tested CI tarball bytes",
+    "regression": "unrelated pointer exit cancels keyboard help on1.0.0; fixed on1.0.1 in Chromium and desktop WebKit"
+  }
+}
