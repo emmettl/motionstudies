@@ -1,0 +1,22 @@
+{
+  "name": "@motionstudies/tooling",
+  "version": "0.1.0-alpha.1",
+  "sourceCommit": "306b78512462316790b235b191bdad6a70af7a81",
+  "workflowRun": "https://github.com/emmettl/motionstudies/actions/runs/42867594969",
+  "authentication": "GitHub Actions OIDC; NODE_AUTH_TOKEN empty",
+  "sha256": "8b4a8524f1153aa8fbde1f0923576b4c4db47e3b4256aef6db81c775ce91886a",
+  "integrity": "sha512-mkDFYNC6IFt4ByCMHHQJJZnYpVXINsdnmAr6+iyh1rgOwlLlgL5JCoRTIehH/wvbduUT02GiCpCZBF/2vjT2TA==",
+  "bytes": 6524,
+  "tag": "next",
+  "verifiedAt": "2026-11-10T17:50:06.515Z",
+  "checks": [
+    "live tarball matches tested CI artifact",
+    "fresh exact registry install",
+    "six public exports",
+    "Working Models boundaries",
+    "nine installed-package contract tests",
+    "code and presets unchanged from alpha.0"
+  ],
+  "publicationAttempt": 2,
+  "registryVerificationRun": "https://github.com/emmettl/motionstudies/actions/runs/42868710996"
+}
