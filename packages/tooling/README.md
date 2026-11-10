@@ -24,20 +24,20 @@ The packed check builds a public candidate, installs its tarball in a temporary 
 
 ## Release and adoption
 
-This initial candidate is **not published**. The existing four-package release workflow deliberately excludes tooling. The dedicated manual `tooling-release.yml` workflow tests and retains the exact tarball before publication. It has four explicit modes:
+The first release, `0.1.0-alpha.0`, is published under `next`. It was staged through [run 42865681277](https://github.com/emmettl/motionstudies/actions/runs/42865681277), approved with maintainer 2FA and verified against the tested tarball. Version `0.1.0-alpha.1` updates release documentation without changing public exports or stack defaults. Tooling is versioned independently of the four runtime packages, whose release workflow deliberately excludes it. The dedicated manual `tooling-release.yml` workflow tests and retains the exact tarball before publication. It has four explicit modes:
 
 - `dry-run` (default): verify and retain the candidate, without npm credentials or publication.
 - `stage`: submit the verified tarball using `NPM_TOKEN`, download the stored stage and verify its bytes. A maintainer then approves it on npm with 2FA. For a new package, npm creates a public `0.0.0-stage` placeholder; the candidate remains unavailable to install until approval.
 - `bootstrap`: first publication using the `NPM_TOKEN` secret in the repository's `npm` GitHub environment. It fails before publishing if the secret is missing.
 - `trusted`: subsequent publication through npm OIDC, with an empty `NODE_AUTH_TOKEN` so the bootstrap secret is not used.
 
-All staging/publishing modes require `main` and submit the same verified artifact. To introduce this new package:
+All staging/publishing modes require `main` and submit the same verified artifact. The initial bootstrap is complete and the owner has configured the trusted publisher. Use `mode: trusted` for subsequent releases; the job supplies no npm token, so successful publication verifies OIDC. The historical bootstrap procedure is:
 
 1. Manually create an npm granular token with write permission for the `@motionstudies` scope. Add it as **`NPM_TOKEN`** in Motion Studies' repository secrets or the `npm` environment secrets. Enter the token directly in GitHub; do not put it in chat, source files or workflow inputs.
 2. Run **Release shared tooling** (`tooling-release.yml`) on `main` with **`mode: stage`**, then approve the reported stage in npm's Staged Packages tab with 2FA. Alternatively, `mode: bootstrap` directly publishes with a token explicitly permitted to bypass publishing 2FA; an `EOTP` failure means npm still requires interactive authentication. The bootstrap workflow verifies live registry bytes; the stage workflow verifies stored stage bytes, and live bytes must be verified after approval.
-3. Once `@motionstudies/tooling` exists on npm, configure its trusted publisher: GitHub owner **`emmettl`**, repository **`motionstudies`**, workflow **`tooling-release.yml`**, environment **`npm`**.
+3. Once `@motionstudies/tooling` exists on npm, configure its trusted publisher: GitHub owner **`emmettl`**, repository **`motionstudies`**, workflow **`tooling-release.yml`**, environment **`npm`**, allowed action **direct `npm publish`**.
 4. Use **`mode: trusted`** for later versions. If the token was created solely for this bootstrap, revoke it after trusted publication is verified.
 
 See npm's [access token guidance](https://docs.npmjs.com/about-access-tokens/), [staged publishing](https://docs.npmjs.com/staged-publishing/) and [trusted publishing configuration](https://docs.npmjs.com/trusted-publishers/).
 
-After registry publication, Working Models can add the exact `@motionstudies/tooling` dev dependency, extend these configs and invoke `checkProject` from a small repository-owned script. Its current minimal bootstrap configs allow clean registry-only installation before that release. No application imports sibling source or unpublished tarballs.
+Working Models can adopt the exact published `@motionstudies/tooling` dev dependency, extend these configs and invoke `checkProject` from a small repository-owned script. Adoption must update its lockfile and pass its full checks. Its current minimal bootstrap configs remain in place until that explicit adoption. No application imports sibling source or unpublished tarballs.
