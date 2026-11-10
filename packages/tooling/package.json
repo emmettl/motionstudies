@@ -5,20 +5,34 @@
   "type": "module",
   "description": "Shared stack pins, configuration defaults and repository boundary checks for study applications",
   "license": "MIT",
-  "engines": { "node": ">=24.0.0" },
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "exports": {
     "./stack": "./src/stack.mjs",
     "./check-project": "./src/check-project.mjs",
     "./tsconfig/base.json": "./tsconfig/base.json",
     "./tsconfig/react.json": "./tsconfig/react.json",
-    "./oxlint.json": "./oxlint.json"
+    "./oxlint.json": "./oxlint.json",
+    "./oxfmt.json": "./oxfmt.json"
   },
-  "dependencies": { "@motionstudies/data": "0.1.0-alpha.44" },
+  "dependencies": {
+    "@motionstudies/data": "0.1.0-alpha.44"
+  },
+  "devDependencies": {
+    "oxfmt": "0.78.0"
+  },
   "scripts": {
     "test": "node --test test/*.test.mjs",
     "build": "node build.mjs",
+    "format": "oxfmt --config oxfmt.json --write .",
+    "format:check": "oxfmt --config oxfmt.json --check .",
     "check:packed": "node check-packed.mjs"
   },
-  "repository": { "type": "git", "url": "git+https://github.com/emmettl/motionstudies.git", "directory": "packages/tooling" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmettl/motionstudies.git",
+    "directory": "packages/tooling"
+  },
   "sideEffects": false
 }

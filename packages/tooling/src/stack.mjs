@@ -19,6 +19,7 @@ export const stack = Object.freeze({
     '@types/three': '0.186.0',
     '@vitejs/plugin-react': '6.1.2',
     oxlint: '1.88.0',
+    oxfmt: '0.78.0',
     typescript: '7.0.2',
     vite: '8.3.5',
     vitest: '5.0.5',
@@ -27,9 +28,14 @@ export const stack = Object.freeze({
 
 export function checkStack(manifest) {
   const failures = []
-  if (manifest.packageManager && manifest.packageManager !== stack.packageManager) failures.push(`Expected packageManager ${stack.packageManager}`)
-  for (const [name, version] of Object.entries({ ...manifest.dependencies, ...manifest.devDependencies })) {
-    if (Object.hasOwn(stack.dependencies, name) && version !== stack.dependencies[name]) failures.push(`Expected ${name}@${stack.dependencies[name]}, found ${version}`)
+  if (manifest.packageManager && manifest.packageManager !== stack.packageManager)
+    failures.push(`Expected packageManager ${stack.packageManager}`)
+  for (const [name, version] of Object.entries({
+    ...manifest.dependencies,
+    ...manifest.devDependencies,
+  })) {
+    if (Object.hasOwn(stack.dependencies, name) && version !== stack.dependencies[name])
+      failures.push(`Expected ${name}@${stack.dependencies[name]}, found ${version}`)
   }
   return failures
 }

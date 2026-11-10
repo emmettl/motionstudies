@@ -34,6 +34,7 @@ jobs:
           package-manager-cache: false
       - run: npm install --global npm@11.21.1 --ignore-scripts
       - run: npm ci
+      - run: npm run format:check --workspace @motionstudies/tooling
       - run: npm run test --workspace @motionstudies/tooling
       - run: npm run check:packed --workspace @motionstudies/tooling > tooling-verification.log
       - name: Retain verified tarball

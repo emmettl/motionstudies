@@ -6,6 +6,7 @@ Shared development defaults for Motion Studies, Working Models and their indepen
 - `@motionstudies/tooling/check-project`: `checkProject({ root, sources, packages, manifests, allowWorkspaces, stack })`. Editions leave workspaces disabled. Package hosts opt in. `packages` is an explicit list of installed registry packages to verify. `manifests` includes workspace declarations. Source directories must exist and stay inside the repository. The checker verifies exact dependency pins, lockfile/installed identity, public imports, source links and undeclared dependencies. Node-only; it reuses the published module-reference parser from `@motionstudies/data`.
 - `@motionstudies/tooling/tsconfig/base.json` and `tsconfig/react.json`: extend from local tsconfigs; consumers own `include`, `exclude` and output paths.
 - `@motionstudies/tooling/oxlint.json`: use `oxlint --config node_modules/@motionstudies/tooling/oxlint.json` with consumer-owned file selection.
+- `@motionstudies/tooling/oxfmt.json`: shared formatting defaults for Oxfmt 0.78.0: 100 columns, two spaces, single quotes, no semicolons and trailing commas. Package key sorting is disabled. Keep generated-file exclusions in each consumer; the preset contains style only. Run `oxfmt --config node_modules/@motionstudies/tooling/oxfmt.json --check <source paths>`, or merge the JSON preset into a consumer-owned Oxfmt TypeScript config with local `ignorePatterns`.
 
 No Vite factory, renderer settings, source aliases or hosting policy are imposed.
 
@@ -15,10 +16,11 @@ From the repository root:
 
 ```sh
 npm run test --workspace @motionstudies/tooling
+npm run format:check --workspace @motionstudies/tooling
 npm run check:packed --workspace @motionstudies/tooling
 ```
 
-The packed check builds a public candidate, installs its tarball in a temporary consumer, exercises exports, config resolution and the configurable checker, and verifies Working Models' bootstrap pins/configs against the candidate when `--consumer /absolute/path/to/workingmodels` is supplied. It never changes that consumer or its dependency lockfile.
+The packed check builds a public candidate, installs its tarball in a temporary consumer, exercises exports, config resolution and the configurable checker, and formats/typechecks/lints a sample with the installed presets. It verifies Working Models' bootstrap pins/configs, including formatting style, against the candidate when `--consumer /absolute/path/to/workingmodels` is supplied. It never changes that consumer or its dependency lockfile.
 
 ## Release and adoption
 
