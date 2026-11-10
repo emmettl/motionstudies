@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Dry run, first release with NPM_TOKEN, or trusted OIDC release
+        description: Dry run, staged release, token bootstrap, or trusted OIDC release
         type: choice
-        options: [dry-run, bootstrap, trusted]
+        options: [dry-run, stage, bootstrap, trusted]
         default: dry-run
         required: true
 permissions:
@@ -88,12 +88,47 @@ jobs:
             exit 1
           fi
           npm publish tooling.tgz --access public --provenance --tag next
+      - name: Stage publication and verify stored bytes
+        if: inputs.mode == 'stage'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo 'Staging requires NPM_TOKEN.' >&2
+            exit 1
+          fi
+          npm stage publish tooling.tgz --access public --provenance --tag next --json > stage.json
+          node --input-type=module <<'JS'
+          import { readFile, readdir, appendFile } from 'node:fs/promises'
+          import { createHash } from 'node:crypto'
+          import { execFileSync } from 'node:child_process'
+          const result = JSON.parse(await readFile('stage.json', 'utf8'))['@motionstudies/tooling']
+          const receipt = JSON.parse(await readFile('receipt.json', 'utf8'))
+          if (!/^[\da-f]{8}-(?:[\da-f]{4}-){3}[\da-f]{12}$/i.test(result?.stageId ?? '')) throw new Error('Missing stage identity')
+          if (result.version !== receipt.version || result.integrity !== receipt.integrity) throw new Error('Staged identity mismatch')
+          execFileSync('npm', ['stage', 'download', result.stageId], { stdio: 'inherit' })
+          const files = (await readdir('.')).filter(name => name.endsWith(`-${result.stageId}.tgz`))
+          if (files.length !== 1) throw new Error('Missing staged tarball')
+          if (createHash('sha256').update(await readFile(files[0])).digest('hex') !== receipt.sha256) throw new Error('Staged bytes mismatch')
+          const summary = `Staged @motionstudies/tooling@${receipt.version} with byte-for-byte verification.\n\nStage ID: ${result.stageId}\n\nA maintainer must approve this stage on npm with 2FA before this version becomes installable.\n`
+          console.log(summary)
+          await appendFile(process.env.GITHUB_STEP_SUMMARY, summary)
+          JS
+      - uses: actions/upload-artifact@v7
+        if: inputs.mode == 'stage'
+        with:
+          name: staged-tooling
+          path: |
+            stage.json
+            receipt.json
+          if-no-files-found: error
       - name: Trusted publication
         if: inputs.mode == 'trusted'
         env:
           NODE_AUTH_TOKEN: ''
         run: npm publish tooling.tgz --access public --provenance --tag next
       - name: Verify registry bytes
+        if: inputs.mode != 'stage'
         run: |
           node --input-type=module <<'JS'
           import { readFile } from 'node:fs/promises'
