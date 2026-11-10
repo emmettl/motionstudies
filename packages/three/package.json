@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/three",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "exports": {
@@ -32,7 +32,7 @@
     "./frame-state": "./src/frame-state.ts"
   },
   "dependencies": {
-    "@motionstudies/core": "1.0.0"
+    "@motionstudies/core": "1.0.1"
   },
   "peerDependencies": {
     "@react-three/fiber": "^9.8.2",

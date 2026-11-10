@@ -37,7 +37,7 @@ The packed check builds a public candidate, installs its tarball in a temporary 
 
 ## Release and adoption
 
-Version `1.0.0` targets Node 26 and npm 12.2.2, pins the runtime packages at 1.0.0 and refreshes the development stack. Stable versions publish under `latest`; prereleases use `next`. Public exports and documented configuration follow semantic versioning.
+Version `1.1.0` adds the opt-in static-site contract, targets Node 26 and npm 12.2.2, pins the runtime packages at 1.0.1 and refreshes the development stack. Stable versions publish under `latest`; prereleases use `next`. Public exports and documented configuration follow semantic versioning.
 
 ```sh
 npm install --save-dev --save-exact @motionstudies/tooling@1.1.0

@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createHash } from 'node:crypto'
+import { stack } from './src/stack.mjs'
 
 const source = fileURLToPath(new URL('.', import.meta.url))
 const manifest = JSON.parse(await readFile(resolve(source, 'package.json'), 'utf8'))
@@ -16,7 +17,7 @@ const overrides = runtimeDirectory
   ? Object.fromEntries(
       ['core', 'data'].map((name) => [
         `@motionstudies/${name}`,
-        `file:${resolve(runtimeDirectory, `motionstudies-${name}-${manifest.version}.tgz`)}`,
+        `file:${resolve(runtimeDirectory, `motionstudies-${name}-${stack.dependencies[`@motionstudies/${name}`]}.tgz`)}`,
       ]),
     )
   : undefined

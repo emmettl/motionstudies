@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/data",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
@@ -130,7 +130,7 @@
     }
   },
   "dependencies": {
-    "@motionstudies/core": "1.0.0",
+    "@motionstudies/core": "1.0.1",
     "fast-xml-parser": "5.12.0",
     "oxc-parser": "0.158.0"
   },
