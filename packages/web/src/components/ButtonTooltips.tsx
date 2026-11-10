@@ -80,6 +80,8 @@ export function ButtonTooltips() {
     }
     const out = (event: PointerEvent) => {
       const button = buttonAt(event.target)
+      // A scene moving under the pointer must not cancel keyboard help.
+      if (!button && !tooltip.contains(event.target as Node)) return
       if (button?.contains(event.relatedTarget as Node) || tooltip.contains(event.relatedTarget as Node)) return
       window.clearTimeout(showTimer)
       if (anchor || tooltip.contains(event.target as Node)) {

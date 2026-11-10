@@ -2,6 +2,10 @@
 
 The four shared packages are MIT-licensed. The first coordinated release is `0.1.0-alpha.0`, published under the npm `next` tag. Stable versions use `latest`. All four packages share a version; internal dependencies pin that exact version. Source workspaces stay private. Only an explicit release build produces publishable compiled distributions.
 
+## 1.0.1 patch candidate
+
+The patch fixes unrelated pointer exits cancelling pending/visible keyboard help. A deterministic browser regression fails on 1.0.0 and passes with the two-line guard. Runtime and tooling baseline pins move together to 1.0.1; Node 26/npm 12.2.2 are unchanged. Publication and registry verification must be recorded after the trusted workflows finish.
+
 ## Current release procedure
 
 The stable release is **1.0.0** for all five packages, published on 10 November 2026 from `a6e46beea79251d6848ca7a52023d4d96a4cb2d4`. The [runtime workflow](https://github.com/emmettl/motionstudies/actions/runs/42888908491) and [tooling workflow, attempt 2](https://github.com/emmettl/motionstudies/actions/runs/42893932965/attempts/2) passed. All five `latest` tags resolve to 1.0.0, and downloaded registry archives match the retained tested CI tarballs byte-for-byte. A fresh registry install through all five `latest` tags installed 1.0.0 without workspace links. See [release evidence](evidence/packages-1.0.0.json).

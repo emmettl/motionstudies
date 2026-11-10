@@ -3,7 +3,7 @@
 Browser controls, React widgets, progressive loaders and study styles. ESM with TypeScript declarations. React and React DOM ^19.3.0 are peer dependencies.
 
 ```sh
-npm install --save-exact @motionstudies/web@1.0.0 react@19.3.1 react-dom@19.3.1
+npm install --save-exact @motionstudies/web@1.0.1 react@19.3.1 react-dom@19.3.1
 ```
 
 ```ts
@@ -28,8 +28,10 @@ Keep resolvers and loader options stable. Consumers own playback, service-time m
 
 ## Imports and compatibility
 
-Use explicit extensionless subpaths; there is no root barrel import. The package's `exports` map lists supported entry points. The four runtime packages share exact version 1.0.0; upgrade them together where used. Published public exports and documented behaviour follow semantic versioning from 1.0. Internal files are not an API. Editions adopt releases explicitly with their own checks.
+Use explicit extensionless subpaths; there is no root barrel import. The package's `exports` map lists supported entry points. The four runtime packages share exact version 1.0.1; upgrade them together where used. Published public exports and documented behaviour follow semantic versioning from 1.0. Internal files are not an API. Editions adopt releases explicitly with their own checks.
 
 See [the complete package contracts](https://github.com/emmettl/motionstudies/blob/main/packages/README.md), [release instructions](https://github.com/emmettl/motionstudies/blob/main/docs/RELEASING.md) and [the widget lab](https://motionstudies.app/lab/). Node 26 and npm 12 are the repository's development target; browser modules require a modern ESM build pipeline.
 
 MIT. [Source and issues](https://github.com/emmettl/motionstudies).
+
+Version 1.0.1 preserves pending and visible keyboard help when an unrelated element leaves the pointer during scene/layout changes. Pointer exits from controls and the tooltip retain their existing dismissal behaviour.

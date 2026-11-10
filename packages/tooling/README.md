@@ -24,10 +24,10 @@ The packed check builds a public candidate, installs its tarball in a temporary 
 
 ## Release and adoption
 
-Version `1.0.0` targets Node 26 and npm 12.2.2, pins the runtime packages at 1.0.0 and refreshes the development stack. Stable versions publish under `latest`; prereleases use `next`. Public exports and documented configuration follow semantic versioning.
+Version `1.0.1` targets Node 26 and npm 12.2.2, pins the runtime packages at 1.0.1 and refreshes the development stack. Stable versions publish under `latest`; prereleases use `next`. Public exports and documented configuration follow semantic versioning.
 
 ```sh
-npm install --save-dev --save-exact @motionstudies/tooling@1.0.0
+npm install --save-dev --save-exact @motionstudies/tooling@1.0.1
 ```
 
 Tooling is versioned independently of the four runtime packages. From the repository root, dispatch `tooling-release.yml` on `main` with `mode: trusted` after the runtime release is available. The workflow tests an isolated packed consumer, retains the tested tarball, publishes with provenance and verifies registry bytes. Stable releases use `latest` automatically. `dry-run` verifies without publishing; `verify-registry` and `promote-latest` inspect or promote an existing byte-identical release. Historical bootstrap and staging modes remain available for package setup.

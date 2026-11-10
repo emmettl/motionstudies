@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/tooling",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Shared stack pins, configuration defaults and repository boundary checks for study applications",
@@ -17,7 +17,7 @@
     "./oxfmt.json": "./oxfmt.json"
   },
   "dependencies": {
-    "@motionstudies/data": "1.0.0"
+    "@motionstudies/data": "1.0.1"
   },
   "devDependencies": {
     "oxfmt": "0.78.0"
