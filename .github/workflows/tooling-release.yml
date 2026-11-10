@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Dry run, staged release, token bootstrap, or trusted OIDC release
+        description: Dry run, stage, token bootstrap, trusted release, or registry verification
         type: choice
-        options: [dry-run, stage, bootstrap, trusted]
+        options: [dry-run, stage, bootstrap, trusted, verify-registry]
         default: dry-run
         required: true
 permissions:
@@ -129,15 +129,32 @@ jobs:
         run: npm publish tooling.tgz --access public --provenance --tag next --loglevel verbose
       - name: Verify registry bytes
         if: inputs.mode != 'stage'
+        timeout-minutes: 10
         run: |
           node --input-type=module <<'JS'
           import { readFile } from 'node:fs/promises'
+          import { createHash } from 'node:crypto'
+          import { setTimeout as delay } from 'node:timers/promises'
           const receipt = JSON.parse(await readFile('receipt.json', 'utf8'))
-          const response = await fetch('https://registry.npmjs.org/@motionstudies%2ftooling/' + receipt.version)
-          if (!response.ok) throw new Error('Registry version unavailable')
-          const release = await response.json()
+          async function available(url) {
+            for (let attempt = 0; attempt < 20; attempt++) {
+              const fresh = new URL(url)
+              fresh.searchParams.set('verify', `${Date.now()}-${attempt}`)
+              let response
+              try { response = await fetch(fresh, { signal: AbortSignal.timeout(15_000) }) } catch {}
+              if (response?.ok) return response
+              if (response && response.status !== 404 && response.status !== 429 && response.status < 500) throw new Error(`Registry HTTP ${response.status}`)
+              if (attempt < 19) {
+                console.log(`Waiting for npm registry processing (attempt ${attempt + 1})`)
+                await delay(15_000)
+              }
+            }
+            throw new Error('Registry processing did not complete')
+          }
+          const release = await (await available('https://registry.npmjs.org/@motionstudies%2ftooling/' + receipt.version)).json()
+          if (release.name !== '@motionstudies/tooling' || release.version !== receipt.version) throw new Error('Registry identity mismatch')
           if (release.dist.integrity !== receipt.integrity) throw new Error('Registry integrity mismatch')
-          const bytes = new Uint8Array(await (await fetch(release.dist.tarball)).arrayBuffer())
-          const { createHash } = await import('node:crypto')
+          const bytes = new Uint8Array(await (await available(release.dist.tarball)).arrayBuffer())
           if (createHash('sha256').update(bytes).digest('hex') !== receipt.sha256) throw new Error('Registry bytes mismatch')
+          console.log(`Verified @motionstudies/tooling@${receipt.version}: registry bytes match the tested tarball.`)
           JS
