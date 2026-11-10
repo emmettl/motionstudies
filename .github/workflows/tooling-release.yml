@@ -32,7 +32,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           package-manager-cache: false
-      - run: npm install --global npm@11.21.1 --ignore-scripts
+      - run: npm install --global npm@12.2.2 --ignore-scripts
       - run: npm ci
       - run: npm run format:check --workspace @motionstudies/tooling
       - run: npm run test --workspace @motionstudies/tooling
@@ -63,20 +63,21 @@ jobs:
     steps:
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
           registry-url: https://registry.npmjs.org
           package-manager-cache: false
-      - run: npm install --global npm@11.21.1 --ignore-scripts
+      - run: npm install --global npm@12.2.2 --ignore-scripts
       - uses: actions/download-artifact@v8
         with:
           name: verified-tooling
       - name: Verify candidate identity
         run: |
           node --input-type=module <<'JS'
-          import { readFile } from 'node:fs/promises'
+          import { readFile, appendFile } from 'node:fs/promises'
           import { createHash } from 'node:crypto'
           const receipt = JSON.parse(await readFile('receipt.json', 'utf8'))
           if (createHash('sha256').update(await readFile('tooling.tgz')).digest('hex') !== receipt.sha256) throw new Error('Tarball digest mismatch')
+          await appendFile(process.env.GITHUB_ENV, `NPM_RELEASE_TAG=${receipt.version.includes('-') ? 'next' : 'latest'}\n`)
           JS
       - name: Bootstrap publication
         if: inputs.mode == 'bootstrap'
@@ -87,7 +88,7 @@ jobs:
             echo 'Bootstrap requires the NPM_TOKEN secret in the npm GitHub environment.' >&2
             exit 1
           fi
-          npm publish tooling.tgz --access public --provenance --tag next
+          npm publish tooling.tgz --access public --provenance --tag "$NPM_RELEASE_TAG"
       - name: Stage publication and verify stored bytes
         if: inputs.mode == 'stage'
         env:
@@ -97,7 +98,7 @@ jobs:
             echo 'Staging requires NPM_TOKEN.' >&2
             exit 1
           fi
-          npm stage publish tooling.tgz --access public --provenance --tag next --json > stage.json
+          npm stage publish tooling.tgz --access public --provenance --tag "$NPM_RELEASE_TAG" --json > stage.json
           node --input-type=module <<'JS'
           import { readFile, readdir, appendFile } from 'node:fs/promises'
           import { createHash } from 'node:crypto'
@@ -126,7 +127,7 @@ jobs:
         if: inputs.mode == 'trusted'
         env:
           NODE_AUTH_TOKEN: ''
-        run: npm publish tooling.tgz --access public --provenance --tag next --loglevel verbose
+        run: npm publish tooling.tgz --access public --provenance --tag "$NPM_RELEASE_TAG" --loglevel verbose
       - name: Verify registry bytes
         if: inputs.mode != 'stage'
         timeout-minutes: 10

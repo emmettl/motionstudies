@@ -29,7 +29,7 @@ if (values.registry) {
 } else {
   await buildPackages()
   for (const name of packageNames) {
-    const [packed] = JSON.parse(run('npm', ['pack', join(root, '.package-dist', name), '--json', '--pack-destination', output, '--cache', cache], root, true))
+    const [packed] = Object.values(JSON.parse(run('npm', ['pack', join(root, '.package-dist', name), '--json', '--pack-destination', output, '--cache', cache], root, true)))
     const path = join(output, packed.filename)
     dependencies[`@motionstudies/${name}`] = `file:${path}`
     artifacts.push({ name, file: packed.filename, sha256: digest(await readFile(path)) })

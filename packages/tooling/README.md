@@ -1,6 +1,6 @@
 # @motionstudies/tooling
 
-Shared development defaults for Motion Studies, Working Models and their independent editions. Node 24+, ESM. This package is versioned independently of the four runtime packages. Source workspaces remain private; only an explicit build creates a public release candidate.
+Shared development defaults for Motion Studies, Working Models and their independent editions. Node 26+, ESM. This package is versioned independently of the four runtime packages. Source workspaces remain private; only an explicit build creates a public release candidate.
 
 - `@motionstudies/tooling/stack`: frozen stack manifest and `checkStack(packageJson)`. Checks dependencies that are present, rather than requiring every package. Runtime version enforcement belongs in CI, not in browser code.
 - `@motionstudies/tooling/check-project`: `checkProject({ root, sources, packages, manifests, allowWorkspaces, stack })`. Editions leave workspaces disabled. Package hosts opt in. `packages` is an explicit list of installed registry packages to verify. `manifests` includes workspace declarations. Source directories must exist and stay inside the repository. The checker verifies exact dependency pins, lockfile/installed identity, public imports, source links and undeclared dependencies. Node-only; it reuses the published module-reference parser from `@motionstudies/data`.
@@ -24,20 +24,12 @@ The packed check builds a public candidate, installs its tarball in a temporary 
 
 ## Release and adoption
 
-The first release, `0.1.0-alpha.0`, is published under `next`. It was staged through [run 42865681277](https://github.com/emmettl/motionstudies/actions/runs/42865681277), approved with maintainer 2FA and verified against the tested tarball. Version `0.1.0-alpha.1` updates release documentation without changing public exports or stack defaults. Tooling is versioned independently of the four runtime packages, whose release workflow deliberately excludes it. The dedicated manual `tooling-release.yml` workflow tests and retains the exact tarball before publication. It has four explicit modes:
+Version `1.0.0` targets Node 26 and npm 12.2.2, pins the runtime packages at 1.0.0 and refreshes the development stack. Stable versions publish under `latest`; prereleases use `next`. Public exports and documented configuration follow semantic versioning.
 
-- `dry-run` (default): verify and retain the candidate, without npm credentials or publication.
-- `stage`: submit the verified tarball using `NPM_TOKEN`, download the stored stage and verify its bytes. A maintainer then approves it on npm with 2FA. For a new package, npm creates a public `0.0.0-stage` placeholder; the candidate remains unavailable to install until approval.
-- `bootstrap`: first publication using the `NPM_TOKEN` secret in the repository's `npm` GitHub environment. It fails before publishing if the secret is missing.
-- `trusted`: subsequent publication through npm OIDC, with an empty `NODE_AUTH_TOKEN` so the bootstrap secret is not used.
+```sh
+npm install --save-dev --save-exact @motionstudies/tooling@1.0.0
+```
 
-All staging/publishing modes require `main` and submit the same verified artifact. The initial bootstrap is complete and the owner has configured the trusted publisher. Use `mode: trusted` for subsequent releases; the job supplies no npm token, so successful publication verifies OIDC. The historical bootstrap procedure is:
+Tooling is versioned independently of the four runtime packages. From the repository root, dispatch `tooling-release.yml` on `main` with `mode: trusted` after the runtime release is available. The workflow tests an isolated packed consumer, retains the tested tarball, publishes with provenance and verifies registry bytes. Stable releases use `latest` automatically. `dry-run` verifies without publishing; `verify-registry` and `promote-latest` inspect or promote an existing byte-identical release. Historical bootstrap and staging modes remain available for package setup.
 
-1. Manually create an npm granular token with write permission for the `@motionstudies` scope. Add it as **`NPM_TOKEN`** in Motion Studies' repository secrets or the `npm` environment secrets. Enter the token directly in GitHub; do not put it in chat, source files or workflow inputs.
-2. Run **Release shared tooling** (`tooling-release.yml`) on `main` with **`mode: stage`**, then approve the reported stage in npm's Staged Packages tab with 2FA. Alternatively, `mode: bootstrap` directly publishes with a token explicitly permitted to bypass publishing 2FA; an `EOTP` failure means npm still requires interactive authentication. The bootstrap workflow verifies live registry bytes; the stage workflow verifies stored stage bytes, and live bytes must be verified after approval.
-3. Once `@motionstudies/tooling` exists on npm, configure its trusted publisher: GitHub owner **`emmettl`**, repository **`motionstudies`**, workflow **`tooling-release.yml`**, environment **`npm`**, allowed action **direct `npm publish`**.
-4. Use **`mode: trusted`** for later versions. If the token was created solely for this bootstrap, revoke it after trusted publication is verified.
-
-See npm's [access token guidance](https://docs.npmjs.com/about-access-tokens/), [staged publishing](https://docs.npmjs.com/staged-publishing/) and [trusted publishing configuration](https://docs.npmjs.com/trusted-publishers/).
-
-Working Models can adopt the exact published `@motionstudies/tooling` dev dependency, extend these configs and invoke `checkProject` from a small repository-owned script. Adoption must update its lockfile and pass its full checks. Its current minimal bootstrap configs remain in place until that explicit adoption. No application imports sibling source or unpublished tarballs.
+Adoption is explicit: update the consumer's exact dependency and lockfile, extend the exported presets and run its checks. Keep dataset, renderer, hosting and generated-file policies in the consumer. Source workspaces remain private; only release builds produce publishable distributions.

@@ -10,7 +10,7 @@ function run(command,args,cwd=root,capture=false){const r=spawnSync(command,args
 console.log(`Weather consumers: ${output}`)
 await buildPackages()
 const dependencies={},artifacts=[]
-for(const name of packageNames){const [p]=JSON.parse(run('npm',['pack',join(root,'.package-dist',name),'--json','--pack-destination',output,'--cache',join(output,'cache')],root,true));const file=join(output,p.filename);dependencies[`@motionstudies/${name}`]=`file:${file}`;artifacts.push({name,file,sha256:createHash('sha256').update(await readFile(file)).digest('hex')})}
+for(const name of packageNames){const [p]=Object.values(JSON.parse(run('npm',['pack',join(root,'.package-dist',name),'--json','--pack-destination',output,'--cache',join(output,'cache')],root,true)));const file=join(output,p.filename);dependencies[`@motionstudies/${name}`]=`file:${file}`;artifacts.push({name,file,sha256:createHash('sha256').update(await readFile(file)).digest('hex')})}
 for(const edition of ['zugunruhe','gleislicht']){
  const flag=process.argv.indexOf(`--${edition}`),source=resolve(flag>=0?process.argv[flag+1]:join(root,'..',edition)),target=join(output,edition)
  await mkdir(target)

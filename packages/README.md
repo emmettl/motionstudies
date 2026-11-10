@@ -2,7 +2,7 @@
 
 `@motionstudies/tooling` is an independently versioned development-tooling candidate for both Motion Studies and Working Models. It is outside the coordinated four-package runtime release. See [its contract and release instructions](tooling/README.md); the initial candidate is not yet published.
 
-Shared packages for the Motion Studies transport instrument. The source workspace and compiled distributions expose the same explicit, extensionless module subpaths. The initial release is `0.1.0-alpha.0` under npm’s `next` tag.
+Shared packages for the Motion Studies transport instrument. The source workspace and compiled distributions expose the same explicit, extensionless module subpaths. The stable release line starts at `1.0.0` under npm’s `latest` tag. Prereleases use `next`. Node 26 and npm 12 are the development target. Each published package includes its own focused README; this document records the detailed cross-package contracts.
 
 - `@motionstudies/core`: transport contracts, indexing, interpolation and visual theme contracts; no browser or Node dependencies.
 - `@motionstudies/three`: `NationalNetworkScene`, `HubPulseScene`, `StationFlowScene`, camera framing and label-mode contracts. React, React Three Fiber and Three.js are peers; rendering internals are not public subpaths.
@@ -308,7 +308,7 @@ Plain playback bars can use `@motionstudies/web/components/TimelineScrubber` wit
 
 Air and road code load lazily when their corresponding scene inputs are present. A suspended optional layer leaves the network mounted. Opening-transfer checks should count layers requested on opening and separately bound deferred closures, rather than treating every dynamic import as an opening request. The public scene owns React and GPU lifetimes; consumers do not rewrite installed renderer source.
 
-## Terrain primitives (0.1.0-alpha.44)
+## Terrain primitives
 
 - `@motionstudies/core/terrain`: local terrain points, north-to-south vertex grids,
   3D path interpolation and source-labelled visibility masks. Masks control

@@ -4,8 +4,8 @@ export interface StackManifest {
   readonly devDependencies?: Readonly<Record<string, string>>
 }
 export const stack: Readonly<{
-  nodeMajor: 24
-  packageManager: 'npm@11.21.1'
+  nodeMajor: 26
+  packageManager: 'npm@12.2.2'
   dependencies: Readonly<Record<string, string>>
 }>
 export function checkStack(manifest: StackManifest): string[]

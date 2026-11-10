@@ -22,7 +22,7 @@ function run(command, args, cwd = root, capture = false) {
 await buildPackages()
 const dependencies = {}, artifacts = []
 for (const name of packageNames) {
-  const [packed] = JSON.parse(run('npm', ['pack', join(root, '.package-dist', name), '--json', '--pack-destination', output, '--cache', cache], root, true))
+  const [packed] = Object.values(JSON.parse(run('npm', ['pack', join(root, '.package-dist', name), '--json', '--pack-destination', output, '--cache', cache], root, true)))
   const path = join(output, packed.filename)
   dependencies[`@motionstudies/${name}`] = `file:${path}`
   artifacts.push({ name, file: packed.filename, sha256: createHash('sha256').update(await readFile(path)).digest('hex') })

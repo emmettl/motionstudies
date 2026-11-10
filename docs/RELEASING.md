@@ -4,7 +4,9 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The latest verified coordinated release is `0.1.0-alpha.52` under `next`, published
+The 1.0.0 candidate promotes all four runtime packages and independently released tooling to stable semantic versions. Stable releases use `latest`; prereleases use `next`. Development and CI target Node 26 and npm 12.2.2. Runtime distributions ship package-specific READMEs. Record successful workflow runs and registry byte verification after publication; a prepared candidate is not a published release.
+
+The last verified coordinated prerelease before this candidate is `0.1.0-alpha.52` under `next`, published
 from `d8aee8c666b51fd52face6ab6222b6de1bfedfc6` through
 [trusted run 42627012927](https://github.com/emmettl/motionstudies/actions/runs/42627012927).
 All four downloaded registry archives match the retained, tested CI tarballs

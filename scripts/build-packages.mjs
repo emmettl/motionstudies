@@ -81,7 +81,7 @@ export async function buildPackages({ release = false } = {}) {
       ...(manifest.peerDependenciesMeta ? { peerDependenciesMeta: manifest.peerDependenciesMeta } : {}),
     }
     await writeFile(join(output, 'package.json'), `${JSON.stringify(distribution, null, 2)}\n`)
-    await cp(resolve('packages/README.md'), join(output, 'README.md'))
+    await cp(join(source, 'README.md'), join(output, 'README.md'))
     if (manifest.license) await cp(resolve('packages/LICENSE'), join(output, 'LICENSE'))
     console.log(`Built ${manifest.name}: ${Object.keys(distribution.exports).length} supported subpaths`)
   }

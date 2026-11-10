@@ -1,3 +1,4 @@
+import { releaseTag } from '../../scripts/release-policy.mjs'
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { resolve } from 'node:path'
@@ -17,7 +18,7 @@ if (!distribution.private)
   distribution.publishConfig = {
     access: 'public',
     registry: 'https://registry.npmjs.org/',
-    tag: 'next',
+    tag: releaseTag(manifest.version),
   }
 await writeFile(resolve(output, 'package.json'), `${JSON.stringify(distribution, null, 2)}\n`)
 console.log(output)

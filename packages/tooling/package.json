@@ -1,12 +1,12 @@
 {
   "name": "@motionstudies/tooling",
-  "version": "0.1.0-alpha.1",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Shared stack pins, configuration defaults and repository boundary checks for study applications",
   "license": "MIT",
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=26.0.0"
   },
   "exports": {
     "./stack": "./src/stack.mjs",
@@ -17,7 +17,7 @@
     "./oxfmt.json": "./oxfmt.json"
   },
   "dependencies": {
-    "@motionstudies/data": "0.1.0-alpha.44"
+    "@motionstudies/data": "1.0.0"
   },
   "devDependencies": {
     "oxfmt": "0.78.0"

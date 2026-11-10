@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/web",
-  "version": "0.1.0-alpha.52",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -48,7 +48,7 @@
     "./weather-assets": "./src/weather-assets.ts"
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.52"
+    "@motionstudies/core": "1.0.0"
   },
   "peerDependencies": {
     "react": "^19.3.0",
@@ -63,7 +63,7 @@
     "url": "git+https://github.com/emmettl/motionstudies.git",
     "directory": "packages/web"
   },
-  "homepage": "https://github.com/emmettl/motionstudies#readme",
+  "homepage": "https://github.com/emmettl/motionstudies/tree/main/packages/web#readme",
   "bugs": {
     "url": "https://github.com/emmettl/motionstudies/issues"
   },

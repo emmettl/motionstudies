@@ -20,7 +20,7 @@ const artifacts = []
 for (const name of packageNames) {
   const result = spawnSync('npm', ['pack', join(packageOutput, name), '--json', '--pack-destination', tarballs, '--cache', join(packageOutput, 'npm-cache')], { encoding: 'utf8' })
   if (result.status !== 0) throw new Error(result.stderr || 'npm pack failed')
-  const [packed] = JSON.parse(result.stdout)
+  const [packed] = Object.values(JSON.parse(result.stdout))
   for (const { path } of packed.files) {
     if (path.includes('.test.') || path.startsWith('src/') || (/\.tsx?$/.test(path) && !path.endsWith('.d.ts'))) {
       throw new Error(`${name} ships source or tests: ${path}`)
@@ -36,6 +36,9 @@ for (const name of packageNames) {
   }
   dependencies[`@motionstudies/${name}`] = `file:${join(tarballs, packed.filename)}`
   const manifest = JSON.parse(await readFile(join(packageOutput, name, 'package.json'), 'utf8'))
+  const readme = await readFile(join(packageOutput, name, 'README.md'), 'utf8')
+  if (!readme.startsWith(`# @motionstudies/${name}\n`)) throw new Error(`Wrong package README: ${name}`)
+  if (!packed.files.some(file => file.path === 'README.md')) throw new Error(`Missing packed README: ${name}`)
   artifacts.push({ name: manifest.name, version: manifest.version, file: packed.filename, integrity: `sha512-${createHash('sha512').update(await readFile(join(tarballs, packed.filename))).digest('base64')}` })
 }
 const consumer = await mkdtemp(join(tmpdir(), 'motion-studies-consumer-'))

@@ -17,7 +17,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
-      - run: npm install --global npm@11.21.1 --ignore-scripts
+      - run: npm install --global npm@12.2.2 --ignore-scripts
       - run: npm ci
       - run: npm run format:check --workspace @motionstudies/tooling
       - run: npm run test --workspace @motionstudies/tooling

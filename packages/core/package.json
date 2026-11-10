@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/core",
-  "version": "0.1.0-alpha.52",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -60,7 +60,7 @@
     "url": "git+https://github.com/emmettl/motionstudies.git",
     "directory": "packages/core"
   },
-  "homepage": "https://github.com/emmettl/motionstudies#readme",
+  "homepage": "https://github.com/emmettl/motionstudies/tree/main/packages/core#readme",
   "bugs": {
     "url": "https://github.com/emmettl/motionstudies/issues"
   },

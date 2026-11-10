@@ -1,11 +1,11 @@
 {
   "name": "@motionstudies/data",
-  "version": "0.1.0-alpha.52",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Offline data preparation primitives for Motion Studies.",
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=26.0.0"
   },
   "exports": {
     "./observation-windows": {
@@ -130,9 +130,9 @@
     }
   },
   "dependencies": {
-    "@motionstudies/core": "0.1.0-alpha.52",
-    "fast-xml-parser": "5.11.2",
-    "oxc-parser": "0.156.0"
+    "@motionstudies/core": "1.0.0",
+    "fast-xml-parser": "5.12.0",
+    "oxc-parser": "0.158.0"
   },
   "peerDependencies": {
     "@types/node": ">=22"
@@ -147,7 +147,7 @@
     "url": "git+https://github.com/emmettl/motionstudies.git",
     "directory": "packages/data"
   },
-  "homepage": "https://github.com/emmettl/motionstudies#readme",
+  "homepage": "https://github.com/emmettl/motionstudies/tree/main/packages/data#readme",
   "bugs": {
     "url": "https://github.com/emmettl/motionstudies/issues"
   },

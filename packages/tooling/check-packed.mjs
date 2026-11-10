@@ -17,8 +17,10 @@ function run(command, args, cwd = source) {
   return result.stdout
 }
 run(process.execPath, ['build.mjs', '--release'])
-const packed = JSON.parse(
-  run('npm', ['pack', output, '--pack-destination', temporary, '--json', '--ignore-scripts']),
+const packed = Object.values(
+  JSON.parse(
+    run('npm', ['pack', output, '--pack-destination', temporary, '--json', '--ignore-scripts']),
+  ),
 )[0]
 const tarball = resolve(temporary, packed.filename)
 await writeFile(
@@ -46,7 +48,7 @@ import { createRequire } from 'node:module'
 import { stack, checkStack } from '@motionstudies/tooling/stack'
 import { checkProject } from '@motionstudies/tooling/check-project'
 const require = createRequire(import.meta.url)
-assert.equal(stack.nodeMajor, 24)
+assert.equal(stack.nodeMajor, 26)
 assert.deepEqual(checkStack({ dependencies: { react: stack.dependencies.react } }), [])
 const base = JSON.parse(await readFile(require.resolve('@motionstudies/tooling/tsconfig/base.json'), 'utf8'))
 assert.equal(base.compilerOptions.strict, true)
