@@ -1,6 +1,6 @@
 # Shared tooling release record
 
-`@motionstudies/tooling` is versioned independently of the four runtime packages. It is published under `next`; consumers adopt exact versions explicitly.
+`@motionstudies/tooling` is versioned independently of the four runtime packages. Releases are published under `next`, then can be explicitly promoted to `latest`. Both tags currently point to `0.1.0-alpha.1`; consumers adopt exact versions explicitly.
 
 ## First publication
 
@@ -25,5 +25,13 @@ The publication job's immediate registry check encountered a processing 404. [Ve
 The live archive is 6,524 bytes with SHA-256 `8b4a8524f1153aa8fbde1f0923576b4c4db47e3b4256aef6db81c775ce91886a`. Its bytes match the tested CI tarball and `next` points to this version. A clean registry install passed all nine contract tests, resolved all six exports and verified Working Models' boundaries read-only. Code, declarations and configuration presets are byte-identical to `0.1.0-alpha.0`; see [machine-readable evidence](evidence/tooling-alpha1.json).
 
 Trusted publication is verified. A token created solely for this bootstrap can now be revoked in npm and its GitHub `NPM_TOKEN` secret removed. This record does not claim either credential-cleanup action has been performed.
+
+## Default install tag
+
+[Promotion run 42870336557](https://github.com/emmettl/motionstudies/actions/runs/42870336557) moved `latest` from the `0.0.0-stage` placeholder to `0.1.0-alpha.1` on 10 November 2026. It verified the existing registry archive against the tested candidate before changing the tag and confirmed `next` remained `0.1.0-alpha.1`. No new package version was published.
+
+A fresh, unversioned `npm install --save-exact @motionstudies/tooling` resolved `0.1.0-alpha.1` with the verified release integrity. The default install now receives the actual tooling package. Its version remains a prerelease.
+
+For future explicit promotions, run `tooling-release.yml` on `main` with `mode: promote-latest`. The committed candidate must match the existing registry archive. The trusted publisher needs `Allow npm dist-tag` in addition to its publishing permission; this grant has been configured and verified. New releases continue to use `next` until an explicit promotion.
 
 See [package verification and release procedure](../packages/tooling/README.md).
