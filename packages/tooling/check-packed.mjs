@@ -55,10 +55,11 @@ await writeFile(
   resolve(temporary, 'verify.mjs'),
   `
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { readFile, mkdir, writeFile } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { stack, checkStack } from '@motionstudies/tooling/stack'
 import { checkProject } from '@motionstudies/tooling/check-project'
+import { stampStaticRelease, verifyStaticRelease, writeStaticAssetHeaders } from '@motionstudies/tooling/static-site'
 const require = createRequire(import.meta.url)
 assert.equal(stack.nodeMajor, 26)
 assert.deepEqual(checkStack({ dependencies: { react: stack.dependencies.react } }), [])
@@ -81,7 +82,14 @@ if (consumer) {
   assert(ignorePatterns.includes('package-lock.json'))
   await checkProject({ root: consumer, allowWorkspaces: true, manifests: ['lab/package.json'], sources: ['lab/src', 'scripts'], packages: ['@motionstudies/web'] })
 }
-console.log('Packed exports, configs and consumer boundaries verified.')
+await mkdir('site/assets', { recursive: true })
+await writeFile('site/assets/app-abcd1234.js', 'export const value = 1')
+await writeFile('site/_headers', '/_release.json\\n  Cache-Control: no-store\\n')
+await writeStaticAssetHeaders({root:'site'})
+const site = {root:'site',repository:'example/consumer',commit:'a'.repeat(40),runId:42}
+await stampStaticRelease(site)
+assert.equal((await verifyStaticRelease(site)).source.runId, '42')
+console.log('Packed exports, configs, static-site contract and consumer boundaries verified.')
 `,
 )
 const consumerIndex = process.argv.indexOf('--consumer')
@@ -93,7 +101,7 @@ console.log(
 )
 await writeFile(
   resolve(temporary, 'typed.mts'),
-  `import { stack, checkStack } from '@motionstudies/tooling/stack'; import { checkProject, type ProjectPolicy } from '@motionstudies/tooling/check-project'; const policy: ProjectPolicy = { sources: ['src'], allowWorkspaces: true }; void checkProject(policy); checkStack({ dependencies: { react: stack.dependencies.react } });`,
+  `import { stack, checkStack } from '@motionstudies/tooling/stack'; import { checkProject, type ProjectPolicy } from '@motionstudies/tooling/check-project'; const policy: ProjectPolicy = { sources: ['src'], allowWorkspaces: true }; void checkProject(policy); import type { StaticDeploymentOptions } from '@motionstudies/tooling/static-site'; const deployment: StaticDeploymentOptions = { repository: 'example/consumer', commit: 'a'.repeat(40), siteUrl: 'https://example.com', indexable: true }; void deployment; checkStack({ dependencies: { react: stack.dependencies.react } });`,
 )
 await writeFile(
   resolve(temporary, 'tsconfig.json'),
@@ -119,14 +127,20 @@ run(
 )
 // Exercise checker policies in a clean consumer, with registry deps rather than workspace links.
 await cp(resolve(source, 'test'), resolve(temporary, 'test'), { recursive: true })
-for (const name of ['check-project.mjs', 'stack.mjs']) {
+for (const name of ['check-project.mjs', 'stack.mjs', 'static-site.mjs']) {
   await mkdir(resolve(temporary, 'src'), { recursive: true })
   await writeFile(
     resolve(temporary, 'src', name),
     `export * from '@motionstudies/tooling/${name.replace('.mjs', '')}'`,
   )
 }
-console.log(run(process.execPath, ['--test', 'test/check-project.test.mjs'], temporary).trim())
+console.log(
+  run(
+    process.execPath,
+    ['--test', 'test/check-project.test.mjs', 'test/static-site.test.mjs'],
+    temporary,
+  ).trim(),
+)
 const bytes = await readFile(tarball)
 const receipt = {
   version: manifest.version,

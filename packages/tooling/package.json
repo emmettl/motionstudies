@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/tooling",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "description": "Shared stack pins, configuration defaults and repository boundary checks for study applications",
@@ -14,10 +14,16 @@
     "./tsconfig/base.json": "./tsconfig/base.json",
     "./tsconfig/react.json": "./tsconfig/react.json",
     "./oxlint.json": "./oxlint.json",
-    "./oxfmt.json": "./oxfmt.json"
+    "./oxfmt.json": "./oxfmt.json",
+    "./static-site": {
+      "types": "./src/static-site.d.mts",
+      "import": "./src/static-site.mjs"
+    }
   },
   "dependencies": {
-    "@motionstudies/data": "1.0.0"
+    "@motionstudies/data": "1.0.0",
+    "fflate": "0.8.3",
+    "zod": "4.6.7"
   },
   "devDependencies": {
     "oxfmt": "0.78.0"
