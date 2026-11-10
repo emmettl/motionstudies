@@ -4,9 +4,11 @@ The four shared packages are MIT-licensed. The first coordinated release is `0.1
 
 ## Current release procedure
 
-The 1.0.0 candidate promotes all four runtime packages and independently released tooling to stable semantic versions. Stable releases use `latest`; prereleases use `next`. Development and CI target Node 26 and npm 12.2.2. Runtime distributions ship package-specific READMEs. Record successful workflow runs and registry byte verification after publication; a prepared candidate is not a published release.
+The stable release is **1.0.0** for all five packages, published on 10 November 2026 from `a6e46beea79251d6848ca7a52023d4d96a4cb2d4`. The [runtime workflow](https://github.com/emmettl/motionstudies/actions/runs/42888908491) and [tooling workflow, attempt 2](https://github.com/emmettl/motionstudies/actions/runs/42893932965/attempts/2) passed. All five `latest` tags resolve to 1.0.0, and downloaded registry archives match the retained tested CI tarballs byte-for-byte. A fresh registry install through all five `latest` tags installed 1.0.0 without workspace links. See [release evidence](evidence/packages-1.0.0.json).
 
-The last verified coordinated prerelease before this candidate is `0.1.0-alpha.52` under `next`, published
+Development and CI target Node 26 and npm 12.2.2. Runtime distributions ship package-specific READMEs. CI passed 563 unit tests, 296 packed browser checks (two deliberate skips), 42 loader checks and the tooling tests/packed consumer. Tooling's first attempt encountered Core's registry propagation delay; the successful second attempt used the published dependencies. `next` retains the previous prereleases. Edition adoption remains explicit.
+
+The last verified coordinated prerelease before 1.0 is `0.1.0-alpha.52` under `next`, published
 from `d8aee8c666b51fd52face6ab6222b6de1bfedfc6` through
 [trusted run 42627012927](https://github.com/emmettl/motionstudies/actions/runs/42627012927).
 All four downloaded registry archives match the retained, tested CI tarballs
@@ -166,7 +168,7 @@ References: [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/)
 
 ## Stable 1.0 migration
 
-The 1.0 candidate is based on the complete alpha.52 source, preserving existing public subpaths. Upgrade runtime packages together and retain exact registry pins. Tooling has a separate release workflow and follows the runtime publication because its dependency is `@motionstudies/data@1.0.0`. Existing editions keep their current pins until explicitly adopted and verified.
+The 1.0 release is based on the complete alpha.52 source, preserving existing public subpaths. Upgrade runtime packages together and retain exact registry pins. Tooling has a separate release workflow and follows the runtime publication because its dependency is `@motionstudies/data@1.0.0`. Existing editions keep their current pins until explicitly adopted and verified.
 
 The development target is Node 26 (`.nvmrc`) and npm 12.2.2. Node-only data and tooling require Node >=26. Browser consumers use React 19.3.1/Fiber 9.8.2 and Three.js 0.187.0; three's peer range follows that new minor. The source packages stay private. Stable tarballs publish to `latest`; `next` retains the prerelease channel.
 

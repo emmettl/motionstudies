@@ -1,0 +1,83 @@
+{
+  "sourceCommit": "a6e46beea79251d6848ca7a52023d4d96a4cb2d4",
+  "packages": [
+    {
+      "name": "@motionstudies/core",
+      "version": "1.0.0",
+      "tags": {
+        "latest": "1.0.0",
+        "next": "0.1.0-alpha.52"
+      },
+      "integrity": "sha512-HWoa8p9SbNpZfaB20z/FSFNROa6sodyLx8s0pt4cgKw3lZM6qqmXEsJ4ZdiutipAT2u1QpR4eU0IpYP08RkE7w==",
+      "sha256": "e413b452613c259f16f4818bc27c28cff35f031b6fe899331154a0cf54d65662",
+      "bytes": 62168,
+      "readme": true
+    },
+    {
+      "name": "@motionstudies/data",
+      "version": "1.0.0",
+      "tags": {
+        "latest": "1.0.0",
+        "next": "0.1.0-alpha.52"
+      },
+      "integrity": "sha512-O3MDB8uYXOxdBowmMQbPBXd1uwhnk+q0QSpolMGXaGpCdpMnu45fmAKwRXMjeGWG5mSLNCkUtjsIW3mRLZou9Q==",
+      "sha256": "a76ce1ea2442745c3cb355039fe2a36fe8b6fdbd830963e4395e8dcba1f13c3e",
+      "bytes": 66485,
+      "readme": true
+    },
+    {
+      "name": "@motionstudies/three",
+      "version": "1.0.0",
+      "tags": {
+        "latest": "1.0.0",
+        "next": "0.1.0-alpha.52"
+      },
+      "integrity": "sha512-fGK4IqG0JudInu/hQYCiN0QNcGI8ZqAHRqR0gXAKdB8TKWER1wmcCeYuA6TqrZhKfdt1Uo6LN9eGERM0Bqmcyg==",
+      "sha256": "af7603ef79d8375d716f61df052a04b734ff60d87f97805224ddd22dc226af92",
+      "bytes": 107422,
+      "readme": true
+    },
+    {
+      "name": "@motionstudies/web",
+      "version": "1.0.0",
+      "tags": {
+        "latest": "1.0.0",
+        "next": "0.1.0-alpha.52"
+      },
+      "integrity": "sha512-RRificoKwkc3cIp/MnkDpI7FCTAAy6Gq1zbo8pElCyoJuoghQqUVpajMz1eRNjMpPxuBul0tY2lBJAqSeijfPw==",
+      "sha256": "d6d61c8b46f4416e8281c933f6054083c10d28a21ece5f6d46c40f4490bd3f30",
+      "bytes": 313260,
+      "readme": true
+    },
+    {
+      "name": "@motionstudies/tooling",
+      "version": "1.0.0",
+      "tags": {
+        "latest": "1.0.0",
+        "next": "0.1.0-alpha.1"
+      },
+      "integrity": "sha512-wYmQwO/gJDQ4YVcn/0IcOIdMrjUNBRmfAwJlpq/o8WuWFZVCO6d364uTbva5rXm4p7ZXgdv/Vsxi8S7se30pSQ==",
+      "sha256": "42dccc78b1a0769ab190957a304795cbabcd9ce61170a8a5fb6876d0e16e255a",
+      "bytes": 5710,
+      "readme": true
+    }
+  ],
+  "date": "2026-11-10",
+  "runtimeWorkflow": "https://github.com/emmettl/motionstudies/actions/runs/42888908491",
+  "toolingWorkflow": "https://github.com/emmettl/motionstudies/actions/runs/42893932965/attempts/2",
+  "toolchain": {
+    "node": "26.13.0",
+    "npm": "12.2.2"
+  },
+  "validation": {
+    "unitTests": 563,
+    "packedBrowserTestsPassed": 296,
+    "packedBrowserTestsSkipped": 2,
+    "loaderBrowserTestsPassed": 42,
+    "toolingUnitTests": 9,
+    "toolingPackedConsumer": "passed against registry 1.0.0 dependencies",
+    "registryArchives": "all five byte-identical to retained tested CI tarballs",
+    "productionAuditVulnerabilities": 0,
+    "defaultLatestInstall": "all five installed as 1.0.0 from registry without workspace links"
+  }
+}
