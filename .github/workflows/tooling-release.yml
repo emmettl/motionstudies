@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Dry run, stage, token bootstrap, trusted release, or registry verification
+        description: Verify, stage, publish, or promote the verified release to latest
         type: choice
-        options: [dry-run, stage, bootstrap, trusted, verify-registry]
+        options: [dry-run, stage, bootstrap, trusted, verify-registry, promote-latest]
         default: dry-run
         required: true
 permissions:
@@ -157,4 +157,34 @@ jobs:
           const bytes = new Uint8Array(await (await available(release.dist.tarball)).arrayBuffer())
           if (createHash('sha256').update(bytes).digest('hex') !== receipt.sha256) throw new Error('Registry bytes mismatch')
           console.log(`Verified @motionstudies/tooling@${receipt.version}: registry bytes match the tested tarball.`)
+          JS
+      - name: Promote verified release to latest
+        if: inputs.mode == 'promote-latest'
+        env:
+          NODE_AUTH_TOKEN: ''
+        run: |
+          node --input-type=module <<'JS'
+          import { readFile, appendFile } from 'node:fs/promises'
+          import { execFileSync } from 'node:child_process'
+          import { setTimeout as delay } from 'node:timers/promises'
+          const receipt = JSON.parse(await readFile('receipt.json', 'utf8'))
+          async function tags() {
+            const response = await fetch(`https://registry.npmjs.org/@motionstudies%2ftooling?verify=${Date.now()}`, { signal: AbortSignal.timeout(15_000) })
+            if (!response.ok) throw new Error(`Registry HTTP ${response.status}`)
+            return (await response.json())['dist-tags']
+          }
+          const before = await tags()
+          execFileSync('npm', ['dist-tag', 'add', `@motionstudies/tooling@${receipt.version}`, 'latest'], { stdio: 'inherit' })
+          for (let attempt = 0; attempt < 12; attempt++) {
+            const current = await tags()
+            if (current.latest === receipt.version) {
+              if (current.next !== before.next) throw new Error('Unexpected next tag change')
+              const summary = `Verified latest: ${before.latest} -> ${current.latest}; next: ${current.next}\n`
+              console.log(summary)
+              await appendFile(process.env.GITHUB_STEP_SUMMARY, summary)
+              process.exit(0)
+            }
+            await delay(5_000)
+          }
+          throw new Error('Registry latest tag did not propagate')
           JS
