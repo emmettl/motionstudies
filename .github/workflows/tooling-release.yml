@@ -126,7 +126,7 @@ jobs:
         if: inputs.mode == 'trusted'
         env:
           NODE_AUTH_TOKEN: ''
-        run: npm publish tooling.tgz --access public --provenance --tag next
+        run: npm publish tooling.tgz --access public --provenance --tag next --loglevel verbose
       - name: Verify registry bytes
         if: inputs.mode != 'stage'
         run: |
