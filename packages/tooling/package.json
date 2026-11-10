@@ -1,0 +1,24 @@
+{
+  "name": "@motionstudies/tooling",
+  "version": "0.1.0-alpha.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared stack pins, configuration defaults and repository boundary checks for study applications",
+  "license": "MIT",
+  "engines": { "node": ">=24.0.0" },
+  "exports": {
+    "./stack": "./src/stack.mjs",
+    "./check-project": "./src/check-project.mjs",
+    "./tsconfig/base.json": "./tsconfig/base.json",
+    "./tsconfig/react.json": "./tsconfig/react.json",
+    "./oxlint.json": "./oxlint.json"
+  },
+  "dependencies": { "@motionstudies/data": "0.1.0-alpha.44" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "build": "node build.mjs",
+    "check:packed": "node check-packed.mjs"
+  },
+  "repository": { "type": "git", "url": "git+https://github.com/emmettl/motionstudies.git", "directory": "packages/tooling" },
+  "sideEffects": false
+}

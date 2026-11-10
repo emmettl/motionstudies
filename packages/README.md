@@ -1,5 +1,7 @@
 # Motion Studies packages
 
+`@motionstudies/tooling` is an independently versioned development-tooling candidate for both Motion Studies and Working Models. It is outside the coordinated four-package runtime release. See [its contract and release instructions](tooling/README.md); the initial candidate is not yet published.
+
 Shared packages for the Motion Studies transport instrument. The source workspace and compiled distributions expose the same explicit, extensionless module subpaths. The initial release is `0.1.0-alpha.0` under npm’s `next` tag.
 
 - `@motionstudies/core`: transport contracts, indexing, interpolation and visual theme contracts; no browser or Node dependencies.
