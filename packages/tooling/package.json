@@ -1,6 +1,6 @@
 {
   "name": "@motionstudies/tooling",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "type": "module",
   "description": "Shared stack pins, configuration defaults and repository boundary checks for study applications",
@@ -21,7 +21,7 @@
     }
   },
   "dependencies": {
-    "@motionstudies/data": "1.0.1",
+    "@motionstudies/data": "1.1.0",
     "fflate": "0.8.3",
     "zod": "4.6.7"
   },
