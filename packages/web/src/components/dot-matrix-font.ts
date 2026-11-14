@@ -40,6 +40,26 @@ const glyphs: Readonly<Record<string, readonly number[]>> = {
   "'": [4, 4, 8, 0, 0, 0, 0], '’': [4, 4, 8, 0, 0, 0, 0],
   '(': [2, 4, 8, 8, 8, 4, 2], ')': [8, 4, 2, 2, 2, 4, 8],
   '!': [4, 4, 4, 4, 4, 0, 4], '?': [14, 17, 1, 2, 4, 0, 4],
+  // German and French accented letters for place names.
+  ä: [10, 0, 14, 1, 15, 17, 15], ö: [10, 0, 14, 17, 17, 17, 14],
+  ü: [10, 0, 17, 17, 17, 19, 13], Ä: [10, 0, 14, 17, 31, 17, 17],
+  Ö: [10, 0, 14, 17, 17, 17, 14], Ü: [10, 0, 17, 17, 17, 17, 14],
+  é: [2, 4, 14, 17, 31, 16, 14], è: [8, 4, 14, 17, 31, 16, 14],
+  ê: [4, 10, 14, 17, 31, 16, 14], à: [8, 4, 14, 1, 15, 17, 15],
+  â: [4, 10, 14, 1, 15, 17, 15], ç: [0, 0, 14, 16, 17, 14, 4],
+  ô: [4, 10, 14, 17, 17, 17, 14], î: [4, 10, 0, 12, 4, 4, 14],
+  É: [2, 4, 31, 16, 30, 16, 31], ',': [0, 0, 0, 0, 12, 4, 8],
+  // Step-free access pictogram, as on stop displays.
+  '♿': [4, 0, 4, 7, 9, 17, 14],
+}
+
+/**
+ * The 5 × 7 bitmap for one character: seven rows, each five bits with the leftmost dot as the
+ * most significant bit (16). Undefined for unsupported characters. For renderers that draw
+ * their own dots, such as a canvas texture; the glyph advance is six dots.
+ */
+export function matrixGlyph(character: string): readonly number[] | undefined {
+  return glyphs[character]
 }
 
 /** Unsupported scripts retain their original text through the SVG text fallback. */
