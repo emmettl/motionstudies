@@ -2,6 +2,10 @@
 
 The four shared packages are MIT-licensed. The first coordinated release is `0.1.0-alpha.0`, published under the npm `next` tag. Stable versions use `latest`. All four packages share a version; internal dependencies pin that exact version. Source workspaces stay private. Only an explicit release build produces publishable compiled distributions.
 
+## Stable runtime 1.1.0
+
+Published on 14 November 2026 from `77ba4d2` through [trusted run 43641162005](https://github.com/emmettl/motionstudies/actions/runs/43641162005), which verified the published registry artifacts. The minor release extends the dot-matrix alphabet with German and French accented letters (ä ö ü Ä Ö Ü é è ê à â ç ô î É), the comma and a step-free access pictogram, and exports the bitmaps as `@motionstudies/web/dot-matrix-font` (`matrixGlyph`, `matrixPath`) for renderers that draw their own dots. Tooling 1.1.1 pins the 1.1.0 runtime.
+
 ## Stable runtime 1.0.1
 
 Published on 10 November 2026 from `7560d8c` through [trusted run 42904432565](https://github.com/emmettl/motionstudies/actions/runs/42904432565). All four runtime `latest` tags and downloaded registry archives are verified against the retained tested CI tarballs. See [the patch evidence](evidence/packages-1.0.1.json).
