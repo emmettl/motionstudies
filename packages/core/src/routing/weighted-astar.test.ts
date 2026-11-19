@@ -1,6 +1,6 @@
 // @ts-nocheck -- ported unchanged from PFAD's untyped tests; typing them is follow-up work.
 import { test } from 'vitest'
-import assert from 'node:assert/strict'
+import assert from './assertions.test.ts'
 import { compileGraph } from './engine.ts'
 import { astar, weightedAstar } from './astar.ts'
 import { compileReverse } from './bidirectional.ts'
